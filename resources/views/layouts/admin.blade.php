@@ -13,7 +13,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 
@@ -29,7 +29,7 @@
                 @yield('content')
             </div>
         </main>
-        
+    </div>
 </body>
 
 </html>
