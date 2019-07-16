@@ -6,3 +6,134 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+#app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/*-------------------------------- SIDE BAR --------------------------------*/
+aside {
+    .sidebar {
+        background: $black-side;
+        box-shadow: $box-shadow;
+
+        flex-grow: 0;
+        flex-shrink: 0;
+        color: white;
+        width: 250px;
+        height: 100vh;
+
+        &.fixed-top {
+            position: fixed;
+            top: 0px;
+        }
+    }
+
+    .pofile-admin {
+        margin-top: 12px;
+        margin-bottom: 12px;
+        padding-left: 30px;
+        padding-right: 30px;
+
+        .avatar {
+            border-radius: 360px;
+            height: 40px;
+            width: 40px;
+            background-image: url('images/avatar.jpg');
+            background-size: cover;
+            background-position: center center;
+            margin-right: 20px;
+        }
+
+        .profile-admin-desc {
+            .profile-name {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 13px;
+                line-height: 19px;
+                /* identical to box height */
+                color: rgb(209, 209, 209);
+                margin-bottom: 5px;
+
+            }
+
+            .profile-desc {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 200;
+                font-size: 10px;
+                line-height: 12px;
+                /* identical to box height */
+                color: rgb(158, 158, 158);
+
+            }
+        }
+    }
+
+    .content-side {
+        padding: 30px;
+
+        .brand {
+            a {
+                img {
+                    margin-right: 20px;
+                }
+            }
+
+
+        }
+
+        .content-item {
+            margin-bottom: 12px;
+
+            .content-link {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 600;
+                font-size: 15px;
+                line-height: 21px;
+                /* identical to box height */
+                color: rgb(209, 209, 209);
+                text-transform: uppercase;
+                text-decoration: none;
+
+                i {
+                    margin-right: 15px;
+                    color: rgb(158, 158, 158);
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+
+}
+
+main {
+    background: $grey-back;
+    flex-grow: 1;
+}
+
+.jumbotron {
+    height: 200px;
+    background: $blue-back;
+}
+
+.line-white {
+    height: 1px;
+    width: 90%;
+    background: white;
+}
+
+.content {
+    padding-left: 250px;
+    margin-top: -180px;
+}
