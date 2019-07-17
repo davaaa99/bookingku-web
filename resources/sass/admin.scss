@@ -39,13 +39,33 @@ main {
     margin-top: -180px;
 }
 
+.title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 37px;
 
+    color: #000000;
+}
 
+.spacer {
+    height: 100px;
+}
+
+.spacer-50 {
+    height: 50px;
+}
+
+.spacer-20 {
+    height: 20px;
+}
+
+/*------------------------ SIDE BAR ------------------------*/
 #sidebar {
     .sidebar {
         background: $black-side;
         box-shadow: $box-shadow;
-
         flex-grow: 0;
         flex-shrink: 0;
         color: white;
@@ -82,7 +102,6 @@ main {
                     font-weight: 300;
                     font-size: 13px;
                     line-height: 19px;
-                    /* identical to box height */
                     color: rgb(209, 209, 209);
                     margin-bottom: 5px;
 
@@ -94,7 +113,6 @@ main {
                     font-weight: 200;
                     font-size: 10px;
                     line-height: 12px;
-                    /* identical to box height */
                     color: rgb(158, 158, 158);
 
                 }
@@ -121,7 +139,6 @@ main {
                     font-weight: 600;
                     font-size: 15px;
                     line-height: 21px;
-                    /* identical to box height */
                     color: rgb(209, 209, 209);
                     text-transform: uppercase;
                     text-decoration: none;
@@ -135,5 +152,122 @@ main {
             }
         }
 
+    }
+}
+
+/*------------------------ VERIFY BAR ------------------------*/
+
+#booking-list {
+    .filter {
+        padding-left: 50px;
+        padding-right: 50px;
+        margin-top: 30px;
+
+        .filter-item {
+            font-size: 13px;
+
+            input {
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            select {
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .inputFilter {
+                width: 200px;
+                height: 40px;
+                border-radius: 100px;
+                padding: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: white;
+                background: $filter-color;
+                border: none;
+                margin-right: 30px;
+            }
+
+            .filterStatus {
+                .filterTitle {
+                    background: $filter-color;
+                    padding: 10px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    width: 200px;
+                    height: 40px;
+                    border-radius: 100px;
+                    color: white;
+
+                }
+
+                .box {
+                    position: absolute;
+                    z-index: 1;
+                    width: 200px;
+                    margin-top: 10px;
+
+                    .link {
+                        width: 180px;
+                        -webkit-box-shadow: 0px 0px 10px 1px rgba(245, 245, 245, 1);
+                        -moz-box-shadow: 0px 0px 10px 1px rgba(245, 245, 245, 1);
+                        box-shadow: 0px 0px 10px 1px rgba(245, 245, 245, 1);
+                        background: white;
+
+                        .link-item {
+                            padding: 5px;
+                            font-family: Poppins;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 13px;
+                            color: #606266;
+
+                            &:hover {
+                                background: #f5f7fa;
+                            }
+
+                            .link-status {
+                                width: 180px;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+            .search {
+                border: 1px solid #C0C4CC;
+                border-radius: 100px;
+                padding: 20px;
+                height: 40px;
+
+                .filterSearch {
+                    border: none;
+                    color: #C0C4CC !important;
+
+                }
+            }
+
+        }
+    }
+}
+
+#verify {
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .table {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 100%;
+        background: white;
+
+        .title {
+            margin-left: 20px;
+        }
     }
 }
