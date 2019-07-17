@@ -15,7 +15,8 @@ class BookingController extends Controller
     // //input booking baik dari user maupun client
     public function createBooking(request $request){
         $booking = new bookings();
-        $booking->id_booking = (String) Str::uuid();
+        // $booking->id_booking = (String) Str::uuid();
+        $booking->id_booking = $request->id_booking;
         $booking->id_schedule = $request->id_schedule;
         $booking->client_email = $request->client_email;
         $booking->user_email = $request->user_email;
@@ -34,11 +35,22 @@ class BookingController extends Controller
     }
     //untuk mengambil data booking berdasarkan lokasi dan tanggal untuk update status
     public function getBookingByDate($location, $date){
-        // $userID = locations::where('id_location',$location)->get('id_user');
-        // $email =  users::where('id_users',$userID)->get('email');
-        // $listBooking = bookings::where('client_email',$email)->where('created_at',$date)->get();
-        $listBooking = bookings::where('created_at',$date)->get();
+        $userID = locations::where('id_location',$location)->get('id_user');
+        $email =  users::where('id_users',$userID)->get('email');
+        $listBooking = bookings::where('client_email',$email)->where('created_at',$date)->get();
         return $listBooking;
     }
-    //edit     
+    //edit status payment
+    public function updateStatusPayment(request $request,$id){ 
+        $booking = bookings::where('id_booking',$id)->update([
+            'report_status' => $request->report_status
+        ]);
+        // $booking->report_status = $report;
+        // $booking->save();
+        // $booking->update([
+        //     $booking->report_status => $request->report_status
+        // ]);
+        return 'update status berhasil';
+        // return $booking;
+    }
 }
