@@ -21,4 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('field','FieldController@index');
 Route::post('field/add','FieldController@create');
 Route::get('field/show','FieldController@show');
-Route::get('field/clientfield','FieldController@getClientField');
+Route::get('field/getfieldlocation/{id_location}','FieldController@getLapangLocation');
+// Route::get('field/getfieldid/{id_location}','FieldController@getIdField');
