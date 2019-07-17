@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('bookings','API\BookingController@getBooking');
 Route::post('bookings/add','API\BookingController@createBooking');
+Route::get('bookings/client/{email}','API\BookingController@getBookingByEmail');
+Route::get('bookings/admin/{location}&{date}','API\BookingController@getBookingByDate');
