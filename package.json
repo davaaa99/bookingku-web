@@ -24,6 +24,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.9.0"
+        "@fortawesome/fontawesome-free": "^5.9.0",
+        "moment": "^2.24.0",
+        "vue-date-picker": "^2.5.0",
+        "vue2-datepicker": "^2.12.0"
     }
 }
