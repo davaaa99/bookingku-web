@@ -2,9 +2,10 @@
     <div id="booking-list">
         <div class="filter ">
             <div class="filter-item d-flex">
-              
-                <date-picker v-model="time1" input-class="datepicker" format="DD-MM-YYYY" > </date-picker>
-        
+               
+                <date-picker width="200"   v-model="date" lang="en" input-class="datepicker" format="DD-MM-YYYY" > </date-picker>
+
+
                 <div class="filterStatus">
                     <div class="filterTitle d-flex align-items-center " @click="show">
                       {{filterTitle}}
@@ -32,20 +33,26 @@
                     </input>
 
                 </div>
+                 
             </div>
+            <div class="spacer-50"></div>
+             <b-table striped hover :items="statusList"></b-table>
         </div>
     </div>
 </template>
 
 <script>
 import DatePicker from 'vue2-datepicker'
-    
-    export default {
+
+import BootstrapVue from 'bootstrap-vue'
+Vue.use(BootstrapVue)
+
+export default {
         components: { DatePicker },
         data() {
 
             return {
-               time1: '',
+               date: '',
                 status: false,
                 search: "",
                 statusList: [{

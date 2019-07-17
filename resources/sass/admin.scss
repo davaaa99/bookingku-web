@@ -180,18 +180,26 @@ main {
 
 
             .datepicker {
-                width: 200px;
+                display: flex;
+                align-items: center;
+
                 height: 40px;
                 border-radius: 100px;
                 padding: 10px;
                 padding-left: 20px;
                 padding-right: 20px;
-                color: white;
-                background: $filter-color;
+                color: #73879c !important;
+                // background: $filter-color;
                 border: none;
                 margin-right: 30px;
-                margin-bottom: 10px
+
+                margin-bottom: 10px;
+                border: 1px solid #73879c;
+
+
             }
+
+
 
             .filterStatus {
                 .filterTitle {
@@ -201,11 +209,11 @@ main {
                     padding: 10px;
                     padding-left: 20px;
                     padding-right: 20px;
-                    color: white;
-                    background: $filter-color;
+                    color: #73879c;
+                    // background: $filter-color;
                     border: none;
-                    margin-right: 30px;
-
+                    margin-left: 30px;
+                    border: 1px solid #73879c;
 
                 }
 
@@ -214,6 +222,7 @@ main {
                     z-index: 1;
                     width: 200px;
                     margin-top: 10px;
+                    margin-left: 30px;
 
                     .link {
                         width: 180px;
@@ -224,12 +233,13 @@ main {
                         box-shadow: 0px 0px 6px 3px rgba(240, 240, 240, 1);
 
                         .link-item {
+
                             padding: 5px;
-                            font-family: Poppins;
+
                             font-style: normal;
                             font-weight: normal;
                             font-size: 13px;
-                            color: #606266;
+                            color: #73879c;
 
                             &:hover {
                                 background: #f5f7fa;
@@ -244,7 +254,7 @@ main {
             }
 
             .search {
-                border: 1px solid #C0C4CC;
+                border: 1px solid #73879c;
                 border-radius: 100px;
                 padding: 20px;
                 height: 40px;

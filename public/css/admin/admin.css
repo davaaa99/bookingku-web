@@ -16639,17 +16639,18 @@ main {
 }
 
 #booking-list .filter .filter-item .datepicker {
-  width: 200px;
+  display: flex;
+  align-items: center;
   height: 40px;
   border-radius: 100px;
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  color: white;
-  background: #FA7A50;
+  color: #73879c !important;
   border: none;
   margin-right: 30px;
   margin-bottom: 10px;
+  border: 1px solid #73879c;
 }
 
 #booking-list .filter .filter-item .filterStatus .filterTitle {
@@ -16659,10 +16660,10 @@ main {
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  color: white;
-  background: #FA7A50;
+  color: #73879c;
   border: none;
-  margin-right: 30px;
+  margin-left: 30px;
+  border: 1px solid #73879c;
 }
 
 #booking-list .filter .filter-item .filterStatus .box {
@@ -16670,6 +16671,7 @@ main {
   z-index: 1;
   width: 200px;
   margin-top: 10px;
+  margin-left: 30px;
 }
 
 #booking-list .filter .filter-item .filterStatus .box .link {
@@ -16681,11 +16683,10 @@ main {
 
 #booking-list .filter .filter-item .filterStatus .box .link .link-item {
   padding: 5px;
-  font-family: Poppins;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
-  color: #606266;
+  color: #73879c;
 }
 
 #booking-list .filter .filter-item .filterStatus .box .link .link-item:hover {
@@ -16697,7 +16698,7 @@ main {
 }
 
 #booking-list .filter .filter-item .search {
-  border: 1px solid #C0C4CC;
+  border: 1px solid #73879c;
   border-radius: 100px;
   padding: 20px;
   height: 40px;
