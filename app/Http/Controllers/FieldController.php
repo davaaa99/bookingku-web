@@ -16,17 +16,18 @@ class FieldController extends Controller
 
 	//input atau store data
     public function create(request $request){
+		Field::create([
 		// $data = $request->all();
-		$fields = new Field();
+		// $fields = new Field();
 		// $location = new Location();
 		// Location::find($id_location)->get();
 		// $kind_of_Field = new KindOfField();
 		// KindOfField::find($id_kind_of_field)->get();
-    	$fields->id_field =  (string) Str::uuid();
-		$fields->field_type = $request->field_type;
-    	$fields->field_name = $request->field_name;
-		$fields->save();
-		return $fields;
+    	'id_field' =>  (string) Str::uuid(),
+		'field_type' => $request->field_type,
+    	'field_name' => $request->field_name
+		]);
+		return 'Data masuk';
     }
 	
 	// untuk mendapatkan lapang berdasarkan id lokasi
