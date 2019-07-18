@@ -1,10 +1,12 @@
 <?php
 
 namespace App;
+use SoftDeletes;
 
 use Illuminate\Database\Eloquent\Model;
 
 class bookings extends Model
 {
-    protected $fillable = ['report_status'];
+    protected $fillable = ['payment_status'];
+    protected $deleted =['isDeleted'];
 }

@@ -8,19 +8,13 @@ use PDF;
 
 class PaymentController extends Controller
 {
-    // public function updateStatusPembayaran($id_booking,$status_pembayaran){
-    //     //update data booking
-    //     $payment=DB::table('booking')->where('idBooking',$id_booking)->update([
-    //         'status_pembayaran'=>$status_pembayaran
-    //     ]);
-    // }
-
-    // public function reportPayment($id_booking){
-    //     //getData Booking berdasarkan client
-    //     $payment=DB::table('booking')->where('emailClient', $id_booking)->get();
-    //     //generate pdf
-    //     $pdf = PDF::loadview('invoice',['payment'=>$payment]);
-    //     //send email
-    //     Mail::send('invoice',$pdf,)
-    // }
+    public function reportPayment($client_email){
+        //membuat 
+        //getData Booking berdasarkan client
+        $payment=DB::table('booking')->where('client_email', $client_email)->where('created_at',$date)->get();
+        $user=DB::table('users')->where('client_email', $client_email)->first('name');
+        //generate pdf
+        $pdf = PDF::loadview('invoice',['payment'=>$payment]);
+        return $pdf->download('Invoice '.$user.' '.date('Y-m-d_H-i-s').'.pdf');
+    }
 }

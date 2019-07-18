@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\bookings;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class BookingController extends Controller
 {
     //mengambil semua data booking yang pernah dilakukan
@@ -21,7 +23,7 @@ class BookingController extends Controller
         $booking->client_email = $request->client_email;
         $booking->user_email = $request->user_email;
         $booking->payment_type = $request->payment_type;
-        $booking->report_status = $request->report_status;
+        $booking->payment_status = $request->payment_status;
         $booking->created_by = $request->created_by;
         
         $booking->save();
@@ -41,16 +43,18 @@ class BookingController extends Controller
         return $listBooking;
     }
     //edit status payment
-    public function updateStatusPayment(request $request,$id){ 
-        $booking = bookings::where('id_booking',$id)->update([
-            'report_status' => $request->report_status
+    public function updateStatusPayment(request $request,$id_booking){ 
+        $booking = bookings::where('id_booking',$id_booking)->update([
+            'payment_status' => $request->payment_status
         ]);
-        // $booking->report_status = $report;
-        // $booking->save();
-        // $booking->update([
-        //     $booking->report_status => $request->report_status
-        // ]);
         return 'update status berhasil';
         // return $booking;
+    }
+    //softdelete
+    public function deleteBooking($id_booking){
+        $booking = booking::find($id_booking);
+        $booking->delete();
+
+        return 'delete berhasil';
     }
 }
