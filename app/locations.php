@@ -20,9 +20,7 @@ class locations extends Model
         'location_photo',
         'city',
         'created_by',
-        'updated_by',
-        'isdeleted',        
+        'updated_by',       
     ];
 
-    protected $boolean = ['isdeleted'];
 }
