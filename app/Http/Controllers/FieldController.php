@@ -42,6 +42,12 @@ class FieldController extends Controller
 		return $field;
 	}
 
+	public function deleteField($id_field){
+        Field::where('id_field',$id_field)->delete();
+
+        return "Data lapang dihapus";
+    }
+
 }
 
 
