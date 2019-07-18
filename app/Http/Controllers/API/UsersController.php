@@ -16,4 +16,10 @@ class UsersController extends Controller
         $idClient = users::where('email',$email)->first();
         return $idClient->id_users;
     }
+
+    public function deleteClient($email){
+        users::where('email',$email)->delete();
+
+        return "Client telah dihapus";
+    }
 }

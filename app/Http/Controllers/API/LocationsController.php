@@ -22,13 +22,14 @@ class LocationsController extends Controller
     //     $location->id_users = $request->id_users;
     //     $location->location_name = $request->location_name;
     //     $location->location_address = $request->location_address;
-    //     $location->description = $request->description;
-    //     $location->open_time = $request->open_time;
-    //     $location->closing_time = $request->closing_time;
-    //     $location->location_photo = $request->location_photo;
+    //     // $location->description = $request->description;
+    //     // $location->open_time = $request->open_time;
+    //     // $location->closing_time = $request->closing_time;
+    //     // $location->location_photo = $request->location_photo;
     //     $location->city = $request->city;
-    //     $location->created_by = $request->created_by;
-    //     $location->updated_by = $request->updated_by;
+    //     // $location->created_by = $request->created_by;
+    //     // $location->updated_by = $request->updated_by;
+    //     $location->isdeleted = 0;
 
     //     $location->save();
     //     return "Data lokasi baru masuk...";
@@ -67,8 +68,7 @@ class LocationsController extends Controller
     }
     
     public function deleteLocation($idLocation){
-        $location = locations::where('id_location',$location)->get();
-        $location->delete();
+        locations::where('id_location',$idLocation)->delete();
 
         return "Data lokasi dihapus";
     }
