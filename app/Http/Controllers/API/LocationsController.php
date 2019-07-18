@@ -16,20 +16,40 @@ class LocationsController extends Controller
     }
 
     // Membuat lokasi baru
-    public function create(Request $request){
-        $location = new locations();
-        $location->id_location = (string) Str::uuid();
-        $location->id_users = $request->id_users;
-        $location->location_name = $request->location_name;
-        $location->location_address = $request->location_address;
-        $location->description = $request->description;
-        $location->open_time = $request->open_time;
-        $location->closing_time = $request->closing_time;
-        $location->location_photo = $request->location_photo;
-        $location->city = $request->city;
-        $location->created_by = $request->created_by;
+    // public function create(Request $request){
+    //     $location = new locations();
+    //     $location->id_location = (string) Str::uuid();
+    //     $location->id_users = $request->id_users;
+    //     $location->location_name = $request->location_name;
+    //     $location->location_address = $request->location_address;
+    //     $location->description = $request->description;
+    //     $location->open_time = $request->open_time;
+    //     $location->closing_time = $request->closing_time;
+    //     $location->location_photo = $request->location_photo;
+    //     $location->city = $request->city;
+    //     $location->created_by = $request->created_by;
+    //     $location->updated_by = $request->updated_by;
 
-        $location->save();
+    //     $location->save();
+    //     return "Data lokasi baru masuk...";
+    // }
+
+    public function create(Request $request){
+        locations::create([
+            'id_location' => (string) Str::uuid(),
+            'id_users' => $request->id_users,
+            'location_name' => $request->location_name,
+            'location_address' => $request->location_address,
+            // 'description' => $request->description,
+            // 'open_time' => $request->open_time,
+            // 'closing_time' => $request->closing_time,
+            // 'location_photo' => $request->location_photo,
+            'city' => $request->city,
+            // 'created_by' => $request->created_by,
+            // 'updated_by' => $request->updated_by,
+            'isdeleted' => 0,
+        ]);
+        
         return "Data lokasi baru masuk...";
     }
 
@@ -46,4 +66,10 @@ class LocationsController extends Controller
         return $location;
     }
     
+    public function deleteLocation($idLocation){
+        $location = locations::where('id_location',$location)->get();
+        $location->delete();
+
+        return "Data lokasi dihapus";
+    }
 }
