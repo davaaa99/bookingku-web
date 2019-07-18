@@ -19,7 +19,9 @@ class FieldController extends Controller
 		$data = $request->all();
 		$fields = new Field();
 		// $location = new Location();
-    	// Location::find($id_location)->get();
+		// Location::find($id_location)->get();
+		// $kind_of_Field = new KindOfField();
+		// KindOfField::find($id_kind_of_field)->get();
     	$fields->id_field =  $request->id_field;
 		$field->field_type = $request->field_type;
     	$field->field_name = $request->field_name;
