@@ -13,7 +13,17 @@ class FieldController extends Controller
     public function index(){
     	return Field::all();
     }
+	// untuk mendapatkan lapang berdasarkan id lokasi
+	public function getLapangLocation($id_location){
+		$field = Field::where('id_location',$id_location)->get();
+		return $field;
+	}
 
+	// mendapatkan lapang berdasarkan id lapang
+	public function getLapangDetail($id_field){
+		$field = Field::where('id_field',$id_field)->get();
+		return $field;
+	}
 	//input atau store data
     public function create(request $request){
 		Field::create([
@@ -30,18 +40,6 @@ class FieldController extends Controller
 		return 'Data masuk';
     }
 	
-	// untuk mendapatkan lapang berdasarkan id lokasi
-    public function getLapangLocation($id_location){
-		$field = Field::where('id_location',$id_location)->get();
-		return $field;
-	}
-	
-	// mendapatkan lapang berdasarkan id lapang
-	public function getLapangDetail($id_field){
-		$field = Field::where('id_field',$id_field)->get();
-		return $field;
-	}
-
 	public function deleteField($id_field){
         Field::where('id_field',$id_field)->delete();
 

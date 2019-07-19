@@ -63,10 +63,14 @@ class LocationsController extends Controller
 
     // Mengambil lokasi by kota
     public function searchLocation($city){
-        $location = locations::where('city',$city)->get();
+        $location = locations::where('city','LIKE',"%$city%")
+                                ->orwhere('location_address','LIKE',"%$city%")
+                                ->orwhere('location_name','LIKE',"%$city%")
+                                ->get();
         return $location;
     }
     
+    // Hapus lokasi (soft deleting)
     public function deleteLocation($idLocation){
         locations::where('id_location',$idLocation)->delete();
 
