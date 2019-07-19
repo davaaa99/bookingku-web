@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "aac0ea93522dc16d8a7e0aa0a50fe73c",
+=======
+    "content-hash": "e80c715c050fc1aa18dd4c19e894e499",
+>>>>>>> origin/qotrun-dev
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",

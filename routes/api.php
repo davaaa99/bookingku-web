@@ -56,3 +56,6 @@ Route::delete('/user/delete/{email}','API\UsersController@deleteUser');
 Route::get('all','API\UsersController@getAllUser');
 
 Route::get('all/{name}','API\UsersController@searchAllUser');
+
+Route::get('schedule','API\SchedulesController@index');
+Route::get('createschedule','API\SchedulesController@createSchedule');
