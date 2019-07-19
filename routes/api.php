@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,25 @@ Route::post('location','API\LocationsController@create');
 // Route::get('/location/{idClient}','API\LocationsController@getLocationClient');
 Route::get('/location/{emailClient}','API\LocationsController@getLocationClient');
 Route::get('/locations/{city}','API\LocationsController@searchLocation');
-Route::get('/location/delete/{idLocation}','API\LocationsController@deleteLocation');
+Route::delete('/location/delete/{idLocation}','API\LocationsController@deleteLocation');
 
+//Route untuk admin
+Route::get('admin','API\UsersController@getAdmin');
+Route::get('/admin/search/{name}','API\UsersController@searchAdmin');
+Route::put('/admin/update/{idAdmin}','API\UsersController@updateAdmin');
+Route::delete('/admin/delete/{email}','API\UsersController@deleteAdmin');
+
+//Route untuk client
 Route::get('client','API\UsersController@getClient');
-Route::get('/client/{email}','API\UsersController@getIdClient');
+Route::get('/client/search/{name}','API\UsersController@searchClient');
+Route::delete('/client/delete/{email}','API\UsersController@deleteClient');
+
+//Route untuk user
+Route::post('user/register','API\UsersController@createUser');
+Route::get('user','API\UsersController@getUser');
+Route::get('user/search/{name}','API\UsersController@searchUser');
+Route::delete('/user/delete/{email}','API\UsersController@deleteUser');
+
+Route::get('all','API\UsersController@getAllUser');
+
+Route::get('all/{name}','API\UsersController@searchAllUser');
