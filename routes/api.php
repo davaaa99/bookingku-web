@@ -22,7 +22,7 @@ Route::post('bookings/add','API\BookingController@createBooking');
 Route::get('bookings/client/{email}','API\BookingController@getBookingByEmail');
 Route::get('bookings/admin/{location}&{date}','API\BookingController@getBookingByDate');
 Route::put('/bookings/update/{id}','API\BookingController@updateStatusPayment');
-Route::get('/booking/delete/{id}', 'API\BookingController@deleteBooking');
+Route::delete('/booking/delete/{id}', 'API\BookingController@deleteBooking');
 Route::get('/payments/report', 'API\PaymentController@reportPayment');
 
 

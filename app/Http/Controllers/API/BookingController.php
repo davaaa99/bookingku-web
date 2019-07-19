@@ -52,8 +52,7 @@ class BookingController extends Controller
     }
     //softdelete
     public function deleteBooking($id_booking){
-        $booking = booking::find($id_booking);
-        $booking->delete();
+        bookings::where('id_booking',$id_booking)->delete();
 
         return 'delete berhasil';
     }
