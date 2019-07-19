@@ -35,7 +35,8 @@ class FieldController extends Controller
 		// KindOfField::find($id_kind_of_field)->get();
     	'id_field' =>  (string) Str::uuid(),
 		'field_type' => $request->field_type,
-    	'field_name' => $request->field_name
+		'field_name' => $request->field_name,
+		'field_photo' => $request->field_foto
 		]);
 		return 'Data masuk';
     }

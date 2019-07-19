@@ -10,6 +10,6 @@ class Field extends Model
     use SoftDeletes;
 
      protected $fillable = [
-        'id_field','field_name', 'field_type',
+        'id_field','field_name', 'field_type','field_foto',
     ];
 }

@@ -23,7 +23,7 @@ Route::get('field','FieldController@index');
 Route::post('field/add','FieldController@create');
 Route::get('field/show','FieldController@show');
 Route::get('field/getfieldlocation/{id_location}','FieldController@getLapangLocation');
-Route::delete('/field/delete/{id_field}','FieldController@deleteField');
+Route::delete('/field/delete/{id_field}','FieldController@deleteField'); 
 
 // // Route::get('field/getfieldid/{id_location}','FieldController@getIdField');
 // Route::get('location','API\LocationsController@getLocation');
@@ -49,7 +49,7 @@ Route::delete('/client/delete/{email}','API\UsersController@deleteClient');
 
 //Route untuk user
 Route::post('user/register','API\UsersController@createUser');
-Route::get('user','API\UsersController@getUser');
+// Route::get('user','API\UsersController@getUser');
 Route::get('user/search/{name}','API\UsersController@searchUser');
 Route::delete('/user/delete/{email}','API\UsersController@deleteUser');
 
