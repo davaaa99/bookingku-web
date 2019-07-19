@@ -2,27 +2,7 @@
     <div id="list">
         <div class="filter ">
             <div class="filter-item d-flex">
-                <!-- <date-picker width="200" v-model="filterTanggal" lang="en" input-class="datepicker" format="DD-MM-YYYY">
-                </date-picker> -->
-                <input type="date" v-model="filterTanggal" class="datepicker">
-                <div class="filterStatus">
-                    <div class="filterTitle d-flex align-items-center " @click="show">
-                        {{filterStatus}}
-                        <i :class="[{ 'fas fa-caret-down':!status }, { 'fas fa-sort-up':status }]" class="ml-auto"></i>
-                    </div>
-                    <div v-if="status" class="box d-flex align-items-center justify-content-center">
-                        <div class="link">
-                            <div class="link-item" v-for="list in statusList">
-                                <a @click="click(list.status)">
-                                    <div class="link-status">
-                                        {{ list.status }}
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="search ml-auto d-flex align-items-center">
+                <div class="search  ml-auto d-flex align-items-center">
                     <input class="filterSearch" type="text" v-model="search" placeholder="Search">
                     
                         <i class="fa fa-search" style="color:#C0C4CC"></i>
@@ -50,7 +30,6 @@
 </template>
 
 <script>
-    import DatePicker from 'vue2-datepicker'
     import BootstrapVue from 'bootstrap-vue'
     import {
         type
@@ -58,10 +37,6 @@
     Vue.use(BootstrapVue)
 
     export default {
-
-        components: {
-            DatePicker
-        },
 
         data() {
 
@@ -148,18 +123,6 @@
 
                 ],
             };
-        },
-        methods: {
-            show: function () {
-                this.status = !this.status;
-            },
-            click: function (status) {
-                this.status = !this.status;
-                this.filterStatus = status;
-            },
-            testing: function (id) {
-                alert(id);
-            }
         },
         computed: {
             rows() {

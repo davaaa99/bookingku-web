@@ -21,6 +21,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('verify-component', require('./components/VerifyComponent.vue').default);
+Vue.component('client-list', require('./components/clientListComponent.vue').default);
+Vue.component('payment-list', require('./components/paymentComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

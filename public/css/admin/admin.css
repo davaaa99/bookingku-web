@@ -16534,6 +16534,18 @@ main {
   height: 20px;
 }
 
+.table-box {
+  padding: 20px;
+  width: 100%;
+  background: white;
+}
+
+.table-header {
+  width: 100%;
+  background: #1B3A5D;
+  height: 30px;
+}
+
 /*------------------------ SIDE BAR ------------------------*/
 
 #sidebar .sidebar {
@@ -16620,25 +16632,24 @@ main {
 
 /*------------------------ VERIFY BAR ------------------------*/
 
-#booking-list .filter {
+#list .filter {
   padding-left: 20px;
   padding-right: 50px;
-  margin-top: 30px;
 }
 
-#booking-list .filter .filter-item {
+#list .filter .filter-item {
   font-size: 13px;
 }
 
-#booking-list .filter .filter-item input:focus {
+#list .filter .filter-item input:focus {
   outline: none;
 }
 
-#booking-list .filter .filter-item select:focus {
+#list .filter .filter-item select:focus {
   outline: none;
 }
 
-#booking-list .filter .filter-item .datepicker {
+#list .filter .filter-item .datepicker {
   display: flex;
   align-items: center;
   height: 40px;
@@ -16653,7 +16664,7 @@ main {
   border: 1px solid #73879c;
 }
 
-#booking-list .filter .filter-item .filterStatus .filterTitle {
+#list .filter .filter-item .filterStatus .filterTitle {
   width: 200px;
   height: 40px;
   border-radius: 100px;
@@ -16666,7 +16677,7 @@ main {
   border: 1px solid #73879c;
 }
 
-#booking-list .filter .filter-item .filterStatus .box {
+#list .filter .filter-item .filterStatus .box {
   position: absolute;
   z-index: 1;
   width: 200px;
@@ -16674,14 +16685,13 @@ main {
   margin-left: 30px;
 }
 
-#booking-list .filter .filter-item .filterStatus .box .link {
+#list .filter .filter-item .filterStatus .box .link {
   width: 180px;
   background: white;
-  border-radius: 5px;
-  box-shadow: 0px 0px 6px 3px #f0f0f0;
+  box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
 }
 
-#booking-list .filter .filter-item .filterStatus .box .link .link-item {
+#list .filter .filter-item .filterStatus .box .link .link-item {
   padding: 5px;
   font-style: normal;
   font-weight: normal;
@@ -16689,15 +16699,15 @@ main {
   color: #73879c;
 }
 
-#booking-list .filter .filter-item .filterStatus .box .link .link-item:hover {
+#list .filter .filter-item .filterStatus .box .link .link-item:hover {
   background: #f5f7fa;
 }
 
-#booking-list .filter .filter-item .filterStatus .box .link .link-item .link-status {
+#list .filter .filter-item .filterStatus .box .link .link-item .link-status {
   width: 180px;
 }
 
-#booking-list .filter .filter-item .search {
+#list .filter .filter-item .search {
   border: 1px solid #73879c;
   border-radius: 100px;
   padding: 20px;
@@ -16705,8 +16715,101 @@ main {
   width: 200px;
 }
 
-#booking-list .filter .filter-item .search .filterSearch {
+#list .filter .filter-item .search .filterSearch {
   border: none;
+}
+
+#list .header {
+  border: none;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 27px;
+  /* identical to box height */
+  color: #FA7A50;
+}
+
+#list .pagination li a {
+  color: #4D4D4D;
+  border: none !important;
+  border-radius: 360px;
+  margin-right: 10px;
+}
+
+#list .pagination li span {
+  color: #4D4D4D;
+  border: none !important;
+  border-radius: 360px;
+  margin-right: 10px;
+  width: 30px;
+  width: 30px;
+}
+
+#list .pagination .active a {
+  background-color: #FA7A50;
+  outline: none !important;
+  color: #FFFFFF;
+}
+
+#list .pagination .active a:focus {
+  background-color: #FA7A50;
+  outline: none;
+  color: #FFFFFF;
+  border-radius: 360px;
+}
+
+#list .pagination .active a:hover {
+  background-color: #FA7A50;
+  outline: none;
+  color: #FFFFFF;
+  border-radius: 360px;
+}
+
+#list .pagination .active span {
+  background-color: #FA7A50;
+  outline: none !important;
+  color: #FFFFFF;
+  border-radius: 360px;
+  font-family: Poppins;
+  width: 30px;
+  width: 30px;
+}
+
+#list .pagination .active span:focus {
+  background-color: #FA7A50;
+  outline: none;
+  color: #FFFFFF;
+  border-radius: 360px;
+  width: 30px;
+  width: 30px;
+}
+
+#list .pagination .active span:hover {
+  background-color: #FA7A50;
+  outline: none;
+  color: #FFFFFF;
+  border-radius: 360px;
+  width: 30px;
+  width: 30px;
+}
+
+#list .btn-detail {
+  width: 85px;
+  height: 32.96px;
+  background: #3FB5E1;
+  border-radius: 100px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height */
+  color: #FFFFFF;
+}
+
+#list .btn-detail:focus {
+  border-radius: 100px;
 }
 
 #verify {
@@ -16714,14 +16817,65 @@ main {
   padding-right: 50px;
 }
 
-#verify .table {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  width: 100%;
-  background: white;
+#verify .table-box .title {
+  margin-left: 20px;
 }
 
-#verify .table .title {
-  margin-left: 20px;
+#verifydetail .table-box {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+#verifydetail .table-box .detail {
+  border-left: 1px solid #EBECF1;
+  border-bottom: 1px solid #EBECF1;
+  border-right: 1px solid #EBECF1;
+  padding: 50px;
+}
+
+#verifydetail .table-box .detail table {
+  width: 100%;
+}
+
+#verifydetail .table-box .detail table tr td,
+#verifydetail .table-box .detail table tr th {
+  padding: 20px;
+  font-family: Poppins;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  color: #4D4D4D;
+}
+
+#verifydetail .table-box .detail table tr td .buktipembayaran,
+#verifydetail .table-box .detail table tr th .buktipembayaran {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+#paymentdetail .table-box {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+#paymentdetail .detail {
+  border-left: 1px solid #EBECF1;
+  border-bottom: 1px solid #EBECF1;
+  border-right: 1px solid #EBECF1;
+  padding: 50px;
+}
+
+#paymentdetail .detail table {
+  width: 100%;
+}
+
+#paymentdetail .detail table tr td,
+#paymentdetail .detail table tr th {
+  padding: 10px;
+  font-family: Poppins;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  color: #4D4D4D;
 }
 
