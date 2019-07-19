@@ -17,11 +17,10 @@ class CreateKindOfFieldsTable extends Migration {
 			$table->string('id_kind_of_field', 35)->primary();
 			$table->string('name_of_kind', 30)->nullable();
 			$table->text('description', 65535)->nullable();
-			$table->dateTime('created_at')->nullable();
 			$table->string('created_by')->nullable();
-			$table->dateTime('update_at')->nullable();
-			$table->string('update_by')->nullable();
-			$table->boolean('isdeleted')->nullable();
+			$table->timestamps();
+			$table->string('updated_by')->nullable();
+			$table->softDeletes();
 		});
 	}
 

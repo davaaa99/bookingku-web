@@ -20,11 +20,10 @@ class CreateBookingsTable extends Migration {
 			$table->string('user_email')->nullable();
 			$table->string('payment_type', 15)->nullable();
 			$table->smallInteger('report_status')->nullable();
-			$table->dateTime('created_at')->nullable();
 			$table->string('created_by')->nullable();
-			$table->dateTime('update_at')->nullable();
-			$table->string('update_by')->nullable();
-			$table->boolean('isdeleted')->nullable();
+			$table->timestamps();
+			$table->string('updated_by')->nullable();
+			$table->softDeletes();
 		});
 	}
 

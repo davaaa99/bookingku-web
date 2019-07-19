@@ -18,6 +18,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('bookings','API\BookingController@getBooking');
+Route::post('bookings/add','API\BookingController@createBooking');
+Route::get('bookings/client/{email}','API\BookingController@getBookingByEmail');
+Route::get('bookings/admin/{location}&{date}','API\BookingController@getBookingByDate');
+Route::put('/bookings/update/{id}','API\BookingController@updateStatusPayment');
+Route::delete('/booking/delete/{id}', 'API\BookingController@deleteBooking');
+Route::get('/payments/report', 'API\PaymentController@reportPayment');
+
+
+Route::get('location','API\LocationsController@getLocation');
+Route::post('location','API\LocationsController@create');
+// Route::get('/location/{idClient}','API\LocationsController@getLocationClient');
+Route::get('/location/{emailClient}','API\LocationsController@getLocationClient');
+Route::get('/locations/{city}','API\LocationsController@searchLocation');
+Route::delete('/location/delete/{idLocation}','API\LocationsController@deleteLocation');
 
 Route::get('field','FieldController@index');
 Route::post('field/add','FieldController@create');
