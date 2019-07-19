@@ -17,8 +17,7 @@ class BookingController extends Controller
     // //input booking baik dari user maupun client
     public function createBooking(request $request){
         $booking = new bookings();
-        // $booking->id_booking = (String) Str::uuid();
-        $booking->id_booking = $request->id_booking;
+        $booking->id_booking = (String) Str::uuid();
         $booking->id_schedule = $request->id_schedule;
         $booking->client_email = $request->client_email;
         $booking->user_email = $request->user_email;
