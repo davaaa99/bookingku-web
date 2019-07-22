@@ -39,6 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'phone_number',
         'users_type',
         'users_photo',
+        'email_token',
     ];
 
     /**
@@ -91,7 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @return bool
      */
-    public function getIsUsertAttribute()
+    public function getIsUserAttribute()
     {
         return $this->attributes['users_type'] == '3';
     }

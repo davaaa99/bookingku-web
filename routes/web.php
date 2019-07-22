@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'LandingPageController@index')->name('welcome');
+Route::get('/verified/email', 'Auth\VerificationController@verifiedEmail');
 Auth::routes(['verify' => true]);
 
 /**

@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'phone_number' => $data['phone_number'],
             'users_type' => $data['users_type'],
             'users_photo' => $data['users_photo'],
+            'email_token' => base64_encode($data['email']),
         ]);
     }
 }

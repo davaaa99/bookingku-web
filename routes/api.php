@@ -23,15 +23,23 @@ Route::group(['prefix' => '/v1/auth'], function () {
 /**
  * Router Group for mobile
  */
-Route::group(['middleware' => ['auth:api', 'verified'], 'prefix' => 'v1'], function () {    
+Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => 'v1'], function () {    
     Route::get('bookings','API\BookingController@getBooking');
     
 });
 
 /**
- * Router Group for web
+ * Router Group for web client
  */
-Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'v1'], function () {    
+Route::group(['middleware' => ['auth', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
+    
+    
+});
+
+/**
+ * Router Group for web admin
+ */
+Route::group(['middleware' => ['auth', 'verified', 'is_admin'], 'prefix' => 'v1'], function () {    
     
     
 });

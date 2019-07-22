@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use Ramsey\Uuid\Uuid;
@@ -61,6 +63,8 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'name' => $data['name'],
+            'email_token' => base64_encode($data['email']),
+            'users_type' => '3',
         ]);
     }
 
@@ -82,6 +86,7 @@ class AuthController extends Controller
             ], 401);
         }
 
+        /* Remark : disabled recaptcha
         $clientIps = request()->getClientIps();
         $visitorIp = end($clientIps);
 
@@ -95,16 +100,20 @@ class AuthController extends Controller
         ]);
         $dirtyResult = $response->getBody()->getContents();
         $result = json_decode($dirtyResult, true);
-        
+
         if (!$result['success']) {
             return response()->json([
                 'message' => 'Deleteing your data at ' . $visitorIp . '. Good luck.'
             ], 401);
         }
+        */
         
+        /**
+         * Register
+         * Sending email verification
+         */
         event(new Registered($user = $this->create($request->all())));
 
-        $user->sendEmailVerificationNotification();
         $success = [
             'message' => 'Successfully saved data.',
             'serve' => []
