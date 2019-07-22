@@ -16504,8 +16504,14 @@ main {
 
 .line-white {
   height: 1px;
-  width: 90%;
+  width: 100%;
   background: white;
+}
+
+.line-grey {
+  height: 1px;
+  width: 100%;
+  background: #E4E4E4;
 }
 
 .content {
@@ -16516,9 +16522,8 @@ main {
 .title {
   font-family: Poppins;
   font-style: normal;
-  font-weight: normal;
-  font-size: 25px;
-  line-height: 37px;
+  font-weight: 500;
+  font-size: 35px;
   color: #000000;
 }
 
@@ -16534,16 +16539,27 @@ main {
   height: 20px;
 }
 
+.spacer-30 {
+  height: 30px;
+}
+
 .table-box {
-  padding: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
   width: 100%;
   background: white;
 }
 
 .table-header {
   width: 100%;
-  background: #1B3A5D;
-  height: 30px;
+  background: #3A69B7;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: Poppins;
+  font-size: 16px;
+  color: #FFFFFF;
 }
 
 /*------------------------ SIDE BAR ------------------------*/
@@ -16556,6 +16572,7 @@ main {
   color: white;
   width: 250px;
   height: 100vh;
+  padding: 20px;
 }
 
 #sidebar .sidebar.fixed-top {
@@ -16563,78 +16580,31 @@ main {
   top: 0px;
 }
 
-#sidebar .sidebar .pofile-admin {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-#sidebar .sidebar .pofile-admin .avatar {
+#sidebar .sidebar .brand a img {
   height: 40px;
   width: 40px;
-  border-radius: 360px;
-  height: 40px;
-  width: 40px;
-  background-image: url("/images/avatar.jpg");
-  background-size: cover;
-  background-position: center center;
-  margin-right: 20px;
-}
-
-#sidebar .sidebar .pofile-admin .profile-admin-desc .profile-name {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 19px;
-  color: #d1d1d1;
-  margin-bottom: 5px;
-}
-
-#sidebar .sidebar .pofile-admin .profile-admin-desc .profile-desc {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 200;
-  font-size: 10px;
-  line-height: 12px;
-  color: #9e9e9e;
-}
-
-#sidebar .sidebar .content-side {
-  padding: 30px;
-}
-
-#sidebar .sidebar .content-side .brand a img {
-  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 #sidebar .sidebar .content-side .content-item {
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 #sidebar .sidebar .content-side .content-item .content-link {
   font-family: Poppins;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 15px;
-  line-height: 21px;
-  color: #d1d1d1;
+  color: #8B8B8B;
+  padding-left: 20px;
   text-transform: uppercase;
   text-decoration: none;
 }
 
 #sidebar .sidebar .content-side .content-item .content-link i {
   margin-right: 15px;
-  color: #9e9e9e;
-  font-size: 20px;
-}
-
-/*------------------------ VERIFY BAR ------------------------*/
-
-#list .filter {
-  padding-left: 20px;
-  padding-right: 50px;
+  font-size: 17px;
 }
 
 #list .filter .filter-item {
@@ -16719,16 +16689,37 @@ main {
   border: none;
 }
 
-#list .header {
-  border: none;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+#list #my-table thead {
+  background: #3A69B7 !important;
+  font-family: Poppins;
   font-style: normal;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 27px;
-  /* identical to box height */
-  color: #FA7A50;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+#list #my-table thead th {
+  text-align: center;
+}
+
+#list #my-table tbody {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  color: #4D4D4D;
+}
+
+#list #my-table tbody tr td {
+  text-align: center;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#list #my-table tbody tr td .btn-detail {
+  background: #3FB5E1;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #FFFFFF;
 }
 
 #list .pagination li a {
@@ -16748,27 +16739,27 @@ main {
 }
 
 #list .pagination .active a {
-  background-color: #FA7A50;
+  background: #2796E1;
   outline: none !important;
   color: #FFFFFF;
 }
 
 #list .pagination .active a:focus {
-  background-color: #FA7A50;
+  background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
 #list .pagination .active a:hover {
-  background-color: #FA7A50;
+  background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
 #list .pagination .active span {
-  background-color: #FA7A50;
+  background: #2796E1;
   outline: none !important;
   color: #FFFFFF;
   border-radius: 360px;
@@ -16778,7 +16769,7 @@ main {
 }
 
 #list .pagination .active span:focus {
-  background-color: #FA7A50;
+  background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
@@ -16787,7 +16778,7 @@ main {
 }
 
 #list .pagination .active span:hover {
-  background-color: #FA7A50;
+  background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
@@ -16795,62 +16786,146 @@ main {
   width: 30px;
 }
 
-#list .btn-detail {
-  width: 85px;
-  height: 32.96px;
-  background: #3FB5E1;
-  border-radius: 100px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  /* identical to box height */
-  color: #FFFFFF;
-}
+/*------------------------ VERIFY BOOKING ------------------------*/
 
-#list .btn-detail:focus {
-  border-radius: 100px;
-}
-
-#verify {
+#verify-booking {
   padding-left: 50px;
   padding-right: 50px;
 }
 
-#verify .table-box .title {
-  margin-left: 20px;
+/*------------------------ END VERIFY BOOKING ------------------------*/
+
+#verifyBookingDetail {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
-#verifydetail .table-box {
+#verifyBookingDetail .table-box {
   padding-left: 100px;
   padding-right: 100px;
 }
 
-#verifydetail .table-box .detail {
-  border-left: 1px solid #EBECF1;
-  border-bottom: 1px solid #EBECF1;
-  border-right: 1px solid #EBECF1;
-  padding: 50px;
+#verifyBookingDetail .table-box .detail {
+  border: 1px solid #EBECF1;
+  padding: 30px;
 }
 
-#verifydetail .table-box .detail table {
+#verifyBookingDetail .table-box .detail table {
   width: 100%;
 }
 
-#verifydetail .table-box .detail table tr td,
-#verifydetail .table-box .detail table tr th {
-  padding: 20px;
+#verifyBookingDetail .table-box .detail table tr td,
+#verifyBookingDetail .table-box .detail table tr th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
   font-family: Poppins;
   font-size: 16px;
   line-height: 24px;
   /* identical to box height */
   color: #4D4D4D;
+  border-bottom: 1px solid #EBECF1;
 }
 
-#verifydetail .table-box .detail table tr td .buktipembayaran,
-#verifydetail .table-box .detail table tr th .buktipembayaran {
+#verifyBookingDetail .table-box .detail table tr td .buktipembayaran,
+#verifyBookingDetail .table-box .detail table tr th .buktipembayaran {
   max-width: 300px;
   max-height: 300px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol {
+  padding-top: 30px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .btn {
+  width: 150px;
+  height: 40px;
+  border-radius: 4px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .accept {
+  background: #4ABA70;
+  margin-right: 30px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .decline {
+  background: #FF3636;
+}
+
+#detaillokasi {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#detaillokasi .lokasi {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 50px;
+  background: #FFFFFF;
+  border: 1px solid #E1E1E1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#detaillokasi .lokasi .image {
+  padding-right: 20px;
+  width: 400px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+#detaillokasi .lokasi .desc {
+  padding-left: 20px;
+  color: #5C5C5C;
+}
+
+#detaillokasi .lokasi .desc .item {
+  margin-bottom: 20px;
+}
+
+#detaillokasi .lokasi .desc .item i {
+  font-size: 15px;
+  color: #C0C0C0;
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .title-list {
+  margin-right: 10px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam {
+  margin-top: 10px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul {
+  list-style: none;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul .jam {
+  margin-left: 20px;
+}
+
+#detaillokasi .lokasi .desc .nama-client {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 20px;
+  color: #414141;
+}
+
+#detaillokasi .lokasi .btn {
+  width: 290.2px;
+  height: 49.16px;
+  font-size: 15px;
+  font-family: Poppins;
+  color: #FFFFFF;
+  background: #3A69B7;
+  border-radius: 4px;
 }
 
 #paymentdetail .table-box {
@@ -16858,19 +16933,19 @@ main {
   padding-right: 100px;
 }
 
-#paymentdetail .detail {
+#paymentdetail .table-box .detail {
   border-left: 1px solid #EBECF1;
   border-bottom: 1px solid #EBECF1;
   border-right: 1px solid #EBECF1;
   padding: 50px;
 }
 
-#paymentdetail .detail table {
+#paymentdetail .table-box .detail table {
   width: 100%;
 }
 
-#paymentdetail .detail table tr td,
-#paymentdetail .detail table tr th {
+#paymentdetail .table-box .detail table tr td,
+#paymentdetail .table-box .detail table tr th {
   padding: 10px;
   font-family: Poppins;
   font-size: 16px;

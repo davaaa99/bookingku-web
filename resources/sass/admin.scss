@@ -30,8 +30,15 @@ main {
 
 .line-white {
     height: 1px;
-    width: 90%;
+    width: 100%;
     background: white;
+}
+
+.line-grey {
+    height: 1px;
+    width: 100%;
+    background: #E4E4E4;
+    ;
 }
 
 .content {
@@ -43,10 +50,8 @@ main {
 .title {
     font-family: Poppins;
     font-style: normal;
-    font-weight: normal;
-    font-size: 25px;
-    line-height: 37px;
-
+    font-weight: 500;
+    font-size: 35px;
     color: #000000;
 }
 
@@ -62,16 +67,29 @@ main {
     height: 20px;
 }
 
+.spacer-30 {
+    height: 30px;
+}
+
 .table-box {
-    padding: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     width: 100%;
     background: white;
 }
 
 .table-header {
     width: 100%;
-    background: $blue-back;
-    height: 30px;
+    background: #3A69B7;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-family: Poppins;
+    font-size: 16px;
+    color: #FFFFFF;
+
+
 }
 
 /*------------------------ SIDE BAR ------------------------*/
@@ -84,96 +102,56 @@ main {
         color: white;
         width: 250px;
         height: 100vh;
+        padding: 20px;
 
         &.fixed-top {
             position: fixed;
             top: 0px;
         }
 
-        .pofile-admin {
-            margin-top: 12px;
-            margin-bottom: 12px;
-            padding-left: 30px;
-            padding-right: 30px;
 
-            .avatar {
-                height: 40px;
-                width: 40px;
-                border-radius: 360px;
-                height: 40px;
-                width: 40px;
-                background-image: url('~/images/avatar.jpg');
-                background-size: cover;
-                background-position: center center;
-                margin-right: 20px;
-            }
-
-            .profile-admin-desc {
-                .profile-name {
-                    font-family: Poppins;
-                    font-style: normal;
-                    font-weight: 300;
-                    font-size: 13px;
-                    line-height: 19px;
-                    color: rgb(209, 209, 209);
-                    margin-bottom: 5px;
-
-                }
-
-                .profile-desc {
-                    font-family: Poppins;
-                    font-style: normal;
-                    font-weight: 200;
-                    font-size: 10px;
-                    line-height: 12px;
-                    color: rgb(158, 158, 158);
-
+        .brand {
+            a {
+                img {
+                    height: 40px;
+                    width: 40px;
+                    margin-top: 10px;
+                    margin-bottom: 30px;
                 }
             }
         }
 
         .content-side {
-            padding: 30px;
-
-            .brand {
-                a {
-                    img {
-                        margin-right: 20px;
-                    }
-                }
-            }
-
             .content-item {
-                margin-bottom: 12px;
+                margin-bottom: 15px;
 
                 .content-link {
                     font-family: Poppins;
                     font-style: normal;
-                    font-weight: 600;
+                    font-weight: 500;
                     font-size: 15px;
-                    line-height: 21px;
-                    color: rgb(209, 209, 209);
+                    color: #8B8B8B;
+                    padding-left: 20px;
                     text-transform: uppercase;
                     text-decoration: none;
 
                     i {
                         margin-right: 15px;
-                        color: rgb(158, 158, 158);
-                        font-size: 20px;
+                        font-size: 17px;
                     }
                 }
             }
         }
-
     }
+
 }
 
-/*------------------------ VERIFY BAR ------------------------*/
+
+
 
 #list {
     .filter {
-        padding-left: 20px;
-        padding-right: 50px;
+
 
         .filter-item {
             font-size: 13px;
@@ -194,24 +172,17 @@ main {
             .datepicker {
                 display: flex;
                 align-items: center;
-
                 height: 40px;
                 border-radius: 100px;
                 padding: 10px;
                 padding-left: 20px;
                 padding-right: 20px;
                 color: #73879c !important;
-                // background: $filter-color;
                 border: none;
                 margin-right: 30px;
-
                 margin-bottom: 10px;
                 border: 1px solid #73879c;
-
-
             }
-
-
 
             .filterStatus {
                 .filterTitle {
@@ -222,11 +193,9 @@ main {
                     padding-left: 20px;
                     padding-right: 20px;
                     color: #73879c;
-                    // background: $filter-color;
                     border: none;
                     margin-left: 30px;
                     border: 1px solid #73879c;
-
                 }
 
                 .box {
@@ -244,9 +213,7 @@ main {
                         box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
 
                         .link-item {
-
                             padding: 5px;
-
                             font-style: normal;
                             font-weight: normal;
                             font-size: 13px;
@@ -280,19 +247,50 @@ main {
         }
     }
 
-    .header {
+    #my-table {
+        thead {
 
-        border: none;
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 15px;
-        line-height: 27px;
-        /* identical to box height */
+            background: #3A69B7 !important;
+            font-family: Poppins;
+            font-style: normal;
+            color: #FFFFFF;
+            font-size: 14px;
+
+            th {
+                text-align: center;
+            }
+
+        }
+
+        tbody {
+
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            color: #4D4D4D;
+
+            tr {
+                td {
+                    text-align: center;
+                    padding-left: 7px;
+                    padding-right: 7px;
+
+                    .btn-detail {
+
+                        background: #3FB5E1;
+                        border-radius: 4px;
+                        font-size: 13px;
+                        color: #FFFFFF;
+
+                        &:focus {}
+                    }
+                }
+
+            }
+        }
 
 
-        color: #FA7A50;
     }
 
     .pagination {
@@ -323,14 +321,14 @@ main {
 
         .active {
             a {
-                background-color: #FA7A50;
+                background: #2796E1;
                 outline: none !important;
                 color: #FFFFFF;
 
 
 
                 &:focus {
-                    background-color: #FA7A50;
+                    background: #2796E1;
                     outline: none;
 
                     color: #FFFFFF;
@@ -338,7 +336,7 @@ main {
                 }
 
                 &:hover {
-                    background-color: #FA7A50;
+                    background: #2796E1;
                     outline: none;
                     color: #FFFFFF;
                     border-radius: 360px;
@@ -346,7 +344,7 @@ main {
             }
 
             span {
-                background-color: #FA7A50;
+                background: #2796E1;
                 outline: none !important;
                 color: #FFFFFF;
                 border-radius: 360px;
@@ -355,7 +353,7 @@ main {
                 width: 30px;
 
                 &:focus {
-                    background-color: #FA7A50;
+                    background: #2796E1;
                     outline: none;
                     color: #FFFFFF;
                     border-radius: 360px;
@@ -364,7 +362,7 @@ main {
                 }
 
                 &:hover {
-                    background-color: #FA7A50;
+                    background: #2796E1;
                     outline: none;
                     color: #FFFFFF;
                     border-radius: 360px;
@@ -376,99 +374,174 @@ main {
     }
 
 
-    // .pagination>.active>a,
-    // .pagination>.active>a:focus,
-    // .pagination>.active>a:hover,
-    // .pagination>.active>span,
-    // .pagination>.active>span:focus,
-    // .pagination>.active>span:hover {
-    //     background-color: green;
-    //     border-color: green;
-    //     color: #FFFFFF;
-    //     border-radius: 360px;
-    // }
 
 
 
-    .btn-detail {
-        width: 85px;
-        height: 32.96px;
-        background: #3FB5E1;
-        border-radius: 100px;
-
-
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 21px;
-        /* identical to box height */
-
-
-        color: #FFFFFF;
-
-        &:focus {
-            border-radius: 100px;
-
-        }
-    }
 
 
 }
 
-#verify {
+/*------------------------ VERIFY BOOKING ------------------------*/
+#verify-booking {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/*------------------------ END VERIFY BOOKING ------------------------*/
+
+
+#verifyBookingDetail {
     padding-left: 50px;
     padding-right: 50px;
 
     .table-box {
-        .title {
-            margin-left: 20px;
+        padding-left: 100px;
+        padding-right: 100px;
+
+        .detail {
+            border: 1px solid $grey-back;
+            padding: 30px;
+
+            table {
+                width: 100%;
+
+                tr {
+
+                    td,
+                    th {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        padding-right: 20px;
+                        font-family: Poppins;
+
+                        font-size: 16px;
+                        line-height: 24px;
+                        /* identical to box height */
+
+
+                        color: #4D4D4D;
+                        border-bottom: 1px solid $grey-back;
+
+                        .buktipembayaran {
+                            max-width: 300px;
+                            max-height: 300px;
+                        }
+                    }
+                }
+            }
+
+            .tombol {
+                padding-top: 30px;
+
+
+                .btn {
+                    width: 150px;
+                    height: 40px;
+                    border-radius: 4px;
+                    font-family: Poppins;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+
+
+                    color: #FFFFFF;
+                }
+
+                .accept {
+                    background: #4ABA70;
+                    margin-right: 30px;
+                }
+
+                .decline {
+                    background: #FF3636;
+                }
+            }
+
         }
-
-        // .table {
-        //     .header {
-
-        //         border: none;
-        //         padding-left: 20px !important;
-        //         padding-right: 20px !important;
-        //         font-style: normal;
-        //         font-weight: 600;
-        //         font-size: 15px;
-        //         line-height: 27px;
-        //         /* identical to box height */
-
-
-        //         color: #FA7A50;
-        //     }
-
-        //     .row_table {
-        //         border-bottom: 0.5px solid #F1F1F1;
-        //         border-top: 0.5px solid #F1F1F1;
-        //         padding-left: 20px !important;
-        //         padding-right: 20px !important;
-
-        //         .btn {
-        //             width: 85px;
-        //             height: 32.96px;
-
-        //             background: #FFB845;
-        //             border-radius: 100px;
-
-
-        //             font-style: normal;
-        //             font-weight: 500;
-        //             font-size: 14px;
-        //             line-height: 21px;
-        //             /* identical to box height */
-
-
-        //             color: #FFFFFF;
-        //         }
-        //     }
-        // }
     }
 }
 
-#verifydetail {
+#detaillokasi {
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .lokasi {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 50px;
+        background: #FFFFFF;
+        border: 1px solid #E1E1E1;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        .image {
+            padding-right: 20px;
+            width: 400px;
+            height: 300px;
+            // background-image: url('~/images/avatar.jpg');
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .desc {
+            padding-left: 20px;
+            color: #5C5C5C;
+
+            .item {
+                margin-bottom: 20px;
+
+                i {
+                    font-size: 15px;
+                    color: #C0C0C0;
+                    margin-right: 20px;
+                    padding-top: 5px;
+                }
+
+                .jam-buka {
+                    .title-list {
+                        margin-right: 10px;
+                    }
+
+                    .list-jam {
+                        margin-top: 10px;
+
+                        ul {
+
+                            list-style: none;
+
+
+
+                            .jam {
+                                margin-left: 20px;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+            .nama-client {
+                font-family: Poppins;
+                font-weight: 500;
+                font-size: 20px;
+                color: #414141;
+            }
+        }
+
+        .btn {
+            width: 290.2px;
+            height: 49.16px;
+            font-size: 15px;
+            font-family: Poppins;
+            color: #FFFFFF;
+            background: #3A69B7;
+            border-radius: 4px;
+        }
+    }
+}
+
+
+#paymentdetail {
     .table-box {
         padding-left: 100px;
         padding-right: 100px;
@@ -486,66 +559,21 @@ main {
 
                     td,
                     th {
-                        padding: 20px;
+                        padding: 10px;
                         font-family: Poppins;
-
                         font-size: 16px;
                         line-height: 24px;
                         /* identical to box height */
-
-
                         color: #4D4D4D;
 
 
-                        .buktipembayaran {
-                            max-width: 300px;
-                            max-height: 300px;
-                        }
+
                     }
                 }
             }
+
         }
     }
-}
-
-#clientdetail {
-    .table-box {
-        .card {}
-    }
-
-}
-
-#paymentdetail {
-    .table-box {
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-
-    .detail {
-        border-left: 1px solid $grey-back;
-        border-bottom: 1px solid $grey-back;
-        border-right: 1px solid $grey-back;
-        padding: 50px;
-
-        table {
-            width: 100%;
-
-            tr {
-
-                td,
-                th {
-                    padding: 10px;
-                    font-family: Poppins;
-                    font-size: 16px;
-                    line-height: 24px;
-                    /* identical to box height */
-                    color: #4D4D4D;
 
 
-
-                }
-            }
-        }
-
-    }
 }

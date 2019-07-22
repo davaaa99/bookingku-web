@@ -2,9 +2,9 @@
     <div id="list">
         <div class="filter ">
             <div class="filter-item d-flex">
-                <!-- <date-picker width="200" v-model="filterTanggal" lang="en" input-class="datepicker" format="DD-MM-YYYY">
-                </date-picker> -->
-                <input type="date" v-model="filterTanggal" class="datepicker">
+                <date-picker width="200" v-model="filterTanggal" lang="en" input-class="datepicker" format="DD-MM-YYYY">
+                </date-picker>
+                <!-- <input type="date" v-model="filterTanggal" class="datepicker"> -->
                 <div class="filterStatus">
                     <div class="filterTitle d-flex align-items-center " @click="show">
                         {{filterStatus}}
@@ -30,8 +30,9 @@
                     </input>
                 </div>
             </div>
-            <div class="spacer-50"></div>
+            <div class="spacer-20"></div>
         </div>
+        
         <b-table id="my-table" :filter="search" :fields="fields" :items="VerifyBooking" :per-page="perPage" :current-page="currentPage"
             striped outlined  show-empty>
             <template slot="No" slot-scope="data">
@@ -41,6 +42,7 @@
                 <button class=" btn btn-detail" @click="testing(data.idClient)">Detail</button>
             </template>
         </b-table>
+        
         <div class="spacer-20"></div>
         <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-controls="my-table"
             :prev-text="'«'" :next-text="'»'" :hide-goto-end-buttons="true" size="md" align="center">
@@ -92,7 +94,7 @@
                     "No",
                     {
                         key: "idBooking",
-                        label: "ID Clients"
+                        label: "ID Booking"
                     },
                     {
                         key: "lokasi",
@@ -118,10 +120,10 @@
                 VerifyBooking: [
                     {
                         idBooking: "CLN-001",
-                        lokasi: "JL. Telkom",
+                        lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
                         tanggal: "12-12-2012",
-                        status: "can mayar"
+                        status: "can mayar "
                         
                     },{
                         idBooking: "CLN-002",
@@ -139,6 +141,13 @@
                         
                     },{
                         idBooking: "CLN-004",
+                        lokasi: "JL. Telkom",
+                        lapangan: "Lapang Semesta",
+                        tanggal: "12-12-2012",
+                        status: "mayar"
+                        
+                    },{
+                        idBooking: "CLN-005",
                         lokasi: "JL. Telkom",
                         lapangan: "Lapang Semesta",
                         tanggal: "12-12-2012",

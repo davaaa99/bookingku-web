@@ -16,9 +16,15 @@
 // });
 
 Route::get('/','AdminPageController@index')->name('index');
-Route::get('/verifydetail','AdminPageController@verifydetail')->name('verifydetail');
-Route::get('/client','AdminPageController@client')->name('client');
-Route::get('/detaillokasi','AdminPageController@detaillokasi')->name('detaillokasi');
-Route::get('/detaillapang','AdminPageController@detaillapang')->name('detaillapang');
+Route::get('/verifydetail','AdminPageController@verifyBookingDetail')->name('verifybookingdetail');
+Route::get('/clientlist','AdminPageController@clientList')->name('clientlist');
+Route::get('/clientlist/detaillokasi','AdminPageController@clientListDetailLokasi')->name('detaillokasi');
+Route::get('/clientlist/detaillokasi/detaillapang','AdminPageController@clientListDetailLapangan')->name('detaillapang');
 Route::get('/payment','AdminPageController@payment')->name('payment');
 Route::get('/paymentdetail','AdminPageController@paymentdetail')->name('paymentdetail');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

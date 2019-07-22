@@ -22,6 +22,7 @@ window.Vue = require('vue');
 
 Vue.component('verify-component', require('./components/VerifyComponent.vue').default);
 Vue.component('client-list', require('./components/clientListComponent.vue').default);
+Vue.component('detail-lokasi', require('./components/detailLokasiComponent.vue').default);
 Vue.component('payment-list', require('./components/paymentComponent.vue').default);
 
 /**

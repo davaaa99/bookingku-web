@@ -1771,6 +1771,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -1801,7 +1803,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       }],
       fields: ["No", {
         key: "idBooking",
-        label: "ID Clients"
+        label: "ID Booking"
       }, {
         key: "lokasi",
         label: "Lokasi"
@@ -1820,10 +1822,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       }],
       VerifyBooking: [{
         idBooking: "CLN-001",
-        lokasi: "JL. Telkom",
+        lokasi: "JL. Telkom ",
         lapangan: "Lapang Semesta",
         tanggal: "12-12-2012",
-        status: "can mayar"
+        status: "can mayar "
       }, {
         idBooking: "CLN-002",
         lokasi: "JL. Telkom",
@@ -1838,6 +1840,12 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         status: "teu mayar"
       }, {
         idBooking: "CLN-004",
+        lokasi: "JL. Telkom",
+        lapangan: "Lapang Semesta",
+        tanggal: "12-12-2012",
+        status: "mayar"
+      }, {
+        idBooking: "CLN-005",
         lokasi: "JL. Telkom",
         lapangan: "Lapang Semesta",
         tanggal: "12-12-2012",
@@ -1915,36 +1923,18 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      date: '',
-      status: false,
-      search: "",
       perPage: 10,
       currentPage: 1,
-      filterTanggal: "",
-      filterStatus: "Semua",
       filterSearch: "",
-      statusList: [{
-        id: '001',
-        status: 'status 1'
-      }, {
-        id: '001',
-        status: 'status 2'
-      }, {
-        id: '001',
-        status: 'status 3'
-      }],
       fields: ["No", {
-        key: "idBooking",
+        key: "idClient",
         label: "ID Clients"
+      }, {
+        key: "nama",
+        label: "Nama"
       }, {
         key: "lokasi",
         label: "Lokasi"
-      }, {
-        key: "lapangan",
-        label: "Lapangan"
-      }, {
-        key: "tanggal",
-        label: "Tanggal"
       }, {
         key: "status",
         label: "Status"
@@ -1952,36 +1942,163 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         key: "aksi",
         label: "Aksi"
       }],
-      VerifyBooking: [{
-        idBooking: "CLN-001",
+      ClientList: [{
+        idClient: "CLN-001",
+        nama: "Tedy",
         lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "can mayar"
+        status: "member"
       }, {
-        idBooking: "CLN-002",
+        idClient: "CLN-002",
+        nama: "Tedy",
         lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "can mayar"
+        status: "member"
       }, {
-        idBooking: "CLN-003",
+        idClient: "CLN-003",
+        nama: "Tedy",
         lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "teu mayar"
+        status: "member"
       }, {
-        idBooking: "CLN-004",
+        idClient: "CLN-004",
+        nama: "Tedy",
         lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "mayar"
+        status: "member"
+      }, {
+        idClient: "CLN-005",
+        nama: "Tedy",
+        lokasi: "JL. Telkom",
+        status: "member"
       }]
     };
   },
   computed: {
     rows: function rows() {
-      return this.VerifyBooking.length;
+      return this.ClientList.length;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLokasiComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/detailLokasiComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      dropdown: false,
+      datailLokasi: [{
+        id: "001",
+        img: "images/avatar.jpg",
+        namaClient: "Amir",
+        lokasi: "Gor Lodaya",
+        alamat: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        jamBuka: [{
+          hari: "senin",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "selasa",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "rabu",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "kamis",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "jumat",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "sabtu",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "minggu",
+          jam: "07.00 - 12.00"
+        }],
+        nomorTelepon: "089898989898"
+      }, {
+        id: "001",
+        img: "images/avatar.jpg",
+        namaClient: "Amir",
+        lokasi: "Gor Lodaya",
+        alamat: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        jamBuka: [{
+          hari: "senin",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "selasa",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "rabu",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "kamis",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "jumat",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "sabtu",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "minggu",
+          jam: "07.00 - 12.00"
+        }],
+        nomorTelepon: "089898989898"
+      }]
+    };
+  },
+  methods: {
+    click: function click() {
+      this.dropdown = !this.dropdown;
     }
   }
 });
@@ -65056,128 +65173,127 @@ var render = function() {
     { attrs: { id: "list" } },
     [
       _c("div", { staticClass: "filter " }, [
-        _c("div", { staticClass: "filter-item d-flex" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
+        _c(
+          "div",
+          { staticClass: "filter-item d-flex" },
+          [
+            _c("date-picker", {
+              attrs: {
+                width: "200",
+                lang: "en",
+                "input-class": "datepicker",
+                format: "DD-MM-YYYY"
+              },
+              model: {
                 value: _vm.filterTanggal,
+                callback: function($$v) {
+                  _vm.filterTanggal = $$v
+                },
                 expression: "filterTanggal"
               }
-            ],
-            staticClass: "datepicker",
-            attrs: { type: "date" },
-            domProps: { value: _vm.filterTanggal },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.filterTanggal = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "filterStatus" }, [
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "filterStatus" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "filterTitle d-flex align-items-center ",
+                  on: { click: _vm.show }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.filterStatus) +
+                      "\n                    "
+                  ),
+                  _c("i", {
+                    staticClass: "ml-auto",
+                    class: [
+                      { "fas fa-caret-down": !_vm.status },
+                      { "fas fa-sort-up": _vm.status }
+                    ]
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _vm.status
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "box d-flex align-items-center justify-content-center"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "link" },
+                        _vm._l(_vm.statusList, function(list) {
+                          return _c("div", { staticClass: "link-item" }, [
+                            _c(
+                              "a",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    return _vm.click(list.status)
+                                  }
+                                }
+                              },
+                              [
+                                _c("div", { staticClass: "link-status" }, [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(list.status) +
+                                      "\n                                "
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
             _c(
               "div",
-              {
-                staticClass: "filterTitle d-flex align-items-center ",
-                on: { click: _vm.show }
-              },
+              { staticClass: "search ml-auto d-flex align-items-center" },
               [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.filterStatus) +
-                    "\n                    "
-                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.search,
+                      expression: "search"
+                    }
+                  ],
+                  staticClass: "filterSearch",
+                  attrs: { type: "text", placeholder: "Search" },
+                  domProps: { value: _vm.search },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.search = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
                 _c("i", {
-                  staticClass: "ml-auto",
-                  class: [
-                    { "fas fa-caret-down": !_vm.status },
-                    { "fas fa-sort-up": _vm.status }
-                  ]
+                  staticClass: "fa fa-search",
+                  staticStyle: { color: "#C0C4CC" }
                 })
               ]
-            ),
-            _vm._v(" "),
-            _vm.status
-              ? _c(
-                  "div",
-                  {
-                    staticClass:
-                      "box d-flex align-items-center justify-content-center"
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "link" },
-                      _vm._l(_vm.statusList, function(list) {
-                        return _c("div", { staticClass: "link-item" }, [
-                          _c(
-                            "a",
-                            {
-                              on: {
-                                click: function($event) {
-                                  return _vm.click(list.status)
-                                }
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "link-status" }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(list.status) +
-                                    "\n                                "
-                                )
-                              ])
-                            ]
-                          )
-                        ])
-                      }),
-                      0
-                    )
-                  ]
-                )
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "search ml-auto d-flex align-items-center" },
-            [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
-                  }
-                ],
-                staticClass: "filterSearch",
-                attrs: { type: "text", placeholder: "Search" },
-                domProps: { value: _vm.search },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.search = $event.target.value
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("i", {
-                staticClass: "fa fa-search",
-                staticStyle: { color: "#C0C4CC" }
-              })
-            ]
-          )
-        ]),
+            )
+          ],
+          1
+        ),
         _vm._v(" "),
-        _c("div", { staticClass: "spacer-50" })
+        _c("div", { staticClass: "spacer-20" })
       ]),
       _vm._v(" "),
       _c("b-table", {
@@ -65276,49 +65392,45 @@ var render = function() {
     [
       _c("div", { staticClass: "filter " }, [
         _c("div", { staticClass: "filter-item d-flex" }, [
-          _c(
-            "div",
-            { staticClass: "search  ml-auto d-flex align-items-center" },
-            [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
-                  }
-                ],
-                staticClass: "filterSearch",
-                attrs: { type: "text", placeholder: "Search" },
-                domProps: { value: _vm.search },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.search = $event.target.value
-                  }
+          _c("div", { staticClass: "search  d-flex align-items-center" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filterSearch,
+                  expression: "filterSearch"
                 }
-              }),
-              _vm._v(" "),
-              _c("i", {
-                staticClass: "fa fa-search",
-                staticStyle: { color: "#C0C4CC" }
-              })
-            ]
-          )
+              ],
+              staticClass: "filterSearch",
+              attrs: { type: "text", placeholder: "Search" },
+              domProps: { value: _vm.filterSearch },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.filterSearch = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("i", {
+              staticClass: "fa fa-search",
+              staticStyle: { color: "#C0C4CC" }
+            })
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "spacer-50" })
+        _c("div", { staticClass: "spacer-20" })
       ]),
       _vm._v(" "),
       _c("b-table", {
         attrs: {
           id: "my-table",
-          filter: _vm.search,
+          filter: _vm.filterSearch,
           fields: _vm.fields,
-          items: _vm.VerifyBooking,
+          items: _vm.ClientList,
           "per-page": _vm.perPage,
           "current-page": _vm.currentPage,
           striped: "",
@@ -65379,6 +65491,124 @@ var render = function() {
       })
     ],
     1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "detail-lokasi" } },
+    _vm._l(_vm.datailLokasi, function(lokasi) {
+      return _c(
+        "div",
+        { key: _vm.id, staticClass: "lokasi d-flex justify-content-center" },
+        [
+          _c("div", { staticClass: "col-md-6 col-lg-6" }, [
+            _c("div", {
+              staticClass: "image",
+              style: { backgroundImage: lokasi.image }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6 col-lg-6" }, [
+            _c("div", { staticClass: "desc" }, [
+              _c("div", { staticClass: "nama-client item" }, [
+                _vm._v(
+                  _vm._s(lokasi.namaClient) +
+                    " ( " +
+                    _vm._s(lokasi.lokasi) +
+                    " )"
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex item" }, [
+                _c("i", { staticClass: "fas fa-map-marker-alt" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "alamat" }, [
+                  _vm._v(_vm._s(lokasi.alamat))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex item" }, [
+                _c("i", { staticClass: "far fa-clock" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "jam-buka" }, [
+                  _c("a", { staticClass: "d-flex", on: { click: _vm.click } }, [
+                    _c("div", { staticClass: "title-list" }, [
+                      _vm._v("Jam Buka")
+                    ]),
+                    _vm._v(" "),
+                    _c("i", { staticClass: "fas fa-caret-down" })
+                  ]),
+                  _vm._v(" "),
+                  _vm.dropdown
+                    ? _c("div", { staticClass: "list-jam" }, [
+                        _c(
+                          "ul",
+                          _vm._l(lokasi.jamBuka, function(list) {
+                            return _c("li", { staticClass: "d-flex" }, [
+                              _c("div", { staticClass: "hari" }, [
+                                _vm._v(_vm._s(list.hari))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "jam" }, [
+                                _vm._v(": " + _vm._s(list.jam) + " WIB")
+                              ])
+                            ])
+                          }),
+                          0
+                        )
+                      ])
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex item" }, [
+                _c("i", { staticClass: "fas fa-phone" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "phone" }, [
+                  _vm._v(_vm._s(lokasi.nomorTelepon))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "line-grey" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "spacer-20" }),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "btn d-flex align-items-center justify-content-center ml-auto mr-auto"
+              },
+              [_vm._v("DETAIL")]
+            )
+          ])
+        ]
+      )
+    }),
+    0
   )
 }
 var staticRenderFns = []
@@ -77695,6 +77925,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('verify-component', __webpack_require__(/*! ./components/VerifyComponent.vue */ "./resources/js/admin/components/VerifyComponent.vue")["default"]);
 Vue.component('client-list', __webpack_require__(/*! ./components/clientListComponent.vue */ "./resources/js/admin/components/clientListComponent.vue")["default"]);
+Vue.component('detail-lokasi', __webpack_require__(/*! ./components/detailLokasiComponent.vue */ "./resources/js/admin/components/detailLokasiComponent.vue")["default"]);
 Vue.component('payment-list', __webpack_require__(/*! ./components/paymentComponent.vue */ "./resources/js/admin/components/paymentComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -77949,6 +78180,76 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_clientListComponent_vue_vue_type_template_id_5ff9da39___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_clientListComponent_vue_vue_type_template_id_5ff9da39___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/detailLokasiComponent.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/admin/components/detailLokasiComponent.vue ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _detailLokasiComponent_vue_vue_type_template_id_1d0c7d82___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detailLokasiComponent.vue?vue&type=template&id=1d0c7d82& */ "./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82&");
+/* harmony import */ var _detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./detailLokasiComponent.vue?vue&type=script&lang=js& */ "./resources/js/admin/components/detailLokasiComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _detailLokasiComponent_vue_vue_type_template_id_1d0c7d82___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _detailLokasiComponent_vue_vue_type_template_id_1d0c7d82___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/admin/components/detailLokasiComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/detailLokasiComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/admin/components/detailLokasiComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./detailLokasiComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLokasiComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLokasiComponent_vue_vue_type_template_id_1d0c7d82___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./detailLokasiComponent.vue?vue&type=template&id=1d0c7d82& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLokasiComponent_vue_vue_type_template_id_1d0c7d82___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLokasiComponent_vue_vue_type_template_id_1d0c7d82___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

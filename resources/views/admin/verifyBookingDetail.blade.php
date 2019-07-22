@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 @section('content')
 
-<div id="verifydetail">
+<div id="verifyBookingDetail">
     <div class="container">
-        <div class="table-box">
+        <div class="table-box ">
             <div class="spacer-50"></div>
             <div class="title d-flex justify-content-center">Verify Booking Detail</div>
             <div class="spacer-50"></div>
-            <div class="table-header"></div>
+            <div class="table-header">Detail Informasi Booking</div>
             <div class="detail">
-                <table >
+                <table>
                     <tr>
                         <th>ID Booking</th>
                         <td> : </td>
@@ -54,17 +54,13 @@
                             <img class="buktipembayaran" src="{{ asset('images/avatar.jpg') }}" alt="">
                         </td>
                     </tr>
-                    <tr>
-                        <th></th>
-                        <td> </td>
-                        <td>
-                            <button class="btn btn-primary">Accept</button>
-                            <button class="btn btn-danger">Decline</button>
-                        </td>
-                    </tr>
+
 
                 </table>
-               
+                <div class="tombol d-flex justify-content-end">
+                    <button class="btn accept">Accept</button>
+                    <button class="btn decline">Decline</button>
+                </div>
             </div>
             <div class="spacer-50"></div>
         </div>

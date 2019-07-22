@@ -2,18 +2,18 @@
     <div id="list">
         <div class="filter ">
             <div class="filter-item d-flex">
-                <div class="search  ml-auto d-flex align-items-center">
-                    <input class="filterSearch" type="text" v-model="search" placeholder="Search">
-                    
-                        <i class="fa fa-search" style="color:#C0C4CC"></i>
-                    
+                <div class="search  d-flex align-items-center">
+                    <input class="filterSearch" type="text" v-model="filterSearch" placeholder="Search">
+
+                    <i class="fa fa-search" style="color:#C0C4CC"></i>
+
                     </input>
                 </div>
             </div>
-            <div class="spacer-50"></div>
+            <div class="spacer-20"></div>
         </div>
-        <b-table id="my-table" :filter="search" :fields="fields" :items="VerifyBooking" :per-page="perPage" :current-page="currentPage"
-            striped outlined  show-empty>
+        <b-table id="my-table" :filter="filterSearch" :fields="fields" :items="ClientList" :per-page="perPage"
+            :current-page="currentPage" striped outlined show-empty>
             <template slot="No" slot-scope="data">
                 {{ data.index + 1 }}
             </template>
@@ -41,45 +41,24 @@
         data() {
 
             return {
-                date: '',
-                status: false,
-                search: "",
+
                 perPage: 10,
                 currentPage: 1,
-                filterTanggal: "",
-                filterStatus: "Semua",
                 filterSearch: "",
-                statusList: [{
-                        id: '001',
-                        status: 'status 1'
-                    },
-                    {
-                        id: '001',
-                        status: 'status 2'
-                    },
-                    {
-                        id: '001',
-                        status: 'status 3'
-                    }
-                ],
 
                 fields: [
                     "No",
                     {
-                        key: "idBooking",
+                        key: "idClient",
                         label: "ID Clients"
+                    },
+                    {
+                        key: "nama",
+                        label: "Nama"
                     },
                     {
                         key: "lokasi",
                         label: "Lokasi"
-                    },
-                    {
-                        key: "lapangan",
-                        label: "Lapangan"
-                    },
-                    {
-                        key: "tanggal",
-                        label: "Tanggal"
                     },
                     {
                         key: "status",
@@ -90,43 +69,50 @@
                         label: "Aksi"
                     }
                 ],
-                VerifyBooking: [
-                    {
-                        idBooking: "CLN-001",
+                ClientList: [{
+                        idClient: "CLN-001",
+                        nama: "Tedy",
                         lokasi: "JL. Telkom",
-                        lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "can mayar"
-                        
-                    },{
-                        idBooking: "CLN-002",
-                        lokasi: "JL. Telkom",
-                        lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "can mayar"
-                        
-                    },{
-                        idBooking: "CLN-003",
-                        lokasi: "JL. Telkom",
-                        lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "teu mayar"
-                        
-                    },{
-                        idBooking: "CLN-004",
-                        lokasi: "JL. Telkom",
-                        lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "mayar"
-                        
-                    }
+                        status: "member"
 
+                    },
+                    {
+                        idClient: "CLN-002",
+                        nama: "Tedy",
+                        lokasi: "JL. Telkom",
+                        status: "member"
+
+                    },
+
+                    {
+                        idClient: "CLN-003",
+                        nama: "Tedy",
+                        lokasi: "JL. Telkom",
+                        status: "member"
+
+                    },
+
+                    {
+                        idClient: "CLN-004",
+                        nama: "Tedy",
+                        lokasi: "JL. Telkom",
+                        status: "member"
+
+                    },
+
+                    {
+                        idClient: "CLN-005",
+                        nama: "Tedy",
+                        lokasi: "JL. Telkom",
+                        status: "member"
+
+                    }                   
                 ],
             };
         },
         computed: {
             rows() {
-                return this.VerifyBooking.length;
+                return this.ClientList.length;
 
             }
         }
