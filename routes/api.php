@@ -24,9 +24,9 @@ Route::get('bookings/client/{email}','API\BookingController@getBookingByEmail');
 Route::get('bookings/admin/{location}/{date}','API\BookingController@getBookingByDate');
 Route::put('/bookings/update/{id}','API\BookingController@updateStatusPayment');
 Route::delete('/booking/delete/{id}', 'API\BookingController@deleteBooking');
-Route::post('/payments/report/{client_email}/{date}', 'API\PaymentController@reportPayment');
-Route::put('/payments/update/{id}','API\BookingController@updatePayment');
-
+Route::put('/payments/report/{client_email}/{date}', 'API\PaymentController@reportPayment');
+Route::put('/payments/update/{id}','API\PaymentController@updatePayment');
+Route::delete('/payments/delete/{id}','API\PaymentController@deletePayment');
 
 Route::get('location','API\LocationsController@getLocation');
 Route::post('location','API\LocationsController@create');
