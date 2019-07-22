@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'LandingPageController@index')->name('welcome');
+Auth::routes(['verify' => true]);
+
+/**
+ * Router Group for
+ */
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
 });
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

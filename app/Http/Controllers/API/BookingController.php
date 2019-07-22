@@ -12,7 +12,11 @@ class BookingController extends Controller
 {
     //mengambil semua data booking yang pernah dilakukan
     public function getBooking(){
-        return bookings::all();
+        // return bookings::all();
+        return response()->json([
+            'message' => 'Unable to save data. Bad config.',
+            'serve' => bookings::all()
+        ], 200);
     }
     // //input booking baik dari user maupun client
     public function createBooking(request $request){

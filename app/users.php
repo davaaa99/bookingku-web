@@ -18,11 +18,11 @@ class users extends Model
         'phone_number',
         'users_type',
         'users_photo',
-        'api_token',
+        // 'api_token',
     ];
 
     protected $hidden = [
         'password',
-        'api_token',
+        // 'api_token',
     ];
 }

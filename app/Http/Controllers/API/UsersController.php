@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\users;
-use App\Http\Controllers\API\ApiTokenController;
+// use App\Http\Controllers\API\ApiTokenController;
 
 class UsersController extends Controller
 {
@@ -118,7 +118,7 @@ class UsersController extends Controller
             'phone_number' => $request->phone_number,
             'users_type' => 2,
             'users_photo' => $request->users_photo,
-            'api_token' => Str::random(60),
+            // 'api_token' => Str::random(60),
         ]);
 
         return "Pendaftaran user berhasil...";

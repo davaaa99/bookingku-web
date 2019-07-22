@@ -14,11 +14,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => '/v1/auth'], function () {
+    Route::post('login', 'API\AuthController@login');
+    Route::post('register', 'API\AuthController@registration');
+    Route::get('logout', 'API\AuthController@logout');
 });
 
-Route::get('bookings','API\BookingController@getBooking');
+/**
+ * Router Group for mobile
+ */
+Route::group(['middleware' => ['auth:api', 'verified'], 'prefix' => 'v1'], function () {    
+    Route::get('bookings','API\BookingController@getBooking');
+    
+});
+
+/**
+ * Router Group for web
+ */
+Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'v1'], function () {    
+    
+    
+});
+
+// Route::get('bookings','API\BookingController@getBooking');
 Route::post('bookings/add','API\BookingController@createBooking');
 Route::get('bookings/client/{email}','API\BookingController@getBookingByEmail');
 Route::get('bookings/admin/{location}&{date}','API\BookingController@getBookingByDate');

@@ -6,11 +6,24 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Notifications\VerifyEmail;
+use Laravel\Passport\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
-    use SoftDeletes;
+    use HasApiTokens, Notifiable, SoftDeletes;
+
+    /**
+     * Assign new primary key
+     * 
+     */
+    protected $primaryKey = 'id_users';
+
+    /**
+     * Set incrementing primary key to false
+     * 
+     */
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'id_users',
         'email',
         'password',
         'name',
@@ -44,4 +58,50 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['is_admin', 'is_client', 'is_user'];
+
+    /**
+     * Get the administrator flag for the user.
+     *
+     * @return bool
+     */
+    public function getIsAdminAttribute()
+    {
+        return $this->attributes['users_type'] == '1';
+    }
+
+    /**
+     * Get the client flag for the user.
+     *
+     * @return bool
+     */
+    public function getIsClientAttribute()
+    {
+        return $this->attributes['users_type'] == '2';
+    }
+
+    /**
+     * Get the user flag for the user.
+     *
+     * @return bool
+     */
+    public function getIsUsertAttribute()
+    {
+        return $this->attributes['users_type'] == '3';
+    }
+
+    /**
+     * Override send email verification
+     * 
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail);
+    }
 }
