@@ -32,7 +32,9 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
  * Router Group for web client
  */
 Route::group(['middleware' => ['auth', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
-    
+    Route::get('location','API\REST\LocationController@index');
+    Route::post('location','API\REST\LocationController@create');
+
     
 });
 

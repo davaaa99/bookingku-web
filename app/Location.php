@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class locations extends Model
+class Location extends Model
 {
     use SoftDeletes;
 
@@ -22,5 +22,4 @@ class locations extends Model
         'created_by',
         'updated_by',       
     ];
-
 }
