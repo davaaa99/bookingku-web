@@ -1785,12 +1785,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      idBooking: atob(window.location.pathname.split("/")[2]),
+      nIdBooking: atob(window.location.pathname.split("/")[2]),
       detailBooking: {
-        id: "",
+        idBooking: "",
         nama: "",
         lokasi: "",
         lapangan: "",
@@ -1798,17 +1802,85 @@ __webpack_require__.r(__webpack_exports__);
         jamBooking: "",
         jenisPembayaran: "",
         status: "",
+        buktiPembayaran: ""
+      },
+      filterData: [{
+        idBooking: "BKN-001",
+        nama: "Tedy Subagjo",
+        lokasi: "JL. Telkom ",
+        lapangan: "Lapang Semesta",
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
         buktiPembayaran: "/images/avatar.jpg"
-      }
+      }, {
+        idBooking: "BKN-002",
+        nama: "Masrum",
+        lokasi: "JL. Telkom ",
+        lapangan: "Lapang Semesta",
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
+      }, {
+        idBooking: "BKN-003",
+        nama: "Mokhan",
+        lokasi: "JL. Telkom ",
+        lapangan: "Lapang Semesta",
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
+      }, {
+        idBooking: "BKN-004",
+        nama: "Abnes",
+        lokasi: "JL. Telkom ",
+        lapangan: "Lapang Semesta",
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
+      }, {
+        idBooking: "BKN-005",
+        nama: "Rendy",
+        lokasi: "JL. Telkom ",
+        lapangan: "Lapang Semesta",
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
+      }, {
+        idBooking: "BKN-006",
+        nama: "Hammad",
+        lokasi: "JL. Telkom ",
+        lapangan: "Lapang Semesta",
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
+      }]
     };
   },
   mounted: function mounted() {
-    this.detailBooking.id = this.idBooking;
-  },
-  methods: {
-    cek: function cek() {
-      console.log(this.idBooking);
-    }
+    self = this;
+    var data = self.filterData.filter(function (project) {
+      return project.idBooking === self.nIdBooking;
+    });
+    self.detailBooking.idBooking = data[0].idBooking;
+    self.detailBooking.nama = data[0].nama;
+    self.detailBooking.lokasi = data[0].lokasi;
+    self.detailBooking.lapangan = data[0].lapangan;
+    self.detailBooking.tglBayar = data[0].tglBayar;
+    self.detailBooking.jamBooking = data[0].jamBooking;
+    self.detailBooking.jenisPembayaran = data[0].jenisPembayaran;
+    self.detailBooking.status = data[0].status;
+    self.detailBooking.buktiPembayaran = data[0].buktiPembayaran;
   }
 });
 
@@ -1926,7 +1998,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
         key: "lapangan",
         label: "Lapangan"
       }, {
-        key: "tanggal",
+        key: "tglBayar",
         label: "Tanggal"
       }, {
         key: "status",
@@ -1937,52 +2009,64 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
       }],
       VerifyBooking: [{
         idBooking: "BKN-001",
+        nama: "Tedy Subagjo",
         lokasi: "JL. Telkom ",
         lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "Confirmed"
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
       }, {
         idBooking: "BKN-002",
-        lokasi: "JL. Telkom",
+        nama: "Masrum",
+        lokasi: "JL. Telkom ",
         lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "Confirmed"
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
       }, {
         idBooking: "BKN-003",
-        lokasi: "JL. Telkom",
+        nama: "Mokhan",
+        lokasi: "JL. Telkom ",
         lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "Waiting"
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
       }, {
         idBooking: "BKN-004",
-        lokasi: "JL. Telkom",
+        nama: "Abnes",
+        lokasi: "JL. Telkom ",
         lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "Rejected"
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
       }, {
         idBooking: "BKN-005",
-        lokasi: "JL. Telkom",
+        nama: "Rendy",
+        lokasi: "JL. Telkom ",
         lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "Waiting"
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
       }, {
-        idBooking: "BKN-003",
-        lokasi: "JL. Telkom",
+        idBooking: "BKN-006",
+        nama: "Hammad",
+        lokasi: "JL. Telkom ",
         lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "Waiting"
-      }, {
-        idBooking: "BKN-004",
-        lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "Rejected"
-      }, {
-        idBooking: "BKN-005",
-        lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "Waiting"
+        tglBayar: "12-12-2012",
+        jamBooking: "12.00",
+        jenisPembayaran: "DP",
+        status: "Confirmed",
+        buktiPembayaran: "/images/avatar.jpg"
       }],
       filterData: []
     };
@@ -2037,7 +2121,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
       if (day.length < 2) day = '0' + day;
       var realdate = [day, month, year].join('-');
       var data = self.filterData.filter(function (project) {
-        return project.tanggal === realdate;
+        return project.tglBayar === realdate;
       });
       self.filterData = data;
     },
@@ -66335,13 +66419,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "verify-detail" } }, [
+    _c("div", { staticClass: "display-image" }),
+    _vm._v(" "),
     _c("table", [
       _c("tr", [
         _c("th", [_vm._v("ID Booking")]),
         _vm._v(" "),
         _c("td", [_vm._v(":")]),
         _vm._v(" "),
-        _c("td", [_vm._v(_vm._s(_vm.detailBooking.id))])
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.idBooking))])
       ]),
       _vm._v(" "),
       _c("tr", [
@@ -66406,24 +66492,31 @@ var render = function() {
         _c("td", [_vm._v(":")]),
         _vm._v(" "),
         _c("td", [
-          _c("img", {
-            staticClass: "buktipembayaran",
-            attrs: { src: _vm.detailBooking.buktiPembayaran, alt: "" }
-          })
+          _c("a", [
+            _c("img", {
+              staticClass: "buktipembayaran",
+              attrs: { src: _vm.detailBooking.buktiPembayaran, alt: "" }
+            })
+          ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "tombol d-flex justify-content-end" }, [
-      _c("button", { staticClass: "btn accept", on: { click: _vm.cek } }, [
-        _vm._v("Accept")
-      ]),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tombol d-flex justify-content-end" }, [
+      _c("button", { staticClass: "btn accept" }, [_vm._v("Accept")]),
       _vm._v(" "),
       _c("button", { staticClass: "btn decline" }, [_vm._v("Decline")])
     ])
-  ])
-}
-var staticRenderFns = []
+  }
+]
 render._withStripped = true
 
 

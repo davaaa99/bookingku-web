@@ -100,7 +100,7 @@
                         label: "Lapangan"
                     },
                     {
-                        key: "tanggal",
+                        key: "tglBayar",
                         label: "Tanggal"
                     },
                     {
@@ -114,60 +114,68 @@
                 ],
                 VerifyBooking: [{
                         idBooking: "BKN-001",
+                        nama:"Tedy Subagjo",
                         lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "Confirmed"
-
-                    }, {
+                        tglBayar: "12-12-2012",
+                        jamBooking:"12.00",
+                        jenisPembayaran:"DP",
+                        status: "Confirmed",
+                        buktiPembayaran:"/images/avatar.jpg"
+                    },{
                         idBooking: "BKN-002",
-                        lokasi: "JL. Telkom",
+                        nama:"Masrum",
+                        lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "Confirmed"
-
-                    }, {
+                        tglBayar: "12-12-2012",
+                        jamBooking:"12.00",
+                        jenisPembayaran:"DP",
+                        status: "Confirmed",
+                        buktiPembayaran:"/images/avatar.jpg"
+                    },
+                    {
                         idBooking: "BKN-003",
-                        lokasi: "JL. Telkom",
+                        nama:"Mokhan",
+                        lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "Waiting"
-
-                    }, {
+                        tglBayar: "12-12-2012",
+                        jamBooking:"12.00",
+                        jenisPembayaran:"DP",
+                        status: "Confirmed",
+                        buktiPembayaran:"/images/avatar.jpg"
+                    },
+                     {
                         idBooking: "BKN-004",
-                        lokasi: "JL. Telkom",
+                        nama:"Abnes",
+                        lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "Rejected"
-
-                    }, {
+                        tglBayar: "12-12-2012",
+                        jamBooking:"12.00",
+                        jenisPembayaran:"DP",
+                        status: "Confirmed",
+                        buktiPembayaran:"/images/avatar.jpg"
+                    },
+                     {
                         idBooking: "BKN-005",
-                        lokasi: "JL. Telkom",
+                        nama:"Rendy",
+                        lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "Waiting"
-
-                    }, {
-                        idBooking: "BKN-003",
-                        lokasi: "JL. Telkom",
+                        tglBayar: "12-12-2012",
+                        jamBooking:"12.00",
+                        jenisPembayaran:"DP",
+                        status: "Confirmed",
+                        buktiPembayaran:"/images/avatar.jpg"
+                    },
+                     {
+                        idBooking: "BKN-006",
+                        nama:"Hammad",
+                        lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "Waiting"
-
-                    }, {
-                        idBooking: "BKN-004",
-                        lokasi: "JL. Telkom",
-                        lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "Rejected"
-
-                    }, {
-                        idBooking: "BKN-005",
-                        lokasi: "JL. Telkom",
-                        lapangan: "Lapang Semesta",
-                        tanggal: "12-12-2012",
-                        status: "Waiting"
-
+                        tglBayar: "12-12-2012",
+                        jamBooking:"12.00",
+                        jenisPembayaran:"DP",
+                        status: "Confirmed",
+                        buktiPembayaran:"/images/avatar.jpg"
                     }
 
                 ],
@@ -207,7 +215,7 @@
                 var realdate = [day, month, year].join('-');
 
                 const data = self.filterData.filter(function (project) {
-                    return project.tanggal === realdate;
+                    return project.tglBayar === realdate;
                 });
 
                 self.filterData = data;
