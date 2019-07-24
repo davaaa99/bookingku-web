@@ -22,8 +22,10 @@ class AdminPageController extends Controller
      * 
      * @return View
      */
-    public function verifyBookingDetail(){
-        return view('admin.verifyBookingDetail');
+    public function verifyBookingDetail($id){
+        
+        $data = base64_decode($id);
+        return view('admin.verifyBookingDetail',['id' => $data]);
     }
 
     
@@ -42,8 +44,12 @@ class AdminPageController extends Controller
      * 
      * @return View
      */
-    public function clientListDetailLokasi(){
-        return view('admin.clientListDetailLokasi');
+    public function clientListDetailLokasi($id){
+        
+        $data = base64_decode($id);
+        // $data = $id;
+        
+        return view('admin.clientListDetailLokasi',['id' => $data]);
     }
 
 

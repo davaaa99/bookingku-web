@@ -4,9 +4,7 @@
             <div class="filter-item d-flex">
                 <div class="search  d-flex align-items-center">
                     <input class="filterSearch" type="text" v-model="filterSearch" placeholder="Search">
-
                     <i class="fa fa-search" style="color:#C0C4CC"></i>
-
                     </input>
                 </div>
             </div>
@@ -18,7 +16,7 @@
                 {{ data.index + 1 }}
             </template>
             <template slot="aksi" slot-scope="data">
-                <button class=" btn btn-detail" @click="testing(data.idClient)">Detail</button>
+                <button class=" btn btn-detail" @click="detail(data.item.idClient)">Detail</button>
             </template>
         </b-table>
         <div class="spacer-20"></div>
@@ -114,6 +112,12 @@
             rows() {
                 return this.ClientList.length;
 
+            }
+        },
+        methods:{
+            detail:function(id){
+                 window.location.href = window.location.protocol + '//' + window.location.host + '/clientlist/detaillokasi/' +
+                    btoa(id);
             }
         }
     };

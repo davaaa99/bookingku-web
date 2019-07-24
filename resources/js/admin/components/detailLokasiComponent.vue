@@ -1,10 +1,10 @@
 <template>
   <div id="detail-lokasi">
-    <div class="lokasi d-flex justify-content-center" v-for="lokasi in datailLokasi" :key="id">
-      <div class="col-md-6 col-lg-6">
-        <div class="image" :style="{backgroundImage : lokasi.image }"></div>
+    <div class="lokasi" v-for="lokasi in datailLokasi" :key="lokasi.idLokasi">
+      <div class="col-md-12 col-lg-6 col-sm-12">
+        <div class="image" :style="{ 'background-image': 'url(' + lokasi.img + ')' }"></div>
       </div>
-      <div class="col-md-6 col-lg-6">
+      <div class="col-md-12 col-lg-6 col-sm-12">
         <div class="desc">
           <div class="nama-client item">{{lokasi.namaClient}} ( {{lokasi.lokasi}} )</div>
           <div class="d-flex item">
@@ -35,21 +35,29 @@
           </div>
         </div>
         <div class="line-grey"></div>
+
         <div class="spacer-20"></div>
-        <a class="btn d-flex align-items-center justify-content-center ml-auto mr-auto">DETAIL</a>
+        <a
+          class="btn d-flex align-items-center justify-content-center ml-auto mr-auto"
+          @click="detail(lokasi.idLokasi)"
+        >DETAIL</a>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
+  // props: {
+  //   id: [String, Number]
+  // },
   data() {
     return {
+      idClient: atob(window.location.pathname.split("/")[3]),
       dropdown: false,
       datailLokasi: [
         {
-          id: "001",
-          img: "images/avatar.jpg",
+          idLokasi: "001",
+          img: "/images/avatar.jpg",
           namaClient: "Amir",
           lokasi: "Gor Lodaya",
           alamat:
@@ -87,39 +95,40 @@ export default {
           nomorTelepon: "089898989898"
         },
         {
-          id: "001",
-          img: "images/avatar.jpg",
+          idLokasi: "002",
+          img:
+            "https://images.unsplash.com/photo-1489216317223-a88355bd0e38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
           namaClient: "Amir",
           lokasi: "Gor Lodaya",
           alamat:
             "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
           jamBuka: [
             {
-              hari: "senin",
+              hari: "Senin",
               jam: "07.00 - 12.00"
             },
             {
-              hari: "selasa",
+              hari: "Selasa",
               jam: "07.00 - 12.00"
             },
             {
-              hari: "rabu",
+              hari: "Rabu",
               jam: "07.00 - 12.00"
             },
             {
-              hari: "kamis",
+              hari: "Kamis",
               jam: "07.00 - 12.00"
             },
             {
-              hari: "jumat",
+              hari: "Jumat",
               jam: "07.00 - 12.00"
             },
             {
-              hari: "sabtu",
+              hari: "Sabtu",
               jam: "07.00 - 12.00"
             },
             {
-              hari: "minggu",
+              hari: "Minggu",
               jam: "07.00 - 12.00"
             }
           ],
@@ -128,9 +137,21 @@ export default {
       ]
     };
   },
+
   methods: {
     click: function() {
       this.dropdown = !this.dropdown;
+    },
+    detail: function(idLokasi) {
+      console.log(this.idClient);
+
+      console.log(idLokasi);
+      window.location.href =
+        window.location.protocol +
+        "//" +
+        window.location.host +
+        "/clientlist/detaillokasi/detaillapang/" +
+        btoa(idLokasi);
     }
   }
 };

@@ -148,8 +148,15 @@ main {
 
 
 
+/*------------------------  LIST  ------------------------*/
 
 #list {
+    .btn-clear {
+        // background: $filter-color;
+        color: white;
+        font-family: Poppins;
+    }
+
     .filter {
 
 
@@ -206,6 +213,8 @@ main {
                     margin-left: 30px;
 
                     .link {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
                         width: 180px;
                         background: white;
                         -webkit-box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
@@ -213,7 +222,10 @@ main {
                         box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
 
                         .link-item {
-                            padding: 5px;
+                            padding-left: 15px;
+                            padding-right: 15px;
+                            padding-top: 5px;
+                            padding-bottom: 5px;
                             font-style: normal;
                             font-weight: normal;
                             font-size: 13px;
@@ -381,15 +393,15 @@ main {
 
 }
 
+
 /*------------------------ VERIFY BOOKING ------------------------*/
 #verify-booking {
     padding-left: 50px;
     padding-right: 50px;
 }
 
-/*------------------------ END VERIFY BOOKING ------------------------*/
 
-
+/*------------------------ VERIFY BOOKING DETAIL ------------------------*/
 #verifyBookingDetail {
     padding-left: 50px;
     padding-right: 50px;
@@ -461,6 +473,14 @@ main {
     }
 }
 
+
+#client {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/*------------------------ DETAIL LOKASI ------------------------*/
+
 #detaillokasi {
     padding-left: 50px;
     padding-right: 50px;
@@ -473,13 +493,28 @@ main {
         border: 1px solid #E1E1E1;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+        @media (min-width :990px) {
+            display: flex;
+
+        }
+
         .image {
             padding-right: 20px;
-            width: 400px;
+            // max-width: 400px;
             height: 300px;
-            // background-image: url('~/images/avatar.jpg');
             background-size: cover;
             background-position: center center;
+
+            @media (max-width :990px) {
+
+                margin-bottom: 20px;
+
+            }
+
+            @media (max-width:750px) {
+                height: 200px;
+
+            }
         }
 
         .desc {
@@ -509,10 +544,12 @@ main {
                             list-style: none;
 
 
-
-                            .jam {
-                                margin-left: 20px;
+                            li {
+                                .jam {
+                                    margin-left: 20px;
+                                }
                             }
+
 
                         }
                     }
@@ -529,7 +566,7 @@ main {
         }
 
         .btn {
-            width: 290.2px;
+            max-width: 290.2px;
             height: 49.16px;
             font-size: 15px;
             font-family: Poppins;
@@ -541,39 +578,231 @@ main {
 }
 
 
+/*------------------------ DETAIL LAPANGAN ------------------------*/
+#detailapangan {
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .lapangan {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 50px;
+        background: #FFFFFF;
+        border: 1px solid #E1E1E1;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        @media (min-width :990px) {
+            display: flex;
+
+        }
+
+        .image {
+            padding-right: 20px;
+            // max-width: 400px;
+            height: 300px;
+            background-size: cover;
+            background-position: center center;
+
+            @media (max-width :990px) {
+
+                margin-bottom: 20px;
+
+            }
+
+            @media (max-width:750px) {
+                height: 200px;
+
+            }
+        }
+
+
+        .nama-lapangan {
+            margin-bottom: 10px;
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 31px;
+            color: #414141;
+
+        }
+
+        .jadwal {
+            .datepicker {
+                display: flex;
+                align-items: center;
+                height: 40px;
+                border-radius: 4px;
+                padding: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: #73879c !important;
+                border: none;
+                margin-bottom: 10px;
+                border: 1px solid #73879c;
+            }
+
+            .list-jam {
+                border: 1px solid#73879c;
+                box-sizing: border-box;
+                border-radius: 4px;
+                font-family: Poopins;
+                font-size: 18px;
+                text-align: center;
+                color: #73879c;
+                margin-left: 15px;
+                margin-top: 10px;
+                height: 30px;
+
+                @media (max-width :1099px) {
+
+                    font-size: 14px;
+
+                }
+            }
+        }
+    }
+
+
+
+
+}
+
+
+#payment {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 #paymentdetail {
+
+
+    padding-left: 50px;
+    padding-right: 50px;
+
     .table-box {
         padding-left: 100px;
         padding-right: 100px;
 
-        .detail {
-            border-left: 1px solid $grey-back;
-            border-bottom: 1px solid $grey-back;
-            border-right: 1px solid $grey-back;
-            padding: 50px;
+
+        .header {
+            padding-right: 15px;
+
+            .brand {
+                width: 50px;
+                height: 50px;
+
+            }
+
+
+        }
+
+        .item {
+
+            text-align: right;
+
+            .sub-title {
+                font-family: Poppins;
+                font-style: normal;
+
+                font-size: 15px;
+                text-align: right;
+                color: #4D4D4D;
+
+            }
+
+            .sub-item {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 300;
+                font-size: 12px;
+                color: #4D4D4D;
+            }
+        }
+
+        .desc {
+
+            .penerima {
+                padding-right: 50px;
+            }
+
+            .pengirim {
+                padding-left: 50px;
+            }
+
+            .sub-title {
+                font-family: Poppins;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 15px;
+                color: #4D4D4D;
+                margin-bottom: 10px;
+            }
+
+            .desc-item {
+                margin-bottom: 10px;
+                font-family: Poppins;
+                font-size: 12px;
+            }
+        }
+
+        .row {
+            padding-left: 30px;
+            padding-right: 30px;
 
             table {
+
                 width: 100%;
+                border-left: 1px solid #E1E1E1;
+                border-top: 1px solid #E1E1E1;
+                border-bottom: 1px solid #E1E1E1;
+                border-right: 1px solid #E1E1E1;
 
                 tr {
+                    th {
+                        font-size: 12px;
+                    }
+
+                    td {
+                        font-size: 12px;
+                        font-family: Poppins;
+
+                    }
 
                     td,
                     th {
-                        padding: 10px;
-                        font-family: Poppins;
-                        font-size: 16px;
-                        line-height: 24px;
-                        /* identical to box height */
-                        color: #4D4D4D;
-
-
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        padding-left: 15px;
+                        padding-right: 15px;
 
                     }
+
                 }
             }
 
-        }
-    }
+            .total {
+                max-width: 50%;
+            }
 
+            .btn {
+                background: #3A69B7;
+                border-radius: 4px;
+                width: 200px;
+                height: 50px;
+                font-family: Poppins;
+
+                font-weight: 500;
+                font-size: 15px;
+
+
+
+                color: #FFFFFF;
+
+
+            }
+        }
+
+    }
 
 }

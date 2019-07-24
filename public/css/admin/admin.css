@@ -16607,6 +16607,13 @@ main {
   font-size: 17px;
 }
 
+/*------------------------  LIST  ------------------------*/
+
+#list .btn-clear {
+  color: white;
+  font-family: Poppins;
+}
+
 #list .filter .filter-item {
   font-size: 13px;
 }
@@ -16656,13 +16663,18 @@ main {
 }
 
 #list .filter .filter-item .filterStatus .box .link {
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 180px;
   background: white;
   box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
 }
 
 #list .filter .filter-item .filterStatus .box .link .link-item {
-  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
@@ -16793,7 +16805,7 @@ main {
   padding-right: 50px;
 }
 
-/*------------------------ END VERIFY BOOKING ------------------------*/
+/*------------------------ VERIFY BOOKING DETAIL ------------------------*/
 
 #verifyBookingDetail {
   padding-left: 50px;
@@ -16857,6 +16869,13 @@ main {
   background: #FF3636;
 }
 
+#client {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*------------------------ DETAIL LOKASI ------------------------*/
+
 #detaillokasi {
   padding-left: 50px;
   padding-right: 50px;
@@ -16871,12 +16890,29 @@ main {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+@media (min-width: 990px) {
+  #detaillokasi .lokasi {
+    display: flex;
+  }
+}
+
 #detaillokasi .lokasi .image {
   padding-right: 20px;
-  width: 400px;
   height: 300px;
   background-size: cover;
   background-position: center center;
+}
+
+@media (max-width: 990px) {
+  #detaillokasi .lokasi .image {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  #detaillokasi .lokasi .image {
+    height: 200px;
+  }
 }
 
 #detaillokasi .lokasi .desc {
@@ -16907,7 +16943,7 @@ main {
   list-style: none;
 }
 
-#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul .jam {
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul li .jam {
   margin-left: 20px;
 }
 
@@ -16919,7 +16955,7 @@ main {
 }
 
 #detaillokasi .lokasi .btn {
-  width: 290.2px;
+  max-width: 290.2px;
   height: 49.16px;
   font-size: 15px;
   font-family: Poppins;
@@ -16928,29 +16964,199 @@ main {
   border-radius: 4px;
 }
 
+/*------------------------ DETAIL LAPANGAN ------------------------*/
+
+#detailapangan {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#detailapangan .lapangan {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 50px;
+  background: #FFFFFF;
+  border: 1px solid #E1E1E1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 990px) {
+  #detailapangan .lapangan {
+    display: flex;
+  }
+}
+
+#detailapangan .lapangan .image {
+  padding-right: 20px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (max-width: 990px) {
+  #detailapangan .lapangan .image {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  #detailapangan .lapangan .image {
+    height: 200px;
+  }
+}
+
+#detailapangan .lapangan .nama-lapangan {
+  margin-bottom: 10px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  color: #414141;
+}
+
+#detailapangan .lapangan .jadwal .datepicker {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 4px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #73879c !important;
+  border: none;
+  margin-bottom: 10px;
+  border: 1px solid #73879c;
+}
+
+#detailapangan .lapangan .jadwal .list-jam {
+  border: 1px solid #73879c;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Poopins;
+  font-size: 18px;
+  text-align: center;
+  color: #73879c;
+  margin-left: 15px;
+  margin-top: 10px;
+  height: 30px;
+}
+
+@media (max-width: 1099px) {
+  #detailapangan .lapangan .jadwal .list-jam {
+    font-size: 14px;
+  }
+}
+
+#payment {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#paymentdetail {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 #paymentdetail .table-box {
   padding-left: 100px;
   padding-right: 100px;
 }
 
-#paymentdetail .table-box .detail {
-  border-left: 1px solid #EBECF1;
-  border-bottom: 1px solid #EBECF1;
-  border-right: 1px solid #EBECF1;
-  padding: 50px;
+#paymentdetail .table-box .header {
+  padding-right: 15px;
 }
 
-#paymentdetail .table-box .detail table {
-  width: 100%;
+#paymentdetail .table-box .header .brand {
+  width: 50px;
+  height: 50px;
 }
 
-#paymentdetail .table-box .detail table tr td,
-#paymentdetail .table-box .detail table tr th {
-  padding: 10px;
+#paymentdetail .table-box .item {
+  text-align: right;
+}
+
+#paymentdetail .table-box .item .sub-title {
   font-family: Poppins;
-  font-size: 16px;
-  line-height: 24px;
-  /* identical to box height */
+  font-style: normal;
+  font-size: 15px;
+  text-align: right;
   color: #4D4D4D;
+}
+
+#paymentdetail .table-box .item .sub-item {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  color: #4D4D4D;
+}
+
+#paymentdetail .table-box .desc .penerima {
+  padding-right: 50px;
+}
+
+#paymentdetail .table-box .desc .pengirim {
+  padding-left: 50px;
+}
+
+#paymentdetail .table-box .desc .sub-title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  color: #4D4D4D;
+  margin-bottom: 10px;
+}
+
+#paymentdetail .table-box .desc .desc-item {
+  margin-bottom: 10px;
+  font-family: Poppins;
+  font-size: 12px;
+}
+
+#paymentdetail .table-box .row {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#paymentdetail .table-box .row table {
+  width: 100%;
+  border-left: 1px solid #E1E1E1;
+  border-top: 1px solid #E1E1E1;
+  border-bottom: 1px solid #E1E1E1;
+  border-right: 1px solid #E1E1E1;
+}
+
+#paymentdetail .table-box .row table tr th {
+  font-size: 12px;
+}
+
+#paymentdetail .table-box .row table tr td {
+  font-size: 12px;
+  font-family: Poppins;
+}
+
+#paymentdetail .table-box .row table tr td,
+#paymentdetail .table-box .row table tr th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#paymentdetail .table-box .row .total {
+  max-width: 50%;
+}
+
+#paymentdetail .table-box .row .btn {
+  background: #3A69B7;
+  border-radius: 4px;
+  width: 200px;
+  height: 50px;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 15px;
+  color: #FFFFFF;
 }
 

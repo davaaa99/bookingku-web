@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -1706,6 +1718,102 @@ Vue.component("booking-list", __webpack_require__(/*! ./child/BookingList.vue */
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      idBooking: atob(window.location.pathname.split("/")[2]),
+      detailBooking: {
+        id: "",
+        nama: "",
+        lokasi: "",
+        lapangan: "",
+        tglBayar: "",
+        jamBooking: "",
+        jenisPembayaran: "",
+        status: "",
+        buktiPembayaran: "/images/avatar.jpg"
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.detailBooking.id = this.idBooking;
+  },
+  methods: {
+    cek: function cek() {
+      console.log(this.idBooking);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/child/BookingList.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/child/BookingList.vue?vue&type=script&lang=js& ***!
@@ -1715,13 +1823,19 @@ Vue.component("booking-list", __webpack_require__(/*! ./child/BookingList.vue */
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/lib/index.js");
-/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/lib/index.js");
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_3__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -1776,30 +1890,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    DatePicker: vue2_datepicker__WEBPACK_IMPORTED_MODULE_0___default.a
+    DatePicker: vue2_datepicker__WEBPACK_IMPORTED_MODULE_1___default.a
+  },
+  props: {
+    idBooking: [String]
   },
   data: function data() {
     return {
-      date: '',
       status: false,
-      search: "",
-      perPage: 10,
+      perPage: 5,
       currentPage: 1,
       filterTanggal: "",
-      filterStatus: "Semua",
+      filterStatus: "Filter Status",
       filterSearch: "",
       statusList: [{
         id: '001',
-        status: 'status 1'
+        status: 'Waiting'
       }, {
-        id: '001',
-        status: 'status 2'
+        id: '002',
+        status: 'Confirmed'
       }, {
-        id: '001',
-        status: 'status 3'
+        id: '003',
+        status: 'Rejected'
       }],
       fields: ["No", {
         key: "idBooking",
@@ -1821,39 +1936,85 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         label: "Aksi"
       }],
       VerifyBooking: [{
-        idBooking: "CLN-001",
+        idBooking: "BKN-001",
         lokasi: "JL. Telkom ",
         lapangan: "Lapang Semesta",
         tanggal: "12-12-2012",
-        status: "can mayar "
+        status: "Confirmed"
       }, {
-        idBooking: "CLN-002",
+        idBooking: "BKN-002",
         lokasi: "JL. Telkom",
         lapangan: "Lapang Semesta",
         tanggal: "12-12-2012",
-        status: "can mayar"
+        status: "Confirmed"
       }, {
-        idBooking: "CLN-003",
+        idBooking: "BKN-003",
         lokasi: "JL. Telkom",
         lapangan: "Lapang Semesta",
         tanggal: "12-12-2012",
-        status: "teu mayar"
+        status: "Waiting"
       }, {
-        idBooking: "CLN-004",
+        idBooking: "BKN-004",
         lokasi: "JL. Telkom",
         lapangan: "Lapang Semesta",
         tanggal: "12-12-2012",
-        status: "mayar"
+        status: "Rejected"
       }, {
-        idBooking: "CLN-005",
+        idBooking: "BKN-005",
         lokasi: "JL. Telkom",
         lapangan: "Lapang Semesta",
         tanggal: "12-12-2012",
-        status: "mayar"
-      }]
+        status: "Waiting"
+      }, {
+        idBooking: "BKN-003",
+        lokasi: "JL. Telkom",
+        lapangan: "Lapang Semesta",
+        tanggal: "12-12-2012",
+        status: "Waiting"
+      }, {
+        idBooking: "BKN-004",
+        lokasi: "JL. Telkom",
+        lapangan: "Lapang Semesta",
+        tanggal: "12-12-2012",
+        status: "Rejected"
+      }, {
+        idBooking: "BKN-005",
+        lokasi: "JL. Telkom",
+        lapangan: "Lapang Semesta",
+        tanggal: "12-12-2012",
+        status: "Waiting"
+      }],
+      filterData: []
     };
   },
+  mounted: function mounted() {
+    this.getData();
+  },
   methods: {
+    getData: function () {
+      var _getData = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.filterData = this.VerifyBooking;
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function getData() {
+        return _getData.apply(this, arguments);
+      }
+
+      return getData;
+    }(),
     show: function show() {
       this.status = !this.status;
     },
@@ -1861,13 +2022,36 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       this.status = !this.status;
       this.filterStatus = status;
     },
-    testing: function testing(id) {
-      alert(id);
+    detail: function detail(id) {
+      window.location.href = window.location.protocol + '//' + window.location.host + '/verifydetail/' + btoa(id);
+    }
+  },
+  watch: {
+    filterTanggal: function filterTanggal(fal) {
+      var self = this;
+      var d = new Date(fal),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      var realdate = [day, month, year].join('-');
+      var data = self.filterData.filter(function (project) {
+        return project.tanggal === realdate;
+      });
+      self.filterData = data;
+    },
+    filterStatus: function filterStatus(fal) {
+      var self = this;
+      var data = self.filterData.filter(function (project) {
+        return project.status === fal;
+      });
+      self.filterData = data;
     }
   },
   computed: {
     rows: function rows() {
-      return this.VerifyBooking.length;
+      return this.filterData.length;
     }
   }
 });
@@ -1886,8 +2070,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
-//
-//
 //
 //
 //
@@ -1974,6 +2156,100 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     rows: function rows() {
       return this.ClientList.length;
     }
+  },
+  methods: {
+    detail: function detail(id) {
+      window.location.href = window.location.protocol + '//' + window.location.host + '/clientlist/detaillokasi/' + btoa(id);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLapanganComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/detailLapanganComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/lib/index.js");
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      filterTanggal: "",
+      detailLapangan: [{
+        id: "001",
+        img: "/images/avatar.jpg",
+        namaLapangan: "Amir",
+        jamBooking: [{
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }]
+      }, {
+        id: "001",
+        img: "/images/avatar.jpg",
+        namaLapangan: "Amir",
+        jamBooking: [{
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }, {
+          jam: "07.00 - 12.00"
+        }]
+      }]
+    };
   }
 });
 
@@ -2031,13 +2307,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  // props: {
+  //   id: [String, Number]
+  // },
   data: function data() {
     return {
+      idClient: atob(window.location.pathname.split("/")[3]),
       dropdown: false,
       datailLokasi: [{
-        id: "001",
-        img: "images/avatar.jpg",
+        idLokasi: "001",
+        img: "/images/avatar.jpg",
         namaClient: "Amir",
         lokasi: "Gor Lodaya",
         alamat: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
@@ -2065,31 +2349,31 @@ __webpack_require__.r(__webpack_exports__);
         }],
         nomorTelepon: "089898989898"
       }, {
-        id: "001",
-        img: "images/avatar.jpg",
+        idLokasi: "002",
+        img: "https://images.unsplash.com/photo-1489216317223-a88355bd0e38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
         namaClient: "Amir",
         lokasi: "Gor Lodaya",
         alamat: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
         jamBuka: [{
-          hari: "senin",
+          hari: "Senin",
           jam: "07.00 - 12.00"
         }, {
-          hari: "selasa",
+          hari: "Selasa",
           jam: "07.00 - 12.00"
         }, {
-          hari: "rabu",
+          hari: "Rabu",
           jam: "07.00 - 12.00"
         }, {
-          hari: "kamis",
+          hari: "Kamis",
           jam: "07.00 - 12.00"
         }, {
-          hari: "jumat",
+          hari: "Jumat",
           jam: "07.00 - 12.00"
         }, {
-          hari: "sabtu",
+          hari: "Sabtu",
           jam: "07.00 - 12.00"
         }, {
-          hari: "minggu",
+          hari: "Minggu",
           jam: "07.00 - 12.00"
         }],
         nomorTelepon: "089898989898"
@@ -2099,6 +2383,11 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     click: function click() {
       this.dropdown = !this.dropdown;
+    },
+    detail: function detail(idLokasi) {
+      console.log(this.idClient);
+      console.log(idLokasi);
+      window.location.href = window.location.protocol + "//" + window.location.host + "/clientlist/detaillokasi/detaillapang/" + btoa(idLokasi);
     }
   }
 });
@@ -2146,21 +2435,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      date: '',
-      status: false,
-      search: "",
       perPage: 10,
       currentPage: 1,
-      filterTanggal: "",
-      filterStatus: "Semua",
       filterSearch: "",
       statusList: [{
         id: '001',
@@ -2173,17 +2455,17 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         status: 'status 3'
       }],
       fields: ["No", {
-        key: "idBooking",
+        key: "idClient",
         label: "ID Clients"
+      }, {
+        key: "namaClient",
+        label: "Nama Client"
       }, {
         key: "lokasi",
         label: "Lokasi"
       }, {
-        key: "lapangan",
-        label: "Lapangan"
-      }, {
-        key: "tanggal",
-        label: "Tanggal"
+        key: "total",
+        label: "Total"
       }, {
         key: "status",
         label: "Status"
@@ -2191,36 +2473,183 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         key: "aksi",
         label: "Aksi"
       }],
-      VerifyBooking: [{
-        idBooking: "CLN-001",
-        lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "can mayar"
+      paymentList: [{
+        idClient: "CLN-001",
+        namaClient: "Tedy",
+        lokasi: "GOR LODAYA",
+        total: "36.000.000",
+        status: "dibayarkan"
       }, {
-        idBooking: "CLN-002",
-        lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "can mayar"
+        idClient: "CLN-001",
+        namaClient: "Tedy",
+        lokasi: "GOR LODAYA",
+        total: "36.000.000",
+        status: "dibayarkan"
       }, {
-        idBooking: "CLN-003",
-        lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "teu mayar"
-      }, {
-        idBooking: "CLN-004",
-        lokasi: "JL. Telkom",
-        lapangan: "Lapang Semesta",
-        tanggal: "12-12-2012",
-        status: "mayar"
+        idClient: "CLN-001",
+        namaClient: "Tedy",
+        lokasi: "GOR LODAYA",
+        total: "36.000.000",
+        status: "dibayarkan"
       }]
     };
   },
   computed: {
     rows: function rows() {
-      return this.VerifyBooking.length;
+      return this.paymentList.length;
+    }
+  },
+  methods: {
+    detail: function detail(id) {
+      console.log(id);
+      window.location.href = window.location.protocol + "//" + window.location.host + "/payment/paymentdetail/" + btoa(id);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/paymentDetailComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/paymentDetailComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      nomorInvoice: "",
+      tanggalInvoice: "",
+      penerima: {
+        nama: "",
+        alamat: "",
+        emaik: "",
+        nomorTelepon: ""
+      },
+      dataTransaksi: [{
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }]
+    };
+  },
+  computed: {
+    subTotal: function subTotal() {
+      var total = 0;
+
+      for (var i = 0; i < this.dataTransaksi.length; i++) {
+        total = parseInt(this.dataTransaksi[1].jumlah) + total;
+      }
+
+      return total;
+    },
+    administrasi: function administrasi() {
+      var total = this.subTotal * 10 / 100;
+      return total;
+    },
+    total: function total() {
+      var total = this.subTotal - this.administrasi;
+      return total;
+    }
+  },
+  methods: {
+    printme: function printme() {
+      window.print();
     }
   }
 });
@@ -64864,6 +65293,743 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : undefined
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  Function("r", "regeneratorRuntime = r")(runtime);
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/setimmediate/setImmediate.js":
 /*!***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
@@ -65153,6 +66319,117 @@ var e=function(){return(e=Object.assign||function(e){for(var t,r=1,s=arguments.l
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=template&id=04cbe550&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=template&id=04cbe550& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "verify-detail" } }, [
+    _c("table", [
+      _c("tr", [
+        _c("th", [_vm._v("ID Booking")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.id))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Atas Nama")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.nama))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Lokasi")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.lokasi))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Lapangan")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.lapangan))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Tanggal Pembayaran")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.tglBayar))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Jam Booking")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.jamBooking))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Jenis Pembayaran")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.jenisPembayaran))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(_vm._s(_vm.detailBooking.status))])
+      ]),
+      _vm._v(" "),
+      _c("tr", [
+        _c("th", [_vm._v("Bukti Pembayaran")]),
+        _vm._v(" "),
+        _c("td", [_vm._v(":")]),
+        _vm._v(" "),
+        _c("td", [
+          _c("img", {
+            staticClass: "buktipembayaran",
+            attrs: { src: _vm.detailBooking.buktiPembayaran, alt: "" }
+          })
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "tombol d-flex justify-content-end" }, [
+      _c("button", { staticClass: "btn accept", on: { click: _vm.cek } }, [
+        _vm._v("Accept")
+      ]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn decline" }, [_vm._v("Decline")])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/child/BookingList.vue?vue&type=template&id=70300589&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/child/BookingList.vue?vue&type=template&id=70300589& ***!
@@ -65266,19 +66543,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.search,
-                      expression: "search"
+                      value: _vm.filterSearch,
+                      expression: "filterSearch"
                     }
                   ],
                   staticClass: "filterSearch",
                   attrs: { type: "text", placeholder: "Search" },
-                  domProps: { value: _vm.search },
+                  domProps: { value: _vm.filterSearch },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.search = $event.target.value
+                      _vm.filterSearch = $event.target.value
                     }
                   }
                 }),
@@ -65296,12 +66573,25 @@ var render = function() {
         _c("div", { staticClass: "spacer-20" })
       ]),
       _vm._v(" "),
+      _c("div", { staticClass: "d-flex" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-clear btn-success",
+            on: { click: _vm.getData }
+          },
+          [_vm._v("CLEAR FILTER")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-20" }),
+      _vm._v(" "),
       _c("b-table", {
         attrs: {
           id: "my-table",
-          filter: _vm.search,
+          filter: _vm.filterSearch,
           fields: _vm.fields,
-          items: _vm.VerifyBooking,
+          items: _vm.filterData,
           "per-page": _vm.perPage,
           "current-page": _vm.currentPage,
           striped: "",
@@ -65322,12 +66612,12 @@ var render = function() {
             fn: function(data) {
               return [
                 _c(
-                  "button",
+                  "a",
                   {
                     staticClass: " btn btn-detail",
                     on: {
                       click: function($event) {
-                        return _vm.testing(data.idClient)
+                        return _vm.detail(data.item.idBooking)
                       }
                     }
                   },
@@ -65456,7 +66746,7 @@ var render = function() {
                     staticClass: " btn btn-detail",
                     on: {
                       click: function($event) {
-                        return _vm.testing(data.idClient)
+                        return _vm.detail(data.item.idClient)
                       }
                     }
                   },
@@ -65500,6 +66790,89 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLapanganComponent.vue?vue&type=template&id=68829105&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/detailLapanganComponent.vue?vue&type=template&id=68829105& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "detail-lapangan" } },
+    _vm._l(_vm.detailLapangan, function(lapangan) {
+      return _c("div", { staticClass: "lapangan" }, [
+        _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
+          _c("div", {
+            staticClass: "image",
+            style: { "background-image": "url(" + lapangan.img + ")" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12 col-lg-6" }, [
+          _c("div", { staticClass: "nama-lapangan" }, [
+            _vm._v(_vm._s(lapangan.namaLapangan))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "jadwal" },
+            [
+              _c("date-picker", {
+                attrs: {
+                  width: "200",
+                  lang: "en",
+                  "input-class": "datepicker",
+                  format: "DD-MM-YYYY"
+                },
+                model: {
+                  value: _vm.filterTanggal,
+                  callback: function($$v) {
+                    _vm.filterTanggal = $$v
+                  },
+                  expression: "filterTanggal"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(lapangan.jamBooking, function(jam) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass:
+                        "col-5 list-jam d-flex align-items-center justify-content-center"
+                    },
+                    [_vm._v(_vm._s(jam.jam))]
+                  )
+                }),
+                0
+              )
+            ],
+            1
+          )
+        ])
+      ])
+    }),
+    0
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82& ***!
@@ -65519,94 +66892,92 @@ var render = function() {
     "div",
     { attrs: { id: "detail-lokasi" } },
     _vm._l(_vm.datailLokasi, function(lokasi) {
-      return _c(
-        "div",
-        { key: _vm.id, staticClass: "lokasi d-flex justify-content-center" },
-        [
-          _c("div", { staticClass: "col-md-6 col-lg-6" }, [
-            _c("div", {
-              staticClass: "image",
-              style: { backgroundImage: lokasi.image }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-lg-6" }, [
-            _c("div", { staticClass: "desc" }, [
-              _c("div", { staticClass: "nama-client item" }, [
-                _vm._v(
-                  _vm._s(lokasi.namaClient) +
-                    " ( " +
-                    _vm._s(lokasi.lokasi) +
-                    " )"
-                )
-              ]),
+      return _c("div", { key: lokasi.idLokasi, staticClass: "lokasi" }, [
+        _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
+          _c("div", {
+            staticClass: "image",
+            style: { "background-image": "url(" + lokasi.img + ")" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
+          _c("div", { staticClass: "desc" }, [
+            _c("div", { staticClass: "nama-client item" }, [
+              _vm._v(
+                _vm._s(lokasi.namaClient) + " ( " + _vm._s(lokasi.lokasi) + " )"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex item" }, [
+              _c("i", { staticClass: "fas fa-map-marker-alt" }),
               _vm._v(" "),
-              _c("div", { staticClass: "d-flex item" }, [
-                _c("i", { staticClass: "fas fa-map-marker-alt" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "alamat" }, [
-                  _vm._v(_vm._s(lokasi.alamat))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex item" }, [
-                _c("i", { staticClass: "far fa-clock" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "jam-buka" }, [
-                  _c("a", { staticClass: "d-flex", on: { click: _vm.click } }, [
-                    _c("div", { staticClass: "title-list" }, [
-                      _vm._v("Jam Buka")
-                    ]),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fas fa-caret-down" })
-                  ]),
-                  _vm._v(" "),
-                  _vm.dropdown
-                    ? _c("div", { staticClass: "list-jam" }, [
-                        _c(
-                          "ul",
-                          _vm._l(lokasi.jamBuka, function(list) {
-                            return _c("li", { staticClass: "d-flex" }, [
-                              _c("div", { staticClass: "hari" }, [
-                                _vm._v(_vm._s(list.hari))
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "jam" }, [
-                                _vm._v(": " + _vm._s(list.jam) + " WIB")
-                              ])
-                            ])
-                          }),
-                          0
-                        )
-                      ])
-                    : _vm._e()
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex item" }, [
-                _c("i", { staticClass: "fas fa-phone" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "phone" }, [
-                  _vm._v(_vm._s(lokasi.nomorTelepon))
-                ])
+              _c("div", { staticClass: "alamat" }, [
+                _vm._v(_vm._s(lokasi.alamat))
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "line-grey" }),
+            _c("div", { staticClass: "d-flex item" }, [
+              _c("i", { staticClass: "far fa-clock" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "jam-buka" }, [
+                _c("a", { staticClass: "d-flex", on: { click: _vm.click } }, [
+                  _c("div", { staticClass: "title-list" }, [
+                    _vm._v("Jam Buka")
+                  ]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-caret-down" })
+                ]),
+                _vm._v(" "),
+                _vm.dropdown
+                  ? _c("div", { staticClass: "list-jam" }, [
+                      _c(
+                        "ul",
+                        _vm._l(lokasi.jamBuka, function(list) {
+                          return _c("li", { staticClass: "d-flex" }, [
+                            _c("div", { staticClass: "hari" }, [
+                              _vm._v(_vm._s(list.hari))
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "jam" }, [
+                              _vm._v(": " + _vm._s(list.jam) + " WIB")
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  : _vm._e()
+              ])
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "spacer-20" }),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "btn d-flex align-items-center justify-content-center ml-auto mr-auto"
-              },
-              [_vm._v("DETAIL")]
-            )
-          ])
-        ]
-      )
+            _c("div", { staticClass: "d-flex item" }, [
+              _c("i", { staticClass: "fas fa-phone" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "phone" }, [
+                _vm._v(_vm._s(lokasi.nomorTelepon))
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "line-grey" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-20" }),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "btn d-flex align-items-center justify-content-center ml-auto mr-auto",
+              on: {
+                click: function($event) {
+                  return _vm.detail(lokasi.idLokasi)
+                }
+              }
+            },
+            [_vm._v("DETAIL")]
+          )
+        ])
+      ])
     }),
     0
   )
@@ -65648,19 +67019,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
+                    value: _vm.filterSearch,
+                    expression: "filterSearch"
                   }
                 ],
                 staticClass: "filterSearch",
                 attrs: { type: "text", placeholder: "Search" },
-                domProps: { value: _vm.search },
+                domProps: { value: _vm.filterSearch },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.search = $event.target.value
+                    _vm.filterSearch = $event.target.value
                   }
                 }
               }),
@@ -65679,9 +67050,9 @@ var render = function() {
       _c("b-table", {
         attrs: {
           id: "my-table",
-          filter: _vm.search,
+          filter: _vm.filterSearch,
           fields: _vm.fields,
-          items: _vm.VerifyBooking,
+          items: _vm.paymentList,
           "per-page": _vm.perPage,
           "current-page": _vm.currentPage,
           striped: "",
@@ -65707,7 +67078,7 @@ var render = function() {
                     staticClass: " btn btn-detail",
                     on: {
                       click: function($event) {
-                        return _vm.testing(data.idClient)
+                        return _vm.detail(data.item.idClient)
                       }
                     }
                   },
@@ -65745,6 +67116,194 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/paymentDetailComponent.vue?vue&type=template&id=34d830de&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/paymentDetailComponent.vue?vue&type=template&id=34d830de& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "payment-det" } }, [
+    _c("div", { staticClass: "container" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-20" }),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-50" }),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-50" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "table",
+          [
+            _vm._m(3),
+            _vm._v(" "),
+            _vm._l(_vm.dataTransaksi, function(dt) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(dt.namaTransaksi))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(dt.tanggal))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(dt.jumlah))])
+              ])
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-50" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row d-flex" }, [
+        _c("table", { staticClass: "total ml-auto" }, [
+          _c("tr", [
+            _c("th", [_vm._v("SUB TOTAL")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Rp " + _vm._s(_vm.subTotal))])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("th", [_vm._v("BIAYA ADMINISTRASI (10%)")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Rp " + _vm._s(_vm.administrasi))])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("th", [_vm._v("TOTAL")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Rp " + _vm._s(_vm.total))])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row d-flex" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary ml-auto",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.printme($event)
+              }
+            }
+          },
+          [_vm._v("BAYAR")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "header d-flex" }, [
+      _c("img", {
+        staticClass: "brand mr-auto",
+        attrs: {
+          src:
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAw1BMVEX////rHTkAWJEAVpAAUo4ARYcAVI8ATowATIsAR4jqACEAUI0ARIfqACvrGDYASorqAB3qACfpABfrETLs8fX5ztL1pq1kiq/qCC76/P3sNErzkZr4vsP85efF0t/0mqLwaneqvdHU3uiIpMCftctylLXyf4q7ytruVWX61dj+8vPwcn4UX5X4w8dMeqXR3ObuT2DyiJLg5+4raJp9m7rvYnDsKEH3tbv1o6pXgqrtQlU8caBOfKbsMknuUWKUrcUANYDm1B6gAAAJOElEQVR4nO2daXfiOhKGQYCxDd6wg00WdkIWspGQ3EB6cv//rxobQ4cGvEgqlekZPefw3e8pqTaVRKkkkUgkEolEIpFIJBKJRCKRSCQSiURyyN1VzF3RHwLN1UP7pb8sO7atx9i2Yy4XL+2Hq6I/jZ/b9v3S1h0jcE2zvItpuoHh6Pb5ffu26I9k5rZ309KN4E9l+5iuobeee3+hyst7QzfcVHE7MgPd6V/+TbvzcmE7edVtcR17cVn0h+fj9lqnlrcVqV+f/nL9WNoBk7yNSHv5UbSEVHquk+5YsjGdoFe0jEQudINX31qjoV8ULeUoPd0AkBdj6Kdnx48ATt9aY3Ba+/H2nHv/7WM65yfkV+9b0PrWGlv3RQvbcGnwxIc0AuMkcoCFLcKAMabdL1pe6Sxgy1/yErhnxQp8EbIDdzFbRTrVu2dHsL4QvUAjXrliV2hMUJzAS+ErNMK9Lkxgr4Wgr1x2HooSeK2jCCzrRQnsI/iYiKCovGaBJLAwT3oDW0ikUJAnXeAJfClEINYeDLELqaCu8QSav4oQ2LPRBJaNfwoQeIkT6GNaBfTBrxAtWHb7+AJLJkYuuqWIYPgfjGpii/mOL/ACz42WC/Ezt5heJgyG+H7GxdyE5QC/MrwX1TU8Tgv9lP8BM1CEoeIGW2Ap40QeGjstVMw7AgRe465Rc5n6NW/wAq9w/WhZT2/o+3NwhUvcNZoV7aev0AIvkRpPW5yMTrf37xRYYRnZhOWsD2oQWIFt1HQt24Sl0qc2AFWILDBHzj1qVCEF/oPWeorJcKQRg3p9DKgQOdib59mf9GQRQCNi70I7x1mFpxEVbie+45rQfc7xTZ0aqcygBD4gx8J8TVKLEKsLpPAGs3UR1oX9XF9FCFE+YQRiZ6Q5S/uVQkjNA1F4gVtUGDlH2lYVQhrfIApRG4hl08z5WY+hwgpI6naG62fyRIpYYbhKifUEoPAa1c/k711ENiRViEoYN2HL30GM9iGByGtwF6mTf3J2tlYIsExfMD0pzXlhfa2wMeJWiFr6tiiOfJuRQIDMDfU0zaA4tQ8z7zXcQf8DsaygOmsaWrHCOm+BcY8YK2jWaGmqxgqrE06FiAkNzRotlb4bZAOfQMRtmKew38FXNgI1vo14iTg6Q3fUFIfDEJWvSMSrK/Q21YeFJf4GzvpigeVoaM/SuupWIWcZjBXvTZfyw0a/HQ1fzL/DcjRUgSLidetowpjPc5Z4izUITHtVzfu9DcPkm+egDcmVBgvaDxvUfxRyOdM2SnGYfdB0wNfPIiVc3X2c0okyEoZ0mj8CSZWngELJSlv0F9R2FylRfA6FGGNsDsOl3x1PGip85FB4Lj4c0nuZsHLSdgSSCs+RvngTunT5doxf3VVIFA6FwgO+GTBM5+0Gw8iGDQ6Fwk8sdJbZtbc/TUhUDoWibdhiGQLeM2FYIXKkbYIVMsSJ0qEJT1ihzTQDPN83IVfqLVQh4+sXX/smPFkbOmwjwF1tXyCXQoG+1GG8WKgcCCQWu8CSuPLQ6bN90aRxIJArHgprYrAK7B64mQgOhaKGSlkFdg4tyJmXCpozYd2D8cn2PsoXh0Ix9w90VoEj9YhAUuWpD4U0hHXWmyLTo5uQ75BURJ/GZn3manhcIN/52hl8r61F173/wTu6RAlnr+0KOiCabMl2JLBaSVDI1S+FDvmmzno32yNJArmSNuhGjWuyXtZKtiDvrAJoO9FYsl4onNePBcIYrmYi7Ai73mf9iq6WaMEwWPANtANORLWYH0McN1ME8p4Bg1WIZu6ZwwN8K0UfIU3Oi3pAuXfwzupj5rNj2TaYo4E6m9EZGtsx41qyj1nDPX/5AJDVmC3Wa+feKimR+dmGvHfY7vgbGUGZNcx/ZxmQQAyzP/NuROYV2p3VM/WRyopXIG9EdG3GRwHnj2lB8DcA0/p8c1/Oks2Hzv0cCzRCA7gP/It9mZqMUT63PpirTz3mZer8YjJg9yuvPpAhaPZlajIV853Bq5ZbX+hJQS6ts6U1zjmDAYcTq57Hv2xRYO6sswxCu5SjhhHeeKYll4FH4R6B3kC9TE27T1sJeoNVrUEnj/CW9z/QvojhvFMe7c7HqxrV6tzAPeO9hc7XBJQLtDuaMVhvDYyfiaBo7ruta4oFOh98Whbl3vtB4c/YtpzlNaJpL3J7UG86IVpdYZVHAK8Bl/IGDNNe5qwi5qG6Wp3ZeDFcZ0775LnNberLXI2K4cBXNF51axOCvm6SaURTP8/W53VHj5aV0hmkASjab8nYia6dab/hYDKrqQ0YdREa4C6MSHOnrn2TGgC96ehRtSAW5g6AjjQm+VJ+0LpP8Z/DsU8i04Gqi2iCPxR1PLExneAiKf6Fpls1oXbdPmDpzA5H8u8g8d+ZQodJNBV2Xe5SUQU82PaxFzGif9g6tjw73W84h5mEBfuE0obdoW/TsJ+PmM+bvr02IR1mAuBuJuZua0QzsH/1DswXZmFhOBC3MHdpwrz4cUBbj+W9X+zLW6sDDgcpqJAvRP3BjWHY5xd7uWen+4apjnBeP0jn7rm9Z73h90qkyzxOXcTDl8fwBn7dYqxdeWgCp2sJDEevNa7ijhkVokWaQWc6aRRhvDVVcZtwgzf4CndeMepI1MYXvgk9qzh5IZagSLjL/HCUHI/aULzAUumpmf0lgmhCP8uaQLcoiU0h+fYxpsVI1IQlaycisQbz/FxuiejhsIlowQjsvVjB24NbhpbwOndXYA0nGf0Dj+BJVOoocXCfzirHRA8I1RlCJnOUScL9AGAsoIdYWRjknwthptJEjRL7ZE1/8lOtQDzgyYPYlVrRPrFaFsl0q+LMWAV8spuDzqQmKMHRPovyofs8zVhmRbJoKEi1Ui7G4JV/tYbQcaIhXKqQGpWafyoL9AfPB9Oo1L7g/ygHgnmoEWA/VmufhWShufDe6KYnD6k0tMlp2m9Lh36EcgfFIt+nt/8OeJqoKku6qtQ1v4AqkI2pb1GeSFVV7XNQfIJGQ/eN5J3tCo1XnUz/Lnkx880YVLLMitJQa8QfnLZvScfrjv1XVbPUeqOqKBWlUgl/ilJtNOqWpr76392/wLPkwHuajkdv/tdq9RqyevQno/H06X9Dm0QikUgkEolEIpFIJBKJRCKRSCQSieT/hv8Cn17ceZu/VqQAAAAASUVORK5CYII=",
+          alt: ""
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "title ml-auto" }, [_vm._v("Invoice")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "item ml-auto" }, [
+        _c("div", { staticClass: "sub-title" }, [_vm._v("Invoice No.")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-item" }, [_vm._v("001/2019")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-title" }, [_vm._v("Invoice No.")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "sub-item" }, [_vm._v("001/2019")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "desc d-flex" }, [
+      _c("div", { staticClass: "col-md-6 col-lg-6" }, [
+        _c("div", { staticClass: "penerima" }, [
+          _c("div", { staticClass: "sub-title" }, [_vm._v("PENERIMA")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "desc-item" }, [_vm._v("TEDY")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "desc-item" }, [
+            _vm._v(
+              "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223"
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "desc-item" }, [
+            _vm._v("fjahdak@fgmail.com")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "desc-item" }, [_vm._v("0888898989898")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 col-lg-6 text-right" }, [
+        _c("div", { staticClass: "pengirim" }, [
+          _c("div", { staticClass: "sub-title text-right" }, [
+            _vm._v("PT. KONG TEKNOLOGI ASIA")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "desc-item" }, [
+            _vm._v(
+              "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223"
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "desc-item" }, [_vm._v("(022) 64646737363")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("DATA TRANSAKSI")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("TANGGAL")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("JUMLAH")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -77924,9 +79483,12 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('verify-component', __webpack_require__(/*! ./components/VerifyComponent.vue */ "./resources/js/admin/components/VerifyComponent.vue")["default"]);
+Vue.component('verify-detail', __webpack_require__(/*! ./components/VerifyDetailComponent.vue */ "./resources/js/admin/components/VerifyDetailComponent.vue")["default"]);
 Vue.component('client-list', __webpack_require__(/*! ./components/clientListComponent.vue */ "./resources/js/admin/components/clientListComponent.vue")["default"]);
 Vue.component('detail-lokasi', __webpack_require__(/*! ./components/detailLokasiComponent.vue */ "./resources/js/admin/components/detailLokasiComponent.vue")["default"]);
+Vue.component('detail-lapangan', __webpack_require__(/*! ./components/detailLapanganComponent.vue */ "./resources/js/admin/components/detailLapanganComponent.vue")["default"]);
 Vue.component('payment-list', __webpack_require__(/*! ./components/paymentComponent.vue */ "./resources/js/admin/components/paymentComponent.vue")["default"]);
+Vue.component('payment-detail', __webpack_require__(/*! ./components/paymentDetailComponent.vue */ "./resources/js/admin/components/paymentDetailComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -78044,6 +79606,75 @@ component.options.__file = "resources/js/admin/components/VerifyComponent.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerifyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./VerifyComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/VerifyComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerifyComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/VerifyDetailComponent.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/admin/components/VerifyDetailComponent.vue ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _VerifyDetailComponent_vue_vue_type_template_id_04cbe550___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VerifyDetailComponent.vue?vue&type=template&id=04cbe550& */ "./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=template&id=04cbe550&");
+/* harmony import */ var _VerifyDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VerifyDetailComponent.vue?vue&type=script&lang=js& */ "./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _VerifyDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _VerifyDetailComponent_vue_vue_type_template_id_04cbe550___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _VerifyDetailComponent_vue_vue_type_template_id_04cbe550___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/admin/components/VerifyDetailComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerifyDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./VerifyDetailComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerifyDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=template&id=04cbe550&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=template&id=04cbe550& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerifyDetailComponent_vue_vue_type_template_id_04cbe550___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./VerifyDetailComponent.vue?vue&type=template&id=04cbe550& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/VerifyDetailComponent.vue?vue&type=template&id=04cbe550&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerifyDetailComponent_vue_vue_type_template_id_04cbe550___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerifyDetailComponent_vue_vue_type_template_id_04cbe550___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -78185,19 +79816,87 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/admin/components/detailLapanganComponent.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/admin/components/detailLapanganComponent.vue ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _detailLapanganComponent_vue_vue_type_template_id_68829105___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detailLapanganComponent.vue?vue&type=template&id=68829105& */ "./resources/js/admin/components/detailLapanganComponent.vue?vue&type=template&id=68829105&");
+/* harmony import */ var _detailLapanganComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./detailLapanganComponent.vue?vue&type=script&lang=js& */ "./resources/js/admin/components/detailLapanganComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _detailLapanganComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _detailLapanganComponent_vue_vue_type_template_id_68829105___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _detailLapanganComponent_vue_vue_type_template_id_68829105___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/admin/components/detailLapanganComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/detailLapanganComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/admin/components/detailLapanganComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapanganComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./detailLapanganComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLapanganComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapanganComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/detailLapanganComponent.vue?vue&type=template&id=68829105&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/admin/components/detailLapanganComponent.vue?vue&type=template&id=68829105& ***!
+  \**************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapanganComponent_vue_vue_type_template_id_68829105___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./detailLapanganComponent.vue?vue&type=template&id=68829105& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/detailLapanganComponent.vue?vue&type=template&id=68829105&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapanganComponent_vue_vue_type_template_id_68829105___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapanganComponent_vue_vue_type_template_id_68829105___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/admin/components/detailLokasiComponent.vue":
 /*!*****************************************************************!*\
   !*** ./resources/js/admin/components/detailLokasiComponent.vue ***!
   \*****************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _detailLokasiComponent_vue_vue_type_template_id_1d0c7d82___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detailLokasiComponent.vue?vue&type=template&id=1d0c7d82& */ "./resources/js/admin/components/detailLokasiComponent.vue?vue&type=template&id=1d0c7d82&");
 /* harmony import */ var _detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./detailLokasiComponent.vue?vue&type=script&lang=js& */ "./resources/js/admin/components/detailLokasiComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _detailLokasiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -78227,7 +79926,7 @@ component.options.__file = "resources/js/admin/components/detailLokasiComponent.
 /*!******************************************************************************************!*\
   !*** ./resources/js/admin/components/detailLokasiComponent.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78319,6 +80018,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_paymentComponent_vue_vue_type_template_id_7dc8c222___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_paymentComponent_vue_vue_type_template_id_7dc8c222___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/paymentDetailComponent.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/admin/components/paymentDetailComponent.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _paymentDetailComponent_vue_vue_type_template_id_34d830de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./paymentDetailComponent.vue?vue&type=template&id=34d830de& */ "./resources/js/admin/components/paymentDetailComponent.vue?vue&type=template&id=34d830de&");
+/* harmony import */ var _paymentDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./paymentDetailComponent.vue?vue&type=script&lang=js& */ "./resources/js/admin/components/paymentDetailComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _paymentDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _paymentDetailComponent_vue_vue_type_template_id_34d830de___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _paymentDetailComponent_vue_vue_type_template_id_34d830de___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/admin/components/paymentDetailComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/paymentDetailComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/admin/components/paymentDetailComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_paymentDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./paymentDetailComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/paymentDetailComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_paymentDetailComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/admin/components/paymentDetailComponent.vue?vue&type=template&id=34d830de&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/admin/components/paymentDetailComponent.vue?vue&type=template&id=34d830de& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_paymentDetailComponent_vue_vue_type_template_id_34d830de___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./paymentDetailComponent.vue?vue&type=template&id=34d830de& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/admin/components/paymentDetailComponent.vue?vue&type=template&id=34d830de&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_paymentDetailComponent_vue_vue_type_template_id_34d830de___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_paymentDetailComponent_vue_vue_type_template_id_34d830de___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
