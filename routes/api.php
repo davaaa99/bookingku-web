@@ -61,7 +61,8 @@ Route::get('/locations/{city}','API\LocationsController@searchLocation');
 Route::delete('/location/delete/{idLocation}','API\LocationsController@deleteLocation');
 
 Route::get('field','FieldController@index');
-Route::post('field/add','FieldController@create');
+
+Route::post('field/add','API\REST\FieldController@create');
 Route::get('field/show','FieldController@show');
 Route::get('field/getfieldlocation/{id_location}','FieldController@getLapangLocation');
 Route::delete('/field/delete/{id_field}','FieldController@deleteField'); 
