@@ -126,8 +126,8 @@ class LocationController extends Controller
             $dataLocation = Location::where('id_users',$idUser)->get();
         }catch(Exception $e){
             return response()->json([
-                'message' => 'Failed retrieve data.',
-                'serve' => report($e)
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
             ], 500);
         }
 

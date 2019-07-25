@@ -37,7 +37,10 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
     Route::put('location/{id_location}','API\REST\LocationController@update');
     Route::delete('location/{id_location}','API\REST\LocationController@destroy');
 
-    
+    Route::get('field/{id_location}','API\REST\FieldController@show');
+    Route::post('field/{id_location}/{id_kind}','API\REST\FieldController@create');
+    Route::put('field/{id_field}','API\REST\FieldController@update');
+    Route::delete('field/{id_field}','API\REST\FieldController@destroy');
 });
 
 /**
