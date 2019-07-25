@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use PHPUnit\Framework\MockObject\Stub\Exception;
+use App\Field;
 
 class BookingController extends Controller
 {
@@ -78,15 +79,15 @@ class BookingController extends Controller
         // return $listBooking;
     }
     //untuk mengambil data booking berdasarkan lokasi dan tanggal untuk update status
-    public function getBookingByDate($location, $date,$email){
+    public function getBookingByDate($location){
         // public function getBookingByDate($userID){
         try {
-            $userID = locations::where('id_location',$location)->first();
+            $FieldID = Field::where('id_location',$location)->get();
             // $email =  users::where('id_users',$userID)->get('email');
-            $listBooking = bookings::where('client_email',$email)->where('created_at',$date)->get();
+            // $listBooking = bookings::where('client_email',$email)->where('created_at',$date)->get();
             return response()->json([
                 'message' => 'Succesfully retrieved data.',
-                'serve' => $listBooking
+                'serve' => $FieldID
             ], 200);
         } catch (Exception $e) {
             return response()->json([
