@@ -22,12 +22,13 @@ class CreateUsersTable extends Migration
 			$table->string('account_number', 25)->nullable();
 			$table->string('phone_number', 20)->nullable();
 			$table->string('users_type', 15)->nullable();
-			$table->string('users_photo')->nullable();
-			$table->dateTime('created_at')->nullable();
-			$table->string('created_by')->nullable();
-			$table->dateTime('update_at')->nullable();
-			$table->string('update_by')->nullable();
-			$table->boolean('isdeleted')->nullable();
+            $table->string('users_photo')->nullable();
+            $table->string('email_token')->nullable();
+            $table->dateTime('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+            $table->string('updated_by')->nullable();
+            $table->softDeletes();
 		});
     }
 

@@ -20,11 +20,10 @@ class CreateFieldsTable extends Migration {
 			$table->string('field_type', 20)->nullable();
 			$table->string('field_name', 30)->nullable();
 			$table->string('field_photo')->nullable();
-			$table->dateTime('created_at')->nullable();
 			$table->string('created_by')->nullable();
-			$table->dateTime('update_at')->nullable();
-			$table->string('update_by')->nullable();
-			$table->boolean('isdeleted')->nullable();
+			$table->timestamps();
+			$table->string('updated_by')->nullable();
+			$table->softDeletes();
 		});
 	}
 

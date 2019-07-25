@@ -11,6 +11,7 @@
 |
 */
 
+<<<<<<< HEAD
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,3 +19,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+=======
+Route::get('/', 'LandingPageController@index')->name('welcome');
+Route::get('/verified/email', 'Auth\VerificationController@verifiedEmail');
+Auth::routes(['verify' => true]);
+
+/**
+ * Router Group for
+ */
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+});
+>>>>>>> e5f22d6cbdb7ef337d83dcec267fd48346ac8437

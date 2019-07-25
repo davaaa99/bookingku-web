@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Ramsey\Uuid\Uuid;
 
 class RegisterController extends Controller
 {
@@ -64,9 +65,15 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'id_users' => Uuid::uuid1()->getHex(),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'name' => $data['name'],
+            'account_number' => $data['account_number'],
+            'phone_number' => $data['phone_number'],
+            'users_type' => $data['users_type'],
+            'users_photo' => $data['users_photo'],
+            'email_token' => base64_encode($data['email']),
         ]);
     }
 }

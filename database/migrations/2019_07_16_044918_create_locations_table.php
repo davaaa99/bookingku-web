@@ -23,11 +23,10 @@ class CreateLocationsTable extends Migration {
 			$table->time('closing_time')->nullable();
 			$table->string('location_photo')->nullable();
 			$table->string('city', 30)->nullable();
-			$table->dateTime('created_at')->nullable();
 			$table->string('created_by')->nullable();
-			$table->dateTime('update_at')->nullable();
-			$table->string('update_by')->nullable();
-			$table->boolean('isdeleted')->nullable();
+			$table->timestamps();
+			$table->string('updated_by')->nullable();
+			$table->softDeletes();
 		});
 	}
 
