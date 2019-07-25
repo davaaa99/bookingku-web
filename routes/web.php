@@ -12,12 +12,17 @@
 */
 
 
-
-// firman
-Route::get('/','AdminPageController@index')->name('index');
-Route::get('/verifydetail/{id}','AdminPageController@verifyBookingDetail')->name('verifybookingdetail');
-Route::get('/clientlist','AdminPageController@clientList')->name('clientlist');
-Route::get('/clientlist/detaillokasi/{id}','AdminPageController@clientListDetailLokasi')->name('detaillokasi');
-Route::get('/clientlist/detaillokasi/detaillapang/{id}','AdminPageController@clientListDetailLapangan')->name('detaillapang');
-Route::get('/payment','AdminPageController@payment')->name('payment');
-Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
+/**
+ * Firman
+ * Admin Page
+ */
+$now = \Carbon\Carbon::now();
+Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm'. (string) $now->day], function () {
+    Route::get('/','AdminPageController@index')->name('index');
+    Route::get('/verifydetail/{id}','AdminPageController@verifyBookingDetail')->name('verifybookingdetail');
+    Route::get('/clientlist','AdminPageController@clientList')->name('clientlist');
+    Route::get('/clientlist/detaillokasi/{id}','AdminPageController@clientListDetailLokasi')->name('detaillokasi');
+    Route::get('/clientlist/detaillokasi/detaillapang/{id}','AdminPageController@clientListDetailLapangan')->name('detaillapang');
+    Route::get('/payment','AdminPageController@payment')->name('payment');
+    Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
+});

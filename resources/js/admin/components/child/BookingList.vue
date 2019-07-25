@@ -61,8 +61,8 @@
         components: {
             DatePicker
         },
-        props:{
-            idBooking:[String]
+        props: {
+            idBooking: [String]
         },
         data() {
             return {
@@ -114,68 +114,68 @@
                 ],
                 VerifyBooking: [{
                         idBooking: "BKN-001",
-                        nama:"Tedy Subagjo",
+                        nama: "Tedy Subagjo",
                         lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
                         tglBayar: "12-12-2012",
-                        jamBooking:"12.00",
-                        jenisPembayaran:"DP",
+                        jamBooking: "12.00",
+                        jenisPembayaran: "DP",
                         status: "Confirmed",
-                        buktiPembayaran:"/images/avatar.jpg"
-                    },{
+                        buktiPembayaran: "/images/avatar.jpg"
+                    }, {
                         idBooking: "BKN-002",
-                        nama:"Masrum",
+                        nama: "Masrum",
                         lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
                         tglBayar: "12-12-2012",
-                        jamBooking:"12.00",
-                        jenisPembayaran:"DP",
+                        jamBooking: "12.00",
+                        jenisPembayaran: "DP",
                         status: "Confirmed",
-                        buktiPembayaran:"/images/avatar.jpg"
+                        buktiPembayaran: "/images/avatar.jpg"
                     },
                     {
                         idBooking: "BKN-003",
-                        nama:"Mokhan",
+                        nama: "Mokhan",
                         lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
                         tglBayar: "12-12-2012",
-                        jamBooking:"12.00",
-                        jenisPembayaran:"DP",
+                        jamBooking: "12.00",
+                        jenisPembayaran: "DP",
                         status: "Confirmed",
-                        buktiPembayaran:"/images/avatar.jpg"
+                        buktiPembayaran: "/images/avatar.jpg"
                     },
-                     {
+                    {
                         idBooking: "BKN-004",
-                        nama:"Abnes",
+                        nama: "Abnes",
                         lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
                         tglBayar: "12-12-2012",
-                        jamBooking:"12.00",
-                        jenisPembayaran:"DP",
+                        jamBooking: "12.00",
+                        jenisPembayaran: "DP",
                         status: "Confirmed",
-                        buktiPembayaran:"/images/avatar.jpg"
+                        buktiPembayaran: "/images/avatar.jpg"
                     },
-                     {
+                    {
                         idBooking: "BKN-005",
-                        nama:"Rendy",
+                        nama: "Rendy",
                         lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
                         tglBayar: "12-12-2012",
-                        jamBooking:"12.00",
-                        jenisPembayaran:"DP",
+                        jamBooking: "12.00",
+                        jenisPembayaran: "DP",
                         status: "Confirmed",
-                        buktiPembayaran:"/images/avatar.jpg"
+                        buktiPembayaran: "/images/avatar.jpg"
                     },
-                     {
+                    {
                         idBooking: "BKN-006",
-                        nama:"Hammad",
+                        nama: "Hammad",
                         lokasi: "JL. Telkom ",
                         lapangan: "Lapang Semesta",
                         tglBayar: "12-12-2012",
-                        jamBooking:"12.00",
-                        jenisPembayaran:"DP",
+                        jamBooking: "12.00",
+                        jenisPembayaran: "DP",
                         status: "Confirmed",
-                        buktiPembayaran:"/images/avatar.jpg"
+                        buktiPembayaran: "/images/avatar.jpg"
                     }
 
                 ],
@@ -197,8 +197,20 @@
                 this.filterStatus = status;
             },
             detail: function (id) {
-                window.location.href = window.location.protocol + '//' + window.location.host + '/verifydetail/' +
+                var self = this;
+                var d = new Date(),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/verifydetail/' +
                     btoa(id);
+
             }
         },
         watch: {

@@ -26,9 +26,10 @@
               <div class="sub-title">PENERIMA</div>
 
               <div class="desc-item">TEDY</div>
-              <div
-                class="desc-item"
-              >Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223</div>
+              <div class="desc-item">
+                Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan
+                Ciparay, Kota Bandung, Jawa Barat 40223
+              </div>
               <div class="desc-item">fjahdak@fgmail.com</div>
               <div class="desc-item">0888898989898</div>
             </div>
@@ -37,9 +38,10 @@
             <div class="pengirim">
               <div class="sub-title text-right">PT. KONG TEKNOLOGI ASIA</div>
 
-              <div
-                class="desc-item"
-              >Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223</div>
+              <div class="desc-item">
+                Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan
+                Ciparay, Kota Bandung, Jawa Barat 40223
+              </div>
               <div class="desc-item">(022) 64646737363</div>
             </div>
           </div>
@@ -94,8 +96,128 @@ export default {
       nomorInvoice: "",
       tanggalInvoice: "",
 
-      penerima: { nama: "", alamat: "", emaik: "", nomorTelepon: "" },
+      penerima: {
+        nama: "",
+        alamat: "",
+        emaik: "",
+        nomorTelepon: ""
+      },
       dataTransaksi: [
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
+        {
+          namaTransaksi: "lorem ipsum",
+          tanggal: "27-01-1999",
+          jumlah: "3000"
+        },
         {
           namaTransaksi: "lorem ipsum",
           tanggal: "27-01-1999",
@@ -137,11 +259,11 @@ export default {
         imageTimeout: 1000,
         useCORS: true
       }).then(canvas => {
-        document.getElementById("generate-pdf").appendChild(canvas);
+        document.getElementById("generate-pdf");
         let img = canvas.toDataURL("image/png");
         let pdf = new JsPDF("portrait", "mm", "a4");
         pdf.addImage(img, "JPEG", 5, 5, 200, 287);
-        pdf.save("relatorio-remoto.pdf");
+        pdf.pdf.save("relatorio-remoto.pdf");
       });
     }
   }

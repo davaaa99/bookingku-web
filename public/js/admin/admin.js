@@ -1792,7 +1792,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      nIdBooking: atob(window.location.pathname.split("/")[2]),
+      nIdBooking: atob(window.location.pathname.split("/")[4]),
       detailBooking: {
         idBooking: "",
         nama: "",
@@ -2107,7 +2107,14 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
       this.filterStatus = status;
     },
     detail: function detail(id) {
-      window.location.href = window.location.protocol + '//' + window.location.host + '/verifydetail/' + btoa(id);
+      var self = this;
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/verifydetail/' + btoa(id);
     }
   },
   watch: {
@@ -2243,7 +2250,14 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   },
   methods: {
     detail: function detail(id) {
-      window.location.href = window.location.protocol + '//' + window.location.host + '/clientlist/detaillokasi/' + btoa(id);
+      var self = this;
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
     }
   }
 });
@@ -2471,7 +2485,14 @@ __webpack_require__.r(__webpack_exports__);
     detail: function detail(idLokasi) {
       console.log(this.idClient);
       console.log(idLokasi);
-      window.location.href = window.location.protocol + "//" + window.location.host + "/clientlist/detaillokasi/detaillapang/" + btoa(idLokasi);
+      var self = this;
+      var d = new Date(),
+          month = "" + (d.getMonth() + 1),
+          day = "" + d.getDate(),
+          year = d.getFullYear();
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+      window.location.href = window.location.protocol + "//" + window.location.host + "/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm" + day + "/clientlist/detaillokasi/detaillapang/" + btoa(idLokasi);
     }
   }
 });
@@ -2586,7 +2607,14 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   methods: {
     detail: function detail(id) {
       console.log(id);
-      window.location.href = window.location.protocol + "//" + window.location.host + "/payment/paymentdetail/" + btoa(id);
+      var self = this;
+      var d = new Date(),
+          month = "" + (d.getMonth() + 1),
+          day = "" + d.getDate(),
+          year = d.getFullYear();
+      if (month.length < 2) month = "0" + month;
+      if (day.length < 2) day = "0" + day;
+      window.location.href = window.location.protocol + "//" + window.location.host + "/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm" + day + "/payment/paymentdetail/" + btoa(id);
     }
   }
 });
@@ -2606,6 +2634,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var html2canvas__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(html2canvas__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jspdf */ "./node_modules/jspdf/dist/jspdf.min.js");
 /* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jspdf__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
 //
 //
 //
@@ -2718,6 +2748,98 @@ __webpack_require__.r(__webpack_exports__);
         namaTransaksi: "lorem ipsum",
         tanggal: "27-01-1999",
         jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
+      }, {
+        namaTransaksi: "lorem ipsum",
+        tanggal: "27-01-1999",
+        jumlah: "3000"
       }]
     };
   },
@@ -2746,11 +2868,11 @@ __webpack_require__.r(__webpack_exports__);
         imageTimeout: 1000,
         useCORS: true
       }).then(function (canvas) {
-        document.getElementById("generate-pdf").appendChild(canvas);
+        document.getElementById("generate-pdf");
         var img = canvas.toDataURL("image/png");
         var pdf = new jspdf__WEBPACK_IMPORTED_MODULE_1__("portrait", "mm", "a4");
         pdf.addImage(img, "JPEG", 5, 5, 200, 287);
-        pdf.save("relatorio-remoto.pdf");
+        pdf.pdf.save("relatorio-remoto.pdf");
       });
     }
   }
@@ -75153,7 +75275,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "desc-item" }, [
             _vm._v(
-              "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223"
+              "\n              Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan\n              Ciparay, Kota Bandung, Jawa Barat 40223\n            "
             )
           ]),
           _vm._v(" "),
@@ -75173,7 +75295,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "desc-item" }, [
             _vm._v(
-              "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223"
+              "\n              Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan\n              Ciparay, Kota Bandung, Jawa Barat 40223\n            "
             )
           ]),
           _vm._v(" "),

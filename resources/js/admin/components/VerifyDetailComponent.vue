@@ -64,7 +64,7 @@
 export default {
   data() {
     return {
-      nIdBooking: atob(window.location.pathname.split("/")[2]),
+      nIdBooking: atob(window.location.pathname.split("/")[4]),
       detailBooking: {
         idBooking: "",
         nama: "",
