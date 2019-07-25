@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('schedule','API\SchedulesController@index');
-Route::get('createschedule','API\SchedulesController@createSchedule');
+Route::post('createschedule','API\SchedulesController@createSchedules');
+Route::get('/schedules/{id_field}','API\SchedulesController@getSchedule');
