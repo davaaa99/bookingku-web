@@ -78,15 +78,15 @@ class BookingController extends Controller
         // return $listBooking;
     }
     //untuk mengambil data booking berdasarkan lokasi dan tanggal untuk update status
-    public function getBookingByDate($location, $date){
+    public function getBookingByDate($location, $date,$email){
         // public function getBookingByDate($userID){
         try {
-            $userID = locations::where('id_location',$location)->get('id_user');
-            $email =  users::where('id_users',$userID)->get('email');
+            $userID = locations::where('id_location',$location)->first();
+            // $email =  users::where('id_users',$userID)->get('email');
             $listBooking = bookings::where('client_email',$email)->where('created_at',$date)->get();
             return response()->json([
                 'message' => 'Succesfully retrieved data.',
-                'serve' => $email
+                'serve' => $listBooking
             ], 200);
         } catch (Exception $e) {
             return response()->json([

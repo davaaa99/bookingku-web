@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth', 'verified', 'is_admin'], 'prefix' => 'v1'
 Route::get('bookings','API\BookingController@getBooking');
 Route::post('bookings/add','API\BookingController@createBooking');
 Route::get('bookings/client/{email}','API\BookingController@getBookingByEmail');
-Route::get('bookings/admin/{location}/{date}','API\BookingController@getBookingByDate');
+Route::get('bookings/admin/{location}/{date}/{email}','API\BookingController@getBookingByDate');
 Route::put('/bookings/update/{id}','API\BookingController@updateStatusPayment');
 Route::delete('/bookings/delete/{id}', 'API\BookingController@deleteBooking');
 Route::put('/payments/report/{client_email}/{date}', 'API\PaymentController@reportPayment');
