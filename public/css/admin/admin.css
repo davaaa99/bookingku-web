@@ -17059,8 +17059,8 @@ main {
 }
 
 #paymentdetail .table-box {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 #paymentdetail .table-box .header {
@@ -17081,7 +17081,7 @@ main {
   font-style: normal;
   font-size: 15px;
   text-align: right;
-  color: #4D4D4D;
+  color: black;
 }
 
 #paymentdetail .table-box .item .sub-item {
@@ -17089,7 +17089,7 @@ main {
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
-  color: #4D4D4D;
+  color: black;
 }
 
 #paymentdetail .table-box .desc .penerima {
@@ -17104,15 +17104,15 @@ main {
   font-family: Poppins;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
-  color: #4D4D4D;
+  font-size: 12px;
+  color: black;
   margin-bottom: 10px;
 }
 
 #paymentdetail .table-box .desc .desc-item {
   margin-bottom: 10px;
   font-family: Poppins;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 #paymentdetail .table-box .row {
@@ -17129,11 +17129,11 @@ main {
 }
 
 #paymentdetail .table-box .row table tr th {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 #paymentdetail .table-box .row table tr td {
-  font-size: 12px;
+  font-size: 11px;
   font-family: Poppins;
 }
 
@@ -17141,8 +17141,8 @@ main {
 #paymentdetail .table-box .row table tr th {
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #paymentdetail .table-box .row .total {

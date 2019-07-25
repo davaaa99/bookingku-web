@@ -5,7 +5,6 @@
         <div class="table-box"  >
             <div class="spacer-30"></div>
             <div class="title">Detail Lokasi</div>
-            {{$id}}
             <div class="spacer-50"></div>
             <detail-lokasi></detail-lokasi>
             <div class="spacer-50"></div>

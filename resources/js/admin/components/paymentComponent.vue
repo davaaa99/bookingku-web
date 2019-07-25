@@ -89,14 +89,14 @@
 
                     },
                     {
-                        idClient: "CLN-001",
+                        idClient: "CLN-002",
                         namaClient: "Tedy",
                         lokasi: "GOR LODAYA",
                         total: "36.000.000",
                         status: "dibayarkan",
 
                     }, {
-                        idClient: "CLN-001",
+                        idClient: "CLN-003",
                         namaClient: "Tedy",
                         lokasi: "GOR LODAYA",
                         total: "36.000.000",
