@@ -29,13 +29,13 @@ class Field extends Model
 
      protected $fillable = [
         'id_field',
-        // 'id_location',
-        // 'id_kind_of_field',
+        'id_location',
+        'id_kind_of_field',
         'field_type',
         'field_name',
         'field_photo',
-        // 'updated_by',
-        // 'created_by',
+        'updated_by',
+        'created_by',
     ];
 
     

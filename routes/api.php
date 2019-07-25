@@ -60,12 +60,13 @@ Route::get('/location/{emailClient}','API\LocationsController@getLocationClient'
 Route::get('/locations/{city}','API\LocationsController@searchLocation');
 Route::delete('/location/delete/{idLocation}','API\LocationsController@deleteLocation');
 
-Route::get('field','FieldController@index');
+Route::get('field','API\REST\FieldController@index');
 
 Route::post('field/add','API\REST\FieldController@create');
-Route::get('field/show','FieldController@show');
-Route::get('field/getfieldlocation/{id_location}','FieldController@getLapangLocation');
-Route::delete('/field/delete/{id_field}','FieldController@deleteField'); 
+Route::get('field/show','API\REST\FieldController@show');
+Route::get('field/getfieldlocation/{id_location}','API\REST\FieldController@getLapangLocation');
+Route::get('field/getfielddetail/{id_field}','API\REST\FieldController@getLapangDetail');
+Route::delete('/field/delete/{id_field}','API\REST\FieldController@deleteField'); 
 
 // // Route::get('field/getfieldid/{id_location}','FieldController@getIdField');
 // Route::get('location','API\LocationsController@getLocation');

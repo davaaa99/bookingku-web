@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\uuid;
+use App\Field;
 
 class FieldController extends Controller
 {
@@ -85,12 +86,12 @@ class FieldController extends Controller
         return Field::create([
             'id_field' =>  Uuid::uuid()->getHex(),
             'id_location'=>$dataUser->id_location,
-            'id_kind_of_field' => $dataUser->id_kind_of_field,
-            'field_type' => $data['field_type'],
-            'field_name' => $data['field_name'],
-            'field_photo' => $data['field_foto'],
-            'created_by'=> $dataUser->name,
-            'updated_by'=> $dataUser->name,
+            // 'id_kind_of_field' => $dataUser->id_kind_of_field,
+            // 'field_type' => $data['field_type'],
+            // 'field_name' => $data['field_name'],
+            // 'field_photo' => $data['field_foto'],
+            // 'created_by'=> $dataUser->name,
+            // 'updated_by'=> $dataUser->name,
             ]);
 
             response()->json()([
