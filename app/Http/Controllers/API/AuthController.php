@@ -64,7 +64,7 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
             'name' => $data['name'],
             'email_token' => base64_encode($data['email']),
-            'users_type' => '2',
+            'users_type' => $data['users_type'],
         ]);
     }
 

@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Uuid;
 use App\Location;
+use Mockery\CountValidator\Exception;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Response;
+
 
 class LocationController extends Controller
 {
@@ -17,7 +21,7 @@ class LocationController extends Controller
      */
     public function __construct(Request $request)
     {
-        $this->middleware('guest');
+        $this->middleware(['auth:api']);
     }
 
     /**
@@ -27,60 +31,136 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $dataLocation = Location::all();
-        return $dataLocation;
-        // return response()->json()([
-        //     'message' => 'Succesfully retrieved data.',
-        //     'serve' => $dataLocation
-        // ], 200);
+        try{
+            $dataLocation = Location::all();
+        }catch (Exception $e){
+            return response()->json()([
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully retrieved data.',
+            'serve' => $dataLocation
+        ], 200);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Get a validator for an incoming location registration request.
      *
-     * @param array $data
-     * @return \App\Location
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function create(array $data)
+    protected function validator(array $data)
     {
-        $dataUser = Auth::user();
-        return Location::create([
-            'id_location' => Uuid::uuid1()->getHex(),
-            'id_users' => $dataUser->id_users,
-            'location_name' => $data['location_name'],
-            'location_address' => $data['location_address'],
-            'description' => $data['description'],
-            // 'open_time' => $data['open_time'],
-            // 'closing_time' => $data['closing_time'],
-            // 'location_photo' => $data['location_photo'],
-            'city' => $data['city'],
-            'created_by' => $dataUser->name,
-            'updated_by' => $dataUser->name,
+        return Validator::make($data, [
+            'location_name' => ['required', 'string', 'max:50'],
+            'location_address' => ['required', 'string', 'max:255'],
+            'open_time' => ['required', 'date_format:H:i'],
+            'closing_time' => ['required', 'date_format:H:i','after:open_time'],
         ]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create and store a new location.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function create(Request $request)
     {
-        //
+        try{
+            $validate = $this->validator($request->all());
+            if ($validate->fails()){
+                return response()->json([
+                    'message' => 'Unable to save data. Bad config',
+                    'serve' => [
+                        'error' => $validate->errors()
+                    ]
+                ], 401);
+            }
+    
+            /**
+             * Location register
+             */
+            $dataUser = Auth::user();
+    
+            $location = new Location();
+            $location->id_location = Uuid::uuid1()->getHex();
+            $location->id_users = $dataUser->id_users;
+            $location->location_name = $request->location_name;
+            $location->location_address = $request->location_address;
+            $location->description = $request->description;
+            $location->open_time = $request->open_time;
+            $location->closing_time = $request->closing_time;
+            $location->location_photo = $request->location_photo;
+            $location->city = $request->city;
+            $location->created_by = $dataUser->email;
+            $location->updated_by = $dataUser->email;
+            $location->save();
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Failed save data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+
+        return response()->json([
+            'message' => 'Successfully saved data.',
+            'serve' => $location
+        ], 200);
     }
 
     /**
-     * Display the specified resource.
+     * Show specified location based on client login.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $idUser = Auth::user()->id_users;
-        $dataLocation = Location::where('id_users',$idUser)->get();
-        return $dataLocation;
+        try{
+            $idUser = Auth::user()->id_users;
+            $dataLocation = Location::where('id_users',$idUser)->get();
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Failed retrieve data.',
+                'serve' => report($e)
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully retrieved data.',
+            'serve' => $dataLocation,
+        ], 200);
+    }
+
+    /**
+     * Display the specified location based on entered location .
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search($city)
+    {
+        try{
+            $location = locations::where('city','LIKE',"%$city%")
+                                ->orwhere('location_address','LIKE',"%$city%")
+                                ->orwhere('location_name','LIKE',"%$city%")
+                                ->get();
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Failed retrieve data.',
+                'serve' => report($e)
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully retrieved data.',
+            'serve' => $location
+        ], 200);
     }
 
     /**
@@ -95,26 +175,59 @@ class LocationController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the location data.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_location)
     {
-        //
+        try{
+            $dataUser = Auth::user();
+
+            $location = Location::find($id_location);
+            $location->location_name = $request->location_name;
+            $location->location_address = $request->location_address;
+            $location->description = $request->description;
+            $location->open_time = $request->open_time;
+            $location->closing_time = $request->closing_time;
+            $location->location_photo = $request->location_photo;
+            $location->city = $request->city;
+            $location->updated_by = $dataUser->email;
+            $location->save();
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Failed update location data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully updated location data.',
+            'serve' => []
+        ], 200);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified location from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Location::where('id_location',$id)->delete();
+        try{
+            Location::where('id_location',$id)->delete();
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Failed delete data.' . $e->getMessage(),
+            ], 500);
+        }
 
+        return response()->json([
+            'message' => 'Successfully deleted data.',
+            'serve' => []
+        ], 200);
     }
 }

@@ -9,6 +9,23 @@ class Location extends Model
 {
     use SoftDeletes;
 
+    /**
+     * Assign new primary key
+     * 
+     */
+    protected $primaryKey = 'id_location';
+
+    /**
+     * Set incrementing primary key to false
+     * 
+     */
+    public $incrementing = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'id_location',
         'id_users',
