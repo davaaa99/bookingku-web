@@ -76,7 +76,7 @@ class schedulesController extends Controller
             $schedules = schedules::where('id_field', $id_field)->get();
             return response()->json([
                 'message' => 'Succesfully retrieved data.',
-                'serve' => $schedule
+                'serve' => $schedules
             ], 200);  
         }catch (Exception $e){
             return response()->json([
