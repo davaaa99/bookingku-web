@@ -31,9 +31,12 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
 /**
  * Router Group for web client
  */
-Route::group(['middleware' => ['auth', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
-    
-    
+Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
+    Route::post('booking/{id_schedule}','API\REST\BookingController@create');
+    Route::get('booking','API\REST\BookingController@showByEmail');
+    Route::put('/booking/{id}','API\REST\BookingController@update');
+    Route::delete('/booking/{id}', 'API\REST\BookingController@destroy');
+    Route::get('bookings/{id}','API\REST\BookingController@showByDate');
 });
 
 /**
@@ -44,15 +47,15 @@ Route::group(['middleware' => ['auth', 'verified', 'is_admin'], 'prefix' => 'v1'
     
 });
 
-Route::get('bookings','API\BookingController@getBooking');
-Route::post('bookings/add','API\BookingController@createBooking');
-Route::get('bookings/client/{email}','API\BookingController@getBookingByEmail');
-Route::get('bookings/admin/{location}/{date}/{email}','API\BookingController@getBookingByDate');
-Route::put('/bookings/update/{id}','API\BookingController@updateStatusPayment');
-Route::delete('/bookings/delete/{id}', 'API\BookingController@deleteBooking');
-Route::put('/payments/report/{client_email}/{date}', 'API\PaymentController@reportPayment');
-Route::put('/payments/update/{id}','API\PaymentController@updatePayment');
-Route::delete('/payments/delete/{id}','API\PaymentController@deletePayment');
+Route::get('bookings','API\REST\BookingController@index');
+
+
+
+
+
+Route::put('/payments/report/{client_email}/{date}', 'API\REST\PaymentController@reportPayment');
+Route::put('/payments/update/{id}','API\REST\PaymentController@update');
+Route::delete('/payments/delete/{id}','API\REST\PaymentController@destroy');
 
 Route::get('location','API\LocationsController@getLocation');
 Route::post('location','API\LocationsController@create');
