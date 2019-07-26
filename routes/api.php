@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
     Route::post('field/{id_location}/{id_kind}','API\REST\FieldController@create');
     Route::put('field/{id_field}','API\REST\FieldController@update');
     Route::delete('field/{id_field}','API\REST\FieldController@destroy');
+
+    Route::put('client','API\REST\UserController@update');
 });
 
 /**
@@ -48,6 +50,12 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
  */
 Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 'v1'], function () {    
     Route::get('locations','API\REST\LocationController@index');
+    Route::get('clients','API\REST\UserController@getClient');
+    Route::get('client/{name}','API\REST\UserController@searchClient');
+    Route::delete('client/{id_client}','API\REST\UserController@destroy');
+
+    Route::get('users','API\REST\UserController@getUser');
+    Route::get('user/{name}','API\REST\UserController@searchUser');
     
 });
 
