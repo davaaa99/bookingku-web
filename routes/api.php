@@ -24,7 +24,7 @@ Route::group(['prefix' => '/v1/auth'], function () {
  * Router Group for mobile
  */
 Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => 'v1'], function () {    
-    Route::get('bookings','API\BookingController@getBooking');
+    
     
 });
 
@@ -37,13 +37,30 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
     Route::put('/booking/{id}','API\REST\BookingController@update');
     Route::delete('/booking/{id}', 'API\REST\BookingController@destroy');
     Route::get('bookings/{id}','API\REST\BookingController@showByDate');
+    Route::get('location','API\REST\LocationController@show');
+    Route::post('location','API\REST\LocationController@create');
+    Route::put('location/{id_location}','API\REST\LocationController@update');
+    Route::delete('location/{id_location}','API\REST\LocationController@destroy');
+
+    Route::get('field/{id_location}','API\REST\FieldController@show');
+    Route::post('field/{id_location}/{id_kind}','API\REST\FieldController@create');
+    Route::put('field/{id_field}','API\REST\FieldController@update');
+    Route::delete('field/{id_field}','API\REST\FieldController@destroy');
+
+    Route::put('client','API\REST\UserController@update');
 });
 
 /**
  * Router Group for web admin
  */
-Route::group(['middleware' => ['auth', 'verified', 'is_admin'], 'prefix' => 'v1'], function () {    
-    
+Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 'v1'], function () {    
+    Route::get('locations','API\REST\LocationController@index');
+    Route::get('clients','API\REST\UserController@getClient');
+    Route::get('client/{name}','API\REST\UserController@searchClient');
+    Route::delete('client/{id_client}','API\REST\UserController@destroy');
+
+    Route::get('users','API\REST\UserController@getUser');
+    Route::get('user/{name}','API\REST\UserController@searchUser');
     
 });
 
@@ -56,51 +73,3 @@ Route::get('bookings','API\REST\BookingController@index');
 Route::put('/payments/report/{client_email}/{date}', 'API\REST\PaymentController@reportPayment');
 Route::put('/payments/update/{id}','API\REST\PaymentController@update');
 Route::delete('/payments/delete/{id}','API\REST\PaymentController@destroy');
-
-Route::get('location','API\LocationsController@getLocation');
-Route::post('location','API\LocationsController@create');
-// Route::get('/location/{idClient}','API\LocationsController@getLocationClient');
-Route::get('/location/{emailClient}','API\LocationsController@getLocationClient');
-Route::get('/locations/{city}','API\LocationsController@searchLocation');
-Route::delete('/location/delete/{idLocation}','API\LocationsController@deleteLocation');
-
-Route::get('field','FieldController@index');
-Route::post('field/add','FieldController@create');
-Route::get('field/show','FieldController@show');
-Route::get('field/getfieldlocation/{id_location}','FieldController@getLapangLocation');
-Route::delete('/field/delete/{id_field}','FieldController@deleteField'); 
-
-// // Route::get('field/getfieldid/{id_location}','FieldController@getIdField');
-// Route::get('location','API\LocationsController@getLocation');
-// Route::post('location','API\LocationsController@create');
-// // Route::get('/location/{idClient}','API\LocationsController@getLocationClient');
-// Route::get('/location/{emailClient}','API\LocationsController@getLocationClient');
-// Route::get('/locations/{city}','API\LocationsController@searchLocation');
-// Route::delete('/location/delete/{idLocation}','API\LocationsController@deleteLocation');
-
-// Route::get('client','API\UsersController@getClient');
-// Route::get('/client/{email}','API\UsersController@getIdClient');
-// Route::delete('/client/delete/{email}','API\UsersController@deleteClient');
-//Route untuk admin
-Route::get('admin','API\UsersController@getAdmin');
-Route::get('/admin/search/{name}','API\UsersController@searchAdmin');
-Route::put('/admin/update/{idAdmin}','API\UsersController@updateAdmin');
-Route::delete('/admin/delete/{email}','API\UsersController@deleteAdmin');
-
-//Route untuk client
-Route::get('client','API\UsersController@getClient');
-Route::get('/client/search/{name}','API\UsersController@searchClient');
-Route::delete('/client/delete/{email}','API\UsersController@deleteClient');
-
-//Route untuk user
-Route::post('user/register','API\UsersController@createUser');
-// Route::get('user','API\UsersController@getUser');
-Route::get('user/search/{name}','API\UsersController@searchUser');
-Route::delete('/user/delete/{email}','API\UsersController@deleteUser');
-
-Route::get('all','API\UsersController@getAllUser');
-
-Route::get('all/{name}','API\UsersController@searchAllUser');
-
-Route::get('schedule','API\SchedulesController@index');
-Route::get('createschedule','API\SchedulesController@createSchedule');

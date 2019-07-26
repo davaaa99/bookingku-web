@@ -5,20 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class payment_booking extends Model
+class Location extends Model
 {
     use SoftDeletes;
-<<<<<<< HEAD:app/payment_booking.php
-    protected $table='payment_booking';
-=======
-    
-     /**
+
+    /**
      * Assign new primary key
      * 
      */
-    protected $primaryKey = 'id_field';
+    protected $primaryKey = 'id_location';
 
-     /**
+    /**
      * Set incrementing primary key to false
      * 
      */
@@ -29,17 +26,17 @@ class payment_booking extends Model
      *
      * @var array
      */
-     protected $fillable = [
-        'id_field',
-        'id_kind_of_field',
+    protected $fillable = [
         'id_location',
-        'field_type',
-        'field_name',
-        'field_photo',
-        'updated_by',
+        'id_users',
+        'location_name',
+        'location_address',
+        'description',
+        'open_time',
+        'closing_time',
+        'location_photo',
+        'city',
         'created_by',
+        'updated_by',       
     ];
-
-    
->>>>>>> 44f1e4aed759efd8f1399ef7600550e9bb2ac2dc:app/Field.php
 }
