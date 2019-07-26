@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RenameColumnReportStatus extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class RenameColumnReportStatus extends Migration
      */
     public function up()
     {
-        Schema::table('bookings',function(Blueprint $table){
-            $table->renameColumn('report_status','payment_status');
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -25,8 +27,6 @@ class RenameColumnReportStatus extends Migration
      */
     public function down()
     {
-        Schema::table('bookings',function(Blueprint $table){
-            $table->renameColumn('payment_status','report_status');
-        });
+        Schema::dropIfExists('password_resets');
     }
 }
