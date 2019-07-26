@@ -14,9 +14,9 @@ class CreateSchedulesTable extends Migration {
 	{
 		Schema::create('schedules', function(Blueprint $table)
 		{
-			$table->string('id_schedule', 35)->primary();
-			$table->string('id_field', 35)->nullable()->index('fk_field_schedule');
-			$table->string('id_booking', 35)->nullable()->index('fk_schedule_booking');
+			$table->string('id_schedule', 50)->primary();
+			$table->string('id_field', 50)->nullable()->index('fk_field_schedule');
+			$table->string('id_booking', 50)->nullable()->index('fk_schedule_booking');
 			$table->date('date')->nullable();
 			$table->string('day', 15)->nullable();
 			$table->time('start_time')->nullable();
