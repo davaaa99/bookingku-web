@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Auth;
 use Mockery\CountValidator\Exception;
+use App\Schedule;
 
 class ScheduleController extends Controller
 {
@@ -18,7 +19,7 @@ class ScheduleController extends Controller
     public function index($id_field)
     {
         try{
-            $schedules = schedules::where('id_field', $id_field)->get();
+            $schedules = Schedule::where('id_field', $id_field)->get();
             
         }catch (Exception $e){
             return response()->json([
@@ -40,7 +41,7 @@ class ScheduleController extends Controller
     public function create(Request $request, $id_field)
     {
         try{
-            $schedule = new Schedules();
+            $schedule = new Schedule();
             $schedule->id_schedule = Uuid::uuid1()->getHex();
             $schedule->id_field = $id_field;
             $schedule->date = $request->date;
