@@ -47,6 +47,9 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
     Route::post('field/{id_location}/{id_kind}','API\REST\FieldController@create');
     Route::put('field/{id_field}','API\REST\FieldController@update');
     Route::delete('field/{id_field}','API\REST\FieldController@destroy');
+    
+    Route::get('schedule/{id_field}','API\REST\ScheduleController@index');
+    Route::post('schedule/{id_field}','API\REST\ScheduleController@create');
 
     Route::put('client','API\REST\UserController@update');
 });
@@ -65,6 +68,7 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 
     
 });
 
+<<<<<<< HEAD
 Route::get('bookings','API\REST\BookingController@index');
 
 
@@ -74,3 +78,8 @@ Route::get('bookings','API\REST\BookingController@index');
 Route::put('/payments/report/{client_email}/{date}', 'API\REST\PaymentController@reportPayment');
 Route::put('/payments/update/{id}','API\REST\PaymentController@update');
 Route::delete('/payments/delete/{id}','API\REST\PaymentController@destroy');
+=======
+Route::get('schedule','API\SchedulesController@index');
+Route::post('createschedule','API\SchedulesController@createSchedules');
+Route::get('/schedules/{id_field}','API\SchedulesController@getSchedule');
+>>>>>>> 4cf0bfa70faa99a18d1dc2ba9d76fb4480d76190
