@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
     Route::put('/booking/{id}','API\REST\BookingController@update');
     Route::delete('/booking/{id}', 'API\REST\BookingController@destroy');
     Route::get('bookings/{id}','API\REST\BookingController@showByDate');
+    
     Route::get('location','API\REST\LocationController@show');
     Route::post('location','API\REST\LocationController@create');
     Route::put('location/{id_location}','API\REST\LocationController@update');

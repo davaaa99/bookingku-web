@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class payment_booking extends Model
 {
     use SoftDeletes;
-<<<<<<< HEAD:app/payment_booking.php
     protected $table='payment_booking';
-=======
     
      /**
      * Assign new primary key
@@ -41,5 +39,4 @@ class payment_booking extends Model
     ];
 
     
->>>>>>> 44f1e4aed759efd8f1399ef7600550e9bb2ac2dc:app/Field.php
 }
