@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
     Route::delete('field/{id_field}','API\REST\FieldController@destroy');
 
     Route::put('client','API\REST\UserController@update');
+    Route::get('test','API\REST\FieldController@test');
 });
 
 /**

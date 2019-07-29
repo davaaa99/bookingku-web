@@ -10,6 +10,7 @@ use Ramsey\Uuid\Uuid;
 use App\Field;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Auth;
+use App\Location;
 
 class FieldController extends Controller
 {
