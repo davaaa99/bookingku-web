@@ -6,7 +6,7 @@
             <div class="spacer-30"></div>
             <div class="title">Detail Lokasi</div>
             <div class="spacer-50"></div>
-            <detail-lokasi></detail-lokasi>
+            <detail-lokasi client-id="{{$id}}"></detail-lokasi>
             <div class="spacer-50"></div>
         </div>
         

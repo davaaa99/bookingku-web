@@ -58,8 +58,9 @@ class AdminPageController extends Controller
      * 
      * @return View
      */
-    public function clientListDetailLapangan(){
-        return view('admin.clientListDetailLapangan');
+    public function clientListDetailLapangan($id){
+        $data = base64_decode($id);
+        return view('admin.clientListDetailLapangan',['id'=>$data]);
     }
 
     /**
@@ -76,8 +77,9 @@ class AdminPageController extends Controller
      * 
      * @return View
      */
-    public function paymentdetail(){
-        return view('admin.paymentdetail');
+    public function paymentdetail($id){
+        $data = base64_decode($id);
+        return view('admin.paymentdetail',['id'=>$data]);
     }
     
 }

@@ -90,12 +90,16 @@
 import html2canvas from "html2canvas";
 import * as JsPDF from "jspdf";
 export default {
+  props: {
+    clientId: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
-      idClient: atob(window.location.pathname.split("/")[3]),
       nomorInvoice: "",
       tanggalInvoice: "",
-
       penerima: {
         nama: "",
         alamat: "",

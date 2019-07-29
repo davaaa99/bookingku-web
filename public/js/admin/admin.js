@@ -1788,22 +1788,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    idBooking: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
-      nIdBooking: atob(window.location.pathname.split("/")[4]),
-      detailBooking: {
-        idBooking: "",
-        nama: "",
-        lokasi: "",
-        lapangan: "",
-        tglBayar: "",
-        jamBooking: "",
-        jenisPembayaran: "",
-        status: "",
-        buktiPembayaran: ""
-      },
+      detailBooking: {},
       filterData: [{
         idBooking: "BKN-001",
         nama: "Tedy Subagjo",
@@ -1870,17 +1864,9 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     self = this;
     var data = self.filterData.filter(function (project) {
-      return project.idBooking === self.nIdBooking;
+      return project.idBooking === self.idBooking;
     });
-    self.detailBooking.idBooking = data[0].idBooking;
-    self.detailBooking.nama = data[0].nama;
-    self.detailBooking.lokasi = data[0].lokasi;
-    self.detailBooking.lapangan = data[0].lapangan;
-    self.detailBooking.tglBayar = data[0].tglBayar;
-    self.detailBooking.jamBooking = data[0].jamBooking;
-    self.detailBooking.jenisPembayaran = data[0].jenisPembayaran;
-    self.detailBooking.status = data[0].status;
-    self.detailBooking.buktiPembayaran = data[0].buktiPembayaran;
+    self.detailBooking = data[0];
   }
 });
 
@@ -2305,6 +2291,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    idLokasi: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
       filterTanggal: "",
@@ -2410,12 +2402,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // props: {
-  //   id: [String, Number]
-  // },
+  props: {
+    clientId: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
-      idClient: atob(window.location.pathname.split("/")[3]),
       dropdown: false,
       datailLokasi: [{
         idLokasi: "001",
@@ -2725,9 +2719,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    clientId: {
+      type: String,
+      required: true
+    }
+  },
   data: function data() {
     return {
-      idClient: atob(window.location.pathname.split("/")[3]),
       nomorInvoice: "",
       tanggalInvoice: "",
       penerima: {

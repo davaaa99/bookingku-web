@@ -1,7 +1,6 @@
 <template>
   <div id="verify-detail">
     <div class="display-image"></div>
-
     <table>
       <tr>
         <th>ID Booking</th>
@@ -62,20 +61,15 @@
 </template>
 <script>
 export default {
+  props: {
+    idBooking: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
-      nIdBooking: atob(window.location.pathname.split("/")[4]),
-      detailBooking: {
-        idBooking: "",
-        nama: "",
-        lokasi: "",
-        lapangan: "",
-        tglBayar: "",
-        jamBooking: "",
-        jenisPembayaran: "",
-        status: "",
-        buktiPembayaran: ""
-      },
+      detailBooking: {},
 
       filterData: [
         {
@@ -150,17 +144,9 @@ export default {
   mounted() {
     self = this;
     const data = self.filterData.filter(function(project) {
-      return project.idBooking === self.nIdBooking;
+      return project.idBooking === self.idBooking;
     });
-    self.detailBooking.idBooking = data[0].idBooking;
-    self.detailBooking.nama = data[0].nama;
-    self.detailBooking.lokasi = data[0].lokasi;
-    self.detailBooking.lapangan = data[0].lapangan;
-    self.detailBooking.tglBayar = data[0].tglBayar;
-    self.detailBooking.jamBooking = data[0].jamBooking;
-    self.detailBooking.jenisPembayaran = data[0].jenisPembayaran;
-    self.detailBooking.status = data[0].status;
-    self.detailBooking.buktiPembayaran = data[0].buktiPembayaran;
+    self.detailBooking = data[0];
   }
 };
 </script>

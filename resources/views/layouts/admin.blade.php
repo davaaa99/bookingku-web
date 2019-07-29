@@ -10,7 +10,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>Admin</title>
+    <title>Bookingku - Admin</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/admin/admin.js') }}" defer></script>

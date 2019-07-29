@@ -11,7 +11,7 @@
             <div class="spacer-50"></div>
             <div class="table-header">Detail Informasi Booking</div>
             <div class="detail">
-               <verify-detail></verify-detail>
+               <verify-detail id-booking="{{$id}}"></verify-detail>
             </div>
             <div class="spacer-50"></div>
         </div>

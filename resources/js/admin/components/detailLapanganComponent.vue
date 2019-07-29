@@ -29,6 +29,12 @@
 <script>
 import DatePicker from "vue2-datepicker";
 export default {
+  props: {
+    idLokasi: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       filterTanggal: "",

@@ -47,12 +47,14 @@
 </template>
 <script>
 export default {
-  // props: {
-  //   id: [String, Number]
-  // },
+  props: {
+    clientId: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
-      idClient: atob(window.location.pathname.split("/")[3]),
       dropdown: false,
       datailLokasi: [
         {

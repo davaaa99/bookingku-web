@@ -12,7 +12,7 @@
             <div class="spacer-30"></div>
             <div class="content-side">
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('index') }}" class="content-link">
+                    <a href="{{ route('admin') }}" class="content-link">
                         <i class="far fa-clone"></i>
                         VERIFY BOOKING
                     </a>
