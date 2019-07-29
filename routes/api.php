@@ -34,10 +34,10 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
 Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
     Route::post('booking/{id_schedule}','API\REST\BookingController@create');
     Route::get('booking','API\REST\BookingController@showByEmail');
-    Route::put('/booking/{id}','API\REST\BookingController@update');
-    Route::delete('/booking/{id}', 'API\REST\BookingController@destroy');
-    Route::get('bookings/{id}','API\REST\BookingController@showByDate');
-    
+    Route::put('/booking/{id_booking}','API\REST\BookingController@update');
+    Route::delete('/booking/{id_booking}', 'API\REST\BookingController@destroy');
+    Route::get('booking/{id_location}','API\REST\BookingController@showByDate');
+
     Route::get('location','API\REST\LocationController@show');
     Route::post('location','API\REST\LocationController@create');
     Route::put('location/{id_location}','API\REST\LocationController@update');
@@ -66,20 +66,18 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 
     Route::get('users','API\REST\UserController@getUser');
     Route::get('user/{name}','API\REST\UserController@searchUser');
     
+    Route::put('payment', 'API\REST\PaymentController@store');
 });
 
-<<<<<<< HEAD
 Route::get('bookings','API\REST\BookingController@index');
 
 
 
 
 
-Route::put('/payments/report/{client_email}/{date}', 'API\REST\PaymentController@reportPayment');
+
 Route::put('/payments/update/{id}','API\REST\PaymentController@update');
 Route::delete('/payments/delete/{id}','API\REST\PaymentController@destroy');
-=======
 Route::get('schedule','API\SchedulesController@index');
 Route::post('createschedule','API\SchedulesController@createSchedules');
 Route::get('/schedules/{id_field}','API\SchedulesController@getSchedule');
->>>>>>> 4cf0bfa70faa99a18d1dc2ba9d76fb4480d76190

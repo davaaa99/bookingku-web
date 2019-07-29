@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Uuid;
 use App\Booking;
-use Illuminate\Console\Scheduling\Schedule;
+use App\Field;
+use App\Schedule;
 
 class BookingController extends Controller
 {
@@ -108,10 +109,14 @@ class BookingController extends Controller
     {
         try {
             // $client=Auth::user();
-
-            // $listBooking = Booking::where('id_schedule',Schedule::where('id_field',Field::where('id_location',$id_location)))->get();
-            $listBooking = Booking::where('id_schedule',(Schedule::where('id_field',$id_location)->get()))->get();
-        } catch (Exception $e) {
+            $datafield = Field::where('id_location', $id_location)->get();
+            foreach ($datafield as $df) {
+                $dataschedule = Schedule::where('id_field', $df->id_field)->get();
+                foreach ($dataschedule as $df) {
+                    $databooking[] = Booking::where('id_schedule', $df->id_schedule)->get();
+                }
+            }
+            } catch (Exception $e) {
             return response()->json([
                 'message' => 'Unuccesfully retrieved data.' . $e->getMessage(),
                 'serve' => []
@@ -119,7 +124,7 @@ class BookingController extends Controller
         }
         return response()->json([
             'message' => 'Succesfully retrieved data.',
-            'serve' => $listBooking
+            'serve' => $databooking
         ], 200);
     }
 
