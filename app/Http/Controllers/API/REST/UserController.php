@@ -28,7 +28,7 @@ class UserController extends Controller
     public function getClient()
     {
         try{
-            $clients = User::where('users_type',2)->get();
+            $clients = User::where('user_type',2)->get();
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),
@@ -50,7 +50,7 @@ class UserController extends Controller
     public function getUser()
     {
         try{
-            $clients = User::where('users_type',3)->get();
+            $clients = User::where('user_type',3)->get();
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),
@@ -73,7 +73,7 @@ class UserController extends Controller
     public function searchClient($name)
     {
         try{
-            $clients = User::where('users_type',2)
+            $clients = User::where('user_type',2)
                                 ->where('name','LIKE',"%$name%")
                                 ->get();
         }catch(Exception $e){
@@ -98,7 +98,7 @@ class UserController extends Controller
     public function searchUser($name)
     {
         try{
-            $clients = User::where('users_type',3)
+            $clients = User::where('user_type',3)
                                 ->where('name','LIKE',"%$name%")
                                 ->get();
         }catch(Exception $e){
@@ -137,13 +137,13 @@ class UserController extends Controller
         try{
             $dataUser = Auth::user();
 
-            $client = User::find($dataUser->id_users);
+            $client = User::find($dataUser->id_user);
             $client->email = $request->email;
             $client->password = $request->password;
             $client->name = $request->name;
             $client->account_number = $request->account_number;
             $client->phone_number = $request->phone_number;
-            $client->users_photo = $request->users_photo;
+            $client->user_photo = $request->user_photo;
             $client->updated_by = $dataUser->email;
             $client->save();
 
@@ -169,7 +169,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         try{
-            User::where('id_users',$id)->delete();
+            User::where('id_user',$id)->delete();
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Failed delete data.' . $e->getMessage(),

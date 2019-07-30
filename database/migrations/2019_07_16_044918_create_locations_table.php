@@ -22,7 +22,8 @@ class CreateLocationsTable extends Migration {
 			$table->time('open_time')->nullable();
 			$table->time('closing_time')->nullable();
 			$table->string('location_photo')->nullable();
-			$table->string('city', 30)->nullable();
+			$table->float('latitude')->nullable();
+			$table->float('longitude')->nullable();
 			$table->string('created_by')->nullable();
 			$table->timestamps();
 			$table->string('updated_by')->nullable();

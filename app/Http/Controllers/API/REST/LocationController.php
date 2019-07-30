@@ -25,7 +25,7 @@ class LocationController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the location.
      *
      * @return \Illuminate\Http\Response
      */
@@ -78,7 +78,7 @@ class LocationController extends Controller
                     'serve' => [
                         'error' => $validate->errors()
                     ]
-                ], 401);
+                ], 500);
             }
     
             /**
@@ -88,14 +88,15 @@ class LocationController extends Controller
     
             $location = new Location();
             $location->id_location = Uuid::uuid1()->getHex();
-            $location->id_users = $dataUser->id_users;
+            $location->id_user = $dataUser->id_user;
             $location->location_name = $request->location_name;
             $location->location_address = $request->location_address;
             $location->description = $request->description;
             $location->open_time = $request->open_time;
             $location->closing_time = $request->closing_time;
             $location->location_photo = $request->location_photo;
-            $location->city = $request->city;
+            $location->latitude = $request->latitude;
+            $location->longitude = $request->longitude;
             $location->created_by = $dataUser->email;
             $location->updated_by = $dataUser->email;
             $location->save();
@@ -116,14 +117,13 @@ class LocationController extends Controller
     /**
      * Show specified location based on client login.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show()
     {
         try{
-            $idUser = Auth::user()->id_users;
-            $dataLocation = Location::where('id_users',$idUser)->get();
+            $idUser = Auth::user()->id_user;
+            $dataLocation = Location::where('id_user',$idUser)->get();
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),
@@ -140,15 +140,15 @@ class LocationController extends Controller
     /**
      * Display the specified location based on entered location .
      *
-     * @param  int  $id
+     * @param  String $address
      * @return \Illuminate\Http\Response
      */
-    public function search($city)
+    public function search($address)
     {
         try{
-            $location = locations::where('city','LIKE',"%$city%")
-                                ->orwhere('location_address','LIKE',"%$city%")
-                                ->orwhere('location_name','LIKE',"%$city%")
+            $location = locations::where('city','LIKE',"%$address%")
+                                ->orwhere('location_address','LIKE',"%$address%")
+                                ->orwhere('location_name','LIKE',"%$address%")
                                 ->get();
         }catch(Exception $e){
             return response()->json([
@@ -164,21 +164,10 @@ class LocationController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the location data.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  String $id_location
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id_location)
@@ -193,7 +182,8 @@ class LocationController extends Controller
             $location->open_time = $request->open_time;
             $location->closing_time = $request->closing_time;
             $location->location_photo = $request->location_photo;
-            $location->city = $request->city;
+            $location->latitude = $request->latitude;
+            $location->longitude = $request->longitude;
             $location->updated_by = $dataUser->email;
             $location->save();
         }catch(Exception $e){
@@ -212,13 +202,18 @@ class LocationController extends Controller
     /**
      * Remove the specified location from storage.
      *
-     * @param  int  $id
+     * @param  String $id_location
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_location)
     {
         try{
-            Location::where('id_location',$id)->delete();
+            $dataUser = Auth::user();
+
+            $location = Location::find($id_location);
+            $location->updated_by = $dataUser->email;
+            $location->save();
+            Location::where('id_location',$id_location)->delete();
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Failed delete data.' . $e->getMessage(),

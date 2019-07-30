@@ -5,8 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class payments extends Model
+class Payment_booking extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['deleted_at'];
+    
+    protected $table = 'payment_booking';
 }

@@ -4,9 +4,24 @@ namespace App\Http\Controllers\API\REST;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Ramsey\Uuid\Uuid;
+use App\Booking;
+use App\Payment;
+use App\Payment_booking;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        $this->middleware(['auth:api']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,59 +33,69 @@ class PaymentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Create and store new payment and payment_booking.
      *
      * @param  String $client_email
-     * @param Date $date
+     * @param  Date $date
      * @return \Illuminate\Http\Response
      */
-    public function store($client_email,$date)
+    public function create($client_email,$date)
     {
         try {
-            //getData Booking berdasarkan client
+            /**
+             * Get list booking based on client email
+             */
             $booking=Booking::where('client_email', $client_email)->where('created_at','LIKE',"%$date%")->get();
-            return $booking;
-            // $user=DB::table('users')->where('client_email', $client_email)->first('name');
-            //generate pdf
+            
+            // $user=DB::table('user')->where('client_email', $client_email)->first('name');
+            
+            /**
+             * Generate PDF
+             */
             // $pdf = PDF::loadview('invoice',['booking'=>$booking]);
             // $invoice = $pdf->download('Invoice '.$user.' '.date('Y-m-d_H-i-s').'.pdf');
-            // //send invoice
+            
+            /**
+             * Send invoice to client email
+             */
             // $objInvoice = new \stdClass();
             // $objInvoice->sender = 'example@mail.com';   //ganti pake email admin
             // $objInvoice->reciever = $client_email;
 
             // Mail::to($client_email)->send(new InvoiceMail($objInvoice));
-            // add to db payment
-            // $payment = new Payment();
-            // $payment->id_payment = (String) Str::uuid();
-            // $payment->report_status = 0;
-            // $payment->save();
-            // // add to db payment_booking
-            // foreach($booking as $booklist ){
-            //     $payment_booking = new Payment_booking();
-            //     $payment_booking->id_payment = $payment->id_payment;
-            //     $payment_booking->id_booking = $booklist->id_booking;
-            //     $payment_booking->save();
-            // }
+            
+            /**
+             * Insert new Payment
+             */
+            $admin = Auth::user();
+
+            $payment = new Payment();
+            $payment->id_payment = Uuid::uuid1()->getHex();
+            $payment->report_status = 0;
+            $payment->created_by = $admin->email;
+            $payment->updated_by = $admin->email;
+            $payment->save();
+            
+            /**
+             * Insert new Payment_booking
+             */
+            foreach($booking as $booklist ){
+                $payment_booking = new Payment_booking();
+                $payment_booking->id_payment = $payment->id_payment;
+                $payment_booking->id_booking = $booklist->id_booking;
+                $payment_booking->created_by = $admin->email;
+                $payment_booking->updated_by = $admin->email;
+                $payment_booking->save();
+            }
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'Unuccesfully report data.',
+                'message' => 'Failed create data.',
                 'serve' => report($e)
-            ], 408);
+            ], 500);
         }
         return response()->json([
-            'message' => 'Unuccesfully update data.' . $e->getMessage()
-            // 'serve' => $invoice
+            'message' => 'Successfull created data.',
+            'serve' => []
         ], 201);        
     }
 
@@ -97,48 +122,56 @@ class PaymentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified payment status in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id_payment
+     * @param  String $id_payment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_payment)
+    public function update($id_payment)
     {
         try {
-            $payment = payments::where('id_payment',$id_payment)->update([
-                'report_status' => 1
-            ]);
+            $admin = Auth::user();
+
+            $payment = Payment::where('id_payment',$id_payment)->get();
+            $payment->report_status = 1;
+            $payment->created_by = $admin->email;
+            $payment->updated_by = $admin->email;
+            $payment->save();
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'Unuccesfully update data.' . $e->getMessage(),
+                'message' => 'Failed update data.' . $e->getMessage(),
                 'serve' => report($e)
-            ], 408);
+            ], 500);
         }
         return response()->json([
-            'message' => 'Succesfully update data.',
-            'serve' => $payment
+            'message' => 'Succesfully updated data.',
+            'serve' => []
         ], 201);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified payment from storage.
      *
-     * @param  int  $id
+     * @param  String $id_payment
      * @return \Illuminate\Http\Response
      */
     public function destroy($id_payment)
     {
         try {
-            payments ::where('id_payment',$id_payment)->delete();
+            $admin = Auth::user();
+
+            $payment = Payment::find($id_payment);
+            $payment->updated_by = $admin->email;
+            $payment->save();
+            Payment::where('id_payment',$id_payment)->delete();
         } catch (Exception $e){
             return response()->json([
-                'message' => 'Unuccesfully update data.' . $e->getMessage(),
+                'message' => 'Failed update data.' . $e->getMessage(),
                 'serve' => report($e)
-            ], 408);
+            ], 500);
         }
         return response()->json([
-            'message' => 'Succesfully detele data.',
+            'message' => 'Succesfully deteled data.',
             'serve' => []
         ], 200);
     }

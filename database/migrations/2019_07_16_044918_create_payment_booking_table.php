@@ -17,6 +17,10 @@ class CreatePaymentBookingTable extends Migration {
 			$table->string('id_payment', 50);
 			$table->string('id_booking', 50)->index('fk_payment_booking2');
 			$table->primary(['id_payment','id_booking']);
+			$table->string('created_by')->nullable();
+			$table->timestamps();
+			$table->string('updated_by')->nullable();
+			$table->softDeletes();
 		});
 	}
 
