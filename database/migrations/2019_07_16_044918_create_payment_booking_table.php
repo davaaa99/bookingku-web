@@ -14,9 +14,13 @@ class CreatePaymentBookingTable extends Migration {
 	{
 		Schema::create('payment_booking', function(Blueprint $table)
 		{
-			$table->string('id_payment', 35);
-			$table->string('id_booking', 35)->index('fk_payment_booking2');
+			$table->string('id_payment', 50);
+			$table->string('id_booking', 50)->index('fk_payment_booking2');
 			$table->primary(['id_payment','id_booking']);
+			$table->string('created_by')->nullable();
+			$table->timestamps();
+			$table->string('updated_by')->nullable();
+			$table->softDeletes();
 		});
 	}
 

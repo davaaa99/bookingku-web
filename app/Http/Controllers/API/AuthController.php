@@ -12,6 +12,7 @@ use App\User;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use Ramsey\Uuid\Uuid;
+use Mockery\CountValidator\Exception;
 
 class AuthController extends Controller
 {
@@ -59,12 +60,12 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'id_users' => Uuid::uuid1()->getHex(),
+            'id_user' => Uuid::uuid1()->getHex(),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'name' => $data['name'],
             'email_token' => base64_encode($data['email']),
-            'users_type' => '3',
+            'user_type' => $data['user_type'],
         ]);
     }
 
@@ -76,49 +77,56 @@ class AuthController extends Controller
     */
     public function registration(Request $request) 
     {
-        $validate = $this->validator($request->all());
-        if ($validate->fails()) {
-            return response()->json([
-                'message' => 'Unable to save data. Bad config.',
-                'serve' => [
-                    'error' => $validate->errors()
+        try{
+            $validate = $this->validator($request->all());
+            if ($validate->fails()) {
+                return response()->json([
+                    'message' => 'Unable to save data. Bad config.',
+                    'serve' => [
+                        'error' => $validate->errors()
+                    ]
+                ], 401);
+            }
+
+            /* Remark : disabled recaptcha
+            $clientIps = request()->getClientIps();
+            $visitorIp = end($clientIps);
+
+            $client = new Client();
+            $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
+                'form_params' => [
+                    'secret' => $this->GTOKEN,
+                    'response' => $request->token,
+                    'remoteip' => $visitorIp
                 ]
-            ], 401);
-        }
+            ]);
+            $dirtyResult = $response->getBody()->getContents();
+            $result = json_decode($dirtyResult, true);
 
-        /* Remark : disabled recaptcha
-        $clientIps = request()->getClientIps();
-        $visitorIp = end($clientIps);
+            if (!$result['success']) {
+                return response()->json([
+                    'message' => 'Deleteing your data at ' . $visitorIp . '. Good luck.'
+                ], 401);
+            }
+            */
+            
+            /**
+             * Register
+             * Sending email verification
+             */
+            event(new Registered($user = $this->create($request->all())));
 
-        $client = new Client();
-        $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
-            'form_params' => [
-                'secret' => $this->GTOKEN,
-                'response' => $request->token,
-                'remoteip' => $visitorIp
-            ]
-        ]);
-        $dirtyResult = $response->getBody()->getContents();
-        $result = json_decode($dirtyResult, true);
-
-        if (!$result['success']) {
+        }catch(Exception $e){
             return response()->json([
-                'message' => 'Deleteing your data at ' . $visitorIp . '. Good luck.'
-            ], 401);
+                'message' => 'Failed saved data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
         }
-        */
-        
-        /**
-         * Register
-         * Sending email verification
-         */
-        event(new Registered($user = $this->create($request->all())));
 
-        $success = [
+        return response()->json([
             'message' => 'Successfully saved data.',
             'serve' => []
-        ];
-        return response()->json($success, 200);
+        ], 200);
     }
 
     /**
@@ -129,21 +137,28 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
+        try{
+            $credentials = request(['email', 'password']);
 
-        if(!Auth::attempt($credentials))
+            if(!Auth::attempt($credentials))
+                return response()->json([
+                    'message' => 'Unauthorized. Bad username or password.',
+                    'serve' => []
+                ], 401);
+
+            $user = Auth::user();
+            $now = \Carbon\Carbon::now();
+            
+            $tokenResult = $user->createToken('bookingku-'.$now.'-'.$user->email);
+            $token = $tokenResult->token;        
+            $token->save();
+        }catch(Exception $e){
             return response()->json([
-                'message' => 'Unauthorized. Bad username or password.',
+                'message' => 'Failed logged in.'. $e->getMessage(),
                 'serve' => []
             ], 401);
-
-        $user = Auth::user();
-        $now = \Carbon\Carbon::now();
+        }
         
-        $tokenResult = $user->createToken('bookingku-'.$now.'-'.$user->email);
-        $token = $tokenResult->token;        
-        $token->save();
-
         return response()->json([
             'message' => 'Successfully logged in.',
             'serve' => [

@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * Assign new primary key
      * 
      */
-    protected $primaryKey = 'id_users';
+    protected $primaryKey = 'id_user';
 
     /**
      * Set incrementing primary key to false
@@ -31,14 +31,14 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'id_users',
+        'id_user',
         'email',
         'password',
         'name',
         'account_number',
         'phone_number',
-        'users_type',
-        'users_photo',
+        'user_type',
+        'user_photo',
         'email_token',
     ];
 
@@ -48,7 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','api_token'
     ];
 
     /**
@@ -74,7 +74,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getIsAdminAttribute()
     {
-        return $this->attributes['users_type'] == '1';
+        return $this->attributes['user_type'] == '1';
     }
 
     /**
@@ -84,7 +84,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getIsClientAttribute()
     {
-        return $this->attributes['users_type'] == '2';
+        return $this->attributes['user_type'] == '2';
     }
 
     /**
@@ -94,7 +94,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getIsUserAttribute()
     {
-        return $this->attributes['users_type'] == '3';
+        return $this->attributes['user_type'] == '3';
     }
 
     /**

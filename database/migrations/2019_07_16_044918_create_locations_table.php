@@ -14,15 +14,16 @@ class CreateLocationsTable extends Migration {
 	{
 		Schema::create('locations', function(Blueprint $table)
 		{
-			$table->string('id_location', 35)->primary();
-			$table->string('id_users', 50)->nullable()->index('fk_users_location');
+			$table->string('id_location', 50)->primary();
+			$table->string('id_user', 50)->nullable()->index('fk_users_location');
 			$table->string('location_name', 50)->nullable();
 			$table->string('location_address')->nullable();
 			$table->text('description', 65535)->nullable();
 			$table->time('open_time')->nullable();
 			$table->time('closing_time')->nullable();
 			$table->string('location_photo')->nullable();
-			$table->string('city', 30)->nullable();
+			$table->float('latitude')->nullable();
+			$table->float('longitude')->nullable();
 			$table->string('created_by')->nullable();
 			$table->timestamps();
 			$table->string('updated_by')->nullable();

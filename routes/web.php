@@ -11,6 +11,13 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'LandingPageController@index')->name('welcome');
 Route::get('/verified/email', 'Auth\VerificationController@verifiedEmail');
 Auth::routes(['verify' => true]);
@@ -22,6 +29,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
 });
+<<<<<<< HEAD
 
 /**
  * Firman
@@ -44,3 +52,5 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
  * Landing Page
  */
 Route::get('/','landingPageController@index')->name('index');
+=======
+>>>>>>> 2ac417fd4fd7417a50c0ba0dbd77f77efd5d60d8

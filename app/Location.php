@@ -5,17 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Field extends Model
+class Location extends Model
 {
     use SoftDeletes;
-    
-     /**
+
+    /**
      * Assign new primary key
      * 
      */
-    protected $primaryKey = 'id_field';
+    protected $primaryKey = 'id_location';
 
-     /**
+    /**
      * Set incrementing primary key to false
      * 
      */
@@ -26,16 +26,18 @@ class Field extends Model
      *
      * @var array
      */
-     protected $fillable = [
-        'id_field',
-        'id_kind_of_field',
+    protected $fillable = [
         'id_location',
-        'field_type',
-        'field_name',
-        'field_photo',
-        'updated_by',
+        'id_users',
+        'location_name',
+        'location_address',
+        'description',
+        'open_time',
+        'closing_time',
+        'location_photo',
+        'latitude',
+        'longitude',
         'created_by',
+        'updated_by',       
     ];
-
-    
 }

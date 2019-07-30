@@ -14,7 +14,7 @@ class AddForeignKeysToLocationsTable extends Migration {
 	{
 		Schema::table('locations', function(Blueprint $table)
 		{
-			$table->foreign('id_users', 'fk_users_location')->references('id_users')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('id_user', 'fk_user_location')->references('id_user')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddForeignKeysToLocationsTable extends Migration {
 	{
 		Schema::table('locations', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_users_location');
+			$table->dropForeign('fk_user_location');
 		});
 	}
 
