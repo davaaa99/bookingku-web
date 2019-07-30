@@ -17,7 +17,7 @@ class FieldController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         try{
             $dataField = Field::all();
             return response()->json([
