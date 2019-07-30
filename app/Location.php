@@ -35,7 +35,8 @@ class Location extends Model
         'open_time',
         'closing_time',
         'location_photo',
-        'city',
+        'latitude',
+        'longitude',
         'created_by',
         'updated_by',       
     ];

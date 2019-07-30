@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\REST;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
@@ -25,7 +26,7 @@ class FieldController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of the field.
      *
      * @return \Illuminate\Http\Response
      */
@@ -37,7 +38,7 @@ class FieldController extends Controller
             return response()->json([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),
                 'serve' => []
-            ],408);
+            ],500);
         }
        
         return response()->json([
@@ -47,8 +48,9 @@ class FieldController extends Controller
     }
 
     /**
-     * Display a listing of the field by id_location.
+     * Display a listing of the field based on id_location.
      *
+     * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function show($id_location){
@@ -58,7 +60,7 @@ class FieldController extends Controller
             return response()->json([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),
                 'serve' => []
-            ],408);
+            ],500);
         }
         
 		return response()->json([
@@ -70,7 +72,7 @@ class FieldController extends Controller
     /**
      * Display the specified field based on entered name of field.
      *
-     * @param  int  $id
+     * @param  String $field_name
      * @return \Illuminate\Http\Response
      */
     public function search($field_name)
@@ -90,41 +92,22 @@ class FieldController extends Controller
         ], 200);
     }
 
-
-    /**
-     * Display a listing of the resource by id_field.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getLapangDetail($id_field){
-		try{
-            $field = Field::where('id_field',$id_field)->get();
-            return response()->json([
-                'message' => 'Succesfully retrieved data.',
-                'serve' => $field
-            ],200);
-        }catch (Exceptrion $e){
-            return response()->json([
-            'message' => 'Unsuccesfully retrieved data.',
-            'serve' => report($e)
-            ],408);
-        }
-	}
-
     /**
      * Create and store a new field.
      *
      * @param \Illuminate\Http\Request  $request
+     * @param String $id_location
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request,$id_location,$id_kind_of_field)
+    public function create(Request $request,$id_location)
     {
         try{
             $dataUser = Auth::user();
+            $kind_of_field = DB::table('kind_of_fields')->where('name_of_kind',$request->name_of_kind)->first();
 
             $field = new Field();
             $field->id_field = Uuid::uuid1()->getHex();
-            $field->id_kind_of_field = $id_kind_of_field;
+            $field->id_kind_of_field = $kind_of_field->id_kind_of_field;
             $field->id_location = $id_location;
             $field->field_type = $request->field_type;
             $field->field_name = $request->field_name;
@@ -179,20 +162,25 @@ class FieldController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified field from storage.
      *
-     * @param  int  $id
+     * @param  String $id_field
      * @return \Illuminate\Http\Response
      */
     public function destroy($id_field)
     {
         try{
+            $dataUser = Auth::user();
+
+            $field = Field::find($id_field);
+            $field->updated_by = $dataUser->email;
+            $field->save();
             Field::where('id_field',$id_field)->delete();
         }catch (Exception $e){
             return response()->json([
             'message' => 'Failed delete data.' . $e->getMessage(),
             'serve' => []
-            ],408);
+            ],500);
         }
 
         return response()->json([
