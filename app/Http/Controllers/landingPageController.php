@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class landingPageController extends Controller
+class LandingPageController extends Controller
 {
-      /**
-     * Display index
-     * 
-     * @return View
+    /**
+     * Show the application about.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function index(){
-        return view('landing.landingPage');
+    public function index()
+    {
+        return view('welcome');
     }
 }
