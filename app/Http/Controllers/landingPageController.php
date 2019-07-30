@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
-      /**
+    /**
      * Display index
      * 
      * @return View
