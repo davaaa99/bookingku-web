@@ -6,29 +6,29 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use App\users;
+use App\User;
 // use App\Http\Controllers\API\ApiTokenController;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     //============== GET USER ==============//
     // Mengambil semua data di tabel user    
     public function getAllUser(){
-        return users::all();
+        return User::all();
     }
     // Mengambil semua data admin
     public function getAdmin(){
-        $admin = users::where('users_type',0)->get();
+        $admin = User::where('users_type',1)->get();
         return $admin;
     }
     // Mengambil semua data client
     public function getClient(){
-        $client = users::where('users_type',1)->get();
+        $client = User::where('users_type',2)->get();
         return $client;
     }
     // Mengambil semua data user
     public function getUser(){
-        $user = users::where('users_type',2)->get();
+        $user = User::where('users_type',3)->get();
         return $user;
     }
 
@@ -36,7 +36,7 @@ class UsersController extends Controller
     //============== SEARCH USER ==============//
     // Mengambil data dari tabel user berdasarkan nama atau email
     public function searchAllUser($name){
-        $user = users::where('name','LIKE',"%$name%")
+        $user = User::where('name','LIKE',"%$name%")
                                 ->orwhere('email','LIKE',"%$name%")
                                 ->get();
         return $user;
@@ -44,7 +44,7 @@ class UsersController extends Controller
 
     // Mengambil data admin berdasarkan nama
     public function searchAdmin($name){
-        $admin = users::where('users_type',0)
+        $admin = User::where('users_type',0)
                                 ->where('name','LIKE',"%$name%")
                                 // ->orwhere('email','LIKE',"%$name%")
                                 ->get();                                
@@ -52,14 +52,14 @@ class UsersController extends Controller
     }
     // Mengambil data client berdasarkan nama
     public function searchClient($name){
-        $client = users::where('users_type',1)
+        $client = User::where('users_type',1)
                                 ->where('name','LIKE',"%$name%")
                                 ->get();                                
         return $client;
     }
     // Mengambil data user berdasarkan nama
     public function searchUser($name){
-        $user = users::where('users_type',2)
+        $user = User::where('users_type',2)
                                 ->where('name','LIKE',"%$name%")
                                 ->get();                                
         return $user;
@@ -68,7 +68,7 @@ class UsersController extends Controller
 
     //============== UPDATE USER ==============//
     public function updateAdmin(Request $request, $iduser){
-        users::where('id_users',$iduser)->update([
+        User::where('id_users',$iduser)->update([
             'email' => $request->email,
             'name' => $request->name,
             'account_number' => $request->account_number,
@@ -81,19 +81,19 @@ class UsersController extends Controller
     //============== DELETE USER ==============//
     // Hapus client (soft deleting)
     public function deleteClient($email){
-        users::where('email',$email)->delete();
+        User::where('email',$email)->delete();
 
         return "Client telah dihapus";
     }
     // Hapus client (soft deleting)
     public function deleteUser($email){
-        users::where('email',$email)->delete();
+        User::where('email',$email)->delete();
 
         return "User telah dihapus";
     }
     // Hapus client (soft deleting)
     public function deleteAdmin($email){
-        users::where('email',$email)->delete();
+        User::where('email',$email)->delete();
 
         return "Admin telah dihapus";
     }
@@ -109,7 +109,7 @@ class UsersController extends Controller
 
     protected function createUser(Request $request)
     {
-        users::create([
+        User::create([
             'id_users' => (string) Str::uuid(),
             'email' => $request->email,
             'password' => Hash::make($request->password),
