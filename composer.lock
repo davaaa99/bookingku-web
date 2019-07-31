@@ -4,11 +4,10 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "76a4b0c8311a3618d975b6c76ae309c0",
-=======
+
     "content-hash": "e80c715c050fc1aa18dd4c19e894e499",
->>>>>>> e62adb24b192743d58398e85bbcc6613c4a1ef7d
+
+
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -1265,7 +1264,6 @@
                 "laravel"
             ],
             "time": "2019-07-16T14:05:28+00:00"
-<<<<<<< HEAD
         },
         {
             "name": "laravel/passport",
@@ -1336,8 +1334,6 @@
                 "passport"
             ],
             "time": "2019-07-11T21:16:43+00:00"
-=======
->>>>>>> e62adb24b192743d58398e85bbcc6613c4a1ef7d
         },
         {
             "name": "laravel/tinker",
