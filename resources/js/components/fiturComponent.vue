@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-center">
       <div class="row">
         <div class="row">
-          <div class="col-12 col-lg-6 col-md-6" v-for="fn in fiturName">
+          <div class="col-lg-6 col-md-6 col-6" v-for="fn in fiturName">
             <div class="fitur-item"></div>
             <div class="fitur-desc">{{fn.name}}</div>
           </div>
