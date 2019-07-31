@@ -47,10 +47,9 @@ class ScheduleController extends Controller
      * Create and store a new schedule.
      *
      * @param \Illuminate\Http\Request  $request
-     * @param String $id_field
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, $id_field)
+    public function create(Request $request)
     {
         try{
             $dataUser = Auth::user();
@@ -59,7 +58,7 @@ class ScheduleController extends Controller
             while ($start_time < $request->end_time) {
                 $schedule = new Schedule();
                 $schedule->id_schedule = Uuid::uuid1()->getHex();
-                $schedule->id_field = $id_field;
+                $schedule->id_field = $request->id_field;
                 $schedule->day = $request->day;
                 $schedule->start_time = $start_time;
                 $schedule->end_time = date("H:i", strtotime($start_time) + 60*60);

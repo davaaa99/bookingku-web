@@ -146,8 +146,7 @@ class LocationController extends Controller
     public function search($address)
     {
         try{
-            $location = locations::where('city','LIKE',"%$address%")
-                                ->orwhere('location_address','LIKE',"%$address%")
+            $location = locations::where('location_address','LIKE',"%$address%")
                                 ->orwhere('location_name','LIKE',"%$address%")
                                 ->get();
         }catch(Exception $e){
