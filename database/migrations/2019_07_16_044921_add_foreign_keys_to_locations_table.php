@@ -28,7 +28,7 @@ class AddForeignKeysToLocationsTable extends Migration {
 	{
 		Schema::table('locations', function(Blueprint $table)
 		{
-			$table->dropForeign('fk_users_location');
+			$table->dropForeign('fk_user_location');
 		});
 	}
 

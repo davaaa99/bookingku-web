@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Field extends Model
 {
     use SoftDeletes;
-
-    /**
+    
+     /**
      * Assign new primary key
      * 
      */
     protected $primaryKey = 'id_field';
 
-    /**
+     /**
      * Set incrementing primary key to false
      * 
      */
@@ -26,14 +26,16 @@ class Field extends Model
      *
      * @var array
      */
-    protected $fillable = [
+     protected $fillable = [
         'id_field',
         'id_kind_of_field',
         'id_location',
         'field_type',
         'field_name',
         'field_photo',
+        'updated_by',
         'created_by',
-        'updated_by',       
     ];
+
+    
 }

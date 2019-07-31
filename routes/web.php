@@ -11,10 +11,21 @@
 |
 */
 
+Route::get('/', 'LandingPageController@index')->name('welcome');
+Route::get('/verified/email', 'Auth\VerificationController@verifiedEmail');
+Auth::routes(['verify' => true]);
 
 /**
- * Firman
- * Admin Page
+ * Router Group for
+ */
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+});
+
+/**
+ * Create by Firman
+ * Router Group for Admin Page
  */
 $now = \Carbon\Carbon::now();
 Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm'. (string) $now->day], function () {
@@ -26,10 +37,3 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
     Route::get('/payment','AdminPageController@payment')->name('payment');
     Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
 });
-
-
-/**
- * Firman
- * Landing Page
- */
-Route::get('/','landingPageController@index')->name('index');

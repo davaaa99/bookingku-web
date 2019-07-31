@@ -12,20 +12,30 @@ use App\Schedule;
 class ScheduleController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        $this->middleware(['auth:api']);
+    }
+
+    /**
+     * Display a listing of the schedule.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id_field)
+    public function index()
     {
         try{
-            $schedules = Schedule::where('id_field', $id_field)->get();
+            $schedules = Schedule::all();
             
         }catch (Exception $e){
             return response()->json([
-                'message' => 'Unuccesfully retrieved data.'. $e->getMessage(),
+                'message' => 'Failed retrieved data.'. $e->getMessage(),
                 'serve' => []
-            ], 408);
+            ], 500);
         }
         return response()->json([
             'message' => 'Succesfully retrieved data.',
@@ -34,32 +44,38 @@ class ScheduleController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create and store a new schedule.
      *
+     * @param \Illuminate\Http\Request  $request
+     * @param String $id_field
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request, $id_field)
     {
         try{
-            $schedule = new Schedule();
-            $schedule->id_schedule = Uuid::uuid1()->getHex();
-            $schedule->id_field = $id_field;
-            $schedule->date = $request->date;
-            $schedule->day = $request->day;
-            $schedule->start_time = $request->start_time;
-            $schedule->end_time = $request->end_time;
-            $schedule->price = $request->price;
-            $schedule->down_payment = $request->down_payment;
-            // $schedule->booking_status =0;
-            $schedule->booking_status= $request->booking_status;
-            $schedule->created_at = $request->createat;
-            $schedule->created_by = $request->createby;
-            $schedule->save();
+            $dataUser = Auth::user();
+
+            $start_time = $request->start_time;
+            while ($start_time < $request->end_time) {
+                $schedule = new Schedule();
+                $schedule->id_schedule = Uuid::uuid1()->getHex();
+                $schedule->id_field = $id_field;
+                $schedule->day = $request->day;
+                $schedule->start_time = $start_time;
+                $schedule->end_time = date("H:i", strtotime($start_time) + 60*60);
+                $schedule->price = $request->price;
+                $schedule->down_payment = $request->down_payment;
+                $schedule->booking_status= 0;
+                $schedule->created_by = $dataUser->email;
+                $schedule->updated_by = $dataUser->email;
+                $schedule->save();
+                $start_time = date("H:i", strtotime($start_time) + 60*60);
+            }
         }catch (Exception $e){
             return response()->json([
-                'message' => 'failed insert data.'. $e->getMessage(),
+                'message' => 'Failed insert data.'. $e->getMessage(),
                 'serve' => []
-            ],408);
+            ],500);
         }
         return response()->json([
             'message' => 'Succesfully insert data.',
@@ -68,40 +84,30 @@ class ScheduleController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display the specified schedule based on id_field.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  String $id_field
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function show($id_field)
     {
-        //
+        try{
+            $schedules = Schedule::where('id_field', $id_field)->get();
+            
+        }catch (Exception $e){
+            return response()->json([
+                'message' => 'Failed retrieved data.'. $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+        return response()->json([
+            'message' => 'Succesfully retrieved data.',
+            'serve' => $schedules
+        ], 200);  
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Update the specified schedule in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -113,13 +119,30 @@ class ScheduleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified schedule from storage.
      *
-     * @param  int  $id
+     * @param  String $id_schedule
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_schedule)
     {
-        //
+        try{
+            $dataUser = Auth::user();
+
+            $schedule = Schedule::find($id_schedule);
+            $schedule->updated_by = $dataUser->email;
+            $schedule->save();
+            Schedule::where('id_schedule',$id_schedule)->delete();
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Failed deleted data.' . $e->getMessage(),
+                'serve' => []
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Successfully deleted data.',
+            'serve' => []
+        ]);
     }
 }

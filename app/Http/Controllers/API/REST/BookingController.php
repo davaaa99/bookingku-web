@@ -9,11 +9,22 @@ use Ramsey\Uuid\Uuid;
 use App\Booking;
 use App\Field;
 use App\Schedule;
+use App\Location;
 
 class BookingController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Request $request)
+    {
+        $this->middleware(['auth:api']);
+    }
+
+    /**
+     * Display a listing of the booking.
      *
      * @return \Illuminate\Http\Response
      */
@@ -23,9 +34,9 @@ class BookingController extends Controller
             $dataBooking = Booking::all();
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'Unuccesfully retrieved data.' . $e->getMessage(),
+                'message' => 'Failed retrieved data.' . $e->getMessage(),
                 'serve' => []
-            ], 408);
+            ], 500);
         }
         return response()->json([
             'message' => 'Succesfully retrieved data.',
@@ -34,30 +45,40 @@ class BookingController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create and store a new booking from user (mobile).
      *
+     * @param Request $request
+     * @param String $id_schedule, $client_email
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, $id_schedule)
+    public function create(Request $request, $id_schedule, $client_email)
     {
         try {
-            $client=Auth::user();
-
+            $user=Auth::user();
+            /**
+             * Store new booking
+             */
             $booking = new Booking();
             $booking->id_booking = Uuid::uuid1()->getHex();
             $booking->id_schedule = $id_schedule;
-            $booking->client_email = $client->email;
-            $booking->user_email = $request->user_email;
+            $booking->client_email = $client_email;
+            $booking->user_email = $user->email;
             $booking->payment_type = $request->payment_type;
-            $booking->payment_status = $request->payment_status;
-            $booking->created_by = $client->email;
-            $booking->updated_by =$client->email;
+            $booking->payment_status = 0;
+            $booking->created_by = $user->email;
+            $booking->updated_by =$user->email;
             $booking->save();
+            /**
+             * Update booking_status in table schedule
+             */
+            $schedule = Schedule::find($id_schedule);
+            $schedule->booking_status = 1;
+            $schedule->save();
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'Unuccesfully insert data.' . $e->getMessage(),
+                'message' => 'Failed insert data.' . $e->getMessage(),
                 'serve' => []
-            ], 408);
+            ], 500);
         }
         return response()->json([
             'message' => 'Succesfully insert data.',
@@ -66,32 +87,68 @@ class BookingController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create and store a new manual booking.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request  $request
+     * @param String $id_schedule
      * @return \Illuminate\Http\Response
      */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  String $email
-     * @return \Illuminate\Http\Response
-     */
-    public function showByEmail()
+    public function createBookingManual(Request $request, $id_schedule)
     {
         try {
             $client=Auth::user();
-            $listBooking = Booking::where('client_email',$client->email)->get();
+            /**
+             * Store new booking
+             */
+            $booking = new Booking();
+            $booking->id_booking = Uuid::uuid1()->getHex();
+            $booking->id_schedule = $id_schedule;
+            $booking->client_email = $client->email;
+            $booking->user_email = $request->user_email;
+            $booking->payment_type = $request->payment_type;
+            $booking->payment_status = 0;
+            $booking->created_by = $client->email;
+            $booking->updated_by =$client->email;
+            $booking->save();
+            /**
+             * Update booking_status in table schedule
+             */
+            $schedule = Schedule::find($id_schedule);
+            $schedule->booking_status = 1;
+            $schedule->save();
+
         } catch (Exception $e) {
             return response()->json([
-                'message' => 'Unuccesfully retrieved data.' . $e->getMessage(),
+                'message' => 'Failed insert data.' . $e->getMessage(),
                 'serve' => []
-            ], 408);
+            ], 500);
+        }
+        return response()->json([
+            'message' => 'Succesfully insert data.',
+            'serve' => $booking
+        ], 201);
+    }
+
+    /**
+     * Display the specified booking based on field and date.
+     *
+     * @param  String $id_field, 
+     * @param  Date $date
+     * @return \Illuminate\Http\Response
+     */
+    public function showByField($id_field, $date)
+    {
+        try {
+            $listBooking=Field::join('schedules','schedules.id_field','=','fields.id_field')
+                                ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                ->where('fields.id_field',$id_field)
+                                ->where('bookings.created_at','LIKE',"%$date%")
+                                ->select('bookings.*')->get();
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed retrieved data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
         }
         return response()->json([
             'message' => 'Succesfully retrieved data.',
@@ -100,31 +157,52 @@ class BookingController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified booking based on location and date.
      *
-     * @param  String $email
+     * @param  String $id_location
+     * @param  Date $date
      * @return \Illuminate\Http\Response
      */
-    public function showByDate($id_location)
+    public function showByLocation($id_location,$date)
     {
         try {
-            // $client=Auth::user();
-            $datafield = Field::where('id_location', $id_location)->get();
-            foreach ($datafield as $df) {
-                $dataschedule = Schedule::where('id_field', $df->id_field)->get();
-                foreach ($dataschedule as $df) {
-                    $databooking[] = Booking::where('id_schedule', $df->id_schedule)->get();
-                }
-            }
-            } catch (Exception $e) {
+            $listbooking=Location::join('fields','fields.id_location','=','locations.id_location')
+                                    ->join('schedules','schedules.id_field','=','fields.id_field')
+                                    ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                    ->where('locations.id_location',$id_location)
+                                    ->where('bookings.created_at','LIKE',"%$date%")
+                                    ->select('bookings.*')->get();
+        } catch (Exception $e) {
             return response()->json([
-                'message' => 'Unuccesfully retrieved data.' . $e->getMessage(),
+                'message' => 'Failed retrieved data.' . $e->getMessage(),
                 'serve' => []
-            ], 408);
+            ], 500);
         }
         return response()->json([
             'message' => 'Succesfully retrieved data.',
-            'serve' => $databooking
+            'serve' => $listbooking
+        ], 200);
+    }
+
+    /**
+     * Display the specified booking based on user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showByUser()
+    {
+        try {
+            $user = Auth::user();
+            $listBooking = Booking::where('user_email',$user->email)->get();
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed retrieved data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+        return response()->json([
+            'message' => 'Succesfully retrieved data.',
+            'serve' => $listBooking
         ], 200);
     }
 
@@ -140,25 +218,25 @@ class BookingController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified booking in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  String $id_booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_booking)
     {
         try {
-            $client=Auth::user();
-            $booking = Booking::find($id);
+            $dataUser = Auth::user();
+            $booking = Booking::find($id_booking);
             $booking->payment_status=$request->payment_status;
-            $booking->updated_by = $client->email;
+            $booking->updated_by = $dataUser->email;
             $booking->save();
         } catch (Exception $e){
             return response()->json([
-                'message' => 'Unuccesfully update data.' . $e->getMessage(),
+                'message' => 'Failed update data.' . $e->getMessage(),
                 'serve' => []
-            ], 408);
+            ], 500);
         }
         return response()->json([
             'message' => 'Succesfully update data.',
@@ -167,20 +245,23 @@ class BookingController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified booking from storage.
      *
-     * @param  int  $id
+     * @param  String $id_booking
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_booking)
     {
         try {
-            Booking::where('id_booking',$id)->delete();
+            $client = Auth::user();
+            $booking = Booking::find($id_booking);
+            $booking->updated_by = $client->email;
+            Booking::where('id_booking',$id_booking)->delete();
         } catch (Exception $e){
             return response()->json([
-                'message' => 'Unuccesfully delete data.' . $e->getMessage(),
+                'message' => 'Failed delete data.' . $e->getMessage(),
                 'serve' => []
-            ], 408);
+            ], 500);
         }
         return response()->json([
             'message' => 'Succesfully detele data.',

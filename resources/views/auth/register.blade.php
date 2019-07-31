@@ -61,8 +61,6 @@
                             </div>
                         </div>
 
-<<<<<<< HEAD
-=======
                         <div class="form-group row">
                             <label for="account_number" class="col-md-4 col-form-label text-md-right">{{ __('NIK') }}</label>
 
@@ -120,7 +118,6 @@
                         </div>
 
 
->>>>>>> e5f22d6cbdb7ef337d83dcec267fd48346ac8437
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
