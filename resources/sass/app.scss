@@ -200,9 +200,14 @@ header {
                     font-size: 13px;
                     font-family: Raleway;
                     font-weight: 500;
+                    color: $white;
 
 
-                    color: #FFFFFF;
+
+                    &:hover {
+
+                        color: rgb(184, 184, 184);
+                    }
 
                     @media (max-width: 568px) {
                         font-size: 11px;
@@ -245,14 +250,22 @@ header {
             }
 
             .page-title {
+                // @media (max-width:767px) {
+                //     text-align: center;
+                // }
+
                 .decor {
+                    @media(max-width:767px) {
+                        margin-left: 50px;
+                    }
+
                     @media (max-width:425px) {
-                        margin-left: 0;
+                        margin-left: 0px;
                     }
                 }
 
                 p {
-                    @media (max-width:425px) {
+                    @media (max-width:767px) {
                         text-align: center;
                     }
                 }
@@ -260,13 +273,13 @@ header {
             }
 
             .page-desc {
-                @media (max-width:425px) {
+                @media (max-width:767px) {
                     text-align: center;
                 }
             }
 
             .btn-aksi {
-                @media (max-width:425px) {
+                @media (max-width:767px) {
                     justify-content: center;
                 }
             }
@@ -333,23 +346,24 @@ header {
         background-size: cover;
         background-position: center center;
 
-        // @media (max-width:568px) {
-        //     min-height: 500px;
-        // }
-
         .content {
             .text {
                 margin-left: auto;
 
                 .page-title {
+
                     .decor {
+                        @media(max-width:767px) {
+                            margin-left: 120px;
+                        }
+
                         @media (max-width:425px) {
                             margin-left: 50px;
                         }
                     }
 
                     p {
-                        @media (max-width:425px) {
+                        @media (max-width:767px) {
                             text-align: center;
                         }
                     }
@@ -357,7 +371,7 @@ header {
                 }
 
                 .page-desc {
-                    @media (max-width:425px) {
+                    @media (max-width:767px) {
                         text-align: center;
                     }
                 }
@@ -633,7 +647,13 @@ footer {
                 font-size: 16px;
                 margin-left: 35px;
                 margin-right: 35px;
-                color: #FFFFFF;
+                color: $white;
+                text-decoration: none;
+
+                &:hover {
+
+                    color: rgb(184, 184, 184);
+                }
 
                 @media (max-width:600px) {
                     margin-left: 25px;
