@@ -37111,17 +37111,13 @@ var render = function() {
           "div",
           { staticClass: "row" },
           _vm._l(_vm.fiturName, function(fn) {
-            return _c(
-              "div",
-              { key: fn.fiturName, staticClass: "col-12 col-lg-6 col-md-6" },
-              [
-                _c("div", { staticClass: "fitur-item" }),
-                _vm._v(" "),
-                _c("div", { staticClass: "fitur-desc" }, [
-                  _vm._v(_vm._s(fn.name))
-                ])
-              ]
-            )
+            return _c("div", { staticClass: "col-lg-6 col-md-6 col-6" }, [
+              _c("div", { staticClass: "fitur-item" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "fitur-desc" }, [
+                _vm._v(_vm._s(fn.name))
+              ])
+            ])
           }),
           0
         )
