@@ -91,7 +91,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
-                        <div class="footer-item d-flex justify-content-center wrap">
+                        <div class="footer-item">
                             <div class="footer-link mb-3">
                                 <a class="d-inline" href="">Home</a>
                             </div>
@@ -108,7 +108,6 @@
                     </div>
                 </div>
                 <div class="spacer"></div>
-               
                 <div class="footer-copyright text-center py-3">&copy; 2019. Crafted by <a
                         href="https://kongcreativestudio.com/" target="_blank"> PT. Kong Teknologi Asia.</a>
                 </div>
