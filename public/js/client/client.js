@@ -1750,6 +1750,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1767,17 +1773,17 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       perPage: 5,
       currentPage: 1,
       filterTanggal: "",
-      filterStatus: "Filter Status",
+      filterStatus: "Pilih Lokasi",
       filterSearch: "",
       statusList: [{
         id: '001',
-        status: 'Waiting'
+        status: 'Sarijadi Futsal'
       }, {
         id: '002',
-        status: 'Confirmed'
+        status: 'Ciwaruga Futsal'
       }, {
         id: '003',
-        status: 'Rejected'
+        status: 'Progresif Futsal'
       }],
       dataLapangan: [{
         namalapangan: 'Lapang A',
@@ -64760,7 +64766,9 @@ var render = function() {
     "div",
     { attrs: { id: "content" } },
     [
-      _c("div", { attrs: { id: "list" } }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "lapang" } }, [
         _c("div", { staticClass: "filter " }, [
           _c("div", { staticClass: "filter-item d-flex" }, [
             _c("div", { staticClass: "filterStatus" }, [
@@ -64835,9 +64843,18 @@ var render = function() {
               "div",
               { staticClass: "buttonadd" },
               [
-                _c("b-button", { attrs: { variant: "primary" } }, [
-                  _vm._v("Primary")
-                ])
+                _c(
+                  "b-col",
+                  { attrs: { offset: "10" } },
+                  [
+                    _c(
+                      "b-button",
+                      { attrs: { type: "add", variant: "primary" } },
+                      [_vm._v("Add")]
+                    )
+                  ],
+                  1
+                )
               ],
               1
             )
@@ -64879,6 +64896,14 @@ var render = function() {
                           _vm._s(lapangan.jenislapangan) +
                           "\r\n        "
                       )
+                    ]),
+                    _vm._v(" "),
+                    _c("b-button", { attrs: { variant: "light" } }, [
+                      _vm._v("Edit")
+                    ]),
+                    _vm._v(" "),
+                    _c("b-button", { attrs: { variant: "danger" } }, [
+                      _vm._v("Delete ")
                     ])
                   ],
                   1
@@ -64894,7 +64919,16 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "carilokasi" } }, [
+      _c("h5", [_vm._v("Cari Lokasi: ")])
+    ])
+  }
+]
 render._withStripped = true
 
 

@@ -1,6 +1,8 @@
 <template>
 <div id="content">
-  <div id="list">
+    <div id="carilokasi"><h5>Cari Lokasi: </h5></div>
+    
+  <div id="lapang">
         <div class="filter ">
             <div class="filter-item d-flex">
                 <div class="filterStatus">
@@ -20,10 +22,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="buttonadd">
-                  <b-button variant="primary">Primary</b-button>
+               <div class="buttonadd">
+                    <b-col offset="10">
+                        <b-button  type="add" variant="primary">Add</b-button>
+                    </b-col>
                 </div>
             </div>
+           
         </div>
         
     </div>
@@ -38,10 +43,11 @@
         <b-card-text>
           {{lapangan.jenislapangan}}
         </b-card-text>
+        <b-button variant="light">Edit</b-button>
+        <b-button variant="danger">Delete </b-button>
       </b-card>
-        
+      
         </b-card-group>
-        
     </div>
 </div>
 </template>
@@ -67,19 +73,19 @@
                 perPage: 5,
                 currentPage: 1,
                 filterTanggal: "",
-                filterStatus: "Filter Status",
+                filterStatus: "Pilih Lokasi",
                 filterSearch: "",
                 statusList: [{
                         id: '001',
-                        status: 'Waiting'
+                        status: 'Sarijadi Futsal'
                     },
                     {
                         id: '002',
-                        status: 'Confirmed'
+                        status: 'Ciwaruga Futsal'
                     },
                     {
                         id: '003',
-                        status: 'Rejected'
+                        status: 'Progresif Futsal'
                     }
                 ],
                 dataLapangan: [{

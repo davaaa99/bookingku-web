@@ -16612,105 +16612,9 @@ main {
   font-size: 17px;
 }
 
-/*------------------------  LIST  ------------------------*/
+/*------------------------ LIST ------------------------*/
 
-#list .btn-clear {
-  color: white;
-  font-family: Poppins;
-}
-
-#list .filter .filter-item {
-  font-size: 13px;
-}
-
-#list .filter .filter-item input:focus {
-  outline: none;
-}
-
-#list .filter .filter-item select:focus {
-  outline: none;
-}
-
-#list .filter .filter-item .datepicker {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  border-radius: 100px;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #73879c !important;
-  border: none;
-  margin-right: 30px;
-  margin-bottom: 10px;
-  border: 1px solid #73879c;
-}
-
-#list .filter .filter-item .filterStatus .filterTitle {
-  width: 200px;
-  height: 40px;
-  border-radius: 100px;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #73879c;
-  border: none;
-  margin-left: 30px;
-  border: 1px solid #73879c;
-}
-
-#list .filter .filter-item .filterStatus .box {
-  position: absolute;
-  z-index: 1;
-  width: 200px;
-  margin-top: 0px;
-  margin-left: 30px;
-}
-
-#list .filter .filter-item .filterStatus .box .link {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 180px;
-  background: white;
-  box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
-}
-
-#list .filter .filter-item .filterStatus .box .link .link-item {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  color: #73879c;
-}
-
-#list .filter .filter-item .filterStatus .box .link .link-item:hover {
-  background: #f5f7fa;
-}
-
-#list .filter .filter-item .filterStatus .box .link .link-item .link-status {
-  width: 180px;
-}
-
-#list .filter .filter-item .buttonadd {
-  padding-left: 680px;
-}
-
-#list .filter .filter-item .search {
-  border: 1px solid #73879c;
-  border-radius: 100px;
-  padding: 20px;
-  height: 40px;
-  width: 200px;
-}
-
-#list .filter .filter-item .search .filterSearch {
-  border: none;
-}
-
-#list #my-table thead {
+#my-table thead {
   background: #3A69B7 !important;
   font-family: Poppins;
   font-style: normal;
@@ -16718,11 +16622,11 @@ main {
   font-size: 14px;
 }
 
-#list #my-table thead th {
+#my-table thead th {
   text-align: center;
 }
 
-#list #my-table tbody {
+#my-table tbody {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -16730,27 +16634,27 @@ main {
   color: #4D4D4D;
 }
 
-#list #my-table tbody tr td {
+#my-table tbody tr td {
   text-align: center;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-#list #my-table tbody tr td .btn-detail {
+#my-table tbody tr td .btn-detail {
   background: #3FB5E1;
   border-radius: 4px;
   font-size: 13px;
   color: #FFFFFF;
 }
 
-#list .pagination li a {
+.pagination li a {
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
   margin-right: 10px;
 }
 
-#list .pagination li span {
+.pagination li span {
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
@@ -16759,27 +16663,27 @@ main {
   width: 30px;
 }
 
-#list .pagination .active a {
+.pagination .active a {
   background: #2796E1;
   outline: none !important;
   color: #FFFFFF;
 }
 
-#list .pagination .active a:focus {
+.pagination .active a:focus {
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
-#list .pagination .active a:hover {
+.pagination .active a:hover {
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
-#list .pagination .active span {
+.pagination .active span {
   background: #2796E1;
   outline: none !important;
   color: #FFFFFF;
@@ -16789,7 +16693,7 @@ main {
   width: 30px;
 }
 
-#list .pagination .active span:focus {
+.pagination .active span:focus {
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -16798,7 +16702,7 @@ main {
   width: 30px;
 }
 
-#list .pagination .active span:hover {
+.pagination .active span:hover {
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -17169,8 +17073,15 @@ main {
   color: #FFFFFF;
 }
 
+/*------------------------ MENU LAPANGAN ------------------------*/
+
 #content .cardlapang {
   display: inline-block;
+}
+
+#content .button-variant {
+  width: 20px;
+  height: 10px;
 }
 
 #content .card-img-top {
@@ -17191,5 +17102,96 @@ main {
   height: 500px;
   margin: 20px auto;
   display: inline-block;
+}
+
+#carilokasi {
+  padding-left: 10px;
+}
+
+/*------------------------ MENU LAPANGAN ------------------------*/
+
+#lapang .btn-clear {
+  color: white;
+  font-family: Poppins;
+}
+
+#lapang .filter .filter-item {
+  font-size: 13px;
+}
+
+#lapang .filter .filter-item input:focus {
+  outline: none;
+}
+
+#lapang .filter .filter-item select:focus {
+  outline: none;
+}
+
+#lapang .filter .filter-item .datepicker {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #73879c !important;
+  border: none;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #73879c;
+}
+
+#lapang .filter .filter-item .filterStatus .filterTitle {
+  width: 300px;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px;
+  padding-right: 20px;
+  color: #73879c;
+  border: none;
+  margin-left: 10px;
+  border: 1px solid #73879c;
+}
+
+#lapang .filter .filter-item .filterStatus .box {
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  margin-top: 0px;
+  margin-left: 10px;
+}
+
+#lapang .filter .filter-item .filterStatus .box .link {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 280px;
+  padding-left: 10px;
+  background: white;
+  box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+}
+
+#lapang .filter .filter-item .filterStatus .box .link .link-item {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  color: #73879c;
+}
+
+#lapang .filter .filter-item .filterStatus .box .link .link-item:hover {
+  background: #f5f7fa;
+}
+
+#lapang .filter .filter-item .filterStatus .box .link .link-item .link-status {
+  width: 180px;
+}
+
+#lapang .filter .filter-item .buttonadd {
+  position: relative;
+  margin-left: 50%;
 }
 
