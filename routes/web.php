@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
  * Router Group for Admin Page
  */
 $now = \Carbon\Carbon::now();
-Route::group(['middleware' => ['auth', 'verified'], 'prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm'. (string) $now->day], function () {
+Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm'. (string) $now->day], function () {
     Route::get('/','AdminPageController@index')->name('admin');
     Route::get('/verifydetail/{id}','AdminPageController@verifyBookingDetail')->name('verifybookingdetail');
     Route::get('/clientlist','AdminPageController@clientList')->name('clientlist');
@@ -36,4 +36,7 @@ Route::group(['middleware' => ['auth', 'verified'], 'prefix' => '/$2y$10$MtKIr0/
     Route::get('/clientlist/detaillokasi/detaillapang/{id}','AdminPageController@clientListDetailLapangan')->name('detaillapang');
     Route::get('/payment','AdminPageController@payment')->name('payment');
     Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
+    Route::get('/locationlist','ClientPageController@locationList')->name('locationlist');
+    Route::get('/locationlist/detail/{id}','ClientPageController@locationDetail')->name('locationdetail');
+    Route::get('/fieldlist','ClientPageController@locationList')->name('fieldlist');
 });
