@@ -34,24 +34,24 @@
 .spacer {
     height: 100px;
 
-    @media (width:320px) {
-        height: 50px;
+    @media (width:425px) {
+        height: 70px;
     }
 }
 
 .spacer-50 {
     height: 50px;
 
-    @media (width:320px) {
-        height: 25px;
+    @media (width:425px) {
+        height: 35px;
     }
 }
 
 .spacer-20 {
     height: 20px;
 
-    @media (width:320px) {
-        height: 10px;
+    @media (width:425px) {
+        height: 14px;
     }
 }
 
@@ -67,8 +67,21 @@
         color: $white;
         line-height: 92px;
         font-weight: 900;
+        // background: red;
+
+        @media (max-width:1000px) {
+            font-size: 70px;
+        }
+
+        @media (max-width:800px) {
+            font-size: 60px;
+        }
 
         @media (max-width: 568px) {
+            font-size: 55px;
+        }
+
+        @media(max-width:400px) {
             font-size: 50px;
         }
     }
@@ -78,24 +91,29 @@
         font-size: 15px;
         line-height: 21px;
         color: $white;
-        width: 50%;
         font-weight: 300;
         margin-bottom: 20px;
 
+        @media (max-width:1000px) {
+            font-size: 14px;
+        }
+
+        @media (max-width:800px) {
+            font-size: 13px;
+        }
+
         @media (max-width: 568px) {
             font-size: 12px;
-
         }
 
-        @media (max-width: 500px) {
-            width: 100%;
-        }
+        // @media(max-width:400px) {
+        //     font-size: 50px;
+        // }
     }
 }
 
 header {
     width: 100%;
-
 
     .navbar {
         @media (max-width: 992px) {
@@ -109,7 +127,7 @@ header {
         padding-top: 40px;
         z-index: 9999;
 
-        @media(max-width:575px) {
+        @media(max-width:425px) {
             margin-top: 15px;
             padding-top: 0px;
 
@@ -182,9 +200,14 @@ header {
                     font-size: 13px;
                     font-family: Raleway;
                     font-weight: 500;
+                    color: $white;
 
 
-                    color: #FFFFFF;
+
+                    &:hover {
+
+                        color: rgb(184, 184, 184);
+                    }
 
                     @media (max-width: 568px) {
                         font-size: 11px;
@@ -219,8 +242,47 @@ header {
         }
 
         .content {
-            padding-top: 7rem;
+            padding-top: 10rem;
             padding-bottom: 3rem;
+
+            @media (max-width:425px) {
+                padding-top: 5rem;
+            }
+
+            .page-title {
+                // @media (max-width:767px) {
+                //     text-align: center;
+                // }
+
+                .decor {
+                    @media(max-width:767px) {
+                        margin-left: 50px;
+                    }
+
+                    @media (max-width:425px) {
+                        margin-left: 0px;
+                    }
+                }
+
+                p {
+                    @media (max-width:767px) {
+                        text-align: center;
+                    }
+                }
+
+            }
+
+            .page-desc {
+                @media (max-width:767px) {
+                    text-align: center;
+                }
+            }
+
+            .btn-aksi {
+                @media (max-width:767px) {
+                    justify-content: center;
+                }
+            }
 
             .btn-daftar {
                 width: 93px;
@@ -279,52 +341,58 @@ header {
     }
 
     .section-2 {
-        min-height: 650px;
+        min-height: 600px;
         background-image: url('~/images/section-2.png');
         background-size: cover;
         background-position: center center;
 
-        @media (max-width:568px) {
-            min-height: 500px;
-        }
-
-        // &:after {
-        //     background: rgba(0, 0, 0, .75);
-        //     content: " ";
-        //     position: absolute;
-        //     width: 100%;
-        //     height: 100%;
-        //     z-index: 0;
-        // }
-
         .content {
-            padding-top: 0rem;
-            padding-top: 0rem;
-
-
             .text {
                 margin-left: auto;
-                width: 50%;
-                padding-left: 50px;
+
+                .page-title {
+
+                    .decor {
+                        @media(max-width:767px) {
+                            margin-left: 120px;
+                        }
+
+                        @media (max-width:425px) {
+                            margin-left: 50px;
+                        }
+                    }
+
+                    p {
+                        @media (max-width:767px) {
+                            text-align: center;
+                        }
+                    }
+
+                }
 
                 .page-desc {
-                    width: 90%;
+                    @media (max-width:767px) {
+                        text-align: center;
+                    }
                 }
+
             }
         }
 
     }
 
     .section-3 {
-        // background: #F5F5F5;
         overflow: hidden;
+        min-height: 600px;
 
         .container {
-            display: flex;
+            @media (min-width:768px) {
+                display: flex;
+            }
 
             .content {
                 padding-top: 4rem;
-                padding-top: 4rem;
+                padding-bottom: 4rem;
 
                 .page-title {
                     color: #182035;
@@ -333,24 +401,22 @@ header {
 
                 .page-desc {
                     padding-left: 10px;
-                    font-family: Raleway;
-                    font-style: normal;
-                    font-weight: 300;
-                    font-size: 15px;
+                    padding-right: 10px;
                     text-align: center;
                     width: 100%;
                     color: #5C5C5C;
-                    padding-right: 10px;
-
                 }
 
                 #fitur {
-                    width: 70%;
                     padding-left: 50px;
                     padding-right: 50px;
                     padding-top: 30px;
 
-                    // background: black;
+                    @media (max-width:425px) {
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+
                     .fitur-item {
                         width: 70px;
                         height: 70px;
@@ -370,39 +436,51 @@ header {
                         margin-bottom: 30px;
                     }
                 }
-
-                .phone {
-                    width: 220px;
-                    height: 456px;
-                    background-image: url('~/images/phone.png');
-                    background-size: cover;
-                    background-position: center center;
-                    margin-left: auto;
-                    margin-right: auto;
-
-
-                }
-
-                .play-store {
-                    background-image: url('~/logo//play-store.png');
-                    background-size: cover;
-                    background-position: center center;
-                    width: 135px;
-                    height: 39px;
-                    border-radius: 5px;
-                    margin-left: auto;
-                    margin-right: auto;
-
-                    &:hover {
-                        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-                        -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-                        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-                    }
-
-                }
             }
         }
 
+        .phone-section {
+            padding-bottom: 4rem;
+            padding-top: 4rem;
+
+            @media (max-width:767px) {
+                padding-top: 0rem;
+            }
+
+            .phone {
+                width: 220px;
+                height: 456px;
+                background-image: url('~/images/phone.png');
+                background-size: cover;
+                background-position: center center;
+                margin-left: auto;
+                margin-right: auto;
+
+                @media (max-width:1024px) {
+                    width: 176px;
+                    height: 364.8px;
+                }
+
+            }
+
+            .play-store {
+                background-image: url('~/logo//play-store.png');
+                background-size: cover;
+                background-position: center center;
+                width: 135px;
+                height: 39px;
+                border-radius: 5px;
+                margin-left: auto;
+                margin-right: auto;
+
+                &:hover {
+                    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+                    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+                    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+                }
+
+            }
+        }
 
         .cirle {
             position: absolute;
@@ -410,12 +488,20 @@ header {
             top: 200px;
             right: 0;
             animation: looping 10s infinite linear;
+
+            @media (max-width:1024px) {
+                width: 220px;
+                height: 220px;
+            }
+
+            @media (max-width:800px) {
+                display: none;
+            }
         }
     }
 
     .section-4 {
-
-        height: 650px;
+        min-height: 600px;
         background-image: url('~/images/section-4.png');
         background-size: cover;
         background-position: center center;
@@ -434,11 +520,9 @@ header {
         }
 
         .content {
-
             .page-desc {
                 text-align: center;
                 font-weight: 300;
-                width: 60%;
             }
 
             .btn-daftar {
@@ -451,7 +535,6 @@ header {
                 color: #3A69B7;
                 background: $white;
                 border-radius: 4px;
-                margin-right: 30px;
 
                 &:hover {
                     background: #227DC7;
@@ -465,13 +548,23 @@ header {
     .section-5 {
         padding-top: 4rem;
         padding-top: 4rem;
+        min-height: 600px;
+        overflow: hidden;
 
         .container {
             display: flex;
 
+
+
             .people {
                 margin-top: auto;
+
+                @media (max-width:767px) {
+                    display: none;
+                }
             }
+
+
 
             .content {
 
@@ -530,8 +623,23 @@ footer {
     background-size: cover;
     background-position: center center;
 
+    @media (max-width:425px) {
+        padding-top: 20px;
+    }
+
     .footer-item {
+        display: flex;
+        justify-content: center;
+
+        @media (max-width:425px) {
+            display: inline;
+        }
+
         .footer-link {
+            @media (max-width:425px) {
+                margin-top: 30px;
+            }
+
             a {
                 font-family: Raleway;
                 font-style: normal;
@@ -539,21 +647,51 @@ footer {
                 font-size: 16px;
                 margin-left: 35px;
                 margin-right: 35px;
-                color: #FFFFFF;
+                color: $white;
+                text-decoration: none;
+
+                &:hover {
+
+                    color: rgb(184, 184, 184);
+                }
+
+                @media (max-width:600px) {
+                    margin-left: 25px;
+                    margin-right: 25px;
+                    font-size: 14px;
+                }
             }
         }
 
 
     }
 
+    .spacer {
+        @media (max-width:425px) {
+            height: 30px;
+        }
+    }
+
     .footer-copyright {
         font-family: Raleway;
         color: #FFFFFF !important;
+        font-size: 16px;
+
+        @media (max-width:600px) {
+
+            font-size: 14px;
+        }
 
         a {
             font-family: Raleway;
             color: #FFFFFF !important;
             text-decoration: none;
+            font-size: 16px;
+
+            @media (max-width:600px) {
+
+                font-size: 14px;
+            }
         }
     }
 }
