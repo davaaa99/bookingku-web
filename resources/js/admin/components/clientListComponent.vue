@@ -5,7 +5,6 @@
                 <div class="search  d-flex align-items-center">
                     <input class="filterSearch" type="text" v-model="filterSearch" placeholder="Search">
                     <i class="fa fa-search" style="color:#C0C4CC"></i>
-                    </input>
                 </div>
             </div>
             <div class="spacer-20"></div>
@@ -123,7 +122,7 @@
                     year = d.getFullYear();
 
                 if (month.length < 2) month = '0' + month;
-                if (day.length < 2) day = '0' + day;
+                // if (day.length < 2) day = '0' + day;
 
                 window.location.href = window.location.protocol + '//' + window.location.host +
                     '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +

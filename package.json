@@ -12,6 +12,7 @@
     "devDependencies": {
         "axios": "^0.18",
         "bootstrap": "^4.3.1",
+        "bootstrap-vue": "^2.0.0-rc.27",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
@@ -25,7 +26,6 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.9.0",
-        "bootstrap-vue": "^2.0.0-rc.26",
         "jspdf": "^1.5.3",
         "moment": "^2.24.0",
         "vue-date-picker": "^2.5.0",
