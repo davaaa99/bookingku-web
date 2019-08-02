@@ -1688,6 +1688,363 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addLapangComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/addLapangComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {
+        location: '',
+        namalapang: '',
+        tipelapang: null,
+        file: null,
+        file2: null
+      },
+      location: [{
+        text: 'Pilih Lokasi',
+        value: null
+      }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
+      tipelapang: [{
+        text: 'Pilih Tipe Lapang',
+        value: null
+      }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
+      show: true
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit(evt) {
+      evt.preventDefault();
+      alert(JSON.stringify(this.form));
+    },
+    onReset: function onReset(evt) {
+      var _this = this;
+
+      evt.preventDefault(); // Reset our form values
+
+      this.form.location = null;
+      this.form.namalapang = '';
+      this.form.tipelapang = null; // Trick to reset/clear native browser form validation state
+
+      this.show = false;
+      this.$nextTick(function () {
+        _this.show = true;
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/detailLapangComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/detailLapangComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      namalapang: 'Lapang A',
+      tipelapang: 'Sintetis',
+      fields: ['Jam', 'Down_Payment', 'Harga', 'Action'],
+      items: [],
+      selected: null,
+      options: [{
+        value: null,
+        text: 'Pilih Hari '
+      }, {
+        value: 'Senin',
+        text: 'Senin'
+      }, {
+        value: 'Selasa',
+        text: 'Selasa'
+      }, {
+        value: 'Rabu',
+        text: 'Rabu'
+      }, {
+        value: 'Kamis',
+        text: 'Kamis'
+      }, {
+        value: 'Jumat',
+        text: 'Jumat'
+      }, {
+        value: 'Sabtu',
+        text: 'Sabtu'
+      }, {
+        value: 'Minggu',
+        text: 'Minggu'
+      }],
+      perPage: 10,
+      filterSearch: "",
+      url: window.location.origin + window.location.pathname,
+      dataLocation: [{
+        id_location: "001",
+        location_name: "Sarijadi Futsal",
+        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        description: "Lapangan Baru",
+        open_time: "07:00",
+        closing_time: "22:00"
+      }, {
+        id_location: "002",
+        location_name: "Ciwaruga Futsal",
+        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        description: "Lapangan Baru",
+        open_time: "07:00",
+        closing_time: "22:00"
+      }, {
+        id_location: "001",
+        location_name: "Sarijadi Futsal",
+        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        description: "Lapangan Baru",
+        open_time: "07:00",
+        closing_time: "22:00"
+      }, {
+        id_location: "002",
+        location_name: "Ciwaruga Futsal",
+        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        description: "Lapangan Baru",
+        open_time: "07:00",
+        closing_time: "22:00"
+      }, {
+        id_location: "001",
+        location_name: "Sarijadi Futsal",
+        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        description: "Lapangan Baru",
+        open_time: "07:00",
+        closing_time: "22:00"
+      }, {
+        id_location: "002",
+        location_name: "Ciwaruga Futsal",
+        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        description: "Lapangan Baru",
+        open_time: "07:00",
+        closing_time: "22:00"
+      }, {
+        id_location: "001",
+        location_name: "Sarijadi Futsal",
+        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        description: "Lapangan Baru",
+        open_time: "07:00",
+        closing_time: "22:00"
+      }]
+    };
+  },
+  computed: {
+    rows: function rows() {
+      return this.dataLocation.length;
+    }
+  },
+  methods: {
+    detail: function detail(id) {
+      var self = this;
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/editLapangComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/editLapangComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {
+        location: 'Bandung',
+        namalapang: 'Sarijadi Futsal',
+        tipelapang: 'Sintetis',
+        file: null,
+        file2: null
+      },
+      location: [{
+        text: 'Pilih Lokasi',
+        value: null
+      }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
+      tipelapang: [{
+        text: 'Pilih Tipe Lapang',
+        value: null
+      }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
+      show: true
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit(evt) {
+      evt.preventDefault();
+      alert(JSON.stringify(this.form));
+    },
+    onReset: function onReset(evt) {
+      var _this = this;
+
+      evt.preventDefault(); // Reset our form values
+
+      this.form.location = null;
+      this.form.namalapang = '';
+      this.form.tipelapang = null; // Trick to reset/clear native browser form validation state
+
+      this.show = false;
+      this.$nextTick(function () {
+        _this.show = true;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js& ***!
@@ -64747,6 +65104,438 @@ var e=function(){return(e=Object.assign||function(e){for(var t,r=1,s=arguments.l
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "content" } },
+    [
+      _vm.show
+        ? _c("b-form", { on: { submit: _vm.onSubmit, reset: _vm.onReset } }, [
+            _c(
+              "div",
+              { staticClass: "chooselocation" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      id: "input-group-1",
+                      label: "Location:",
+                      "label-for": "input-1"
+                    }
+                  },
+                  [
+                    _c("b-form-select", {
+                      attrs: {
+                        id: "input-1",
+                        options: _vm.location,
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.form.location,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "location", $$v)
+                        },
+                        expression: "form.location"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "namalapang" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      id: "input-group-2",
+                      label: "Nama Lapang:",
+                      "label-for": "input-2"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: {
+                        id: "input-2",
+                        required: "",
+                        placeholder: "Masukan Nama Lapang"
+                      },
+                      model: {
+                        value: _vm.form.namalapang,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "namalapang", $$v)
+                        },
+                        expression: "form.namalapang"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tipelapang" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      id: "input-group-3",
+                      label: "Tipe Lapang:",
+                      "label-for": "input-3"
+                    }
+                  },
+                  [
+                    _c("b-form-select", {
+                      attrs: {
+                        id: "input-3",
+                        options: _vm.tipelapang,
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.form.tipelapang,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "tipelapang", $$v)
+                        },
+                        expression: "form.tipelapang"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uploadgambar" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      id: "input-group-4",
+                      label: "Upload Gambar:",
+                      "label-for": "input-4"
+                    }
+                  },
+                  [
+                    _c("b-form-file", {
+                      attrs: {
+                        state: Boolean(_vm.file),
+                        placeholder: "Choose a file...",
+                        "drop-placeholder": "Drop file here..."
+                      },
+                      model: {
+                        value: _vm.file,
+                        callback: function($$v) {
+                          _vm.file = $$v
+                        },
+                        expression: "file"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ])
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/detailLapangComponent.vue?vue&type=template&id=7144864a&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/detailLapangComponent.vue?vue&type=template&id=7144864a& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "lapang-detail" } },
+    [
+      _c(
+        "b-card",
+        {
+          staticClass: "image-header",
+          attrs: {
+            overlay: "",
+            "img-src": "https://picsum.photos/900/250/?image=3",
+            "img-alt": "Gambar Lapangan",
+            "text-variant": "white",
+            "border-variant": "dark"
+          }
+        },
+        [
+          _c("div", { staticClass: "spacer" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-30" }),
+          _vm._v(" "),
+          _c("b-card-text", [
+            _c("h1", [_vm._v(" " + _vm._s(_vm.namalapang))]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.tipelapang))])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-30" }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "hari" },
+        [
+          _c("b-form-select", {
+            attrs: { options: _vm.options },
+            model: {
+              value: _vm.selected,
+              callback: function($$v) {
+                _vm.selected = $$v
+              },
+              expression: "selected"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "tabel-jadwal" },
+        [
+          _c("b-table", {
+            attrs: { hover: _vm.hover, items: _vm.items, fields: _vm.fields }
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "content" } },
+    [
+      _vm.show
+        ? _c("b-form", { on: { submit: _vm.onSubmit, reset: _vm.onReset } }, [
+            _c(
+              "div",
+              { staticClass: "chooselocation" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      id: "input-group-1",
+                      label: "Location:",
+                      "label-for": "input-1"
+                    }
+                  },
+                  [
+                    _c("b-form-select", {
+                      attrs: {
+                        id: "input-1",
+                        options: _vm.location,
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.form.location,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "location", $$v)
+                        },
+                        expression: "form.location"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "namalapang" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      id: "input-group-2",
+                      label: "Nama Lapang:",
+                      "label-for": "input-2"
+                    }
+                  },
+                  [
+                    _c("b-form-input", {
+                      attrs: {
+                        id: "input-2",
+                        required: "",
+                        placeholder: "Masukan Nama Lapang"
+                      },
+                      model: {
+                        value: _vm.form.namalapang,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "namalapang", $$v)
+                        },
+                        expression: "form.namalapang"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tipelapang" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      id: "input-group-3",
+                      label: "Tipe Lapang:",
+                      "label-for": "input-3"
+                    }
+                  },
+                  [
+                    _c("b-form-select", {
+                      attrs: {
+                        id: "input-3",
+                        options: _vm.tipelapang,
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.form.tipelapang,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "tipelapang", $$v)
+                        },
+                        expression: "form.tipelapang"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "uploadgambar" },
+              [
+                _c(
+                  "b-form-group",
+                  {
+                    attrs: {
+                      id: "input-group-4",
+                      label: "Upload Gambar:",
+                      "label-for": "input-4"
+                    }
+                  },
+                  [
+                    _c("b-form-file", {
+                      attrs: {
+                        state: Boolean(_vm.file),
+                        placeholder: "Choose a file...",
+                        "drop-placeholder": "Drop file here..."
+                      },
+                      model: {
+                        value: _vm.file,
+                        callback: function($$v) {
+                          _vm.file = $$v
+                        },
+                        expression: "file"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ])
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/menuLapanganComponent.vue?vue&type=template&id=a81cf222&":
 /*!*******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/menuLapanganComponent.vue?vue&type=template&id=a81cf222& ***!
@@ -77166,6 +77955,9 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('menu-lapangan', __webpack_require__(/*! ./components/menuLapanganComponent.vue */ "./resources/js/client/components/menuLapanganComponent.vue")["default"]);
+Vue.component('add-lapangan', __webpack_require__(/*! ./components/addLapangComponent.vue */ "./resources/js/client/components/addLapangComponent.vue")["default"]);
+Vue.component('edit-lapangan', __webpack_require__(/*! ./components/editLapangComponent.vue */ "./resources/js/client/components/editLapangComponent.vue")["default"]);
+Vue.component('detail-lapangan', __webpack_require__(/*! ./components/detailLapangComponent.vue */ "./resources/js/client/components/detailLapangComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -77175,6 +77967,213 @@ Vue.component('menu-lapangan', __webpack_require__(/*! ./components/menuLapangan
 var app = new Vue({
   el: '#app'
 });
+
+/***/ }),
+
+/***/ "./resources/js/client/components/addLapangComponent.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/client/components/addLapangComponent.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _addLapangComponent_vue_vue_type_template_id_26944960___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addLapangComponent.vue?vue&type=template&id=26944960& */ "./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960&");
+/* harmony import */ var _addLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addLapangComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/addLapangComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _addLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _addLapangComponent_vue_vue_type_template_id_26944960___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _addLapangComponent_vue_vue_type_template_id_26944960___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/client/components/addLapangComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/client/components/addLapangComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/client/components/addLapangComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_addLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./addLapangComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addLapangComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_addLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addLapangComponent_vue_vue_type_template_id_26944960___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./addLapangComponent.vue?vue&type=template&id=26944960& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addLapangComponent_vue_vue_type_template_id_26944960___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addLapangComponent_vue_vue_type_template_id_26944960___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/client/components/detailLapangComponent.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/client/components/detailLapangComponent.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _detailLapangComponent_vue_vue_type_template_id_7144864a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detailLapangComponent.vue?vue&type=template&id=7144864a& */ "./resources/js/client/components/detailLapangComponent.vue?vue&type=template&id=7144864a&");
+/* harmony import */ var _detailLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./detailLapangComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/detailLapangComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _detailLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _detailLapangComponent_vue_vue_type_template_id_7144864a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _detailLapangComponent_vue_vue_type_template_id_7144864a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/client/components/detailLapangComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/client/components/detailLapangComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/client/components/detailLapangComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./detailLapangComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/detailLapangComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/client/components/detailLapangComponent.vue?vue&type=template&id=7144864a&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/client/components/detailLapangComponent.vue?vue&type=template&id=7144864a& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapangComponent_vue_vue_type_template_id_7144864a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./detailLapangComponent.vue?vue&type=template&id=7144864a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/detailLapangComponent.vue?vue&type=template&id=7144864a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapangComponent_vue_vue_type_template_id_7144864a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_detailLapangComponent_vue_vue_type_template_id_7144864a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/client/components/editLapangComponent.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/client/components/editLapangComponent.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editLapangComponent.vue?vue&type=template&id=0755dd9e& */ "./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e&");
+/* harmony import */ var _editLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editLapangComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/editLapangComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _editLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/client/components/editLapangComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/client/components/editLapangComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/client/components/editLapangComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_editLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./editLapangComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/editLapangComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_editLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./editLapangComponent.vue?vue&type=template&id=0755dd9e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

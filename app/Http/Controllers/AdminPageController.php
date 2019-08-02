@@ -82,8 +82,6 @@ class AdminPageController extends Controller
         return view('admin.paymentdetail',['id'=>$data]);
     }
 
-    public function menulapang(){
-        return view('client.DetailLapangan');
-    }
+    
     
 }
