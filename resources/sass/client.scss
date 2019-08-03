@@ -215,24 +215,34 @@ main {
             color: #5C5C5C;
             width: 60%;
             // background: rgb(228, 228, 228);
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
         }
     
         .time {
-            margin-left: 100px;
+            margin-left: 70px;
             padding: 10px;
             // padding-left: 100px;
             // padding-top: 10px;
             // padding-right: 10px;
             // padding-bottom: 10px;
             width: 30%;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
             ul {
                 list-style-type: none;
             }
         }
     }
 }
+
+#location-add {
+    
+    #location-form {
+        #octime {
+            
+        }
+    }
+}
+
 
 /*------------------------ SIDE BAR ------------------------*/
 #sidebar {
@@ -297,6 +307,7 @@ main {
         color: white;
         font-family: Poppins;
         border-radius: 20px;
+        width: 80px;
     }
 
     .btn-clear {

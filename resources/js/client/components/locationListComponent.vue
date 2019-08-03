@@ -5,10 +5,9 @@
                 <div class="filter-item d-flex">
                     <div class="search  d-flex align-items-center">
                         <input class="filterSearch" type="text" v-model="filterSearch" placeholder="Search">
-                            <i class="fa fa-search" style="color:#C0C4CC"></i>
-                        </input>
+                        <i class="fa fa-search" style="color:#C0C4CC"></i>
                     </div>
-                    <button @click="getData" class="btn btn-add btn-primary ml-auto">add</button>
+                    <button @click="getData" class="btn btn-add btn-primary ml-auto">ADD</button>
                 </div>
                 <div class="spacer-20"></div>
             </div>

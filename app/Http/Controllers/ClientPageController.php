@@ -35,4 +35,16 @@ class ClientPageController extends Controller
         
         return view('client.locationDetail',['id' => $data]);
     }
+
+    /**
+     * Display Form Add Location
+     * 
+     * @param String $id
+     * @return View
+     */
+    public function locationAdd(){
+        
+        return view('client.locationAdd');
+    }
+    
 }

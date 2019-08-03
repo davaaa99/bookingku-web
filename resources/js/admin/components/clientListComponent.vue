@@ -5,7 +5,6 @@
                 <div class="search  d-flex align-items-center">
                     <input class="filterSearch" type="text" v-model="filterSearch" placeholder="Search">
                     <i class="fa fa-search" style="color:#C0C4CC"></i>
-                    </input>
                 </div>
             </div>
             <div class="spacer-20"></div>

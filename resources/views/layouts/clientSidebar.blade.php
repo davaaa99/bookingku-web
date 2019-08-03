@@ -24,9 +24,9 @@
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('fieldlist') }}" class="content-link">
+                    <a href="{{ route('locationadd') }}" class="content-link">
                         <i class="far fa-credit-card"></i>
-                        FIELD
+                        LOCATION ADD
                     </a>
                 </div>
             </div>

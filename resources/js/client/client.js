@@ -22,6 +22,8 @@ window.Vue = require('vue');
 
 Vue.component('location-list', require('./components/locationListComponent.vue').default);
 Vue.component('location-detail', require('./components/locationDetailComponent.vue').default);
+Vue.component('location-add', require('./components/locationAddComponent.vue').default);
+
 
 
 /**
