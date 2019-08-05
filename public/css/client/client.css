@@ -16678,6 +16678,10 @@ main {
   list-style-type: none;
 }
 
+#location-add #location-form .forminput {
+  border-radius: 10px;
+}
+
 /*------------------------ SIDE BAR ------------------------*/
 
 #sidebar .sidebar {

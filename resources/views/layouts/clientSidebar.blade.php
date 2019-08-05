@@ -23,12 +23,6 @@
                         LOCATION
                     </a>
                 </div>
-                <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('locationadd') }}" class="content-link">
-                        <i class="far fa-credit-card"></i>
-                        LOCATION ADD
-                    </a>
-                </div>
             </div>
         </div>
     </div>

@@ -7,21 +7,22 @@
                         <input class="filterSearch" type="text" v-model="filterSearch" placeholder="Search">
                         <i class="fa fa-search" style="color:#C0C4CC"></i>
                     </div>
-                    <button @click="getData" class="btn btn-add btn-primary ml-auto">ADD</button>
+                    <button class="btn btn-add btn-primary ml-auto" @click="addLocation()">ADD</button>
                 </div>
                 <div class="spacer-20"></div>
             </div>
         </div>
         <!-- @click="detail(data.item.id_location)" -->
         <div class="item-list">
-            <div class="card mt-3" v-for="location in dataLocation" :key="location.id_location" >
+            <div class="card mt-3" v-for="location in dataLocation" :key="location.id_location">
                 <div class="horizontal" >
                     <b-card no-body class="overflow-hidden">
                         <b-row no-gutters class="d-flex">
-                            <b-col class="col-lg-2 col-md-4 col-sm-12">
+                            <!-- col-lg-2 col-md-4 col-sm-12 -->
+                            <b-col class="col-lg-2" @click="detailLocation()">
                                 <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
                             </b-col>
-                            <b-col md="6">
+                            <b-col class="col-lg-9" @click="detailLocation()">
                                 <b-card-body>
                                     <h2>{{location.location_name}}</h2>
                                     <b-card-text>
@@ -32,8 +33,8 @@
                                     </b-card-text>
                                 </b-card-body>
                             </b-col>
-                            <div class="ml-auto mt-2 igroup">
-                                <i class="material-icons ic">edit</i>
+                            <div class="mt-2 igroup col-lg-1">
+                                <i class="material-icons ic" @click="editLocation()">edit</i>
                                 <i class="material-icons mr-3 ic">close</i>
                             </div>
                         </b-row>
@@ -182,7 +183,34 @@
                     '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
                     '/locationlist/detail/' +
                     btoa(id);
-            }
+            },
+            detailLocation: function() {
+                var d = new Date(),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
+                    '/locationdetail';
+            },
+            addLocation: function() {
+                var d = new Date(),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
+                    '/locationadd';
+            },
+            editLocation: function() {
+                var d = new Date(),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
+                    '/locationedit';
+            },
         }
     };
 

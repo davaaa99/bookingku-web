@@ -1793,6 +1793,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -1800,13 +1852,54 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   data: function data() {
     return {
       checked: false,
-      status: 'Tutup',
+      colorstatus: '#5C5C5C',
       form: {
         name: '',
         address: '',
-        open_time: '',
-        closing_time: '',
-        description: ''
+        monday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        tuesday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        wednesday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        thrusday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        friday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        saturday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        sunday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        description: '',
+        images: ''
       },
       otimes: [{
         text: 'Buka',
@@ -1815,16 +1908,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       ctimes: [{
         text: 'Tutup',
         value: null
-      }, '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
-      show: {
-        monday: false,
-        tuesday: false,
-        wednesday: false,
-        thrusday: false,
-        friday: false,
-        saturaday: false,
-        sunday: false
-      }
+      }, '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
     };
   },
   methods: {
@@ -1833,6 +1917,20 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         return files[0].name;
       } else {
         return "".concat(files.length, " files selected");
+      }
+    },
+    changeStatus: function changeStatus(valstatus) {
+      if (valstatus) {
+        return 'Buka';
+      } else {
+        return 'Tutup';
+      }
+    },
+    changeColor: function changeColor(valstatus) {
+      if (valstatus) {
+        return '#0032E7';
+      } else {
+        return 'darkgray';
       }
     }
   }
@@ -2014,6 +2112,256 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationEditComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationEditComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      checked: false,
+      colorstatus: '#5C5C5C',
+      form: {
+        name: '',
+        address: '',
+        monday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        tuesday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        wednesday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        thrusday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        friday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        saturday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        sunday: {
+          status: 'Tutup',
+          valstatus: false,
+          open_time: '',
+          closing_time: ''
+        },
+        description: '',
+        images: ''
+      },
+      otimes: [{
+        text: 'Buka',
+        value: null
+      }, '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+      ctimes: [{
+        text: 'Tutup',
+        value: null
+      }, '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
+    };
+  },
+  methods: {
+    formatNames: function formatNames(files) {
+      if (files.length === 1) {
+        return files[0].name;
+      } else {
+        return "".concat(files.length, " files selected");
+      }
+    },
+    changeStatus: function changeStatus(valstatus) {
+      if (valstatus) {
+        return 'Buka';
+      } else {
+        return 'Tutup';
+      }
+    },
+    changeColor: function changeColor(valstatus) {
+      if (valstatus) {
+        return '#0032E7';
+      } else {
+        return 'darkgray';
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationListComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationListComponent.vue?vue&type=script&lang=js& ***!
@@ -2026,6 +2374,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -2184,6 +2533,27 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       if (month.length < 2) month = '0' + month; // if (day.length < 2) day = '0' + day;
 
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/locationlist/detail/' + btoa(id);
+    },
+    detailLocation: function detailLocation() {
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/locationdetail';
+    },
+    addLocation: function addLocation() {
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/locationadd';
+    },
+    editLocation: function editLocation() {
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/locationedit';
     }
   }
 });
@@ -65141,47 +65511,146 @@ var render = function() {
         [
           _c(
             "b-form-group",
-            { attrs: { label: "Nama Lokasi", "label-for": "input-name" } },
             [
-              _c("b-form-input", {
-                attrs: {
-                  id: "input-name",
-                  required: "",
-                  placeholder: "Masukkan nama lokasi"
-                },
-                model: {
-                  value: _vm.form.name,
-                  callback: function($$v) {
-                    _vm.$set(_vm.form, "name", $$v)
-                  },
-                  expression: "form.name"
-                }
-              })
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Nama Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-input", {
+                        staticClass: "forminput",
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan nama lokasi"
+                        },
+                        model: {
+                          value: _vm.form.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "name", $$v)
+                          },
+                          expression: "form.name"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
           ),
           _vm._v(" "),
           _c(
             "b-form-group",
-            { attrs: { label: "Alamat Lokasi", "label-for": "input-address" } },
             [
-              _c("b-form-input", {
-                attrs: {
-                  id: "input-address",
-                  required: "",
-                  placeholder: "Masukkan alamat lokasi"
-                },
-                model: {
-                  value: _vm.form.address,
-                  callback: function($$v) {
-                    _vm.$set(_vm.form, "address", $$v)
-                  },
-                  expression: "form.address"
-                }
-              })
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Alamat Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-input", {
+                        staticClass: "forminput",
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan alamat lokasi"
+                        },
+                        model: {
+                          value: _vm.form.address,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "address", $$v)
+                          },
+                          expression: "form.address"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
             ],
             1
           ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Deskripsi Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-textarea", {
+                        staticClass: "forminput",
+                        staticStyle: { height: "100px" },
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan deskripsi lapangan"
+                        },
+                        model: {
+                          value: _vm.form.description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "description", $$v)
+                          },
+                          expression: "form.description"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Foto Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-file", {
+                        attrs: {
+                          multiple: "",
+                          "file-name-formater": _vm.formatName
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-20" }),
           _vm._v(" "),
           _c(
             "div",
@@ -65196,7 +65665,9 @@ var render = function() {
                       rawName: "v-b-modal.octime",
                       modifiers: { octime: true }
                     }
-                  ]
+                  ],
+                  staticClass: "btn",
+                  staticStyle: { "margin-left": "17.5%" }
                 },
                 [_vm._v("Atur Waktu Buka")]
               ),
@@ -65212,418 +65683,566 @@ var render = function() {
                   }
                 },
                 [
-                  _c(
-                    "b-row",
-                    [
-                      _c("p", { staticClass: "col-2 mt-2" }, [
-                        _c("strong", [_vm._v("Senin")])
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-checkbox", {
-                        staticClass: "mt-2 col-1",
-                        attrs: { name: "check-button", switch: "" },
-                        model: {
-                          value: _vm.show.monday,
-                          callback: function($$v) {
-                            _vm.$set(_vm.show, "monday", $$v)
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Senin")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.monday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.monday, "valstatus", $$v)
+                            },
+                            expression: "form.monday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.monday.valstatus)
+                            }
                           },
-                          expression: "show.monday"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.show.monday
-                        ? _c(
-                            "div",
-                            { staticClass: "col-8" },
-                            [
-                              _c("b-form-select", {
-                                staticClass: "ml-3 mb-2 mr-2 col-4",
-                                attrs: { options: _vm.otimes },
-                                model: {
-                                  value: _vm.form.open_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "open_time", $$v)
-                                  },
-                                  expression: "form.open_time"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fas fa-minus mr-2 mt-2"
-                              }),
-                              _vm._v(" "),
-                              _c("b-form-select", {
-                                staticClass: "mb-2 mr-2 col-4",
-                                attrs: { options: _vm.ctimes },
-                                model: {
-                                  value: _vm.form.closing_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "closing_time", $$v)
-                                  },
-                                  expression: "form.closing_time"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.monday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.monday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.monday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.monday, "open_time", $$v)
+                                },
+                                expression: "form.monday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.monday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.monday, "closing_time", $$v)
+                                },
+                                expression: "form.monday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "b-row",
-                    [
-                      _c("p", { staticClass: "col-2 mt-2" }, [
-                        _c("strong", [_vm._v("Selasa")])
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-checkbox", {
-                        staticClass: "mt-2 col-1",
-                        attrs: { name: "check-button", switch: "" },
-                        model: {
-                          value: _vm.show.tuesday,
-                          callback: function($$v) {
-                            _vm.$set(_vm.show, "tuesday", $$v)
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Selasa")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.tuesday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.tuesday, "valstatus", $$v)
+                            },
+                            expression: "form.tuesday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.tuesday.valstatus)
+                            }
                           },
-                          expression: "show.tuesday"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.show.tuesday
-                        ? _c(
-                            "div",
-                            { staticClass: "col-8" },
-                            [
-                              _c("b-form-select", {
-                                staticClass: "ml-3 mb-2 mr-2 col-4",
-                                attrs: { options: _vm.otimes },
-                                model: {
-                                  value: _vm.form.open_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "open_time", $$v)
-                                  },
-                                  expression: "form.open_time"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fas fa-minus mr-2 mt-2"
-                              }),
-                              _vm._v(" "),
-                              _c("b-form-select", {
-                                staticClass: "mb-2 mr-2 col-4",
-                                attrs: { options: _vm.ctimes },
-                                model: {
-                                  value: _vm.form.closing_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "closing_time", $$v)
-                                  },
-                                  expression: "form.closing_time"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.tuesday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.tuesday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.tuesday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.tuesday, "open_time", $$v)
+                                },
+                                expression: "form.tuesday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.tuesday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.tuesday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.tuesday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "b-row",
-                    [
-                      _c("p", { staticClass: "col-2 mt-2" }, [
-                        _c("strong", [_vm._v("Rabu")])
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-checkbox", {
-                        staticClass: "mt-2 col-1",
-                        attrs: { name: "check-button", switch: "" },
-                        model: {
-                          value: _vm.show.wednesday,
-                          callback: function($$v) {
-                            _vm.$set(_vm.show, "wednesday", $$v)
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Rabu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.wednesday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.wednesday, "valstatus", $$v)
+                            },
+                            expression: "form.wednesday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.wednesday.valstatus
+                              )
+                            }
                           },
-                          expression: "show.wednesday"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.show.wednesday
-                        ? _c(
-                            "div",
-                            { staticClass: "col-8" },
-                            [
-                              _c("b-form-select", {
-                                staticClass: "ml-3 mb-2 mr-2 col-4",
-                                attrs: { options: _vm.otimes },
-                                model: {
-                                  value: _vm.form.open_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "open_time", $$v)
-                                  },
-                                  expression: "form.open_time"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fas fa-minus mr-2 mt-2"
-                              }),
-                              _vm._v(" "),
-                              _c("b-form-select", {
-                                staticClass: "mb-2 mr-2 col-4",
-                                attrs: { options: _vm.ctimes },
-                                model: {
-                                  value: _vm.form.closing_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "closing_time", $$v)
-                                  },
-                                  expression: "form.closing_time"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.wednesday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.wednesday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.wednesday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.wednesday, "open_time", $$v)
+                                },
+                                expression: "form.wednesday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.wednesday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.wednesday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.wednesday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "b-row",
-                    [
-                      _c("p", { staticClass: "col-2 mt-2" }, [
-                        _c("strong", [_vm._v("Kamis")])
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-checkbox", {
-                        staticClass: "mt-2 col-1",
-                        attrs: { name: "check-button", switch: "" },
-                        model: {
-                          value: _vm.show.thrusday,
-                          callback: function($$v) {
-                            _vm.$set(_vm.show, "thrusday", $$v)
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Kamis")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.thrusday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.thrusday, "valstatus", $$v)
+                            },
+                            expression: "form.thrusday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.thrusday.valstatus
+                              )
+                            }
                           },
-                          expression: "show.thrusday"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.show.thrusday
-                        ? _c(
-                            "div",
-                            { staticClass: "col-8" },
-                            [
-                              _c("b-form-select", {
-                                staticClass: "ml-3 mb-2 mr-2 col-4",
-                                attrs: { options: _vm.otimes },
-                                model: {
-                                  value: _vm.form.open_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "open_time", $$v)
-                                  },
-                                  expression: "form.open_time"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fas fa-minus mr-2 mt-2"
-                              }),
-                              _vm._v(" "),
-                              _c("b-form-select", {
-                                staticClass: "mb-2 mr-2 col-4",
-                                attrs: { options: _vm.ctimes },
-                                model: {
-                                  value: _vm.form.closing_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "closing_time", $$v)
-                                  },
-                                  expression: "form.closing_time"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.thrusday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.thrusday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.thrusday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.thrusday, "open_time", $$v)
+                                },
+                                expression: "form.thrusday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.thrusday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.thrusday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.thrusday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "b-row",
-                    [
-                      _c("p", { staticClass: "col-2 mt-2" }, [
-                        _c("strong", [_vm._v("Jumat")])
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-checkbox", {
-                        staticClass: "mt-2 col-1",
-                        attrs: { name: "check-button", switch: "" },
-                        model: {
-                          value: _vm.show.friday,
-                          callback: function($$v) {
-                            _vm.$set(_vm.show, "friday", $$v)
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Jumat")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.friday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.friday, "valstatus", $$v)
+                            },
+                            expression: "form.friday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.friday.valstatus)
+                            }
                           },
-                          expression: "show.friday"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.show.friday
-                        ? _c(
-                            "div",
-                            { staticClass: "col-8" },
-                            [
-                              _c("b-form-select", {
-                                staticClass: "ml-3 mb-2 mr-2 col-4",
-                                attrs: { options: _vm.otimes },
-                                model: {
-                                  value: _vm.form.open_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "open_time", $$v)
-                                  },
-                                  expression: "form.open_time"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fas fa-minus mr-2 mt-2"
-                              }),
-                              _vm._v(" "),
-                              _c("b-form-select", {
-                                staticClass: "mb-2 mr-2 col-4",
-                                attrs: { options: _vm.ctimes },
-                                model: {
-                                  value: _vm.form.closing_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "closing_time", $$v)
-                                  },
-                                  expression: "form.closing_time"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.friday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.friday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.friday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.friday, "open_time", $$v)
+                                },
+                                expression: "form.friday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.friday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.friday, "closing_time", $$v)
+                                },
+                                expression: "form.friday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "b-row",
-                    [
-                      _c("p", { staticClass: "col-2 mt-2" }, [
-                        _c("strong", [_vm._v("Sabtu")])
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-checkbox", {
-                        staticClass: "mt-2 col-1",
-                        attrs: { name: "check-button", switch: "" },
-                        model: {
-                          value: _vm.show.saturday,
-                          callback: function($$v) {
-                            _vm.$set(_vm.show, "saturday", $$v)
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Sabtu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.saturday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.saturday, "valstatus", $$v)
+                            },
+                            expression: "form.saturday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.saturday.valstatus
+                              )
+                            }
                           },
-                          expression: "show.saturday"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.show.saturday
-                        ? _c(
-                            "div",
-                            { staticClass: "col-8" },
-                            [
-                              _c("b-form-select", {
-                                staticClass: "ml-3 mb-2 mr-2 col-4",
-                                attrs: { options: _vm.otimes },
-                                model: {
-                                  value: _vm.form.open_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "open_time", $$v)
-                                  },
-                                  expression: "form.open_time"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fas fa-minus mr-2 mt-2"
-                              }),
-                              _vm._v(" "),
-                              _c("b-form-select", {
-                                staticClass: "mb-2 mr-2 col-4",
-                                attrs: { options: _vm.ctimes },
-                                model: {
-                                  value: _vm.form.closing_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "closing_time", $$v)
-                                  },
-                                  expression: "form.closing_time"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  ),
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.saturday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.saturday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.saturday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.saturday, "open_time", $$v)
+                                },
+                                expression: "form.saturday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.saturday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.saturday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.saturday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
-                  _c(
-                    "b-row",
-                    [
-                      _c("p", { staticClass: "col-2 mt-2" }, [
-                        _c("strong", [_vm._v("Minggu")])
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-checkbox", {
-                        staticClass: "mt-2 col-1",
-                        attrs: { name: "check-button", switch: "" },
-                        model: {
-                          value: _vm.show.sunday,
-                          callback: function($$v) {
-                            _vm.$set(_vm.show, "sunday", $$v)
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Minggu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.sunday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.sunday, "valstatus", $$v)
+                            },
+                            expression: "form.sunday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.sunday.valstatus)
+                            }
                           },
-                          expression: "show.sunday"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.show.sunday
-                        ? _c(
-                            "div",
-                            { staticClass: "col-8" },
-                            [
-                              _c("b-form-select", {
-                                staticClass: "ml-3 mb-2 mr-2 col-4",
-                                attrs: { options: _vm.otimes },
-                                model: {
-                                  value: _vm.form.open_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "open_time", $$v)
-                                  },
-                                  expression: "form.open_time"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("i", {
-                                staticClass: "fas fa-minus mr-2 mt-2"
-                              }),
-                              _vm._v(" "),
-                              _c("b-form-select", {
-                                staticClass: "mb-2 mr-2 col-4",
-                                attrs: { options: _vm.ctimes },
-                                model: {
-                                  value: _vm.form.closing_time,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.form, "closing_time", $$v)
-                                  },
-                                  expression: "form.closing_time"
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ],
-                    1
-                  )
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.sunday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.sunday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.sunday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.sunday, "open_time", $$v)
+                                },
+                                expression: "form.sunday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.sunday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.sunday, "closing_time", $$v)
+                                },
+                                expression: "form.sunday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ])
                 ],
                 1
               )
@@ -65631,33 +66250,17 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "spacer-20" }),
+          _c("div", { staticClass: "spacer-50" }),
           _vm._v(" "),
-          _c(
-            "b-form-group",
-            { attrs: { label: "Deskripsi", "label-for": "input-description" } },
-            [
-              _c("b-form-input", {
-                attrs: {
-                  id: "input-description",
-                  required: "",
-                  placeholder: "Masukkan deskripsi lapangan"
-                },
-                model: {
-                  value: _vm.form.description,
-                  callback: function($$v) {
-                    _vm.$set(_vm.form, "description", $$v)
-                  },
-                  expression: "form.description"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("b-form-file", {
-            attrs: { multiple: "", "file-name-formater": _vm.formatName }
-          })
+          _c("div", { staticClass: "d-flex" }, [
+            _c("button", { staticClass: "btn btn-primary ml-auto mr-2" }, [
+              _vm._v("Save")
+            ]),
+            _vm._v(" "),
+            _c("button", { staticClass: "btn btn-danger mr-auto" }, [
+              _vm._v("Cancel")
+            ])
+          ])
         ],
         1
       ),
@@ -65797,6 +66400,797 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationEditComponent.vue?vue&type=template&id=3a13b15b&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationEditComponent.vue?vue&type=template&id=3a13b15b& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "location-add" } },
+    [
+      _c(
+        "b-form",
+        { attrs: { id: "location-form" } },
+        [
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Nama Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-input", {
+                        staticClass: "forminput",
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan nama lokasi"
+                        },
+                        model: {
+                          value: _vm.form.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "name", $$v)
+                          },
+                          expression: "form.name"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Alamat Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-input", {
+                        staticClass: "forminput",
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan alamat lokasi"
+                        },
+                        model: {
+                          value: _vm.form.address,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "address", $$v)
+                          },
+                          expression: "form.address"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Deskripsi Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-textarea", {
+                        staticClass: "forminput",
+                        staticStyle: { height: "100px" },
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan deskripsi lapangan"
+                        },
+                        model: {
+                          value: _vm.form.description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "description", $$v)
+                          },
+                          expression: "form.description"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Foto Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-file", {
+                        attrs: {
+                          multiple: "",
+                          "file-name-formater": _vm.formatName
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-20" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            [
+              _c(
+                "b-button",
+                {
+                  directives: [
+                    {
+                      name: "b-modal",
+                      rawName: "v-b-modal.octime",
+                      modifiers: { octime: true }
+                    }
+                  ],
+                  staticClass: "btn",
+                  staticStyle: { "margin-left": "17.5%" }
+                },
+                [_vm._v("Atur Waktu Buka")]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-modal",
+                {
+                  attrs: {
+                    id: "octime",
+                    size: "lg",
+                    centered: "",
+                    title: "Atur Waktu Buka"
+                  }
+                },
+                [
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Senin")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.monday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.monday, "valstatus", $$v)
+                            },
+                            expression: "form.monday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.monday.valstatus)
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.monday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.monday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.monday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.monday, "open_time", $$v)
+                                },
+                                expression: "form.monday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.monday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.monday, "closing_time", $$v)
+                                },
+                                expression: "form.monday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Selasa")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.tuesday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.tuesday, "valstatus", $$v)
+                            },
+                            expression: "form.tuesday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.tuesday.valstatus)
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.tuesday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.tuesday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.tuesday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.tuesday, "open_time", $$v)
+                                },
+                                expression: "form.tuesday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.tuesday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.tuesday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.tuesday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Rabu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.wednesday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.wednesday, "valstatus", $$v)
+                            },
+                            expression: "form.wednesday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.wednesday.valstatus
+                              )
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.wednesday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.wednesday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.wednesday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.wednesday, "open_time", $$v)
+                                },
+                                expression: "form.wednesday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.wednesday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.wednesday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.wednesday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Kamis")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.thrusday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.thrusday, "valstatus", $$v)
+                            },
+                            expression: "form.thrusday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.thrusday.valstatus
+                              )
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.thrusday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.thrusday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.thrusday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.thrusday, "open_time", $$v)
+                                },
+                                expression: "form.thrusday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.thrusday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.thrusday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.thrusday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Jumat")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.friday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.friday, "valstatus", $$v)
+                            },
+                            expression: "form.friday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.friday.valstatus)
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.friday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.friday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.friday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.friday, "open_time", $$v)
+                                },
+                                expression: "form.friday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.friday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.friday, "closing_time", $$v)
+                                },
+                                expression: "form.friday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Sabtu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.saturday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.saturday, "valstatus", $$v)
+                            },
+                            expression: "form.saturday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.saturday.valstatus
+                              )
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.saturday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.saturday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.saturday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.saturday, "open_time", $$v)
+                                },
+                                expression: "form.saturday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.saturday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.saturday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.saturday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Minggu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.sunday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.sunday, "valstatus", $$v)
+                            },
+                            expression: "form.sunday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.sunday.valstatus)
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.sunday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.sunday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-4",
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.sunday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.sunday, "open_time", $$v)
+                                },
+                                expression: "form.sunday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-4",
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.sunday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.sunday, "closing_time", $$v)
+                                },
+                                expression: "form.sunday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-50" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex" }, [
+            _c("button", { staticClass: "btn btn-primary ml-auto mr-2" }, [
+              _vm._v("Save")
+            ]),
+            _vm._v(" "),
+            _c("button", { staticClass: "btn btn-danger mr-auto" }, [
+              _vm._v("Cancel")
+            ])
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-20" })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationListComponent.vue?vue&type=template&id=59243f47&":
 /*!*******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationListComponent.vue?vue&type=template&id=59243f47& ***!
@@ -65849,7 +67243,11 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-add btn-primary ml-auto",
-              on: { click: _vm.getData }
+              on: {
+                click: function($event) {
+                  return _vm.addLocation()
+                }
+              }
             },
             [_vm._v("ADD")]
           )
@@ -65881,7 +67279,14 @@ var render = function() {
                       [
                         _c(
                           "b-col",
-                          { staticClass: "col-lg-2 col-md-4 col-sm-12" },
+                          {
+                            staticClass: "col-lg-2",
+                            on: {
+                              click: function($event) {
+                                return _vm.detailLocation()
+                              }
+                            }
+                          },
                           [
                             _c("b-card-img", {
                               staticClass: "rounded-0",
@@ -65895,7 +67300,14 @@ var render = function() {
                         _vm._v(" "),
                         _c(
                           "b-col",
-                          { attrs: { md: "6" } },
+                          {
+                            staticClass: "col-lg-9",
+                            on: {
+                              click: function($event) {
+                                return _vm.detailLocation()
+                              }
+                            }
+                          },
                           [
                             _c(
                               "b-card-body",
@@ -65928,10 +67340,19 @@ var render = function() {
                           1
                         ),
                         _vm._v(" "),
-                        _c("div", { staticClass: "ml-auto mt-2 igroup" }, [
-                          _c("i", { staticClass: "material-icons ic" }, [
-                            _vm._v("edit")
-                          ]),
+                        _c("div", { staticClass: "mt-2 igroup col-lg-1" }, [
+                          _c(
+                            "i",
+                            {
+                              staticClass: "material-icons ic",
+                              on: {
+                                click: function($event) {
+                                  return _vm.editLocation()
+                                }
+                              }
+                            },
+                            [_vm._v("edit")]
+                          ),
                           _vm._v(" "),
                           _c("i", { staticClass: "material-icons mr-3 ic" }, [
                             _vm._v("close")
@@ -78184,6 +79605,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('location-list', __webpack_require__(/*! ./components/locationListComponent.vue */ "./resources/js/client/components/locationListComponent.vue")["default"]);
 Vue.component('location-detail', __webpack_require__(/*! ./components/locationDetailComponent.vue */ "./resources/js/client/components/locationDetailComponent.vue")["default"]);
 Vue.component('location-add', __webpack_require__(/*! ./components/locationAddComponent.vue */ "./resources/js/client/components/locationAddComponent.vue")["default"]);
+Vue.component('location-edit', __webpack_require__(/*! ./components/locationEditComponent.vue */ "./resources/js/client/components/locationEditComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -78329,6 +79751,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_locationDetailComponent_vue_vue_type_template_id_19076674___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_locationDetailComponent_vue_vue_type_template_id_19076674___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/client/components/locationEditComponent.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/client/components/locationEditComponent.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _locationEditComponent_vue_vue_type_template_id_3a13b15b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./locationEditComponent.vue?vue&type=template&id=3a13b15b& */ "./resources/js/client/components/locationEditComponent.vue?vue&type=template&id=3a13b15b&");
+/* harmony import */ var _locationEditComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./locationEditComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/locationEditComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _locationEditComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _locationEditComponent_vue_vue_type_template_id_3a13b15b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _locationEditComponent_vue_vue_type_template_id_3a13b15b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/client/components/locationEditComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/client/components/locationEditComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/client/components/locationEditComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_locationEditComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./locationEditComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationEditComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_locationEditComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/client/components/locationEditComponent.vue?vue&type=template&id=3a13b15b&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/client/components/locationEditComponent.vue?vue&type=template&id=3a13b15b& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_locationEditComponent_vue_vue_type_template_id_3a13b15b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./locationEditComponent.vue?vue&type=template&id=3a13b15b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationEditComponent.vue?vue&type=template&id=3a13b15b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_locationEditComponent_vue_vue_type_template_id_3a13b15b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_locationEditComponent_vue_vue_type_template_id_3a13b15b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -30,10 +30,11 @@ class ClientPageController extends Controller
      * @param String $id
      * @return View
      */
-    public function locationDetail($id){
-        $data = base64_decode($id);
+    public function locationDetail(){
+        // $data = base64_decode($id);
         
-        return view('client.locationDetail',['id' => $data]);
+        // return view('client.locationDetail',['id' => $data]);
+        return view('client.locationDetail');
     }
 
     /**
@@ -47,4 +48,14 @@ class ClientPageController extends Controller
         return view('client.locationAdd');
     }
     
+    /**
+     * Display Form Add Location
+     * 
+     * @param String $id
+     * @return View
+     */
+    public function locationEdit(){
+        
+        return view('client.locationEdit');
+    }
 }

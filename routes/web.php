@@ -37,6 +37,7 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
     Route::get('/payment','AdminPageController@payment')->name('payment');
     Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
     Route::get('/locationlist','ClientPageController@locationList')->name('locationlist');
-    Route::get('/locationlist/detail/{id}','ClientPageController@locationDetail')->name('locationdetail');
+    Route::get('/locationdetail','ClientPageController@locationDetail')->name('locationdetail');
     Route::get('/locationadd','ClientPageController@locationAdd')->name('locationadd');
+    Route::get('/locationedit','ClientPageController@locationEdit')->name('locationedit');
 });
