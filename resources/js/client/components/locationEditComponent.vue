@@ -135,8 +135,8 @@
             </div>
             <div class="spacer-50"></div>
             <div class="d-flex">
-                <button class="btn btn-primary ml-auto mr-2">Save</button>
-                <button class="btn btn-danger mr-auto">Cancel</button>
+                <button class="btn btn-primary ml-auto mr-2" @click="save()">Save</button>
+                <button class="btn btn-danger mr-auto" @click="cancel()">Cancel</button>
             </div>
         </b-form>
         <div class="spacer-20"></div>
@@ -212,6 +212,24 @@
             }
         },
         methods: {
+            save : function (){
+                var d = new Date(),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
+                    '/locationlist';
+            },
+            cancel : function (){
+                var d = new Date(),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
+                    '/locationlist';
+            },
             formatNames(files) {
                 if (files.length === 1) {
                 return files[0].name

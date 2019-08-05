@@ -1912,6 +1912,20 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
   },
   methods: {
+    save: function save() {
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/locationlist';
+    },
+    cancel: function cancel() {
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/locationlist';
+    },
     formatNames: function formatNames(files) {
       if (files.length === 1) {
         return files[0].name;
@@ -2336,6 +2350,20 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
   },
   methods: {
+    save: function save() {
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/locationlist';
+    },
+    cancel: function cancel() {
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/locationlist';
+    },
     formatNames: function formatNames(files) {
       if (files.length === 1) {
         return files[0].name;
@@ -66253,13 +66281,31 @@ var render = function() {
           _c("div", { staticClass: "spacer-50" }),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex" }, [
-            _c("button", { staticClass: "btn btn-primary ml-auto mr-2" }, [
-              _vm._v("Save")
-            ]),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary ml-auto mr-2",
+                on: {
+                  click: function($event) {
+                    return _vm.save()
+                  }
+                }
+              },
+              [_vm._v("Save")]
+            ),
             _vm._v(" "),
-            _c("button", { staticClass: "btn btn-danger mr-auto" }, [
-              _vm._v("Cancel")
-            ])
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger mr-auto",
+                on: {
+                  click: function($event) {
+                    return _vm.cancel()
+                  }
+                }
+              },
+              [_vm._v("Cancel")]
+            )
           ])
         ],
         1
@@ -67167,13 +67213,31 @@ var render = function() {
           _c("div", { staticClass: "spacer-50" }),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex" }, [
-            _c("button", { staticClass: "btn btn-primary ml-auto mr-2" }, [
-              _vm._v("Save")
-            ]),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary ml-auto mr-2",
+                on: {
+                  click: function($event) {
+                    return _vm.save()
+                  }
+                }
+              },
+              [_vm._v("Save")]
+            ),
             _vm._v(" "),
-            _c("button", { staticClass: "btn btn-danger mr-auto" }, [
-              _vm._v("Cancel")
-            ])
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger mr-auto",
+                on: {
+                  click: function($event) {
+                    return _vm.cancel()
+                  }
+                }
+              },
+              [_vm._v("Cancel")]
+            )
           ])
         ],
         1
