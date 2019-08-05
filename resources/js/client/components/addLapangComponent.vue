@@ -1,6 +1,6 @@
 <template>
 
-    <div id="content">
+    <div id="addlapang">
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <div class="chooselocation">
                 <b-form-group id="input-group-1" label="Location:" label-for="input-1">
@@ -35,12 +35,16 @@
             <div class="uploadgambar">
                 <b-form-group id="input-group-4" label="Upload Gambar:" label-for="input-4">
                 <b-form-file
+                    multiple 
                     v-model="file"
                     :state="Boolean(file)"
                     placeholder="Choose a file..."
                     drop-placeholder="Drop file here...">
                 </b-form-file>
                 </b-form-group>
+            </div>
+            <div class="buttonadd">
+            <b-button variant="primary">Add</b-button>
             </div>
         </b-form>
 </div>

@@ -1,7 +1,7 @@
 <template>
     <div id="lapang-detail">
         <b-card overlay img-src="https://picsum.photos/900/250/?image=3" img-alt="Gambar Lapangan" 
-        text-variant="white" border-variant="dark"class="image-header">
+        text-variant="white" border-variant="dark" class="image-header">
             <div class="spacer"></div>
             <div class="spacer-30"></div>
             <b-card-text>
@@ -15,8 +15,12 @@
             <b-form-select v-model="selected" :options="options"></b-form-select>
         </div>
         <div class="tabel-jadwal">
-            <b-table :hover="hover" :items="items" :fields="fields">
-                
+            <b-table stripped hover :items="items" :fields="fields">
+                <template slot="Action" slot-scope="data">
+                    <b-button variant="light"  class=" btn btn-detail" @click="detail(data.item.idClient)">Edit</b-button>
+                    ||
+                    <b-button variant="danger" class=" btn btn-detail" @click="detail(data.item.idClient)">Delete</b-button>
+                </template>
             </b-table>
         </div>
     </div>
@@ -39,7 +43,9 @@
                 tipelapang: 'Sintetis',
                 fields: ['Jam', 'Down_Payment', 'Harga', 'Action'],
                 items: [
-                
+                    {Jam:"07.00-12.00",Down_Payment:"50%",Harga:"Rp.120.000",Action:""},
+                    {Jam:"12.00-18.00",Down_Payment:"50%",Harga:"Rp.125.000",Action:""},
+                    {Jam:"18.00-22.00",Down_Payment:"50%",Harga:"Rp.130.000",Action:""},
                 ],
                 selected: null,
                 options: [
@@ -56,7 +62,7 @@
                 perPage: 10,
                 filterSearch: "",
                 url: window.location.origin + window.location.pathname,
-                dataLocation: [
+                dataLocationitem: [
                     {
                         id_location: "001",
                         location_name: "Sarijadi Futsal",

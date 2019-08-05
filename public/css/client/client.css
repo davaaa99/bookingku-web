@@ -16567,6 +16567,7 @@ main {
 #sidebar .logo {
   width: 20px;
   height: 20px;
+  margin-right: 10px;
 }
 
 #sidebar .sidebar {
@@ -16602,13 +16603,13 @@ main {
   font-weight: 500;
   font-size: 15px;
   color: #FFFFFF;
-  padding-left: 20px;
+  padding-left: 30px;
   text-transform: uppercase;
   text-decoration: none;
 }
 
 #sidebar .sidebar .content-side .content-item .content-link i {
-  margin-right: 15px;
+  margin-right: 10px;
   font-size: 17px;
 }
 
@@ -16664,13 +16665,13 @@ main {
 }
 
 .pagination .active a {
-  background: #2796E1;
+  background: #000;
   outline: none !important;
   color: #FFFFFF;
 }
 
 .pagination .active a:focus {
-  background: #2796E1;
+  background: #000;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
@@ -17079,6 +17080,13 @@ main {
   display: inline-block;
 }
 
+#content .gambarlapang {
+  width: 100%;
+  height: 100%;
+  margin: 2 auto;
+  margin-bottom: 10px;
+}
+
 #content .button-variant {
   width: 20px;
   height: 10px;
@@ -17147,6 +17155,7 @@ main {
   height: 40px;
   border-radius: 100px;
   padding: 10px;
+  padding-left: 20px;
   padding-right: 20px;
   color: #73879c;
   border: none;
@@ -17195,6 +17204,10 @@ main {
   margin-left: 50%;
 }
 
+#lapang .filter .filter-item .cardlink {
+  color: #000000;
+}
+
 #lapang-detail .hari {
   width: 20%;
   margin-left: 30px;
@@ -17204,5 +17217,11 @@ main {
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 2%;
+}
+
+#addlapang .buttonadd {
+  float: right;
+  padding-top: 5px;
+  margin-bottom: 1%;
 }
 

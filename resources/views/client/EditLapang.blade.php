@@ -7,7 +7,7 @@
         <div class="spacer-30"></div>
         <div class="title">Edit Lapang </div>
         <div class="spacer-50"></div>
-        <add-lapangan></add-lapangan>
+        <edit-lapangan></edit-lapangan>
         <div class="spacer-50"></div>
         </div>
     </div>

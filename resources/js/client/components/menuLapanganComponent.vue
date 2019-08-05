@@ -24,7 +24,7 @@
                 </div>
                <div class="buttonadd">
                     <b-col offset="10">
-                        <b-button  type="add" variant="primary">Add</b-button>
+                        <a href="addlapang"><b-button  type="add" variant="primary">Add</b-button></a>
                     </b-col>
                 </div>
             </div>
@@ -35,19 +35,20 @@
    
     
     <div class ="cardlapang" v-for="lapangan in dataLapangan" :key="lapangan.dataLapangan">
-        <b-card-group deck>
-      <b-card img-src= "http://www.staradmiral.com/wp-content/uploads/2017/01/Empat-Macam-Lapangan-Futsal.jpg" img-alt="Card image" img-top>
+        <a href="detaillapang" class="cardlink"><b-card-group deck>
+       <b-card>
+        <img class="gambarlapang" :src="lapangan.image" />
         <b-card-title>
           {{lapangan.namalapangan}}
         </b-card-title>
         <b-card-text>
           {{lapangan.jenislapangan}}
         </b-card-text>
-        <b-button variant="light">Edit</b-button>
+        <a href="editlapang"><b-button variant="light">Edit</b-button></a>
         <b-button variant="danger">Delete </b-button>
-      </b-card>
-      
+       </b-card> 
         </b-card-group>
+        </a>
     </div>
 </div>
 </template>

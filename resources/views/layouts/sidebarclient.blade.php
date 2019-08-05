@@ -32,7 +32,7 @@
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('payment') }}" class="content-link">
+                    <a href="{{ route('lapang') }}" class="content-link">
                         <!-- <i class="far fa-credit-card"></i> -->
                         <img class="logo" src="{{ asset('client/field.png')}}" >
                         Field
@@ -40,7 +40,7 @@
                 </div>
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('payment') }}" class="content-link">
-                        <i class="far fa-credit-card"></i>
+                    <img class="logo" src="{{ asset('client/schedule.png')}}" >
                         Schedule
                     </a>
                 </div>

@@ -1747,6 +1747,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1829,6 +1833,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -1838,7 +1846,22 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       namalapang: 'Lapang A',
       tipelapang: 'Sintetis',
       fields: ['Jam', 'Down_Payment', 'Harga', 'Action'],
-      items: [],
+      items: [{
+        Jam: "07.00-12.00",
+        Down_Payment: "50%",
+        Harga: "Rp.120.000",
+        Action: ""
+      }, {
+        Jam: "12.00-18.00",
+        Down_Payment: "50%",
+        Harga: "Rp.125.000",
+        Action: ""
+      }, {
+        Jam: "18.00-22.00",
+        Down_Payment: "50%",
+        Harga: "Rp.130.000",
+        Action: ""
+      }],
       selected: null,
       options: [{
         value: null,
@@ -1868,7 +1891,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       perPage: 10,
       filterSearch: "",
       url: window.location.origin + window.location.pathname,
-      dataLocation: [{
+      dataLocationitem: [{
         id_location: "001",
         location_name: "Sarijadi Futsal",
         location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
@@ -2000,6 +2023,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2059,6 +2086,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
+//
 //
 //
 //
@@ -65121,7 +65149,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "content" } },
+    { attrs: { id: "addlapang" } },
     [
       _vm.show
         ? _c("b-form", { on: { submit: _vm.onSubmit, reset: _vm.onReset } }, [
@@ -65246,6 +65274,7 @@ var render = function() {
                   [
                     _c("b-form-file", {
                       attrs: {
+                        multiple: "",
                         state: Boolean(_vm.file),
                         placeholder: "Choose a file...",
                         "drop-placeholder": "Drop file here..."
@@ -65261,6 +65290,17 @@ var render = function() {
                   ],
                   1
                 )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "buttonadd" },
+              [
+                _c("b-button", { attrs: { variant: "primary" } }, [
+                  _vm._v("Add")
+                ])
               ],
               1
             )
@@ -65347,7 +65387,48 @@ var render = function() {
         { staticClass: "tabel-jadwal" },
         [
           _c("b-table", {
-            attrs: { hover: _vm.hover, items: _vm.items, fields: _vm.fields }
+            attrs: {
+              stripped: "",
+              hover: "",
+              items: _vm.items,
+              fields: _vm.fields
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "Action",
+                fn: function(data) {
+                  return [
+                    _c(
+                      "b-button",
+                      {
+                        staticClass: " btn btn-detail",
+                        attrs: { variant: "light" },
+                        on: {
+                          click: function($event) {
+                            return _vm.detail(data.item.idClient)
+                          }
+                        }
+                      },
+                      [_vm._v("Edit")]
+                    ),
+                    _vm._v("\n                ||\n                "),
+                    _c(
+                      "b-button",
+                      {
+                        staticClass: " btn btn-detail",
+                        attrs: { variant: "danger" },
+                        on: {
+                          click: function($event) {
+                            return _vm.detail(data.item.idClient)
+                          }
+                        }
+                      },
+                      [_vm._v("Delete")]
+                    )
+                  ]
+                }
+              }
+            ])
           })
         ],
         1
@@ -65505,6 +65586,7 @@ var render = function() {
                   [
                     _c("b-form-file", {
                       attrs: {
+                        multiple: "",
                         state: Boolean(_vm.file),
                         placeholder: "Choose a file...",
                         "drop-placeholder": "Drop file here..."
@@ -65520,6 +65602,17 @@ var render = function() {
                   ],
                   1
                 )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "buttonadd" },
+              [
+                _c("b-button", { attrs: { variant: "primary" } }, [
+                  _vm._v("Add")
+                ])
               ],
               1
             )
@@ -65632,18 +65725,20 @@ var render = function() {
               "div",
               { staticClass: "buttonadd" },
               [
-                _c(
-                  "b-col",
-                  { attrs: { offset: "10" } },
-                  [
-                    _c(
-                      "b-button",
-                      { attrs: { type: "add", variant: "primary" } },
-                      [_vm._v("Add")]
-                    )
-                  ],
-                  1
-                )
+                _c("b-col", { attrs: { offset: "10" } }, [
+                  _c(
+                    "a",
+                    { attrs: { href: "addlapang" } },
+                    [
+                      _c(
+                        "b-button",
+                        { attrs: { type: "add", variant: "primary" } },
+                        [_vm._v("Add")]
+                      )
+                    ],
+                    1
+                  )
+                ])
               ],
               1
             )
@@ -65657,51 +65752,61 @@ var render = function() {
           { key: lapangan.dataLapangan, staticClass: "cardlapang" },
           [
             _c(
-              "b-card-group",
-              { attrs: { deck: "" } },
+              "a",
+              { staticClass: "cardlink", attrs: { href: "detaillapang" } },
               [
                 _c(
-                  "b-card",
-                  {
-                    attrs: {
-                      "img-src":
-                        "http://www.staradmiral.com/wp-content/uploads/2017/01/Empat-Macam-Lapangan-Futsal.jpg",
-                      "img-alt": "Card image",
-                      "img-top": ""
-                    }
-                  },
+                  "b-card-group",
+                  { attrs: { deck: "" } },
                   [
-                    _c("b-card-title", [
-                      _vm._v(
-                        "\r\n          " +
-                          _vm._s(lapangan.namalapangan) +
-                          "\r\n        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("b-card-text", [
-                      _vm._v(
-                        "\r\n          " +
-                          _vm._s(lapangan.jenislapangan) +
-                          "\r\n        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("b-button", { attrs: { variant: "light" } }, [
-                      _vm._v("Edit")
-                    ]),
-                    _vm._v(" "),
-                    _c("b-button", { attrs: { variant: "danger" } }, [
-                      _vm._v("Delete ")
-                    ])
+                    _c(
+                      "b-card",
+                      [
+                        _c("img", {
+                          staticClass: "gambarlapang",
+                          attrs: { src: lapangan.image }
+                        }),
+                        _vm._v(" "),
+                        _c("b-card-title", [
+                          _vm._v(
+                            "\r\n          " +
+                              _vm._s(lapangan.namalapangan) +
+                              "\r\n        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("b-card-text", [
+                          _vm._v(
+                            "\r\n          " +
+                              _vm._s(lapangan.jenislapangan) +
+                              "\r\n        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          { attrs: { href: "editlapang" } },
+                          [
+                            _c("b-button", { attrs: { variant: "light" } }, [
+                              _vm._v("Edit")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("b-button", { attrs: { variant: "danger" } }, [
+                          _vm._v("Delete ")
+                        ])
+                      ],
+                      1
+                    )
                   ],
                   1
                 )
               ],
               1
             )
-          ],
-          1
+          ]
         )
       })
     ],
