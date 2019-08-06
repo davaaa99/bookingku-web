@@ -37,6 +37,6 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
     Route::get('/payment','AdminPageController@payment')->name('payment');
     Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
 
-    Route::get('/bookinglist', 'AdminPageController@bookinglist');
+    Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
     Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');
 });

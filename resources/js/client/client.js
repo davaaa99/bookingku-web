@@ -23,8 +23,6 @@ window.Vue = require('vue');
 Vue.component('booking-list', require('./components/bookingListComponent.vue').default);
 Vue.component('add-booking', require('./components/addBookingComponent.vue').default);
 
-Vue.component('client-list', require('../admin/components/clientListComponent.vue').default);
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

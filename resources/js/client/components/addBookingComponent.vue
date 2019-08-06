@@ -1,51 +1,89 @@
 <template>
-    <div>
+    <div id="addbooking">
         <b-form @submit="onSubmit" @reset="onReset">
             <b-form-group>
                 <b-row>
-                    <b-col cols="4">
-                        <label for="location">Lokasi</label>
-                        <b-form-select v-model="selecteLocation" :option="location"></b-form-select>
-                    </b-col>
-                    <b-col cols="4">
-                        <label for="field">Lapang</label>
-                        <b-form-select v-model="selecteField" :option="field"></b-form-select>
-                    </b-col>
-                    <b-col cols="4">
-                        <b-row>
-                            <label for="date">Tanggal</label>
-                        </b-row>
-                        <b-row>
-                            <date-picker v-model="selectedDate" lang="en" :config="date"></date-picker>
-                        </b-row>
-                    </b-col>
-                </b-row>
+                <b-col cols="4">
+                    <label for="location">Lokasi</label>
+                    <b-form-select v-model="selectedLocation" :options="location"></b-form-select>
+                </b-col>
+                <b-col cols="4">
+                    <label for="field">Lapang</label>
+                    <b-form-select v-model="selectedField" :options="field"></b-form-select>
+                </b-col>
+                <b-col cols="4">
+                    <b-row>
+                        <label for="date">Tanggal</label>
+                    </b-row>
+                    <b-row>
+                        <date-picker v-model="selectedDate" lang="en" :config="date"></date-picker>
+                    </b-row>
+                </b-col>
+            </b-row>
             </b-form-group>
             <b-form-group>
-                <b-card-group deck>
-                    <!-- foreach field -->
-                    <b-card border-variant="secondary" header="Lapang A" header-border-variant="white" align="center">
-                        <!-- foreach schedule where field -->
-                        <b-button>08.00-09.00</b-button>
-                        <b-button>09.00-10.00</b-button>
-                        <b-button>10.00-11.00</b-button>
-                        <b-button>11.00-12.00</b-button>
-                    </b-card>
-                    <b-card border-variant="secondary" header="Lapang B" header-border-variant="white" align="center">
-                        <!-- foreach schedule where field -->
-                        <b-button>08.00-09.00</b-button>
-                        <b-button>09.00-10.00</b-button>
-                        <b-button>10.00-11.00</b-button>
-                        <b-button>11.00-12.00</b-button>
-                    </b-card>
-                    <b-card border-variant="secondary" header="Lapang C" header-border-variant="white" align="center">
-                        <!-- foreach schedule where field -->
-                        <b-button>08.00-09.00</b-button>
-                        <b-button>09.00-10.00</b-button>
-                        <b-button>10.00-11.00</b-button>
-                        <b-button>11.00-12.00</b-button>
-                    </b-card>
-                </b-card-group>
+                <b-carousel id="schedule" v-model="schedule" controls indikator @sliding-start="onSlideStart" @sliding-end="onSlideEnd">
+                    <b-card-group deck>
+                        <!-- foreach field -->
+                        <b-carousel-slide>
+                            <b-card border-variant="secondary" header="Lapang A" header-border-variant="white" align="center">
+                                <!-- foreach schedule where field -->
+                                <b-button class="available">08.00-09.00</b-button>
+                                <b-button class="available">09.00-10.00</b-button>
+                                <b-button class="unavailable">10.00-11.00</b-button>
+                                <b-button class="unavailable">11.00-12.00</b-button>
+                                <b-button class="available">12.00-13.00</b-button>
+                                <b-button class="available">13.00-14.00</b-button>
+                                <b-button class="available">14.00-15.00</b-button>
+                                <b-button class="available">15.00-16.00</b-button>
+                                <b-button class="unavailable">16.00-17.00</b-button>
+                                <b-button class="unavailable">17.00-17.00</b-button>
+                                <b-button class="unavailable">18.00-19.00</b-button>
+                                <b-button class="unavailable">19.00-20.00</b-button>
+                                <b-button class="available">20.00-21.00</b-button>
+                                <b-button class="available">21.00-22.00</b-button>
+                            </b-card>
+                        </b-carousel-slide>
+                        <b-carousel-slide>
+                            <b-card border-variant="secondary" header="Lapang B" header-border-variant="white" align="center">
+                                <!-- foreach schedule where field -->
+                                <b-button class="available">08.00-09.00</b-button>
+                                <b-button class="available">09.00-10.00</b-button>
+                                <b-button class="unavailable">10.00-11.00</b-button>
+                                <b-button class="unavailable">11.00-12.00</b-button>
+                                <b-button class="available">12.00-13.00</b-button>
+                                <b-button class="available">13.00-14.00</b-button>
+                                <b-button class="available">14.00-15.00</b-button>
+                                <b-button class="choosed">15.00-16.00</b-button>
+                                <b-button class="unavailable">16.00-17.00</b-button>
+                                <b-button class="unavailable">17.00-17.00</b-button>
+                                <b-button class="unavailable">18.00-19.00</b-button>
+                                <b-button class="unavailable">19.00-20.00</b-button>
+                                <b-button class="available">20.00-21.00</b-button>
+                                <b-button class="available">21.00-22.00</b-button>
+                            </b-card>
+                        </b-carousel-slide>
+                        <b-carousel-slide>
+                            <b-card border-variant="secondary" header="Lapang C" header-border-variant="white" align="center">
+                                <!-- foreach schedule where field -->
+                                <b-button class="available">08.00-09.00</b-button>
+                                <b-button class="available">09.00-10.00</b-button>
+                                <b-button class="unavailable">10.00-11.00</b-button>
+                                <b-button class="unavailable">11.00-12.00</b-button>
+                                <b-button class="available">12.00-13.00</b-button>
+                                <b-button class="available">13.00-14.00</b-button>
+                                <b-button class="available">14.00-15.00</b-button>
+                                <b-button class="available">15.00-16.00</b-button>
+                                <b-button class="unavailable">16.00-17.00</b-button>
+                                <b-button class="unavailable">17.00-17.00</b-button>
+                                <b-button class="unavailable">18.00-19.00</b-button>
+                                <b-button class="unavailable">19.00-20.00</b-button>
+                                <b-button class="available">20.00-21.00</b-button>
+                                <b-button class="available">21.00-22.00</b-button>
+                            </b-card>
+                        </b-carousel-slide> 
+                    </b-card-group>
+                </b-carousel>
             </b-form-group>
             <b-form-group id="input-name"  Label="Nama / Email Pelaggan" label-for="input-name">
                 <b-form-row class="justify-content-md-right">
@@ -81,13 +119,12 @@
                     </b-col>
                 </b-row>
             </b-form-group>
-            
             <b-row class="justify-content-md-right">
                 <b-col col="6" offset="8">
-                    <b-button pill type="reset" variant="outline-primary">
+                    <b-button type="reset" variant="outline-primary" href="bookinglist">
                         <i class="fas fa-arrow-left"></i>
                     </b-button>
-                    <b-button pill type="submit" variant="primary">Continue</b-button>
+                    <b-button type="submit" variant="primary">Continue</b-button>
                 </b-col>
             </b-row>
         </b-form>
@@ -105,31 +142,20 @@
     export default {
         data(){
             return{
-                
+                perPage:20,
+                currentPage:1,
+                selectedLocation: null,
+                location:[{text:'Pilih Lokasi', value:null},'Ciwarug Futsal', 'Sarijadi Futsal'],
+                selectedField: null,
+                field:[{text:'Pilih Lokasi', value:null},'Vinyl', 'Sintetis','Semen'],
                 selectedDate: new Date(),
                 date:{
                     format: 'YYYY/MM/DD',
                     useCurrent:false,
                 },
-                components:{
-                    datePicker
-                },
-                selectedField:null,
-                field:[
-                    { value: null, text: 'Please select an option' },
-                    { value: 'a', text: 'This is First option' },
-                    { value: 'b', text: 'Selected Option' },
-                    { value: { C: '3PO' }, text: 'This is an option with object value' },
-                    { value: 'd', text: 'This one is disabled', disabled: true }
-                ],
-                selectedFieldType:null,
-                fieldType:[
-                    { value: null, text: 'Please select an option' },
-                    { value: 'a', text: 'This is First option' },
-                    { value: 'b', text: 'Selected Option' },
-                    { value: { C: '3PO' }, text: 'This is an option with object value' },
-                    { value: 'd', text: 'This one is disabled', disabled: true }
-                ],
+                // components:{
+                //     datePicker
+                // },
                 "user_email":"",
                 "price":"", //ambil dari db
                 "paymentType":"", 
@@ -140,6 +166,14 @@
             onSubmit(book){
                 book.preventDefault()
                 alert(JSON.stringify(this.form))
+
+                var d = new Date(),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
+                    '/bookinglist';
             },
             onReset(book){
                 book.preventDefault()
@@ -155,6 +189,15 @@
                 this.$nextTick(()=>{
                     this.show=true
                 })
+
+                var d = new Date(),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
+                    '/bookinglist';
+
             }
         }
     }

@@ -91,6 +91,20 @@ main {
 
 
 }
+ 
+
+
+#addbooking{
+    .available{
+         background: rgb(127, 189, 27) !important;
+     }
+    .unavailable{
+        background: #e93a3a !important;
+    }
+    .choosed{
+        background: rgb(106, 176, 223) !important;
+    }
+}
 
 /*------------------------ SIDE BAR ------------------------*/
 #sidebar {
