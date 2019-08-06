@@ -58,4 +58,24 @@ class ClientPageController extends Controller
         
         return view('client.locationEdit');
     }
+
+    /**
+     * Display Form Registration
+     * 
+     * @return View
+     */
+    public function register(){
+        
+        return view('landing.registerPage');
+    }
+
+    /**
+     * Display Form Login
+     * 
+     * @return View
+     */
+    public function login(){
+        
+        return view('landing.loginPage');
+    }
 }

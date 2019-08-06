@@ -36,8 +36,17 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
     Route::get('/clientlist/detaillokasi/detaillapang/{id}','AdminPageController@clientListDetailLapangan')->name('detaillapang');
     Route::get('/payment','AdminPageController@payment')->name('payment');
     Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
+});
+
+/**
+ * Router Group for Client Page
+ */
+Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm'. (string) $now->day], function () {
     Route::get('/locationlist','ClientPageController@locationList')->name('locationlist');
     Route::get('/locationdetail','ClientPageController@locationDetail')->name('locationdetail');
     Route::get('/locationadd','ClientPageController@locationAdd')->name('locationadd');
     Route::get('/locationedit','ClientPageController@locationEdit')->name('locationedit');
+
+    Route::get('/register','ClientPageController@register')->name('clientregister');
+    Route::get('/login','ClientPageController@login')->name('clientlogin');
 });

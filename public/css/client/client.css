@@ -16535,12 +16535,16 @@ main {
   height: 50px;
 }
 
+.spacer-30 {
+  height: 30px;
+}
+
 .spacer-20 {
   height: 20px;
 }
 
-.spacer-30 {
-  height: 30px;
+.spacer-10 {
+  height: 10px;
 }
 
 .table-box {
@@ -16680,6 +16684,197 @@ main {
 
 #location-add #location-form .forminput {
   border-radius: 10px;
+}
+
+#register {
+  min-height: 600px;
+  background-image: url("/images/section-4.png");
+  background-size: cover;
+  height: 100%;
+  background-position: center center;
+}
+
+#register .container {
+  background-color: #FFFFFF;
+  z-index: 1;
+  width: 35%;
+  height: 90%;
+}
+
+#register .container .register-header {
+  font-family: Rajdhani;
+  font-size: 30px;
+  color: black;
+  font-weight: 900;
+}
+
+#register .container .register-header .sub-title {
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  color: #8B8B8B;
+  font-weight: 100;
+}
+
+#register .container #register-form {
+  width: 80%;
+}
+
+#register .container #register-form .register-label {
+  font-family: Source Sans Pro;
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+#register .container #register-form .register-input {
+  border: none;
+  border-bottom: 1px #C7C7DB solid;
+  border-radius: 0px;
+}
+
+#register .container #register-form .register-checkbox {
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  margin-top: 25px;
+  margin-bottom: 2px;
+}
+
+#register .container .register-footer .register-button {
+  border-radius: 4px;
+  font-size: 13px;
+  color: #FFFFFF;
+}
+
+#register .container .register-footer .sub-title {
+  text-decoration: underline;
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  color: #8B8B8B;
+  font-weight: 100;
+}
+
+#register .container .register-footer .sub-title:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 568px) {
+  #register {
+    min-height: 500px;
+  }
+}
+
+#register:after {
+  background: rgba(0, 0, 0, 0.75);
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#login {
+  min-height: 600px;
+  background-image: url("/images/section-1.png");
+  background-size: cover;
+  height: 100%;
+  background-position: center center;
+}
+
+#login .container {
+  background-color: #FFFFFF;
+  z-index: 1;
+  width: 35%;
+  height: 90%;
+}
+
+#login .container .login-header {
+  font-family: Rajdhani;
+  font-size: 30px;
+  color: black;
+  font-weight: 900;
+}
+
+#login .container .login-header .sub-title {
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  color: #8B8B8B;
+  font-weight: 100;
+}
+
+#login .container #login-form {
+  width: 80%;
+}
+
+#login .container #login-form .login-label {
+  font-family: Source Sans Pro;
+  font-weight: bold;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+#login .container #login-form .login-input {
+  border: none;
+  border-bottom: 1px #C7C7DB solid;
+  border-radius: 0px;
+}
+
+#login .container #login-form .login-checkbox {
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  margin-top: 25px;
+  margin-bottom: 2px;
+}
+
+#login .container #login-form .login-checkbox .sub-title:hover {
+  cursor: pointer;
+}
+
+#login .container .login-footer {
+  width: 80%;
+}
+
+#login .container .login-footer .login-button {
+  border-radius: 4px;
+  font-size: 13px;
+  color: #FFFFFF;
+  width: 130px;
+  margin-right: auto;
+}
+
+#login .container .login-footer .signup-button {
+  border-radius: 4px;
+  font-size: 13px;
+  color: #4D4F5C;
+  background-color: #FFFFFF;
+  width: 130px;
+}
+
+#login .container .login-footer .signup-button:hover {
+  color: #FFFFFF;
+  background-color: #4D4F5C;
+}
+
+#login .container .login-footer .sub-title {
+  text-decoration: underline;
+  font-family: Source Sans Pro;
+  font-size: 12px;
+  color: #8B8B8B;
+  font-weight: 100;
+}
+
+@media (max-width: 568px) {
+  #login {
+    min-height: 500px;
+  }
+}
+
+#login:after {
+  background: rgba(0, 0, 0, 0.75);
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 /*------------------------ SIDE BAR ------------------------*/
