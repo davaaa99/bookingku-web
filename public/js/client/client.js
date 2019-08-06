@@ -1751,6 +1751,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1758,8 +1759,7 @@ __webpack_require__.r(__webpack_exports__);
         location: '',
         namalapang: '',
         tipelapang: null,
-        file: null,
-        file2: null
+        file: null
       },
       location: [{
         text: 'Pilih Lokasi',
@@ -1776,20 +1776,6 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit(evt) {
       evt.preventDefault();
       alert(JSON.stringify(this.form));
-    },
-    onReset: function onReset(evt) {
-      var _this = this;
-
-      evt.preventDefault(); // Reset our form values
-
-      this.form.location = null;
-      this.form.namalapang = '';
-      this.form.tipelapang = null; // Trick to reset/clear native browser form validation state
-
-      this.show = false;
-      this.$nextTick(function () {
-        _this.show = true;
-      });
     }
   }
 });
@@ -2027,6 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2034,8 +2021,7 @@ __webpack_require__.r(__webpack_exports__);
         location: 'Bandung',
         namalapang: 'Sarijadi Futsal',
         tipelapang: 'Sintetis',
-        file: null,
-        file2: null
+        file: null
       },
       location: [{
         text: 'Pilih Lokasi',
@@ -65275,18 +65261,25 @@ var render = function() {
                     _c("b-form-file", {
                       attrs: {
                         multiple: "",
-                        state: Boolean(_vm.file),
+                        state: Boolean(_vm.form.file),
                         placeholder: "Choose a file...",
                         "drop-placeholder": "Drop file here..."
                       },
                       model: {
-                        value: _vm.file,
+                        value: _vm.form.file,
                         callback: function($$v) {
-                          _vm.file = $$v
+                          _vm.$set(_vm.form, "file", $$v)
                         },
-                        expression: "file"
+                        expression: "form.file"
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mt-3" }, [
+                      _vm._v(
+                        "Selected file: " +
+                          _vm._s(_vm.form.file ? _vm.form.file.name : "")
+                      )
+                    ])
                   ],
                   1
                 )
@@ -65298,9 +65291,11 @@ var render = function() {
               "div",
               { staticClass: "buttonadd" },
               [
-                _c("b-button", { attrs: { variant: "primary" } }, [
-                  _vm._v("Add")
-                ])
+                _c(
+                  "b-button",
+                  { attrs: { variant: "primary", type: "submit" } },
+                  [_vm._v("Add")]
+                )
               ],
               1
             )
@@ -65587,16 +65582,17 @@ var render = function() {
                     _c("b-form-file", {
                       attrs: {
                         multiple: "",
+                        id: "input-4",
                         state: Boolean(_vm.file),
                         placeholder: "Choose a file...",
                         "drop-placeholder": "Drop file here..."
                       },
                       model: {
-                        value: _vm.file,
+                        value: _vm.form.file,
                         callback: function($$v) {
-                          _vm.file = $$v
+                          _vm.$set(_vm.form, "file", $$v)
                         },
-                        expression: "file"
+                        expression: "form.file"
                       }
                     })
                   ],
@@ -65610,9 +65606,11 @@ var render = function() {
               "div",
               { staticClass: "buttonadd" },
               [
-                _c("b-button", { attrs: { variant: "primary" } }, [
-                  _vm._v("Add")
-                ])
+                _c(
+                  "b-button",
+                  { attrs: { variant: "primary", type: "submit" } },
+                  [_vm._v("Add")]
+                )
               ],
               1
             )

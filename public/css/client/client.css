@@ -16704,7 +16704,7 @@ main {
 }
 
 .pagination .active span:hover {
-  background: #2796E1;
+  background: #000;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
@@ -17121,6 +17121,13 @@ main {
 #lapang .btn-clear {
   color: white;
   font-family: Poppins;
+}
+
+#lapang .selectlokasi {
+  width: 75%;
+  margin-left: 1.5%;
+  margin-right: 5%;
+  display: inline-block;
 }
 
 #lapang .filter .filter-item {

@@ -36,7 +36,8 @@
                 <b-form-group id="input-group-4" label="Upload Gambar:" label-for="input-4">
                 <b-form-file
                     multiple
-                    v-model="file"
+                    id="input-4"
+                    v-model="form.file"
                     :state="Boolean(file)"
                     placeholder="Choose a file..."
                     drop-placeholder="Drop file here...">
@@ -44,7 +45,7 @@
                 </b-form-group>
             </div>
             <div class="buttonadd">
-            <b-button variant="primary">Add</b-button>
+            <b-button variant="primary" type="submit">Add</b-button>
             </div> 
         </b-form>
 </div>
@@ -60,8 +61,7 @@
           location: 'Bandung',
           namalapang: 'Sarijadi Futsal',
           tipelapang: 'Sintetis',
-          file: null,
-          file2: null,
+          file: null
         },
         location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
         tipelapang: [{ text: 'Pilih Tipe Lapang', value: null }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],

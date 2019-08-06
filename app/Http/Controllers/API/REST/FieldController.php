@@ -125,8 +125,9 @@ class FieldController extends Controller
 
         return response()->json([
             'message' => 'Successfully saved data.',
-            'serve' => $field
+            'serve' => view('client.MenuLapangan')
         ], 200);
+        
     }
 
     /**
