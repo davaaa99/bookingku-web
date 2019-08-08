@@ -37,12 +37,12 @@
     <div class ="cardlapang" v-for="lapangan in dataLapangan" :key="lapangan.dataLapangan">
         <a href="detaillapang" class="cardlink"><b-card-group deck>
        <b-card>
-        <img class="gambarlapang" :src="lapangan.image" />
+        <img class="gambarlapang" :src="lapangan.field_photo" />
         <b-card-title>
-          {{lapangan.namalapangan}}
+          {{lapangan.field_name}}
         </b-card-title>
         <b-card-text>
-          {{lapangan.jenislapangan}}
+          {{lapangan.field_type}}
         </b-card-text>
         <a href="editlapang"><b-button variant="light">Edit</b-button></a>
         <b-button variant="danger">Delete </b-button>
@@ -56,6 +56,7 @@
 <script>
     import DatePicker from 'vue2-datepicker'
     import BootstrapVue from 'bootstrap-vue'
+    import Axios from 'axios'
     import {
         type
     } from 'os';
@@ -89,25 +90,37 @@
                         status: 'Progresif Futsal'
                     }
                 ],
-                dataLapangan: [{
-                  namalapangan : 'Lapang A',
-                  jenislapangan: 'Sintetis',
-                  image: 'http://www.staradmiral.com/wp-content/uploads/2017/01/Empat-Macam-Lapangan-Futsal.jpg'
-                },
-                {
-                  namalapangan : 'Lapang B',
-                  jenislapangan: 'Vinyl',
-                  image: 'https://djsport.id/wp-content/uploads/2018/11/futsal-stadium-1024x576.jpg'
-                }
-                ]
+                dataLapangan: [
+                //   namalapangan : 'Lapang A',
+                //   jenislapangan: 'Sintetis',
+                //   image: 'http://www.staradmiral.com/wp-content/uploads/2017/01/Empat-Macam-Lapangan-Futsal.jpg'
+                // },
+                // {
+                //   namalapangan : 'Lapang B',
+                //   jenislapangan: 'Vinyl',
+                //   image: 'https://djsport.id/wp-content/uploads/2018/11/futsal-stadium-1024x576.jpg'
+                // }
+                ],
                 
             };
         },
-        mounted() {
-            this.getData()
-        },
+        created(){
+              let uri = 'http://localhost:8000/api/v1/field';
+              this.axios.get(uri).then(response => {
+                  console.log(response);
+                  this.dataLapangan = response.data.data;   
+              });
+            },
+        // created: function(){
+        //     this.fetchItems();
+        // },
         methods: {
-            
+            // fetchItems(){
+            //   let uri = 'http://127.0.0.1:8000/api/v1/field';
+            //   this.Axios.get(uri).then((response) => {
+            //       this.dataLapangan = response.data;
+            //   });
+            // },
             show: function () {
                 this.status = !this.status;
             },

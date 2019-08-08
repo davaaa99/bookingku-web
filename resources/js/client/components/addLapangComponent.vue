@@ -1,22 +1,22 @@
 <template>
 
     <div id="addlapang">
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-            <div class="chooselocation">
+        <form @submit.prevent="addLapang">
+            <!-- <div class="chooselocation">
                 <b-form-group id="input-group-1" label="Location:" label-for="input-1">
                     <b-form-select
                     id="input-1"
-                    v-model="form.location"
+                    v-model="form.id_location"
                     :options="location"
                     required>
                     </b-form-select>
                 </b-form-group>
-            </div>
+            </div> -->
             <div class="namalapang">
                 <b-form-group id="input-group-2" label="Nama Lapang:" label-for="input-2">
                     <b-form-input
                     id="input-2"
-                    v-model="form.namalapang"
+                    v-model="form.field_name"
                     required
                     placeholder="Masukan Nama Lapang">
                     </b-form-input>
@@ -26,7 +26,7 @@
                 <b-form-group id="input-group-3" label="Tipe Lapang:" label-for="input-3">
                     <b-form-select
                     id="input-3"
-                    v-model="form.tipelapang"
+                    v-model="form.field_type"
                     :options="tipelapang"
                     required>
                     </b-form-select>
@@ -36,18 +36,18 @@
                 <b-form-group id="input-group-4" label="Upload Gambar:" label-for="input-4">
                 <b-form-file
                   multiple=""
-                  v-model="form.file"
-                  :state="Boolean(form.file)"
+                  v-model="form.field_photo"
+                  :state="Boolean(form.field_photo)"
                   placeholder="Choose a file..."
                   drop-placeholder="Drop file here..."
                 ></b-form-file>
-                 <div class="mt-3">Selected file: {{ form.file ? form.file.name : '' }}</div>
+                 <!-- <div class="mt-3">Selected file: {{ form.file ? form.file.name : '' }}</div> -->
                 </b-form-group>
             </div>
             <div class="buttonadd">
-            <b-button variant="primary" type="submit">Add</b-button>
+            <button class="btn btn-primary">Add Lapang</button>
             </div>
-        </b-form>
+        </form>
 </div>
 
 </template>
@@ -57,21 +57,20 @@
   export default {
     data() {
       return {
-        form: {
-          location: '',
-          namalapang: '',
-          tipelapang: null,
-          file: null,
-        },
+        form: {},
         location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
         tipelapang: [{ text: 'Pilih Tipe Lapang', value: null }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
         show: true
       }
     },
+    
     methods: {
-      onSubmit(evt) {
-        evt.preventDefault()
-        alert(JSON.stringify(this.form))
+      addLapang() {
+          let uri = 'http://localhost:8000/api/v1/field';
+          this.axios.post(uri, this.form).then((response) => {
+          // this.$router.push({name: 'fields'});
+          console.log(this.form);
+        });
       }
     }
   }
