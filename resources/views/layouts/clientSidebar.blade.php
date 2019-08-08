@@ -12,27 +12,21 @@
             <div class="spacer-30"></div>
             <div class="content-side">
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('locationlist') }}" class="content-link">
-                        <i class="far fa-clone"></i>
-                        CLIENT PAGE
-                    </a>
-                </div>
-                <div class="content-item d-flex align-items-center">
                     <a href="{{ route('admin') }}" class="content-link">
                         <i class="far fa-clone"></i>
-                        VERIFY BOOKING
+                        DASHBOARD
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('clientlist') }}" class="content-link">
+                    <a href="{{ route('locationlist') }}" class="content-link">
                         <i class="far fa-address-card"></i>
-                        CLIENT LIST
+                        LOCATION
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('payment') }}" class="content-link">
-                        <i class="far fa-credit-card"></i>
-                        PAYMENT
+                    <a href="{{ route('register') }}" class="content-link">
+                        <i class="far fa-address-card"></i>
+                        REGISTER
                     </a>
                 </div>
             </div>

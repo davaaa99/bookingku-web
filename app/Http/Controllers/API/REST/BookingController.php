@@ -9,6 +9,7 @@ use Ramsey\Uuid\Uuid;
 use App\Booking;
 use App\Field;
 use App\Schedule;
+use App\Location;
 
 class BookingController extends Controller
 {
@@ -47,10 +48,9 @@ class BookingController extends Controller
      * Create and store a new booking from user (mobile).
      *
      * @param Request $request
-     * @param String $id_schedule, $client_email
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, $id_schedule, $client_email)
+    public function create(Request $request)
     {
         try {
             $user=Auth::user();
@@ -59,8 +59,8 @@ class BookingController extends Controller
              */
             $booking = new Booking();
             $booking->id_booking = Uuid::uuid1()->getHex();
-            $booking->id_schedule = $id_schedule;
-            $booking->client_email = $client_email;
+            $booking->id_schedule = $request->id_schedule;
+            $booking->client_email = $request->client_email;
             $booking->user_email = $user->email;
             $booking->payment_type = $request->payment_type;
             $booking->payment_status = 0;
@@ -70,7 +70,7 @@ class BookingController extends Controller
             /**
              * Update booking_status in table schedule
              */
-            $schedule = Schedule::find($id_schedule);
+            $schedule = Schedule::find($request->id_schedule);
             $schedule->booking_status = 1;
             $schedule->save();
         } catch (Exception $e) {
@@ -89,10 +89,9 @@ class BookingController extends Controller
      * Create and store a new manual booking.
      *
      * @param \Illuminate\Http\Request  $request
-     * @param String $id_schedule
      * @return \Illuminate\Http\Response
      */
-    public function createBookingManual(Request $request, $id_schedule)
+    public function createBookingManual(Request $request)
     {
         try {
             $client=Auth::user();
@@ -101,7 +100,7 @@ class BookingController extends Controller
              */
             $booking = new Booking();
             $booking->id_booking = Uuid::uuid1()->getHex();
-            $booking->id_schedule = $id_schedule;
+            $booking->id_schedule = $request->id_schedule;
             $booking->client_email = $client->email;
             $booking->user_email = $request->user_email;
             $booking->payment_type = $request->payment_type;
@@ -112,7 +111,7 @@ class BookingController extends Controller
             /**
              * Update booking_status in table schedule
              */
-            $schedule = Schedule::find($id_schedule);
+            $schedule = Schedule::find($request->id_schedule);
             $schedule->booking_status = 1;
             $schedule->save();
 
@@ -131,17 +130,16 @@ class BookingController extends Controller
     /**
      * Display the specified booking based on field and date.
      *
-     * @param  String $id_field, 
-     * @param  Date $date
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function showByField($id_field, $date)
+    public function showByField(Request $request)
     {
         try {
-            $listSchedule = Schedule::where('id_field', $id_field)->get();
+            $listSchedule = Schedule::where('id_field', $request->id_field)->get();
             foreach ($listSchedule as $ds) {
                 $listBooking = Booking::where('id_schedule', $ds->id_schedule)
-                                        ->orwhere('created_at','LIKE',"%$date%")
+                                        ->orwhere('created_at','LIKE',"%$request->date%")
                                         ->get();
             }
         } catch (Exception $e) {
@@ -159,19 +157,18 @@ class BookingController extends Controller
     /**
      * Display the specified booking based on location and date.
      *
-     * @param  String $id_location
-     * @param  Date $date
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function showByLocation($id_location,$date)
+    public function showByLocation(Request $request)
     {
         try {
-            $listField = Field::where('id_location', $id_location)->get();
+            $listField = Field::where('id_location', $request->id_location)->get();
             foreach ($listField as $df) {
                 $dataschedule = Schedule::where('id_field', $df->id_field)->get();
                 foreach ($dataschedule as $ds) {
-                    $listbooking[] = Booking::where('id_schedule', $ds->id_schedule)
-                                                ->orwhere('created_at','LIKE',"%$date%")
+                    $listBooking[] = Booking::where('id_schedule', $ds->id_schedule)
+                                                ->orwhere('created_at','LIKE',"%$request->date%")
                                                 ->get();
                 }
             }
@@ -183,7 +180,7 @@ class BookingController extends Controller
         }
         return response()->json([
             'message' => 'Succesfully retrieved data.',
-            'serve' => $listbooking
+            'serve' => $listBooking
         ], 200);
     }
 

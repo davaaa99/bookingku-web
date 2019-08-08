@@ -96,10 +96,9 @@ class FieldController extends Controller
      * Create and store a new field.
      *
      * @param \Illuminate\Http\Request  $request
-     * @param String $id_location
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request,$id_location)
+    public function create(Request $request)
     {
         try{
             $dataUser = Auth::user();
@@ -108,7 +107,7 @@ class FieldController extends Controller
             $field = new Field();
             $field->id_field = Uuid::uuid1()->getHex();
             $field->id_kind_of_field = $kind_of_field->id_kind_of_field;
-            $field->id_location = $id_location;
+            $field->id_location = $request->id_location;
             $field->field_type = $request->field_type;
             $field->field_name = $request->field_name;
             $field->field_photo = $request->field_photo;
