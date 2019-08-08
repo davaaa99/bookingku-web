@@ -11,12 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'LandingPageController@index')->name('welcome');
 Route::get('/verified/email', 'Auth\VerificationController@verifiedEmail');
