@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class ClientPageController extends Controller
 {
+<<<<<<< HEAD
     /**
      * Display Dashboard
      * 
@@ -77,5 +78,19 @@ class ClientPageController extends Controller
     public function login(){
         
         return view('landing.loginPage');
+=======
+    public function menulapang(){
+        return view('client.MenuLapangan');
+    }
+
+    public function addLapang(){
+        return view('client.AddLapang');
+    }
+    public function editLapang(){
+        return view('client.EditLapang');
+    }
+    public function detailLapang(){
+        return view('client.DetailLapangan');
+>>>>>>> origin/newdava-dev
     }
 }

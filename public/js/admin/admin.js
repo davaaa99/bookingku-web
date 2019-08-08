@@ -2286,7 +2286,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2299,25 +2298,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       filterTanggal: "",
       detailLapangan: [{
-        id: "001",
-        img: "/images/avatar.jpg",
-        namaLapangan: "Amir",
-        jamBooking: [{
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }]
-      }, {
         id: "001",
         img: "/images/avatar.jpg",
         namaLapangan: "Amir",
@@ -74513,27 +74493,31 @@ var render = function() {
                         "div",
                         { staticClass: "link" },
                         _vm._l(_vm.statusList, function(list) {
-                          return _c("div", { staticClass: "link-item" }, [
-                            _c(
-                              "a",
-                              {
-                                on: {
-                                  click: function($event) {
-                                    return _vm.click(list.status)
+                          return _c(
+                            "div",
+                            { key: list.statusList, staticClass: "link-item" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.click(list.status)
+                                    }
                                   }
-                                }
-                              },
-                              [
-                                _c("div", { staticClass: "link-status" }, [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(list.status) +
-                                      "\n                                "
-                                  )
-                                ])
-                              ]
-                            )
-                          ])
+                                },
+                                [
+                                  _c("div", { staticClass: "link-status" }, [
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(list.status) +
+                                        "\n                                "
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
                         }),
                         0
                       )
@@ -74817,59 +74801,64 @@ var render = function() {
     "div",
     { attrs: { id: "detail-lapangan" } },
     _vm._l(_vm.detailLapangan, function(lapangan) {
-      return _c("div", { staticClass: "lapangan" }, [
-        _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
-          _c("div", {
-            staticClass: "image",
-            style: { "background-image": "url(" + lapangan.img + ")" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-12 col-lg-6" }, [
-          _c("div", { staticClass: "nama-lapangan" }, [
-            _vm._v(_vm._s(lapangan.namaLapangan))
+      return _c(
+        "div",
+        { key: lapangan.detailLapangan, staticClass: "lapangan" },
+        [
+          _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
+            _c("div", {
+              staticClass: "image",
+              style: { "background-image": "url(" + lapangan.img + ")" }
+            })
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "jadwal" },
-            [
-              _c("date-picker", {
-                attrs: {
-                  width: "200",
-                  lang: "en",
-                  "input-class": "datepicker",
-                  format: "DD-MM-YYYY"
-                },
-                model: {
-                  value: _vm.filterTanggal,
-                  callback: function($$v) {
-                    _vm.filterTanggal = $$v
+          _c("div", { staticClass: "col-md-12 col-lg-6" }, [
+            _c("div", { staticClass: "nama-lapangan" }, [
+              _vm._v(_vm._s(lapangan.namaLapangan))
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "jadwal" },
+              [
+                _c("date-picker", {
+                  attrs: {
+                    width: "200",
+                    lang: "en",
+                    "input-class": "datepicker",
+                    format: "DD-MM-YYYY"
                   },
-                  expression: "filterTanggal"
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(lapangan.jamBooking, function(jam) {
-                  return _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-5 list-jam d-flex align-items-center justify-content-center"
+                  model: {
+                    value: _vm.filterTanggal,
+                    callback: function($$v) {
+                      _vm.filterTanggal = $$v
                     },
-                    [_vm._v(_vm._s(jam.jam))]
-                  )
+                    expression: "filterTanggal"
+                  }
                 }),
-                0
-              )
-            ],
-            1
-          )
-        ])
-      ])
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(lapangan.jamBooking, function(jam) {
+                    return _c(
+                      "div",
+                      {
+                        key: jam.JamBooking,
+                        staticClass:
+                          "col-5 list-jam d-flex align-items-center justify-content-center"
+                      },
+                      [_vm._v(_vm._s(jam.jam))]
+                    )
+                  }),
+                  0
+                )
+              ],
+              1
+            )
+          ])
+        ]
+      )
     }),
     0
   )
@@ -74941,15 +74930,19 @@ var render = function() {
                       _c(
                         "ul",
                         _vm._l(lokasi.jamBuka, function(list) {
-                          return _c("li", { staticClass: "d-flex" }, [
-                            _c("div", { staticClass: "hari" }, [
-                              _vm._v(_vm._s(list.hari))
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "jam" }, [
-                              _vm._v(": " + _vm._s(list.jam) + " WIB")
-                            ])
-                          ])
+                          return _c(
+                            "li",
+                            { key: list.jamBuka, staticClass: "d-flex" },
+                            [
+                              _c("div", { staticClass: "hari" }, [
+                                _vm._v(_vm._s(list.hari))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "jam" }, [
+                                _vm._v(": " + _vm._s(list.jam) + " WIB")
+                              ])
+                            ]
+                          )
                         }),
                         0
                       )
@@ -75167,7 +75160,7 @@ var render = function() {
               _vm._m(3),
               _vm._v(" "),
               _vm._l(_vm.dataTransaksi, function(dt) {
-                return _c("tr", [
+                return _c("tr", { key: dt.dataTransaksi }, [
                   _c("td", [_vm._v(_vm._s(dt.namaTransaksi))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(dt.tanggal))]),

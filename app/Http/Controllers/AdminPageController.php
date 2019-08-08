@@ -81,5 +81,7 @@ class AdminPageController extends Controller
         $data = base64_decode($id);
         return view('admin.paymentdetail',['id'=>$data]);
     }
+
+    
     
 }

@@ -16535,16 +16535,24 @@ main {
   height: 50px;
 }
 
+<<<<<<< HEAD
 .spacer-30 {
   height: 30px;
 }
 
+=======
+>>>>>>> origin/newdava-dev
 .spacer-20 {
   height: 20px;
 }
 
+<<<<<<< HEAD
 .spacer-10 {
   height: 10px;
+=======
+.spacer-30 {
+  height: 30px;
+>>>>>>> origin/newdava-dev
 }
 
 .table-box {
@@ -16566,6 +16574,7 @@ main {
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 /*------------------------ LOCATION ------------------------*/
 
 #location-list .item-list .card {
@@ -16592,13 +16601,106 @@ main {
 }
 
 #location-list .pagination li a {
+=======
+/*------------------------ SIDE BAR ------------------------*/
+
+#sidebar .logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+#sidebar .sidebar {
+  background: #156183;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  flex-grow: 0;
+  flex-shrink: 0;
+  color: white;
+  width: 250px;
+  height: 100vh;
+  padding: 20px;
+}
+
+#sidebar .sidebar.fixed-top {
+  position: fixed;
+  top: 0px;
+}
+
+#sidebar .sidebar .brand a img {
+  height: 40px;
+  width: 40px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+#sidebar .sidebar .content-side .content-item {
+  margin-bottom: 15px;
+}
+
+#sidebar .sidebar .content-side .content-item .content-link {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  color: #FFFFFF;
+  padding-left: 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+#sidebar .sidebar .content-side .content-item .content-link i {
+  margin-right: 10px;
+  font-size: 17px;
+}
+
+/*------------------------ LIST ------------------------*/
+
+#my-table thead {
+  background: #3A69B7 !important;
+  font-family: Poppins;
+  font-style: normal;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+#my-table thead th {
+  text-align: center;
+}
+
+#my-table tbody {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  color: #4D4D4D;
+}
+
+#my-table tbody tr td {
+  text-align: center;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#my-table tbody tr td .btn-detail {
+  background: #3FB5E1;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #FFFFFF;
+}
+
+.pagination li a {
+>>>>>>> origin/newdava-dev
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
   margin-right: 10px;
 }
 
+<<<<<<< HEAD
 #location-list .pagination li span {
+=======
+.pagination li span {
+>>>>>>> origin/newdava-dev
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
@@ -16607,27 +16709,45 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 #location-list .pagination .active a {
   background: #2796E1;
+=======
+.pagination .active a {
+  background: #000;
+>>>>>>> origin/newdava-dev
   outline: none !important;
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 #location-list .pagination .active a:focus {
   background: #2796E1;
+=======
+.pagination .active a:focus {
+  background: #000;
+>>>>>>> origin/newdava-dev
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
+<<<<<<< HEAD
 #location-list .pagination .active a:hover {
+=======
+.pagination .active a:hover {
+>>>>>>> origin/newdava-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
+<<<<<<< HEAD
 #location-list .pagination .active span {
+=======
+.pagination .active span {
+>>>>>>> origin/newdava-dev
   background: #2796E1;
   outline: none !important;
   color: #FFFFFF;
@@ -16637,7 +16757,11 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 #location-list .pagination .active span:focus {
+=======
+.pagination .active span:focus {
+>>>>>>> origin/newdava-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -16646,7 +16770,11 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 #location-list .pagination .active span:hover {
+=======
+.pagination .active span:hover {
+>>>>>>> origin/newdava-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -16655,6 +16783,7 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 #location-detail .image-header {
   width: 100%;
 }
@@ -16932,10 +17061,420 @@ main {
 }
 
 #list .btn-clear {
+=======
+/*------------------------ VERIFY BOOKING ------------------------*/
+
+#verify-booking {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*------------------------ VERIFY BOOKING DETAIL ------------------------*/
+
+#verifyBookingDetail {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#verifyBookingDetail .table-box {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+#verifyBookingDetail .table-box .detail {
+  border: 1px solid #EBECF1;
+  padding: 30px;
+}
+
+#verifyBookingDetail .table-box .detail table {
+  width: 100%;
+}
+
+#verifyBookingDetail .table-box .detail table tr td,
+#verifyBookingDetail .table-box .detail table tr th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  font-family: Poppins;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  color: #4D4D4D;
+  border-bottom: 1px solid #EBECF1;
+}
+
+#verifyBookingDetail .table-box .detail table tr td .buktipembayaran,
+#verifyBookingDetail .table-box .detail table tr th .buktipembayaran {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol {
+  padding-top: 30px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .btn {
+  width: 150px;
+  height: 40px;
+  border-radius: 4px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .accept {
+  background: #4ABA70;
+  margin-right: 30px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .decline {
+  background: #FF3636;
+}
+
+#client {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*------------------------ DETAIL LOKASI ------------------------*/
+
+#detaillokasi {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#detaillokasi .lokasi {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 50px;
+  background: #FFFFFF;
+  border: 1px solid #E1E1E1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 990px) {
+  #detaillokasi .lokasi {
+    display: flex;
+  }
+}
+
+#detaillokasi .lokasi .image {
+  padding-right: 20px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (max-width: 990px) {
+  #detaillokasi .lokasi .image {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  #detaillokasi .lokasi .image {
+    height: 200px;
+  }
+}
+
+#detaillokasi .lokasi .desc {
+  padding-left: 20px;
+  color: #5C5C5C;
+}
+
+#detaillokasi .lokasi .desc .item {
+  margin-bottom: 20px;
+}
+
+#detaillokasi .lokasi .desc .item i {
+  font-size: 15px;
+  color: #C0C0C0;
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .title-list {
+  margin-right: 10px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam {
+  margin-top: 10px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul {
+  list-style: none;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul li .jam {
+  margin-left: 20px;
+}
+
+#detaillokasi .lokasi .desc .nama-client {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 20px;
+  color: #414141;
+}
+
+#detaillokasi .lokasi .btn {
+  max-width: 290.2px;
+  height: 49.16px;
+  font-size: 15px;
+  font-family: Poppins;
+  color: #FFFFFF;
+  background: #3A69B7;
+  border-radius: 4px;
+}
+
+/*------------------------ DETAIL LAPANGAN ------------------------*/
+
+#detailapangan {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#detailapangan .lapangan {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 50px;
+  background: #FFFFFF;
+  border: 1px solid #E1E1E1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 990px) {
+  #detailapangan .lapangan {
+    display: flex;
+  }
+}
+
+#detailapangan .lapangan .image {
+  padding-right: 20px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (max-width: 990px) {
+  #detailapangan .lapangan .image {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  #detailapangan .lapangan .image {
+    height: 200px;
+  }
+}
+
+#detailapangan .lapangan .nama-lapangan {
+  margin-bottom: 10px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  color: #414141;
+}
+
+#detailapangan .lapangan .jadwal .datepicker {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 4px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #73879c !important;
+  border: none;
+  margin-bottom: 10px;
+  border: 1px solid #73879c;
+}
+
+#detailapangan .lapangan .jadwal .list-jam {
+  border: 1px solid #73879c;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Poopins;
+  font-size: 18px;
+  text-align: center;
+  color: #73879c;
+  margin-left: 15px;
+  margin-top: 10px;
+  height: 30px;
+}
+
+@media (max-width: 1099px) {
+  #detailapangan .lapangan .jadwal .list-jam {
+    font-size: 14px;
+  }
+}
+
+#payment {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#paymentdetail {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#paymentdetail .table-box {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#paymentdetail .table-box .header {
+  padding-right: 15px;
+}
+
+#paymentdetail .table-box .header .brand {
+  width: 50px;
+  height: 50px;
+}
+
+#paymentdetail .table-box .item {
+  text-align: right;
+}
+
+#paymentdetail .table-box .item .sub-title {
+  font-family: Poppins;
+  font-style: normal;
+  font-size: 15px;
+  text-align: right;
+  color: black;
+}
+
+#paymentdetail .table-box .item .sub-item {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  color: black;
+}
+
+#paymentdetail .table-box .desc .penerima {
+  padding-right: 50px;
+}
+
+#paymentdetail .table-box .desc .pengirim {
+  padding-left: 50px;
+}
+
+#paymentdetail .table-box .desc .sub-title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+#paymentdetail .table-box .desc .desc-item {
+  margin-bottom: 10px;
+  font-family: Poppins;
+  font-size: 11px;
+}
+
+#paymentdetail .table-box .row {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#paymentdetail .table-box .row table {
+  width: 100%;
+  border-left: 1px solid #E1E1E1;
+  border-top: 1px solid #E1E1E1;
+  border-bottom: 1px solid #E1E1E1;
+  border-right: 1px solid #E1E1E1;
+}
+
+#paymentdetail .table-box .row table tr th {
+  font-size: 11px;
+}
+
+#paymentdetail .table-box .row table tr td {
+  font-size: 11px;
+  font-family: Poppins;
+}
+
+#paymentdetail .table-box .row table tr td,
+#paymentdetail .table-box .row table tr th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#paymentdetail .table-box .row .total {
+  max-width: 50%;
+}
+
+#paymentdetail .table-box .row .btn {
+  background: #3A69B7;
+  border-radius: 4px;
+  width: 200px;
+  height: 50px;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+
+/*------------------------ MENU LAPANGAN ------------------------*/
+
+#content .cardlapang {
+  display: inline-block;
+}
+
+#content .gambarlapang {
+  width: 100%;
+  height: 100%;
+  margin: 2 auto;
+  margin-bottom: 10px;
+}
+
+#content .button-variant {
+  width: 20px;
+  height: 10px;
+}
+
+#content .card-img-top {
+  width: 100%;
+  height: 300px;
+}
+
+#content .card:hover {
+  background: lightgray;
+}
+
+#content .card {
+  display: inline-block;
+}
+
+#content .card-deck {
+  width: 500px;
+  height: 500px;
+  margin: 20px auto;
+  display: inline-block;
+}
+
+#carilokasi {
+  padding-left: 10px;
+}
+
+/*------------------------ MENU LAPANGAN ------------------------*/
+
+#lapang .btn-clear {
+>>>>>>> origin/newdava-dev
   color: white;
   font-family: Poppins;
 }
 
+<<<<<<< HEAD
 #list .filter .filter-item {
   font-size: 13px;
 }
@@ -16949,6 +17488,21 @@ main {
 }
 
 #list .filter .filter-item .datepicker {
+=======
+#lapang .filter .filter-item {
+  font-size: 13px;
+}
+
+#lapang .filter .filter-item input:focus {
+  outline: none;
+}
+
+#lapang .filter .filter-item select:focus {
+  outline: none;
+}
+
+#lapang .filter .filter-item .datepicker {
+>>>>>>> origin/newdava-dev
   display: flex;
   align-items: center;
   height: 40px;
@@ -16963,8 +17517,13 @@ main {
   border: 1px solid #73879c;
 }
 
+<<<<<<< HEAD
 #list .filter .filter-item .filterStatus .filterTitle {
   width: 200px;
+=======
+#lapang .filter .filter-item .filterStatus .filterTitle {
+  width: 300px;
+>>>>>>> origin/newdava-dev
   height: 40px;
   border-radius: 100px;
   padding: 10px;
@@ -16972,6 +17531,7 @@ main {
   padding-right: 20px;
   color: #73879c;
   border: none;
+<<<<<<< HEAD
   margin-left: 30px;
   border: 1px solid #73879c;
 }
@@ -16988,11 +17548,34 @@ main {
   padding-top: 10px;
   padding-bottom: 10px;
   width: 180px;
+=======
+  margin-left: 10px;
+  border: 1px solid #73879c;
+}
+
+#lapang .filter .filter-item .filterStatus .box {
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  margin-top: 0px;
+  margin-left: 10px;
+}
+
+#lapang .filter .filter-item .filterStatus .box .link {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 280px;
+  padding-left: 10px;
+>>>>>>> origin/newdava-dev
   background: white;
   box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
 }
 
+<<<<<<< HEAD
 #list .filter .filter-item .filterStatus .box .link .link-item {
+=======
+#lapang .filter .filter-item .filterStatus .box .link .link-item {
+>>>>>>> origin/newdava-dev
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;
@@ -17003,6 +17586,7 @@ main {
   color: #73879c;
 }
 
+<<<<<<< HEAD
 #list .filter .filter-item .filterStatus .box .link .link-item:hover {
   background: #f5f7fa;
 }
@@ -17122,3 +17706,39 @@ main {
 
 /*------------------------ DETAIL LOKASI ------------------------*/
 
+=======
+#lapang .filter .filter-item .filterStatus .box .link .link-item:hover {
+  background: #f5f7fa;
+}
+
+#lapang .filter .filter-item .filterStatus .box .link .link-item .link-status {
+  width: 180px;
+}
+
+#lapang .filter .filter-item .buttonadd {
+  position: relative;
+  margin-left: 50%;
+}
+
+#lapang .filter .filter-item .cardlink {
+  color: #000000;
+}
+
+#lapang-detail .hari {
+  width: 20%;
+  margin-left: 30px;
+}
+
+#lapang-detail .tabel-jadwal {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+#addlapang .buttonadd {
+  float: right;
+  padding-top: 5px;
+  margin-bottom: 1%;
+}
+
+>>>>>>> origin/newdava-dev
