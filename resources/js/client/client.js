@@ -21,6 +21,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Vue.component('register-component', require('./components/registerComponent.vue').default);
 Vue.component('login-component', require('./components/loginComponent.vue').default);
 Vue.component('location-list', require('./components/locationListComponent.vue').default);
@@ -35,6 +36,12 @@ Vue.component('add-lapangan', require('./components/addLapangComponent.vue').def
 Vue.component('edit-lapangan', require('./components/editLapangComponent.vue').default);
 Vue.component('detail-lapangan', require('./components/detailLapangComponent.vue').default);
 >>>>>>> origin/newdava-dev
+=======
+Vue.component('manage-schedule', require('./components/manageScheduleComponent.vue').default);
+Vue.component('client-list', require('../admin/components/clientListComponent.vue').default);
+
+
+>>>>>>> origin/qotrun-dev
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

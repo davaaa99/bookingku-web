@@ -16536,16 +16536,20 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .spacer-30 {
   height: 30px;
 }
 
 =======
 >>>>>>> origin/newdava-dev
+=======
+>>>>>>> origin/qotrun-dev
 .spacer-20 {
   height: 20px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .spacer-10 {
   height: 10px;
@@ -16553,6 +16557,10 @@ main {
 .spacer-30 {
   height: 30px;
 >>>>>>> origin/newdava-dev
+=======
+.spacer-30 {
+  height: 30px;
+>>>>>>> origin/qotrun-dev
 }
 
 .table-box {
@@ -16574,6 +16582,7 @@ main {
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /*------------------------ LOCATION ------------------------*/
 
@@ -16612,6 +16621,12 @@ main {
 
 #sidebar .sidebar {
   background: #156183;
+=======
+/*------------------------ SIDE BAR ------------------------*/
+
+#sidebar .sidebar {
+  background: #212120;
+>>>>>>> origin/qotrun-dev
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   flex-grow: 0;
   flex-shrink: 0;
@@ -16642,13 +16657,19 @@ main {
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
+<<<<<<< HEAD
   color: #FFFFFF;
   padding-left: 30px;
+=======
+  color: #8B8B8B;
+  padding-left: 20px;
+>>>>>>> origin/qotrun-dev
   text-transform: uppercase;
   text-decoration: none;
 }
 
 #sidebar .sidebar .content-side .content-item .content-link i {
+<<<<<<< HEAD
   margin-right: 10px;
   font-size: 17px;
 }
@@ -16656,6 +16677,107 @@ main {
 /*------------------------ LIST ------------------------*/
 
 #my-table thead {
+=======
+  margin-right: 15px;
+  font-size: 17px;
+}
+
+/*------------------------  LIST  ------------------------*/
+
+#list .btn-clear {
+  color: white;
+  font-family: Poppins;
+}
+
+#list .filter .filter-item {
+  font-size: 13px;
+}
+
+#list .filter .filter-item input:focus {
+  outline: none;
+}
+
+#list .filter .filter-item select:focus {
+  outline: none;
+}
+
+#list .filter .filter-item .datepicker {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #73879c !important;
+  border: none;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #73879c;
+}
+
+#list .filter .filter-item .filterStatus .filterTitle {
+  width: 200px;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #73879c;
+  border: none;
+  margin-left: 30px;
+  border: 1px solid #73879c;
+}
+
+#list .filter .filter-item .filterStatus .box {
+  position: absolute;
+  z-index: 1;
+  width: 200px;
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+#list .filter .filter-item .filterStatus .box .link {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 180px;
+  background: white;
+  box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+}
+
+#list .filter .filter-item .filterStatus .box .link .link-item {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  color: #73879c;
+}
+
+#list .filter .filter-item .filterStatus .box .link .link-item:hover {
+  background: #f5f7fa;
+}
+
+#list .filter .filter-item .filterStatus .box .link .link-item .link-status {
+  width: 180px;
+}
+
+#list .filter .filter-item .search {
+  border: 1px solid #73879c;
+  border-radius: 100px;
+  padding: 20px;
+  height: 40px;
+  width: 200px;
+}
+
+#list .filter .filter-item .search .filterSearch {
+  border: none;
+}
+
+#list #my-table thead {
+>>>>>>> origin/qotrun-dev
   background: #3A69B7 !important;
   font-family: Poppins;
   font-style: normal;
@@ -16663,11 +16785,19 @@ main {
   font-size: 14px;
 }
 
+<<<<<<< HEAD
 #my-table thead th {
   text-align: center;
 }
 
 #my-table tbody {
+=======
+#list #my-table thead th {
+  text-align: center;
+}
+
+#list #my-table tbody {
+>>>>>>> origin/qotrun-dev
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -16675,21 +16805,33 @@ main {
   color: #4D4D4D;
 }
 
+<<<<<<< HEAD
 #my-table tbody tr td {
+=======
+#list #my-table tbody tr td {
+>>>>>>> origin/qotrun-dev
   text-align: center;
   padding-left: 7px;
   padding-right: 7px;
 }
 
+<<<<<<< HEAD
 #my-table tbody tr td .btn-detail {
+=======
+#list #my-table tbody tr td .btn-detail {
+>>>>>>> origin/qotrun-dev
   background: #3FB5E1;
   border-radius: 4px;
   font-size: 13px;
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 .pagination li a {
 >>>>>>> origin/newdava-dev
+=======
+#list .pagination li a {
+>>>>>>> origin/qotrun-dev
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
@@ -16697,10 +16839,14 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #location-list .pagination li span {
 =======
 .pagination li span {
 >>>>>>> origin/newdava-dev
+=======
+#list .pagination li span {
+>>>>>>> origin/qotrun-dev
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
@@ -16709,6 +16855,7 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #location-list .pagination .active a {
   background: #2796E1;
@@ -16716,10 +16863,15 @@ main {
 .pagination .active a {
   background: #000;
 >>>>>>> origin/newdava-dev
+=======
+#list .pagination .active a {
+  background: #2796E1;
+>>>>>>> origin/qotrun-dev
   outline: none !important;
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #location-list .pagination .active a:focus {
   background: #2796E1;
@@ -16727,16 +16879,24 @@ main {
 .pagination .active a:focus {
   background: #000;
 >>>>>>> origin/newdava-dev
+=======
+#list .pagination .active a:focus {
+  background: #2796E1;
+>>>>>>> origin/qotrun-dev
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #location-list .pagination .active a:hover {
 =======
 .pagination .active a:hover {
 >>>>>>> origin/newdava-dev
+=======
+#list .pagination .active a:hover {
+>>>>>>> origin/qotrun-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -16744,10 +16904,14 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #location-list .pagination .active span {
 =======
 .pagination .active span {
 >>>>>>> origin/newdava-dev
+=======
+#list .pagination .active span {
+>>>>>>> origin/qotrun-dev
   background: #2796E1;
   outline: none !important;
   color: #FFFFFF;
@@ -16758,10 +16922,14 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #location-list .pagination .active span:focus {
 =======
 .pagination .active span:focus {
 >>>>>>> origin/newdava-dev
+=======
+#list .pagination .active span:focus {
+>>>>>>> origin/qotrun-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -16771,10 +16939,14 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #location-list .pagination .active span:hover {
 =======
 .pagination .active span:hover {
 >>>>>>> origin/newdava-dev
+=======
+#list .pagination .active span:hover {
+>>>>>>> origin/qotrun-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -16783,6 +16955,7 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #location-detail .image-header {
   width: 100%;
@@ -17182,6 +17355,128 @@ main {
 #detaillokasi .lokasi .desc {
   padding-left: 20px;
   color: #5C5C5C;
+=======
+/*------------------------ VERIFY BOOKING ------------------------*/
+
+#verify-booking {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*------------------------ VERIFY BOOKING DETAIL ------------------------*/
+
+#verifyBookingDetail {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#verifyBookingDetail .table-box {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+#verifyBookingDetail .table-box .detail {
+  border: 1px solid #EBECF1;
+  padding: 30px;
+}
+
+#verifyBookingDetail .table-box .detail table {
+  width: 100%;
+}
+
+#verifyBookingDetail .table-box .detail table tr td,
+#verifyBookingDetail .table-box .detail table tr th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  font-family: Poppins;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  color: #4D4D4D;
+  border-bottom: 1px solid #EBECF1;
+}
+
+#verifyBookingDetail .table-box .detail table tr td .buktipembayaran,
+#verifyBookingDetail .table-box .detail table tr th .buktipembayaran {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol {
+  padding-top: 30px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .btn {
+  width: 150px;
+  height: 40px;
+  border-radius: 4px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .accept {
+  background: #4ABA70;
+  margin-right: 30px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .decline {
+  background: #FF3636;
+}
+
+#client {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*------------------------ DETAIL LOKASI ------------------------*/
+
+#detaillokasi {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#detaillokasi .lokasi {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 50px;
+  background: #FFFFFF;
+  border: 1px solid #E1E1E1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 990px) {
+  #detaillokasi .lokasi {
+    display: flex;
+  }
+}
+
+#detaillokasi .lokasi .image {
+  padding-right: 20px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (max-width: 990px) {
+  #detaillokasi .lokasi .image {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  #detaillokasi .lokasi .image {
+    height: 200px;
+  }
+}
+
+#detaillokasi .lokasi .desc {
+  padding-left: 20px;
+  color: #5C5C5C;
+>>>>>>> origin/qotrun-dev
 }
 
 #detaillokasi .lokasi .desc .item {
@@ -17424,6 +17719,7 @@ main {
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 /*------------------------ MENU LAPANGAN ------------------------*/
 
 #content .cardlapang {
@@ -17742,3 +18038,5 @@ main {
 }
 
 >>>>>>> origin/newdava-dev
+=======
+>>>>>>> origin/qotrun-dev

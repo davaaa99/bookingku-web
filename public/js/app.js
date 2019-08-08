@@ -49553,7 +49553,10 @@ __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\app.js */"./r
 __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\admin.scss */"./resources/sass/admin.scss");
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\client.scss */"./resources/sass/client.scss");
+<<<<<<< HEAD
 >>>>>>> origin/newdava-dev
+=======
+>>>>>>> origin/qotrun-dev
 
 
 /***/ })

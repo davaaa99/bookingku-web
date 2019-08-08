@@ -19,9 +19,12 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/client/client.css') }}">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 =======
 >>>>>>> origin/newdava-dev
+=======
+>>>>>>> origin/qotrun-dev
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
@@ -32,10 +35,14 @@
 <body>
     <div id="app">
 <<<<<<< HEAD
+<<<<<<< HEAD
         @include('layouts.clientSidebar')
 =======
         @include('layouts.sidebarclient')
 >>>>>>> origin/newdava-dev
+=======
+        @include('layouts.clientSidebar')
+>>>>>>> origin/qotrun-dev
         <main>
             <div class="jumbotron jumbotron-fluid"></div>
             <div class="content">

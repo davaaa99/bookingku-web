@@ -45,9 +45,13 @@ main {
     padding-left: 250px;
     margin-top: -180px;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // margin-top: 67px;
 >>>>>>> origin/newdava-dev
+=======
+    // margin-top: 67px;
+>>>>>>> origin/qotrun-dev
 }
 
 .title {
@@ -67,16 +71,20 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .spacer-30 {
     height: 30px;
 }
 
 =======
 >>>>>>> origin/newdava-dev
+=======
+>>>>>>> origin/qotrun-dev
 .spacer-20 {
     height: 20px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .spacer-10 {
     height: 10px;
@@ -84,6 +92,10 @@ main {
 .spacer-30 {
     height: 30px;
 >>>>>>> origin/newdava-dev
+=======
+.spacer-30 {
+    height: 30px;
+>>>>>>> origin/qotrun-dev
 }
 
 .table-box {
@@ -107,6 +119,7 @@ main {
 
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /*------------------------ LOCATION ------------------------*/
 #location-list {
@@ -134,6 +147,12 @@ main {
     }
     .sidebar {
         background :#156183;
+=======
+/*------------------------ SIDE BAR ------------------------*/
+#sidebar {
+    .sidebar {
+        background: $black-side;
+>>>>>>> origin/qotrun-dev
         box-shadow: $box-shadow;
         flex-grow: 0;
         flex-shrink: 0;
@@ -168,19 +187,30 @@ main {
                     font-style: normal;
                     font-weight: 500;
                     font-size: 15px;
+<<<<<<< HEAD
                     color: #FFFFFF;
                     padding-left: 30px;
+=======
+                    color: #8B8B8B;
+                    padding-left: 20px;
+>>>>>>> origin/qotrun-dev
                     text-transform: uppercase;
                     text-decoration: none;
 
                     i {
+<<<<<<< HEAD
                         margin-right: 10px;
                         font-size: 17px;
 >>>>>>> origin/newdava-dev
+=======
+                        margin-right: 15px;
+                        font-size: 17px;
+>>>>>>> origin/qotrun-dev
                     }
                 }
             }
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
         .card:hover {
@@ -188,13 +218,129 @@ main {
             cursor: pointer;
         }
 =======
+=======
+>>>>>>> origin/qotrun-dev
     }
 
 }
 
 
 
+<<<<<<< HEAD
 /*------------------------ LIST ------------------------*/
+=======
+/*------------------------  LIST  ------------------------*/
+
+#list {
+    .btn-clear {
+        // background: $filter-color;
+        color: white;
+        font-family: Poppins;
+    }
+
+    .filter {
+
+
+        .filter-item {
+            font-size: 13px;
+
+            input {
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            select {
+                &:focus {
+                    outline: none;
+                }
+            }
+
+
+            .datepicker {
+                display: flex;
+                align-items: center;
+                height: 40px;
+                border-radius: 100px;
+                padding: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: #73879c !important;
+                border: none;
+                margin-right: 30px;
+                margin-bottom: 10px;
+                border: 1px solid #73879c;
+            }
+
+            .filterStatus {
+                .filterTitle {
+                    width: 200px;
+                    height: 40px;
+                    border-radius: 100px;
+                    padding: 10px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    color: #73879c;
+                    border: none;
+                    margin-left: 30px;
+                    border: 1px solid #73879c;
+                }
+
+                .box {
+                    position: absolute;
+                    z-index: 1;
+                    width: 200px;
+                    margin-top: 10px;
+                    margin-left: 30px;
+
+                    .link {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        width: 180px;
+                        background: white;
+                        -webkit-box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+                        -moz-box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+                        box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+
+                        .link-item {
+                            padding-left: 15px;
+                            padding-right: 15px;
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 13px;
+                            color: #73879c;
+
+                            &:hover {
+                                background: #f5f7fa;
+                            }
+
+                            .link-status {
+                                width: 180px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .search {
+                border: 1px solid #73879c;
+                border-radius: 100px;
+                padding: 20px;
+                height: 40px;
+
+                width: 200px;
+
+                .filterSearch {
+                    border: none;
+                }
+            }
+
+        }
+    }
+
+>>>>>>> origin/qotrun-dev
     #my-table {
         thead {
 
@@ -239,7 +385,10 @@ main {
         }
 
 
+<<<<<<< HEAD
 >>>>>>> origin/newdava-dev
+=======
+>>>>>>> origin/qotrun-dev
     }
 
     .pagination {
@@ -271,10 +420,14 @@ main {
         .active {
             a {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 background: #2796E1;
 =======
                 background: #000;
 >>>>>>> origin/newdava-dev
+=======
+                background: #2796E1;
+>>>>>>> origin/qotrun-dev
                 outline: none !important;
                 color: #FFFFFF;
 
@@ -282,10 +435,14 @@ main {
 
                 &:focus {
 <<<<<<< HEAD
+<<<<<<< HEAD
                     background: #2796E1;
 =======
                     background: #000;
 >>>>>>> origin/newdava-dev
+=======
+                    background: #2796E1;
+>>>>>>> origin/qotrun-dev
                     outline: none;
 
                     color: #FFFFFF;
@@ -330,6 +487,7 @@ main {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 #location-detail {
@@ -364,10 +522,21 @@ main {
                 list-style-type: none;
             }
 =======
+=======
+
+
+>>>>>>> origin/qotrun-dev
 
 
 
 
+<<<<<<< HEAD
+=======
+
+}
+
+
+>>>>>>> origin/qotrun-dev
 /*------------------------ VERIFY BOOKING ------------------------*/
 #verify-booking {
     padding-left: 50px;
@@ -443,11 +612,15 @@ main {
                 }
             }
 
+<<<<<<< HEAD
 >>>>>>> origin/newdava-dev
+=======
+>>>>>>> origin/qotrun-dev
         }
     }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #location-add {
     
@@ -809,6 +982,111 @@ main {
         }
     }
 }
+=======
+
+#client {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/*------------------------ DETAIL LOKASI ------------------------*/
+
+#detaillokasi {
+    padding-left: 50px;
+    padding-right: 50px;
+
+    .lokasi {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 50px;
+        background: #FFFFFF;
+        border: 1px solid #E1E1E1;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        @media (min-width :990px) {
+            display: flex;
+
+        }
+
+        .image {
+            padding-right: 20px;
+            // max-width: 400px;
+            height: 300px;
+            background-size: cover;
+            background-position: center center;
+
+            @media (max-width :990px) {
+
+                margin-bottom: 20px;
+
+            }
+
+            @media (max-width:750px) {
+                height: 200px;
+
+            }
+        }
+
+        .desc {
+            padding-left: 20px;
+            color: #5C5C5C;
+
+            .item {
+                margin-bottom: 20px;
+
+                i {
+                    font-size: 15px;
+                    color: #C0C0C0;
+                    margin-right: 20px;
+                    padding-top: 5px;
+                }
+
+                .jam-buka {
+                    .title-list {
+                        margin-right: 10px;
+                    }
+
+                    .list-jam {
+                        margin-top: 10px;
+
+                        ul {
+
+                            list-style: none;
+
+
+                            li {
+                                .jam {
+                                    margin-left: 20px;
+                                }
+                            }
+
+
+                        }
+                    }
+                }
+
+            }
+
+            .nama-client {
+                font-family: Poppins;
+                font-weight: 500;
+                font-size: 20px;
+                color: #414141;
+            }
+        }
+
+        .btn {
+            max-width: 290.2px;
+            height: 49.16px;
+            font-size: 15px;
+            font-family: Poppins;
+            color: #FFFFFF;
+            background: #3A69B7;
+            border-radius: 4px;
+        }
+    }
+}
+>>>>>>> origin/qotrun-dev
 
 
 /*------------------------ DETAIL LAPANGAN ------------------------*/
@@ -1032,6 +1310,7 @@ main {
             }
         }
 
+<<<<<<< HEAD
 >>>>>>> origin/newdava-dev
     }
 
@@ -1490,3 +1769,8 @@ main {
     }
 }
 >>>>>>> origin/newdava-dev
+=======
+    }
+
+}
+>>>>>>> origin/qotrun-dev
