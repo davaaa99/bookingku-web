@@ -16566,6 +16566,25 @@ main {
   color: #FFFFFF;
 }
 
+.dirty {
+  border-color: #5A5;
+  background: #EFE;
+}
+
+.dirty:focus {
+  outline-color: #8E8;
+}
+
+.error {
+  border-color: red;
+  background: #FDD;
+  color: red;
+}
+
+.error:focus {
+  outline-color: #F99;
+}
+
 /*------------------------ LOCATION ------------------------*/
 
 #location-list .item-list .card {
