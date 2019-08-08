@@ -22,15 +22,16 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Source Sans Pro' rel='stylesheet'>
+
+
 </head>
+
 <body>
     <div id="app">
-    @include('layouts.sidebarclient')
         <main>
-            <div class="jumbotron jumbotron-fluid"></div>
-            <div class="content">
-                @yield('content')
-            </div>
+            <login-component></login-component>
         </main>
     </div>
 </body>

@@ -17,7 +17,11 @@
           <div class="row">
             <div
               class="col-5 list-jam d-flex align-items-center justify-content-center"
+<<<<<<< HEAD
               v-for="jam in lapangan.jamBooking" :key="jam.JamBooking">{{jam.jam}}</div>
+=======
+              v-for="jam in lapangan.jamBooking">{{jam.jam}}</div>
+>>>>>>> origin/velia_merge-dev
           </div>
         </div>
       </div>

@@ -11,12 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'LandingPageController@index')->name('welcome');
 Route::get('/verified/email', 'Auth\VerificationController@verifiedEmail');
@@ -52,9 +46,19 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
 
 });
 
-
 /**
- * Firman
- * Landing Page
+ * Router Group for Client Page
  */
-Route::get('/','landingPageController@index')->name('index');
+Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm'. (string) $now->day], function () {
+    Route::get('/locationlist','ClientPageController@locationList')->name('locationlist');
+    Route::get('/locationdetail','ClientPageController@locationDetail')->name('locationdetail');
+    Route::get('/locationadd','ClientPageController@locationAdd')->name('locationadd');
+    Route::get('/locationedit','ClientPageController@locationEdit')->name('locationedit');
+
+    Route::get('/register','ClientPageController@register')->name('clientregister');
+    Route::get('/login','ClientPageController@login')->name('clientlogin');
+    Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
+    
+    Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
+    Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');
+});

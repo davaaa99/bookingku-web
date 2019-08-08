@@ -56,20 +56,21 @@ class FieldController extends Controller
      * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id_location){
-        try{
-            $field = Field::where('id_location',$id_location)->get();
-        }catch (Exception $e){
-            return response()->json([
-                'message' => 'Failed retrieve data.' . $e->getMessage(),
-                'serve' => []
-            ],500);
-        }
+    public function show(){
+        // try{
+        //     $field = Field::where('id_location',$id_location)->get();
+        // }catch (Exception $e){
+        //     return response()->json([
+        //         'message' => 'Failed retrieve data.' . $e->getMessage(),
+        //         'serve' => []
+        //     ],500);
+        // }
         
-		return response()->json([
-            'message' => 'Succesfully retrieved data.',
-            'serve' => $field
-        ],200);
+		// return response()->json([
+        //     'message' => 'Succesfully retrieved data.',
+        //     'serve' => $field
+        // ],200);
+        return new PostCollection(Field::all());
     }
     
     /**
@@ -99,7 +100,6 @@ class FieldController extends Controller
      * Create and store a new field.
      *
      * @param \Illuminate\Http\Request  $request
-     * @param String $id_location
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)

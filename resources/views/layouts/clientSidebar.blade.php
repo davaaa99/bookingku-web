@@ -12,14 +12,21 @@
             <div class="spacer-30"></div>
             <div class="content-side">
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('locationlist') }}" class="content-link">
+                    <a href="{{ route('admin') }}" class="content-link">
                         <i class="far fa-clone"></i>
-                        CLIENT PAGE
+                        DASHBOARD
+            </a>
+                </div>
+                <div class="content-item d-flex align-items-center">
+                    <a href="{{ route('locationlist') }}" class="content-link">
+                        <i class="far fa-address-card"></i>
+                        LOCATION
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('admin') }}" class="content-link">
-                        <i class="far fa-clone"></i>
+                    <a href="{{ route('register') }}" class="content-link">
+                        <i class="far fa-address-card"></i>
+                        REGISTER
                         VERIFY BOOKING
                     </a>
                 </div>

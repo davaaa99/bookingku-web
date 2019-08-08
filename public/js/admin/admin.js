@@ -1944,7 +1944,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -2240,8 +2239,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           month = '' + (d.getMonth() + 1),
           day = '' + d.getDate(),
           year = d.getFullYear();
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
+      if (month.length < 2) month = '0' + month; // if (day.length < 2) day = '0' + day;
+
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
     }
   }
@@ -2260,6 +2259,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/lib/index.js");
 /* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
 //
 //
 //
@@ -74838,25 +74841,20 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  _vm._l(lapangan.jamBooking, function(jam) {
-                    return _c(
-                      "div",
-                      {
-                        key: jam.JamBooking,
-                        staticClass:
-                          "col-5 list-jam d-flex align-items-center justify-content-center"
-                      },
-                      [_vm._v(_vm._s(jam.jam))]
-                    )
-                  }),
-                  0
+                _c("div", { staticClass: "row" }, [
+                  _vm._v(
+                    '\n<<<<<<< HEAD\n              v-for="jam in lapangan.jamBooking" :key="jam.JamBooking">' +
+                      _vm._s(_vm.jam.jam)
+                  )
+                ]),
+                _vm._v(
+                  '\n=======\n              v-for="jam in lapangan.jamBooking">' +
+                    _vm._s(_vm.jam.jam)
                 )
               ],
               1
-            )
+            ),
+            _vm._v("\n>>>>>>> origin/velia_merge-dev\n          ")
           ])
         ]
       )
