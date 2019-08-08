@@ -18,6 +18,7 @@ mix.js('resources/js/admin/admin.js', 'public/js/admin')
 mix.js('resources/js/client/client.js', 'public/js/client')
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     .sass('resources/sass/client.scss', 'public/css/client');
 =======
     .sass('resources/sass/client.scss', 'public/css/client');
@@ -25,3 +26,6 @@ mix.js('resources/js/client/client.js', 'public/js/client')
 =======
     .sass('resources/sass/client.scss', 'public/css/client');
 >>>>>>> origin/qotrun-dev
+=======
+        .sass('resources/sass/client.scss', 'public/css/client');
+>>>>>>> origin/velia_merge-dev

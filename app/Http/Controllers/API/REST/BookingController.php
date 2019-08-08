@@ -136,12 +136,20 @@ class BookingController extends Controller
     public function showByField(Request $request)
     {
         try {
+<<<<<<< HEAD
             $listSchedule = Schedule::where('id_field', $request->id_field)->get();
             foreach ($listSchedule as $ds) {
                 $listBooking = Booking::where('id_schedule', $ds->id_schedule)
                                         ->orwhere('created_at','LIKE',"%$request->date%")
                                         ->get();
             }
+=======
+            $listBooking=Field::join('schedules','schedules.id_field','=','fields.id_field')
+                                ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                ->where('fields.id_field',$id_field)
+                                ->where('bookings.created_at','LIKE',"%$date%")
+                                ->select('bookings.*')->get();
+>>>>>>> origin/velia_merge-dev
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),
@@ -163,6 +171,7 @@ class BookingController extends Controller
     public function showByLocation(Request $request)
     {
         try {
+<<<<<<< HEAD
             $listField = Field::where('id_location', $request->id_location)->get();
             foreach ($listField as $df) {
                 $dataschedule = Schedule::where('id_field', $df->id_field)->get();
@@ -172,6 +181,14 @@ class BookingController extends Controller
                                                 ->get();
                 }
             }
+=======
+            $listbooking=Location::join('fields','fields.id_location','=','locations.id_location')
+                                    ->join('schedules','schedules.id_field','=','fields.id_field')
+                                    ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                    ->where('locations.id_location',$id_location)
+                                    ->where('bookings.created_at','LIKE',"%$date%")
+                                    ->select('bookings.*')->get();
+>>>>>>> origin/velia_merge-dev
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),

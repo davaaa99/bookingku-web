@@ -16537,6 +16537,7 @@ main {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .spacer-30 {
   height: 30px;
 }
@@ -16545,10 +16546,13 @@ main {
 >>>>>>> origin/newdava-dev
 =======
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 .spacer-20 {
   height: 20px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 .spacer-10 {
@@ -16561,6 +16565,10 @@ main {
 .spacer-30 {
   height: 30px;
 >>>>>>> origin/qotrun-dev
+=======
+.spacer-30 {
+  height: 30px;
+>>>>>>> origin/velia_merge-dev
 }
 
 .table-box {
@@ -16582,6 +16590,7 @@ main {
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 /*------------------------ LOCATION ------------------------*/
@@ -16622,11 +16631,28 @@ main {
 #sidebar .sidebar {
   background: #156183;
 =======
+=======
+#addbooking .available {
+  background: #7fbd1b !important;
+}
+
+#addbooking .unavailable {
+  background: #e93a3a !important;
+}
+
+#addbooking .choosed {
+  background: #6ab0df !important;
+}
+
+>>>>>>> origin/velia_merge-dev
 /*------------------------ SIDE BAR ------------------------*/
 
 #sidebar .sidebar {
   background: #212120;
+<<<<<<< HEAD
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   flex-grow: 0;
   flex-shrink: 0;
@@ -16658,17 +16684,23 @@ main {
   font-weight: 500;
   font-size: 15px;
 <<<<<<< HEAD
+<<<<<<< HEAD
   color: #FFFFFF;
   padding-left: 30px;
 =======
   color: #8B8B8B;
   padding-left: 20px;
 >>>>>>> origin/qotrun-dev
+=======
+  color: #8B8B8B;
+  padding-left: 20px;
+>>>>>>> origin/velia_merge-dev
   text-transform: uppercase;
   text-decoration: none;
 }
 
 #sidebar .sidebar .content-side .content-item .content-link i {
+<<<<<<< HEAD
 <<<<<<< HEAD
   margin-right: 10px;
   font-size: 17px;
@@ -16678,6 +16710,8 @@ main {
 
 #my-table thead {
 =======
+=======
+>>>>>>> origin/velia_merge-dev
   margin-right: 15px;
   font-size: 17px;
 }
@@ -16777,7 +16811,10 @@ main {
 }
 
 #list #my-table thead {
+<<<<<<< HEAD
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   background: #3A69B7 !important;
   font-family: Poppins;
   font-style: normal;
@@ -16786,18 +16823,24 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #my-table thead th {
   text-align: center;
 }
 
 #my-table tbody {
 =======
+=======
+>>>>>>> origin/velia_merge-dev
 #list #my-table thead th {
   text-align: center;
 }
 
 #list #my-table tbody {
+<<<<<<< HEAD
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -16806,20 +16849,28 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #my-table tbody tr td {
 =======
 #list #my-table tbody tr td {
 >>>>>>> origin/qotrun-dev
+=======
+#list #my-table tbody tr td {
+>>>>>>> origin/velia_merge-dev
   text-align: center;
   padding-left: 7px;
   padding-right: 7px;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #my-table tbody tr td .btn-detail {
 =======
 #list #my-table tbody tr td .btn-detail {
 >>>>>>> origin/qotrun-dev
+=======
+#list #my-table tbody tr td .btn-detail {
+>>>>>>> origin/velia_merge-dev
   background: #3FB5E1;
   border-radius: 4px;
   font-size: 13px;
@@ -16827,17 +16878,22 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .pagination li a {
 >>>>>>> origin/newdava-dev
 =======
 #list .pagination li a {
 >>>>>>> origin/qotrun-dev
+=======
+#list .pagination li a {
+>>>>>>> origin/velia_merge-dev
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
   margin-right: 10px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 #location-list .pagination li span {
@@ -16847,6 +16903,9 @@ main {
 =======
 #list .pagination li span {
 >>>>>>> origin/qotrun-dev
+=======
+#list .pagination li span {
+>>>>>>> origin/velia_merge-dev
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
@@ -16855,6 +16914,7 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 #location-list .pagination .active a {
@@ -16867,10 +16927,15 @@ main {
 #list .pagination .active a {
   background: #2796E1;
 >>>>>>> origin/qotrun-dev
+=======
+#list .pagination .active a {
+  background: #2796E1;
+>>>>>>> origin/velia_merge-dev
   outline: none !important;
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 #location-list .pagination .active a:focus {
@@ -16883,11 +16948,16 @@ main {
 #list .pagination .active a:focus {
   background: #2796E1;
 >>>>>>> origin/qotrun-dev
+=======
+#list .pagination .active a:focus {
+  background: #2796E1;
+>>>>>>> origin/velia_merge-dev
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 #location-list .pagination .active a:hover {
@@ -16897,12 +16967,16 @@ main {
 =======
 #list .pagination .active a:hover {
 >>>>>>> origin/qotrun-dev
+=======
+#list .pagination .active a:hover {
+>>>>>>> origin/velia_merge-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 #location-list .pagination .active span {
@@ -16912,6 +16986,9 @@ main {
 =======
 #list .pagination .active span {
 >>>>>>> origin/qotrun-dev
+=======
+#list .pagination .active span {
+>>>>>>> origin/velia_merge-dev
   background: #2796E1;
   outline: none !important;
   color: #FFFFFF;
@@ -16923,6 +17000,7 @@ main {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #location-list .pagination .active span:focus {
 =======
 .pagination .active span:focus {
@@ -16930,6 +17008,9 @@ main {
 =======
 #list .pagination .active span:focus {
 >>>>>>> origin/qotrun-dev
+=======
+#list .pagination .active span:focus {
+>>>>>>> origin/velia_merge-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -16938,6 +17019,7 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 #location-list .pagination .active span:hover {
@@ -16947,6 +17029,9 @@ main {
 =======
 #list .pagination .active span:hover {
 >>>>>>> origin/qotrun-dev
+=======
+#list .pagination .active span:hover {
+>>>>>>> origin/velia_merge-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -16955,6 +17040,7 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 #location-detail .image-header {
@@ -17235,6 +17321,8 @@ main {
 
 #list .btn-clear {
 =======
+=======
+>>>>>>> origin/velia_merge-dev
 /*------------------------ VERIFY BOOKING ------------------------*/
 
 #verify-booking {
@@ -17355,6 +17443,7 @@ main {
 #detaillokasi .lokasi .desc {
   padding-left: 20px;
   color: #5C5C5C;
+<<<<<<< HEAD
 =======
 /*------------------------ VERIFY BOOKING ------------------------*/
 
@@ -17507,6 +17596,38 @@ main {
 }
 
 #detaillokasi .lokasi .desc .nama-client {
+=======
+}
+
+#detaillokasi .lokasi .desc .item {
+  margin-bottom: 20px;
+}
+
+#detaillokasi .lokasi .desc .item i {
+  font-size: 15px;
+  color: #C0C0C0;
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .title-list {
+  margin-right: 10px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam {
+  margin-top: 10px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul {
+  list-style: none;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul li .jam {
+  margin-left: 20px;
+}
+
+#detaillokasi .lokasi .desc .nama-client {
+>>>>>>> origin/velia_merge-dev
   font-family: Poppins;
   font-weight: 500;
   font-size: 20px;
@@ -17719,6 +17840,7 @@ main {
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /*------------------------ MENU LAPANGAN ------------------------*/
 
@@ -18040,3 +18162,5 @@ main {
 >>>>>>> origin/newdava-dev
 =======
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev

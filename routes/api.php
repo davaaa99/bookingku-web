@@ -69,10 +69,17 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 
     Route::get('users','API\REST\UserController@getUser');
     Route::get('user/{name}','API\REST\UserController@searchUser');
 
+<<<<<<< HEAD
     Route::get('locations/admin','API\REST\LocationController@index');
     Route::get('fields/admin/{id_location}','API\REST\FieldController@show');
     Route::post('bookings/admin','API\REST\BookingController@showByLocation');
     Route::put('/bookings/{id_booking}','API\REST\BookingController@update');
+=======
+    Route::get('locations','API\REST\LocationController@index');
+    Route::get('fields/{id_location}','API\REST\FieldController@show');
+    Route::get('bookings/{id_location}/{date}','API\REST\BookingController@showByLocation');
+    Route::put('/booking/{id_booking}','API\REST\BookingController@update');
+>>>>>>> origin/velia_merge-dev
     
     Route::get('kindoffield','API\REST\KindOfFieldController@index');
     Route::post('kindoffield','API\REST\KindOfFieldController@create');

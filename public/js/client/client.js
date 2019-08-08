@@ -1690,6 +1690,7 @@ module.exports = {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationAddComponent.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationAddComponent.vue?vue&type=script&lang=js& ***!
@@ -1706,11 +1707,18 @@ module.exports = {
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/admin/components/clientListComponent.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************************/
 >>>>>>> origin/qotrun-dev
+=======
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addBookingComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/addBookingComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -1742,11 +1750,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+=======
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/lib/index.js");
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
+>>>>>>> origin/velia_merge-dev
 //
 //
 //
 //
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 //
 //
 //
@@ -1780,8 +1798,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 =======
 >>>>>>> origin/newdava-dev
+=======
+>>>>>>> origin/velia_merge-dev
 //
 //
 //
@@ -1837,6 +1858,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 //
 //
 //
@@ -1881,6 +1905,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
+<<<<<<< HEAD
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2025,18 +2050,83 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.form.location = null;
       this.form.namalapang = '';
       this.form.tipelapang = null; // Trick to reset/clear native browser form validation state
+=======
+
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      perPage: 20,
+      currentPage: 1,
+      selectedLocation: null,
+      location: [{
+        text: 'Pilih Lokasi',
+        value: null
+      }, 'Ciwarug Futsal', 'Sarijadi Futsal'],
+      selectedField: null,
+      field: [{
+        text: 'Pilih Lokasi',
+        value: null
+      }, 'Vinyl', 'Sintetis', 'Semen'],
+      selectedDate: new Date(),
+      date: {
+        format: 'YYYY/MM/DD',
+        useCurrent: false
+      },
+      // components:{
+      //     datePicker
+      // },
+      "user_email": "",
+      "price": "",
+      //ambil dari db
+      "paymentType": "",
+      "paymentValue": "" //ambil dari db
+
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit(book) {
+      book.preventDefault();
+      alert(JSON.stringify(this.form));
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/bookinglist';
+    },
+    onReset: function onReset(book) {
+      var _this = this;
+
+      book.preventDefault(); //reset value
+
+      this.form.field = '';
+      this.form.fieldType = '';
+      this.form.user_email = '';
+      this.form.price = '';
+      this.form.paymentType = '';
+      this.form.paymentValue = ''; //cleare native browser
+>>>>>>> origin/velia_merge-dev
 
       this.show = false;
       this.$nextTick(function () {
         _this.show = true;
       });
+<<<<<<< HEAD
 >>>>>>> origin/newdava-dev
+=======
+      var d = new Date(),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/bookinglist';
+>>>>>>> origin/velia_merge-dev
     }
   }
 });
 
 /***/ }),
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationDetailComponent.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************!*\
@@ -2048,6 +2138,12 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/detailLapangComponent.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2086,6 +2182,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 <<<<<<< HEAD
+<<<<<<< HEAD
+//
+//
+//
+=======
+>>>>>>> origin/velia_merge-dev
 //
 //
 //
@@ -2097,21 +2199,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
+<<<<<<< HEAD
 //
 //
 =======
 >>>>>>> origin/newdava-dev
 =======
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       perPage: 10,
@@ -2328,12 +2431,97 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 >>>>>>> origin/qotrun-dev
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
+=======
+      // Note 'age' is left out and will not appear in the rendered table
+      perPage: 20,
+      currentPage: 1,
+      selectedLocation: null,
+      location: [{
+        text: 'Pilih Lokasi',
+        value: null
+      }, 'Ciwarug Futsal', 'Sarijadi Futsal'],
+      selectedField: null,
+      field: [{
+        text: 'Pilih Lokasi',
+        value: null
+      }, 'Vinyl', 'Syntetic', 'Semen'],
+      selectedDate: new Date(),
+      date: {
+        format: 'YYYY/MM/DD',
+        useCurrent: false
+      },
+      // components:{
+      //     datePicker
+      // },
+      fields: {
+        user: {
+          label: 'User',
+          sortable: true
+        },
+        bookingCode: {
+          label: 'Booking Code',
+          sortable: false
+        },
+        schedule: {
+          key: 'schedule',
+          sortable: true
+        },
+        status: {
+          key: 'status',
+          label: 'Status',
+          sortable: true
+        },
+        payment: {
+          label: 'Payment',
+          sortable: true
+        }
+      },
+      items: [{
+        user: "Tedy Subagjo",
+        bookingCode: "BKN-001",
+        schedule: "11.00-12.00",
+        status: true,
+        payment: "DP"
+      }, {
+        user: "Tedy Subagjo",
+        bookingCode: "BKN-001",
+        schedule: "11.00-12.00",
+        status: false,
+        payment: "DP"
+      }, {
+        user: "Tedy Subagjo",
+        bookingCode: "BKN-001",
+        schedule: "11.00-12.00",
+        status: false,
+        payment: "DP"
+      }, {
+        user: "Tedy Subagjo",
+        bookingCode: "BKN-001",
+        schedule: "11.00-12.00",
+        status: false,
+        payment: "DP"
+      }]
+    };
+  },
+  methods: {
+    paid: function paid(status) {
+      if (!status) {
+        return 'Unpaid';
+      } else return 'Paid';
+    },
+    changeStatus: function changeStatus(status) {
+      if (status) {
+        var newStatus = !status;
+        return paid(newStatus);
+      }
+>>>>>>> origin/velia_merge-dev
     }
   }
 });
 
 /***/ }),
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationEditComponent.vue?vue&type=script&lang=js&":
@@ -2352,11 +2540,18 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/manageScheduleComponent.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************************************************************************************/
 >>>>>>> origin/qotrun-dev
+=======
+/***/ "./node_modules/bootstrap-vue/esm/bv-config.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/bv-config.js ***!
+  \*****************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 /* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
@@ -3422,6 +3617,159 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         // Only emit dismissed events for dismissible or auto dismissing alerts
         this.$emit('dismissed');
       }
+=======
+/* harmony import */ var _utils_plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/plugins */ "./node_modules/bootstrap-vue/esm/utils/plugins.js");
+//
+// Utility Plugin for setting the configuration
+//
+
+var BVConfigPlugin =
+/*#__PURE__*/
+Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_0__["pluginFactory"])();
+/* harmony default export */ __webpack_exports__["default"] = (BVConfigPlugin);
+
+/***/ }),
+
+/***/ "./node_modules/bootstrap-vue/esm/components/alert/alert.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/bootstrap-vue/esm/components/alert/alert.js ***!
+  \******************************************************************/
+/*! exports provided: BAlert, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BAlert", function() { return BAlert; });
+/* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
+/* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+/* harmony import */ var _utils_bv_transition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/bv-transition */ "./node_modules/bootstrap-vue/esm/utils/bv-transition.js");
+/* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+/* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+var NAME = 'BAlert'; // Convert `show` value to a number
+
+var parseCountDown = function parseCountDown(show) {
+  if (show === '' || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isBoolean"])(show)) {
+    return 0;
+  }
+
+  show = parseInt(show, 10);
+  return show > 0 ? show : 0;
+}; // Convert `show` value to a boolean
+
+
+var parseShow = function parseShow(show) {
+  if (show === '' || show === true) {
+    return true;
+  }
+
+  if (parseInt(show, 10) < 1) {
+    // Boolean will always return false for the above comparison
+    return false;
+  }
+
+  return Boolean(show);
+}; // Is a value number like (i.e. a number or a number as string)
+
+
+var isNumericLike = function isNumericLike(value) {
+  return !isNaN(parseInt(value, 10));
+}; // @vue/component
+
+
+var BAlert =
+/*#__PURE__*/
+_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: NAME,
+  mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_5__["default"]],
+  model: {
+    prop: 'show',
+    event: 'input'
+  },
+  props: {
+    variant: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_1__["getComponentConfig"])(NAME, 'variant');
+      }
+    },
+    dismissible: {
+      type: Boolean,
+      default: false
+    },
+    dismissLabel: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_1__["getComponentConfig"])(NAME, 'dismissLabel');
+      }
+    },
+    show: {
+      type: [Boolean, Number, String],
+      default: false
+    },
+    fade: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data: function data() {
+    return {
+      countDownTimerId: null,
+      countDown: 0,
+      // If initially shown, we need to set these for SSR
+      localShow: parseShow(this.show)
+    };
+  },
+  watch: {
+    show: function show(newVal) {
+      this.countDown = parseCountDown(newVal);
+      this.localShow = parseShow(newVal);
+    },
+    countDown: function countDown(newVal) {
+      var _this = this;
+
+      this.clearTimer();
+
+      if (isNumericLike(this.show)) {
+        // Ignore if this.show transitions to a boolean value.
+        this.$emit('dismiss-count-down', newVal);
+
+        if (this.show !== newVal) {
+          // Update the v-model if needed
+          this.$emit('input', newVal);
+        }
+
+        if (newVal > 0) {
+          this.localShow = true;
+          this.countDownTimerId = setTimeout(function () {
+            _this.countDown--;
+          }, 1000);
+        } else {
+          // Slightly delay the hide to allow any UI updates
+          this.$nextTick(function () {
+            Object(_utils_dom__WEBPACK_IMPORTED_MODULE_2__["requestAF"])(function () {
+              _this.localShow = false;
+            });
+          });
+        }
+      }
+    },
+    localShow: function localShow(newVal) {
+      if (!newVal && (this.dismissible || isNumericLike(this.show))) {
+        // Only emit dismissed events for dismissible or auto dismissing alerts
+        this.$emit('dismissed');
+      }
+>>>>>>> origin/velia_merge-dev
 
       if (!isNumericLike(this.show) && this.show !== newVal) {
         // Only emit booleans if we weren't passed a number via `this.show`
@@ -3458,10 +3806,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
     if (this.localShow) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       var $dismissBtn = h(false);
 =======
       var $dismissBtn = h();
 >>>>>>> origin/qotrun-dev
+=======
+      var $dismissBtn = h(false);
+>>>>>>> origin/velia_merge-dev
 
       if (this.dismissible) {
         // Add dismiss button
@@ -3546,10 +3898,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_pluck_props__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/pluck-props */ "./node_modules/bootstrap-vue/esm/utils/pluck-props.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -3694,10 +4050,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -3772,10 +4132,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _breadcrumb_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./breadcrumb-item */ "./node_modules/bootstrap-vue/esm/components/breadcrumb/breadcrumb-item.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -4145,11 +4509,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* harmony import */ var _utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/normalize-slot */ "./node_modules/bootstrap-vue/esm/utils/normalize-slot.js");
 =======
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _utils_normalize_slot__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/normalize-slot */ "./node_modules/bootstrap-vue/esm/utils/normalize-slot.js");
 >>>>>>> origin/qotrun-dev
+=======
+/* harmony import */ var _utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/normalize-slot */ "./node_modules/bootstrap-vue/esm/utils/normalize-slot.js");
+>>>>>>> origin/velia_merge-dev
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -4157,9 +4525,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 var NAME = 'BButtonClose';
 var props = {
   disabled: {
@@ -4204,6 +4575,9 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       },
       on: {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
         click: function click(e) {
           // Ensure click on button HTML content is also disabled
 
@@ -4211,6 +4585,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           if (props.disabled && e instanceof Event) {
             e.stopPropagation();
             e.preventDefault();
+<<<<<<< HEAD
 =======
         click: function click(evt) {
           // Ensure click on button HTML content is also disabled
@@ -4220,6 +4595,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
             evt.stopPropagation();
             evt.preventDefault();
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
           }
         }
       } // Careful not to override the default slot with innerHTML
@@ -4227,20 +4604,28 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (!Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["hasNormalizedSlot"])('default', $scopedSlots, $slots)) {
 =======
     if (!Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_4__["hasNormalizedSlot"])('default', $scopedSlots, $slots)) {
 >>>>>>> origin/qotrun-dev
+=======
+    if (!Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["hasNormalizedSlot"])('default', $scopedSlots, $slots)) {
+>>>>>>> origin/velia_merge-dev
       componentData.domProps = {
         innerHTML: '&times;'
       };
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     return h('button', Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, componentData), Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('default', {}, $scopedSlots, $slots));
 =======
     return h('button', Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, componentData), Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_4__["normalizeSlot"])('default', {}, $scopedSlots, $slots));
 >>>>>>> origin/qotrun-dev
+=======
+    return h('button', Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, componentData), Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('default', {}, $scopedSlots, $slots));
+>>>>>>> origin/velia_merge-dev
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (BButtonClose);
@@ -4268,10 +4653,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -4436,11 +4825,15 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     var link = isLink(props);
     var on = {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       click: function click(e) {
         /* istanbul ignore if: blink/button disabled should handle this */
         if (props.disabled && e instanceof Event) {
           e.stopPropagation();
           e.preventDefault();
+<<<<<<< HEAD
 =======
       click: function click(evt) {
         /* istanbul ignore if: blink/button disabled should handle this */
@@ -4448,6 +4841,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           evt.stopPropagation();
           evt.preventDefault();
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         } else if (toggle && listeners && listeners['update:pressed']) {
           // Send .sync updates to any "pressed" prop (if .sync listeners)
           // Concat will normalize the value to an array
@@ -4543,10 +4938,14 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -4585,6 +4984,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         data = _ref.data,
         children = _ref.children;
 <<<<<<< HEAD
+<<<<<<< HEAD
     var cardTitle = h(false);
     var cardSubTitle = h(false);
     var cardContent = children || [h(false)];
@@ -4593,6 +4993,11 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     var cardSubTitle = h();
     var cardContent = children || [h()];
 >>>>>>> origin/qotrun-dev
+=======
+    var cardTitle = h(false);
+    var cardSubTitle = h(false);
+    var cardContent = children || [h(false)];
+>>>>>>> origin/velia_merge-dev
 
     if (props.title) {
       cardTitle = h(_card_title__WEBPACK_IMPORTED_MODULE_6__["BCardTitle"], {
@@ -4637,10 +5042,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
 /* harmony import */ var _mixins_card_mixin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/card-mixin */ "./node_modules/bootstrap-vue/esm/mixins/card-mixin.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -4766,10 +5175,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
 /* harmony import */ var _mixins_card_mixin__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/card-mixin */ "./node_modules/bootstrap-vue/esm/mixins/card-mixin.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -4836,10 +5249,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _image_img_lazy__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../image/img-lazy */ "./node_modules/bootstrap-vue/esm/components/image/img-lazy.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -5189,10 +5606,14 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -5241,11 +5662,15 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     var $scopedSlots = scopedSlots || {}; // Create placeholder elements for each section
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
     var imgFirst = h(false);
     var header = h(false);
     var content = h(false);
     var footer = h(false);
     var imgLast = h(false);
+<<<<<<< HEAD
 =======
     var imgFirst = h();
     var header = h();
@@ -5253,6 +5678,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     var footer = h();
     var imgLast = h();
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
     if (props.imgSrc) {
       var img = h(_card_img__WEBPACK_IMPORTED_MODULE_11__["BCardImg"], {
@@ -5470,11 +5897,17 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   },
   props: props,
 <<<<<<< HEAD
+<<<<<<< HEAD
   data: function data() {
     return {};
   },
 =======
 >>>>>>> origin/qotrun-dev
+=======
+  data: function data() {
+    return {};
+  },
+>>>>>>> origin/velia_merge-dev
   computed: {
     contentClasses: function contentClasses() {
       return [this.contentVisibleUp ? 'd-none' : '', this.contentVisibleUp ? "d-".concat(this.contentVisibleUp, "-block") : ''];
@@ -5516,16 +5949,22 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
     if (!img) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       img = h(false);
     }
 
     var content = h(false);
+<<<<<<< HEAD
 =======
       img = h();
     }
 
     var content = h();
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
     var contentChildren = [this.caption || this.captionHtml ? h(this.captionTag, {
       domProps: Object(_utils_html__WEBPACK_IMPORTED_MODULE_4__["htmlOrText"])(this.captionHtml, this.caption)
     }) : false, this.text || this.textHtml ? h(this.textTag, {
@@ -5538,10 +5977,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         class: this.contentClasses
       }, contentChildren.map(function (i) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return i || h(false);
 =======
         return i || h();
 >>>>>>> origin/qotrun-dev
+=======
+        return i || h(false);
+>>>>>>> origin/velia_merge-dev
       }));
     }
 
@@ -5628,29 +6071,41 @@ var EventOptions = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function getTransitionEndEvent(el) {
 =======
 var getTransitionEndEvent = function getTransitionEndEvent(el) {
 >>>>>>> origin/qotrun-dev
+=======
+function getTransitionEndEvent(el) {
+>>>>>>> origin/velia_merge-dev
   for (var name in TransitionEndEvents) {
     if (!Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isUndefined"])(el.style[name])) {
       return TransitionEndEvents[name];
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
   } // fallback
 =======
   } // Fallback
 >>>>>>> origin/qotrun-dev
+=======
+  } // fallback
+>>>>>>> origin/velia_merge-dev
 
   /* istanbul ignore next */
 
 
   return null;
 <<<<<<< HEAD
+<<<<<<< HEAD
 } // @vue/component
 =======
 }; // @vue/component
 >>>>>>> origin/qotrun-dev
+=======
+} // @vue/component
+>>>>>>> origin/velia_merge-dev
 
 
 var BCarousel =
@@ -6121,10 +6576,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }, [this.normalizeSlot('default')]); // Prev and next controls
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     var controls = h(false);
 =======
     var controls = h();
 >>>>>>> origin/qotrun-dev
+=======
+    var controls = h(false);
+>>>>>>> origin/velia_merge-dev
 
     if (this.controls) {
       controls = [h('a', {
@@ -6701,10 +7160,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _form_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../form/form */ "./node_modules/bootstrap-vue/esm/components/form/form.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -6825,10 +7288,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
     var adb = [headerId, props.ariaDescribedBy].filter(Boolean).join(' ').trim();
 <<<<<<< HEAD
+<<<<<<< HEAD
     return h('li', [header || h(false), h('ul', Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, {
 =======
     return h('li', [header || h(), h('ul', Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, {
 >>>>>>> origin/qotrun-dev
+=======
+    return h('li', [header || h(false), h('ul', Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, {
+>>>>>>> origin/velia_merge-dev
       staticClass: 'list-unstyled',
       attrs: {
         id: props.id || null,
@@ -6913,10 +7380,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
 /* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -7004,10 +7475,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -7133,6 +7608,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BDropdown", function() { return BDropdown; });
 /* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
 /* harmony import */ var _utils_safe_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/safe-types */ "./node_modules/bootstrap-vue/esm/utils/safe-types.js");
@@ -7140,6 +7618,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../mixins/dropdown */ "./node_modules/bootstrap-vue/esm/mixins/dropdown.js");
 /* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
 /* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
+<<<<<<< HEAD
 =======
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
@@ -7151,6 +7630,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
 
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 
 
@@ -7166,10 +7647,14 @@ var props = {
     type: String,
     default: function _default() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'toggleText');
 =======
       return Object(_utils_config__WEBPACK_IMPORTED_MODULE_3__["getComponentConfig"])(NAME, 'toggleText');
 >>>>>>> origin/qotrun-dev
+=======
+      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'toggleText');
+>>>>>>> origin/velia_merge-dev
     }
   },
   size: {
@@ -7180,10 +7665,14 @@ var props = {
     type: String,
     default: function _default() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'variant');
 =======
       return Object(_utils_config__WEBPACK_IMPORTED_MODULE_3__["getComponentConfig"])(NAME, 'variant');
 >>>>>>> origin/qotrun-dev
+=======
+      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'variant');
+>>>>>>> origin/velia_merge-dev
     }
   },
   menuClass: {
@@ -7218,6 +7707,7 @@ var props = {
     type: String,
     default: function _default() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'splitVariant');
 =======
       return Object(_utils_config__WEBPACK_IMPORTED_MODULE_3__["getComponentConfig"])(NAME, 'splitVariant');
@@ -7229,6 +7719,9 @@ var props = {
     validator: function validator(value) {
       return Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])(['button', 'submit', 'reset'], value);
 >>>>>>> origin/qotrun-dev
+=======
+      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])(NAME, 'splitVariant');
+>>>>>>> origin/velia_merge-dev
     }
   },
   role: {
@@ -7239,10 +7732,14 @@ var props = {
     // String: `scrollParent`, `window` or `viewport`
     // HTMLElement: HTML Element reference
 <<<<<<< HEAD
+<<<<<<< HEAD
     type: [String, _utils_safe_types__WEBPACK_IMPORTED_MODULE_3__["HTMLElement"]],
 =======
     type: [String, _utils_safe_types__WEBPACK_IMPORTED_MODULE_4__["HTMLElement"]],
 >>>>>>> origin/qotrun-dev
+=======
+    type: [String, _utils_safe_types__WEBPACK_IMPORTED_MODULE_3__["HTMLElement"]],
+>>>>>>> origin/velia_merge-dev
     default: 'scrollParent'
   } // @vue/component
 
@@ -7252,10 +7749,14 @@ var BDropdown =
 _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_6__["default"]],
 =======
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_dropdown__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_7__["default"]],
 >>>>>>> origin/qotrun-dev
+=======
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_dropdown__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_6__["default"]],
+>>>>>>> origin/velia_merge-dev
   props: props,
   computed: {
     dropdownClasses: function dropdownClasses() {
@@ -7282,12 +7783,17 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   },
   render: function render(h) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     var split = h(false);
     var buttonContent = this.normalizeSlot('button-content') || this.normalizeSlot('text') || this.html || Object(_utils_html__WEBPACK_IMPORTED_MODULE_1__["stripTags"])(this.text);
 =======
     var split = h();
     var buttonContent = this.normalizeSlot('button-content') || this.normalizeSlot('text') || this.html || Object(_utils_html__WEBPACK_IMPORTED_MODULE_2__["stripTags"])(this.text);
 >>>>>>> origin/qotrun-dev
+=======
+    var split = h(false);
+    var buttonContent = this.normalizeSlot('button-content') || this.normalizeSlot('text') || this.html || Object(_utils_html__WEBPACK_IMPORTED_MODULE_1__["stripTags"])(this.text);
+>>>>>>> origin/velia_merge-dev
 
     if (this.split) {
       var btnProps = {
@@ -7300,6 +7806,9 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       if (this.splitTo) {
         btnProps.to = this.splitTo;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       }
 
       if (this.splitHref) {
@@ -7307,6 +7816,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }
 
       split = h(_button_button__WEBPACK_IMPORTED_MODULE_7__["BButton"], {
+<<<<<<< HEAD
 =======
       } else if (this.splitHref) {
         btnProps.href = this.splitHref;
@@ -7316,6 +7826,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
       split = h(_button_button__WEBPACK_IMPORTED_MODULE_8__["BButton"], {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         ref: 'button',
         props: btnProps,
         attrs: {
@@ -7328,10 +7840,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     var toggle = h(_button_button__WEBPACK_IMPORTED_MODULE_7__["BButton"], {
 =======
     var toggle = h(_button_button__WEBPACK_IMPORTED_MODULE_8__["BButton"], {
 >>>>>>> origin/qotrun-dev
+=======
+    var toggle = h(_button_button__WEBPACK_IMPORTED_MODULE_7__["BButton"], {
+>>>>>>> origin/velia_merge-dev
       ref: 'toggle',
       staticClass: 'dropdown-toggle',
       class: this.toggleClasses,
@@ -7371,10 +7887,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }, !this.lazy || this.visible ? this.normalizeSlot('default', {
       hide: this.hide
 <<<<<<< HEAD
+<<<<<<< HEAD
     }) : [h(false)]);
 =======
     }) : [h()]);
 >>>>>>> origin/qotrun-dev
+=======
+    }) : [h(false)]);
+>>>>>>> origin/velia_merge-dev
     return h('div', {
       staticClass: 'dropdown btn-group b-dropdown',
       class: this.dropdownClasses,
@@ -8226,10 +8746,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form_form_invalid_feedback__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../form/form-invalid-feedback */ "./node_modules/bootstrap-vue/esm/components/form/form-invalid-feedback.js");
 /* harmony import */ var _form_form_valid_feedback__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../form/form-valid-feedback */ "./node_modules/bootstrap-vue/esm/components/form/form-valid-feedback.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -8264,10 +8788,14 @@ var DEPRECATED_MSG = 'Props "horizontal" and "breakpoint" are deprecated. Use "l
 var renderInvalidFeedback = function renderInvalidFeedback(h, ctx) {
   var content = ctx.normalizeSlot('invalid-feedback') || ctx.invalidFeedback;
 <<<<<<< HEAD
+<<<<<<< HEAD
   var invalidFeedback = h(false);
 =======
   var invalidFeedback = h();
 >>>>>>> origin/qotrun-dev
+=======
+  var invalidFeedback = h(false);
+>>>>>>> origin/velia_merge-dev
 
   if (content) {
     invalidFeedback = h(_form_form_invalid_feedback__WEBPACK_IMPORTED_MODULE_15__["BFormInvalidFeedback"], {
@@ -8291,10 +8819,14 @@ var renderInvalidFeedback = function renderInvalidFeedback(h, ctx) {
 var renderValidFeedback = function renderValidFeedback(h, ctx) {
   var content = ctx.normalizeSlot('valid-feedback') || ctx.validFeedback;
 <<<<<<< HEAD
+<<<<<<< HEAD
   var validFeedback = h(false);
 =======
   var validFeedback = h();
 >>>>>>> origin/qotrun-dev
+=======
+  var validFeedback = h(false);
+>>>>>>> origin/velia_merge-dev
 
   if (content) {
     validFeedback = h(_form_form_valid_feedback__WEBPACK_IMPORTED_MODULE_16__["BFormValidFeedback"], {
@@ -8319,10 +8851,14 @@ var renderHelpText = function renderHelpText(h, ctx) {
   // Form help text (description)
   var content = ctx.normalizeSlot('description') || ctx.description;
 <<<<<<< HEAD
+<<<<<<< HEAD
   var description = h(false);
 =======
   var description = h();
 >>>>>>> origin/qotrun-dev
+=======
+  var description = h(false);
+>>>>>>> origin/velia_merge-dev
 
   if (content) {
     description = h(_form_form_text__WEBPACK_IMPORTED_MODULE_14__["BFormText"], {
@@ -8346,6 +8882,7 @@ var renderLabel = function renderLabel(h, ctx) {
 
   if (!content && !isHorizontal) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     return h(false);
   } else if (ctx.labelSrOnly) {
     var label = h(false);
@@ -8354,6 +8891,11 @@ var renderLabel = function renderLabel(h, ctx) {
   } else if (ctx.labelSrOnly) {
     var label = h();
 >>>>>>> origin/qotrun-dev
+=======
+    return h(false);
+  } else if (ctx.labelSrOnly) {
+    var label = h(false);
+>>>>>>> origin/velia_merge-dev
 
     if (content) {
       label = h(labelTag, {
@@ -8689,10 +9231,14 @@ var BFormGroup = {
         role: isFieldset ? 'group' : null
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
     }, [this.normalizeSlot('default') || h(false), renderInvalidFeedback(h, this), renderValidFeedback(h, this), renderHelpText(h, this)]); // Create the form-group
 =======
     }, [this.normalizeSlot('default') || h(), renderInvalidFeedback(h, this), renderValidFeedback(h, this), renderHelpText(h, this)]); // Create the form-group
 >>>>>>> origin/qotrun-dev
+=======
+    }, [this.normalizeSlot('default') || h(false), renderInvalidFeedback(h, this), renderValidFeedback(h, this), renderHelpText(h, this)]); // Create the form-group
+>>>>>>> origin/velia_merge-dev
 
     var data = {
       staticClass: 'form-group',
@@ -8771,10 +9317,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -9152,10 +9702,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -9344,10 +9898,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -9611,10 +10169,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -10384,16 +10946,22 @@ var props = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 function makeBlankImgSrc(width, height, color) {
   var src = encodeURIComponent(BLANK_TEMPLATE.replace('%{w}', String(width)).replace('%{h}', String(height)).replace('%{f}', color));
   return "data:image/svg+xml;charset=UTF-8,".concat(src);
 } // @vue/component
+<<<<<<< HEAD
 =======
 var makeBlankImgSrc = function makeBlankImgSrc(width, height, color) {
   var src = encodeURIComponent(BLANK_TEMPLATE.replace('%{w}', String(width)).replace('%{h}', String(height)).replace('%{f}', color));
   return "data:image/svg+xml;charset=UTF-8,".concat(src);
 }; // @vue/component
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 
 var BImg =
@@ -11205,10 +11773,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _input_group_text__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./input-group-text */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-text.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -11276,10 +11848,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _input_group_addon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./input-group-addon */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-addon.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -11325,10 +11901,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _input_group_addon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./input-group-addon */ "./node_modules/bootstrap-vue/esm/components/input-group/input-group-addon.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -11481,16 +12061,22 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       props.prepend || props.prependHtml ? h(_input_group_text__WEBPACK_IMPORTED_MODULE_6__["BInputGroupText"], {
         domProps: Object(_utils_html__WEBPACK_IMPORTED_MODULE_2__["htmlOrText"])(props.prependHtml, props.prepend)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       }) : h(false), // Slot
       Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('prepend', {}, $scopedSlots, $slots) || h(false)]));
     } else {
       childNodes.push(h(false));
+<<<<<<< HEAD
 =======
       }) : h(), // Slot
       Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('prepend', {}, $scopedSlots, $slots) || h()]));
     } else {
       childNodes.push(h());
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
     } // Default slot
 
 
@@ -11498,10 +12084,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       childNodes.push.apply(childNodes, _toConsumableArray(Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('default', {}, $scopedSlots, $slots)));
     } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
       childNodes.push(h(false));
 =======
       childNodes.push(h());
 >>>>>>> origin/qotrun-dev
+=======
+      childNodes.push(h(false));
+>>>>>>> origin/velia_merge-dev
     } // Append prop
 
 
@@ -11510,16 +12100,22 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       props.append || props.appendHtml ? h(_input_group_text__WEBPACK_IMPORTED_MODULE_6__["BInputGroupText"], {
         domProps: Object(_utils_html__WEBPACK_IMPORTED_MODULE_2__["htmlOrText"])(props.appendHtml, props.append)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       }) : h(false), // Slot
       Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('append', {}, $scopedSlots, $slots) || h(false)]));
     } else {
       childNodes.push(h(false));
+<<<<<<< HEAD
 =======
       }) : h(), // Slot
       Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('append', {}, $scopedSlots, $slots) || h()]));
     } else {
       childNodes.push(h());
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
     }
 
     return h(props.tag, Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, {
@@ -11729,10 +12325,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -11745,6 +12345,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 
 /**
  * Generates a prop object with a type of
@@ -11752,16 +12355,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  */
 
 function boolStrNum() {
+<<<<<<< HEAD
 =======
  // Generates a prop object with a type of `[Boolean, String, Number]`
 
 var boolStrNum = function boolStrNum() {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   return {
     type: [Boolean, String, Number],
     default: false
   };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 }
 /**
  * Generates a prop object with a type of
@@ -11770,27 +12379,36 @@ var boolStrNum = function boolStrNum() {
 
 
 function strNum() {
+<<<<<<< HEAD
 =======
 }; // Generates a prop object with a type of `[String, Number]`
 
 
 var strNum = function strNum() {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   return {
     type: [String, Number],
     default: null
   };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 } // Memoized function for better performance on generating class names
 
 
 var computeBkPtClass = Object(_utils_memoize__WEBPACK_IMPORTED_MODULE_1__["default"])(function computeBkPt(type, breakpoint, val) {
+<<<<<<< HEAD
 =======
 }; // Compute a breakpoint class name
 
 
 var computeBreakpoint = function computeBreakpoint(type, breakpoint, val) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   var className = type;
 
   if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isUndefined"])(val) || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_4__["isNull"])(val) || val === false) {
@@ -11813,6 +12431,7 @@ var computeBreakpoint = function computeBreakpoint(type, breakpoint, val) {
   className += "-".concat(val);
   return className.toLowerCase();
 <<<<<<< HEAD
+<<<<<<< HEAD
 }); // Cached copy of the breakpoint prop names
 =======
 }; // Memoized function for better performance on generating class names
@@ -11820,6 +12439,9 @@ var computeBreakpoint = function computeBreakpoint(type, breakpoint, val) {
 
 var computeBreakpointClass = Object(_utils_memoize__WEBPACK_IMPORTED_MODULE_1__["default"])(computeBreakpoint); // Cached copy of the breakpoint prop names
 >>>>>>> origin/qotrun-dev
+=======
+}); // Cached copy of the breakpoint prop names
+>>>>>>> origin/velia_merge-dev
 
 var breakpointPropMap = Object(_utils_object__WEBPACK_IMPORTED_MODULE_5__["create"])(null); // Lazy evaled props factory for BCol
 
@@ -11912,12 +12534,17 @@ var BCol = {
 
       for (var i = 0; i < _keys.length; i++) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // computeBkPt(col, colSm => Sm, value=[String, Number, Boolean])
         var c = computeBkPtClass(type, _keys[i].replace(type, ''), props[_keys[i]]); // If a class is returned, push it onto the array.
 =======
         // computeBreakpoint(col, colSm => Sm, value=[String, Number, Boolean])
         var c = computeBreakpointClass(type, _keys[i].replace(type, ''), props[_keys[i]]); // If a class is returned, push it onto the array.
 >>>>>>> origin/qotrun-dev
+=======
+        // computeBkPt(col, colSm => Sm, value=[String, Number, Boolean])
+        var c = computeBkPtClass(type, _keys[i].replace(type, ''), props[_keys[i]]); // If a class is returned, push it onto the array.
+>>>>>>> origin/velia_merge-dev
 
         if (c) {
           classList.push(c);
@@ -12203,10 +12830,14 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -12334,11 +12965,15 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     onClick: function onClick(evt) {
       var _arguments = arguments;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       var isEvent = evt instanceof Event;
       var isRouterLink = this.isRouterLink;
       var suppliedHandler = this.$listeners.click;
 
       if (isEvent && this.disabled) {
+<<<<<<< HEAD
 =======
       var evtIsEvent = Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_3__["isEvent"])(evt);
       var isRouterLink = this.isRouterLink;
@@ -12346,6 +12981,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
       if (evtIsEvent && this.disabled) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         // Stop event from bubbling up
         evt.stopPropagation(); // Kill the event loop attached to this specific `EventTarget`
         // Needed to prevent `vue-router` for doing it's thing
@@ -12372,10 +13009,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (isEvent && (this.disabled || !isRouterLink && this.computedHref === '#')) {
 =======
       if (evtIsEvent && (this.disabled || !isRouterLink && this.computedHref === '#')) {
 >>>>>>> origin/qotrun-dev
+=======
+      if (isEvent && (this.disabled || !isRouterLink && this.computedHref === '#')) {
+>>>>>>> origin/velia_merge-dev
         evt.preventDefault();
       }
     },
@@ -12427,10 +13068,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     return h(tag, componentData, this.normalizeSlot('default', {}));
 =======
     return h(tag, componentData, this.normalizeSlot('default'));
 >>>>>>> origin/qotrun-dev
+=======
+    return h(tag, componentData, this.normalizeSlot('default', {}));
+>>>>>>> origin/velia_merge-dev
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (BLink);
@@ -12488,10 +13133,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -12866,10 +13515,14 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -12980,10 +13633,14 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -13271,9 +13928,12 @@ var plugin = function plugin(Vue) {
   }); // Define our read-only `$bvModal` instance property
   // Placed in an if just in case in HMR mode
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // eslint-disable-next-line no-prototype-builtins
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
   if (!Vue.prototype.hasOwnProperty(PROP_NAME)) {
     Object(_utils_object__WEBPACK_IMPORTED_MODULE_4__["defineProperty"])(Vue.prototype, PROP_NAME, {
@@ -13616,10 +14276,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _button_button__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../button/button */ "./node_modules/bootstrap-vue/esm/components/button/button.js");
 /* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -13660,6 +14324,9 @@ var EVT_OPTIONS = {
 };
 var props = {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
   title: {
     type: String,
     default: ''
@@ -13673,8 +14340,11 @@ var props = {
       return Object(_utils_config__WEBPACK_IMPORTED_MODULE_12__["getComponentConfig"])(NAME, 'titleTag');
     }
   },
+<<<<<<< HEAD
 =======
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   size: {
     type: String,
     default: function _default() {
@@ -13714,6 +14384,7 @@ var props = {
     default: false
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   title: {
     type: String,
@@ -13741,6 +14412,8 @@ var props = {
     default: null
   },
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   headerBgVariant: {
     type: String,
     default: function _default() {
@@ -13767,10 +14440,14 @@ var props = {
   },
   headerClass: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     type: [String, Array],
 =======
     type: [String, Array, Object],
 >>>>>>> origin/qotrun-dev
+=======
+    type: [String, Array],
+>>>>>>> origin/velia_merge-dev
     default: null
   },
   bodyBgVariant: {
@@ -13787,6 +14464,9 @@ var props = {
   },
   modalClass: {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
     type: [String, Array],
     default: null
   },
@@ -13800,6 +14480,7 @@ var props = {
   },
   bodyClass: {
     type: [String, Array],
+<<<<<<< HEAD
 =======
     type: [String, Array, Object],
     default: null
@@ -13815,6 +14496,8 @@ var props = {
   bodyClass: {
     type: [String, Array, Object],
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
     default: null
   },
   footerBgVariant: {
@@ -13837,10 +14520,14 @@ var props = {
   },
   footerClass: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     type: [String, Array],
 =======
     type: [String, Array, Object],
 >>>>>>> origin/qotrun-dev
+=======
+    type: [String, Array],
+>>>>>>> origin/velia_merge-dev
     default: null
   },
   hideHeader: {
@@ -13994,6 +14681,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       return [(_ref2 = {}, _defineProperty(_ref2, "bg-".concat(this.headerBgVariant), Boolean(this.headerBgVariant)), _defineProperty(_ref2, "text-".concat(this.headerTextVariant), Boolean(this.headerTextVariant)), _defineProperty(_ref2, "border-".concat(this.headerBorderVariant), Boolean(this.headerBorderVariant)), _ref2), this.headerClass];
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     titleClases: function titleClases() {
       return [{
@@ -14001,6 +14689,8 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }, this.titleClass];
     },
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
     bodyClasses: function bodyClasses() {
       var _ref3;
 
@@ -14434,20 +15124,28 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     makeModal: function makeModal(h) {
       // Modal header
 <<<<<<< HEAD
+<<<<<<< HEAD
       var header = h(false);
 =======
       var header = h();
 >>>>>>> origin/qotrun-dev
+=======
+      var header = h(false);
+>>>>>>> origin/velia_merge-dev
 
       if (!this.hideHeader) {
         var modalHeader = this.normalizeSlot('modal-header', this.slotScope);
 
         if (!modalHeader) {
 <<<<<<< HEAD
+<<<<<<< HEAD
           var closeButton = h(false);
 =======
           var closeButton = h();
 >>>>>>> origin/qotrun-dev
+=======
+          var closeButton = h(false);
+>>>>>>> origin/velia_merge-dev
 
           if (!this.hideHeaderClose) {
             closeButton = h(_button_button_close__WEBPACK_IMPORTED_MODULE_16__["BButtonClose"], {
@@ -14460,16 +15158,21 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
                 click: this.onClose
               }
 <<<<<<< HEAD
+<<<<<<< HEAD
             }, [this.normalizeSlot('modal-header-close', {})]);
 =======
             }, [this.normalizeSlot('modal-header-close')]);
 >>>>>>> origin/qotrun-dev
+=======
+            }, [this.normalizeSlot('modal-header-close', {})]);
+>>>>>>> origin/velia_merge-dev
           }
 
           var domProps = !this.hasNormalizedSlot('modal-title') && this.titleHtml ? {
             innerHTML: this.titleHtml
           } : {};
           modalHeader = [h(this.titleTag, {
+<<<<<<< HEAD
 <<<<<<< HEAD
             class: ['modal-title'],
 =======
@@ -14479,6 +15182,9 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
               id: this.safeId('__BV_modal_title_')
             },
 >>>>>>> origin/qotrun-dev
+=======
+            class: ['modal-title'],
+>>>>>>> origin/velia_merge-dev
             domProps: domProps
           }, [this.normalizeSlot('modal-title', this.slotScope) || Object(_utils_html__WEBPACK_IMPORTED_MODULE_13__["stripTags"])(this.title)]), closeButton];
         }
@@ -14504,20 +15210,28 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }, this.normalizeSlot('default', this.slotScope)); // Modal footer
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       var footer = h(false);
 =======
       var footer = h();
 >>>>>>> origin/qotrun-dev
+=======
+      var footer = h(false);
+>>>>>>> origin/velia_merge-dev
 
       if (!this.hideFooter) {
         var modalFooter = this.normalizeSlot('modal-footer', this.slotScope);
 
         if (!modalFooter) {
 <<<<<<< HEAD
+<<<<<<< HEAD
           var cancelButton = h(false);
 =======
           var cancelButton = h();
 >>>>>>> origin/qotrun-dev
+=======
+          var cancelButton = h(false);
+>>>>>>> origin/velia_merge-dev
 
           if (!this.okOnly) {
             var cancelHtml = this.cancelTitleHtml ? {
@@ -14533,10 +15247,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
                 click: this.onCancel
               }
 <<<<<<< HEAD
+<<<<<<< HEAD
             }, [this.normalizeSlot('modal-cancel', {}) || (cancelHtml ? h('span', {
 =======
             }, [this.normalizeSlot('modal-cancel') || (cancelHtml ? h('span', {
 >>>>>>> origin/qotrun-dev
+=======
+            }, [this.normalizeSlot('modal-cancel', {}) || (cancelHtml ? h('span', {
+>>>>>>> origin/velia_merge-dev
               domProps: cancelHtml
             }) : Object(_utils_html__WEBPACK_IMPORTED_MODULE_13__["stripTags"])(this.cancelTitle))]);
           }
@@ -14554,10 +15272,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
               click: this.onOk
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
           }, [this.normalizeSlot('modal-ok', {}) || (okHtml ? h('span', {
 =======
           }, [this.normalizeSlot('modal-ok') || (okHtml ? h('span', {
 >>>>>>> origin/qotrun-dev
+=======
+          }, [this.normalizeSlot('modal-ok', {}) || (okHtml ? h('span', {
+>>>>>>> origin/velia_merge-dev
             domProps: okHtml
           }) : Object(_utils_html__WEBPACK_IMPORTED_MODULE_13__["stripTags"])(this.okTitle))]);
           modalFooter = [cancelButton, okButton];
@@ -14581,12 +15303,18 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         attrs: {
           role: 'document',
 <<<<<<< HEAD
+<<<<<<< HEAD
           id: this.safeId('__BV_modal_content_'),
           'aria-labelledby': this.hideHeader ? null : this.safeId('__BV_modal_header_'),
           'aria-describedby': this.safeId('__BV_modal_body_')
 =======
           id: this.safeId('__BV_modal_content_')
 >>>>>>> origin/qotrun-dev
+=======
+          id: this.safeId('__BV_modal_content_'),
+          'aria-labelledby': this.hideHeader ? null : this.safeId('__BV_modal_header_'),
+          'aria-describedby': this.safeId('__BV_modal_body_')
+>>>>>>> origin/velia_merge-dev
         }
       }, [header, body, footer]); // Modal dialog wrapper
 
@@ -14615,6 +15343,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           tabindex: '-1',
           'aria-hidden': this.isVisible ? null : 'true',
 <<<<<<< HEAD
+<<<<<<< HEAD
           'aria-modal': this.isVisible ? 'true' : null
 =======
           'aria-modal': this.isVisible ? 'true' : null,
@@ -14622,6 +15351,9 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           'aria-labelledby': this.hideHeader || this.ariaLabel || !(this.hasNormalizedSlot('modal-title') || this.titleHtml || this.title) ? null : this.safeId('__BV_modal_title_'),
           'aria-describedby': this.safeId('__BV_modal_body_')
 >>>>>>> origin/qotrun-dev
+=======
+          'aria-modal': this.isVisible ? 'true' : null
+>>>>>>> origin/velia_merge-dev
         },
         on: {
           keydown: this.onEsc,
@@ -14652,10 +15384,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }, [modal]); // Modal backdrop
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       var backdrop = h(false);
 =======
       var backdrop = h();
 >>>>>>> origin/qotrun-dev
+=======
+      var backdrop = h(false);
+>>>>>>> origin/velia_merge-dev
 
       if (!this.hideBackdrop && this.isVisible) {
         backdrop = h('div', {
@@ -14664,10 +15400,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
             id: this.safeId('__BV_modal_backdrop_')
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
         }, [this.normalizeSlot('modal-backdrop', {})]);
 =======
         }, [this.normalizeSlot('modal-backdrop')]);
 >>>>>>> origin/qotrun-dev
+=======
+        }, [this.normalizeSlot('modal-backdrop', {})]);
+>>>>>>> origin/velia_merge-dev
       }
 
       backdrop = h(_utils_bv_transition__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -14678,10 +15418,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // tab index during enforce focus tab cycle
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       var tabTrap = h(false);
 =======
       var tabTrap = h();
 >>>>>>> origin/qotrun-dev
+=======
+      var tabTrap = h(false);
+>>>>>>> origin/velia_merge-dev
 
       if (this.isVisible && this.isTop && !this.noEnforceFocus) {
         tabTrap = h('div', {
@@ -14704,6 +15448,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   render: function render(h) {
     if (this.static) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       return this.lazy && this.isHidden ? h(false) : this.makeModal(h);
     } else {
       return this.isHidden ? h(false) : h(_utils_transporter__WEBPACK_IMPORTED_MODULE_9__["BTransporterSingle"], {}, [this.makeModal(h)]);
@@ -14712,6 +15457,11 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     } else {
       return this.isHidden ? h() : h(_utils_transporter__WEBPACK_IMPORTED_MODULE_9__["BTransporterSingle"], {}, [this.makeModal(h)]);
 >>>>>>> origin/qotrun-dev
+=======
+      return this.lazy && this.isHidden ? h(false) : this.makeModal(h);
+    } else {
+      return this.isHidden ? h(false) : h(_utils_transporter__WEBPACK_IMPORTED_MODULE_9__["BTransporterSingle"], {}, [this.makeModal(h)]);
+>>>>>>> origin/velia_merge-dev
     }
   }
 });
@@ -14791,10 +15541,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 /* harmony import */ var _form_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../form/form */ "./node_modules/bootstrap-vue/esm/components/form/form.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -14847,10 +15601,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -14909,9 +15667,13 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       return [this.extraToggleClasses, // Deprecated
       this.toggleClass, {
 <<<<<<< HEAD
+<<<<<<< HEAD
         disabled: this.disabled,
 =======
 >>>>>>> origin/qotrun-dev
+=======
+        disabled: this.disabled,
+>>>>>>> origin/velia_merge-dev
         'dropdown-toggle-no-caret': this.noCaret
       }];
     }
@@ -14929,10 +15691,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         id: this.safeId('_BV_button_'),
         'aria-haspopup': 'true',
 <<<<<<< HEAD
+<<<<<<< HEAD
         'aria-expanded': String(this.visible)
 =======
         'aria-expanded': this.visible ? 'true' : 'false'
 >>>>>>> origin/qotrun-dev
+=======
+        'aria-expanded': String(this.visible)
+>>>>>>> origin/velia_merge-dev
       },
       on: {
         click: this.toggle,
@@ -14957,10 +15723,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }, !this.lazy || this.visible ? this.normalizeSlot('default', {
       hide: this.hide
 <<<<<<< HEAD
+<<<<<<< HEAD
     }) : [h(false)]);
 =======
     }) : [h()]);
 >>>>>>> origin/qotrun-dev
+=======
+    }) : [h(false)]);
+>>>>>>> origin/velia_merge-dev
     return h('li', {
       staticClass: 'nav-item b-nav-dropdown dropdown',
       class: this.dropdownClasses,
@@ -14989,10 +15759,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -15012,12 +15786,18 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     linkAttrs: {
       type: Object,
 <<<<<<< HEAD
+<<<<<<< HEAD
       default: function _default() {
         return {};
       }
 =======
       default: function _default() {}
 >>>>>>> origin/qotrun-dev
+=======
+      default: function _default() {
+        return {};
+      }
+>>>>>>> origin/velia_merge-dev
     },
     linkClasses: {
       type: [String, Object, Array],
@@ -15256,10 +16036,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_pluck_props__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/pluck-props */ "./node_modules/bootstrap-vue/esm/utils/pluck-props.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -15983,6 +16767,9 @@ var DEFAULT_PER_PAGE = 20;
 var DEFAULT_TOTAL_ROWS = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 function sanitizePerPage(value) {
   var perPage = parseInt(value, 10) || DEFAULT_PER_PAGE;
   return perPage < 1 ? 1 : perPage;
@@ -15992,6 +16779,7 @@ function sanitizeTotalRows(value) {
   var totalRows = parseInt(value, 10) || DEFAULT_TOTAL_ROWS;
   return totalRows < 0 ? 0 : totalRows;
 }
+<<<<<<< HEAD
 =======
 var sanitizePerPage = function sanitizePerPage(val) {
   var perPage = parseInt(val, 10) || DEFAULT_PER_PAGE;
@@ -16003,6 +16791,8 @@ var sanitizeTotalRows = function sanitizeTotalRows(val) {
   return totalRows < 0 ? 0 : totalRows;
 };
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 var props = {
   perPage: {
@@ -16236,11 +17026,17 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   mixins: [_mixins_toolpop__WEBPACK_IMPORTED_MODULE_7__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_6__["default"]],
   props: props,
 <<<<<<< HEAD
+<<<<<<< HEAD
   data: function data() {
     return {};
   },
 =======
 >>>>>>> origin/qotrun-dev
+=======
+  data: function data() {
+    return {};
+  },
+>>>>>>> origin/velia_merge-dev
   methods: {
     createToolpop: function createToolpop() {
       // getTarget is in toolpop mixin
@@ -16435,10 +17231,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   },
   render: function render(h) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     var childNodes = h(false);
 =======
     var childNodes = h();
 >>>>>>> origin/qotrun-dev
+=======
+    var childNodes = h(false);
+>>>>>>> origin/velia_merge-dev
 
     if (this.hasNormalizedSlot('default')) {
       childNodes = this.normalizeSlot('default');
@@ -16684,10 +17484,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       },
       class: (_class = {}, _defineProperty(_class, "spinner-".concat(props.type), Boolean(props.type)), _defineProperty(_class, "spinner-".concat(props.type, "-sm"), props.small), _defineProperty(_class, "text-".concat(props.variant), Boolean(props.variant)), _class)
 <<<<<<< HEAD
+<<<<<<< HEAD
     }), [label || h(false)]);
 =======
     }), [label || h()]);
 >>>>>>> origin/qotrun-dev
+=======
+    }), [label || h(false)]);
+>>>>>>> origin/velia_merge-dev
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (BSpinner);
@@ -16730,9 +17534,13 @@ var EVENT_FILTER = ['a', 'a *', // include content inside links
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return defaultSortCompare; });
 =======
 >>>>>>> origin/qotrun-dev
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return defaultSortCompare; });
+>>>>>>> origin/velia_merge-dev
 /* harmony import */ var _utils_get__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/get */ "./node_modules/bootstrap-vue/esm/utils/get.js");
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _stringify_object_values__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stringify-object-values */ "./node_modules/bootstrap-vue/esm/components/table/helpers/stringify-object-values.js");
@@ -16748,10 +17556,14 @@ __webpack_require__.r(__webpack_exports__);
 //       calling this method for each sortBy
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function defaultSortCompare(a, b, sortBy, formatter, localeOpts, locale) {
 =======
 var defaultSortCompare = function defaultSortCompare(a, b, sortBy, formatter, localeOpts, locale) {
 >>>>>>> origin/qotrun-dev
+=======
+function defaultSortCompare(a, b, sortBy, formatter, localeOpts, locale) {
+>>>>>>> origin/velia_merge-dev
   var aa = Object(_utils_get__WEBPACK_IMPORTED_MODULE_0__["default"])(a, sortBy, '');
   var bb = Object(_utils_get__WEBPACK_IMPORTED_MODULE_0__["default"])(b, sortBy, '');
 
@@ -16772,12 +17584,16 @@ var defaultSortCompare = function defaultSortCompare(a, b, sortBy, formatter, lo
     return Object(_stringify_object_values__WEBPACK_IMPORTED_MODULE_2__["default"])(aa).localeCompare(Object(_stringify_object_values__WEBPACK_IMPORTED_MODULE_2__["default"])(bb), locale, localeOpts);
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (defaultSortCompare);
 >>>>>>> origin/qotrun-dev
+=======
+}
+>>>>>>> origin/velia_merge-dev
 
 /***/ }),
 
@@ -16791,6 +17607,9 @@ var defaultSortCompare = function defaultSortCompare(a, b, sortBy, formatter, lo
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return filterEvent; });
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ "./node_modules/bootstrap-vue/esm/components/table/helpers/constants.js");
@@ -16827,6 +17646,7 @@ function filterEvent(evt) {
 
   return Object(_utils_dom__WEBPACK_IMPORTED_MODULE_0__["matches"])(el, _constants__WEBPACK_IMPORTED_MODULE_1__["EVENT_FILTER"]);
 }
+<<<<<<< HEAD
 =======
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ "./node_modules/bootstrap-vue/esm/components/table/helpers/constants.js");
@@ -16874,6 +17694,8 @@ var filterEvent = function filterEvent(evt) {
 
 /* harmony default export */ __webpack_exports__["default"] = (filterEvent);
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 /***/ }),
 
@@ -16896,10 +17718,14 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!this.hasNormalizedSlot('bottom-row') || this.isStacked === true) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return h(false);
 =======
         return h();
 >>>>>>> origin/qotrun-dev
+=======
+        return h(false);
+>>>>>>> origin/velia_merge-dev
       }
 
       var fields = this.computedFields;
@@ -16988,10 +17814,14 @@ __webpack_require__.r(__webpack_exports__);
         }, [h('td', {
           attrs: tdAttrs
 <<<<<<< HEAD
+<<<<<<< HEAD
         }, [this.normalizeSlot('table-busy', {})])]);
 =======
         }, [this.normalizeSlot('table-busy')])]);
 >>>>>>> origin/qotrun-dev
+=======
+        }, [this.normalizeSlot('table-busy', {})])]);
+>>>>>>> origin/velia_merge-dev
       } else {
         // We return null here so that we can determine if we need to
         // render the table items rows or not.
@@ -17045,12 +17875,17 @@ __webpack_require__.r(__webpack_exports__);
       var h = this.$createElement; // Build the caption
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       var $captionSlot = this.normalizeSlot('table-caption', {});
       var $caption = h(false);
 =======
       var $captionSlot = this.normalizeSlot('table-caption');
       var $caption = h();
 >>>>>>> origin/qotrun-dev
+=======
+      var $captionSlot = this.normalizeSlot('table-caption', {});
+      var $caption = h(false);
+>>>>>>> origin/velia_merge-dev
 
       if ($captionSlot || this.caption || this.captionHtml) {
         var data = {
@@ -17090,10 +17925,14 @@ __webpack_require__.r(__webpack_exports__);
       var h = this.$createElement;
       var fields = this.computedFields;
 <<<<<<< HEAD
+<<<<<<< HEAD
       var $colgroup = h(false);
 =======
       var $colgroup = h();
 >>>>>>> origin/qotrun-dev
+=======
+      var $colgroup = h(false);
+>>>>>>> origin/velia_merge-dev
 
       if (this.hasNormalizedSlot('table-colgroup')) {
         $colgroup = h('colgroup', {
@@ -17191,10 +18030,14 @@ __webpack_require__.r(__webpack_exports__);
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       return $empty || h(false);
 =======
       return $empty || h();
 >>>>>>> origin/qotrun-dev
+=======
+      return $empty || h(false);
+>>>>>>> origin/velia_merge-dev
     }
   }
 });
@@ -17617,10 +18460,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _mixins_listen_on_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../mixins/listen-on-root */ "./node_modules/bootstrap-vue/esm/mixins/listen-on-root.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -17665,10 +18512,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: {
     hasProvider: function hasProvider() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       return this.items instanceof Function;
 =======
       return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isFunction"])(this.items);
 >>>>>>> origin/qotrun-dev
+=======
+      return this.items instanceof Function;
+>>>>>>> origin/velia_merge-dev
     },
     providerTriggerContext: function providerTriggerContext() {
       // Used to trigger the provider function via a watcher. Only the fields that
@@ -17707,10 +18558,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     items: function items(newVal, oldVal) {
       // If a new provider has been specified, trigger an update
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (this.hasProvider || newVal instanceof Function) {
 =======
       if (this.hasProvider || Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isFunction"])(newVal)) {
 >>>>>>> origin/qotrun-dev
+=======
+      if (this.hasProvider || newVal instanceof Function) {
+>>>>>>> origin/velia_merge-dev
         this.$nextTick(this._providerUpdate);
       }
     },
@@ -17771,10 +18626,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     _providerUpdate: function _providerUpdate() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       var _this2 = this;
 
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
       // Refresh the provider function items.
       if (!this.hasProvider) {
         // Do nothing if no provider
@@ -17793,6 +18651,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.$nextTick(function () {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
         var _this2 = this;
 
         try {
@@ -17800,6 +18661,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           var data = this.items(this.context, this._providerSetLocal);
 
           if (data && data.then && Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isFunction"])(data.then)) {
+<<<<<<< HEAD
 =======
         try {
           // Call provider function passing it the context and optional callback
@@ -17807,6 +18669,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
           if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isPromise"])(data)) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
             // Provider returned Promise
             data.then(function (items) {
               // Provider resolved with items
@@ -17815,12 +18679,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           } else if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isArray"])(data)) {
             // Provider returned Array data
 <<<<<<< HEAD
+<<<<<<< HEAD
             this._providerSetLocal(data);
           } else if (this.items.length !== 2) {
 =======
             _this2._providerSetLocal(data);
           } else if (_this2.items.length !== 2) {
 >>>>>>> origin/qotrun-dev
+=======
+            this._providerSetLocal(data);
+          } else if (this.items.length !== 2) {
+>>>>>>> origin/velia_merge-dev
             // Check number of arguments provider function requested
             // Provider not using callback (didn't request second argument), so we clear
             // busy state as most likely there was an error in the provider function
@@ -17830,10 +18699,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             /* istanbul ignore next */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             this.localBusy = false;
 =======
             _this2.localBusy = false;
 >>>>>>> origin/qotrun-dev
+=======
+            this.localBusy = false;
+>>>>>>> origin/velia_merge-dev
           }
         } catch (e)
         /* istanbul ignore next */
@@ -17842,6 +18715,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           // and clear the busy state
           Object(_utils_warn__WEBPACK_IMPORTED_MODULE_1__["default"])("b-table provider function error [".concat(e.name, "] ").concat(e.message));
 <<<<<<< HEAD
+<<<<<<< HEAD
           this.localBusy = false;
           this.$off('refreshed', this.refresh);
 =======
@@ -17849,6 +18723,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
           _this2.$off('refreshed', _this2.refresh);
 >>>>>>> origin/qotrun-dev
+=======
+          this.localBusy = false;
+          this.$off('refreshed', this.refresh);
+>>>>>>> origin/velia_merge-dev
         }
       });
     }
@@ -18068,10 +18946,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _default_sort_compare__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./default-sort-compare */ "./node_modules/bootstrap-vue/esm/components/table/helpers/default-sort-compare.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -18383,10 +19265,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -18536,10 +19422,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _filter_event__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./filter-event */ "./node_modules/bootstrap-vue/esm/components/table/helpers/filter-event.js");
 /* harmony import */ var _text_selection_active__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./text-selection-active */ "./node_modules/bootstrap-vue/esm/components/table/helpers/text-selection-active.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -18832,10 +19722,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this2.tbodyRowKeydown(evt, item, rowIndex);
         };
 <<<<<<< HEAD
+<<<<<<< HEAD
       } // Selctable classes and attributes
 =======
       } // Selectable classes and attributes
 >>>>>>> origin/qotrun-dev
+=======
+      } // Selctable classes and attributes
+>>>>>>> origin/velia_merge-dev
 
 
       var selectableClasses = this.selectableRowClasses ? this.selectableRowClasses(rowIndex) : {};
@@ -18921,11 +19815,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       } else if ($detailsSlot) {
         // Only add the placeholder if a the table has a row-details slot defined (but not shown)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
         $rows.push(h(false));
 
         if (tableStriped) {
           // add extra placeholder if table is striped
           $rows.push(h(false));
+<<<<<<< HEAD
 =======
         $rows.push(h());
 
@@ -18933,6 +19831,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           // add extra placeholder if table is striped
           $rows.push(h());
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         }
       } // Return the row(s)
 
@@ -18955,10 +19855,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixin_tbody_row__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mixin-tbody-row */ "./node_modules/bootstrap-vue/esm/components/table/helpers/mixin-tbody-row.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -19000,16 +19904,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // Table isn't busy, or we don't have a busy slot
         // Add static Top Row slot (hidden in visibly stacked mode as we can't control data-label attr)
 <<<<<<< HEAD
+<<<<<<< HEAD
         $rows.push(this.renderTopRow ? this.renderTopRow() : h(false)); // render the rows
 =======
         $rows.push(this.renderTopRow ? this.renderTopRow() : h()); // render the rows
 >>>>>>> origin/qotrun-dev
+=======
+        $rows.push(this.renderTopRow ? this.renderTopRow() : h(false)); // render the rows
+>>>>>>> origin/velia_merge-dev
 
         items.forEach(function (item, rowIndex) {
           // Render the individual item row (rows if details slot)
           $rows.push(_this.renderTbodyRow(item, rowIndex));
         }); // Empty Items / Empty Filtered Row slot (only shows if items.length < 1)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         $rows.push(this.renderEmpty ? this.renderEmpty() : h(false)); // Static bottom row slot (hidden in visibly stacked mode as we can't control data-label attr)
 
@@ -19019,6 +19928,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         $rows.push(this.renderBottomRow ? this.renderBottomRow() : h());
 >>>>>>> origin/qotrun-dev
+=======
+        $rows.push(this.renderEmpty ? this.renderEmpty() : h(false)); // Static bottom row slot (hidden in visibly stacked mode as we can't control data-label attr)
+
+        $rows.push(this.renderBottomRow ? this.renderBottomRow() : h(false));
+>>>>>>> origin/velia_merge-dev
       } // If tbody transition enabled
 
 
@@ -19093,10 +20007,14 @@ __webpack_require__.r(__webpack_exports__);
       var h = this.$createElement; // Passing true to renderThead will make it render a tfoot
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       return this.footClone ? this.renderThead(true) : h(false);
 =======
       return this.footClone ? this.renderThead(true) : h();
 >>>>>>> origin/qotrun-dev
+=======
+      return this.footClone ? this.renderThead(true) : h(false);
+>>>>>>> origin/velia_merge-dev
     }
   }
 });
@@ -19119,10 +20037,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _filter_event__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./filter-event */ "./node_modules/bootstrap-vue/esm/components/table/helpers/filter-event.js");
 /* harmony import */ var _text_selection_active__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./text-selection-active */ "./node_modules/bootstrap-vue/esm/components/table/helpers/text-selection-active.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -19190,10 +20112,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // In always stacked mode, we don't bother rendering the head/foot.
         // Or if no field headings (empty table)
 <<<<<<< HEAD
+<<<<<<< HEAD
         return h(false);
 =======
         return h();
 >>>>>>> origin/qotrun-dev
+=======
+        return h(false);
+>>>>>>> origin/velia_merge-dev
       } // Helper function to generate a field TH cell
 
 
@@ -19277,10 +20203,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           fields: fields
         };
 <<<<<<< HEAD
+<<<<<<< HEAD
         $trs.push(this.normalizeSlot('thead-top', scope) || h(false));
 =======
         $trs.push(this.normalizeSlot('thead-top', scope) || h());
 >>>>>>> origin/qotrun-dev
+=======
+        $trs.push(this.normalizeSlot('thead-top', scope) || h(false));
+>>>>>>> origin/velia_merge-dev
         $trs.push(h('tr', {
           class: this.theadTrClass,
           attrs: {
@@ -19321,10 +20251,14 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!this.hasNormalizedSlot('top-row') || this.isStacked === true) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         return h(false);
 =======
         return h();
 >>>>>>> origin/qotrun-dev
+=======
+        return h(false);
+>>>>>>> origin/velia_merge-dev
       }
 
       var fields = this.computedFields;
@@ -19359,10 +20293,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ "./node_modules/bootstrap-vue/esm/components/table/helpers/constants.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -19482,15 +20420,20 @@ var normalizeFields = function normalizeFields(origFields, items) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return sanitizeRow; });
 =======
 >>>>>>> origin/qotrun-dev
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return sanitizeRow; });
+>>>>>>> origin/velia_merge-dev
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ "./node_modules/bootstrap-vue/esm/components/table/helpers/constants.js");
 
  // Return a copy of a row after all reserved fields have been filtered out
 // TODO: add option to specify which fields to include
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 function sanitizeRow(row) {
   return Object(_utils_object__WEBPACK_IMPORTED_MODULE_0__["keys"])(row).reduce(function (obj, key) {
@@ -19500,6 +20443,11 @@ var sanitizeRow = function sanitizeRow(row) {
   return Object(_utils_object__WEBPACK_IMPORTED_MODULE_0__["keys"])(row).reduce(function (obj, key) {
     // Ignore special fields that start with `_`
 >>>>>>> origin/qotrun-dev
+=======
+function sanitizeRow(row) {
+  return Object(_utils_object__WEBPACK_IMPORTED_MODULE_0__["keys"])(row).reduce(function (obj, key) {
+    // Ignore special fields that start with _
+>>>>>>> origin/velia_merge-dev
     if (!_constants__WEBPACK_IMPORTED_MODULE_1__["IGNORED_FIELD_KEYS"][key]) {
       obj[key] = row[key];
     }
@@ -19507,12 +20455,16 @@ var sanitizeRow = function sanitizeRow(row) {
     return obj;
   }, {});
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (sanitizeRow);
 >>>>>>> origin/qotrun-dev
+=======
+}
+>>>>>>> origin/velia_merge-dev
 
 /***/ }),
 
@@ -19526,9 +20478,13 @@ var sanitizeRow = function sanitizeRow(row) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return stringifyObjectValues; });
 =======
 >>>>>>> origin/qotrun-dev
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return stringifyObjectValues; });
+>>>>>>> origin/velia_merge-dev
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 
@@ -19544,6 +20500,9 @@ __webpack_require__.r(__webpack_exports__);
 // Null and undefined values are filtered out
 // Dates are converted to their native string format
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 //
 
 function stringifyObjectValues(val) {
@@ -19561,6 +20520,7 @@ function stringifyObjectValues(val) {
       return !Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_1__["isUndefined"])(v) && !Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_1__["isNull"])(v);
     })
     /* ignore undefined/null values */
+<<<<<<< HEAD
 =======
 
 var stringifyObjectValues = function stringifyObjectValues(val) {
@@ -19577,6 +20537,8 @@ var stringifyObjectValues = function stringifyObjectValues(val) {
       return !Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_1__["isUndefinedOrNull"])(v);
     }) // Ignore undefined/null values
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
     .map(function (k) {
       return stringifyObjectValues(val[k]);
     }).join(' ');
@@ -19584,12 +20546,16 @@ var stringifyObjectValues = function stringifyObjectValues(val) {
 
   return String(val);
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (stringifyObjectValues);
 >>>>>>> origin/qotrun-dev
+=======
+}
+>>>>>>> origin/velia_merge-dev
 
 /***/ }),
 
@@ -19603,6 +20569,9 @@ var stringifyObjectValues = function stringifyObjectValues(val) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return stringifyRecordValues; });
 /* harmony import */ var _sanitize_row__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sanitize-row */ "./node_modules/bootstrap-vue/esm/components/table/helpers/sanitize-row.js");
 /* harmony import */ var _stringify_object_values__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stringify-object-values */ "./node_modules/bootstrap-vue/esm/components/table/helpers/stringify-object-values.js");
@@ -19619,6 +20588,7 @@ function stringifyRecordValues(row) {
     return '';
   }
 }
+<<<<<<< HEAD
 =======
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _sanitize_row__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sanitize-row */ "./node_modules/bootstrap-vue/esm/components/table/helpers/sanitize-row.js");
@@ -19636,6 +20606,8 @@ var stringifyRecordValues = function stringifyRecordValues(row) {
 
 /* harmony default export */ __webpack_exports__["default"] = (stringifyRecordValues);
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 /***/ }),
 
@@ -19649,6 +20621,7 @@ var stringifyRecordValues = function stringifyRecordValues(row) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return textSelectionActive; });
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 // Helper to determine if a there is an active text selection on the document page.
@@ -19656,12 +20629,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
  // Helper to determine if a there is an active text selection on the document page
 >>>>>>> origin/qotrun-dev
+=======
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return textSelectionActive; });
+/* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
+// Helper to determine if a there is an active text selection on the document page.
+>>>>>>> origin/velia_merge-dev
 // Used to filter out click events caused by the mouse up at end of selection
 //
 // Accepts an element as only argument to test to see if selection overlaps or is
 // contained within the element
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 function textSelectionActive() {
   var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
   var win = window;
@@ -19677,6 +20658,7 @@ function textSelectionActive() {
     return false;
   }
 }
+<<<<<<< HEAD
 =======
 var textSelectionActive = function textSelectionActive() {
   var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document;
@@ -19686,6 +20668,8 @@ var textSelectionActive = function textSelectionActive() {
 
 /* harmony default export */ __webpack_exports__["default"] = (textSelectionActive);
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 /***/ }),
 
@@ -20093,10 +21077,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }
     }, // Render content lazily if requested
 <<<<<<< HEAD
+<<<<<<< HEAD
     [this.localActive || !this.computedLazy ? this.normalizeSlot('default') : h(false)]);
 =======
     [this.localActive || !this.computedLazy ? this.normalizeSlot('default') : h()]);
 >>>>>>> origin/qotrun-dev
+=======
+    [this.localActive || !this.computedLazy ? this.normalizeSlot('default') : h(false)]);
+>>>>>>> origin/velia_merge-dev
     return h(_utils_bv_transition__WEBPACK_IMPORTED_MODULE_3__["default"], {
       props: {
         mode: 'out-in',
@@ -20125,6 +21113,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_observe_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/observe-dom */ "./node_modules/bootstrap-vue/esm/utils/observe-dom.js");
 /* harmony import */ var _utils_stable_sort__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/stable-sort */ "./node_modules/bootstrap-vue/esm/utils/stable-sort.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
@@ -20133,6 +21124,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 /* harmony import */ var _nav_nav__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../nav/nav */ "./node_modules/bootstrap-vue/esm/components/nav/nav.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+<<<<<<< HEAD
 =======
 /* harmony import */ var _utils_array__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
@@ -20144,6 +21136,8 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 /* harmony import */ var _nav_nav__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../nav/nav */ "./node_modules/bootstrap-vue/esm/components/nav/nav.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -20161,6 +21155,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  // -- Constants --
 
 var navProps = Object(_utils_object__WEBPACK_IMPORTED_MODULE_7__["omit"])(_nav_nav__WEBPACK_IMPORTED_MODULE_11__["props"], ['tabs', 'isNavBar']); // -- Utils --
@@ -20170,6 +21165,11 @@ var navProps = Object(_utils_object__WEBPACK_IMPORTED_MODULE_7__["omit"])(_nav_n
 
 var navProps = Object(_utils_object__WEBPACK_IMPORTED_MODULE_8__["omit"])(_nav_nav__WEBPACK_IMPORTED_MODULE_12__["props"], ['tabs', 'isNavBar']); // -- Utils --
 >>>>>>> origin/qotrun-dev
+=======
+ // -- Constants --
+
+var navProps = Object(_utils_object__WEBPACK_IMPORTED_MODULE_7__["omit"])(_nav_nav__WEBPACK_IMPORTED_MODULE_11__["props"], ['tabs', 'isNavBar']); // -- Utils --
+>>>>>>> origin/velia_merge-dev
 // Filter function to filter out disabled tabs
 
 var notDisabled = function notDisabled(tab) {
@@ -20237,16 +21237,22 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     },
     handleEvt: function handleEvt(evt) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       function stop() {
         evt.preventDefault();
         evt.stopPropagation();
       }
+<<<<<<< HEAD
 =======
       var stop = function stop() {
         evt.preventDefault();
         evt.stopPropagation();
       };
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
       if (this.tab.disabled) {
         /* istanbul ignore next */
@@ -20288,10 +21294,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   },
   render: function render(h) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     var link = h(_link_link__WEBPACK_IMPORTED_MODULE_10__["BLink"], {
 =======
     var link = h(_link_link__WEBPACK_IMPORTED_MODULE_11__["BLink"], {
 >>>>>>> origin/qotrun-dev
+=======
+    var link = h(_link_link__WEBPACK_IMPORTED_MODULE_10__["BLink"], {
+>>>>>>> origin/velia_merge-dev
       ref: 'link',
       staticClass: 'nav-link',
       class: [{
@@ -20334,10 +21344,14 @@ var BTabs =
 _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: 'BTabs',
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_9__["default"]],
 =======
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_9__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_10__["default"]],
 >>>>>>> origin/qotrun-dev
+=======
+  mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_8__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_9__["default"]],
+>>>>>>> origin/velia_merge-dev
   provide: function provide() {
     return {
       bvTabs: this
@@ -20489,10 +21503,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // to trigger the update of the tabs.
       this.$nextTick(function () {
 <<<<<<< HEAD
+<<<<<<< HEAD
         Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["requestAF"])(function () {
 =======
         Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["requestAF"])(function () {
 >>>>>>> origin/qotrun-dev
+=======
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["requestAF"])(function () {
+>>>>>>> origin/velia_merge-dev
           _this.updateTabs();
         });
       });
@@ -20522,10 +21540,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       // Trigger an update after mounted.  Needed for tabs inside lazy modals.
       if (newVal) {
 <<<<<<< HEAD
+<<<<<<< HEAD
         Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["requestAF"])(function () {
 =======
         Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["requestAF"])(function () {
 >>>>>>> origin/qotrun-dev
+=======
+        Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["requestAF"])(function () {
+>>>>>>> origin/velia_merge-dev
           _this3.updateTabs();
         });
       } // Enable or disable the observer
@@ -20589,10 +21611,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       var _this7 = this;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (!Object(_utils_array__WEBPACK_IMPORTED_MODULE_6__["arrayIncludes"])(this.registeredTabs, tab)) {
 =======
       if (!Object(_utils_array__WEBPACK_IMPORTED_MODULE_5__["arrayIncludes"])(this.registeredTabs, tab)) {
 >>>>>>> origin/qotrun-dev
+=======
+      if (!Object(_utils_array__WEBPACK_IMPORTED_MODULE_6__["arrayIncludes"])(this.registeredTabs, tab)) {
+>>>>>>> origin/velia_merge-dev
         this.registeredTabs.push(tab);
         tab.$once('hook:destroyed', function () {
           _this7.unregisterTab(tab);
@@ -20617,10 +21643,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           // updated with the final ID value.
           self.$nextTick(function () {
 <<<<<<< HEAD
+<<<<<<< HEAD
             Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["requestAF"])(function () {
 =======
             Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["requestAF"])(function () {
 >>>>>>> origin/qotrun-dev
+=======
+            Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["requestAF"])(function () {
+>>>>>>> origin/velia_merge-dev
               self.updateTabs();
             });
           });
@@ -20661,10 +21691,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           return "#".concat(tab.safeId());
         }).join(', ');
 <<<<<<< HEAD
+<<<<<<< HEAD
         order = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["selectAll"])(selector, this.$el).map(function (el) {
 =======
         order = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_6__["selectAll"])(selector, this.$el).map(function (el) {
 >>>>>>> origin/qotrun-dev
+=======
+        order = Object(_utils_dom__WEBPACK_IMPORTED_MODULE_5__["selectAll"])(selector, this.$el).map(function (el) {
+>>>>>>> origin/velia_merge-dev
           return el.id;
         }).filter(Boolean);
       } // Stable sort keeps the original order if not found in the
@@ -20788,10 +21822,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     // Emit a click event on a specified <b-tab> component instance
     emitTabClick: function emitTabClick(tab, evt) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (evt && evt instanceof Event && tab && tab.$emit && !tab.disabled) {
 =======
       if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_7__["isEvent"])(evt) && tab && tab.$emit && !tab.disabled) {
 >>>>>>> origin/qotrun-dev
+=======
+      if (evt && evt instanceof Event && tab && tab.$emit && !tab.disabled) {
+>>>>>>> origin/velia_merge-dev
         tab.$emit('click', evt);
       }
     },
@@ -20893,10 +21931,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }); // Nav
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     var nav = h(_nav_nav__WEBPACK_IMPORTED_MODULE_11__["BNav"], {
 =======
     var nav = h(_nav_nav__WEBPACK_IMPORTED_MODULE_12__["BNav"], {
 >>>>>>> origin/qotrun-dev
+=======
+    var nav = h(_nav_nav__WEBPACK_IMPORTED_MODULE_11__["BNav"], {
+>>>>>>> origin/velia_merge-dev
       ref: 'nav',
       class: this.localNavClass,
       attrs: {
@@ -20913,10 +21955,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         small: this.small
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
     }, [buttons, this.normalizeSlot('tabs')]);
 =======
     }, [this.normalizeSlot('tabs-start') || h(false), buttons, this.normalizeSlot('tabs-end') || this.normalizeSlot('tabs') || h(false)]);
 >>>>>>> origin/qotrun-dev
+=======
+    }, [buttons, this.normalizeSlot('tabs')]);
+>>>>>>> origin/velia_merge-dev
     nav = h('div', {
       key: 'bv-tabs-nav',
       class: [{
@@ -20926,10 +21972,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }, this.navWrapperClass]
     }, [nav]);
 <<<<<<< HEAD
+<<<<<<< HEAD
     var empty = h(false);
 =======
     var empty = h();
 >>>>>>> origin/qotrun-dev
+=======
+    var empty = h(false);
+>>>>>>> origin/velia_merge-dev
 
     if (!tabs || tabs.length === 0) {
       empty = h('div', {
@@ -20952,10 +22002,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         id: this.safeId('_BV_tab_container_')
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
     }, Object(_utils_array__WEBPACK_IMPORTED_MODULE_6__["concat"])(this.normalizeSlot('default'), empty)); // Render final output
 =======
     }, Object(_utils_array__WEBPACK_IMPORTED_MODULE_5__["concat"])(this.normalizeSlot('default'), empty)); // Render final output
 >>>>>>> origin/qotrun-dev
+=======
+    }, Object(_utils_array__WEBPACK_IMPORTED_MODULE_6__["concat"])(this.normalizeSlot('default'), empty)); // Render final output
+>>>>>>> origin/velia_merge-dev
 
     return h(this.tag, {
       staticClass: 'tabs',
@@ -20967,10 +22021,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         id: this.safeId()
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
     }, [this.end || this.bottom ? content : h(false), [nav], this.end || this.bottom ? h(false) : content]);
 =======
     }, [this.end || this.bottom ? content : h(), [nav], this.end || this.bottom ? h() : content]);
 >>>>>>> origin/qotrun-dev
+=======
+    }, [this.end || this.bottom ? content : h(false), [nav], this.end || this.bottom ? h(false) : content]);
+>>>>>>> origin/velia_merge-dev
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (BTabs);
@@ -21002,10 +22060,14 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -21207,9 +22269,12 @@ var plugin = function plugin(Vue) {
   }); // Define our read-only `$bvToast` instance property
   // Placed in an if just in case in HMR mode
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   // eslint-disable-next-line no-prototype-builtins
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
   if (!Vue.prototype.hasOwnProperty(PROP_NAME)) {
     Object(_utils_object__WEBPACK_IMPORTED_MODULE_4__["defineProperty"])(Vue.prototype, PROP_NAME, {
@@ -21301,10 +22366,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _button_button_close__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../button/button-close */ "./node_modules/bootstrap-vue/esm/components/button/button-close.js");
 /* harmony import */ var _link_link__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../link/link */ "./node_modules/bootstrap-vue/esm/components/link/link.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -21627,6 +22696,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     setHoverHandler: function setHoverHandler(on) {
       var method = on ? _utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOn"] : _utils_dom__WEBPACK_IMPORTED_MODULE_5__["eventOff"];
 <<<<<<< HEAD
+<<<<<<< HEAD
       method(this.$refs.btoast, 'mouseenter', this.onPause, EVENT_OPTIONS);
       method(this.$refs.btoast, 'mouseleave', this.onUnPause, EVENT_OPTIONS);
 =======
@@ -21634,6 +22704,10 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       method(el, 'mouseenter', this.onPause, EVENT_OPTIONS);
       method(el, 'mouseleave', this.onUnPause, EVENT_OPTIONS);
 >>>>>>> origin/qotrun-dev
+=======
+      method(this.$refs.btoast, 'mouseenter', this.onPause, EVENT_OPTIONS);
+      method(this.$refs.btoast, 'mouseleave', this.onUnPause, EVENT_OPTIONS);
+>>>>>>> origin/velia_merge-dev
     },
     onPause: function onPause(evt) {
       // Determine time remaining, and then pause timer
@@ -21718,10 +22792,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       var $header = h(false);
 =======
       var $header = h();
 >>>>>>> origin/qotrun-dev
+=======
+      var $header = h(false);
+>>>>>>> origin/velia_merge-dev
 
       if ($headerContent.length > 0) {
         $header = h('header', {
@@ -21743,10 +22821,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
           click: this.onLinkClick
         } : {}
 <<<<<<< HEAD
+<<<<<<< HEAD
       }, [this.normalizeSlot('default', this.slotScope) || h(false)]); // Build the toast
 =======
       }, [this.normalizeSlot('default', this.slotScope) || h()]); // Build the toast
 >>>>>>> origin/qotrun-dev
+=======
+      }, [this.normalizeSlot('default', this.slotScope) || h(false)]); // Build the toast
+>>>>>>> origin/velia_merge-dev
 
       var $toast = h('div', {
         key: "toast-".concat(this._uid),
@@ -21764,10 +22846,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   render: function render(h) {
     if (!this.doRender || !this.isMounted) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       return h(false);
 =======
       return h();
 >>>>>>> origin/qotrun-dev
+=======
+      return h(false);
+>>>>>>> origin/velia_merge-dev
     }
 
     var name = "b-toast-".concat(this._uid);
@@ -21782,10 +22868,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }, [h('div', {
       key: name,
 <<<<<<< HEAD
+<<<<<<< HEAD
       ref: 'btoast',
 =======
       ref: 'b-toast',
 >>>>>>> origin/qotrun-dev
+=======
+      ref: 'btoast',
+>>>>>>> origin/velia_merge-dev
       staticClass: 'b-toast',
       class: this.bToastClasses,
       attrs: {
@@ -21800,10 +22890,14 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       },
       on: this.transitionHandlers
 <<<<<<< HEAD
+<<<<<<< HEAD
     }, [this.localShow ? this.makeToast(h) : h(false)])])]);
 =======
     }, [this.localShow ? this.makeToast(h) : h()])])]);
 >>>>>>> origin/qotrun-dev
+=======
+    }, [this.localShow ? this.makeToast(h) : h(false)])])]);
+>>>>>>> origin/velia_merge-dev
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (BToast);
@@ -22102,11 +23196,17 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   data: function data() {
     return {};
   },
 =======
 >>>>>>> origin/qotrun-dev
+=======
+  data: function data() {
+    return {};
+  },
+>>>>>>> origin/velia_merge-dev
   methods: {
     createToolpop: function createToolpop() {
       // getTarget is in toolpop mixin
@@ -22354,10 +23454,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -22597,11 +23701,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -22621,9 +23729,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /*
  * Constants / Defaults
  */
@@ -22678,6 +23789,9 @@ var EventOptions = {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 function toType(obj)
 /* istanbul ignore next: not easy to test */
 {
@@ -22686,6 +23800,7 @@ function toType(obj)
 
 
 function typeCheckConfig(componentName, config, configTypes)
+<<<<<<< HEAD
 =======
 var toType = function toType(obj)
 /* istanbul ignore next: not easy to test */
@@ -22696,6 +23811,8 @@ var toType = function toType(obj)
 
 var typeCheckConfig = function typeCheckConfig(componentName, config, configTypes)
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /* istanbul ignore next: not easy to test */
 {
   for (var property in configTypes) {
@@ -22713,10 +23830,14 @@ var typeCheckConfig = function typeCheckConfig(componentName, config, configType
     }
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 };
 >>>>>>> origin/qotrun-dev
+=======
+}
+>>>>>>> origin/velia_merge-dev
 /*
  * ------------------------------------------------------------------------
  * Class Definition
@@ -22868,10 +23989,14 @@ function () {
         });
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
     } // general event handler
 =======
     } // General event handler
 >>>>>>> origin/qotrun-dev
+=======
+    } // general event handler
+>>>>>>> origin/velia_merge-dev
 
   }, {
     key: "handleEvent",
@@ -22880,10 +24005,14 @@ function () {
       var self = this;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       function resizeThrottle() {
 =======
       var resizeThrottle = function resizeThrottle() {
 >>>>>>> origin/qotrun-dev
+=======
+      function resizeThrottle() {
+>>>>>>> origin/velia_merge-dev
         if (!self.$resizeTimeout) {
           self.$resizeTimeout = setTimeout(function () {
             self.refresh();
@@ -22892,10 +24021,14 @@ function () {
           }, self.$config.throttle);
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
       }
 =======
       };
 >>>>>>> origin/qotrun-dev
+=======
+      }
+>>>>>>> origin/velia_merge-dev
 
       if (type === 'scroll') {
         if (!this.$obs_scroller) {
@@ -23435,16 +24568,22 @@ var VBToggle = {
       if (el.tagName !== 'BUTTON') {
         Object(_utils_dom__WEBPACK_IMPORTED_MODULE_1__["setAttr"])(el, 'role', 'button');
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       } // Toggle state handler, stored on element
 
 
       el[BV_TOGGLE] = function toggleDirectiveHandler(id, state) {
+<<<<<<< HEAD
 =======
       } // Toggle state handler
 
 
       var toggleDirectiveHandler = function toggleDirectiveHandler(id, state) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         var targets = el[BV_TOGGLE_TARGETS] || [];
 
         if (targets.indexOf(id) !== -1) {
@@ -23460,6 +24599,7 @@ var VBToggle = {
           }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
       }; // Listen for toggle state changes (public)
 
 
@@ -23470,6 +24610,11 @@ var VBToggle = {
       el[BV_TOGGLE] = toggleDirectiveHandler; // Listen for toggle state changes (public)
 
 >>>>>>> origin/qotrun-dev
+=======
+      }; // Listen for toggle state changes (public)
+
+
+>>>>>>> origin/velia_merge-dev
       vnode.context.$root.$on(EVENT_STATE, el[BV_TOGGLE]); // Listen for toggle state sync (private)
 
       vnode.context.$root.$on(EVENT_STATE_SYNC, el[BV_TOGGLE]);
@@ -23549,10 +24694,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _utils_object__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -24049,10 +25198,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /*!
 <<<<<<< HEAD
+<<<<<<< HEAD
  * BoostrapVue 2.0.0-rc.26
 =======
  * BoostrapVue 2.0.0-rc.27
 >>>>>>> origin/qotrun-dev
+=======
+ * BoostrapVue 2.0.0-rc.26
+>>>>>>> origin/velia_merge-dev
  *
  * @link https://bootstrap-vue.js.org
  * @source https://github.com/bootstrap-vue/bootstrap-vue
@@ -24210,10 +25363,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _click_out__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./click-out */ "./node_modules/bootstrap-vue/esm/mixins/click-out.js");
 /* harmony import */ var _focus_in__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./focus-in */ "./node_modules/bootstrap-vue/esm/mixins/focus-in.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -24227,11 +25384,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
  // Return an Array of visible items
 
 function filterVisibles(els) {
   return (els || []).filter(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["isVisible"]);
 } // Dropdown item CSS selectors
+<<<<<<< HEAD
 =======
  // Return an array of visible items
 
@@ -24239,6 +25400,8 @@ var filterVisibles = function filterVisibles(els) {
   return (els || []).filter(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["isVisible"]);
 }; // Dropdown item CSS selectors
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 
 var Selector = {
@@ -24373,10 +25536,14 @@ var AttachmentMap = {
           // Reset value and exit if canceled
           this.visibleChangePrevented = true;
 <<<<<<< HEAD
+<<<<<<< HEAD
           this.visible = oldValue; // Just in case a child element triggereded this.hide(true)
 =======
           this.visible = oldValue; // Just in case a child element triggered this.hide(true)
 >>>>>>> origin/qotrun-dev
+=======
+          this.visible = oldValue; // Just in case a child element triggereded this.hide(true)
+>>>>>>> origin/velia_merge-dev
 
           this.$off('hidden', this.focusToggler);
           return;
@@ -24565,12 +25732,17 @@ var AttachmentMap = {
       }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
     toggle: function toggle(evt) {
       // Called only by a button that toggles the menu
 =======
     // Called only by a button that toggles the menu
     toggle: function toggle(evt) {
 >>>>>>> origin/qotrun-dev
+=======
+    toggle: function toggle(evt) {
+      // Called only by a button that toggles the menu
+>>>>>>> origin/velia_merge-dev
       evt = evt || {};
       var type = evt.type;
       var key = evt.keyCode;
@@ -24582,12 +25754,16 @@ var AttachmentMap = {
         return;
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 
       if (this.disabled) {
         /* istanbul ignore next */
         this.visible = false;
         /* istanbul ignore next */
 
+<<<<<<< HEAD
 =======
       /* istanbul ignore next */
 
@@ -24595,11 +25771,16 @@ var AttachmentMap = {
       if (this.disabled) {
         this.visible = false;
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         return;
       }
 
       this.$emit('toggle', evt);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 
       if (evt.defaultPrevented) {
         // Exit if canceled
@@ -24618,6 +25799,7 @@ var AttachmentMap = {
         this.visible = false;
         /* istanbul ignore next */
 
+<<<<<<< HEAD
 =======
       evt.preventDefault();
       evt.stopPropagation(); // Toggle visibility
@@ -24634,11 +25816,14 @@ var AttachmentMap = {
       if (this.disabled) {
         this.visible = false;
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         return;
       }
 
       this.$emit('click', evt);
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
     onKeydown: function onKeydown(evt) {
       // Called from dropdown menu context
@@ -24646,6 +25831,10 @@ var AttachmentMap = {
     // Called from dropdown menu context
     onKeydown: function onKeydown(evt) {
 >>>>>>> origin/qotrun-dev
+=======
+    onKeydown: function onKeydown(evt) {
+      // Called from dropdown menu context
+>>>>>>> origin/velia_merge-dev
       var key = evt.keyCode;
 
       if (key === _utils_key_codes__WEBPACK_IMPORTED_MODULE_2__["default"].ESC) {
@@ -24677,6 +25866,7 @@ var AttachmentMap = {
     // Document focusin listener
     focusInHandler: function focusInHandler(evt) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // If focus leaves dropdown, hide it
       if (this.visible && !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["contains"])(this.$refs.menu, evt.target) && !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["contains"])(this.$refs.toggle, evt.target)) {
 =======
@@ -24684,6 +25874,10 @@ var AttachmentMap = {
 
       if (this.visible && !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["contains"])(this.$refs.menu, target) && !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["contains"])(this.toggler, target)) {
 >>>>>>> origin/qotrun-dev
+=======
+      // If focus leaves dropdown, hide it
+      if (this.visible && !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["contains"])(this.$refs.menu, evt.target) && !Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["contains"])(this.$refs.toggle, evt.target)) {
+>>>>>>> origin/velia_merge-dev
         this.visible = false;
       }
     },
@@ -24692,6 +25886,7 @@ var AttachmentMap = {
       var _this3 = this;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (!this.visible || evt && Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["closest"])(Selector.FORM_CHILD, evt.target)) {
         // Ignore key up/down on form elements
 
@@ -24699,6 +25894,11 @@ var AttachmentMap = {
       // Ignore key up/down on form elements
       if (!this.visible || evt && Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["closest"])(Selector.FORM_CHILD, evt.target)) {
 >>>>>>> origin/qotrun-dev
+=======
+      if (!this.visible || evt && Object(_utils_dom__WEBPACK_IMPORTED_MODULE_4__["closest"])(Selector.FORM_CHILD, evt.target)) {
+        // Ignore key up/down on form elements
+
+>>>>>>> origin/velia_merge-dev
         /* istanbul ignore next: should never happen */
         return;
       }
@@ -24747,11 +25947,15 @@ var AttachmentMap = {
     },
     focusToggler: function focusToggler() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       var toggler = this.toggler;
 
       if (toggler && toggler.focus) {
         toggler.focus();
       }
+<<<<<<< HEAD
 =======
       var _this4 = this;
 
@@ -24763,6 +25967,8 @@ var AttachmentMap = {
         }
       });
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
     }
   }
 });
@@ -25310,10 +26516,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     } else {
       // Not button mode
 <<<<<<< HEAD
+<<<<<<< HEAD
       var label = h(false); // If no label content in plain mode we dont render the label
 =======
       var label = h(); // If no label content in plain mode we dont render the label
 >>>>>>> origin/qotrun-dev
+=======
+      var label = h(false); // If no label content in plain mode we dont render the label
+>>>>>>> origin/velia_merge-dev
       // https://github.com/bootstrap-vue/bootstrap-vue/issues/2911
 
       if (!(this.isPlain && !defaultSlot)) {
@@ -26102,6 +27312,9 @@ var ELLIPSIS_THRESHOLD = 3; // Default # of buttons limit
 var DEFAULT_LIMIT = 5; // Make an array of N to N+X
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 function makePageArray(startNum, numPages) {
   return Object(_utils_range__WEBPACK_IMPORTED_MODULE_1__["default"])(numPages).map(function (value, index) {
     return {
@@ -26125,6 +27338,7 @@ function sanitizeCurPage(value, numPages) {
 
 
 function onSpaceKey(evt) {
+<<<<<<< HEAD
 =======
 var makePageArray = function makePageArray(startNum, numPages) {
   return Object(_utils_range__WEBPACK_IMPORTED_MODULE_1__["default"])(numPages).map(function (val, i) {
@@ -26151,6 +27365,8 @@ var sanitizeCurPage = function sanitizeCurPage(val, numPages) {
 
 var onSpaceKey = function onSpaceKey(evt) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   if (evt.keyCode === _utils_key_codes__WEBPACK_IMPORTED_MODULE_0__["default"].SPACE) {
     evt.preventDefault(); // Stop page from scrolling
 
@@ -26161,10 +27377,14 @@ var onSpaceKey = function onSpaceKey(evt) {
     return false;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
 } // Props object
 =======
 }; // Props object
 >>>>>>> origin/qotrun-dev
+=======
+} // Props object
+>>>>>>> origin/velia_merge-dev
 
 
 var props = {
@@ -26544,10 +27764,14 @@ var props = {
         index: pageNum - 1
       };
 <<<<<<< HEAD
+<<<<<<< HEAD
       var btnContent = _this7.normalizeSlot(btnSlot, scope) || Object(_utils_to_string__WEBPACK_IMPORTED_MODULE_2__["default"])(btnText) || h(false);
 =======
       var btnContent = _this7.normalizeSlot(btnSlot, scope) || Object(_utils_to_string__WEBPACK_IMPORTED_MODULE_2__["default"])(btnText) || h();
 >>>>>>> origin/qotrun-dev
+=======
+      var btnContent = _this7.normalizeSlot(btnSlot, scope) || Object(_utils_to_string__WEBPACK_IMPORTED_MODULE_2__["default"])(btnText) || h(false);
+>>>>>>> origin/velia_merge-dev
       var inner = h(isDisabled ? 'span' : _components_link_link__WEBPACK_IMPORTED_MODULE_7__["BLink"], {
         staticClass: 'page-link',
         props: isDisabled ? {} : _this7.linkProps(linkTo),
@@ -26591,6 +27815,9 @@ var props = {
       }, [h('span', {
         staticClass: 'page-link'
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       }, [_this7.normalizeSlot('ellipsis-text', {}) || Object(_utils_to_string__WEBPACK_IMPORTED_MODULE_2__["default"])(_this7.ellipsisText) || h(false)])]);
     }; // Goto First Page button bookend
 
@@ -26600,6 +27827,7 @@ var props = {
     buttons.push(makeEndBtn(currPage - 1, this.labelPrevPage, 'prev-text', this.prevText, 1, 'bookend-goto-prev')); // First Ellipsis Bookend
 
     buttons.push(showFirstDots ? makeEllipsis(false) : h(false)); // Individual Page links
+<<<<<<< HEAD
 =======
       }, [_this7.normalizeSlot('ellipsis-text') || Object(_utils_to_string__WEBPACK_IMPORTED_MODULE_2__["default"])(_this7.ellipsisText) || h()])]);
     }; // Goto First Page button bookend
@@ -26611,6 +27839,8 @@ var props = {
 
     buttons.push(showFirstDots ? makeEllipsis(false) : h()); // Individual Page links
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
     this.pageList.forEach(function (page, idx) {
       var active = isActivePage(page.number) && !noCurrPage; // Active page will have tabindex of 0, or if no current page and first page button
@@ -26661,11 +27891,15 @@ var props = {
     }); // Last Ellipsis Bookend
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
     buttons.push(showLastDots ? makeEllipsis(true) : h(false)); // Goto Next page button bookend
 
     buttons.push(makeEndBtn(currPage + 1, this.labelNextPage, 'next-text', this.nextText, numberOfPages, 'bookend-goto-next')); // Goto Last Page button bookend
 
     buttons.push(this.hideGotoEndButtons ? h(false) : makeEndBtn(numberOfPages, this.labelLastPage, 'last-text', this.lastText, numberOfPages, 'bookend-goto-last')); // Assemble the pagination buttons
+<<<<<<< HEAD
 =======
     buttons.push(showLastDots ? makeEllipsis(true) : h()); // Goto Next page button bookend
 
@@ -26673,6 +27907,8 @@ var props = {
 
     buttons.push(this.hideGotoEndButtons ? h() : makeEndBtn(numberOfPages, this.labelLastPage, 'last-text', this.lastText, numberOfPages, 'bookend-goto-last')); // Assemble the pagination buttons
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
     var pagination = h('ul', {
       ref: 'ul',
@@ -26728,10 +27964,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _utils_safe_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/safe-types */ "./node_modules/bootstrap-vue/esm/utils/safe-types.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -26816,10 +28056,14 @@ var OBSERVER_CONFIG = {
         // Tooltip/Popover placement
         placement: PLACEMENTS[this.placement] || 'auto',
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Tooltip/popover fallback placemenet
 =======
         // Tooltip/popover fallback placement
 >>>>>>> origin/qotrun-dev
+=======
+        // Tooltip/popover fallback placemenet
+>>>>>>> origin/velia_merge-dev
         fallbackPlacement: this.fallbackPlacement || 'flip',
         // Container currently needs to be an ID with '#' prepended, if null then body is used
         container: cont ? /^#/.test(cont) ? cont : "#".concat(cont) : false,
@@ -27169,12 +28413,16 @@ function () {
     _classCallCheck(this, BvEvent);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
     // Start by emulating native Event constructor.
     if (!type) {
       /* istanbul ignore next */
       throw new TypeError("Failed to construct '".concat(this.constructor.name, "'. 1 argument required, ").concat(arguments.length, " given."));
     } // Assign defaults first, the eventInit,
     // and the type last so it can't be overwritten.
+<<<<<<< HEAD
 =======
     // Start by emulating native Event constructor
     if (!type) {
@@ -27183,15 +28431,21 @@ function () {
     } // Merge defaults first, the eventInit, and the type last
     // so it can't be overwritten
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 
     Object(_object__WEBPACK_IMPORTED_MODULE_0__["assign"])(this, BvEvent.Defaults, this.constructor.Defaults, eventInit, {
       type: type
 <<<<<<< HEAD
+<<<<<<< HEAD
     }); // Freeze some props as readonly, but leave them enumerable.
 =======
     }); // Freeze some props as readonly, but leave them enumerable
 >>>>>>> origin/qotrun-dev
+=======
+    }); // Freeze some props as readonly, but leave them enumerable.
+>>>>>>> origin/velia_merge-dev
 
     Object(_object__WEBPACK_IMPORTED_MODULE_0__["defineProperties"])(this, {
       type: Object(_object__WEBPACK_IMPORTED_MODULE_0__["readonlyDescriptor"])(),
@@ -27202,6 +28456,7 @@ function () {
       vueTarget: Object(_object__WEBPACK_IMPORTED_MODULE_0__["readonlyDescriptor"])(),
       componentId: Object(_object__WEBPACK_IMPORTED_MODULE_0__["readonlyDescriptor"])()
 <<<<<<< HEAD
+<<<<<<< HEAD
     }); // Create a private variable using closure scoping.
 
     var defaultPrevented = false; // Recreate preventDefault method. One way setter.
@@ -27210,11 +28465,17 @@ function () {
 
     var defaultPrevented = false; // Recreate preventDefault method. One way setter
 >>>>>>> origin/qotrun-dev
+=======
+    }); // Create a private variable using closure scoping.
+
+    var defaultPrevented = false; // Recreate preventDefault method. One way setter.
+>>>>>>> origin/velia_merge-dev
 
     this.preventDefault = function preventDefault() {
       if (this.cancelable) {
         defaultPrevented = true;
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
     }; // Create 'defaultPrevented' publicly accessible prop
     // that can only be altered by the preventDefault method.
@@ -27222,6 +28483,10 @@ function () {
     }; // Create `defaultPrevented` publicly accessible prop that
     // can only be altered by the preventDefault method
 >>>>>>> origin/qotrun-dev
+=======
+    }; // Create 'defaultPrevented' publicly accessible prop
+    // that can only be altered by the preventDefault method.
+>>>>>>> origin/velia_merge-dev
 
 
     Object(_object__WEBPACK_IMPORTED_MODULE_0__["defineProperty"])(this, 'defaultPrevented', {
@@ -27271,10 +28536,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -27361,10 +28630,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _object__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./object */ "./node_modules/bootstrap-vue/esm/utils/object.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -27847,10 +29120,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _identity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./identity */ "./node_modules/bootstrap-vue/esm/utils/identity.js");
 /* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -27880,9 +29157,12 @@ var copyProps = function copyProps(props) {
   for (var prop in props) {
     /* istanbul ignore else */
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // eslint-disable-next-line no-prototype-builtins
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
     if (props.hasOwnProperty(prop)) {
       // If the prop value is an object, do a shallow clone to prevent
       // potential mutations to the original object.
@@ -27902,10 +29182,14 @@ var copyProps = function copyProps(props) {
   !*** ./node_modules/bootstrap-vue/esm/utils/dom.js ***!
   \*****************************************************/
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*! exports provided: matchesEl, closestEl, requestAF, MutationObs, parseEventOptions, eventOn, eventOff, isElement, isVisible, isDisabled, reflow, selectAll, select, matches, closest, contains, getById, addClass, removeClass, hasClass, setAttr, removeAttr, getAttr, hasAttr, getBCR, getCS, offset, position */
 =======
 /*! exports provided: matchesEl, closestEl, requestAF, MutationObs, parseEventOptions, eventOn, eventOff, isElement, isVisible, isDisabled, reflow, selectAll, select, matches, closest, contains, getById, addClass, removeClass, hasClass, setAttr, removeAttr, getAttr, hasAttr, getBCR, getCS, getSel, offset, position */
 >>>>>>> origin/qotrun-dev
+=======
+/*! exports provided: matchesEl, closestEl, requestAF, MutationObs, parseEventOptions, eventOn, eventOff, isElement, isVisible, isDisabled, reflow, selectAll, select, matches, closest, contains, getById, addClass, removeClass, hasClass, setAttr, removeAttr, getAttr, hasAttr, getBCR, getCS, offset, position */
+>>>>>>> origin/velia_merge-dev
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -27937,9 +29221,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBCR", function() { return getBCR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCS", function() { return getCS; });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSel", function() { return getSel; });
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "offset", function() { return offset; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "position", function() { return position; });
 /* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
@@ -27977,6 +29264,9 @@ var closestEl = elProto.closest || function (sel)
   return null;
 }; // `requestAnimationFrame()` convenience method
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 // We don't have a version for cancelAnimationFrame, but we don't call it anywhere
 
 var requestAF = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.mozRequestAnimationFrame || w.msRequestAnimationFrame || w.oRequestAnimationFrame || function (cb) {
@@ -27985,6 +29275,7 @@ var requestAF = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.mo
   // `requestAnimationFrame()` without a polyfill
 
   /* istanbul ignore next */
+<<<<<<< HEAD
 =======
 
 var requestAF = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.mozRequestAnimationFrame || w.msRequestAnimationFrame || w.oRequestAnimationFrame || // Fallback, but not a true polyfill
@@ -27993,6 +29284,8 @@ var requestAF = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.mo
 /* istanbul ignore next */
 function (cb) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
   return setTimeout(cb, 16);
 };
 var MutationObs = w.MutationObserver || w.WebKitMutationObserver || w.MozMutationObserver || null; // --- Utils ---
@@ -28125,6 +29418,7 @@ var hasClass = function hasClass(el, className) {
 }; // Set an attribute on an element
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 var setAttr = function setAttr(el, attr, value) {
   if (attr && isElement(el)) {
     el.setAttribute(attr, value);
@@ -28133,6 +29427,11 @@ var setAttr = function setAttr(el, attr, val) {
   if (attr && isElement(el)) {
     el.setAttribute(attr, val);
 >>>>>>> origin/qotrun-dev
+=======
+var setAttr = function setAttr(el, attr, value) {
+  if (attr && isElement(el)) {
+    el.setAttribute(attr, value);
+>>>>>>> origin/velia_merge-dev
   }
 }; // Remove an attribute from an element
 
@@ -28164,6 +29463,7 @@ var getBCR = function getBCR(el) {
 var getCS = function getCS(el) {
   return _env__WEBPACK_IMPORTED_MODULE_1__["hasWindowSupport"] && isElement(el) ? w.getComputedStyle(el) : {};
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 }; // Returns a `Selection` object representing the range of text selected
 // Returns `null` if no window support is given
@@ -28173,6 +29473,8 @@ var getCS = function getCS(el) {
 var getSel = function getSel() {
   return _env__WEBPACK_IMPORTED_MODULE_1__["hasWindowSupport"] && w.getSelection ? w.getSelection() : null;
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 }; // Return an element's offset with respect to document element
 // https://j11y.io/jquery/#v=git&fn=jQuery.fn.offset
 
@@ -28444,10 +29746,14 @@ var identity = function identity(x) {
   !*** ./node_modules/bootstrap-vue/esm/utils/inspect.js ***!
   \*********************************************************/
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*! exports provided: toType, toRawType, toRawTypeLC, isUndefined, isNull, isFunction, isBoolean, isString, isNumber, isPrimitive, isDate, isRegExp, isPromise, isArray, isObject, isPlainObject */
 =======
 /*! exports provided: toType, toRawType, toRawTypeLC, isUndefined, isNull, isUndefinedOrNull, isFunction, isBoolean, isString, isNumber, isPrimitive, isDate, isEvent, isRegExp, isPromise, isArray, isObject, isPlainObject */
 >>>>>>> origin/qotrun-dev
+=======
+/*! exports provided: toType, toRawType, toRawTypeLC, isUndefined, isNull, isFunction, isBoolean, isString, isNumber, isPrimitive, isDate, isRegExp, isPromise, isArray, isObject, isPlainObject */
+>>>>>>> origin/velia_merge-dev
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28458,9 +29764,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isUndefined", function() { return isUndefined; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isNull", function() { return isNull; });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isUndefinedOrNull", function() { return isUndefinedOrNull; });
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isFunction", function() { return isFunction; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isBoolean", function() { return isBoolean; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isString", function() { return isString; });
@@ -28468,9 +29777,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isPrimitive", function() { return isPrimitive; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDate", function() { return isDate; });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isEvent", function() { return isEvent; });
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isRegExp", function() { return isRegExp; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isPromise", function() { return isPromise; });
 /* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
@@ -28484,14 +29796,20 @@ __webpack_require__.r(__webpack_exports__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 /**
  * Convenience inspection utilities
  */
 
+<<<<<<< HEAD
 =======
 
  // --- Convenience inspection utilities ---
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 var toType = function toType(val) {
   return _typeof(val);
@@ -28509,11 +29827,14 @@ var isNull = function isNull(val) {
   return val === null;
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 var isUndefinedOrNull = function isUndefinedOrNull(val) {
   return isUndefined(val) || isNull(val);
 };
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 var isFunction = function isFunction(val) {
   return toType(val) === 'function';
 };
@@ -28533,20 +29854,27 @@ var isDate = function isDate(val) {
   return val instanceof Date;
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 var isEvent = function isEvent(val) {
   return val instanceof Event;
 };
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 var isRegExp = function isRegExp(val) {
   return toRawType(val) === 'RegExp';
 };
 var isPromise = function isPromise(val) {
 <<<<<<< HEAD
+<<<<<<< HEAD
   return !isUndefined(val) && !isNull(val) && isFunction(val.then) && isFunction(val.catch);
 =======
   return !isUndefinedOrNull(val) && isFunction(val.then) && isFunction(val.catch);
 >>>>>>> origin/qotrun-dev
+=======
+  return !isUndefined(val) && !isNull(val) && isFunction(val.then) && isFunction(val.catch);
+>>>>>>> origin/velia_merge-dev
 }; // Extra convenience named re-exports
 
 
@@ -28664,12 +29992,16 @@ var looseEqual = function looseEqual(a, b) {
 
     for (var key in a) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       var aHasKey = a.hasOwnProperty(key);
 =======
       // eslint-disable-next-line no-prototype-builtins
       var aHasKey = a.hasOwnProperty(key); // eslint-disable-next-line no-prototype-builtins
 
 >>>>>>> origin/qotrun-dev
+=======
+      var aHasKey = a.hasOwnProperty(key);
+>>>>>>> origin/velia_merge-dev
       var bHasKey = b.hasOwnProperty(key);
 
       if (aHasKey && !bHasKey || !aHasKey && bHasKey || !looseEqual(a[key], b[key])) {
@@ -28795,10 +30127,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
 <<<<<<< HEAD
+<<<<<<< HEAD
  * Returns true if either scoped or unscoped named slot eists
 =======
  * Returns true if either scoped or unscoped named slot exists
 >>>>>>> origin/qotrun-dev
+=======
+ * Returns true if either scoped or unscoped named slot eists
+>>>>>>> origin/velia_merge-dev
  *
  * @param {String} name
  * @param {Object} scopedSlots
@@ -28834,10 +30170,14 @@ var normalizeSlot = function normalizeSlot(name) {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  // Default export (backwards compatability)
 =======
  // Default export (backwards compatibility)
 >>>>>>> origin/qotrun-dev
+=======
+ // Default export (backwards compatability)
+>>>>>>> origin/velia_merge-dev
 
 /* harmony default export */ __webpack_exports__["default"] = (normalizeSlot);
 
@@ -28848,10 +30188,14 @@ var normalizeSlot = function normalizeSlot(name) {
   !*** ./node_modules/bootstrap-vue/esm/utils/object.js ***!
   \********************************************************/
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*! exports provided: assign, getOwnPropertyNames, keys, defineProperties, defineProperty, freeze, getOwnPropertyDescriptor, getOwnPropertySymbols, getPrototypeOf, create, isFrozen, is, hasOwnProperty, isObject, isPlainObject, omit, readonlyDescriptor, deepFreeze */
 =======
 /*! exports provided: assign, getOwnPropertyNames, keys, defineProperties, defineProperty, freeze, getOwnPropertyDescriptor, getOwnPropertySymbols, getPrototypeOf, create, isFrozen, is, hasOwnProperty, toString, isObject, isPlainObject, omit, readonlyDescriptor, deepFreeze */
 >>>>>>> origin/qotrun-dev
+=======
+/*! exports provided: assign, getOwnPropertyNames, keys, defineProperties, defineProperty, freeze, getOwnPropertyDescriptor, getOwnPropertySymbols, getPrototypeOf, create, isFrozen, is, hasOwnProperty, isObject, isPlainObject, omit, readonlyDescriptor, deepFreeze */
+>>>>>>> origin/velia_merge-dev
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28870,9 +30214,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "is", function() { return is; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hasOwnProperty", function() { return hasOwnProperty; });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toString", function() { return toString; });
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isObject", function() { return isObject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isPlainObject", function() { return isPlainObject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "omit", function() { return omit; });
@@ -28880,10 +30227,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deepFreeze", function() { return deepFreeze; });
 /* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./array */ "./node_modules/bootstrap-vue/esm/utils/array.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -28909,11 +30260,14 @@ var is = Object.is; // --- "Instance" ---
 var hasOwnProperty = function hasOwnProperty(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 };
 var toString = function toString(obj) {
   return Object.prototype.toString.call(obj);
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 }; // --- Utilities ---
 
 /**
@@ -28984,10 +30338,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _warn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./warn */ "./node_modules/bootstrap-vue/esm/utils/warn.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -29130,10 +30488,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_set__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-set */ "./node_modules/bootstrap-vue/esm/utils/config-set.js");
 /* harmony import */ var _env__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./env */ "./node_modules/bootstrap-vue/esm/utils/env.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -29316,10 +30678,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -29915,10 +31281,14 @@ __webpack_require__.r(__webpack_exports__);
 var toString = function toString(val) {
   var spaces = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
 <<<<<<< HEAD
+<<<<<<< HEAD
   return Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isUndefined"])(val) || Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isNull"])(val) ? '' : Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isArray"])(val) || Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isPlainObject"])(val) && val.toString === Object.prototype.toString ? JSON.stringify(val, null, spaces) : String(val);
 =======
   return Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isUndefinedOrNull"])(val) ? '' : Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isArray"])(val) || Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isPlainObject"])(val) && val.toString === Object.prototype.toString ? JSON.stringify(val, null, spaces) : String(val);
 >>>>>>> origin/qotrun-dev
+=======
+  return Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isUndefined"])(val) || Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isNull"])(val) ? '' : Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isArray"])(val) || Object(_inspect__WEBPACK_IMPORTED_MODULE_0__["isPlainObject"])(val) && val.toString === Object.prototype.toString ? JSON.stringify(val, null, spaces) : String(val);
+>>>>>>> origin/velia_merge-dev
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (toString);
@@ -29941,10 +31311,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dom */ "./node_modules/bootstrap-vue/esm/utils/dom.js");
 /* harmony import */ var _inspect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 <<<<<<< HEAD
+<<<<<<< HEAD
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
 =======
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 >>>>>>> origin/qotrun-dev
+=======
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { keys.push.apply(keys, Object.getOwnPropertySymbols(object)); } if (enumerableOnly) keys = keys.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); return keys; }
+>>>>>>> origin/velia_merge-dev
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -29966,11 +31340,15 @@ var NAME = 'tooltip';
 var CLASS_PREFIX = 'bs-tooltip';
 var BS_CLASS_PREFIX_REGEX = new RegExp("\\b".concat(CLASS_PREFIX, "\\S+"), 'g');
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
 var TRANSITION_DURATION = 150; // Modal $root hidden event
 
 var MODAL_CLOSE_EVENT = 'bv::modal::hidden'; // Modal container for appending tooltip/popover
 
 var MODAL_CLASS = '.modal-content';
+<<<<<<< HEAD
 =======
 var TRANSITION_DURATION = 150; // Modal `$root` hidden event
 
@@ -29981,6 +31359,8 @@ var MODAL_SELECTOR = '.modal-content'; // For dropdown sniffing
 var DROPDOWN_CLASS = 'dropdown';
 var DROPDOWN_OPEN_SELECTOR = '.dropdown-menu.show';
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 var AttachmentMap = {
   AUTO: 'auto',
   TOP: 'top',
@@ -30023,11 +31403,15 @@ var Selector = {
   TOOLTIP: '.tooltip',
   TOOLTIP_INNER: '.tooltip-inner',
 <<<<<<< HEAD
+<<<<<<< HEAD
   ARROW: '.arrow'
 =======
   ARROW: '.arrow' // Defaults
 
 >>>>>>> origin/qotrun-dev
+=======
+  ARROW: '.arrow'
+>>>>>>> origin/velia_merge-dev
 };
 var Defaults = {
   animation: true,
@@ -30094,10 +31478,14 @@ function () {
     this.$root = $parent && $parent.$root ? $parent.$root : null;
     this.$routeWatcher = null; // We use a bound version of the following handlers for root/modal
 <<<<<<< HEAD
+<<<<<<< HEAD
     // listeners to maintain the 'this' context
 =======
     // listeners to maintain the correct `this` context
 >>>>>>> origin/qotrun-dev
+=======
+    // listeners to maintain the 'this' context
+>>>>>>> origin/velia_merge-dev
 
     this.$forceHide = this.forceHide.bind(this);
     this.$doHide = this.doHide.bind(this);
@@ -30119,10 +31507,14 @@ function () {
     // Update config
     value: function updateConfig(config) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       // Merge config into defaults. We use "this" here because PopOver overrides Default
 =======
       // Merge config into defaults. We use `this` here because PopOver overrides Default
 >>>>>>> origin/qotrun-dev
+=======
+      // Merge config into defaults. We use "this" here because PopOver overrides Default
+>>>>>>> origin/velia_merge-dev
       var updatedConfig = _objectSpread({}, this.constructor.Default, {}, config); // Sanitize delay
 
 
@@ -30226,6 +31618,7 @@ function () {
         /* istanbul ignore next */
         return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       } // Prevent showing if tip/popover is on a dropdown and the menu is open
 
@@ -30234,6 +31627,8 @@ function () {
         /* istanbul ignore next */
         return;
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
       }
       /* istanbul ignore else */
 
@@ -30264,6 +31659,7 @@ function () {
         // If trigger element isn't in the DOM or is not visible
         return;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       } // Prevent showing if tip/popover is on a dropdown and the menu is open
 
@@ -30272,6 +31668,8 @@ function () {
         /* istanbul ignore next */
         return;
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
       } // Build tooltip element (also sets this.$tip)
 
 
@@ -30381,12 +31779,16 @@ function () {
     value: function setWhileOpenListeners(on) {
       // Modal close events
 <<<<<<< HEAD
+<<<<<<< HEAD
       this.setModalListener(on); // Periodic $element visibility check
 =======
       this.setModalListener(on); // Dropdown open events (if we are attached to a dropdown)
 
       this.setDropdownListener(on); // Periodic $element visibility check
 >>>>>>> origin/qotrun-dev
+=======
+      this.setModalListener(on); // Periodic $element visibility check
+>>>>>>> origin/velia_merge-dev
       // For handling when tip is in <keepalive>, tabs, carousel, etc
 
       this.visibleCheck(on); // On-touch start listeners
@@ -30415,11 +31817,15 @@ function () {
       clearTimeout(this.$hoverTimeout);
       this.$hoverTimeout = null;
 <<<<<<< HEAD
+<<<<<<< HEAD
       this.$hoverState = ''; // Hide the tip
 =======
       this.$hoverState = '';
       this.$activeTrigger = {}; // Hide the tip
 >>>>>>> origin/qotrun-dev
+=======
+      this.$hoverState = ''; // Hide the tip
+>>>>>>> origin/velia_merge-dev
 
       this.hide(null, true);
     } // Hide tooltip
@@ -30465,9 +31871,12 @@ function () {
 
         if (callback) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           /* istanbul ignore next */
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
           callback();
         } // Create a non-cancelable BvEvent
 
@@ -30490,15 +31899,21 @@ function () {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       Object(_dom__WEBPACK_IMPORTED_MODULE_4__["removeClass"])(tip, ClassName.SHOW);
       this.$activeTrigger.click = false;
       this.$activeTrigger.focus = false;
       this.$activeTrigger.hover = false; // Start the hide transition
+<<<<<<< HEAD
 =======
       Object(_dom__WEBPACK_IMPORTED_MODULE_4__["removeClass"])(tip, ClassName.SHOW); // Clear any active triggers
 
       this.$activeTrigger = {}; // Start the hide transition
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
       this.transitionOnce(tip, complete);
       this.$hoverState = '';
@@ -30528,10 +31943,14 @@ function () {
       // unless a container is specified
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       return container === false ? Object(_dom__WEBPACK_IMPORTED_MODULE_4__["closest"])(MODAL_CLASS, this.$element) || body : Object(_dom__WEBPACK_IMPORTED_MODULE_4__["select"])(container, body) || body;
 =======
       return container === false ? Object(_dom__WEBPACK_IMPORTED_MODULE_4__["closest"])(MODAL_SELECTOR, this.$element) || body : Object(_dom__WEBPACK_IMPORTED_MODULE_4__["select"])(container, body) || body;
 >>>>>>> origin/qotrun-dev
+=======
+      return container === false ? Object(_dom__WEBPACK_IMPORTED_MODULE_4__["closest"])(MODAL_CLASS, this.$element) || body : Object(_dom__WEBPACK_IMPORTED_MODULE_4__["select"])(container, body) || body;
+>>>>>>> origin/velia_merge-dev
     } // Will be overridden by PopOver if needed
 
   }, {
@@ -30768,12 +32187,17 @@ function () {
       var triggers = this.$config.trigger.trim().split(/\s+/); // Listen for global show/hide events
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       this.setRootListener(true); // Using 'this' as the handler will get automatically directed to
       // this.handleEvent and maintain our binding to 'this'
 =======
       this.setRootListener(true); // Using `this` as the handler will get automatically directed to
       // this.handleEvent and maintain our binding to `this`
 >>>>>>> origin/qotrun-dev
+=======
+      this.setRootListener(true); // Using 'this' as the handler will get automatically directed to
+      // this.handleEvent and maintain our binding to 'this'
+>>>>>>> origin/velia_merge-dev
 
       triggers.forEach(function (trigger) {
         if (trigger === 'click') {
@@ -30803,10 +32227,14 @@ function () {
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       var events = ['click', 'focusin', 'focusout', 'mouseenter', 'mouseleave']; // Using "this" as the handler will get automatically directed to this.handleEvent
 =======
       var events = ['click', 'focusin', 'focusout', 'mouseenter', 'mouseleave']; // Using `this` as the handler will get automatically directed to this.handleEvent
 >>>>>>> origin/qotrun-dev
+=======
+      var events = ['click', 'focusin', 'focusout', 'mouseenter', 'mouseleave']; // Using "this" as the handler will get automatically directed to this.handleEvent
+>>>>>>> origin/velia_merge-dev
 
       events.forEach(function (evt) {
         Object(_dom__WEBPACK_IMPORTED_MODULE_4__["eventOff"])(el, evt, _this7, EvtOpts);
@@ -30814,6 +32242,9 @@ function () {
 
       this.setRootListener(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
     }
   }, {
     key: "handleEvent",
@@ -30829,6 +32260,7 @@ function () {
 
       if (!this.$isEnabled) {
         // If not enable
+<<<<<<< HEAD
 =======
     } // This special method allows us to use `this` as the event handlers
 
@@ -30852,6 +32284,8 @@ function () {
       if (this.dropdownOpen()) {
         /* istanbul ignore next */
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         return;
       }
 
@@ -30867,6 +32301,9 @@ function () {
         this.enter(e);
       } else if (type === 'focusout') {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
         // target is the element which is loosing focus
         // and relatedTarget is the element gaining focus
         if ($tip && $element && $element.contains(target) && $tip.contains(relatedTarget)) {
@@ -30894,6 +32331,7 @@ function () {
 
         if ($element && $element.contains(target) && $element.contains(relatedTarget)) {
           // If focus moves within $element, don't trigger a leave
+<<<<<<< HEAD
 =======
         // `target` is the element which is loosing focus and
         // `relatedTarget` is the element gaining focus
@@ -30919,6 +32357,8 @@ function () {
         if ($element && $element.contains(target) && $element.contains(relatedTarget)) {
           /* istanbul ignore next */
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
           return;
         } // Otherwise trigger a leave
 
@@ -30935,21 +32375,29 @@ function () {
     value: function setModalListener(on) {
       var el = this.$element;
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* istanbul ignore next */
 =======
 >>>>>>> origin/qotrun-dev
+=======
+      /* istanbul ignore next */
+>>>>>>> origin/velia_merge-dev
 
       if (!el || !this.$root) {
         return;
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       var modal = Object(_dom__WEBPACK_IMPORTED_MODULE_4__["closest"])(MODAL_CLASS, el);
 
       if (!modal) {
         // If we are not in a modal, don't worry. be happy
         return;
       } // We can listen for modal hidden events on $root
+<<<<<<< HEAD
 =======
       var modal = Object(_dom__WEBPACK_IMPORTED_MODULE_4__["closest"])(MODAL_SELECTOR, el); // If we are not in a modal, don't worry
 
@@ -30957,11 +32405,16 @@ function () {
         return;
       } // We can listen for modal hidden events on `$root`
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 
       this.$root[on ? '$on' : '$off'](MODAL_CLOSE_EVENT, this.$forceHide);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
   }, {
     key: "setRootListener",
     value: function setRootListener(on) {
@@ -30979,6 +32432,7 @@ function () {
     key: "doHide",
     value: function doHide(id) {
       // Programmatically hide tooltip or popover
+<<<<<<< HEAD
 =======
     /* istanbul ignore next */
 
@@ -31026,6 +32480,8 @@ function () {
     key: "doHide",
     value: function doHide(id) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
       if (!id) {
         // Close all tooltips or popovers
         this.forceHide();
@@ -31034,11 +32490,15 @@ function () {
         this.hide();
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
     }
   }, {
     key: "doShow",
     value: function doShow(id) {
       // Programmatically show tooltip or popover
+<<<<<<< HEAD
 =======
     } // Programmatically show tooltip or popover
 
@@ -31046,6 +32506,8 @@ function () {
     key: "doShow",
     value: function doShow(id) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
       if (!id) {
         // Open all tooltips or popovers
         this.show();
@@ -31054,11 +32516,15 @@ function () {
         this.show();
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
     }
   }, {
     key: "doDisable",
     value: function doDisable(id) {
       // Programmatically disable tooltip or popover
+<<<<<<< HEAD
 =======
     } // Programmatically disable tooltip or popover
 
@@ -31066,6 +32532,8 @@ function () {
     key: "doDisable",
     value: function doDisable(id) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
       if (!id) {
         // Disable all tooltips or popovers
         this.disable();
@@ -31074,11 +32542,15 @@ function () {
         this.disable();
       }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
     }
   }, {
     key: "doEnable",
     value: function doEnable(id) {
       // Programmatically enable tooltip or popover
+<<<<<<< HEAD
 =======
     } // Programmatically enable tooltip or popover
 
@@ -31086,6 +32558,8 @@ function () {
     key: "doEnable",
     value: function doEnable(id) {
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
       if (!id) {
         // Enable all tooltips or popovers
         this.enable();
@@ -31100,12 +32574,16 @@ function () {
       var _this8 = this;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children
       // Only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement) {
         /* istanbul ignore next: JSDOM does not support 'ontouchstart' event */
+<<<<<<< HEAD
 =======
       // If this is a touch-enabled device we add extra empty
       // `mouseover` listeners to the body's immediate children
@@ -31114,6 +32592,8 @@ function () {
       if ('ontouchstart' in document.documentElement) {
         /* istanbul ignore next: JSDOM does not support `ontouchstart` event */
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
         Object(_array__WEBPACK_IMPORTED_MODULE_3__["from"])(document.body.children).forEach(function (el) {
           if (on) {
             Object(_dom__WEBPACK_IMPORTED_MODULE_4__["eventOn"])(el, 'mouseover', _this8._noop);
@@ -31371,6 +32851,7 @@ __webpack_require__.r(__webpack_exports__);
  // BTransporterSingle/BTransporterTargetSingle:
 //
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Single root node portaling of content, which retains parent/child hierarchy,
 // Unlike Portal-Vue where portaled content is no longer a descendent of
 // it's inteden parent components
@@ -31379,11 +32860,17 @@ __webpack_require__.r(__webpack_exports__);
 // Unlike Portal-Vue where portaled content is no longer a descendent of it's
 // intended parent components
 >>>>>>> origin/qotrun-dev
+=======
+// Single root node portaling of content, which retains parent/child hierarchy,
+// Unlike Portal-Vue where portaled content is no longer a descendent of
+// it's inteden parent components
+>>>>>>> origin/velia_merge-dev
 //
 // Private components for use by Tooltips, Popovers and Modals
 //
 // Based on vue-simple-portal
 // https://github.com/LinusBorg/vue-simple-portal
+<<<<<<< HEAD
 <<<<<<< HEAD
 // Tranporter target used by BTransporterSingle
 // Supports only a single root element.
@@ -31391,16 +32878,24 @@ __webpack_require__.r(__webpack_exports__);
 // Transporter target used by BTransporterSingle
 // Supports only a single root element
 >>>>>>> origin/qotrun-dev
+=======
+// Tranporter target used by BTransporterSingle
+// Supports only a single root element.
+>>>>>>> origin/velia_merge-dev
 // @vue/component
 
 var BTransporterTargetSingle =
 /*#__PURE__*/
 _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 <<<<<<< HEAD
+<<<<<<< HEAD
   // as an abstract component, it doesn't appear in the $parent chain of
 =======
   // As an abstract component, it doesn't appear in the $parent chain of
 >>>>>>> origin/qotrun-dev
+=======
+  // as an abstract component, it doesn't appear in the $parent chain of
+>>>>>>> origin/velia_merge-dev
   // components, which means the next parent of any component rendered inside
   // of this one will be the parent from which is was portal'd
   abstract: true,
@@ -31431,16 +32926,22 @@ _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       return nodes[0];
     } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
       return h(false);
     }
   }
 }); // This omponent has no root element, so only a single VNode is allowed
+<<<<<<< HEAD
 =======
       return h();
     }
   }
 }); // This component has no root element, so only a single VNode is allowed
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 // @vue/component
 
 var BTransporterSingle =
@@ -31519,10 +33020,14 @@ _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
             propsData: {
               // Initial nodes to be rendered
 <<<<<<< HEAD
+<<<<<<< HEAD
               nodes: Object(_array__WEBPACK_IMPORTED_MODULE_1__["concat"])(this.normalizeSlot('default', {}))
 =======
               nodes: Object(_array__WEBPACK_IMPORTED_MODULE_1__["concat"])(this.normalizeSlot('default'))
 >>>>>>> origin/qotrun-dev
+=======
+              nodes: Object(_array__WEBPACK_IMPORTED_MODULE_1__["concat"])(this.normalizeSlot('default', {}))
+>>>>>>> origin/velia_merge-dev
             }
           });
         }
@@ -31539,16 +33044,22 @@ _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
             // We only update the target component if the scoped slot
             // function is a fresh one. The new slot syntax (since Vue 2.6)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
             // can cache unchanged slot functions and we want to respect that here.
             this._bv_target.updatedNodes = defaultFn;
           } else if (!defaultFn) {
             // We also need to be back compatable with non-scoped default slot (i.e. 2.5.x)
+<<<<<<< HEAD
 =======
             // can cache unchanged slot functions and we want to respect that here
             this._bv_target.updatedNodes = defaultFn;
           } else if (!defaultFn) {
             // We also need to be back compatible with non-scoped default slot (i.e. 2.5.x)
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
             this._bv_target.updatedNodes = this.$slots.default;
           }
         } // Update the scoped slot function cache
@@ -31569,10 +33080,14 @@ _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   render: function render(h) {
     if (this.disabled) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       var nodes = Object(_array__WEBPACK_IMPORTED_MODULE_1__["concat"])(this.normalizeSlot('default', {})).filter(Boolean);
 =======
       var nodes = Object(_array__WEBPACK_IMPORTED_MODULE_1__["concat"])(this.normalizeSlot('default')).filter(Boolean);
 >>>>>>> origin/qotrun-dev
+=======
+      var nodes = Object(_array__WEBPACK_IMPORTED_MODULE_1__["concat"])(this.normalizeSlot('default', {})).filter(Boolean);
+>>>>>>> origin/velia_merge-dev
 
       if (nodes.length > 0 && !nodes[0].text) {
         return nodes[0];
@@ -31580,10 +33095,14 @@ _vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     return h(false);
 =======
     return h();
 >>>>>>> origin/qotrun-dev
+=======
+    return h(false);
+>>>>>>> origin/velia_merge-dev
   }
 });
 
@@ -66625,10 +68144,14 @@ Popper.Defaults = Defaults;
   * portal-vue © Thorsten Lünborg, 2019 
   * 
 <<<<<<< HEAD
+<<<<<<< HEAD
   * Version: 2.1.5
 =======
   * Version: 2.1.6
 >>>>>>> origin/qotrun-dev
+=======
+  * Version: 2.1.5
+>>>>>>> origin/velia_merge-dev
   * 
   * LICENCE: MIT 
   * 
@@ -66765,10 +68288,14 @@ var Wormhole = Vue.extend({
       var to = transport.to,
           from = transport.from;
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (!to || !from) return;
 =======
       if (!to || !from && force === false) return;
 >>>>>>> origin/qotrun-dev
+=======
+      if (!to || !from) return;
+>>>>>>> origin/velia_merge-dev
 
       if (!this.transports[to]) {
         return;
@@ -67587,6 +69114,9 @@ process.umask = function() { return 0; };
 
     function installReadyStateChangeImplementation() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/velia_merge-dev
         var html = doc.documentElement;
         registerImmediate = function(handle) {
             // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
@@ -67734,6 +69264,7 @@ var e=function(){return(e=Object.assign||function(e){for(var t,r=1,s=arguments.l
 /***/ }),
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationAddComponent.vue?vue&type=template&id=f1d47c78&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationAddComponent.vue?vue&type=template&id=f1d47c78& ***!
@@ -67744,6 +69275,12 @@ var e=function(){return(e=Object.assign||function(e){for(var t,r=1,s=arguments.l
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960& ***!
   \****************************************************************************************************************************************************************************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addBookingComponent.vue?vue&type=template&id=a30d53bc&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/addBookingComponent.vue?vue&type=template&id=a30d53bc& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -67758,11 +69295,19 @@ var render = function() {
   return _c(
     "div",
 <<<<<<< HEAD
+<<<<<<< HEAD
     { attrs: { id: "location-add" } },
     [
       _c(
         "b-form",
         { attrs: { id: "location-form" } },
+=======
+    { attrs: { id: "addbooking" } },
+    [
+      _c(
+        "b-form",
+        { on: { submit: _vm.onSubmit, reset: _vm.onReset } },
+>>>>>>> origin/velia_merge-dev
         [
           _c(
             "b-form-group",
@@ -67770,6 +69315,7 @@ var render = function() {
               _c(
                 "b-row",
                 [
+<<<<<<< HEAD
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
                     _c("label", [_c("strong", [_vm._v("Nama Lokasi")])])
                   ]),
@@ -67789,10 +69335,83 @@ var render = function() {
                             _vm.$set(_vm.form, "name", $$v)
                           },
                           expression: "form.name"
+=======
+                  _c(
+                    "b-col",
+                    { attrs: { cols: "4" } },
+                    [
+                      _c("label", { attrs: { for: "location" } }, [
+                        _vm._v("Lokasi")
+                      ]),
+                      _vm._v(" "),
+                      _c("b-form-select", {
+                        attrs: { options: _vm.location },
+                        model: {
+                          value: _vm.selectedLocation,
+                          callback: function($$v) {
+                            _vm.selectedLocation = $$v
+                          },
+                          expression: "selectedLocation"
                         }
                       })
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { cols: "4" } },
+                    [
+                      _c("label", { attrs: { for: "field" } }, [
+                        _vm._v("Lapang")
+                      ]),
+                      _vm._v(" "),
+                      _c("b-form-select", {
+                        attrs: { options: _vm.field },
+                        model: {
+                          value: _vm.selectedField,
+                          callback: function($$v) {
+                            _vm.selectedField = $$v
+                          },
+                          expression: "selectedField"
+>>>>>>> origin/velia_merge-dev
+                        }
+                      })
+                    ],
+                    1
+<<<<<<< HEAD
+=======
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { cols: "4" } },
+                    [
+                      _c("b-row", [
+                        _c("label", { attrs: { for: "date" } }, [
+                          _vm._v("Tanggal")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "b-row",
+                        [
+                          _c("date-picker", {
+                            attrs: { lang: "en", config: _vm.date },
+                            model: {
+                              value: _vm.selectedDate,
+                              callback: function($$v) {
+                                _vm.selectedDate = $$v
+                              },
+                              expression: "selectedDate"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+>>>>>>> origin/velia_merge-dev
                   )
                 ],
                 1
@@ -67805,14 +69424,293 @@ var render = function() {
             "b-form-group",
             [
               _c(
+<<<<<<< HEAD
                 "b-row",
                 [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
                     _c("label", [_c("strong", [_vm._v("Alamat Lokasi")])])
+=======
+                "b-carousel",
+                {
+                  attrs: { id: "schedule", controls: "", indikator: "" },
+                  on: {
+                    "sliding-start": _vm.onSlideStart,
+                    "sliding-end": _vm.onSlideEnd
+                  },
+                  model: {
+                    value: _vm.schedule,
+                    callback: function($$v) {
+                      _vm.schedule = $$v
+                    },
+                    expression: "schedule"
+                  }
+                },
+                [
+                  _c(
+                    "b-card-group",
+                    { attrs: { deck: "" } },
+                    [
+                      _c(
+                        "b-carousel-slide",
+                        [
+                          _c(
+                            "b-card",
+                            {
+                              attrs: {
+                                "border-variant": "secondary",
+                                header: "Lapang A",
+                                "header-border-variant": "white",
+                                align: "center"
+                              }
+                            },
+                            [
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("08.00-09.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("09.00-10.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("10.00-11.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("11.00-12.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("12.00-13.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("13.00-14.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("14.00-15.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("15.00-16.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("16.00-17.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("17.00-17.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("18.00-19.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("19.00-20.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("20.00-21.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("21.00-22.00")
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-carousel-slide",
+                        [
+                          _c(
+                            "b-card",
+                            {
+                              attrs: {
+                                "border-variant": "secondary",
+                                header: "Lapang B",
+                                "header-border-variant": "white",
+                                align: "center"
+                              }
+                            },
+                            [
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("08.00-09.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("09.00-10.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("10.00-11.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("11.00-12.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("12.00-13.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("13.00-14.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("14.00-15.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "choosed" }, [
+                                _vm._v("15.00-16.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("16.00-17.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("17.00-17.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("18.00-19.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("19.00-20.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("20.00-21.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("21.00-22.00")
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-carousel-slide",
+                        [
+                          _c(
+                            "b-card",
+                            {
+                              attrs: {
+                                "border-variant": "secondary",
+                                header: "Lapang C",
+                                "header-border-variant": "white",
+                                align: "center"
+                              }
+                            },
+                            [
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("08.00-09.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("09.00-10.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("10.00-11.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("11.00-12.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("12.00-13.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("13.00-14.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("14.00-15.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("15.00-16.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("16.00-17.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("17.00-17.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("18.00-19.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "unavailable" }, [
+                                _vm._v("19.00-20.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("20.00-21.00")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-button", { staticClass: "available" }, [
+                                _vm._v("21.00-22.00")
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                id: "input-name",
+                Label: "Nama / Email Pelaggan",
+                "label-for": "input-name"
+              }
+            },
+            [
+              _c(
+                "b-form-row",
+                { staticClass: "justify-content-md-right" },
+                [
+                  _c("b-col", { attrs: { cols: "2" } }, [
+                    _c("label", { attrs: { for: "input-name" } }, [
+                      _vm._v("Nama / Email Pemesan")
+                    ])
+>>>>>>> origin/velia_merge-dev
                   ]),
                   _vm._v(" "),
                   _c(
                     "b-col",
+<<<<<<< HEAD
                     [
                       _c("b-form-input", {
                         staticClass: "forminput",
@@ -67826,6 +69724,23 @@ var render = function() {
                             _vm.$set(_vm.form, "address", $$v)
                           },
                           expression: "form.address"
+=======
+                    { attrs: { cols: "6" } },
+                    [
+                      _c("b-form-input", {
+                        attrs: {
+                          id: "input-name",
+                          type: "string",
+                          required: "",
+                          placeholder: "Enter Name or Email"
+                        },
+                        model: {
+                          value: _vm.user_email,
+                          callback: function($$v) {
+                            _vm.user_email = $$v
+                          },
+                          expression: "user_email"
+>>>>>>> origin/velia_merge-dev
                         }
                       })
                     ],
@@ -67840,16 +69755,36 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-form-group",
+<<<<<<< HEAD
             [
               _c(
                 "b-row",
                 [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
                     _c("label", [_c("strong", [_vm._v("Deskripsi Lokasi")])])
+=======
+            {
+              attrs: {
+                id: "input-price",
+                "label-align-md": "Price",
+                "label-for": "input-price"
+              }
+            },
+            [
+              _c(
+                "b-row",
+                { staticClass: "justify-content-md-right" },
+                [
+                  _c("b-col", { attrs: { cols: "2" } }, [
+                    _c("label", { attrs: { for: "input-price" } }, [
+                      _vm._v("Harga")
+                    ])
+>>>>>>> origin/velia_merge-dev
                   ]),
                   _vm._v(" "),
                   _c(
                     "b-col",
+<<<<<<< HEAD
                     [
                       _c("b-form-textarea", {
                         staticClass: "forminput",
@@ -67864,6 +69799,22 @@ var render = function() {
                             _vm.$set(_vm.form, "description", $$v)
                           },
                           expression: "form.description"
+=======
+                    { attrs: { cols: "6" } },
+                    [
+                      _c("b-form-input", {
+                        attrs: {
+                          id: "input-price",
+                          type: "number",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.price,
+                          callback: function($$v) {
+                            _vm.price = $$v
+                          },
+                          expression: "price"
+>>>>>>> origin/velia_merge-dev
                         }
                       })
                     ],
@@ -67881,13 +69832,23 @@ var render = function() {
             [
               _c(
                 "b-row",
+<<<<<<< HEAD
                 [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
                     _c("label", [_c("strong", [_vm._v("Foto Lokasi")])])
+=======
+                { staticClass: "justify-content-md-right" },
+                [
+                  _c("b-col", { attrs: { cols: "2" } }, [
+                    _c("label", { attrs: { for: "payment_menthod" } }, [
+                      _vm._v("Tipe Pembayaran")
+                    ])
+>>>>>>> origin/velia_merge-dev
                   ]),
                   _vm._v(" "),
                   _c(
                     "b-col",
+<<<<<<< HEAD
                     [
                       _c("b-form-file", {
                         attrs: {
@@ -67898,6 +69859,28 @@ var render = function() {
                     ],
                     1
                   )
+=======
+                    { attrs: { cols: "6" } },
+                    [
+                      _c(
+                        "b-button",
+                        { attrs: { margin: "1", variant: "primary" } },
+                        [_vm._v("Down Payment")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-button",
+                        { attrs: { margin: "1", variant: "primary" } },
+                        [_vm._v("Fulll Payment")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("b-col", { staticClass: "justify-content-md-right" }, [
+                    _c("p", [_vm._v("Rp. xxx.xxxx")])
+                  ])
+>>>>>>> origin/velia_merge-dev
                 ],
                 1
               )
@@ -67905,6 +69888,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
+<<<<<<< HEAD
           _c("div", { staticClass: "spacer-20" }),
           _vm._v(" "),
           _c(
@@ -68668,11 +70652,39 @@ var render = function() {
                         )
                       : _vm._e()
                   ])
+=======
+          _c(
+            "b-row",
+            { staticClass: "justify-content-md-right" },
+            [
+              _c(
+                "b-col",
+                { attrs: { col: "6", offset: "8" } },
+                [
+                  _c(
+                    "b-button",
+                    {
+                      attrs: {
+                        type: "reset",
+                        variant: "outline-primary",
+                        href: "bookinglist"
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-arrow-left" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-button",
+                    { attrs: { type: "submit", variant: "primary" } },
+                    [_vm._v("Continue")]
+                  )
+>>>>>>> origin/velia_merge-dev
                 ],
                 1
               )
             ],
             1
+<<<<<<< HEAD
           ),
           _vm._v(" "),
           _c("div", { staticClass: "spacer-50" }),
@@ -68868,6 +70880,12 @@ var render = function() {
           ])
         : _vm._e()
 >>>>>>> origin/newdava-dev
+=======
+          )
+        ],
+        1
+      )
+>>>>>>> origin/velia_merge-dev
     ],
     1
   )
@@ -68880,6 +70898,7 @@ render._withStripped = true
 /***/ }),
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationDetailComponent.vue?vue&type=template&id=19076674&":
 /*!*********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationDetailComponent.vue?vue&type=template&id=19076674& ***!
@@ -68890,6 +70909,12 @@ render._withStripped = true
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/detailLapangComponent.vue?vue&type=template&id=7144864a& ***!
   \*******************************************************************************************************************************************************************************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/bookingListComponent.vue?vue&type=template&id=510827b9&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/bookingListComponent.vue?vue&type=template&id=510827b9& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -68903,6 +70928,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+<<<<<<< HEAD
 <<<<<<< HEAD
     { attrs: { id: "location-detail" } },
 =======
@@ -68941,10 +70967,92 @@ var render = function() {
             _c("p", [_vm._v(_vm._s(_vm.tipelapang))])
 >>>>>>> origin/newdava-dev
           ])
+=======
+    [
+      _c(
+        "b-form-group",
+        [
+          _c(
+            "b-row",
+            [
+              _c(
+                "b-col",
+                { attrs: { cols: "4" } },
+                [
+                  _c("label", { attrs: { for: "location" } }, [
+                    _vm._v("Lokasi")
+                  ]),
+                  _vm._v(" "),
+                  _c("b-form-select", {
+                    attrs: { options: _vm.location },
+                    model: {
+                      value: _vm.selectedLocation,
+                      callback: function($$v) {
+                        _vm.selectedLocation = $$v
+                      },
+                      expression: "selectedLocation"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { cols: "4" } },
+                [
+                  _c("label", { attrs: { for: "field" } }, [_vm._v("Lapang")]),
+                  _vm._v(" "),
+                  _c("b-form-select", {
+                    attrs: { options: _vm.field },
+                    model: {
+                      value: _vm.selectedField,
+                      callback: function($$v) {
+                        _vm.selectedField = $$v
+                      },
+                      expression: "selectedField"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-col",
+                { attrs: { cols: "4" } },
+                [
+                  _c("b-row", [
+                    _c("label", { attrs: { for: "date" } }, [_vm._v("Tanggal")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-row",
+                    [
+                      _c("date-picker", {
+                        attrs: { lang: "en", config: _vm.date },
+                        model: {
+                          value: _vm.selectedDate,
+                          callback: function($$v) {
+                            _vm.selectedDate = $$v
+                          },
+                          expression: "selectedDate"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+>>>>>>> origin/velia_merge-dev
         ],
         1
       ),
       _vm._v(" "),
+<<<<<<< HEAD
       _c("div", { staticClass: "spacer-30" }),
       _vm._v(" "),
 <<<<<<< HEAD
@@ -68996,10 +71104,94 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "spacer-20" })
+=======
+      _c("div", { staticClass: "spacer-20" }),
+      _vm._v(" "),
+      _c(
+        "b-col",
+        { attrs: { offset: "10" } },
+        [
+          _c(
+            "b-button",
+            {
+              staticClass: "btn btn-detail",
+              attrs: { variant: "primary", href: "addbooking" }
+            },
+            [_vm._v("Add")]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-20" }),
+      _vm._v(" "),
+      _c("b-table", {
+        staticClass: "thead-light",
+        attrs: {
+          striped: "",
+          hover: "",
+          small: "",
+          items: _vm.items,
+          fields: _vm.fields,
+          id: "bookinglist"
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "status",
+            fn: function(data) {
+              return [
+                _c(
+                  "b-button",
+                  {
+                    staticClass: " btn btn-detail",
+                    on: {
+                      click: function($event) {
+                        return _vm.changeStatus(data.item.status)
+                      }
+                    },
+                    model: {
+                      value: data.item.status,
+                      callback: function($$v) {
+                        _vm.$set(data.item, "status", $$v)
+                      },
+                      expression: "data.item.status"
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.paid(data.item.status)))]
+                )
+              ]
+            }
+          }
+        ])
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-20" }),
+      _vm._v(" "),
+      _c("b-pagination", {
+        attrs: {
+          "total-rows": _vm.rows,
+          "per-page": _vm.perPage,
+          "aria-controls": "bookinglist",
+          "prev-text": "«",
+          "next-text": "»",
+          "hide-goto-end-buttons": true,
+          size: "md",
+          align: "center"
+        },
+        model: {
+          value: _vm.currentPage,
+          callback: function($$v) {
+            _vm.currentPage = $$v
+          },
+          expression: "currentPage"
+        }
+      })
+>>>>>>> origin/velia_merge-dev
     ],
     1
   )
 }
+<<<<<<< HEAD
 var staticRenderFns = [
   function() {
     var _vm = this
@@ -71537,14 +73729,20 @@ var staticRenderFns = [
   }
 ]
 >>>>>>> origin/newdava-dev
+=======
+var staticRenderFns = []
+>>>>>>> origin/velia_merge-dev
 render._withStripped = true
 
 
 
 /***/ }),
 
+<<<<<<< HEAD
 =======
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -83619,7 +85817,10 @@ if (false) {} else {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/velia_merge-dev
 /***/ "./node_modules/vue2-datepicker/lib/index.js":
 /*!***************************************************!*\
   !*** ./node_modules/vue2-datepicker/lib/index.js ***!
@@ -83631,9 +85832,12 @@ if (false) {} else {
 
 /***/ }),
 
+<<<<<<< HEAD
 >>>>>>> origin/newdava-dev
 =======
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -83698,6 +85902,7 @@ module.exports = function(module) {
 
 /***/ }),
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 /***/ "./resources/js/admin/components/clientListComponent.vue":
@@ -83770,6 +85975,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 /***/ "./resources/js/client/bootstrap.js":
 /*!******************************************!*\
   !*** ./resources/js/client/bootstrap.js ***!
@@ -83855,6 +86062,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Vue.component('register-component', __webpack_require__(/*! ./components/registerComponent.vue */ "./resources/js/client/components/registerComponent.vue")["default"]);
 Vue.component('login-component', __webpack_require__(/*! ./components/loginComponent.vue */ "./resources/js/client/components/loginComponent.vue")["default"]);
 Vue.component('location-list', __webpack_require__(/*! ./components/locationListComponent.vue */ "./resources/js/client/components/locationListComponent.vue")["default"]);
@@ -83871,6 +86079,10 @@ Vue.component('detail-lapangan', __webpack_require__(/*! ./components/detailLapa
 Vue.component('manage-schedule', __webpack_require__(/*! ./components/manageScheduleComponent.vue */ "./resources/js/client/components/manageScheduleComponent.vue")["default"]);
 Vue.component('client-list', __webpack_require__(/*! ../admin/components/clientListComponent.vue */ "./resources/js/admin/components/clientListComponent.vue")["default"]);
 >>>>>>> origin/qotrun-dev
+=======
+Vue.component('booking-list', __webpack_require__(/*! ./components/bookingListComponent.vue */ "./resources/js/client/components/bookingListComponent.vue")["default"]);
+Vue.component('add-booking', __webpack_require__(/*! ./components/addBookingComponent.vue */ "./resources/js/client/components/addBookingComponent.vue")["default"]);
+>>>>>>> origin/velia_merge-dev
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -83883,6 +86095,7 @@ var app = new Vue({
 
 /***/ }),
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 /***/ "./resources/js/client/components/locationAddComponent.vue":
@@ -84308,11 +86521,18 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/client/components/editLapangComponent.vue ***!
   \****************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/***/ "./resources/js/client/components/addBookingComponent.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/client/components/addBookingComponent.vue ***!
+  \****************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* harmony import */ var _loginComponent_vue_vue_type_template_id_62748e67___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./loginComponent.vue?vue&type=template&id=62748e67& */ "./resources/js/client/components/loginComponent.vue?vue&type=template&id=62748e67&");
 /* harmony import */ var _loginComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loginComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/loginComponent.vue?vue&type=script&lang=js&");
@@ -84320,6 +86540,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editLapangComponent.vue?vue&type=template&id=0755dd9e& */ "./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e&");
 /* harmony import */ var _editLapangComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editLapangComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/editLapangComponent.vue?vue&type=script&lang=js&");
 >>>>>>> origin/newdava-dev
+=======
+/* harmony import */ var _addBookingComponent_vue_vue_type_template_id_a30d53bc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./addBookingComponent.vue?vue&type=template&id=a30d53bc& */ "./resources/js/client/components/addBookingComponent.vue?vue&type=template&id=a30d53bc&");
+/* harmony import */ var _addBookingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./addBookingComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/addBookingComponent.vue?vue&type=script&lang=js&");
+>>>>>>> origin/velia_merge-dev
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -84330,6 +86554,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
 <<<<<<< HEAD
+<<<<<<< HEAD
   _loginComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _loginComponent_vue_vue_type_template_id_62748e67___WEBPACK_IMPORTED_MODULE_0__["render"],
   _loginComponent_vue_vue_type_template_id_62748e67___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -84338,6 +86563,11 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   _editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__["render"],
   _editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
 >>>>>>> origin/newdava-dev
+=======
+  _addBookingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _addBookingComponent_vue_vue_type_template_id_a30d53bc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _addBookingComponent_vue_vue_type_template_id_a30d53bc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+>>>>>>> origin/velia_merge-dev
   false,
   null,
   null,
@@ -84348,14 +86578,19 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 /* hot reload */
 if (false) { var api; }
 <<<<<<< HEAD
+<<<<<<< HEAD
 component.options.__file = "resources/js/client/components/loginComponent.vue"
 =======
 component.options.__file = "resources/js/client/components/editLapangComponent.vue"
 >>>>>>> origin/newdava-dev
+=======
+component.options.__file = "resources/js/client/components/addBookingComponent.vue"
+>>>>>>> origin/velia_merge-dev
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /***/ "./resources/js/client/components/loginComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************!*\
@@ -84367,11 +86602,18 @@ component.options.__file = "resources/js/client/components/editLapangComponent.v
   !*** ./resources/js/client/components/editLapangComponent.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/***/ "./resources/js/client/components/addBookingComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/client/components/addBookingComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_loginComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./loginComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/loginComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_loginComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
@@ -84393,11 +86635,23 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e& ***!
   \***********************************************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_addBookingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./addBookingComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addBookingComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_addBookingComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/client/components/addBookingComponent.vue?vue&type=template&id=a30d53bc&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/client/components/addBookingComponent.vue?vue&type=template&id=a30d53bc& ***!
+  \***********************************************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_loginComponent_vue_vue_type_template_id_62748e67___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./loginComponent.vue?vue&type=template&id=62748e67& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/loginComponent.vue?vue&type=template&id=62748e67&");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_loginComponent_vue_vue_type_template_id_62748e67___WEBPACK_IMPORTED_MODULE_0__["render"]; });
@@ -84409,11 +86663,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_editLapangComponent_vue_vue_type_template_id_0755dd9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 >>>>>>> origin/newdava-dev
+=======
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addBookingComponent_vue_vue_type_template_id_a30d53bc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./addBookingComponent.vue?vue&type=template&id=a30d53bc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addBookingComponent.vue?vue&type=template&id=a30d53bc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addBookingComponent_vue_vue_type_template_id_a30d53bc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_addBookingComponent_vue_vue_type_template_id_a30d53bc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+>>>>>>> origin/velia_merge-dev
 
 
 
 /***/ }),
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /***/ "./resources/js/client/components/registerComponent.vue":
 /*!**************************************************************!*\
@@ -84425,11 +86686,18 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/client/components/menuLapanganComponent.vue ***!
   \******************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/***/ "./resources/js/client/components/bookingListComponent.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/client/components/bookingListComponent.vue ***!
+  \*****************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* harmony import */ var _registerComponent_vue_vue_type_template_id_9c24e9d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./registerComponent.vue?vue&type=template&id=9c24e9d2& */ "./resources/js/client/components/registerComponent.vue?vue&type=template&id=9c24e9d2&");
 /* harmony import */ var _registerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./registerComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/registerComponent.vue?vue&type=script&lang=js&");
@@ -84437,6 +86705,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menuLapanganComponent_vue_vue_type_template_id_a81cf222___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menuLapanganComponent.vue?vue&type=template&id=a81cf222& */ "./resources/js/client/components/menuLapanganComponent.vue?vue&type=template&id=a81cf222&");
 /* harmony import */ var _menuLapanganComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menuLapanganComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js&");
 >>>>>>> origin/newdava-dev
+=======
+/* harmony import */ var _bookingListComponent_vue_vue_type_template_id_510827b9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bookingListComponent.vue?vue&type=template&id=510827b9& */ "./resources/js/client/components/bookingListComponent.vue?vue&type=template&id=510827b9&");
+/* harmony import */ var _bookingListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookingListComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js&");
+>>>>>>> origin/velia_merge-dev
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -84447,6 +86719,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
 <<<<<<< HEAD
+<<<<<<< HEAD
   _registerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _registerComponent_vue_vue_type_template_id_9c24e9d2___WEBPACK_IMPORTED_MODULE_0__["render"],
   _registerComponent_vue_vue_type_template_id_9c24e9d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -84455,6 +86728,11 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   _menuLapanganComponent_vue_vue_type_template_id_a81cf222___WEBPACK_IMPORTED_MODULE_0__["render"],
   _menuLapanganComponent_vue_vue_type_template_id_a81cf222___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
 >>>>>>> origin/newdava-dev
+=======
+  _bookingListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _bookingListComponent_vue_vue_type_template_id_510827b9___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _bookingListComponent_vue_vue_type_template_id_510827b9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+>>>>>>> origin/velia_merge-dev
   false,
   null,
   null,
@@ -84465,14 +86743,19 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 /* hot reload */
 if (false) { var api; }
 <<<<<<< HEAD
+<<<<<<< HEAD
 component.options.__file = "resources/js/client/components/registerComponent.vue"
 =======
 component.options.__file = "resources/js/client/components/menuLapanganComponent.vue"
 >>>>>>> origin/newdava-dev
+=======
+component.options.__file = "resources/js/client/components/bookingListComponent.vue"
+>>>>>>> origin/velia_merge-dev
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 /***/ "./resources/js/client/components/registerComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************!*\
@@ -84484,11 +86767,18 @@ component.options.__file = "resources/js/client/components/menuLapanganComponent
   !*** ./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/***/ "./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./registerComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/registerComponent.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
@@ -84510,21 +86800,40 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/client/components/menuLapanganComponent.vue?vue&type=template&id=a81cf222& ***!
   \*************************************************************************************************/
 >>>>>>> origin/newdava-dev
+=======
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_bookingListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./bookingListComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_bookingListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/client/components/bookingListComponent.vue?vue&type=template&id=510827b9&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/client/components/bookingListComponent.vue?vue&type=template&id=510827b9& ***!
+  \************************************************************************************************/
+>>>>>>> origin/velia_merge-dev
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_template_id_9c24e9d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./registerComponent.vue?vue&type=template&id=9c24e9d2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/registerComponent.vue?vue&type=template&id=9c24e9d2&");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_template_id_9c24e9d2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_registerComponent_vue_vue_type_template_id_9c24e9d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+=======
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_bookingListComponent_vue_vue_type_template_id_510827b9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./bookingListComponent.vue?vue&type=template&id=510827b9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/bookingListComponent.vue?vue&type=template&id=510827b9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_bookingListComponent_vue_vue_type_template_id_510827b9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_bookingListComponent_vue_vue_type_template_id_510827b9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+>>>>>>> origin/velia_merge-dev
 
 
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./resources/js/client/images/logo.png":
 /*!*********************************************!*\
   !*** ./resources/js/client/images/logo.png ***!
@@ -84552,6 +86861,8 @@ module.exports = "/images/logo.png?00f6a2c540cf18779f150623c4764de4";
 
 /***/ }),
 
+=======
+>>>>>>> origin/velia_merge-dev
 /***/ 2:
 /*!*********************************************!*\
   !*** multi ./resources/js/client/client.js ***!
@@ -84561,6 +86872,7 @@ module.exports = "/images/logo.png?00f6a2c540cf18779f150623c4764de4";
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! D:\xampp\htdocs\ubookingku-web\bookingku-web\resources\js\client\client.js */"./resources/js/client/client.js");
 =======
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\client\client.js */"./resources/js/client/client.js");
@@ -84568,6 +86880,9 @@ module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources
 =======
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\client\client.js */"./resources/js/client/client.js");
 >>>>>>> origin/qotrun-dev
+=======
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\client\client.js */"./resources/js/client/client.js");
+>>>>>>> origin/velia_merge-dev
 
 
 /***/ })

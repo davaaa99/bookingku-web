@@ -49554,9 +49554,12 @@ __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\app.scss */
 __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\admin.scss */"./resources/sass/admin.scss");
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\client.scss */"./resources/sass/client.scss");
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/newdava-dev
 =======
 >>>>>>> origin/qotrun-dev
+=======
+>>>>>>> origin/velia_merge-dev
 
 
 /***/ })
