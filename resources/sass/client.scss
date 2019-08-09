@@ -91,6 +91,49 @@ main {
 
 
 }
+ 
+#bookinglist{
+    .paidbutton{
+        &:hover {
+            background-color:rgb(128, 0, 0);
+            cursor: pointer;
+            cursor: hand;
+        }
+        // width: 100px;
+        // height: 50px;
+        background-color: green;
+        color: white;
+        text-align:center;
+        // line-height:50px;
+        // border-radius: 30px;
+    }
+    .unpaidbutton{
+        &:hover {
+            background-color:green;
+            cursor: pointer;
+            cursor: hand;
+        }
+        // width: 100px;
+        // height: 50px;
+        background-color: rgb(128, 0, 0);
+        color: white;
+        text-align:center;
+        // line-height:50px;
+        // border-radius: 30px;
+    }
+}
+
+#addbooking{
+    .available{
+         background: rgb(127, 189, 27) !important;
+     }
+    .unavailable{
+        background: #e93a3a !important;
+    }
+    .choosed{
+        background: rgb(106, 176, 223) !important;
+    }
+}
 
 /*------------------------ SIDE BAR ------------------------*/
 #sidebar {
