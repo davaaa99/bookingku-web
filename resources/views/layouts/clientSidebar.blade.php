@@ -14,9 +14,8 @@
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('admin') }}" class="content-link">
                         <i class="far fa-clone"></i>
-<<<<<<< HEAD
                         DASHBOARD
-                    </a>
+            </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('locationlist') }}" class="content-link">
@@ -28,7 +27,6 @@
                     <a href="{{ route('register') }}" class="content-link">
                         <i class="far fa-address-card"></i>
                         REGISTER
-=======
                         VERIFY BOOKING
                     </a>
                 </div>
@@ -42,7 +40,6 @@
                     <a href="{{ route('payment') }}" class="content-link">
                         <i class="far fa-credit-card"></i>
                         PAYMENT
->>>>>>> origin/qotrun-dev
                     </a>
                 </div>
             </div>

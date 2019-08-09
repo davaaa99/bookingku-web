@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 class ClientPageController extends Controller
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
     /**
      * Display Dashboard
      * 
@@ -79,7 +77,7 @@ class ClientPageController extends Controller
     public function login(){
         
         return view('landing.loginPage');
-=======
+    }
     public function menulapang(){
         return view('client.MenuLapangan');
     }
@@ -92,16 +90,16 @@ class ClientPageController extends Controller
     }
     public function detailLapang(){
         return view('client.DetailLapangan');
->>>>>>> origin/newdava-dev
-=======
+    }
      /**
      * Display manage Schedule
      * 
      * @return View
      */
+    
     public function manageSchedule(){
         
         return view('client.manageSchedule');
->>>>>>> origin/qotrun-dev
+
     }
 }

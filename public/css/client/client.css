@@ -16535,40 +16535,12 @@ main {
   height: 50px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-.spacer-30 {
-  height: 30px;
-}
-
-=======
->>>>>>> origin/newdava-dev
-=======
->>>>>>> origin/qotrun-dev
-=======
->>>>>>> origin/velia_merge-dev
 .spacer-20 {
   height: 20px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-.spacer-10 {
-  height: 10px;
-=======
 .spacer-30 {
   height: 30px;
->>>>>>> origin/newdava-dev
-=======
-.spacer-30 {
-  height: 30px;
->>>>>>> origin/qotrun-dev
-=======
-.spacer-30 {
-  height: 30px;
->>>>>>> origin/velia_merge-dev
 }
 
 .table-box {
@@ -16590,6 +16562,7 @@ main {
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -16642,6 +16615,8 @@ main {
 
 #location-list .pagination li a {
 =======
+=======
+>>>>>>> origin/newdava-dev
 /*------------------------ SIDE BAR ------------------------*/
 
 #sidebar .logo {
@@ -16652,29 +16627,6 @@ main {
 
 #sidebar .sidebar {
   background: #156183;
-=======
-=======
-#addbooking .available {
-  background: #7fbd1b !important;
-}
-
-#addbooking .unavailable {
-  background: #e93a3a !important;
-}
-
-#addbooking .choosed {
-  background: #6ab0df !important;
-}
-
->>>>>>> origin/velia_merge-dev
-/*------------------------ SIDE BAR ------------------------*/
-
-#sidebar .sidebar {
-  background: #212120;
-<<<<<<< HEAD
->>>>>>> origin/qotrun-dev
-=======
->>>>>>> origin/velia_merge-dev
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   flex-grow: 0;
   flex-shrink: 0;
@@ -16705,25 +16657,13 @@ main {
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
-<<<<<<< HEAD
-<<<<<<< HEAD
   color: #FFFFFF;
   padding-left: 30px;
-=======
-  color: #8B8B8B;
-  padding-left: 20px;
->>>>>>> origin/qotrun-dev
-=======
-  color: #8B8B8B;
-  padding-left: 20px;
->>>>>>> origin/velia_merge-dev
   text-transform: uppercase;
   text-decoration: none;
 }
 
 #sidebar .sidebar .content-side .content-item .content-link i {
-<<<<<<< HEAD
-<<<<<<< HEAD
   margin-right: 10px;
   font-size: 17px;
 }
@@ -16731,112 +16671,6 @@ main {
 /*------------------------ LIST ------------------------*/
 
 #my-table thead {
-=======
-=======
->>>>>>> origin/velia_merge-dev
-  margin-right: 15px;
-  font-size: 17px;
-}
-
-/*------------------------  LIST  ------------------------*/
-
-#list .btn-clear {
-  color: white;
-  font-family: Poppins;
-}
-
-#list .filter .filter-item {
-  font-size: 13px;
-}
-
-#list .filter .filter-item input:focus {
-  outline: none;
-}
-
-#list .filter .filter-item select:focus {
-  outline: none;
-}
-
-#list .filter .filter-item .datepicker {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  border-radius: 100px;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #73879c !important;
-  border: none;
-  margin-right: 30px;
-  margin-bottom: 10px;
-  border: 1px solid #73879c;
-}
-
-#list .filter .filter-item .filterStatus .filterTitle {
-  width: 200px;
-  height: 40px;
-  border-radius: 100px;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #73879c;
-  border: none;
-  margin-left: 30px;
-  border: 1px solid #73879c;
-}
-
-#list .filter .filter-item .filterStatus .box {
-  position: absolute;
-  z-index: 1;
-  width: 200px;
-  margin-top: 10px;
-  margin-left: 30px;
-}
-
-#list .filter .filter-item .filterStatus .box .link {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 180px;
-  background: white;
-  box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
-}
-
-#list .filter .filter-item .filterStatus .box .link .link-item {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  color: #73879c;
-}
-
-#list .filter .filter-item .filterStatus .box .link .link-item:hover {
-  background: #f5f7fa;
-}
-
-#list .filter .filter-item .filterStatus .box .link .link-item .link-status {
-  width: 180px;
-}
-
-#list .filter .filter-item .search {
-  border: 1px solid #73879c;
-  border-radius: 100px;
-  padding: 20px;
-  height: 40px;
-  width: 200px;
-}
-
-#list .filter .filter-item .search .filterSearch {
-  border: none;
-}
-
-#list #my-table thead {
-<<<<<<< HEAD
->>>>>>> origin/qotrun-dev
-=======
->>>>>>> origin/velia_merge-dev
   background: #3A69B7 !important;
   font-family: Poppins;
   font-style: normal;
@@ -16844,25 +16678,11 @@ main {
   font-size: 14px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #my-table thead th {
   text-align: center;
 }
 
 #my-table tbody {
-=======
-=======
->>>>>>> origin/velia_merge-dev
-#list #my-table thead th {
-  text-align: center;
-}
-
-#list #my-table tbody {
-<<<<<<< HEAD
->>>>>>> origin/qotrun-dev
-=======
->>>>>>> origin/velia_merge-dev
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -16870,64 +16690,27 @@ main {
   color: #4D4D4D;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #my-table tbody tr td {
-=======
-#list #my-table tbody tr td {
->>>>>>> origin/qotrun-dev
-=======
-#list #my-table tbody tr td {
->>>>>>> origin/velia_merge-dev
   text-align: center;
   padding-left: 7px;
   padding-right: 7px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #my-table tbody tr td .btn-detail {
-=======
-#list #my-table tbody tr td .btn-detail {
->>>>>>> origin/qotrun-dev
-=======
-#list #my-table tbody tr td .btn-detail {
->>>>>>> origin/velia_merge-dev
   background: #3FB5E1;
   border-radius: 4px;
   font-size: 13px;
   color: #FFFFFF;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 .pagination li a {
->>>>>>> origin/newdava-dev
-=======
-#list .pagination li a {
->>>>>>> origin/qotrun-dev
-=======
-#list .pagination li a {
->>>>>>> origin/velia_merge-dev
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
   margin-right: 10px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#location-list .pagination li span {
-=======
 .pagination li span {
->>>>>>> origin/newdava-dev
-=======
-#list .pagination li span {
->>>>>>> origin/qotrun-dev
-=======
-#list .pagination li span {
->>>>>>> origin/velia_merge-dev
   color: #4D4D4D;
   border: none !important;
   border-radius: 360px;
@@ -16936,81 +16719,27 @@ main {
   width: 30px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#location-list .pagination .active a {
-  background: #2796E1;
-=======
 .pagination .active a {
   background: #000;
->>>>>>> origin/newdava-dev
-=======
-#list .pagination .active a {
-  background: #2796E1;
->>>>>>> origin/qotrun-dev
-=======
-#list .pagination .active a {
-  background: #2796E1;
->>>>>>> origin/velia_merge-dev
   outline: none !important;
   color: #FFFFFF;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#location-list .pagination .active a:focus {
-  background: #2796E1;
-=======
 .pagination .active a:focus {
   background: #000;
->>>>>>> origin/newdava-dev
-=======
-#list .pagination .active a:focus {
-  background: #2796E1;
->>>>>>> origin/qotrun-dev
-=======
-#list .pagination .active a:focus {
-  background: #2796E1;
->>>>>>> origin/velia_merge-dev
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#location-list .pagination .active a:hover {
-=======
 .pagination .active a:hover {
->>>>>>> origin/newdava-dev
-=======
-#list .pagination .active a:hover {
->>>>>>> origin/qotrun-dev
-=======
-#list .pagination .active a:hover {
->>>>>>> origin/velia_merge-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#location-list .pagination .active span {
-=======
 .pagination .active span {
->>>>>>> origin/newdava-dev
-=======
-#list .pagination .active span {
->>>>>>> origin/qotrun-dev
-=======
-#list .pagination .active span {
->>>>>>> origin/velia_merge-dev
   background: #2796E1;
   outline: none !important;
   color: #FFFFFF;
@@ -17020,19 +16749,7 @@ main {
   width: 30px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#location-list .pagination .active span:focus {
-=======
 .pagination .active span:focus {
->>>>>>> origin/newdava-dev
-=======
-#list .pagination .active span:focus {
->>>>>>> origin/qotrun-dev
-=======
-#list .pagination .active span:focus {
->>>>>>> origin/velia_merge-dev
   background: #2796E1;
   outline: none;
   color: #FFFFFF;
@@ -17041,20 +16758,8 @@ main {
   width: 30px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#location-list .pagination .active span:hover {
-=======
 .pagination .active span:hover {
->>>>>>> origin/newdava-dev
-=======
-#list .pagination .active span:hover {
->>>>>>> origin/qotrun-dev
-=======
-#list .pagination .active span:hover {
->>>>>>> origin/velia_merge-dev
-  background: #2796E1;
+  background: #000;
   outline: none;
   color: #FFFFFF;
   border-radius: 360px;
@@ -17062,289 +16767,6 @@ main {
   width: 30px;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-#location-detail .image-header {
-  width: 100%;
-}
-
-#location-detail .detail {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-#location-detail .detail .desc {
-  padding: 10px;
-  color: #5C5C5C;
-  width: 60%;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
-}
-
-#location-detail .detail .time {
-  margin-left: 70px;
-  padding: 10px;
-  width: 30%;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-}
-
-#location-detail .detail .time ul {
-  list-style-type: none;
-}
-
-#location-add #location-form .forminput {
-  border-radius: 10px;
-}
-
-#register {
-  min-height: 600px;
-  background-image: url("/images/section-4.png");
-  background-size: cover;
-  height: 100%;
-  background-position: center center;
-}
-
-#register .container {
-  background-color: #FFFFFF;
-  z-index: 1;
-  width: 35%;
-  height: 90%;
-}
-
-#register .container .register-header {
-  font-family: Rajdhani;
-  font-size: 30px;
-  color: black;
-  font-weight: 900;
-}
-
-#register .container .register-header .sub-title {
-  font-family: Source Sans Pro;
-  font-size: 12px;
-  color: #8B8B8B;
-  font-weight: 100;
-}
-
-#register .container #register-form {
-  width: 80%;
-}
-
-#register .container #register-form .register-label {
-  font-family: Source Sans Pro;
-  font-weight: bold;
-  font-size: 12px;
-  margin-bottom: 2px;
-}
-
-#register .container #register-form .register-input {
-  border: none;
-  border-bottom: 1px #C7C7DB solid;
-  border-radius: 0px;
-}
-
-#register .container #register-form .register-checkbox {
-  font-family: Source Sans Pro;
-  font-size: 12px;
-  margin-top: 25px;
-  margin-bottom: 2px;
-}
-
-#register .container .register-footer .register-button {
-  border-radius: 4px;
-  font-size: 13px;
-  color: #FFFFFF;
-}
-
-#register .container .register-footer .sub-title {
-  text-decoration: underline;
-  font-family: Source Sans Pro;
-  font-size: 12px;
-  color: #8B8B8B;
-  font-weight: 100;
-}
-
-#register .container .register-footer .sub-title:hover {
-  cursor: pointer;
-}
-
-@media (max-width: 568px) {
-  #register {
-    min-height: 500px;
-  }
-}
-
-#register:after {
-  background: rgba(0, 0, 0, 0.75);
-  content: " ";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-#login {
-  min-height: 600px;
-  background-image: url("/images/section-1.png");
-  background-size: cover;
-  height: 100%;
-  background-position: center center;
-}
-
-#login .container {
-  background-color: #FFFFFF;
-  z-index: 1;
-  width: 35%;
-  height: 90%;
-}
-
-#login .container .login-header {
-  font-family: Rajdhani;
-  font-size: 30px;
-  color: black;
-  font-weight: 900;
-}
-
-#login .container .login-header .sub-title {
-  font-family: Source Sans Pro;
-  font-size: 12px;
-  color: #8B8B8B;
-  font-weight: 100;
-}
-
-#login .container #login-form {
-  width: 80%;
-}
-
-#login .container #login-form .login-label {
-  font-family: Source Sans Pro;
-  font-weight: bold;
-  font-size: 12px;
-  margin-bottom: 2px;
-}
-
-#login .container #login-form .login-input {
-  border: none;
-  border-bottom: 1px #C7C7DB solid;
-  border-radius: 0px;
-}
-
-#login .container #login-form .login-checkbox {
-  font-family: Source Sans Pro;
-  font-size: 12px;
-  margin-top: 25px;
-  margin-bottom: 2px;
-}
-
-#login .container #login-form .login-checkbox .sub-title:hover {
-  cursor: pointer;
-}
-
-#login .container .login-footer {
-  width: 80%;
-}
-
-#login .container .login-footer .login-button {
-  border-radius: 4px;
-  font-size: 13px;
-  color: #FFFFFF;
-  width: 130px;
-  margin-right: auto;
-}
-
-#login .container .login-footer .signup-button {
-  border-radius: 4px;
-  font-size: 13px;
-  color: #4D4F5C;
-  background-color: #FFFFFF;
-  width: 130px;
-}
-
-#login .container .login-footer .signup-button:hover {
-  color: #FFFFFF;
-  background-color: #4D4F5C;
-}
-
-#login .container .login-footer .sub-title {
-  text-decoration: underline;
-  font-family: Source Sans Pro;
-  font-size: 12px;
-  color: #8B8B8B;
-  font-weight: 100;
-}
-
-@media (max-width: 568px) {
-  #login {
-    min-height: 500px;
-  }
-}
-
-#login:after {
-  background: rgba(0, 0, 0, 0.75);
-  content: " ";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-/*------------------------ SIDE BAR ------------------------*/
-
-#sidebar .sidebar {
-  background: #212120;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-  flex-grow: 0;
-  flex-shrink: 0;
-  color: white;
-  width: 250px;
-  height: 100vh;
-  padding: 20px;
-}
-
-#sidebar .sidebar.fixed-top {
-  position: fixed;
-  top: 0px;
-}
-
-#sidebar .sidebar .brand a img {
-  height: 40px;
-  width: 40px;
-  margin-top: 10px;
-  margin-bottom: 30px;
-}
-
-#sidebar .sidebar .content-side .content-item {
-  margin-bottom: 15px;
-}
-
-#sidebar .sidebar .content-side .content-item .content-link {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  color: #8B8B8B;
-  padding-left: 20px;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-#sidebar .sidebar .content-side .content-item .content-link i {
-  margin-right: 15px;
-  font-size: 17px;
-}
-
-/*------------------------  LIST  ------------------------*/
-
-#list .btn-add {
-  color: white;
-  font-family: Poppins;
-  border-radius: 20px;
-  width: 80px;
-}
-
-#list .btn-clear {
-=======
-=======
->>>>>>> origin/velia_merge-dev
 /*------------------------ VERIFY BOOKING ------------------------*/
 
 #verify-booking {
@@ -17465,129 +16887,6 @@ main {
 #detaillokasi .lokasi .desc {
   padding-left: 20px;
   color: #5C5C5C;
-<<<<<<< HEAD
-=======
-/*------------------------ VERIFY BOOKING ------------------------*/
-
-#verify-booking {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-/*------------------------ VERIFY BOOKING DETAIL ------------------------*/
-
-#verifyBookingDetail {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-#verifyBookingDetail .table-box {
-  padding-left: 100px;
-  padding-right: 100px;
-}
-
-#verifyBookingDetail .table-box .detail {
-  border: 1px solid #EBECF1;
-  padding: 30px;
-}
-
-#verifyBookingDetail .table-box .detail table {
-  width: 100%;
-}
-
-#verifyBookingDetail .table-box .detail table tr td,
-#verifyBookingDetail .table-box .detail table tr th {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 20px;
-  font-family: Poppins;
-  font-size: 16px;
-  line-height: 24px;
-  /* identical to box height */
-  color: #4D4D4D;
-  border-bottom: 1px solid #EBECF1;
-}
-
-#verifyBookingDetail .table-box .detail table tr td .buktipembayaran,
-#verifyBookingDetail .table-box .detail table tr th .buktipembayaran {
-  max-width: 300px;
-  max-height: 300px;
-}
-
-#verifyBookingDetail .table-box .detail .tombol {
-  padding-top: 30px;
-}
-
-#verifyBookingDetail .table-box .detail .tombol .btn {
-  width: 150px;
-  height: 40px;
-  border-radius: 4px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  color: #FFFFFF;
-}
-
-#verifyBookingDetail .table-box .detail .tombol .accept {
-  background: #4ABA70;
-  margin-right: 30px;
-}
-
-#verifyBookingDetail .table-box .detail .tombol .decline {
-  background: #FF3636;
-}
-
-#client {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-/*------------------------ DETAIL LOKASI ------------------------*/
-
-#detaillokasi {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-#detaillokasi .lokasi {
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 50px;
-  background: #FFFFFF;
-  border: 1px solid #E1E1E1;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-@media (min-width: 990px) {
-  #detaillokasi .lokasi {
-    display: flex;
-  }
-}
-
-#detaillokasi .lokasi .image {
-  padding-right: 20px;
-  height: 300px;
-  background-size: cover;
-  background-position: center center;
-}
-
-@media (max-width: 990px) {
-  #detaillokasi .lokasi .image {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 750px) {
-  #detaillokasi .lokasi .image {
-    height: 200px;
-  }
-}
-
-#detaillokasi .lokasi .desc {
-  padding-left: 20px;
-  color: #5C5C5C;
->>>>>>> origin/qotrun-dev
 }
 
 #detaillokasi .lokasi .desc .item {
@@ -17618,38 +16917,6 @@ main {
 }
 
 #detaillokasi .lokasi .desc .nama-client {
-=======
-}
-
-#detaillokasi .lokasi .desc .item {
-  margin-bottom: 20px;
-}
-
-#detaillokasi .lokasi .desc .item i {
-  font-size: 15px;
-  color: #C0C0C0;
-  margin-right: 20px;
-  padding-top: 5px;
-}
-
-#detaillokasi .lokasi .desc .item .jam-buka .title-list {
-  margin-right: 10px;
-}
-
-#detaillokasi .lokasi .desc .item .jam-buka .list-jam {
-  margin-top: 10px;
-}
-
-#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul {
-  list-style: none;
-}
-
-#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul li .jam {
-  margin-left: 20px;
-}
-
-#detaillokasi .lokasi .desc .nama-client {
->>>>>>> origin/velia_merge-dev
   font-family: Poppins;
   font-weight: 500;
   font-size: 20px;
@@ -17862,8 +17129,6 @@ main {
   color: #FFFFFF;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 /*------------------------ MENU LAPANGAN ------------------------*/
 
 #content .cardlapang {
@@ -17909,26 +17174,17 @@ main {
 /*------------------------ MENU LAPANGAN ------------------------*/
 
 #lapang .btn-clear {
->>>>>>> origin/newdava-dev
   color: white;
   font-family: Poppins;
 }
 
-<<<<<<< HEAD
-#list .filter .filter-item {
-  font-size: 13px;
+#lapang .selectlokasi {
+  width: 75%;
+  margin-left: 1.5%;
+  margin-right: 5%;
+  display: inline-block;
 }
 
-#list .filter .filter-item input:focus {
-  outline: none;
-}
-
-#list .filter .filter-item select:focus {
-  outline: none;
-}
-
-#list .filter .filter-item .datepicker {
-=======
 #lapang .filter .filter-item {
   font-size: 13px;
 }
@@ -17942,7 +17198,6 @@ main {
 }
 
 #lapang .filter .filter-item .datepicker {
->>>>>>> origin/newdava-dev
   display: flex;
   align-items: center;
   height: 40px;
@@ -17957,13 +17212,8 @@ main {
   border: 1px solid #73879c;
 }
 
-<<<<<<< HEAD
-#list .filter .filter-item .filterStatus .filterTitle {
-  width: 200px;
-=======
 #lapang .filter .filter-item .filterStatus .filterTitle {
   width: 300px;
->>>>>>> origin/newdava-dev
   height: 40px;
   border-radius: 100px;
   padding: 10px;
@@ -17971,24 +17221,6 @@ main {
   padding-right: 20px;
   color: #73879c;
   border: none;
-<<<<<<< HEAD
-  margin-left: 30px;
-  border: 1px solid #73879c;
-}
-
-#list .filter .filter-item .filterStatus .box {
-  position: absolute;
-  z-index: 1;
-  width: 200px;
-  margin-top: 10px;
-  margin-left: 30px;
-}
-
-#list .filter .filter-item .filterStatus .box .link {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 180px;
-=======
   margin-left: 10px;
   border: 1px solid #73879c;
 }
@@ -18006,16 +17238,11 @@ main {
   padding-bottom: 10px;
   width: 280px;
   padding-left: 10px;
->>>>>>> origin/newdava-dev
   background: white;
   box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
 }
 
-<<<<<<< HEAD
-#list .filter .filter-item .filterStatus .box .link .link-item {
-=======
 #lapang .filter .filter-item .filterStatus .box .link .link-item {
->>>>>>> origin/newdava-dev
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;
@@ -18026,127 +17253,6 @@ main {
   color: #73879c;
 }
 
-<<<<<<< HEAD
-#list .filter .filter-item .filterStatus .box .link .link-item:hover {
-  background: #f5f7fa;
-}
-
-#list .filter .filter-item .filterStatus .box .link .link-item .link-status {
-  width: 180px;
-}
-
-#list .filter .filter-item .search {
-  border: 1px solid #73879c;
-  border-radius: 100px;
-  padding: 20px;
-  height: 40px;
-  width: 200px;
-}
-
-#list .filter .filter-item .search .filterSearch {
-  border: none;
-}
-
-#list #my-table thead {
-  background: #3A69B7 !important;
-  font-family: Poppins;
-  font-style: normal;
-  color: #FFFFFF;
-  font-size: 14px;
-}
-
-#list #my-table thead th {
-  text-align: center;
-}
-
-#list #my-table tbody {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 13px;
-  color: #4D4D4D;
-}
-
-#list #my-table tbody tr td {
-  text-align: center;
-  padding-left: 7px;
-  padding-right: 7px;
-}
-
-#list #my-table tbody tr td .btn-detail {
-  background: #3FB5E1;
-  border-radius: 4px;
-  font-size: 13px;
-  color: #FFFFFF;
-}
-
-#list .pagination li a {
-  color: #4D4D4D;
-  border: none !important;
-  border-radius: 360px;
-  margin-right: 10px;
-}
-
-#list .pagination li span {
-  color: #4D4D4D;
-  border: none !important;
-  border-radius: 360px;
-  margin-right: 10px;
-  width: 30px;
-  width: 30px;
-}
-
-#list .pagination .active a {
-  background: #2796E1;
-  outline: none !important;
-  color: #FFFFFF;
-}
-
-#list .pagination .active a:focus {
-  background: #2796E1;
-  outline: none;
-  color: #FFFFFF;
-  border-radius: 360px;
-}
-
-#list .pagination .active a:hover {
-  background: #2796E1;
-  outline: none;
-  color: #FFFFFF;
-  border-radius: 360px;
-}
-
-#list .pagination .active span {
-  background: #2796E1;
-  outline: none !important;
-  color: #FFFFFF;
-  border-radius: 360px;
-  font-family: Poppins;
-  width: 30px;
-  width: 30px;
-}
-
-#list .pagination .active span:focus {
-  background: #2796E1;
-  outline: none;
-  color: #FFFFFF;
-  border-radius: 360px;
-  width: 30px;
-  width: 30px;
-}
-
-#list .pagination .active span:hover {
-  background: #2796E1;
-  outline: none;
-  color: #FFFFFF;
-  border-radius: 360px;
-  width: 30px;
-  width: 30px;
-}
-
-/*------------------------ DETAIL LOKASI ------------------------*/
-
-=======
 #lapang .filter .filter-item .filterStatus .box .link .link-item:hover {
   background: #f5f7fa;
 }
@@ -18181,8 +17287,3 @@ main {
   margin-bottom: 1%;
 }
 
->>>>>>> origin/newdava-dev
-=======
->>>>>>> origin/qotrun-dev
-=======
->>>>>>> origin/velia_merge-dev

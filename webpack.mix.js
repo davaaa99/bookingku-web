@@ -16,16 +16,4 @@ mix.js('resources/js/app.js', 'public/js')
 mix.js('resources/js/admin/admin.js', 'public/js/admin')
     .sass('resources/sass/admin.scss', 'public/css/admin');
 mix.js('resources/js/client/client.js', 'public/js/client')
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     .sass('resources/sass/client.scss', 'public/css/client');
-=======
-    .sass('resources/sass/client.scss', 'public/css/client');
->>>>>>> origin/newdava-dev
-=======
-    .sass('resources/sass/client.scss', 'public/css/client');
->>>>>>> origin/qotrun-dev
-=======
-        .sass('resources/sass/client.scss', 'public/css/client');
->>>>>>> origin/velia_merge-dev

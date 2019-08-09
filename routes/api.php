@@ -35,14 +35,15 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
 /**
  * Router Group for web client
  */
-Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
+// Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
+    Route::group(['prefix' => 'v1'], function () {    
     Route::get('location','API\REST\LocationController@show');
     Route::post('location','API\REST\LocationController@create');
     Route::put('location/{id_location}','API\REST\LocationController@update');
     Route::delete('location/{id_location}','API\REST\LocationController@destroy');
 
-    Route::get('field/{id_location}','API\REST\FieldController@show');
-    Route::post('field','API\REST\FieldController@create');
+    Route::get('field','API\REST\FieldController@show');
+    Route::post('field','API\REST\FieldController@store');
     Route::put('field/{id_field}','API\REST\FieldController@update');
     Route::delete('field/{id_field}','API\REST\FieldController@destroy');
     

@@ -1,8 +1,8 @@
 <template>
 
     <div id="content">
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-            <div class="chooselocation">
+        <b-form>
+            <!-- <div class="chooselocation">
                 <b-form-group id="input-group-1" label="Location:" label-for="input-1">
                     <b-form-select
                     id="input-1"
@@ -11,7 +11,7 @@
                     required>
                     </b-form-select>
                 </b-form-group>
-            </div>
+            </div> -->
             <div class="namalapang">
                 <b-form-group id="input-group-2" label="Nama Lapang:" label-for="input-2">
                     <b-form-input
@@ -32,19 +32,20 @@
                     </b-form-select>
                 </b-form-group>
             </div>
-            <div class="uploadgambar">
+            <!-- <div class="uploadgambar">
                 <b-form-group id="input-group-4" label="Upload Gambar:" label-for="input-4">
                 <b-form-file
                     multiple
-                    v-model="file"
+                    id="input-4"
+                    v-model="form.file"
                     :state="Boolean(file)"
                     placeholder="Choose a file..."
                     drop-placeholder="Drop file here...">
                 </b-form-file>
                 </b-form-group>
-            </div>
+            </div> -->
             <div class="buttonadd">
-            <b-button variant="primary">Add</b-button>
+            <b-button variant="primary" type="submit">Add</b-button>
             </div> 
         </b-form>
 </div>
@@ -57,33 +58,21 @@
     data() {
       return {
         form: {
-          location: 'Bandung',
-          namalapang: 'Sarijadi Futsal',
-          tipelapang: 'Sintetis',
-          file: null,
-          file2: null,
+          namalapang: '{{lapangan.namalapang}}',
+          tipelapang: '{{lapangan.tipelapang}}',
         },
-        location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
+        // location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
         tipelapang: [{ text: 'Pilih Tipe Lapang', value: null }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
         show: true
       }
     },
     methods: {
-      onSubmit(evt) {
-        evt.preventDefault()
-        alert(JSON.stringify(this.form))
-      },
-      onReset(evt) {
-        evt.preventDefault()
-        // Reset our form values
-        this.form.location = null
-        this.form.namalapang = ''
-        this.form.tipelapang = null
-        // Trick to reset/clear native browser form validation state
-        this.show = false
-        this.$nextTick(() => {
-          this.show = true
-        })
+      editLapang() {
+          let uri = 'http://localhost:8000/api/v1/field';
+          this.axios.post(uri, this.form).then((response) => {
+          // this.$router.push({name: 'fields'});
+          console.log(this.form);
+        });
       }
     }
   }

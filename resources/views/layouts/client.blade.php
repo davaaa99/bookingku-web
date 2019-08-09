@@ -18,38 +18,14 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/client/client.css') }}">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-=======
->>>>>>> origin/newdava-dev
-=======
->>>>>>> origin/qotrun-dev
-=======
->>>>>>> origin/velia_merge-dev
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-
-
 </head>
-
 <body>
     <div id="app">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        @include('layouts.clientSidebar')
-=======
-        @include('layouts.sidebarclient')
->>>>>>> origin/newdava-dev
-=======
-        @include('layouts.clientSidebar')
->>>>>>> origin/qotrun-dev
-=======
-        @include('layouts.sidebar')
->>>>>>> origin/velia_merge-dev
+    @include('layouts.sidebarclient')
         <main>
             <div class="jumbotron jumbotron-fluid"></div>
             <div class="content">

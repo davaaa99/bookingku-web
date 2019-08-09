@@ -27,7 +27,7 @@ class Field extends Model
      * @var array
      */
      protected $fillable = [
-        'id_field',
+         'id_field',
         'id_kind_of_field',
         'id_location',
         'field_type',
