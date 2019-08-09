@@ -16562,6 +16562,30 @@ main {
   color: #FFFFFF;
 }
 
+#bookinglist .paidbutton {
+  background-color: green;
+  color: white;
+  text-align: center;
+}
+
+#bookinglist .paidbutton:hover {
+  background-color: maroon;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#bookinglist .unpaidbutton {
+  background-color: maroon;
+  color: white;
+  text-align: center;
+}
+
+#bookinglist .unpaidbutton:hover {
+  background-color: green;
+  cursor: pointer;
+  cursor: hand;
+}
+
 #addbooking .available {
   background: #7fbd1b !important;
 }

@@ -11,6 +11,8 @@ use App\Field;
 use App\Schedule;
 use App\Location;
 
+use App\Http\Resources\PostCollection;
+
 class BookingController extends Controller
 {
     /**
@@ -18,10 +20,10 @@ class BookingController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
-    {
-        $this->middleware(['auth:api']);
-    }
+    // public function __construct(Request $request)
+    // {
+    //     $this->middleware(['auth:api']);
+    // }
 
     /**
      * Display a listing of the booking.
@@ -30,18 +32,19 @@ class BookingController extends Controller
      */
     public function index()
     {
-        try {
-            $dataBooking = Booking::all();
-        } catch (Exception $e) {
-            return response()->json([
-                'message' => 'Failed retrieved data.' . $e->getMessage(),
-                'serve' => []
-            ], 500);
-        }
-        return response()->json([
-            'message' => 'Succesfully retrieved data.',
-            'serve' => $dataBooking
-        ], 200);
+        // try {
+        //     $dataBooking = Booking::all();
+        // } catch (Exception $e) {
+        //     return response()->json([
+        //         'message' => 'Failed retrieved data.' . $e->getMessage(),
+        //         'serve' => []
+        //     ], 500);
+        // }
+        // return response()->json([
+        //     'message' => 'Succesfully retrieved data.',
+        //     'serve' => $dataBooking
+        // ], 200);
+        return new PostCollection(Booking::all());
     }
 
     /**
