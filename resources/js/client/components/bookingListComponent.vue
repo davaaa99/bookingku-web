@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="bookinglist">
         <b-form-group>
             <b-row>
                 <b-col cols="4">
@@ -27,8 +27,7 @@
         <div class="spacer-20"></div>
         <b-table striped hover small :items="items" :fields="fields" class="thead-light" id="bookinglist">
             <template slot="status" slot-scope="data">
-                <!-- <b-button :style="{color:paid(data.item.status)}" class=" btn btn-detail" @click="paid(data.item.status)">{{ data.item.status }}</b-button> -->
-                <b-button v-model="data.item.status" class=" btn btn-detail" v-on:click="changeStatus(data.item.status)">{{ paid(data.item.status) }}</b-button>
+                <b-button v-model="data.item.status" class=" btn btn-detail unpaidbutton" v-on:click="handleClick" @click="paidAction()">{{ paid(data.item.status) }}</b-button>
             </template>    
         </b-table>
         <div class="spacer-20"></div>
@@ -40,10 +39,15 @@
 
 <script>
     import BootstrapVue from 'bootstrap-vue'
+    import datePicker from 'vue-date-picker'
     import { type } from "os";
     Vue.use(BootstrapVue)
 
     export default {
+        
+        components:{
+            datePicker
+        },
         data() {
             return {
                 // Note 'age' is left out and will not appear in the rendered table
@@ -125,10 +129,60 @@
             },
             changeStatus(status){
                 if(status){
-                    let newStatus = !status
+                    let newStatus = status
                     return paid(newStatus)
                 }
+            },
+            handleClick: function() {
+                console.log(event)
+            },
+            paidAction(status) {
+                if(status==true){
+                    return 'paidbutton'
+                } else{
+                    return 'unpaidbutton'
+                }
             }
-        }
+        },
+        watch:{
+            filterTanggal: function (fal) {
+                var self = this;
+                var d = new Date(fal),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2) month = '0' + month;
+                if (day.length < 2) day = '0' + day;
+
+                var realdate = [day, month, year].join('-');
+
+                const data = self.filterData.filter(function (project) {
+                    return project.tglBayar === realdate;
+                });
+
+                self.filterData = data;
+            },
+
+            filterLokasi: function (fal) {
+                var self = this;
+                const data = self.filterData.filter(function (project) {
+                    return project.status === fal;
+                });
+                self.filterData = data;
+            },
+            filterLapang: function (fal) {
+                var self = this;
+                const data = self.filterData.filter(function (project) {
+                    return project.status === fal;
+                });
+                self.filterData = data;
+            }
+        },
+        // computed: {
+        //     rows() {
+        //         return this.filterData.length;
+        //     }
+        // }
     }
 </script>
