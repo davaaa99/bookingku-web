@@ -2084,15 +2084,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: {},
-      location: [{
-        text: 'Pilih Lokasi',
-        value: null
-      }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
+      // location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
       tipelapang: [{
         text: 'Pilih Tipe Lapang',
         value: null
@@ -2497,15 +2493,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        location: 'Bandung',
-        namalapang: 'Sarijadi Futsal',
-        tipelapang: 'Sintetis',
-        file: null
+        namalapang: '{{lapangan.namalapang}}',
+        tipelapang: '{{lapangan.tipelapang}}'
       },
-      location: [{
-        text: 'Pilih Lokasi',
-        value: null
-      }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
+      // location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
       tipelapang: [{
         text: 'Pilih Tipe Lapang',
         value: null
@@ -2514,22 +2505,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    onSubmit: function onSubmit(evt) {
-      evt.preventDefault();
-      alert(JSON.stringify(this.form));
-    },
-    onReset: function onReset(evt) {
+    editLapang: function editLapang() {
       var _this = this;
 
-      evt.preventDefault(); // Reset our form values
-
-      this.form.location = null;
-      this.form.namalapang = '';
-      this.form.tipelapang = null; // Trick to reset/clear native browser form validation state
-
-      this.show = false;
-      this.$nextTick(function () {
-        _this.show = true;
+      var uri = 'http://localhost:8000/api/v1/field';
+      this.axios.post(uri, this.form).then(function (response) {
+        // this.$router.push({name: 'fields'});
+        console.log(_this.form);
       });
     }
   }
@@ -3819,7 +3801,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -3881,6 +3862,24 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
     //       this.dataLapangan = response.data;
     //   });
     // },
+    editLapang: function editLapang(id_field) {
+      var _this2 = this;
+
+      var uri = "http://localhost:8000/api/v1/field/".concat(id_field);
+      this.axios.post(uri, this.dataLapangan).then(function (response) {
+        console.log(_this2.form);
+      });
+    },
+    deleteLapang: function deleteLapang(id_field) {
+      var _this3 = this;
+
+      var uri = "http://localhost:8000/api/v1/field/".concat(id_field);
+      this.axios["delete"](uri).then(function (response) {
+        _this3.dataLapangan.splice(_this3.dataLapangan.indexOf(id_field), 1);
+
+        console.log(_this3.dataLapangan);
+      });
+    },
     show: function show() {
       this.status = !this.status;
     },
@@ -23518,7 +23517,7 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip */
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67637,138 +67636,91 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "addlapang" } }, [
-    _c(
-      "form",
-      {
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.addLapang($event)
-          }
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "namalapang" },
-          [
-            _c(
-              "b-form-group",
-              {
+    _c("form", [
+      _c(
+        "div",
+        { staticClass: "namalapang" },
+        [
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                id: "input-group-2",
+                label: "Nama Lapang:",
+                "label-for": "input-2"
+              }
+            },
+            [
+              _c("b-form-input", {
                 attrs: {
-                  id: "input-group-2",
-                  label: "Nama Lapang:",
-                  "label-for": "input-2"
-                }
-              },
-              [
-                _c("b-form-input", {
-                  attrs: {
-                    id: "input-2",
-                    required: "",
-                    placeholder: "Masukan Nama Lapang"
+                  id: "input-2",
+                  required: "",
+                  placeholder: "Masukan Nama Lapang"
+                },
+                model: {
+                  value: _vm.form.field_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "field_name", $$v)
                   },
-                  model: {
-                    value: _vm.form.field_name,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "field_name", $$v)
-                    },
-                    expression: "form.field_name"
-                  }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
+                  expression: "form.field_name"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "tipelapang" },
+        [
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                id: "input-group-3",
+                label: "Tipe Lapang:",
+                "label-for": "input-3"
+              }
+            },
+            [
+              _c("b-form-select", {
+                attrs: { id: "input-3", options: _vm.tipelapang, required: "" },
+                model: {
+                  value: _vm.form.field_type,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "field_type", $$v)
+                  },
+                  expression: "form.field_type"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "buttonadd" }, [
         _c(
-          "div",
-          { staticClass: "tipelapang" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  id: "input-group-3",
-                  label: "Tipe Lapang:",
-                  "label-for": "input-3"
-                }
-              },
-              [
-                _c("b-form-select", {
-                  attrs: {
-                    id: "input-3",
-                    options: _vm.tipelapang,
-                    required: ""
-                  },
-                  model: {
-                    value: _vm.form.field_type,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "field_type", $$v)
-                    },
-                    expression: "form.field_type"
-                  }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "uploadgambar" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  id: "input-group-4",
-                  label: "Upload Gambar:",
-                  "label-for": "input-4"
-                }
-              },
-              [
-                _c("b-form-file", {
-                  attrs: {
-                    multiple: "",
-                    state: Boolean(_vm.form.field_photo),
-                    placeholder: "Choose a file...",
-                    "drop-placeholder": "Drop file here..."
-                  },
-                  model: {
-                    value: _vm.form.field_photo,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "field_photo", $$v)
-                    },
-                    expression: "form.field_photo"
-                  }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _vm._m(0)
-      ]
-    )
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            on: {
+              click: function($event) {
+                return _vm.addLapang()
+              }
+            }
+          },
+          [_vm._v("Add Lapang")]
+        )
+      ])
+    ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "buttonadd" }, [
-      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Add Lapang")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -68113,164 +68065,88 @@ var render = function() {
     "div",
     { attrs: { id: "content" } },
     [
-      _vm.show
-        ? _c("b-form", { on: { submit: _vm.onSubmit, reset: _vm.onReset } }, [
+      _c("b-form", [
+        _c(
+          "div",
+          { staticClass: "namalapang" },
+          [
             _c(
-              "div",
-              { staticClass: "chooselocation" },
+              "b-form-group",
+              {
+                attrs: {
+                  id: "input-group-2",
+                  label: "Nama Lapang:",
+                  "label-for": "input-2"
+                }
+              },
               [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      id: "input-group-1",
-                      label: "Location:",
-                      "label-for": "input-1"
-                    }
+                _c("b-form-input", {
+                  attrs: {
+                    id: "input-2",
+                    required: "",
+                    placeholder: "Masukan Nama Lapang"
                   },
-                  [
-                    _c("b-form-select", {
-                      attrs: {
-                        id: "input-1",
-                        options: _vm.location,
-                        required: ""
-                      },
-                      model: {
-                        value: _vm.form.location,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "location", $$v)
-                        },
-                        expression: "form.location"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "namalapang" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      id: "input-group-2",
-                      label: "Nama Lapang:",
-                      "label-for": "input-2"
-                    }
-                  },
-                  [
-                    _c("b-form-input", {
-                      attrs: {
-                        id: "input-2",
-                        required: "",
-                        placeholder: "Masukan Nama Lapang"
-                      },
-                      model: {
-                        value: _vm.form.namalapang,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "namalapang", $$v)
-                        },
-                        expression: "form.namalapang"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tipelapang" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      id: "input-group-3",
-                      label: "Tipe Lapang:",
-                      "label-for": "input-3"
-                    }
-                  },
-                  [
-                    _c("b-form-select", {
-                      attrs: {
-                        id: "input-3",
-                        options: _vm.tipelapang,
-                        required: ""
-                      },
-                      model: {
-                        value: _vm.form.tipelapang,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "tipelapang", $$v)
-                        },
-                        expression: "form.tipelapang"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "uploadgambar" },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    attrs: {
-                      id: "input-group-4",
-                      label: "Upload Gambar:",
-                      "label-for": "input-4"
-                    }
-                  },
-                  [
-                    _c("b-form-file", {
-                      attrs: {
-                        multiple: "",
-                        id: "input-4",
-                        state: Boolean(_vm.file),
-                        placeholder: "Choose a file...",
-                        "drop-placeholder": "Drop file here..."
-                      },
-                      model: {
-                        value: _vm.form.file,
-                        callback: function($$v) {
-                          _vm.$set(_vm.form, "file", $$v)
-                        },
-                        expression: "form.file"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "buttonadd" },
-              [
-                _c(
-                  "b-button",
-                  { attrs: { variant: "primary", type: "submit" } },
-                  [_vm._v("Add")]
-                )
+                  model: {
+                    value: _vm.form.namalapang,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "namalapang", $$v)
+                    },
+                    expression: "form.namalapang"
+                  }
+                })
               ],
               1
             )
-          ])
-        : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "tipelapang" },
+          [
+            _c(
+              "b-form-group",
+              {
+                attrs: {
+                  id: "input-group-3",
+                  label: "Tipe Lapang:",
+                  "label-for": "input-3"
+                }
+              },
+              [
+                _c("b-form-select", {
+                  attrs: {
+                    id: "input-3",
+                    options: _vm.tipelapang,
+                    required: ""
+                  },
+                  model: {
+                    value: _vm.form.tipelapang,
+                    callback: function($$v) {
+                      _vm.$set(_vm.form, "tipelapang", $$v)
+                    },
+                    expression: "form.tipelapang"
+                  }
+                })
+              ],
+              1
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "buttonadd" },
+          [
+            _c("b-button", { attrs: { variant: "primary", type: "submit" } }, [
+              _vm._v("Add")
+            ])
+          ],
+          1
+        )
+      ])
     ],
     1
   )
@@ -71104,56 +70980,58 @@ var render = function() {
       _vm._l(_vm.dataLapangan, function(lapangan) {
         return _c(
           "div",
-          { key: lapangan.dataLapangan, staticClass: "cardlapang" },
+          { key: lapangan.id_field, staticClass: "cardlapang" },
           [
             _c(
-              "a",
-              { staticClass: "cardlink", attrs: { href: "detaillapang" } },
+              "b-card-group",
+              { attrs: { deck: "" } },
               [
                 _c(
-                  "b-card-group",
-                  { attrs: { deck: "" } },
+                  "b-card",
                   [
+                    _c("img", {
+                      staticClass: "gambarlapang",
+                      attrs: { src: lapangan.field_photo }
+                    }),
+                    _vm._v(" "),
+                    _c("b-card-title", [
+                      _vm._v(
+                        "\r\n          " +
+                          _vm._s(lapangan.field_name) +
+                          "\r\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("b-card-text", [
+                      _vm._v(
+                        "\r\n          " +
+                          _vm._s(lapangan.field_type) +
+                          "\r\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
                     _c(
-                      "b-card",
+                      "a",
+                      { attrs: { href: "editlapang" } },
                       [
-                        _c("img", {
-                          staticClass: "gambarlapang",
-                          attrs: { src: lapangan.field_photo }
-                        }),
-                        _vm._v(" "),
-                        _c("b-card-title", [
-                          _vm._v(
-                            "\r\n          " +
-                              _vm._s(lapangan.field_name) +
-                              "\r\n        "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("b-card-text", [
-                          _vm._v(
-                            "\r\n          " +
-                              _vm._s(lapangan.field_type) +
-                              "\r\n        "
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          { attrs: { href: "editlapang" } },
-                          [
-                            _c("b-button", { attrs: { variant: "light" } }, [
-                              _vm._v("Edit")
-                            ])
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c("b-button", { attrs: { variant: "danger" } }, [
-                          _vm._v("Delete ")
+                        _c("b-button", { attrs: { variant: "light" } }, [
+                          _vm._v("Edit")
                         ])
                       ],
                       1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: { variant: "danger" },
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteLapang(lapangan.id_field)
+                          }
+                        }
+                      },
+                      [_vm._v("Delete ")]
                     )
                   ],
                   1
@@ -71161,7 +71039,8 @@ var render = function() {
               ],
               1
             )
-          ]
+          ],
+          1
         )
       })
     ],

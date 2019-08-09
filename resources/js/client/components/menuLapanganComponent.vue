@@ -34,8 +34,8 @@
     </div>
    
     
-    <div class ="cardlapang" v-for="lapangan in dataLapangan" :key="lapangan.dataLapangan">
-        <a href="detaillapang" class="cardlink"><b-card-group deck>
+    <div class ="cardlapang" v-for="lapangan in dataLapangan" :key="lapangan.id_field">
+        <b-card-group deck>
        <b-card>
         <img class="gambarlapang" :src="lapangan.field_photo" />
         <b-card-title>
@@ -45,10 +45,9 @@
           {{lapangan.field_type}}
         </b-card-text>
         <a href="editlapang"><b-button variant="light">Edit</b-button></a>
-        <b-button variant="danger">Delete </b-button>
+        <b-button variant="danger" @click="deleteLapang(lapangan.id_field)">Delete </b-button>
        </b-card> 
         </b-card-group>
-        </a>
     </div>
 </div>
 </template>
@@ -121,6 +120,20 @@
             //       this.dataLapangan = response.data;
             //   });
             // },
+
+            editLapang(id_field){
+                let uri = `http://localhost:8000/api/v1/field/${id_field}`;
+                this.axios.post(uri, this.dataLapangan).then(response => {
+                console.log(this.form);
+              });
+            },
+            deleteLapang(id_field){
+              let uri = `http://localhost:8000/api/v1/field/${id_field}`;
+              this.axios.delete(uri).then(response => {
+               this.dataLapangan.splice(this.dataLapangan.indexOf(id_field), 1);
+               console.log(this.dataLapangan);
+              });
+            },
             show: function () {
                 this.status = !this.status;
             },

@@ -1,7 +1,7 @@
 <template>
 
     <div id="addlapang">
-        <form @submit.prevent="addLapang">
+        <form> 
             <!-- <div class="chooselocation">
                 <b-form-group id="input-group-1" label="Location:" label-for="input-1">
                     <b-form-select
@@ -32,7 +32,7 @@
                     </b-form-select>
                 </b-form-group>
             </div>
-            <div class="uploadgambar">
+            <!-- <div class="uploadgambar">
                 <b-form-group id="input-group-4" label="Upload Gambar:" label-for="input-4">
                 <b-form-file
                   multiple=""
@@ -41,11 +41,10 @@
                   placeholder="Choose a file..."
                   drop-placeholder="Drop file here..."
                 ></b-form-file>
-                 <!-- <div class="mt-3">Selected file: {{ form.file ? form.file.name : '' }}</div> -->
                 </b-form-group>
-            </div>
+            </div> -->
             <div class="buttonadd">
-            <button class="btn btn-primary">Add Lapang</button>
+            <button class="btn btn-primary" @click="addLapang()">Add Lapang</button>
             </div>
         </form>
 </div>
@@ -58,7 +57,7 @@
     data() {
       return {
         form: {},
-        location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
+        // location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
         tipelapang: [{ text: 'Pilih Tipe Lapang', value: null }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
         show: true
       }

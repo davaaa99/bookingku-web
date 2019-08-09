@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Location;
 use App\Field;
 use App\Http\Resources\PostCollection;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class FieldController extends Controller
 {
@@ -125,11 +127,11 @@ class FieldController extends Controller
         //         'serve' => []
         //     ], 500);
         $field = new Field([
-            // 'id_field' => Uuid::uuid1()->getHex(),
-            // 'id_location' => $request->get('id_location'),
+            'id_field' => '1321',
+            'id_location' => '1111',
             'field_name' => $request->get('field_name'),
             'field_type' => $request->get('field_type'),
-            'field_photo' => $request->get('field_photo'),
+            // 'field_photo' => $request->get('field_photo'),
           ]);
         $field->save();
     
@@ -185,24 +187,25 @@ class FieldController extends Controller
      */
     public function destroy($id_field)
     {
-        try{
-            $dataUser = Auth::user();
+        // try{
+        //     $dataUser = Auth::user();
 
             $field = Field::find($id_field);
-            $field->updated_by = $dataUser->email;
-            $field->save();
+        //     $field->updated_by = $dataUser->email;
+        //     $field->save();
             Field::where('id_field',$id_field)->delete();
-        }catch (Exception $e){
-            return response()->json([
-            'message' => 'Failed delete data.' . $e->getMessage(),
-            'serve' => []
-            ],500);
-        }
+            
+        // }catch (Exception $e){
+        //     return response()->json([
+        //     'message' => 'Failed delete data.' . $e->getMessage(),
+        //     'serve' => []
+        //     ],500);
+        // }
 
-        return response()->json([
-            'message' => 'Succesfully deleted data.',
-            'serve' => []
-        ],200);
+        // return response()->json([
+        //     'message' => 'Succesfully deleted data.',
+        //     'serve' => []
+        // ],200);
     }
 
     
