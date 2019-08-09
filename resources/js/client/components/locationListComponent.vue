@@ -12,13 +12,11 @@
                 <div class="spacer-20"></div>
             </div>
         </div>
-        <!-- @click="detail(data.item.id_location)" -->
         <div class="item-list">
             <div class="card mt-3" v-for="location in dataLocation" :key="location.id_location">
                 <div class="horizontal" >
                     <b-card no-body class="overflow-hidden">
                         <b-row no-gutters class="d-flex">
-                            <!-- col-lg-2 col-md-4 col-sm-12 -->
                             <b-col class="col-lg-2" @click="detailLocation()">
                                 <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
                             </b-col>
@@ -98,62 +96,6 @@
                     {
                         id_location: "005",
                         location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "006",
-                        location_name: "Ciwaruga Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "007",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "008",
-                        location_name: "Ciwaruga Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "009",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "010",
-                        location_name: "Ciwaruga Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "011",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "012",
-                        location_name: "Ciwaruga Futsal",
                         location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
                         description: "Lapangan Baru",
                         open_time: "07:00",
