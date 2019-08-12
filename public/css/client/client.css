@@ -16884,8 +16884,14 @@ main {
 
 /*------------------------ SIDE BAR ------------------------*/
 
+#sidebar .logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
 #sidebar .sidebar {
-  background: #212120;
+  background: #156183;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   flex-grow: 0;
   flex-shrink: 0;
@@ -16916,14 +16922,14 @@ main {
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
-  color: #8B8B8B;
-  padding-left: 20px;
+  color: #FFFFFF;
+  padding-left: 30px;
   text-transform: uppercase;
   text-decoration: none;
 }
 
 #sidebar .sidebar .content-side .content-item .content-link i {
-  margin-right: 15px;
+  margin-right: 10px;
   font-size: 17px;
 }
 
@@ -17123,5 +17129,373 @@ main {
   border-radius: 360px;
   width: 30px;
   width: 30px;
+}
+
+/*------------------------ MENU LAPANGAN ------------------------*/
+
+#content .cardlapang {
+  display: inline-block;
+}
+
+#content .gambarlapang {
+  width: 100%;
+  height: 100%;
+  margin: 2 auto;
+  margin-bottom: 10px;
+}
+
+#content .button-variant {
+  width: 20px;
+  height: 10px;
+}
+
+#content .card-img-top {
+  width: 100%;
+  height: 300px;
+}
+
+#content .card:hover {
+  background: lightgray;
+}
+
+#content .card {
+  display: inline-block;
+}
+
+#content .card-deck {
+  width: 500px;
+  height: 500px;
+  margin: 20px auto;
+  display: inline-block;
+}
+
+#carilokasi {
+  padding-left: 10px;
+}
+
+/*------------------------ MENU LAPANGAN ------------------------*/
+
+#lapang .btn-clear {
+  color: white;
+  font-family: Poppins;
+}
+
+#lapang .selectlokasi {
+  width: 75%;
+  margin-left: 1.5%;
+  margin-right: 5%;
+  display: inline-block;
+}
+
+#lapang .filter .filter-item {
+  font-size: 13px;
+}
+
+#lapang .filter .filter-item input:focus {
+  outline: none;
+}
+
+#lapang .filter .filter-item select:focus {
+  outline: none;
+}
+
+#lapang .filter .filter-item .datepicker {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #73879c !important;
+  border: none;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  border: 1px solid #73879c;
+}
+
+#lapang .filter .filter-item .filterStatus .filterTitle {
+  width: 300px;
+  height: 40px;
+  border-radius: 100px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #73879c;
+  border: none;
+  margin-left: 10px;
+  border: 1px solid #73879c;
+}
+
+#lapang .filter .filter-item .filterStatus .box {
+  position: absolute;
+  z-index: 1;
+  width: 300px;
+  margin-top: 0px;
+  margin-left: 10px;
+}
+
+#lapang .filter .filter-item .filterStatus .box .link {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 280px;
+  padding-left: 10px;
+  background: white;
+  box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+}
+
+#lapang .filter .filter-item .filterStatus .box .link .link-item {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  color: #73879c;
+}
+
+#lapang .filter .filter-item .filterStatus .box .link .link-item:hover {
+  background: #f5f7fa;
+}
+
+#lapang .filter .filter-item .filterStatus .box .link .link-item .link-status {
+  width: 180px;
+}
+
+#lapang .filter .filter-item .buttonadd {
+  position: relative;
+  margin-left: 50%;
+}
+
+#lapang .filter .filter-item .cardlink {
+  color: #000000;
+}
+
+#lapang-detail .hari {
+  width: 20%;
+  margin-left: 30px;
+}
+
+#lapang-detail .tabel-jadwal {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2%;
+}
+
+#lapang-detail .card-img {
+  width: 100%;
+  height: 450px;
+}
+
+#addlapang .buttonadd {
+  float: right;
+  padding-top: 5px;
+  margin-bottom: 1%;
+}
+
+/*------------------------ BOOKING ------------------------*/
+
+#bookinglist button.paid {
+  background-color: green;
+  color: white;
+  text-align: center;
+}
+
+#bookinglist button.paid:hover {
+  background-color: maroon;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#bookinglist button.unpaid {
+  background-color: maroon;
+  color: white;
+  text-align: center;
+}
+
+#bookinglist button.unpaid:hover {
+  background-color: green;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#addbooking .available {
+  background: #7fbd1b !important;
+}
+
+#addbooking .unavailable {
+  background: #e93a3a !important;
+}
+
+#addbooking .choosed {
+  background: #6ab0df !important;
+}
+
+#addbooking body {
+  background: #f8f8f8;
+  color: #2c3e50;
+  font-family: "Source Sans Pro", sans-serif;
+  min-height: 1000px;
+}
+
+#addbooking .card-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 40px;
+  color: #666a73;
+}
+
+#addbooking .card-carousel {
+  display: flex;
+  justify-content: center;
+  width: 640px;
+}
+
+#addbooking .card-carousel--overflow-container {
+  overflow: hidden;
+}
+
+#addbooking .card-carousel--nav__left,
+#addbooking .card-carousel--nav__right {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-top: 2px solid #42b883;
+  border-right: 2px solid #42b883;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: transform 150ms linear;
+}
+
+#addbooking .card-carousel--nav__left[disabled],
+#addbooking .card-carousel--nav__right[disabled] {
+  opacity: 0.2;
+  border-color: black;
+}
+
+#addbooking .card-carousel--nav__left {
+  transform: rotate(-135deg);
+}
+
+#addbooking .card-carousel--nav__left:active {
+  transform: rotate(-135deg) scale(0.9);
+}
+
+#addbooking .card-carousel--nav__right {
+  transform: rotate(45deg);
+}
+
+#addbooking .card-carousel--nav__right:active {
+  transform: rotate(45deg) scale(0.9);
+}
+
+#addbooking .card-carousel-cards {
+  display: flex;
+  transition: transform 150ms ease-out;
+  transform: translatex(0px);
+}
+
+#addbooking .card-carousel-cards .card-carousel--card {
+  margin: 0 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
+  background-color: #fff;
+  border-radius: 4px;
+  z-index: 3;
+  margin-bottom: 2px;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card:first-child {
+  margin-left: 0;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card:last-child {
+  margin-right: 0;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card img {
+  vertical-align: bottom;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  transition: opacity 150ms linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card img:hover {
+  opacity: 0.5;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer {
+  border-top: 0;
+  padding: 7px 15px;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer p {
+  padding: 3px 0;
+  margin: 0;
+  margin-bottom: 2px;
+  font-size: 19px;
+  font-weight: 500;
+  color: #2c3e50;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer p:nth-of-type(2) {
+  font-size: 12px;
+  font-weight: 300;
+  padding: 6px;
+  background: rgba(40, 44, 53, 0.06);
+  display: inline-block;
+  position: relative;
+  margin-left: 4px;
+  color: #666a73;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer p:nth-of-type(2):before {
+  content: "";
+  float: left;
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 0;
+  height: 0;
+  border-color: transparent rgba(40, 44, 53, 0.06) transparent transparent;
+  border-style: solid;
+  border-width: 12px 12px 12px 0;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer p:nth-of-type(2):after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -1px;
+  float: left;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: white;
+  box-shadow: 0px 0px 0px #004977;
+}
+
+#addbooking h1 {
+  font-size: 3.6em;
+  font-weight: 100;
+  text-align: center;
+  margin-bottom: 0;
+  color: #42b883;
+}
+
+.myselect {
+  font-size: 15px;
 }
 
