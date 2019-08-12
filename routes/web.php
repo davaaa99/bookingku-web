@@ -37,8 +37,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 });
 
 /**
- * Firman
- * Admin Page
  * Router Group for client
  */
 Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
@@ -71,6 +69,7 @@ Route::group(['middleware' => ['auth', 'verified', 'is_admin']], function () {
 /**
  * Router Group for Client Page
  */
+$now = \Carbon\Carbon::now();
 Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm'. (string) $now->day], function () {
     Route::get('/locationlist','ClientPageController@locationList')->name('locationlist');
     Route::get('/locationdetail','ClientPageController@locationDetail')->name('locationdetail');
