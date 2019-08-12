@@ -2,10 +2,10 @@
   <div id="detail-lapangan">
     <div class="lapangan" v-for="lapangan in detailLapangan">
       <div class="col-md-12 col-lg-6 col-sm-12">
-        <div class="image" :style="{ 'background-image': 'url(' + lapangan.img + ')' }"></div>
+        <div class="image" :style="{ 'background-image': 'url(' + lapangan.field_photo + ')' }"></div>
       </div>
       <div class="col-md-12 col-lg-6">
-        <div class="nama-lapangan">{{lapangan.namaLapangan}}</div>
+        <div class="nama-lapangan">{{lapangan.field_name}}</div>
         <div class="jadwal">
           <date-picker
             width="200"
@@ -17,8 +17,7 @@
           <div class="row">
             <div
               class="col-5 list-jam d-flex align-items-center justify-content-center"
-              v-for="jam in lapangan.jamBooking"
-            >{{jam.jam}}</div>
+              :v-for="jam in lapangan.jamBooking">{{jam.jam}}</div>
           </div>
         </div>
       </div>
@@ -38,65 +37,73 @@ export default {
   data() {
     return {
       filterTanggal: "",
-      detailLapangan: [
-        {
-          id: "001",
-          img: "/images/avatar.jpg",
-          namaLapangan: "Amir",
-          jamBooking: [
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            }
-          ]
-        },
-        {
-          id: "001",
-          img: "/images/avatar.jpg",
-          namaLapangan: "Amir",
-          jamBooking: [
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            }
-          ]
-        }
-      ]
+        detailLapang:[],
+    //   detailLapangan: [
+    //     {
+    //       id: "001",
+    //       img: "/images/avatar.jpg",
+    //       namaLapangan: "Amir",
+    //       jamBooking: [
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       id: "001",
+    //       img: "/images/avatar.jpg",
+    //       namaLapangan: "Amir",
+    //       jamBooking: [
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         },
+    //         {
+    //           jam: "07.00 - 12.00"
+    //         }
+    //       ]
+    //     }
+    //   ]
     };
-  }
+  },
+  mounted(){
+    let uri='http://localhost:8000/api/v1/clients';
+    this.axios.get(uri).then(response=>{
+        this.ClientList=response.data.data;
+        console.log('response.data.data');
+    });
+  },
 };
 </script>

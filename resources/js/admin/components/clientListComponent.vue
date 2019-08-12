@@ -31,6 +31,7 @@
     import {
         type
     } from 'os';
+    
     Vue.use(BootstrapVue)
 
     export default {
@@ -46,66 +47,37 @@
                 fields: [
                     "No",
                     {
-                        key: "idClient",
+                        key: "id_user",
                         label: "ID Clients"
                     },
                     {
-                        key: "nama",
+                        key: "email",
+                        label: "Email"
+                    },
+                    {
+                        key: "name",
                         label: "Nama"
                     },
-                    {
-                        key: "lokasi",
-                        label: "Lokasi"
-                    },
-                    {
-                        key: "status",
-                        label: "Status"
-                    },
+                    // {
+                    //     key: "user_type",
+                    //     label: "Tipe User"
+                    // },
                     {
                         key: "aksi",
                         label: "Aksi"
                     }
                 ],
-                ClientList: [{
-                        idClient: "CLN-001",
-                        nama: "Tedy",
-                        lokasi: "JL. Telkom",
-                        status: "member"
-
-                    },
-                    {
-                        idClient: "CLN-002",
-                        nama: "Tedy",
-                        lokasi: "JL. Telkom",
-                        status: "member"
-
-                    },
-
-                    {
-                        idClient: "CLN-003",
-                        nama: "Tedy",
-                        lokasi: "JL. Telkom",
-                        status: "member"
-
-                    },
-
-                    {
-                        idClient: "CLN-004",
-                        nama: "Tedy",
-                        lokasi: "JL. Telkom",
-                        status: "member"
-
-                    },
-
-                    {
-                        idClient: "CLN-005",
-                        nama: "Tedy",
-                        lokasi: "JL. Telkom",
-                        status: "member"
-
-                    }
+                ClientList:[
+                    
                 ],
             };
+        },
+        mounted(){
+        let uri='http://localhost:8000/api/v1/clients';
+        this.axios.get(uri).then(response=>{
+            this.ClientList=response.data.data;
+            console.log('response.data.data');
+        });
         },
         computed: {
             rows() {

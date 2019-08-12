@@ -20,9 +20,14 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+<<<<<<< HEAD
 Vue.component('manage-schedule', require('./components/manageScheduleComponent.vue').default);
 Vue.component('client-list', require('../admin/components/clientListComponent.vue').default);
 
+=======
+Vue.component('booking-list', require('./components/bookingListComponent.vue').default);
+Vue.component('add-booking', require('./components/addBookingComponent.vue').default);
+>>>>>>> c75dadfc07c1c6574bbdb97b78c5e46f4440a212
 
 
 /**

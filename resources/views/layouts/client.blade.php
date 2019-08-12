@@ -34,6 +34,7 @@
 <body>
     <div id="app">
         @include('layouts.clientSidebar')
+
         <main>
             <div class="jumbotron jumbotron-fluid"></div>
             <div class="content">
@@ -43,4 +44,5 @@
     </div>
 </body>
 
+</html>
 </html>

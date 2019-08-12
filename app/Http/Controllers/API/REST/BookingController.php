@@ -9,6 +9,9 @@ use Ramsey\Uuid\Uuid;
 use App\Booking;
 use App\Field;
 use App\Schedule;
+use App\Location;
+
+use App\Http\Resources\PostCollection;
 
 class BookingController extends Controller
 {
@@ -17,10 +20,10 @@ class BookingController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
-    {
-        $this->middleware(['auth:api']);
-    }
+    // public function __construct(Request $request)
+    // {
+    //     $this->middleware(['auth:api']);
+    // }
 
     /**
      * Display a listing of the booking.
@@ -29,18 +32,19 @@ class BookingController extends Controller
      */
     public function index()
     {
-        try {
-            $dataBooking = Booking::all();
-        } catch (Exception $e) {
-            return response()->json([
-                'message' => 'Failed retrieved data.' . $e->getMessage(),
-                'serve' => []
-            ], 500);
-        }
-        return response()->json([
-            'message' => 'Succesfully retrieved data.',
-            'serve' => $dataBooking
-        ], 200);
+        // try {
+        //     $dataBooking = Booking::all();
+        // } catch (Exception $e) {
+        //     return response()->json([
+        //         'message' => 'Failed retrieved data.' . $e->getMessage(),
+        //         'serve' => []
+        //     ], 500);
+        // }
+        // return response()->json([
+        //     'message' => 'Succesfully retrieved data.',
+        //     'serve' => $dataBooking
+        // ], 200);
+        return new PostCollection(Booking::all());
     }
 
     /**
@@ -138,12 +142,11 @@ class BookingController extends Controller
     public function showByField($id_field, $date)
     {
         try {
-            $listSchedule = Schedule::where('id_field', $id_field)->get();
-            foreach ($listSchedule as $ds) {
-                $listBooking = Booking::where('id_schedule', $ds->id_schedule)
-                                        ->orwhere('created_at','LIKE',"%$date%")
-                                        ->get();
-            }
+            $listBooking=Field::join('schedules','schedules.id_field','=','fields.id_field')
+                                ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                ->where('fields.id_field',$id_field)
+                                ->where('bookings.created_at','LIKE',"%$date%")
+                                ->select('bookings.*')->get();
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),
@@ -166,15 +169,12 @@ class BookingController extends Controller
     public function showByLocation($id_location,$date)
     {
         try {
-            $listField = Field::where('id_location', $id_location)->get();
-            foreach ($listField as $df) {
-                $dataschedule = Schedule::where('id_field', $df->id_field)->get();
-                foreach ($dataschedule as $ds) {
-                    $listbooking[] = Booking::where('id_schedule', $ds->id_schedule)
-                                                ->orwhere('created_at','LIKE',"%$date%")
-                                                ->get();
-                }
-            }
+            $listbooking=Location::join('fields','fields.id_location','=','locations.id_location')
+                                    ->join('schedules','schedules.id_field','=','fields.id_field')
+                                    ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                    ->where('locations.id_location',$id_location)
+                                    ->where('bookings.created_at','LIKE',"%$date%")
+                                    ->select('bookings.*')->get();
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),
