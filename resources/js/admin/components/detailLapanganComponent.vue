@@ -17,15 +17,7 @@
           <div class="row">
             <div
               class="col-5 list-jam d-flex align-items-center justify-content-center"
-<<<<<<< HEAD
-<<<<<<< HEAD
-              v-for="jam in lapangan.jamBooking" :key="jam.JamBooking">{{jam.jam}}</div>
-=======
-              v-for="jam in lapangan.jamBooking">{{jam.jam}}</div>
->>>>>>> origin/velia_merge-dev
-=======
               :v-for="jam in lapangan.jamBooking">{{jam.jam}}</div>
->>>>>>> origin/velia_merge-dev
           </div>
         </div>
       </div>
@@ -45,38 +37,6 @@ export default {
   data() {
     return {
       filterTanggal: "",
-<<<<<<< HEAD
-      detailLapangan: [
-        {
-          id: "001",
-          img: "/images/avatar.jpg",
-          namaLapangan: "Amir",
-          jamBooking: [
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            },
-            {
-              jam: "07.00 - 12.00"
-            }
-          ]
-        }
-      ]
-=======
         detailLapang:[],
     //   detailLapangan: [
     //     {
@@ -136,7 +96,6 @@ export default {
     //       ]
     //     }
     //   ]
->>>>>>> origin/velia_merge-dev
     };
   },
   mounted(){

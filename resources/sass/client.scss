@@ -90,6 +90,13 @@ main {
     color: #FFFFFF;
 
 }
+
+$vue-navy: #2c3e50;
+$vue-navy-light: #3a5169;
+$vue-teal: #42b883;
+$vue-teal-light: #42b983;
+$gray: #666a73;
+$light-gray: #f8f8f8;
  
 #bookinglist {
     button.paid {
@@ -132,13 +139,6 @@ main {
     .choosed {
         background: rgb(106, 176, 223) !important;
     }
-
-    $vue-navy: #2c3e50;
-    $vue-navy-light: #3a5169;
-    $vue-teal: #42b883;
-    $vue-teal-light: #42b983;
-    $gray: #666a73;
-    $light-gray: #f8f8f8;
 }
 
 body {

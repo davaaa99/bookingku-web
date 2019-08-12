@@ -1,6 +1,6 @@
 <template>
   <div id="detail-lokasi">
-    <div class="lokasi" v-for="lokasi in datailLokasi">
+    <div class="lokasi" :v-for="lokasi in datailLokasi">
       <div class="col-md-12 col-lg-6 col-sm-12">
         <div class="image" :style="{ 'background-image': 'url(' + lokasi.location_photo + ')' }"></div>
       </div>
