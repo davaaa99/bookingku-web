@@ -17110,6 +17110,7 @@ main {
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 /*------------------------ MENU LAPANGAN ------------------------*/
 
 #content .cardlapang {
@@ -17266,5 +17267,9 @@ main {
   float: right;
   padding-top: 5px;
   margin-bottom: 1%;
+=======
+.myselect {
+  font-size: 15px;
+>>>>>>> origin/qotrun-dev
 }
 
