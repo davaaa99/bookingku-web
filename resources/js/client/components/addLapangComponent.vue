@@ -7,8 +7,6 @@
                     <b-form-input
                     id="input-1"
                     v-model="form.id_field"
-                    disabled
-                    hidden
                     placeholder="Masukan Id Lapang" >
                     </b-form-input>
                 <!-- </b-form-group> -->
