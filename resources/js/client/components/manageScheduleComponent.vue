@@ -2,16 +2,17 @@
   <div>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show">
       <b-form-group id="input-group-2" label="Location:" label-for="input-2">
-        <b-form-select
+        <b-form-select class= "myselect"
           id="input-2"
           v-model="form.location"
           :options="locations"
           required
+          size:lg
         ></b-form-select>
       </b-form-group>
 
       <b-form-group id="input-group-3" label="Field:" label-for="input-3">
-        <b-form-select
+        <b-form-select class= "myselect"
           id="input-3"
           v-model="form.field"
           :options="fieldss"
@@ -37,7 +38,7 @@
         ></b-form-input>
       </b-form-group>
         <b-form-group id="input-group-5" label="Day :" label-for="input-5">
-        <b-form-checkbox-group
+        <b-form-checkbox-group class= "myselect"
             v-model="form.day"
             :options="options"
             switches
@@ -45,7 +46,7 @@
         </b-form-group>
 
         <b-form-group id="input-group-8" label="Time Start:" label-for="input-8">
-        <b-form-select
+        <b-form-select class= "myselect"
           id="input-8"
           v-model="form.t_start"
           :options="t_starts"
@@ -54,7 +55,7 @@
         </b-form-group>
 
          <b-form-group id="input-group-9" label="Time Finish:" label-for="input-9">
-        <b-form-select
+        <b-form-select class= "myselect"
           id="input-8"
           v-model="form.t_finish"
           :options="t_finishs"
