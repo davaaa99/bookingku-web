@@ -35,10 +35,7 @@
         "jspdf": "^1.5.3",
         "moment": "^2.24.0",
         "vue-axios": "^2.1.4",
-<<<<<<< HEAD
-=======
         "vue-class-component": "^7.1.0",
->>>>>>> cbe98b476f0b262191ce95166624c5087ad412bd
         "vue-date-picker": "^2.5.0",
         "vue-router": "^3.1.1",
         "vue2-datepicker": "^2.12.0",

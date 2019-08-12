@@ -24,13 +24,6 @@
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('register') }}" class="content-link">
-                        <i class="far fa-address-card"></i>
-                        REGISTER
-                        VERIFY BOOKING
-                    </a>
-                </div>
-                <div class="content-item d-flex align-items-center">
                     <a href="{{ route('clientlist') }}" class="content-link">
                         <i class="far fa-address-card"></i>
                         CLIENT LIST

@@ -78,11 +78,12 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
 
     Route::get('/register','ClientPageController@register')->name('clientregister');
     Route::get('/login','ClientPageController@login')->name('clientlogin');
-    Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
     
-    Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
+    
     
 
-    Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
-    Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');
+    
 });
+Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
+Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
+    Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');
