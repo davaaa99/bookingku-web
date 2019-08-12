@@ -2239,8 +2239,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           month = '' + (d.getMonth() + 1),
           day = '' + d.getDate(),
           year = d.getFullYear();
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
+      if (month.length < 2) month = '0' + month; // if (day.length < 2) day = '0' + day;
+
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
     }
   }
@@ -2287,6 +2287,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2299,25 +2302,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       filterTanggal: "",
       detailLapangan: [{
-        id: "001",
-        img: "/images/avatar.jpg",
-        namaLapangan: "Amir",
-        jamBooking: [{
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }, {
-          jam: "07.00 - 12.00"
-        }]
-      }, {
         id: "001",
         img: "/images/avatar.jpg",
         namaLapangan: "Amir",
@@ -74513,27 +74497,31 @@ var render = function() {
                         "div",
                         { staticClass: "link" },
                         _vm._l(_vm.statusList, function(list) {
-                          return _c("div", { staticClass: "link-item" }, [
-                            _c(
-                              "a",
-                              {
-                                on: {
-                                  click: function($event) {
-                                    return _vm.click(list.status)
+                          return _c(
+                            "div",
+                            { key: list.statusList, staticClass: "link-item" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.click(list.status)
+                                    }
                                   }
-                                }
-                              },
-                              [
-                                _c("div", { staticClass: "link-status" }, [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(list.status) +
-                                      "\n                                "
-                                  )
-                                ])
-                              ]
-                            )
-                          ])
+                                },
+                                [
+                                  _c("div", { staticClass: "link-status" }, [
+                                    _vm._v(
+                                      "\n                                    " +
+                                        _vm._s(list.status) +
+                                        "\n                                "
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
                         }),
                         0
                       )
@@ -74817,59 +74805,59 @@ var render = function() {
     "div",
     { attrs: { id: "detail-lapangan" } },
     _vm._l(_vm.detailLapangan, function(lapangan) {
-      return _c("div", { staticClass: "lapangan" }, [
-        _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
-          _c("div", {
-            staticClass: "image",
-            style: { "background-image": "url(" + lapangan.img + ")" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-12 col-lg-6" }, [
-          _c("div", { staticClass: "nama-lapangan" }, [
-            _vm._v(_vm._s(lapangan.namaLapangan))
+      return _c(
+        "div",
+        { key: lapangan.detailLapangan, staticClass: "lapangan" },
+        [
+          _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
+            _c("div", {
+              staticClass: "image",
+              style: { "background-image": "url(" + lapangan.img + ")" }
+            })
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "jadwal" },
-            [
-              _c("date-picker", {
-                attrs: {
-                  width: "200",
-                  lang: "en",
-                  "input-class": "datepicker",
-                  format: "DD-MM-YYYY"
-                },
-                model: {
-                  value: _vm.filterTanggal,
-                  callback: function($$v) {
-                    _vm.filterTanggal = $$v
+          _c("div", { staticClass: "col-md-12 col-lg-6" }, [
+            _c("div", { staticClass: "nama-lapangan" }, [
+              _vm._v(_vm._s(lapangan.namaLapangan))
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "jadwal" },
+              [
+                _c("date-picker", {
+                  attrs: {
+                    width: "200",
+                    lang: "en",
+                    "input-class": "datepicker",
+                    format: "DD-MM-YYYY"
                   },
-                  expression: "filterTanggal"
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "row" },
-                _vm._l(lapangan.jamBooking, function(jam) {
-                  return _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-5 list-jam d-flex align-items-center justify-content-center"
+                  model: {
+                    value: _vm.filterTanggal,
+                    callback: function($$v) {
+                      _vm.filterTanggal = $$v
                     },
-                    [_vm._v(_vm._s(jam.jam))]
-                  )
+                    expression: "filterTanggal"
+                  }
                 }),
-                0
-              )
-            ],
-            1
-          )
-        ])
-      ])
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _vm._v(
+                    '\n<<<<<<< HEAD\n              v-for="jam in lapangan.jamBooking" :key="jam.JamBooking">' +
+                      _vm._s(_vm.jam.jam)
+                  )
+                ]),
+                _vm._v(
+                  '\n=======\n              v-for="jam in lapangan.jamBooking">' +
+                    _vm._s(_vm.jam.jam)
+                )
+              ],
+              1
+            ),
+            _vm._v("\n>>>>>>> origin/velia_merge-dev\n          ")
+          ])
+        ]
+      )
     }),
     0
   )
@@ -74941,15 +74929,19 @@ var render = function() {
                       _c(
                         "ul",
                         _vm._l(lokasi.jamBuka, function(list) {
-                          return _c("li", { staticClass: "d-flex" }, [
-                            _c("div", { staticClass: "hari" }, [
-                              _vm._v(_vm._s(list.hari))
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "jam" }, [
-                              _vm._v(": " + _vm._s(list.jam) + " WIB")
-                            ])
-                          ])
+                          return _c(
+                            "li",
+                            { key: list.jamBuka, staticClass: "d-flex" },
+                            [
+                              _c("div", { staticClass: "hari" }, [
+                                _vm._v(_vm._s(list.hari))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "jam" }, [
+                                _vm._v(": " + _vm._s(list.jam) + " WIB")
+                              ])
+                            ]
+                          )
                         }),
                         0
                       )
@@ -75167,7 +75159,7 @@ var render = function() {
               _vm._m(3),
               _vm._v(" "),
               _vm._l(_vm.dataTransaksi, function(dt) {
-                return _c("tr", [
+                return _c("tr", { key: dt.dataTransaksi }, [
                   _c("td", [_vm._v(_vm._s(dt.namaTransaksi))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(dt.tanggal))]),
@@ -88109,7 +88101,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation login DONE\bookingku-web-master\resources\js\admin\admin.js */"./resources/js/admin/admin.js");
+=======
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\admin\admin.js */"./resources/js/admin/admin.js");
+>>>>>>> a0b4a658c27d0fc617f476b9701a6bf4a82b1c78
 
 
 /***/ })

@@ -49543,10 +49543,17 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation login DONE\bookingku-web-master\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation login DONE\bookingku-web-master\resources\sass\app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation login DONE\bookingku-web-master\resources\sass\admin.scss */"./resources/sass/admin.scss");
 module.exports = __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation login DONE\bookingku-web-master\resources\sass\client.scss */"./resources/sass/client.scss");
+=======
+__webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\client.scss */"./resources/sass/client.scss");
+>>>>>>> a0b4a658c27d0fc617f476b9701a6bf4a82b1c78
 
 
 /***/ })

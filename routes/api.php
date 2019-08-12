@@ -35,14 +35,18 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
 /**
  * Router Group for web client
  */
-Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
+// Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
+    Route::group(['prefix' => 'v1'], function () {    
     Route::get('location','API\REST\LocationController@show');
     Route::post('location','API\REST\LocationController@create');
     Route::put('location/{id_location}','API\REST\LocationController@update');
     Route::delete('location/{id_location}','API\REST\LocationController@destroy');
 
-    Route::get('field/{id_location}','API\REST\FieldController@show');
-    Route::post('field','API\REST\FieldController@create');
+
+    
+    Route::get('field','API\REST\FieldController@show');
+    Route::post('field','API\REST\FieldController@store');
+    Route::get('/field/{id}', 'PI\REST\FieldController@edit');
     Route::put('field/{id_field}','API\REST\FieldController@update');
     Route::delete('field/{id_field}','API\REST\FieldController@destroy');
     
@@ -73,6 +77,10 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 
     Route::get('fields/admin/{id_location}','API\REST\FieldController@show');
     Route::post('bookings/admin','API\REST\BookingController@showByLocation');
     Route::put('/bookings/{id_booking}','API\REST\BookingController@update');
+    Route::get('locations','API\REST\LocationController@index');
+    Route::get('fields/{id_location}','API\REST\FieldController@show');
+    Route::get('bookings/{id_location}/{date}','API\REST\BookingController@showByLocation');
+    Route::put('/booking/{id_booking}','API\REST\BookingController@update');
     
     Route::get('kindoffield','API\REST\KindOfFieldController@index');
     Route::post('kindoffield','API\REST\KindOfFieldController@create');

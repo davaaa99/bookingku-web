@@ -3,7 +3,7 @@
         <div class="sidebar fixed-top">
             <div class="brand">
                 <a href="" class="d-flex justify-content-center align-items-center">
-                    <img class="" src="{{ asset('logo/logo.png') }}" alt="">
+                    <img class="" src="{{ asset('logo/logo.png') }}" alt=""> &nbsp;<h4> BOOKINGKU </h1>
                 </a>
             </div>
             <div class="d-flex justify-content-center">
@@ -13,39 +13,36 @@
             <div class="content-side">
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('admin') }}" class="content-link">
-                        <i class="far fa-clone"></i>
-                        DASHBOARD
-            </a>
-                </div>
-                <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('locationlist') }}" class="content-link">
-                        <i class="far fa-address-card"></i>
-                        LOCATION
-                    </a>
-                </div>
-                <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('register') }}" class="content-link">
-                        <i class="far fa-address-card"></i>
-                        REGISTER
-                        VERIFY BOOKING
+                    <img class="logo" src="{{ asset('client/dashboard.png') }}">
+                        Dashboard
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('clientlist') }}" class="content-link">
-                        <i class="far fa-address-card"></i>
-                        CLIENT LIST
+                        <!-- <i class="far fa-address-card"></i> -->
+                        <img class="logo" src="{{ asset('client/order.png')}}">
+                        Order
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('payment') }}" class="content-link">
-                        <i class="far fa-credit-card"></i>
-                        PAYMENT
+                        <!-- <i class="far fa-credit-card"></i> -->
+                        <img class="logo" src="{{ asset('client/location.png')}}">
+                        Location
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('clientlogout') }}" class="content-link">
-                        <i class="far fa-address-card"></i>
-                        LOGOUT
+                    <a href="{{ route('payment') }}" class="content-link">
+                        <!-- <i class="far fa-credit-card"></i> -->
+                        <img class="logo" src="{{ asset('client/field.png')}}" >
+                        Field
+                    </a>
+                </div>
+                <div class="content-item d-flex align-items-center">
+                    <a href="{{ route('payment') }}" class="content-link">
+                        <!-- <i class="far fa-credit-card"></i> -->
+                        <img class="logo" src="{{ asset('client.schedule.png')}}">
+                        Schedule
                     </a>
                 </div>
             </div>

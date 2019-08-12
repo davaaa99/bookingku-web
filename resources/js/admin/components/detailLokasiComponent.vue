@@ -21,7 +21,7 @@
 
               <div class="list-jam" v-if="dropdown">
                 <ul>
-                  <li v-for="list in lokasi.jamBuka" class="d-flex">
+                  <li v-for="list in lokasi.jamBuka" class="d-flex" :key="list.jamBuka">
                     <div class="hari">{{list.hari}}</div>
                     <div class="jam">: {{list.jam}} WIB</div>
                   </li>

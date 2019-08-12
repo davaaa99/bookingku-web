@@ -32,10 +32,9 @@
 
 
 </head>
-
 <body>
     <div id="app">
-        @include('layouts.clientSidebar')
+    @include('layouts.sidebarclient')
         <main>
             <div class="jumbotron jumbotron-fluid"></div>
             <div class="content">

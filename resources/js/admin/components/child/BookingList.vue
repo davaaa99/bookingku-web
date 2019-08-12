@@ -11,7 +11,7 @@
                     </div>
                     <div v-if="status" class="box d-flex align-items-center justify-content-center">
                         <div class="link">
-                            <div class="link-item" v-for="list in statusList">
+                            <div class="link-item" v-for="list in statusList" :key="list.statusList">
                                 <a @click="click(list.status)">
                                     <div class="link-status">
                                         {{ list.status }}
