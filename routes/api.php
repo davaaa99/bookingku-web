@@ -62,7 +62,8 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
 /**
  * Router Group for web admin
  */
-Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 'v1'], function () {    
+// Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 'v1'], function () {    
+    Route::group(['prefix' => 'v1'], function () {    
     Route::get('clients','API\REST\UserController@getClient');
     Route::get('client/{name}','API\REST\UserController@searchClient');
     Route::delete('client/{id_client}','API\REST\UserController@destroy');
@@ -76,6 +77,8 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_admin'], 'prefix' => 
     Route::put('/bookings/{id_booking}','API\REST\BookingController@update');
     Route::get('locations','API\REST\LocationController@index');
     Route::get('fields/{id_location}','API\REST\FieldController@show');
+
+    Route::get('bookings','API\REST\BookingController@index');
     Route::get('bookings/{id_location}/{date}','API\REST\BookingController@showByLocation');
     Route::put('/booking/{id_booking}','API\REST\BookingController@update');
     

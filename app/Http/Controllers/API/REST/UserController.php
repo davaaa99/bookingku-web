@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Http\Resources\PostCollection;
 
 class UserController extends Controller
 {
@@ -15,10 +16,10 @@ class UserController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
-    {
-        $this->middleware(['auth:api']);
-    }
+    // public function __construct(Request $request)
+    // {
+    //     $this->middleware(['auth:api']);
+    // }
 
     /**
      * Display a listing of the Client.
@@ -27,19 +28,20 @@ class UserController extends Controller
      */
     public function getClient()
     {
-        try{
-            $clients = User::where('user_type',2)->get();
-        }catch(Exception $e){
-            return response()->json([
-                'message' => 'Failed retrieve data.' . $e->getMessage(),
-                'serve' => []
-            ], 500);
-        }
+        // try{
+        //     $clients = User::where('user_type',2)->get();
+        // }catch(Exception $e){
+        //     return response()->json([
+        //         'message' => 'Failed retrieve data.' . $e->getMessage(),
+        //         'serve' => []
+        //     ], 500);
+        // }
 
-        return response()->json([
-            'message' => 'Successfully retrieved data.',
-            'serve' => $clients
-        ], 200);
+        // return response()->json([
+        //     'message' => 'Successfully retrieved data.',
+        //     'serve' => $clients
+        // ], 200);
+        return new PostCollection(User::where('user_type',2)->get());
     }
 
     /**

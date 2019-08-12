@@ -11,7 +11,11 @@
                     </div>
                     <div v-if="status" class="box d-flex align-items-center justify-content-center">
                         <div class="link">
+<<<<<<< HEAD
                             <div class="link-item" v-for="list in statusList" :key="list.statusList">
+=======
+                            <div class="link-item" v-for-key ="list in statusList">
+>>>>>>> origin/velia_merge-dev
                                 <a @click="click(list.status)">
                                     <div class="link-status">
                                         {{ list.status }}
@@ -32,7 +36,7 @@
             <button @click="getData" class="btn btn-clear btn-success">CLEAR FILTER</button>
         </div>
         <div class="spacer-20"></div>
-        <b-table id="my-table" :filter="filterSearch" :fields="fields" :items="filterData" :per-page="perPage"
+        <b-table id="my-table" :filter="filterSearch" :fields="fields" :items="VerifyBooking" :per-page="perPage"
             :current-page="currentPage" striped outlined show-empty>
             <template slot="No" slot-scope="data">
                 {{ data.index + 1 }}
@@ -51,6 +55,7 @@
 <script>
     import DatePicker from 'vue2-datepicker'
     import BootstrapVue from 'bootstrap-vue'
+    import Axios from 'axios'
     import {
         type
     } from 'os';
@@ -87,23 +92,31 @@
                 fields: [
                     "No",
                     {
-                        key: "idBooking",
+                        key: "id_booking",
                         label: "ID Booking"
                     },
                     {
-                        key: "lokasi",
-                        label: "Lokasi"
+                        key: "id_schedule",
+                        label: "Schedule"
                     },
                     {
-                        key: "lapangan",
-                        label: "Lapangan"
+                        key: "client_email",
+                        label:"Client"
                     },
+                    // {
+                    //     key: "lokasi",
+                    //     label: "Lokasi"
+                    // },
+                    // {
+                    //     key: "lapangan",
+                    //     label: "Lapangan"
+                    // },
                     {
-                        key: "tglBayar",
+                        key: "created_at",
                         label: "Tanggal"
                     },
                     {
-                        key: "status",
+                        key: "payment_status",
                         label: "Status"
                     },
                     {
@@ -111,78 +124,92 @@
                         label: "Aksi"
                     }
                 ],
-                VerifyBooking: [{
-                        idBooking: "BKN-001",
-                        nama: "Tedy Subagjo",
-                        lokasi: "JL. Telkom ",
-                        lapangan: "Lapang Semesta",
-                        tglBayar: "12-12-2012",
-                        jamBooking: "12.00",
-                        jenisPembayaran: "DP",
-                        status: "Confirmed",
-                        buktiPembayaran: "/images/avatar.jpg"
-                    }, {
-                        idBooking: "BKN-002",
-                        nama: "Masrum",
-                        lokasi: "JL. Telkom ",
-                        lapangan: "Lapang Semesta",
-                        tglBayar: "12-12-2012",
-                        jamBooking: "12.00",
-                        jenisPembayaran: "DP",
-                        status: "Confirmed",
-                        buktiPembayaran: "/images/avatar.jpg"
-                    },
-                    {
-                        idBooking: "BKN-003",
-                        nama: "Mokhan",
-                        lokasi: "JL. Telkom ",
-                        lapangan: "Lapang Semesta",
-                        tglBayar: "12-12-2012",
-                        jamBooking: "12.00",
-                        jenisPembayaran: "DP",
-                        status: "Confirmed",
-                        buktiPembayaran: "/images/avatar.jpg"
-                    },
-                    {
-                        idBooking: "BKN-004",
-                        nama: "Abnes",
-                        lokasi: "JL. Telkom ",
-                        lapangan: "Lapang Semesta",
-                        tglBayar: "12-12-2012",
-                        jamBooking: "12.00",
-                        jenisPembayaran: "DP",
-                        status: "Confirmed",
-                        buktiPembayaran: "/images/avatar.jpg"
-                    },
-                    {
-                        idBooking: "BKN-005",
-                        nama: "Rendy",
-                        lokasi: "JL. Telkom ",
-                        lapangan: "Lapang Semesta",
-                        tglBayar: "12-12-2012",
-                        jamBooking: "12.00",
-                        jenisPembayaran: "DP",
-                        status: "Confirmed",
-                        buktiPembayaran: "/images/avatar.jpg"
-                    },
-                    {
-                        idBooking: "BKN-006",
-                        nama: "Hammad",
-                        lokasi: "JL. Telkom ",
-                        lapangan: "Lapang Semesta",
-                        tglBayar: "12-12-2012",
-                        jamBooking: "12.00",
-                        jenisPembayaran: "DP",
-                        status: "Confirmed",
-                        buktiPembayaran: "/images/avatar.jpg"
-                    }
+                VerifyBooking:[
 
                 ],
+                // VerifyBooking: [{
+                //         idBooking: "BKN-001",
+                //         nama: "Tedy Subagjo",
+                //         lokasi: "JL. Telkom ",
+                //         lapangan: "Lapang Semesta",
+                //         tglBayar: "12-12-2012",
+                //         jamBooking: "12.00",
+                //         jenisPembayaran: "DP",
+                //         status: "Confirmed",
+                //         buktiPembayaran: "/images/avatar.jpg"
+                //     }, {
+                //         idBooking: "BKN-002",
+                //         nama: "Masrum",
+                //         lokasi: "JL. Telkom ",
+                //         lapangan: "Lapang Semesta",
+                //         tglBayar: "12-12-2012",
+                //         jamBooking: "12.00",
+                //         jenisPembayaran: "DP",
+                //         status: "Confirmed",
+                //         buktiPembayaran: "/images/avatar.jpg"
+                //     },
+                //     {
+                //         idBooking: "BKN-003",
+                //         nama: "Mokhan",
+                //         lokasi: "JL. Telkom ",
+                //         lapangan: "Lapang Semesta",
+                //         tglBayar: "12-12-2012",
+                //         jamBooking: "12.00",
+                //         jenisPembayaran: "DP",
+                //         status: "Confirmed",
+                //         buktiPembayaran: "/images/avatar.jpg"
+                //     },
+                //     {
+                //         idBooking: "BKN-004",
+                //         nama: "Abnes",
+                //         lokasi: "JL. Telkom ",
+                //         lapangan: "Lapang Semesta",
+                //         tglBayar: "12-12-2012",
+                //         jamBooking: "12.00",
+                //         jenisPembayaran: "DP",
+                //         status: "Confirmed",
+                //         buktiPembayaran: "/images/avatar.jpg"
+                //     },
+                //     {
+                //         idBooking: "BKN-005",
+                //         nama: "Rendy",
+                //         lokasi: "JL. Telkom ",
+                //         lapangan: "Lapang Semesta",
+                //         tglBayar: "12-12-2012",
+                //         jamBooking: "12.00",
+                //         jenisPembayaran: "DP",
+                //         status: "Confirmed",
+                //         buktiPembayaran: "/images/avatar.jpg"
+                //     },
+                //     {
+                //         idBooking: "BKN-006",
+                //         nama: "Hammad",
+                //         lokasi: "JL. Telkom ",
+                //         lapangan: "Lapang Semesta",
+                //         tglBayar: "12-12-2012",
+                //         jamBooking: "12.00",
+                //         jenisPembayaran: "DP",
+                //         status: "Confirmed",
+                //         buktiPembayaran: "/images/avatar.jpg"
+                //     }
+
+                // ],
                 filterData: []
             };
         },
-        mounted() {
-            this.getData()
+        mounted(){
+        //    await Axios.get('http://localhost:8000/api/v1/clients')
+        //     .then(function(rest){
+        //         this.ClientList = rest;
+        //         console.log(this.ClientList)
+        //     }).catch(function(error){
+        //         console.log('Error :',error);
+        //     })
+        let uri='http://localhost:8000/api/v1/bookings';
+        this.axios.get(uri).then(response=>{
+            this.VerifyBooking=response.data.data;
+            console.log(response.data.data);
+        });
         },
         methods: {
             async getData() {
