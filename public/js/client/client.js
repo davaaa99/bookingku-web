@@ -1891,6 +1891,160 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+$(document).ready(function () {
+  $(".update").click(function () {
+    var id = $(this).data("uid");
+    var a1 = $("#a1").html();
+    var f1 = $("#f1").html();
+    var l1 = $("#l1").html();
+    var m1 = $("#m1").html();
+    var b1 = $("#b1").html();
+    var c1 = $("#c1").html();
+    var a2 = $("#a2").html();
+    var f2 = $("#f2").html();
+    var l2 = $("#l2").html();
+    var m2 = $("#m2").html();
+    var b2 = $("#b2").html();
+    var c2 = $("#c2").html();
+
+    if (id == 1) {
+      $("#an").val(a1);
+      $("#fn").val(f1);
+      $("#mn").val(m1);
+      $("#ln").val(l1);
+      $("#bn").val(b1);
+      $("#cn").val(c1);
+    } else if (id == 2) {
+      $("#an").val(a2);
+      $("#fn").val(f2);
+      $("#mn").val(m2);
+      $("#ln").val(l2);
+      $("#bn").val(b2);
+      $("#cn").val(c2);
+    }
+
+    $("#up").click(function () {
+      if (id == 1) {
+        var an = $("#an").val();
+        var fn = $("#fn").val();
+        var mn = $("#mn").val();
+        var ln = $("#ln").val();
+        var bn = $("#bn").val();
+        var cn = $("#cn").val();
+        $("#a1").html(an);
+        $("#f1").html(fn);
+        $("#m1").html(mn);
+        $("#l1").html(ln);
+        $("#b1").html(bn);
+        $("#c1").html(cn);
+      } else if (id == 2) {
+        var an = $("#an").val();
+        var fn = $("#fn").val();
+        var mn = $("#mn").val();
+        var ln = $("#ln").val();
+        var bn = $("#bn").val();
+        var cn = $("#cn").val();
+        $("#a2").html(an);
+        $("#f2").html(fn);
+        $("#m2").html(mn);
+        $("#l2").html(ln);
+        $("#b2").html(bn);
+        $("#c2").html(cn);
+      }
+    });
+  });
+  $(".delete").click(function () {
+    var id = $(this).data("uid");
+    $("#del").click(function () {
+      if (id == 1) {
+        $("#d1").html('');
+      } else if (id == 2) {
+        $("#d2").html('');
+      }
+    });
+  });
+});
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1903,7 +2057,7 @@ __webpack_require__.r(__webpack_exports__);
         t_start: null,
         t_finish: null
       },
-      fields: [{
+      fieldss: [{
         text: 'Select One',
         value: null
       }, 'Progresif', 'D groove', 'Queen', 'Bikasoga'],
@@ -1992,6 +2146,54 @@ __webpack_require__.r(__webpack_exports__);
       this.show = false;
       this.$nextTick(function () {
         _this.show = true;
+      });
+      $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+        var actions = $("table td:last-child").html(); // Append table with add row form on add new button click
+
+        $(".add-new").click(function () {
+          $(this).attr("disabled", "disabled");
+          var index = $("table tbody tr:last-child").index();
+          var row = '<tr>' + '<td><input type="text" class="form-control" name="name" id="name"></td>' + '<td><input type="text" class="form-control" name="department" id="department"></td>' + '<td><input type="text" class="form-control" name="phone" id="phone"></td>' + '<td>' + actions + '</td>' + '</tr>';
+          $("table").append(row);
+          $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
+          $('[data-toggle="tooltip"]').tooltip();
+        }); // Add row on add button click
+
+        $(document).on("click", ".add", function () {
+          var empty = false;
+          var input = $(this).parents("tr").find('input[type="text"]');
+          input.each(function () {
+            if (!$(this).val()) {
+              $(this).addClass("error");
+              empty = true;
+            } else {
+              $(this).removeClass("error");
+            }
+          });
+          $(this).parents("tr").find(".error").first().focus();
+
+          if (!empty) {
+            input.each(function () {
+              $(this).parent("td").html($(this).val());
+            });
+            $(this).parents("tr").find(".add, .edit").toggle();
+            $(".add-new").removeAttr("disabled");
+          }
+        }); // Edit row on edit button click
+
+        $(document).on("click", ".edit", function () {
+          $(this).parents("tr").find("td:not(:last-child)").each(function () {
+            $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+          });
+          $(this).parents("tr").find(".add, .edit").toggle();
+          $(".add-new").attr("disabled", "disabled");
+        }); // Delete row on delete button click
+
+        $(document).on("click", ".delete", function () {
+          $(this).parents("tr").remove();
+          $(".add-new").removeAttr("disabled");
+        });
       });
     }
   }
@@ -21543,7 +21745,7 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default */
+/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65207,7 +65409,11 @@ var render = function() {
                 },
                 [
                   _c("b-form-select", {
-                    attrs: { id: "input-3", options: _vm.fields, required: "" },
+                    attrs: {
+                      id: "input-3",
+                      options: _vm.fieldss,
+                      required: ""
+                    },
                     model: {
                       value: _vm.form.field,
                       callback: function($$v) {
@@ -65360,21 +65566,332 @@ var render = function() {
                 _vm._v("Add")
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover table-responsive" },
+                    [
+                      _c("thead", [
+                        _c("tr", [
+                          _c("th", [_vm._v("Location")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Field")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Price")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Down Payment")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Day")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Time")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Edit")]),
+                          _vm._v(" "),
+                          _c("th", [_vm._v("Delete")])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("tbody", [
+                        _c("tr", { attrs: { id: "d1" } }, [
+                          _c("td", { attrs: { id: "a1" } }, [
+                            _vm._v("Karawang")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "f1" } }, [
+                            _vm._v("Progresif")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "l1" } }, [
+                            _vm._v("Rp.200.000")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "m1" } }, [_vm._v("50%")]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "b1" } }, [_vm._v("Monday")]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "c1" } }, [
+                            _vm._v("15:00 - 17:00")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "update btn btn-warning btn-sm",
+                                attrs: {
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target": "#edit",
+                                  "data-uid": "1"
+                                }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "glyphicon glyphicon-pencil"
+                                })
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "delete btn btn-danger btn-sm",
+                                attrs: {
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target": "#delete",
+                                  "data-uid": "1"
+                                }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "glyphicon glyphicon-trash"
+                                })
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("tr", { attrs: { id: "d2" } }, [
+                          _c("td", { attrs: { id: "a2" } }, [
+                            _vm._v("Bandung")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "f2" } }, [
+                            _vm._v("D'Grove")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "l2" } }, [
+                            _vm._v("Rp.500.000")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "m2" } }, [_vm._v("75%")]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "b2" } }, [_vm._v("Sunday")]),
+                          _vm._v(" "),
+                          _c("td", { attrs: { id: "c2" } }, [
+                            _vm._v("07:00 - 11:00")
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "update btn btn-warning btn-sm",
+                                attrs: {
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target": "#edit",
+                                  "data-uid": "2"
+                                }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "glyphicon glyphicon-pencil"
+                                })
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "delete btn btn-danger btn-sm",
+                                attrs: {
+                                  type: "button",
+                                  "data-toggle": "modal",
+                                  "data-target": "#delete",
+                                  "data-uid": "2"
+                                }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "glyphicon glyphicon-trash"
+                                })
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
               _c(
-                "b-form-group",
+                "div",
                 {
-                  attrs: {
-                    id: "input-group-6",
-                    label: " ",
-                    "label-for": "input-6"
-                  }
+                  staticClass: "modal fade",
+                  attrs: { id: "edit", role: "dialog" }
                 },
                 [
-                  _c("b-table", {
-                    attrs: { striped: "", hover: "", items: _vm.items }
-                  })
-                ],
-                1
+                  _c("div", { staticClass: "modal-dialog" }, [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-header" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "close",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("×")]
+                        ),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "modal-title" }, [
+                          _vm._v("Update Data")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "an",
+                            type: "text",
+                            name: "fname",
+                            placeholder: "Location"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "fn",
+                            type: "text",
+                            name: "fname",
+                            placeholder: "Field"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "ln",
+                            type: "text",
+                            name: "fname",
+                            placeholder: "Price"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "mn",
+                            type: "text",
+                            name: "fname",
+                            placeholder: "Down Payment"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "bn",
+                            type: "text",
+                            name: "fname",
+                            placeholder: "Day"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "cn",
+                            type: "text",
+                            name: "fname",
+                            placeholder: "Time"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-warning",
+                            attrs: {
+                              type: "button",
+                              id: "up",
+                              "data-dismiss": "modal"
+                            }
+                          },
+                          [_vm._v("Update")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("Close")]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "modal fade",
+                  attrs: { id: "delete", role: "dialog" }
+                },
+                [
+                  _c("div", { staticClass: "modal-dialog" }, [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-header" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "close",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("×")]
+                        ),
+                        _vm._v(" "),
+                        _c("h4", { staticClass: "modal-title" }, [
+                          _vm._v("Delete Data")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c("strong", [
+                          _vm._v("Are you sure you want to delete this data?")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            attrs: {
+                              type: "button",
+                              id: "del",
+                              "data-dismiss": "modal"
+                            }
+                          },
+                          [_vm._v("Delete")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "button", "data-dismiss": "modal" }
+                          },
+                          [_vm._v("Close")]
+                        )
+                      ])
+                    ])
+                  ])
+                ]
               ),
               _vm._v(" "),
               _c("b-button", { attrs: { type: "save", variant: "primary" } }, [
@@ -77711,15 +78228,14 @@ var app = new Vue({
 /*!********************************************************************!*\
   !*** ./resources/js/client/components/manageScheduleComponent.vue ***!
   \********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _manageScheduleComponent_vue_vue_type_template_id_147d677e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./manageScheduleComponent.vue?vue&type=template&id=147d677e& */ "./resources/js/client/components/manageScheduleComponent.vue?vue&type=template&id=147d677e&");
 /* harmony import */ var _manageScheduleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./manageScheduleComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/manageScheduleComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _manageScheduleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _manageScheduleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -77749,7 +78265,7 @@ component.options.__file = "resources/js/client/components/manageScheduleCompone
 /*!*********************************************************************************************!*\
   !*** ./resources/js/client/components/manageScheduleComponent.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
