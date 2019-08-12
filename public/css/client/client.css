@@ -16566,23 +16566,9 @@ main {
   color: #FFFFFF;
 }
 
-.dirty {
-  border-color: #5A5;
-  background: #EFE;
-}
-
-.dirty:focus {
-  outline-color: #8E8;
-}
-
 .error {
-  border-color: red;
-  background: #FDD;
   color: red;
-}
-
-.error:focus {
-  outline-color: #F99;
+  font-weight: normal;
 }
 
 /*------------------------ LOCATION ------------------------*/
@@ -17138,6 +17124,4 @@ main {
   width: 30px;
   width: 30px;
 }
-
-/*------------------------ DETAIL LOKASI ------------------------*/
 

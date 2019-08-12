@@ -3,11 +3,14 @@
         <b-form id="location-form">
             <b-form-group>
                 <b-row>
-                    <b-col class="col-2 mt-2">
+                    <b-col class="col-2 mt-2" :class="status($v.form.name)">
                         <label><strong>Nama Lokasi</strong></label>
                     </b-col>
                     <b-col>
-                        <b-form-input class="forminput" v-model="form.name" required placeholder="Masukkan nama lokasi"></b-form-input>
+                        <b-form-input class="forminput" v-model="$v.form.name.$model" required placeholder="Masukkan nama lokasi"></b-form-input>
+                        <div v-if="$v.form.name.$error">
+                            <div class="error" v-if="!$v.form.name.required">Nama lokasi harus diisi</div>
+                        </div>
                     </b-col>
                 </b-row>
             </b-form-group>
@@ -21,8 +24,6 @@
                     </b-col>
                 </b-row>
             </b-form-group>
-            <!-- <div class="spacer-20"></div> -->
-            <!-- <div class="spacer-20"></div> -->
             <b-form-group>
                 <b-row>
                     <b-col class="col-2 mt-2">
@@ -59,90 +60,92 @@
                             <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.everyday.closing_time" :options="ctimes"></b-form-select>
                         </div>
                     </b-row>
-                    <b-row>
-                        <p class="col-1 mt-2 mr-4"><strong>Senin</strong></p>
-                        <div class="mt-2 col-2 d-flex">
-                            <b-form-checkbox v-model="form.monday.valstatus" name="check-button" switch></b-form-checkbox>
-                            <p :style="{color: changeColor(form.monday.valstatus)}"><strong>{{ changeStatus(form.monday.valstatus) }}</strong></p>
-                        </div>
-                        <div v-if="form.monday.valstatus" class="col-8">
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.monday.open_time" :options="otimes"></b-form-select>
-                            <i class="fas fa-minus mr-2 mt-2"></i>
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.monday.closing_time" :options="ctimes"></b-form-select>
-                        </div>
-                    </b-row>
-                    <b-row>
-                        <p class="col-1 mt-2 mr-4"><strong>Selasa</strong></p>
-                        <div class="mt-2 col-2 d-flex">
-                            <b-form-checkbox v-model="form.tuesday.valstatus" name="check-button" switch></b-form-checkbox>
-                            <p :style="{color: changeColor(form.tuesday.valstatus)}"><strong>{{ changeStatus(form.tuesday.valstatus) }}</strong></p>
-                        </div>
-                        <div v-if="form.tuesday.valstatus" class="col-8">
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.tuesday.open_time" :options="otimes"></b-form-select>
-                            <i class="fas fa-minus mr-2 mt-2"></i>
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.tuesday.closing_time" :options="ctimes"></b-form-select>
-                        </div>
-                    </b-row>
-                    <b-row>
-                        <p class="col-1 mt-2 mr-4"><strong>Rabu</strong></p>
-                        <div class="mt-2 col-2 d-flex">
-                            <b-form-checkbox v-model="form.wednesday.valstatus" name="check-button" switch></b-form-checkbox>
-                            <p :style="{color: changeColor(form.wednesday.valstatus)}"><strong>{{ changeStatus(form.wednesday.valstatus) }}</strong></p>
-                        </div>
-                        <div v-if="form.wednesday.valstatus" class="col-8">
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.wednesday.open_time" :options="otimes"></b-form-select>
-                            <i class="fas fa-minus mr-2 mt-2"></i>
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.wednesday.closing_time" :options="ctimes"></b-form-select>
-                        </div>
-                    </b-row>
-                    <b-row>
-                        <p class="col-1 mt-2 mr-4"><strong>Kamis</strong></p>
-                        <div class="mt-2 col-2 d-flex">
-                            <b-form-checkbox v-model="form.thrusday.valstatus" name="check-button" switch></b-form-checkbox>
-                            <p :style="{color: changeColor(form.thrusday.valstatus)}"><strong>{{ changeStatus(form.thrusday.valstatus) }}</strong></p>
-                        </div>
-                        <div v-if="form.thrusday.valstatus" class="col-8">
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.thrusday.open_time" :options="otimes"></b-form-select>
-                            <i class="fas fa-minus mr-2 mt-2"></i>
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.thrusday.closing_time" :options="ctimes"></b-form-select>
-                        </div>
-                    </b-row>
-                    <b-row>
-                        <p class="col-1 mt-2 mr-4"><strong>Jumat</strong></p>
-                        <div class="mt-2 col-2 d-flex">
-                            <b-form-checkbox v-model="form.friday.valstatus" name="check-button" switch></b-form-checkbox>
-                            <p :style="{color: changeColor(form.friday.valstatus)}"><strong>{{ changeStatus(form.friday.valstatus) }}</strong></p>
-                        </div>
-                        <div v-if="form.friday.valstatus" class="col-8">
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.friday.open_time" :options="otimes"></b-form-select>
-                            <i class="fas fa-minus mr-2 mt-2"></i>
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.friday.closing_time" :options="ctimes"></b-form-select>
-                        </div>
-                    </b-row>
-                    <b-row>
-                        <p class="col-1 mt-2 mr-4"><strong>Sabtu</strong></p>
-                        <div class="mt-2 col-2 d-flex">
-                            <b-form-checkbox v-model="form.saturday.valstatus" name="check-button" switch></b-form-checkbox>
-                            <p :style="{color: changeColor(form.saturday.valstatus)}"><strong>{{ changeStatus(form.saturday.valstatus) }}</strong></p>
-                        </div>
-                        <div v-if="form.saturday.valstatus" class="col-8">
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.saturday.open_time" :options="otimes"></b-form-select>
-                            <i class="fas fa-minus mr-2 mt-2"></i>
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.saturday.closing_time" :options="ctimes"></b-form-select>
-                        </div>
-                    </b-row>
-                    <b-row>
-                        <p class="col-1 mt-2 mr-4"><strong>Minggu</strong></p>
-                        <div class="mt-2 col-2 d-flex">
-                            <b-form-checkbox v-model="form.sunday.valstatus" name="check-button" switch></b-form-checkbox>
-                            <p :style="{color: changeColor(form.sunday.valstatus)}"><strong>{{ changeStatus(form.sunday.valstatus) }}</strong></p>
-                        </div>
-                        <div v-if="form.sunday.valstatus" class="col-8">
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.sunday.open_time" :options="otimes"></b-form-select>
-                            <i class="fas fa-minus mr-2 mt-2"></i>
-                            <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.sunday.closing_time" :options="ctimes"></b-form-select>
-                        </div>
-                    </b-row>
+                    <div v-if="!form.everyday.valstatus">
+                        <b-row>
+                            <p class="col-1 mt-2 mr-4"><strong>Senin</strong></p>
+                            <div class="mt-2 col-2 d-flex">
+                                <b-form-checkbox v-model="form.monday.valstatus" name="check-button" switch></b-form-checkbox>
+                                <p :style="{color: changeColor(form.monday.valstatus)}"><strong>{{ changeStatus(form.monday.valstatus) }}</strong></p>
+                            </div>
+                            <div v-if="form.monday.valstatus" class="col-8">
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.monday.open_time" :options="otimes"></b-form-select>
+                                <i class="fas fa-minus mr-2 mt-2"></i>
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.monday.closing_time" :options="ctimes"></b-form-select>
+                            </div>
+                        </b-row>
+                        <b-row>
+                            <p class="col-1 mt-2 mr-4"><strong>Selasa</strong></p>
+                            <div class="mt-2 col-2 d-flex">
+                                <b-form-checkbox v-model="form.tuesday.valstatus" name="check-button" switch></b-form-checkbox>
+                                <p :style="{color: changeColor(form.tuesday.valstatus)}"><strong>{{ changeStatus(form.tuesday.valstatus) }}</strong></p>
+                            </div>
+                            <div v-if="form.tuesday.valstatus" class="col-8">
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.tuesday.open_time" :options="otimes"></b-form-select>
+                                <i class="fas fa-minus mr-2 mt-2"></i>
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.tuesday.closing_time" :options="ctimes"></b-form-select>
+                            </div>
+                        </b-row>
+                        <b-row>
+                            <p class="col-1 mt-2 mr-4"><strong>Rabu</strong></p>
+                            <div class="mt-2 col-2 d-flex">
+                                <b-form-checkbox v-model="form.wednesday.valstatus" name="check-button" switch></b-form-checkbox>
+                                <p :style="{color: changeColor(form.wednesday.valstatus)}"><strong>{{ changeStatus(form.wednesday.valstatus) }}</strong></p>
+                            </div>
+                            <div v-if="form.wednesday.valstatus" class="col-8">
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.wednesday.open_time" :options="otimes"></b-form-select>
+                                <i class="fas fa-minus mr-2 mt-2"></i>
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.wednesday.closing_time" :options="ctimes"></b-form-select>
+                            </div>
+                        </b-row>
+                        <b-row>
+                            <p class="col-1 mt-2 mr-4"><strong>Kamis</strong></p>
+                            <div class="mt-2 col-2 d-flex">
+                                <b-form-checkbox v-model="form.thrusday.valstatus" name="check-button" switch></b-form-checkbox>
+                                <p :style="{color: changeColor(form.thrusday.valstatus)}"><strong>{{ changeStatus(form.thrusday.valstatus) }}</strong></p>
+                            </div>
+                            <div v-if="form.thrusday.valstatus" class="col-8">
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.thrusday.open_time" :options="otimes"></b-form-select>
+                                <i class="fas fa-minus mr-2 mt-2"></i>
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.thrusday.closing_time" :options="ctimes"></b-form-select>
+                            </div>
+                        </b-row>
+                        <b-row>
+                            <p class="col-1 mt-2 mr-4"><strong>Jumat</strong></p>
+                            <div class="mt-2 col-2 d-flex">
+                                <b-form-checkbox v-model="form.friday.valstatus" name="check-button" switch></b-form-checkbox>
+                                <p :style="{color: changeColor(form.friday.valstatus)}"><strong>{{ changeStatus(form.friday.valstatus) }}</strong></p>
+                            </div>
+                            <div v-if="form.friday.valstatus" class="col-8">
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.friday.open_time" :options="otimes"></b-form-select>
+                                <i class="fas fa-minus mr-2 mt-2"></i>
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.friday.closing_time" :options="ctimes"></b-form-select>
+                            </div>
+                        </b-row>
+                        <b-row>
+                            <p class="col-1 mt-2 mr-4"><strong>Sabtu</strong></p>
+                            <div class="mt-2 col-2 d-flex">
+                                <b-form-checkbox v-model="form.saturday.valstatus" name="check-button" switch></b-form-checkbox>
+                                <p :style="{color: changeColor(form.saturday.valstatus)}"><strong>{{ changeStatus(form.saturday.valstatus) }}</strong></p>
+                            </div>
+                            <div v-if="form.saturday.valstatus" class="col-8">
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.saturday.open_time" :options="otimes"></b-form-select>
+                                <i class="fas fa-minus mr-2 mt-2"></i>
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.saturday.closing_time" :options="ctimes"></b-form-select>
+                            </div>
+                        </b-row>
+                        <b-row>
+                            <p class="col-1 mt-2 mr-4"><strong>Minggu</strong></p>
+                            <div class="mt-2 col-2 d-flex">
+                                <b-form-checkbox v-model="form.sunday.valstatus" name="check-button" switch></b-form-checkbox>
+                                <p :style="{color: changeColor(form.sunday.valstatus)}"><strong>{{ changeStatus(form.sunday.valstatus) }}</strong></p>
+                            </div>
+                            <div v-if="form.sunday.valstatus" class="col-8">
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="ml-3 mb-2 mr-2 col-3" v-model="form.sunday.open_time" :options="otimes"></b-form-select>
+                                <i class="fas fa-minus mr-2 mt-2"></i>
+                                <b-form-select style="border: none; border-bottom: 2px solid #3490DC; background: none" class="mb-2 mr-2 col-3" v-model="form.sunday.closing_time" :options="ctimes"></b-form-select>
+                            </div>
+                        </b-row>
+                    </div>
                 </b-modal>
             </div>
             <div class="spacer-50"></div>
@@ -157,6 +160,7 @@
 
 <script>
     import BootstrapVue from 'bootstrap-vue'
+    import { required } from 'vuelidate/lib/validators'
     import {
         type
     } from 'os';
@@ -167,7 +171,6 @@
             return {
                 headerBgVariant: 'primary',
                 headerTextVariant: 'light',
-                checked:  false,
                 colorstatus: '#5C5C5C',
                 form: {
                     name: '',
@@ -231,14 +234,25 @@
                 ],
             }
         },
+        validations: {
+            form: {
+                name: {
+                    required
+                }
+            }
+        },
         methods: {
+            status(validation) {
+                return {
+                    error: validation.$error
+                }
+            },
             save : function (){
                 var d = new Date(),
                     month = '' + (d.getMonth() + 1),
                     day = '' + d.getDate(),
                     year = d.getFullYear();
                 window.location.href = window.location.protocol + '//' + window.location.host +
-                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
                     '/locationlist';
             },
             cancel : function (){
@@ -247,7 +261,6 @@
                     day = '' + d.getDate(),
                     year = d.getFullYear();
                 window.location.href = window.location.protocol + '//' + window.location.host +
-                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
                     '/locationlist';
             },
             formatNames(files) {

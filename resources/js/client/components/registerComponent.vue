@@ -10,26 +10,36 @@
                 <p class="sub-title">Please complete to create your account.</p>
             </div>
             <b-form id="register-form">
-                <b-form-group label="Name" label-for="input-name" class="register-label">
-                    <b-form-input class="register-input" size="sm" id="input-name" v-model="form.name" required></b-form-input>
+                <b-form-group label="Name" label-for="input-name" class="register-label" :class="status($v.form.name)">
+                    <b-form-input class="register-input" size="sm" id="input-name" v-model="$v.form.name.$model" required></b-form-input>
+                    <div v-if="$v.form.name.$error">
+                        <div class="error" v-if="!$v.form.name.required">Name is required</div>
+                        <div class="error" v-if="!$v.form.name.minLength">Name must have at least {{$v.form.name.$params.minLength.min}} characters.</div>
+                    </div>
                 </b-form-group>
-                <b-form-group label="Email" label-for="input-email" class="register-label">
-                    <b-form-input class="register-input" size="sm" id="input-email" v-model="form.email" required></b-form-input>
+                <b-form-group label="Email" label-for="input-email" class="register-label" :class="status($v.form.email)">
+                    <b-form-input class="register-input" size="sm" id="input-email" v-model="$v.form.email.$model" required></b-form-input>
+                    <div v-if="$v.form.email.$error">
+                        <div class="error" v-if="!$v.form.email.required">Email is required</div>
+                    </div>
                 </b-form-group>
                 <b-form-group label="Password" label-for="input-password" class="register-label">
                     <b-form-input type="password" class="register-input" size="sm" id="input-password" v-model="form.password" required></b-form-input>
                 </b-form-group>
-                <!-- <b-form-group label="Confirm Password" label-for="input-conf-password" class="register-label">
+                <b-form-group label="Confirm Password" label-for="input-conf-password" class="register-label">
                     <b-form-input type="password" class="register-input" size="sm" id="input-conf-password" v-model="form.password" required></b-form-input>
-                </b-form-group> -->
+                </b-form-group>
                 <b-form-group label="Account Number" label-for="input-account_number" class="register-label d-flex flex-column">
                     <div class="d-flex">
-                        <!-- <b-form-select size="sm" class="col-3 mr-1" v-model="form.account_type" :options="bank" style="border: none; border-bottom: 1px solid #C7C7DB; background: none"></b-form-select> -->
+                        <b-form-select size="sm" class="col-3 mr-1" v-model="form.account_type" :options="bank" style="border: none; border-bottom: 1px solid #C7C7DB; background: none"></b-form-select>
                         <b-form-input class="register-input" size="sm" id="input-account_number" v-model="form.account_number" required></b-form-input>
                     </div>
                 </b-form-group>
-                <b-form-group label="Phone Number" label-for="input-phone_number" class="register-label">
-                    <b-form-input class="register-input" size="sm" id="input-phone_number" v-model="form.phone_number" required></b-form-input>
+                <b-form-group label="Phone Number" label-for="input-phone_number" class="register-label" :class="status($v.form.phone_number)">
+                    <b-form-input class="register-input" size="sm" id="input-phone_number" v-model="$v.form.phone_number.$model" required></b-form-input>
+                    <div v-if="$v.form.phone_number.$error">
+                        <div class="error" v-if="!$v.form.phone_number.minLength">Phone number must have at least {{$v.form.phone_number.$params.minLength.min}} characters.</div>
+                    </div>
                 </b-form-group>
                 <b-form-group class="register-checkbox">
                     <b-form-checkbox id="check-agreement" v-model="agreement" name="check-agreement">I agree with terms and conditions</b-form-checkbox>
@@ -47,9 +57,11 @@
 
 <script>
     import BootstrapVue from 'bootstrap-vue'
+    import { required, minLength } from 'vuelidate/lib/validators'
     import {
         type
     } from 'os';
+
     Vue.use(BootstrapVue)
 
     export default {
@@ -58,40 +70,49 @@
                 logo: require('../images/logo.png'),
                 checked:  false,
                 colorstatus: '#5C5C5C',
-                // form: {
-                //     name: '',
-                //     email: '',
-                //     password: '',
-                //     account_type: '',
-                //     account_number: '',
-                //     phone_number: '',
-                //     agreement: false,
-                // },
-                form: {},
+                form: {
+                    name: '',
+                    email: '',
+                    password: '',
+                    account_type: '',
+                    account_number: '',
+                    phone_number: '',
+                    // agreement: false,
+                },
+                // form: {},
                 agreement: false,
                 bank: [{text: 'Bank', value:'', disabled: true}, 'BI', 'BNI', 'BRI', 'BTN', 'BCA' ],
             }
         },
+        validations: {
+            form: {
+                name: {
+                    required,
+                    minLength: minLength(3)
+                },
+                email: {
+                    required,
+                },
+                phone_number: {
+                    minLength: minLength(11)
+                },
+            }
+        },
         methods: {
+            status(validation) {
+                return {
+                    error: validation.$error
+                }
+            },
             login : function (){
-                var d = new Date(),
-                    month = '' + (d.getMonth() + 1),
-                    day = '' + d.getDate(),
-                    year = d.getFullYear();
                 window.location.href = window.location.protocol + '//' + window.location.host +
-                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
-                    '/login';
+                    '/clientlogin';
             },
             register() {
-                let uri = 'http://localhost:8000/api/v1/auth/register';
+                let uri = 'http://localhost:8000/v1/auth/register';
                 this.axios.post(uri, this.form).then((response) => {
-                    var d = new Date(),
-                        month = '' + (d.getMonth() + 1),
-                        day = '' + d.getDate(),
-                        year = d.getFullYear();
                     window.location.href = window.location.protocol + '//' + window.location.host +
-                        '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
-                        '/login';
+                        '/clientlogin';
                 });
             }
         }
