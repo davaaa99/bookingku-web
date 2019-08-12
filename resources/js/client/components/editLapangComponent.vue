@@ -1,6 +1,7 @@
 <template>
 
     <div id="content">
+      <form @submit.prevent="updatePost">
         <b-form>
             <!-- <div class="chooselocation">
                 <b-form-group id="input-group-1" label="Location:" label-for="input-1">
@@ -45,9 +46,10 @@
                 </b-form-group>
             </div> -->
             <div class="buttonadd">
-            <b-button variant="primary" type="submit">Add</b-button>
+            <b-button variant="primary" @click="editLapang()">Add</b-button>
             </div> 
         </b-form>
+      </form> 
 </div>
 
 </template>
@@ -58,14 +60,18 @@
     data() {
       return {
         form: {
-          namalapang: '{{lapangan.namalapang}}',
-          tipelapang: '{{lapangan.tipelapang}}',
         },
         // location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
         tipelapang: [{ text: 'Pilih Tipe Lapang', value: null }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
         show: true
       }
     },
+    created() {
+        let uri = `http://localhost:8000/api/v1/field/${this.$route.params.id_field}`;
+        this.axios.get(uri).then((response) => {
+            this.post = response.data;
+        });
+      },
     methods: {
       editLapang() {
           let uri = 'http://localhost:8000/api/v1/field';

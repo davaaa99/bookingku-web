@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Auth;
 use App\Location;
@@ -125,9 +126,12 @@ class FieldController extends Controller
         //     return response()->json([
         //         'message' => 'Failed save data.' . $e->getMessage(),
         //         'serve' => []
-        //     ], 500);
+        //     ], 500)
+        
+        // ;
         $field = new Field([
-            'id_field' => '1321',
+            // 'id_field' => $request->get('id_field'),
+            'id_field' => Uuid::uuid1()->getHex(),
             'id_location' => '1111',
             'field_name' => $request->get('field_name'),
             'field_type' => $request->get('field_type'),
@@ -154,31 +158,38 @@ class FieldController extends Controller
      * @param  String  $id_field
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_field)
+    // public function update(Request $request, $id_field)
+    // {
+    //     try{
+    //         $dataUser = Auth::user();
+
+    //         $field = Field::find($id_field);
+    //         $field->field_type = $request->field_type;
+    //         $field->field_name = $request->field_name;
+    //         $field->field_photo = $request->field_photo;
+    //         $field->updated_by = $dataUser->email;
+    //         $field->save();
+
+    //     }catch(Exception $e){
+    //         return response()->json([
+    //             'message' => 'Failed update field data.' . $e->getMessage(),
+    //             'serve' => []
+    //         ], 500);
+    //     }
+
+    //     return response()->json([
+    //         'message' => 'Successfully updated field data.',
+    //         'serve' => []
+    //     ], 200);
+    // }
+    public function update($id_field, Request $request)
     {
-        try{
-            $dataUser = Auth::user();
+      $field = Field::find($id_field);
 
-            $field = Field::find($id_field);
-            $field->field_type = $request->field_type;
-            $field->field_name = $request->field_name;
-            $field->field_photo = $request->field_photo;
-            $field->updated_by = $dataUser->email;
-            $field->save();
+      $field->update($request->all());
 
-        }catch(Exception $e){
-            return response()->json([
-                'message' => 'Failed update field data.' . $e->getMessage(),
-                'serve' => []
-            ], 500);
-        }
-
-        return response()->json([
-            'message' => 'Successfully updated field data.',
-            'serve' => []
-        ], 200);
+      return response()->json('successfully updated');
     }
-
     /**
      * Remove the specified field from storage.
      *
@@ -208,5 +219,11 @@ class FieldController extends Controller
         // ],200);
     }
 
+    
+    public function edit($id_field)
+    {
+        $field = Field::find($id_field);
+        return response()->json($field);
+    }
     
 }

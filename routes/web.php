@@ -40,7 +40,7 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
     Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
     Route::get('/menulapang','ClientPageController@menulapang')->name('lapang');
     Route::get('/addlapang','ClientPageController@addLapang')->name('addlapang');
-    Route::get('/editlapang','ClientPageController@editLapang')->name('editlapang');
+    Route::get('/editlapang/{id}','ClientPageController@editLapang')->name('editlapang');
     Route::get('/detaillapang','ClientPageController@detailLapang')->name('detaillapang');
 
 

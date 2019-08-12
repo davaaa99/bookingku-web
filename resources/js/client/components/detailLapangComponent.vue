@@ -1,6 +1,6 @@
 <template>
     <div id="lapang-detail">
-        <b-card overlay img-src="https://picsum.photos/900/250/?image=3" img-alt="Gambar Lapangan" 
+        <b-card overlay img-src="https://rumus.web.id/wp-content/uploads/2018/08/lapangan-futsal.jpg" img-alt="Gambar Lapangan" 
         text-variant="white" border-variant="dark" class="image-header">
             <div class="spacer"></div>
             <div class="spacer-30"></div>
@@ -58,69 +58,10 @@
                 { value: 'Sabtu', text: 'Sabtu' },
                 { value: 'Minggu', text: 'Minggu' }
                 ],
-
                 perPage: 10,
                 filterSearch: "",
                 url: window.location.origin + window.location.pathname,
-                dataLocationitem: [
-                    {
-                        id_location: "001",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "002",
-                        location_name: "Ciwaruga Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "001",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "002",
-                        location_name: "Ciwaruga Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "001",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "002",
-                        location_name: "Ciwaruga Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "001",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                 
-                ],
+                datafoto: {},
             };
         },
         computed: {
@@ -130,21 +71,7 @@
             }
         },
         methods: {
-            detail: function (id) {
-                var self = this;
-                var d = new Date(),
-                    month = '' + (d.getMonth() + 1),
-                    day = '' + d.getDate(),
-                    year = d.getFullYear();
-
-                if (month.length < 2) month = '0' + month;
-                if (day.length < 2) day = '0' + day;
-
-                window.location.href = window.location.protocol + '//' + window.location.host +
-                    '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
-                    '/clientlist/detaillokasi/' +
-                    btoa(id);
-            }
+            
         }
     };
 

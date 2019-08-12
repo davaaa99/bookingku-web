@@ -2084,6 +2084,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2352,56 +2363,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       perPage: 10,
       filterSearch: "",
       url: window.location.origin + window.location.pathname,
-      dataLocationitem: [{
-        id_location: "001",
-        location_name: "Sarijadi Futsal",
-        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        description: "Lapangan Baru",
-        open_time: "07:00",
-        closing_time: "22:00"
-      }, {
-        id_location: "002",
-        location_name: "Ciwaruga Futsal",
-        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        description: "Lapangan Baru",
-        open_time: "07:00",
-        closing_time: "22:00"
-      }, {
-        id_location: "001",
-        location_name: "Sarijadi Futsal",
-        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        description: "Lapangan Baru",
-        open_time: "07:00",
-        closing_time: "22:00"
-      }, {
-        id_location: "002",
-        location_name: "Ciwaruga Futsal",
-        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        description: "Lapangan Baru",
-        open_time: "07:00",
-        closing_time: "22:00"
-      }, {
-        id_location: "001",
-        location_name: "Sarijadi Futsal",
-        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        description: "Lapangan Baru",
-        open_time: "07:00",
-        closing_time: "22:00"
-      }, {
-        id_location: "002",
-        location_name: "Ciwaruga Futsal",
-        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        description: "Lapangan Baru",
-        open_time: "07:00",
-        closing_time: "22:00"
-      }, {
-        id_location: "001",
-        location_name: "Sarijadi Futsal",
-        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        description: "Lapangan Baru",
-        open_time: "07:00",
-        closing_time: "22:00"
-      }]
+      datafoto: {}
     };
   },
   computed: {
@@ -2409,18 +2371,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       return this.dataLocation.length;
     }
   },
-  methods: {
-    detail: function detail(id) {
-      var self = this;
-      var d = new Date(),
-          month = '' + (d.getMonth() + 1),
-          day = '' + d.getDate(),
-          year = d.getFullYear();
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
-      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -2489,13 +2440,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      form: {
-        namalapang: '{{lapangan.namalapang}}',
-        tipelapang: '{{lapangan.tipelapang}}'
-      },
+      form: {},
       // location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
       tipelapang: [{
         text: 'Pilih Tipe Lapang',
@@ -2504,14 +2454,22 @@ __webpack_require__.r(__webpack_exports__);
       show: true
     };
   },
+  created: function created() {
+    var _this = this;
+
+    var uri = "http://localhost:8000/api/v1/field/".concat(this.$route.params.id_field);
+    this.axios.get(uri).then(function (response) {
+      _this.post = response.data;
+    });
+  },
   methods: {
     editLapang: function editLapang() {
-      var _this = this;
+      var _this2 = this;
 
       var uri = 'http://localhost:8000/api/v1/field';
       this.axios.post(uri, this.form).then(function (response) {
         // this.$router.push({name: 'fields'});
-        console.log(_this.form);
+        console.log(_this2.form);
       });
     }
   }
@@ -3862,6 +3820,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
     //       this.dataLapangan = response.data;
     //   });
     // },
+    func: function func() {
+      var FieldId = lapangan.id_field;
+      window.location.href = "editlapang" + FieldId;
+    },
     editLapang: function editLapang(id_field) {
       var _this2 = this;
 
@@ -67639,6 +67601,29 @@ var render = function() {
     _c("form", [
       _c(
         "div",
+        { staticClass: "idlapangan" },
+        [
+          _c("b-form-input", {
+            attrs: {
+              id: "input-1",
+              disabled: "",
+              hidden: "",
+              placeholder: "Masukan Id Lapang"
+            },
+            model: {
+              value: _vm.form.id_field,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "id_field", $$v)
+              },
+              expression: "form.id_field"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
         { staticClass: "namalapang" },
         [
           _c(
@@ -67944,7 +67929,8 @@ var render = function() {
           staticClass: "image-header",
           attrs: {
             overlay: "",
-            "img-src": "https://picsum.photos/900/250/?image=3",
+            "img-src":
+              "https://rumus.web.id/wp-content/uploads/2018/08/lapangan-futsal.jpg",
             "img-alt": "Gambar Lapangan",
             "text-variant": "white",
             "border-variant": "dark"
@@ -68061,95 +68047,113 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "content" } },
-    [
-      _c("b-form", [
-        _c(
-          "div",
-          { staticClass: "namalapang" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  id: "input-group-2",
-                  label: "Nama Lapang:",
-                  "label-for": "input-2"
-                }
-              },
-              [
-                _c("b-form-input", {
+  return _c("div", { attrs: { id: "content" } }, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.updatePost($event)
+          }
+        }
+      },
+      [
+        _c("b-form", [
+          _c(
+            "div",
+            { staticClass: "namalapang" },
+            [
+              _c(
+                "b-form-group",
+                {
                   attrs: {
-                    id: "input-2",
-                    required: "",
-                    placeholder: "Masukan Nama Lapang"
-                  },
-                  model: {
-                    value: _vm.form.namalapang,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "namalapang", $$v)
-                    },
-                    expression: "form.namalapang"
+                    id: "input-group-2",
+                    label: "Nama Lapang:",
+                    "label-for": "input-2"
                   }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "tipelapang" },
-          [
-            _c(
-              "b-form-group",
-              {
-                attrs: {
-                  id: "input-group-3",
-                  label: "Tipe Lapang:",
-                  "label-for": "input-3"
-                }
-              },
-              [
-                _c("b-form-select", {
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "input-2",
+                      required: "",
+                      placeholder: "Masukan Nama Lapang"
+                    },
+                    model: {
+                      value: _vm.form.namalapang,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "namalapang", $$v)
+                      },
+                      expression: "form.namalapang"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "tipelapang" },
+            [
+              _c(
+                "b-form-group",
+                {
                   attrs: {
-                    id: "input-3",
-                    options: _vm.tipelapang,
-                    required: ""
-                  },
-                  model: {
-                    value: _vm.form.tipelapang,
-                    callback: function($$v) {
-                      _vm.$set(_vm.form, "tipelapang", $$v)
-                    },
-                    expression: "form.tipelapang"
+                    id: "input-group-3",
+                    label: "Tipe Lapang:",
+                    "label-for": "input-3"
                   }
-                })
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "buttonadd" },
-          [
-            _c("b-button", { attrs: { variant: "primary", type: "submit" } }, [
-              _vm._v("Add")
-            ])
-          ],
-          1
-        )
-      ])
-    ],
-    1
-  )
+                },
+                [
+                  _c("b-form-select", {
+                    attrs: {
+                      id: "input-3",
+                      options: _vm.tipelapang,
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.tipelapang,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "tipelapang", $$v)
+                      },
+                      expression: "form.tipelapang"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "buttonadd" },
+            [
+              _c(
+                "b-button",
+                {
+                  attrs: { variant: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.editLapang()
+                    }
+                  }
+                },
+                [_vm._v("Add")]
+              )
+            ],
+            1
+          )
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -71012,7 +71016,7 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "a",
-                      { attrs: { href: "editlapang" } },
+                      { attrs: { href: "editlapang/4141" } },
                       [
                         _c("b-button", { attrs: { variant: "light" } }, [
                           _vm._v("Edit")
