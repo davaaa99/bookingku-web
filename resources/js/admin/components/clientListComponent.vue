@@ -58,10 +58,10 @@
                         key: "name",
                         label: "Nama"
                     },
-                    {
-                        key: "user_type",
-                        label: "Tipe User"
-                    },
+                    // {
+                    //     key: "user_type",
+                    //     label: "Tipe User"
+                    // },
                     {
                         key: "aksi",
                         label: "Aksi"
@@ -73,13 +73,6 @@
             };
         },
         mounted(){
-        //    await Axios.get('http://localhost:8000/api/v1/clients')
-        //     .then(function(rest){
-        //         this.ClientList = rest;
-        //         console.log(this.ClientList)
-        //     }).catch(function(error){
-        //         console.log('Error :',error);
-        //     })
         let uri='http://localhost:8000/api/v1/clients';
         this.axios.get(uri).then(response=>{
             this.ClientList=response.data.data;
