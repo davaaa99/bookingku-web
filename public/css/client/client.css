@@ -16562,61 +16562,42 @@ main {
   color: #FFFFFF;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-.dirty {
-  border-color: #5A5;
-  background: #EFE;
+#bookinglist .paidbutton {
+  background-color: green;
+  color: white;
+  text-align: center;
 }
 
-.dirty:focus {
-  outline-color: #8E8;
-}
-
-.error {
-  border-color: red;
-  background: #FDD;
-  color: red;
-}
-
-.error:focus {
-  outline-color: #F99;
-}
-
->>>>>>> origin/dhandynew-dev
-/*------------------------ LOCATION ------------------------*/
-
-#location-list .item-list .card {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
-}
-
-#location-list .item-list .card .horizontal {
-  width: 100%;
-}
-
-#location-list .item-list .card .horizontal .igroup {
-  color: #aaaaaa;
-}
-
-#location-list .item-list .card .horizontal .igroup .ic:hover {
-  color: #4D4D4D;
+#bookinglist .paidbutton:hover {
+  background-color: maroon;
   cursor: pointer;
+  cursor: hand;
 }
 
-#location-list .item-list .card:hover {
-  background: #eeeeee;
+#bookinglist .unpaidbutton {
+  background-color: maroon;
+  color: white;
+  text-align: center;
+}
+
+#bookinglist .unpaidbutton:hover {
+  background-color: green;
   cursor: pointer;
+  cursor: hand;
 }
 
-#location-list .pagination li a {
-=======
-=======
->>>>>>> origin/newdava-dev
+#addbooking .available {
+  background: #7fbd1b !important;
+}
+
+#addbooking .unavailable {
+  background: #e93a3a !important;
+}
+
+#addbooking .choosed {
+  background: #6ab0df !important;
+}
+
 /*------------------------ SIDE BAR ------------------------*/
 
 #sidebar .logo {
