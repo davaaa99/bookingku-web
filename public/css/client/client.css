@@ -16566,6 +16566,7 @@ main {
   color: #FFFFFF;
 }
 
+<<<<<<< HEAD
 .error {
   color: red;
   font-weight: normal;
@@ -16865,6 +16866,34 @@ main {
   font-size: 12px;
   color: #8B8B8B;
   font-weight: 100;
+=======
+#bookinglist button.paid {
+  background-color: green;
+  color: white;
+  text-align: center;
+}
+
+#bookinglist button.paid:hover {
+  background-color: maroon;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#bookinglist button.unpaid {
+  background-color: maroon;
+  color: white;
+  text-align: center;
+}
+
+#bookinglist button.unpaid:hover {
+  background-color: green;
+  cursor: pointer;
+  cursor: hand;
+}
+
+#addbooking .available {
+  background: #7fbd1b !important;
+>>>>>>> cbe98b476f0b262191ce95166624c5087ad412bd
 }
 
 @media (max-width: 568px) {
@@ -16882,6 +16911,172 @@ main {
   z-index: 0;
 }
 
+<<<<<<< HEAD
+=======
+#addbooking body {
+  background: #f8f8f8;
+  color: #2c3e50;
+  font-family: "Source Sans Pro", sans-serif;
+  min-height: 1000px;
+}
+
+#addbooking .card-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 40px;
+  color: #666a73;
+}
+
+#addbooking .card-carousel {
+  display: flex;
+  justify-content: center;
+  width: 640px;
+}
+
+#addbooking .card-carousel--overflow-container {
+  overflow: hidden;
+}
+
+#addbooking .card-carousel--nav__left,
+#addbooking .card-carousel--nav__right {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-top: 2px solid #42b883;
+  border-right: 2px solid #42b883;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: transform 150ms linear;
+}
+
+#addbooking .card-carousel--nav__left[disabled],
+#addbooking .card-carousel--nav__right[disabled] {
+  opacity: 0.2;
+  border-color: black;
+}
+
+#addbooking .card-carousel--nav__left {
+  transform: rotate(-135deg);
+}
+
+#addbooking .card-carousel--nav__left:active {
+  transform: rotate(-135deg) scale(0.9);
+}
+
+#addbooking .card-carousel--nav__right {
+  transform: rotate(45deg);
+}
+
+#addbooking .card-carousel--nav__right:active {
+  transform: rotate(45deg) scale(0.9);
+}
+
+#addbooking .card-carousel-cards {
+  display: flex;
+  transition: transform 150ms ease-out;
+  transform: translatex(0px);
+}
+
+#addbooking .card-carousel-cards .card-carousel--card {
+  margin: 0 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px 0 rgba(40, 44, 53, 0.06), 0 2px 2px 0 rgba(40, 44, 53, 0.08);
+  background-color: #fff;
+  border-radius: 4px;
+  z-index: 3;
+  margin-bottom: 2px;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card:first-child {
+  margin-left: 0;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card:last-child {
+  margin-right: 0;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card img {
+  vertical-align: bottom;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  transition: opacity 150ms linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card img:hover {
+  opacity: 0.5;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer {
+  border-top: 0;
+  padding: 7px 15px;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer p {
+  padding: 3px 0;
+  margin: 0;
+  margin-bottom: 2px;
+  font-size: 19px;
+  font-weight: 500;
+  color: #2c3e50;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer p:nth-of-type(2) {
+  font-size: 12px;
+  font-weight: 300;
+  padding: 6px;
+  background: rgba(40, 44, 53, 0.06);
+  display: inline-block;
+  position: relative;
+  margin-left: 4px;
+  color: #666a73;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer p:nth-of-type(2):before {
+  content: "";
+  float: left;
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 0;
+  height: 0;
+  border-color: transparent rgba(40, 44, 53, 0.06) transparent transparent;
+  border-style: solid;
+  border-width: 12px 12px 12px 0;
+}
+
+#addbooking .card-carousel-cards .card-carousel--card--footer p:nth-of-type(2):after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -1px;
+  float: left;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: white;
+  box-shadow: 0px 0px 0px #004977;
+}
+
+#addbooking h1 {
+  font-size: 3.6em;
+  font-weight: 100;
+  text-align: center;
+  margin-bottom: 0;
+  color: #42b883;
+}
+
+>>>>>>> cbe98b476f0b262191ce95166624c5087ad412bd
 /*------------------------ SIDE BAR ------------------------*/
 
 #sidebar .sidebar {
@@ -17125,3 +17320,372 @@ main {
   width: 30px;
 }
 
+<<<<<<< HEAD
+=======
+/*------------------------ VERIFY BOOKING ------------------------*/
+
+#verify-booking {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*------------------------ VERIFY BOOKING DETAIL ------------------------*/
+
+#verifyBookingDetail {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#verifyBookingDetail .table-box {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+#verifyBookingDetail .table-box .detail {
+  border: 1px solid #EBECF1;
+  padding: 30px;
+}
+
+#verifyBookingDetail .table-box .detail table {
+  width: 100%;
+}
+
+#verifyBookingDetail .table-box .detail table tr td,
+#verifyBookingDetail .table-box .detail table tr th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  font-family: Poppins;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  color: #4D4D4D;
+  border-bottom: 1px solid #EBECF1;
+}
+
+#verifyBookingDetail .table-box .detail table tr td .buktipembayaran,
+#verifyBookingDetail .table-box .detail table tr th .buktipembayaran {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol {
+  padding-top: 30px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .btn {
+  width: 150px;
+  height: 40px;
+  border-radius: 4px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .accept {
+  background: #4ABA70;
+  margin-right: 30px;
+}
+
+#verifyBookingDetail .table-box .detail .tombol .decline {
+  background: #FF3636;
+}
+
+#client {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+/*------------------------ DETAIL LOKASI ------------------------*/
+
+#detaillokasi {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#detaillokasi .lokasi {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 50px;
+  background: #FFFFFF;
+  border: 1px solid #E1E1E1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 990px) {
+  #detaillokasi .lokasi {
+    display: flex;
+  }
+}
+
+#detaillokasi .lokasi .image {
+  padding-right: 20px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (max-width: 990px) {
+  #detaillokasi .lokasi .image {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  #detaillokasi .lokasi .image {
+    height: 200px;
+  }
+}
+
+#detaillokasi .lokasi .desc {
+  padding-left: 20px;
+  color: #5C5C5C;
+}
+
+#detaillokasi .lokasi .desc .item {
+  margin-bottom: 20px;
+}
+
+#detaillokasi .lokasi .desc .item i {
+  font-size: 15px;
+  color: #C0C0C0;
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .title-list {
+  margin-right: 10px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam {
+  margin-top: 10px;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul {
+  list-style: none;
+}
+
+#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul li .jam {
+  margin-left: 20px;
+}
+
+#detaillokasi .lokasi .desc .nama-client {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 20px;
+  color: #414141;
+}
+
+#detaillokasi .lokasi .btn {
+  max-width: 290.2px;
+  height: 49.16px;
+  font-size: 15px;
+  font-family: Poppins;
+  color: #FFFFFF;
+  background: #3A69B7;
+  border-radius: 4px;
+}
+
+/*------------------------ DETAIL LAPANGAN ------------------------*/
+
+#detailapangan {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#detailapangan .lapangan {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 50px;
+  background: #FFFFFF;
+  border: 1px solid #E1E1E1;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 990px) {
+  #detailapangan .lapangan {
+    display: flex;
+  }
+}
+
+#detailapangan .lapangan .image {
+  padding-right: 20px;
+  height: 300px;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (max-width: 990px) {
+  #detailapangan .lapangan .image {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  #detailapangan .lapangan .image {
+    height: 200px;
+  }
+}
+
+#detailapangan .lapangan .nama-lapangan {
+  margin-bottom: 10px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 31px;
+  color: #414141;
+}
+
+#detailapangan .lapangan .jadwal .datepicker {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  border-radius: 4px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #73879c !important;
+  border: none;
+  margin-bottom: 10px;
+  border: 1px solid #73879c;
+}
+
+#detailapangan .lapangan .jadwal .list-jam {
+  border: 1px solid #73879c;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-family: Poopins;
+  font-size: 18px;
+  text-align: center;
+  color: #73879c;
+  margin-left: 15px;
+  margin-top: 10px;
+  height: 30px;
+}
+
+@media (max-width: 1099px) {
+  #detailapangan .lapangan .jadwal .list-jam {
+    font-size: 14px;
+  }
+}
+
+#payment {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#paymentdetail {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#paymentdetail .table-box {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+#paymentdetail .table-box .header {
+  padding-right: 15px;
+}
+
+#paymentdetail .table-box .header .brand {
+  width: 50px;
+  height: 50px;
+}
+
+#paymentdetail .table-box .item {
+  text-align: right;
+}
+
+#paymentdetail .table-box .item .sub-title {
+  font-family: Poppins;
+  font-style: normal;
+  font-size: 15px;
+  text-align: right;
+  color: black;
+}
+
+#paymentdetail .table-box .item .sub-item {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  color: black;
+}
+
+#paymentdetail .table-box .desc .penerima {
+  padding-right: 50px;
+}
+
+#paymentdetail .table-box .desc .pengirim {
+  padding-left: 50px;
+}
+
+#paymentdetail .table-box .desc .sub-title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  color: black;
+  margin-bottom: 10px;
+}
+
+#paymentdetail .table-box .desc .desc-item {
+  margin-bottom: 10px;
+  font-family: Poppins;
+  font-size: 11px;
+}
+
+#paymentdetail .table-box .row {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#paymentdetail .table-box .row table {
+  width: 100%;
+  border-left: 1px solid #E1E1E1;
+  border-top: 1px solid #E1E1E1;
+  border-bottom: 1px solid #E1E1E1;
+  border-right: 1px solid #E1E1E1;
+}
+
+#paymentdetail .table-box .row table tr th {
+  font-size: 11px;
+}
+
+#paymentdetail .table-box .row table tr td {
+  font-size: 11px;
+  font-family: Poppins;
+}
+
+#paymentdetail .table-box .row table tr td,
+#paymentdetail .table-box .row table tr th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#paymentdetail .table-box .row .total {
+  max-width: 50%;
+}
+
+#paymentdetail .table-box .row .btn {
+  background: #3A69B7;
+  border-radius: 4px;
+  width: 200px;
+  height: 50px;
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+
+.myselect {
+  font-size: 15px;
+}
+
+>>>>>>> cbe98b476f0b262191ce95166624c5087ad412bd

@@ -10,6 +10,7 @@ use App\Location;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
+use App\Http\Resources\PostCollection;
 
 
 class LocationController extends Controller
@@ -19,10 +20,10 @@ class LocationController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
-    {
-        $this->middleware(['auth:api']);
-    }
+    // public function __construct(Request $request)
+    // {
+    //     $this->middleware(['auth:api']);
+    // }
 
     /**
      * Display a listing of the location.
@@ -31,19 +32,20 @@ class LocationController extends Controller
      */
     public function index()
     {
-        try{
-            $dataLocation = Location::all();
-        }catch (Exception $e){
-            return response()->json()([
-                'message' => 'Failed retrieve data.' . $e->getMessage(),
-                'serve' => []
-            ], 500);
-        }
+        // try{
+        //     $dataLocation = Location::all();
+        // }catch (Exception $e){
+        //     return response()->json()([
+        //         'message' => 'Failed retrieve data.' . $e->getMessage(),
+        //         'serve' => []
+        //     ], 500);
+        // }
 
-        return response()->json([
-            'message' => 'Successfully retrieved data.',
-            'serve' => $dataLocation
-        ], 200);
+        // return response()->json([
+        //     'message' => 'Successfully retrieved data.',
+        //     'serve' => $dataLocation
+        // ], 200);
+        return new PostCollection(Location::all());
     }
 
     /**
