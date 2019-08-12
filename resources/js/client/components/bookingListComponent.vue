@@ -27,7 +27,7 @@
         <div class="spacer-20"></div>
         <b-table striped hover small :items="items" :fields="fields" class="thead-light" id="bookinglist">
             <template slot="status" slot-scope="data">
-                <b-button v-model="data.item.status" class=" btn btn-detail unpaidbutton" v-on:click="handleClick" @click="paidAction()">{{ paid(data.item.status) }}</b-button>
+                <b-button v-model="data.item.status" class=" btn btn-detail paid" v-bind:style="paid" v-on:click="handleClick" @click="paidAction()">{{ paid(data.item.status) }}</b-button>
             </template>    
         </b-table>
         <div class="spacer-20"></div>
@@ -44,10 +44,6 @@
     Vue.use(BootstrapVue)
 
     export default {
-        
-        components:{
-            datePicker
-        },
         data() {
             return {
                 // Note 'age' is left out and will not appear in the rendered table
@@ -62,9 +58,6 @@
                     format: 'YYYY/MM/DD',
                     useCurrent:false,
                 },
-                // components:{
-                //     datePicker
-                // },
                 fields:{
                     user: {
                         label: 'User',
