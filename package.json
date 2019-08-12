@@ -12,6 +12,7 @@
     "devDependencies": {
         "axios": "^0.18.1",
         "bootstrap": "^4.3.1",
+        "bootstrap-vue": "^2.0.0-rc.27",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
@@ -25,10 +26,14 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.9.0",
-        "bootstrap-vue": "^2.0.0-rc.26",
+        "@progress/kendo-theme-material": "^3.1.0",
+        "@progress/kendo-vue-grid": "^0.3.4",
+        "@progress/kendo-vue-intl": "^0.3.4",
+        "hamoni-sync": "^1.1.1",
         "jspdf": "^1.5.3",
         "moment": "^2.24.0",
         "vue-axios": "^2.1.4",
+        "vue-class-component": "^7.1.0",
         "vue-date-picker": "^2.5.0",
         "vue-router": "^3.1.1",
         "vue2-datepicker": "^2.12.0",

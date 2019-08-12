@@ -2274,8 +2274,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           month = '' + (d.getMonth() + 1),
           day = '' + d.getDate(),
           year = d.getFullYear();
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
+      if (month.length < 2) month = '0' + month; // if (day.length < 2) day = '0' + day;
+
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
     }
   }
