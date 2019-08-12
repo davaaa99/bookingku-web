@@ -33,7 +33,7 @@ class BookingController extends Controller
     public function index()
     {
         // try {
-        //     $dataBooking = Booking::all();
+        //     $dataBooking = PostCollection(Booking::all());
         // } catch (Exception $e) {
         //     return response()->json([
         //         'message' => 'Failed retrieved data.' . $e->getMessage(),

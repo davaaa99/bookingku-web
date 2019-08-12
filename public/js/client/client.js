@@ -1827,6 +1827,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1834,6 +1840,31 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      currentOffset: 0,
+      windowSize: 3,
+      paginationFactor: 220,
+      items: [{
+        name: 'Tycoon Thai',
+        tag: "Thai"
+      }, {
+        name: 'Ippudo',
+        tag: "Japanese"
+      }, {
+        name: 'Milano',
+        tag: "Pizza"
+      }, {
+        name: 'Tsing Tao',
+        tag: "Chinese"
+      }, {
+        name: 'Frances',
+        tag: "French"
+      }, {
+        name: 'Burma Superstar',
+        tag: "Burmese"
+      }, {
+        name: 'Salt and Straw',
+        tag: "Ice cream"
+      }],
       perPage: 20,
       currentPage: 1,
       selectedLocation: null,
@@ -1861,6 +1892,14 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       "paymentValue": "" //ambil dari db
 
     };
+  },
+  computed: {
+    atEndOfList: function atEndOfList() {
+      return this.currentOffset <= this.paginationFactor * -1 * (this.items.length - this.windowSize);
+    },
+    atHeadOfList: function atHeadOfList() {
+      return this.currentOffset === 0;
+    }
   },
   methods: {
     onSubmit: function onSubmit(book) {
@@ -1893,6 +1932,14 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
           day = '' + d.getDate(),
           year = d.getFullYear();
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/bookinglist';
+    },
+    moveCarousel: function moveCarousel(direction) {
+      // Find a more elegant way to express the :style. consider using props to make it truly generic
+      if (direction === 1 && !this.atEndOfList) {
+        this.currentOffset -= this.paginationFactor;
+      } else if (direction === -1 && !this.atHeadOfList) {
+        this.currentOffset += this.paginationFactor;
+      }
     }
   }
 });
@@ -1957,9 +2004,6 @@ __webpack_require__.r(__webpack_exports__);
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    datePicker: vue_date_picker__WEBPACK_IMPORTED_MODULE_1___default.a
-  },
   data: function data() {
     return {
       // Note 'age' is left out and will not appear in the rendered table
@@ -1980,9 +2024,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         format: 'YYYY/MM/DD',
         useCurrent: false
       },
-      // components:{
-      //     datePicker
-      // },
       fields: {
         user: {
           label: 'User',
@@ -66900,102 +66941,29 @@ var render = function() {
     "div",
     { attrs: { id: "addbooking" } },
     [
-      _c(
-        "b-form",
-        { on: { submit: _vm.onSubmit, reset: _vm.onReset } },
-        [
-          _c(
-            "b-form-group",
-            [
-              _c(
-                "b-row",
-                [
-                  _c(
-                    "b-col",
-                    { attrs: { cols: "4" } },
-                    [
-                      _c("label", { attrs: { for: "location" } }, [
-                        _vm._v("Lokasi")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-select", {
-                        attrs: { options: _vm.location },
-                        model: {
-                          value: _vm.selectedLocation,
-                          callback: function($$v) {
-                            _vm.selectedLocation = $$v
-                          },
-                          expression: "selectedLocation"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    { attrs: { cols: "4" } },
-                    [
-                      _c("label", { attrs: { for: "field" } }, [
-                        _vm._v("Lapang")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-form-select", {
-                        attrs: { options: _vm.field },
-                        model: {
-                          value: _vm.selectedField,
-                          callback: function($$v) {
-                            _vm.selectedField = $$v
-                          },
-                          expression: "selectedField"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    { attrs: { cols: "4" } },
-                    [
-                      _c("b-row", [
-                        _c("label", { attrs: { for: "date" } }, [
-                          _vm._v("Tanggal")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "b-row",
-                        [
-                          _c("date-picker", {
-                            attrs: { lang: "en", config: _vm.date },
-                            model: {
-                              value: _vm.selectedDate,
-                              callback: function($$v) {
-                                _vm.selectedDate = $$v
-                              },
-                              expression: "selectedDate"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
+      _c("div", { attrs: { id: "v-carousel", type: "x/template" } }, [
+        _c("div", { staticClass: "card-carousel-wrapper" }, [
+          _c("div", {
+            staticClass: "card-carousel--nav__left",
+            attrs: { disabled: _vm.atHeadOfList },
+            on: {
+              click: function($event) {
+                return _vm.moveCarousel(-1)
+              }
+            }
+          }),
           _vm._v(" "),
-          _c(
-            "b-form-group",
-            [
+          _c("div", { staticClass: "card-carousel" }, [
+            _c("div", { staticClass: "card-carousel--overflow-container" }, [
               _c(
-                "b-card-group",
-                { attrs: { deck: "" } },
+                "div",
+                {
+                  staticClass: "card-carousel-cards",
+                  style: {
+                    transform:
+                      "translateX" + "(" + _vm.currentOffset + "px" + ")"
+                  }
+                },
                 [
                   _c(
                     "b-card",
@@ -67203,6 +67171,107 @@ var render = function() {
                       _c("b-button", { staticClass: "available" }, [
                         _vm._v("21.00-22.00")
                       ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", {
+            staticClass: "card-carousel--nav__right",
+            attrs: { disabled: _vm.atEndOfList },
+            on: {
+              click: function($event) {
+                return _vm.moveCarousel(1)
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "b-form",
+        { on: { submit: _vm.onSubmit, reset: _vm.onReset } },
+        [
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c(
+                    "b-col",
+                    { attrs: { cols: "4" } },
+                    [
+                      _c("label", { attrs: { for: "location" } }, [
+                        _vm._v("Lokasi")
+                      ]),
+                      _vm._v(" "),
+                      _c("b-form-select", {
+                        attrs: { options: _vm.location },
+                        model: {
+                          value: _vm.selectedLocation,
+                          callback: function($$v) {
+                            _vm.selectedLocation = $$v
+                          },
+                          expression: "selectedLocation"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { cols: "4" } },
+                    [
+                      _c("label", { attrs: { for: "field" } }, [
+                        _vm._v("Lapang")
+                      ]),
+                      _vm._v(" "),
+                      _c("b-form-select", {
+                        attrs: { options: _vm.field },
+                        model: {
+                          value: _vm.selectedField,
+                          callback: function($$v) {
+                            _vm.selectedField = $$v
+                          },
+                          expression: "selectedField"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    { attrs: { cols: "4" } },
+                    [
+                      _c("b-row", [
+                        _c("label", { attrs: { for: "date" } }, [
+                          _vm._v("Tanggal")
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "b-row",
+                        [
+                          _c("date-picker", {
+                            attrs: { lang: "en", config: _vm.date },
+                            model: {
+                              value: _vm.selectedDate,
+                              callback: function($$v) {
+                                _vm.selectedDate = $$v
+                              },
+                              expression: "selectedDate"
+                            }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -67536,7 +67605,8 @@ var render = function() {
                 _c(
                   "b-button",
                   {
-                    staticClass: " btn btn-detail unpaidbutton",
+                    staticClass: " btn btn-detail paid",
+                    style: _vm.paid,
                     on: {
                       click: [
                         _vm.handleClick,

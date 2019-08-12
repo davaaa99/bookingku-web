@@ -1797,7 +1797,31 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      detailBooking: {},
+      detailBooking: [// {
+        //   key: "id_booking"
+        // },
+        // {
+        //   key: "client_name"
+        // },
+        // {
+        //   key: "location_name"
+        // },
+        // {
+        //   key: "field_name"
+        // },
+        // {
+        //   key: "payment_date"
+        // },
+        // {
+        //   key: "payment_time"
+        // },
+        // {
+        //   key: "payment_type"
+        // },
+        // {
+        //   key: "payment_status"
+        // },
+      ],
       filterData: [{
         idBooking: "BKN-001",
         nama: "Tedy Subagjo",
@@ -2223,9 +2247,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         key: "name",
         label: "Nama"
       }, {
-        key: "user_type",
-        label: "Tipe User"
-      }, {
         key: "aksi",
         label: "Aksi"
       }],
@@ -2235,13 +2256,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   mounted: function mounted() {
     var _this = this;
 
-    //    await Axios.get('http://localhost:8000/api/v1/clients')
-    //     .then(function(rest){
-    //         this.ClientList = rest;
-    //         console.log(this.ClientList)
-    //     }).catch(function(error){
-    //         console.log('Error :',error);
-    //     })
     var uri = 'http://localhost:8000/api/v1/clients';
     this.axios.get(uri).then(function (response) {
       _this.ClientList = response.data.data;

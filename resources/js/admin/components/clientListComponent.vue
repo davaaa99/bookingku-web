@@ -43,7 +43,6 @@
                 perPage: 10,
                 currentPage: 1,
                 filterSearch: "",
-
                 fields: [
                     "No",
                     {
@@ -58,10 +57,6 @@
                         key: "name",
                         label: "Nama"
                     },
-                    // {
-                    //     key: "user_type",
-                    //     label: "Tipe User"
-                    // },
                     {
                         key: "aksi",
                         label: "Aksi"
