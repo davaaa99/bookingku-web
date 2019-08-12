@@ -89,11 +89,10 @@ main {
     font-size: 16px;
     color: #FFFFFF;
 
-
 }
  
-#bookinglist{
-    button.paid{
+#bookinglist {
+    button.paid {
         &:hover {
             background-color:rgb(128, 0, 0);
             cursor: pointer;
@@ -107,7 +106,7 @@ main {
         // line-height:50px;
         // border-radius: 30px;
     }
-    button.unpaid{
+    button.unpaid {
         &:hover {
             background-color:green;
             cursor: pointer;
@@ -123,24 +122,24 @@ main {
     }
 }
 
-#addbooking{
-    .available{
+#addbooking {
+    .available {
          background: rgb(127, 189, 27) !important;
-     }
-    .unavailable{
+    }
+    .unavailable {
         background: #e93a3a !important;
     }
-    .choosed{
+    .choosed {
         background: rgb(106, 176, 223) !important;
     }
 
     $vue-navy: #2c3e50;
-$vue-navy-light: #3a5169;
-$vue-teal: #42b883;
-$vue-teal-light: #42b983;
-$gray: #666a73;
-$light-gray: #f8f8f8;
-
+    $vue-navy-light: #3a5169;
+    $vue-teal: #42b883;
+    $vue-teal-light: #42b983;
+    $gray: #666a73;
+    $light-gray: #f8f8f8;
+}
 
 body {
   background: $light-gray;
@@ -267,7 +266,7 @@ body {
             border-color:transparent rgba(40,44,53,.06) transparent transparent;
             border-style:solid;
             border-width:12px 12px 12px 0;
-        }
+            }
         
           &:after {
             content:"";
@@ -280,7 +279,7 @@ body {
             border-radius: 2px;
             background: white;
             box-shadow:-0px -0px 0px #004977;
-          }
+            }
         }
       }
     }
@@ -294,6 +293,9 @@ h1 {
   margin-bottom: 0;
   color: $vue-teal;
 }
+.error {
+    color: red;
+    font-weight: normal;
 }
 
 /*------------------------ SIDE BAR ------------------------*/
@@ -775,7 +777,6 @@ h1 {
         padding-left: 50px;
         padding-right: 50px;
 
-
         .header {
             padding-right: 15px;
 
@@ -786,9 +787,7 @@ h1 {
         }
 
         .item {
-
             text-align: right;
-
             .sub-title {
                 font-family: Poppins;
                 font-style: normal;
@@ -796,7 +795,14 @@ h1 {
                 font-size: 15px;
                 text-align: right;
                 color: black;
+            }
 
+            .signup-button {
+                border-radius: 4px;
+                font-size: 13px;
+                color: #4D4F5C;
+                background-color: #FFFFFF;
+                width: 130px;
             }
 
             .sub-item {
@@ -809,7 +815,6 @@ h1 {
         }
 
         .desc {
-
             .penerima {
                 padding-right: 50px;
             }
@@ -837,9 +842,7 @@ h1 {
         .row {
             padding-left: 30px;
             padding-right: 30px;
-
             table {
-
                 width: 100%;
                 border-left: 1px solid #E1E1E1;
                 border-top: 1px solid #E1E1E1;
@@ -884,11 +887,7 @@ h1 {
                 font-weight: 500;
                 font-size: 15px;
 
-
-
                 color: #FFFFFF;
-
-
             }
         }
 

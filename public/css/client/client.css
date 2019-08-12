@@ -16563,6 +16563,7 @@ main {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #bookinglist .paidbutton {
 =======
 #bookinglist button.paid {
@@ -16600,6 +16601,11 @@ main {
   background-color: green;
   cursor: pointer;
   cursor: hand;
+=======
+.error {
+  color: red;
+  font-weight: normal;
+>>>>>>> origin/master
 }
 
 #addbooking .available {

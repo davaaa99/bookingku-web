@@ -65,14 +65,15 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'id_users' => Uuid::uuid1()->getHex(),
+            'id_user' => Uuid::uuid1()->getHex(),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'name' => $data['name'],
             'account_number' => $data['account_number'],
             'phone_number' => $data['phone_number'],
-            'users_type' => $data['users_type'],
-            'users_photo' => $data['users_photo'],
+            // 'users_type' => $data['users_type'],
+            'user_type' => 2,
+            // 'users_photo' => $data['users_photo'],
             'email_token' => base64_encode($data['email']),
         ]);
     }

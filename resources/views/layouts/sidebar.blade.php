@@ -35,6 +35,12 @@
                         PAYMENT
                     </a>
                 </div>
+                <div class="content-item d-flex align-items-center">
+                    <a href="{{ route('clientlogout') }}" class="content-link">
+                        <i class="far fa-address-card"></i>
+                        LOGOUT
+                    </a>
+                </div>
             </div>
         </div>
     </div>
