@@ -1971,7 +1971,252 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           month = '' + (d.getMonth() + 1),
           day = '' + d.getDate(),
           year = d.getFullYear();
+<<<<<<< HEAD
       window.location.href = window.location.protocol + '//' + window.location.host + '/locationlist';
+=======
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/bookinglist';
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addLapangComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/addLapangComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {},
+      // location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
+      tipelapang: [{
+        text: 'Pilih Tipe Lapang',
+        value: null
+      }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
+      show: true
+    };
+  },
+  methods: {
+    addLapang: function addLapang() {
+      var _this = this;
+
+      var uri = 'http://localhost:8000/api/v1/field';
+      this.axios.post(uri, this.form).then(function (response) {
+        // this.$router.push({name: 'fields'});
+        console.log(_this.form);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      // Note 'age' is left out and will not appear in the rendered table
+      perPage: 20,
+      currentPage: 1,
+      selectedLocation: null,
+      location: [{
+        text: 'Pilih Lokasi',
+        value: null
+      }, 'Ciwarug Futsal', 'Sarijadi Futsal'],
+      selectedField: null,
+      field: [{
+        text: 'Pilih Lokasi',
+        value: null
+      }, 'Vinyl', 'Syntetic', 'Semen'],
+      selectedDate: new Date(),
+      date: {
+        format: 'YYYY/MM/DD',
+        useCurrent: false
+      },
+      // components:{
+      //     datePicker
+      // },
+      fields: {
+        user: {
+          label: 'User',
+          sortable: true
+        },
+        bookingCode: {
+          label: 'Booking Code',
+          sortable: false
+        },
+        schedule: {
+          key: 'schedule',
+          sortable: true
+        },
+        status: {
+          key: 'status',
+          label: 'Status',
+          sortable: true
+        },
+        payment: {
+          label: 'Payment',
+          sortable: true
+        }
+      },
+      items: [{
+        user: "Tedy Subagjo",
+        bookingCode: "BKN-001",
+        schedule: "11.00-12.00",
+        status: true,
+        payment: "DP"
+      }, {
+        user: "Tedy Subagjo",
+        bookingCode: "BKN-001",
+        schedule: "11.00-12.00",
+        status: false,
+        payment: "DP"
+      }, {
+        user: "Tedy Subagjo",
+        bookingCode: "BKN-001",
+        schedule: "11.00-12.00",
+        status: false,
+        payment: "DP"
+      }, {
+        user: "Tedy Subagjo",
+        bookingCode: "BKN-001",
+        schedule: "11.00-12.00",
+        status: false,
+        payment: "DP"
+      }]
+    };
+  },
+  methods: {
+    paid: function paid(status) {
+      if (!status) {
+        return 'Unpaid';
+      } else return 'Paid';
+>>>>>>> origin/newdava-dev
     },
     formatNames: function formatNames(files) {
       if (files.length === 1) {
@@ -2066,6 +2311,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         key: "aksi",
         label: "Aksi"
       }],
+<<<<<<< HEAD
       ClientList: [{
         idClient: "CLN-001",
         nama: "Tedy",
@@ -2092,6 +2338,12 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         lokasi: "JL. Telkom",
         status: "member"
       }]
+=======
+      perPage: 10,
+      filterSearch: "",
+      url: window.location.origin + window.location.pathname,
+      datafoto: {}
+>>>>>>> origin/newdava-dev
     };
   },
   computed: {
@@ -2099,6 +2351,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       return this.ClientList.length;
     }
   },
+<<<<<<< HEAD
   methods: {
     detail: function detail(id) {
       var self = this;
@@ -2115,6 +2368,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
 >>>>>>> origin/master
   }
+=======
+  methods: {}
+>>>>>>> origin/newdava-dev
 });
 
 /***/ }),
@@ -2189,7 +2445,111 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {},
+      // location: [{ text: 'Pilih Lokasi', value: null }, 'Bandung', 'Jakarta', 'Bekasi', 'Bogor'],
+      tipelapang: [{
+        text: 'Pilih Tipe Lapang',
+        value: null
+      }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
+      show: true
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    var uri = "http://localhost:8000/api/v1/field/".concat(this.$route.params.id_field);
+    this.axios.get(uri).then(function (response) {
+      _this.post = response.data;
+    });
+  },
+  methods: {
+    editLapang: function editLapang() {
+      var _this2 = this;
+
+      var uri = 'http://localhost:8000/api/v1/field';
+      this.axios.post(uri, this.form).then(function (response) {
+        // this.$router.push({name: 'fields'});
+        console.log(_this2.form);
+      });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationAddComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationAddComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> origin/newdava-dev
 //
 //
 //
@@ -3379,7 +3739,68 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
       }],
       props: Object(_utils_pluck_props__WEBPACK_IMPORTED_MODULE_3__["default"])(linkProps, props)
     };
+<<<<<<< HEAD
     return h(tag, Object(vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__["mergeData"])(data, componentData), children);
+=======
+  },
+  created: function created() {
+    var _this = this;
+
+    var uri = 'http://localhost:8000/api/v1/field';
+    this.axios.get(uri).then(function (response) {
+      console.log(response);
+      _this.dataLapangan = response.data.data;
+    });
+  },
+  // created: function(){
+  //     this.fetchItems();
+  // },
+  methods: {
+    // fetchItems(){
+    //   let uri = 'http://127.0.0.1:8000/api/v1/field';
+    //   this.Axios.get(uri).then((response) => {
+    //       this.dataLapangan = response.data;
+    //   });
+    // },
+    func: function func() {
+      var FieldId = lapangan.id_field;
+      window.location.href = "editlapang" + FieldId;
+    },
+    editLapang: function editLapang(id_field) {
+      var _this2 = this;
+
+      var uri = "http://localhost:8000/api/v1/field/".concat(id_field);
+      this.axios.post(uri, this.dataLapangan).then(function (response) {
+        console.log(_this2.form);
+      });
+    },
+    deleteLapang: function deleteLapang(id_field) {
+      var _this3 = this;
+
+      var uri = "http://localhost:8000/api/v1/field/".concat(id_field);
+      this.axios["delete"](uri).then(function (response) {
+        _this3.dataLapangan.splice(_this3.dataLapangan.indexOf(id_field), 1);
+
+        console.log(_this3.dataLapangan);
+      });
+    },
+    show: function show() {
+      this.status = !this.status;
+    },
+    click: function click(status) {
+      this.status = !this.status;
+      this.filterStatus = status;
+    }
+  },
+  watch: {
+    filterStatus: function filterStatus(fal) {
+      var self = this;
+      var data = self.filterData.filter(function (project) {
+        return project.status === fal;
+      });
+      self.filterData = data;
+    }
+>>>>>>> origin/newdava-dev
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = (BBadge);
@@ -68602,8 +69023,136 @@ render._withStripped = true
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "230e":
 /***/ (function(module, exports, __webpack_require__) {
+=======
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/addLapangComponent.vue?vue&type=template&id=26944960& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "addlapang" } }, [
+    _c("form", [
+      _c(
+        "div",
+        { staticClass: "idlapangan" },
+        [
+          _c("b-form-input", {
+            attrs: {
+              id: "input-1",
+              disabled: "",
+              hidden: "",
+              placeholder: "Masukan Id Lapang"
+            },
+            model: {
+              value: _vm.form.id_field,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "id_field", $$v)
+              },
+              expression: "form.id_field"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "namalapang" },
+        [
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                id: "input-group-2",
+                label: "Nama Lapang:",
+                "label-for": "input-2"
+              }
+            },
+            [
+              _c("b-form-input", {
+                attrs: {
+                  id: "input-2",
+                  required: "",
+                  placeholder: "Masukan Nama Lapang"
+                },
+                model: {
+                  value: _vm.form.field_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "field_name", $$v)
+                  },
+                  expression: "form.field_name"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "tipelapang" },
+        [
+          _c(
+            "b-form-group",
+            {
+              attrs: {
+                id: "input-group-3",
+                label: "Tipe Lapang:",
+                "label-for": "input-3"
+              }
+            },
+            [
+              _c("b-form-select", {
+                attrs: { id: "input-3", options: _vm.tipelapang, required: "" },
+                model: {
+                  value: _vm.form.field_type,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "field_type", $$v)
+                  },
+                  expression: "form.field_type"
+                }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "buttonadd" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            on: {
+              click: function($event) {
+                return _vm.addLapang()
+              }
+            }
+          },
+          [_vm._v("Add Lapang")]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+>>>>>>> origin/newdava-dev
 
 var isObject = __webpack_require__("d3f4");
 var document = __webpack_require__("7726").document;
@@ -68908,8 +69457,20 @@ var render = function() {
       _c(
         "div",
         {
+<<<<<<< HEAD
           staticClass:
             "container d-flex align-items-center justify-content-center justify-content-sm-center justify-content-lg-start flex-column mt-auto mb-auto"
+=======
+          staticClass: "image-header",
+          attrs: {
+            overlay: "",
+            "img-src":
+              "https://rumus.web.id/wp-content/uploads/2018/08/lapangan-futsal.jpg",
+            "img-alt": "Gambar Lapangan",
+            "text-variant": "white",
+            "border-variant": "dark"
+          }
+>>>>>>> origin/newdava-dev
         },
         [
           _c("div", { staticClass: "spacer-20" }),
@@ -69001,6 +69562,7 @@ var render = function() {
                       callback: function($$v) {
                         _vm.$set(_vm.$v.form.email, "$model", $$v)
                       },
+<<<<<<< HEAD
                       expression: "$v.form.email.$model"
                     }
                   }),
@@ -69039,10 +69601,88 @@ var render = function() {
                         _vm.$set(_vm.form, "password", $$v)
                       },
                       expression: "form.password"
+=======
+                      [_vm._v("Delete")]
+                    )
+                  ]
+                }
+              }
+            ])
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/editLapangComponent.vue?vue&type=template&id=0755dd9e& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "content" } }, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.updatePost($event)
+          }
+        }
+      },
+      [
+        _c("b-form", [
+          _c(
+            "div",
+            { staticClass: "namalapang" },
+            [
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-2",
+                    label: "Nama Lapang:",
+                    "label-for": "input-2"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "input-2",
+                      required: "",
+                      placeholder: "Masukan Nama Lapang"
+                    },
+                    model: {
+                      value: _vm.form.namalapang,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "namalapang", $$v)
+                      },
+                      expression: "form.namalapang"
+>>>>>>> origin/newdava-dev
                     }
                   })
                 ],
                 1
+<<<<<<< HEAD
               ),
               _vm._v(" "),
               _c(
@@ -69075,6 +69715,106 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
+=======
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "tipelapang" },
+            [
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-3",
+                    label: "Tipe Lapang:",
+                    "label-for": "input-3"
+                  }
+                },
+                [
+                  _c("b-form-select", {
+                    attrs: {
+                      id: "input-3",
+                      options: _vm.tipelapang,
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.tipelapang,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "tipelapang", $$v)
+                      },
+                      expression: "form.tipelapang"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "buttonadd" },
+            [
+              _c(
+                "b-button",
+                {
+                  attrs: { variant: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.editLapang()
+                    }
+                  }
+                },
+                [_vm._v("Add")]
+              )
+            ],
+            1
+          )
+        ])
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationAddComponent.vue?vue&type=template&id=f1d47c78&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationAddComponent.vue?vue&type=template&id=f1d47c78& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "location-add" } },
+    [
+      _c(
+        "b-form",
+        { attrs: { id: "location-form" } },
+        [
+          _c(
+            "b-form-group",
+            [
+>>>>>>> origin/newdava-dev
               _c(
                 "b-form-group",
                 {
@@ -69657,8 +70397,2155 @@ function applyToTag (styleElement, obj) {
 /***/ "4ae7":
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 exports = module.exports = __webpack_require__("2350")(false);
 // imports
+=======
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "location-add" } },
+    [
+      _c(
+        "b-form",
+        { attrs: { id: "location-form" } },
+        [
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Nama Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-input", {
+                        staticClass: "forminput",
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan nama lokasi"
+                        },
+                        model: {
+                          value: _vm.form.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "name", $$v)
+                          },
+                          expression: "form.name"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Alamat Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-input", {
+                        staticClass: "forminput",
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan alamat lokasi"
+                        },
+                        model: {
+                          value: _vm.form.address,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "address", $$v)
+                          },
+                          expression: "form.address"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Deskripsi Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-textarea", {
+                        staticClass: "forminput",
+                        staticStyle: { height: "100px" },
+                        attrs: {
+                          required: "",
+                          placeholder: "Masukkan deskripsi lapangan"
+                        },
+                        model: {
+                          value: _vm.form.description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "description", $$v)
+                          },
+                          expression: "form.description"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form-group",
+            [
+              _c(
+                "b-row",
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }, [
+                    _c("label", [_c("strong", [_vm._v("Foto Lokasi")])])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "b-col",
+                    [
+                      _c("b-form-file", {
+                        attrs: {
+                          multiple: "",
+                          "file-name-formater": _vm.formatName
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-20" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "d-flex" },
+            [
+              _c(
+                "b-button",
+                {
+                  directives: [
+                    {
+                      name: "b-modal",
+                      rawName: "v-b-modal.octime",
+                      modifiers: { octime: true }
+                    }
+                  ],
+                  staticClass: "btn",
+                  staticStyle: { "margin-left": "17.5%" }
+                },
+                [_vm._v("Atur Waktu Buka")]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-modal",
+                {
+                  attrs: {
+                    id: "octime",
+                    size: "lg",
+                    centered: "",
+                    title: "Atur Waktu Buka",
+                    "header-bg-variant": _vm.headerBgVariant,
+                    "header-text-variant": _vm.headerTextVariant
+                  }
+                },
+                [
+                  _c("b-row", [
+                    _c(
+                      "p",
+                      {
+                        staticClass: "col-2 mt-2",
+                        staticStyle: { "margin-right": "-5%" }
+                      },
+                      [_c("strong", [_vm._v("Setiap Hari")])]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.everyday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.everyday, "valstatus", $$v)
+                            },
+                            expression: "form.everyday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.everyday.valstatus
+                              )
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.everyday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.everyday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.everyday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.everyday, "open_time", $$v)
+                                },
+                                expression: "form.everyday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.everyday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.everyday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.everyday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Senin")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.monday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.monday, "valstatus", $$v)
+                            },
+                            expression: "form.monday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.monday.valstatus)
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.monday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.monday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.monday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.monday, "open_time", $$v)
+                                },
+                                expression: "form.monday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.monday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.monday, "closing_time", $$v)
+                                },
+                                expression: "form.monday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Selasa")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.tuesday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.tuesday, "valstatus", $$v)
+                            },
+                            expression: "form.tuesday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.tuesday.valstatus)
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.tuesday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.tuesday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.tuesday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.tuesday, "open_time", $$v)
+                                },
+                                expression: "form.tuesday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.tuesday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.tuesday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.tuesday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Rabu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.wednesday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.wednesday, "valstatus", $$v)
+                            },
+                            expression: "form.wednesday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.wednesday.valstatus
+                              )
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.wednesday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.wednesday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.wednesday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.wednesday, "open_time", $$v)
+                                },
+                                expression: "form.wednesday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.wednesday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.wednesday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.wednesday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Kamis")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.thrusday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.thrusday, "valstatus", $$v)
+                            },
+                            expression: "form.thrusday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.thrusday.valstatus
+                              )
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.thrusday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.thrusday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.thrusday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.thrusday, "open_time", $$v)
+                                },
+                                expression: "form.thrusday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.thrusday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.thrusday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.thrusday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Jumat")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.friday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.friday, "valstatus", $$v)
+                            },
+                            expression: "form.friday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.friday.valstatus)
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.friday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.friday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.friday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.friday, "open_time", $$v)
+                                },
+                                expression: "form.friday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.friday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.friday, "closing_time", $$v)
+                                },
+                                expression: "form.friday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Sabtu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.saturday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.saturday, "valstatus", $$v)
+                            },
+                            expression: "form.saturday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(
+                                _vm.form.saturday.valstatus
+                              )
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.saturday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.saturday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.saturday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.saturday, "open_time", $$v)
+                                },
+                                expression: "form.saturday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.saturday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.form.saturday,
+                                    "closing_time",
+                                    $$v
+                                  )
+                                },
+                                expression: "form.saturday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                      _c("strong", [_vm._v("Minggu")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mt-2 col-2 d-flex" },
+                      [
+                        _c("b-form-checkbox", {
+                          attrs: { name: "check-button", switch: "" },
+                          model: {
+                            value: _vm.form.sunday.valstatus,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form.sunday, "valstatus", $$v)
+                            },
+                            expression: "form.sunday.valstatus"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          {
+                            style: {
+                              color: _vm.changeColor(_vm.form.sunday.valstatus)
+                            }
+                          },
+                          [
+                            _c("strong", [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.changeStatus(_vm.form.sunday.valstatus)
+                                )
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.form.sunday.valstatus
+                      ? _c(
+                          "div",
+                          { staticClass: "col-8" },
+                          [
+                            _c("b-form-select", {
+                              staticClass: "ml-3 mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.otimes },
+                              model: {
+                                value: _vm.form.sunday.open_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.sunday, "open_time", $$v)
+                                },
+                                expression: "form.sunday.open_time"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("i", { staticClass: "fas fa-minus mr-2 mt-2" }),
+                            _vm._v(" "),
+                            _c("b-form-select", {
+                              staticClass: "mb-2 mr-2 col-3",
+                              staticStyle: {
+                                border: "none",
+                                "border-bottom": "2px solid #3490DC",
+                                background: "none"
+                              },
+                              attrs: { options: _vm.ctimes },
+                              model: {
+                                value: _vm.form.sunday.closing_time,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.form.sunday, "closing_time", $$v)
+                                },
+                                expression: "form.sunday.closing_time"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-50" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary ml-auto mr-2",
+                on: {
+                  click: function($event) {
+                    return _vm.save()
+                  }
+                }
+              },
+              [_vm._v("Save")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger mr-auto",
+                on: {
+                  click: function($event) {
+                    return _vm.cancel()
+                  }
+                }
+              },
+              [_vm._v("Cancel")]
+            )
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-20" })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/locationListComponent.vue?vue&type=template&id=59243f47&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/locationListComponent.vue?vue&type=template&id=59243f47& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "location-list" } }, [
+    _c("div", { attrs: { id: "list" } }, [
+      _c("div", { staticClass: "filter " }, [
+        _c("div", { staticClass: "filter-item d-flex" }, [
+          _c("div", { staticClass: "search  d-flex align-items-center" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filterSearch,
+                  expression: "filterSearch"
+                }
+              ],
+              staticClass: "filterSearch",
+              attrs: { type: "text", placeholder: "Search" },
+              domProps: { value: _vm.filterSearch },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.filterSearch = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("i", {
+              staticClass: "fa fa-search",
+              staticStyle: { color: "#C0C4CC" }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-add btn-primary ml-auto",
+              on: {
+                click: function($event) {
+                  return _vm.addLocation()
+                }
+              }
+            },
+            [_vm._v("ADD")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "spacer-20" })
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "item-list" },
+      _vm._l(_vm.dataLocation, function(location) {
+        return _c(
+          "div",
+          { key: location.id_location, staticClass: "card mt-3" },
+          [
+            _c(
+              "div",
+              { staticClass: "horizontal" },
+              [
+                _c(
+                  "b-card",
+                  { staticClass: "overflow-hidden", attrs: { "no-body": "" } },
+                  [
+                    _c(
+                      "b-row",
+                      { staticClass: "d-flex", attrs: { "no-gutters": "" } },
+                      [
+                        _c(
+                          "b-col",
+                          {
+                            staticClass: "col-lg-2",
+                            on: {
+                              click: function($event) {
+                                return _vm.detailLocation()
+                              }
+                            }
+                          },
+                          [
+                            _c("b-card-img", {
+                              staticClass: "rounded-0",
+                              attrs: {
+                                src: "https://picsum.photos/400/400/?image=20"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-col",
+                          {
+                            staticClass: "col-lg-9",
+                            on: {
+                              click: function($event) {
+                                return _vm.detailLocation()
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "b-card-body",
+                              [
+                                _c("h2", [
+                                  _vm._v(_vm._s(location.location_name))
+                                ]),
+                                _vm._v(" "),
+                                _c("b-card-text", [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(location.open_time) +
+                                      " - " +
+                                      _vm._s(location.closing_time) +
+                                      "\n                                "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("b-card-text", [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(location.location_address) +
+                                      "\n                                "
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mt-2 igroup col-lg-1" }, [
+                          _c(
+                            "i",
+                            {
+                              staticClass: "material-icons ic",
+                              on: {
+                                click: function($event) {
+                                  return _vm.editLocation()
+                                }
+                              }
+                            },
+                            [_vm._v("edit")]
+                          ),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "material-icons mr-3 ic" }, [
+                            _vm._v("close")
+                          ])
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "spacer-20" })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/loginComponent.vue?vue&type=template&id=62748e67&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/loginComponent.vue?vue&type=template&id=62748e67& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "position-relative d-flex", attrs: { id: "login" } },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "container d-flex align-items-center justify-content-center justify-content-sm-center flex-column mt-auto mb-auto"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "login-header d-flex flex-column align-items-center"
+            },
+            [
+              _c("div", { staticClass: "d-flex mb-n3" }, [
+                _c("img", {
+                  staticClass: "mr-3 mt-2",
+                  attrs: { src: _vm.logo, width: "30", height: "30", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("p", [_vm._v("BOOKINGKU")])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "sub-title" }, [
+                _vm._v("Welcome back! Please login to your account.")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-50" }),
+          _vm._v(" "),
+          _c(
+            "b-form",
+            { attrs: { id: "login-form" } },
+            [
+              _c(
+                "b-form-group",
+                {
+                  staticClass: "login-label",
+                  attrs: { label: "Email", "label-for": "input-email" }
+                },
+                [
+                  _c("b-form-input", {
+                    staticClass: "login-input",
+                    attrs: { size: "sm", id: "input-email", required: "" },
+                    model: {
+                      value: _vm.form.email,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "email", $$v)
+                      },
+                      expression: "form.email"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  staticClass: "login-label",
+                  attrs: { label: "Password", "label-for": "input-password" }
+                },
+                [
+                  _c("b-form-input", {
+                    staticClass: "login-input",
+                    attrs: {
+                      type: "password",
+                      size: "sm",
+                      id: "input-password",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.password,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "password", $$v)
+                      },
+                      expression: "form.password"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "login-checkbox d-flex" },
+                [
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      attrs: { id: "check-remember", name: "check-remember" },
+                      model: {
+                        value: _vm.form.remember,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "remember", $$v)
+                        },
+                        expression: "form.remember"
+                      }
+                    },
+                    [_vm._v("Remember me")]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "sub-title ml-auto" }, [
+                    _vm._v("Forgot Password")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-20" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "login-footer d-flex" },
+            [
+              _c("b-button", { staticClass: "btn login-button" }, [
+                _vm._v("Login")
+              ]),
+              _vm._v(" "),
+              _c(
+                "b-button",
+                {
+                  staticClass: "btn signup-button",
+                  on: {
+                    click: function($event) {
+                      return _vm.register()
+                    }
+                  }
+                },
+                [_vm._v("Sign up")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/manageScheduleComponent.vue?vue&type=template&id=147d677e&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/manageScheduleComponent.vue?vue&type=template&id=147d677e& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm.show
+        ? _c(
+            "b-form",
+            { on: { submit: _vm.onSubmit, reset: _vm.onReset } },
+            [
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-2",
+                    label: "Location:",
+                    "label-for": "input-2"
+                  }
+                },
+                [
+                  _c("b-form-select", {
+                    attrs: {
+                      id: "input-2",
+                      options: _vm.locations,
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.location,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "location", $$v)
+                      },
+                      expression: "form.location"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-3",
+                    label: "Field:",
+                    "label-for": "input-3"
+                  }
+                },
+                [
+                  _c("b-form-select", {
+                    attrs: { id: "input-3", options: _vm.fields, required: "" },
+                    model: {
+                      value: _vm.form.field,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "field", $$v)
+                      },
+                      expression: "form.field"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-1",
+                    label: "Price:",
+                    "label-for": "input-1"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "input-1",
+                      required: "",
+                      placeholder: "Enter Price"
+                    },
+                    model: {
+                      value: _vm.form.price,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "price", $$v)
+                      },
+                      expression: "form.price"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-4",
+                    label: "Down Payment:",
+                    "label-for": "input-4"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "input-4",
+                      required: "",
+                      placeholder: "Enter Down Payment"
+                    },
+                    model: {
+                      value: _vm.form.dp,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "dp", $$v)
+                      },
+                      expression: "form.dp"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-5",
+                    label: "Day :",
+                    "label-for": "input-5"
+                  }
+                },
+                [
+                  _c("b-form-checkbox-group", {
+                    attrs: { options: _vm.options, switches: "" },
+                    model: {
+                      value: _vm.form.day,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "day", $$v)
+                      },
+                      expression: "form.day"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-8",
+                    label: "Time Start:",
+                    "label-for": "input-8"
+                  }
+                },
+                [
+                  _c("b-form-select", {
+                    attrs: {
+                      id: "input-8",
+                      options: _vm.t_starts,
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.t_start,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "t_start", $$v)
+                      },
+                      expression: "form.t_start"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-9",
+                    label: "Time Finish:",
+                    "label-for": "input-9"
+                  }
+                },
+                [
+                  _c("b-form-select", {
+                    attrs: {
+                      id: "input-8",
+                      options: _vm.t_finishs,
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.t_finish,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "t_finish", $$v)
+                      },
+                      expression: "form.t_finish"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("b-button", { attrs: { type: "add", variant: "primary" } }, [
+                _vm._v("Add")
+              ]),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "input-group-6",
+                    label: " ",
+                    "label-for": "input-6"
+                  }
+                },
+                [
+                  _c("b-table", {
+                    attrs: { striped: "", hover: "", items: _vm.items }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("b-button", { attrs: { type: "save", variant: "primary" } }, [
+                _vm._v("Save")
+              ]),
+              _vm._v(" "),
+              _c("b-button", { attrs: { type: "back", variant: "primary" } }, [
+                _vm._v("Back")
+              ])
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "b-card",
+        { staticClass: "mt-3", attrs: { header: "Form Data Result" } },
+        [_c("pre", { staticClass: "m-0" }, [_vm._v(_vm._s(_vm.form))])]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/menuLapanganComponent.vue?vue&type=template&id=a81cf222&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/menuLapanganComponent.vue?vue&type=template&id=a81cf222& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "content" } },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "lapang" } }, [
+        _c("div", { staticClass: "filter " }, [
+          _c("div", { staticClass: "filter-item d-flex" }, [
+            _c("div", { staticClass: "filterStatus" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "filterTitle d-flex align-items-center ",
+                  on: { click: _vm.show }
+                },
+                [
+                  _vm._v(
+                    "\r\n                        " +
+                      _vm._s(_vm.filterStatus) +
+                      "\r\n                        "
+                  ),
+                  _c("i", {
+                    staticClass: "ml-auto",
+                    class: [
+                      { "fas fa-caret-down": !_vm.status },
+                      { "fas fa-sort-up": _vm.status }
+                    ]
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _vm.status
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "box d-flex align-items-center justify-content-center"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "link" },
+                        _vm._l(_vm.statusList, function(list) {
+                          return _c(
+                            "div",
+                            { key: list.statusList, staticClass: "link-item" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.click(list.status)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("div", { staticClass: "link-status" }, [
+                                    _vm._v(
+                                      "\r\n                                        " +
+                                        _vm._s(list.status) +
+                                        "\r\n                                    "
+                                    )
+                                  ])
+                                ]
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "buttonadd" },
+              [
+                _c("b-col", { attrs: { offset: "10" } }, [
+                  _c(
+                    "a",
+                    { attrs: { href: "addlapang" } },
+                    [
+                      _c(
+                        "b-button",
+                        { attrs: { type: "add", variant: "primary" } },
+                        [_vm._v("Add")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ],
+              1
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.dataLapangan, function(lapangan) {
+        return _c(
+          "div",
+          { key: lapangan.id_field, staticClass: "cardlapang" },
+          [
+            _c(
+              "b-card-group",
+              { attrs: { deck: "" } },
+              [
+                _c(
+                  "b-card",
+                  [
+                    _c("img", {
+                      staticClass: "gambarlapang",
+                      attrs: { src: lapangan.field_photo }
+                    }),
+                    _vm._v(" "),
+                    _c("b-card-title", [
+                      _vm._v(
+                        "\r\n          " +
+                          _vm._s(lapangan.field_name) +
+                          "\r\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("b-card-text", [
+                      _vm._v(
+                        "\r\n          " +
+                          _vm._s(lapangan.field_type) +
+                          "\r\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      { attrs: { href: "editlapang/4141" } },
+                      [
+                        _c("b-button", { attrs: { variant: "light" } }, [
+                          _vm._v("Edit")
+                        ])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "b-button",
+                      {
+                        attrs: { variant: "danger" },
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteLapang(lapangan.id_field)
+                          }
+                        }
+                      },
+                      [_vm._v("Delete ")]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "carilokasi" } }, [
+      _c("h5", [_vm._v("Cari Lokasi: ")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/registerComponent.vue?vue&type=template&id=9c24e9d2&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/registerComponent.vue?vue&type=template&id=9c24e9d2& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "position-relative d-flex", attrs: { id: "register" } },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "container d-flex align-items-center justify-content-center justify-content-sm-center justify-content-lg-start flex-column mt-auto mb-auto"
+        },
+        [
+          _c("div", { staticClass: "spacer-20" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "register-header d-flex flex-column align-items-center"
+            },
+            [
+              _c("div", { staticClass: "d-flex mb-n3" }, [
+                _c("img", {
+                  staticClass: "mr-3 mt-2",
+                  attrs: { src: _vm.logo, width: "30", height: "30", alt: "" }
+                }),
+                _vm._v(" "),
+                _c("p", [_vm._v("BOOKINGKU")])
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "sub-title" }, [
+                _vm._v("Please complete to create your account.")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "b-form",
+            { attrs: { id: "register-form" } },
+            [
+              _c(
+                "b-form-group",
+                {
+                  staticClass: "register-label",
+                  attrs: { label: "Name", "label-for": "input-name" }
+                },
+                [
+                  _c("b-form-input", {
+                    staticClass: "register-input",
+                    attrs: { size: "sm", id: "input-name", required: "" },
+                    model: {
+                      value: _vm.form.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "name", $$v)
+                      },
+                      expression: "form.name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  staticClass: "register-label",
+                  attrs: { label: "Email", "label-for": "input-email" }
+                },
+                [
+                  _c("b-form-input", {
+                    staticClass: "register-input",
+                    attrs: { size: "sm", id: "input-email", required: "" },
+                    model: {
+                      value: _vm.form.email,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "email", $$v)
+                      },
+                      expression: "form.email"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  staticClass: "register-label",
+                  attrs: { label: "Password", "label-for": "input-password" }
+                },
+                [
+                  _c("b-form-input", {
+                    staticClass: "register-input",
+                    attrs: {
+                      type: "password",
+                      size: "sm",
+                      id: "input-password",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.password,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "password", $$v)
+                      },
+                      expression: "form.password"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  staticClass: "register-label",
+                  attrs: {
+                    label: "Confirm Password",
+                    "label-for": "input-conf-password"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    staticClass: "register-input",
+                    attrs: {
+                      type: "password",
+                      size: "sm",
+                      id: "input-conf-password",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.password,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "password", $$v)
+                      },
+                      expression: "form.password"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  staticClass: "register-label d-flex flex-column",
+                  attrs: {
+                    label: "Account Number",
+                    "label-for": "input-account_number"
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "d-flex" },
+                    [
+                      _c("b-form-select", {
+                        staticClass: "col-3 mr-1",
+                        staticStyle: {
+                          border: "none",
+                          "border-bottom": "1px solid #C7C7DB",
+                          background: "none"
+                        },
+                        attrs: { size: "sm", options: _vm.bank },
+                        model: {
+                          value: _vm.form.account_type,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "account_type", $$v)
+                          },
+                          expression: "form.account_type"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("b-form-input", {
+                        staticClass: "register-input",
+                        attrs: {
+                          size: "sm",
+                          id: "input-account_number",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.form.account_number,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "account_number", $$v)
+                          },
+                          expression: "form.account_number"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  staticClass: "register-label",
+                  attrs: {
+                    label: "Phone Number",
+                    "label-for": "input-phone_number"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    staticClass: "register-input",
+                    attrs: {
+                      size: "sm",
+                      id: "input-phone_number",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.form.phone_number,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "phone_number", $$v)
+                      },
+                      expression: "form.phone_number"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                { staticClass: "register-checkbox" },
+                [
+                  _c(
+                    "b-form-checkbox",
+                    {
+                      attrs: { id: "check-agreement", name: "check-agreement" },
+                      model: {
+                        value: _vm.form.agreement,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "agreement", $$v)
+                        },
+                        expression: "form.agreement"
+                      }
+                    },
+                    [_vm._v("I agree with terms and conditions")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-20" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "register-footer d-flex flex-column" },
+            [
+              _c("b-button", { staticClass: "btn register-button" }, [
+                _vm._v("Sign up")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "spacer-10" }),
+              _vm._v(" "),
+              _c(
+                "p",
+                {
+                  staticClass: "sub-title",
+                  on: {
+                    click: function($event) {
+                      return _vm.login()
+                    }
+                  }
+                },
+                [_vm._v("Already have an account? Sign in.")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+>>>>>>> origin/newdava-dev
 
 
 // module

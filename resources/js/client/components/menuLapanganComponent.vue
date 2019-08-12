@@ -44,7 +44,7 @@
         <b-card-text>
           {{lapangan.field_type}}
         </b-card-text>
-        <a href="editlapang"><b-button variant="light">Edit</b-button></a>
+        <a href="editlapang/4141"><b-button variant="light">Edit</b-button></a>
         <b-button variant="danger" @click="deleteLapang(lapangan.id_field)">Delete </b-button>
        </b-card> 
         </b-card-group>
@@ -103,6 +103,7 @@
                 
             };
         },
+        
         created(){
               let uri = 'http://localhost:8000/api/v1/field';
               this.axios.get(uri).then(response => {
@@ -120,7 +121,10 @@
             //       this.dataLapangan = response.data;
             //   });
             // },
-
+            func(){	
+	        var FieldId  = lapangan.id_field;
+	        window.location.href = "editlapang" + FieldId;
+            },
             editLapang(id_field){
                 let uri = `http://localhost:8000/api/v1/field/${id_field}`;
                 this.axios.post(uri, this.dataLapangan).then(response => {

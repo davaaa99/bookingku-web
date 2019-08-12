@@ -17448,6 +17448,11 @@ main {
   margin-top: 2%;
 }
 
+#lapang-detail .card-img {
+  width: 100%;
+  height: 450px;
+}
+
 #addlapang .buttonadd {
   float: right;
   padding-top: 5px;
