@@ -84906,7 +84906,7 @@ module.exports = "/images/logo.png?00f6a2c540cf18779f150623c4764de4";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\xampp\htdocs\ubookingku-web\bookingku-web\resources\js\client\client.js */"./resources/js/client/client.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation register DONE\bookingku-web\resources\js\client\client.js */"./resources/js/client/client.js");
 
 
 /***/ })
