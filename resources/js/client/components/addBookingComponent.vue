@@ -1,31 +1,12 @@
 <template>
     <div id="addbooking">
-        <b-form @submit="onSubmit" @reset="onReset">
-            <b-form-group>
-                <b-row>
-                <b-col cols="4">
-                    <label for="location">Lokasi</label>
-                    <b-form-select v-model="selectedLocation" :options="location"></b-form-select>
-                </b-col>
-                <b-col cols="4">
-                    <label for="field">Lapang</label>
-                    <b-form-select v-model="selectedField" :options="field"></b-form-select>
-                </b-col>
-                <b-col cols="4">
-                    <b-row>
-                        <label for="date">Tanggal</label>
-                    </b-row>
-                    <b-row>
-                        <date-picker v-model="selectedDate" lang="en" :config="date"></date-picker>
-                    </b-row>
-                </b-col>
-            </b-row>
-            </b-form-group>
-            <b-form-group>
-                    <b-card-group deck>
-                        <!-- foreach field -->
-                        <b-card border-variant="secondary" header="Lapang A" header-border-variant="white" align="center">
-                            <!-- foreach schedule where field -->
+        <div id="v-carousel" type="x/template">
+            <div class="card-carousel-wrapper">
+                <div class="card-carousel--nav__left" @click="moveCarousel(-1)" :disabled="atHeadOfList"></div>
+                <div class="card-carousel">
+                <div class="card-carousel--overflow-container">
+                    <div class="card-carousel-cards" :style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}">
+                    <b-card border-variant="secondary" header="Lapang A" header-border-variant="white" align="center">
                             <b-button class="available">08.00-09.00</b-button>
                             <b-button class="available">09.00-10.00</b-button>
                             <b-button class="unavailable">10.00-11.00</b-button>
@@ -40,8 +21,8 @@
                             <b-button class="unavailable">19.00-20.00</b-button>
                             <b-button class="available">20.00-21.00</b-button>
                             <b-button class="available">21.00-22.00</b-button>
-                        </b-card>
-                            <b-card border-variant="secondary" header="Lapang B" header-border-variant="white" align="center">
+                    </b-card>
+                    <b-card border-variant="secondary" header="Lapang B" header-border-variant="white" align="center">
                                 <!-- foreach schedule where field -->
                                 <b-button class="available">08.00-09.00</b-button>
                                 <b-button class="available">09.00-10.00</b-button>
@@ -75,7 +56,32 @@
                                 <b-button class="available">20.00-21.00</b-button>
                                 <b-button class="available">21.00-22.00</b-button>
                             </b-card>
-                    </b-card-group>
+                    </div>
+                </div>
+                </div>
+                <div class="card-carousel--nav__right" @click="moveCarousel(1)" :disabled="atEndOfList"></div>
+            </div>
+        </div>
+        <b-form @submit="onSubmit" @reset="onReset">
+            <b-form-group>
+                <b-row>
+                <b-col cols="4">
+                    <label for="location">Lokasi</label>
+                    <b-form-select v-model="selectedLocation" :options="location"></b-form-select>
+                </b-col>
+                <b-col cols="4">
+                    <label for="field">Lapang</label>
+                    <b-form-select v-model="selectedField" :options="field"></b-form-select>
+                </b-col>
+                <b-col cols="4">
+                    <b-row>
+                        <label for="date">Tanggal</label>
+                    </b-row>
+                    <b-row>
+                        <date-picker v-model="selectedDate" lang="en" :config="date"></date-picker>
+                    </b-row>
+                </b-col>
+            </b-row>
             </b-form-group>
             <b-form-group id="input-name"  Label="Nama / Email Pelaggan" label-for="input-name">
                 <b-form-row class="justify-content-md-right">
@@ -134,6 +140,18 @@
     export default {
         data(){
             return{
+                currentOffset: 0,
+                windowSize: 3,
+                paginationFactor: 220,
+                items: [
+                    {name: 'Tycoon Thai', tag: "Thai"},
+                    {name: 'Ippudo', tag: "Japanese"},
+                    {name: 'Milano', tag: "Pizza"},
+                    {name: 'Tsing Tao', tag: "Chinese"},
+                    {name: 'Frances', tag: "French"},
+                    {name: 'Burma Superstar', tag: "Burmese"},
+                    {name: 'Salt and Straw', tag: "Ice cream"},
+                ],
                 perPage:20,
                 currentPage:1,
                 selectedLocation: null,
@@ -153,6 +171,14 @@
                 "paymentType":"", 
                 "paymentValue":"",//ambil dari db
             }
+        },
+        computed: {
+            atEndOfList() {
+            return this.currentOffset <= (this.paginationFactor * -1) * (this.items.length - this.windowSize);
+            },
+            atHeadOfList() {
+            return this.currentOffset === 0;
+            },
         },
         methods:{
             onSubmit(book){
@@ -190,6 +216,14 @@
                     '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
                     '/bookinglist';
 
+            },
+            moveCarousel(direction) {
+            // Find a more elegant way to express the :style. consider using props to make it truly generic
+                if (direction === 1 && !this.atEndOfList) {
+                    this.currentOffset -= this.paginationFactor;
+                } else if (direction === -1 && !this.atHeadOfList) {
+                    this.currentOffset += this.paginationFactor;
+                }
             }
         }
 
