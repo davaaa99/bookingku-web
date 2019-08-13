@@ -35,17 +35,16 @@ class PaymentController extends Controller
     /**
      * Create and store new payment and payment_booking.
      *
-     * @param  String $client_email
-     * @param  Date $date
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create($client_email,$date)
+    public function create(Request $request)
     {
         try {
             /**
              * Get list booking based on client email
              */
-            $booking=Booking::where('client_email', $client_email)->where('created_at','LIKE',"%$date%")->get();
+            $booking=Booking::where('client_email', $request->client_email)->where('created_at','LIKE',"%$$request->date%")->get();
             
             // $user=DB::table('user')->where('client_email', $client_email)->first('name');
             

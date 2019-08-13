@@ -54,7 +54,7 @@
               <th>TANGGAL</th>
               <th>JUMLAH</th>
             </tr>
-            <tr v-for="dt in dataTransaksi">
+            <tr v-for="dt in dataTransaksi" :key="dt.dataTransaksi">
               <td>{{ dt.namaTransaksi}}</td>
               <td>{{dt.tanggal}}</td>
               <td>{{dt.jumlah}}</td>
