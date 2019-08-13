@@ -145,6 +145,11 @@ class BookingController extends Controller
                                         ->orwhere('created_at','LIKE',"%$request->date%")
                                         ->get();
             }
+            $listBooking=Field::join('schedules','schedules.id_field','=','fields.id_field')
+                                ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                ->where('fields.id_field',$id_field)
+                                ->where('bookings.created_at','LIKE',"%$date%")
+                                ->select('bookings.*')->get();
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),
@@ -175,6 +180,12 @@ class BookingController extends Controller
                                                 ->get();
                 }
             }
+            $listbooking=Location::join('fields','fields.id_location','=','locations.id_location')
+                                    ->join('schedules','schedules.id_field','=','fields.id_field')
+                                    ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                    ->where('locations.id_location',$id_location)
+                                    ->where('bookings.created_at','LIKE',"%$date%")
+                                    ->select('bookings.*')->get();
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),

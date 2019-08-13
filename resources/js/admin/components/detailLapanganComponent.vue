@@ -17,7 +17,7 @@
           <div class="row">
             <div
               class="col-5 list-jam d-flex align-items-center justify-content-center"
-              :v-for="jam in lapangan.jamBooking">{{jam.jam}}</div>
+              v-for="jam in lapangan.jamBooking">{{jam.jam}}</div>
           </div>
         </div>
       </div>

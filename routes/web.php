@@ -25,8 +25,8 @@ Route::group(['prefix' => '/v1/auth'], function () {
     Route::get('logout', 'API\AuthController@logout')->name('clientlogout');
 });
 
-Route::get('/clientregister','ClientPageController@register')->name('clientregister');
-Route::get('/clientlogin','ClientPageController@login')->name('clientlogin');
+Route::get('/cregister','ClientPageController@register')->name('clientregister');
+Route::get('/clogin','ClientPageController@login')->name('clientlogin');
 
 /**
  * Router Group for
@@ -38,23 +38,19 @@ Route::get('/clientlogin','ClientPageController@login')->name('clientlogin');
 // });
 
 /**
- * Firman
- * Admin Page
  * Router Group for client
  */
-// Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
-    // Route::group(function () {
+Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
     Route::get('/locationlist','ClientPageController@locationList')->name('locationlist');
     Route::get('/locationdetail','ClientPageController@locationDetail')->name('locationdetail');
     Route::get('/locationadd','ClientPageController@locationAdd')->name('locationadd');
     Route::get('/locationedit','ClientPageController@locationEdit')->name('locationedit');
-// });
+});
 
 /**
  * Router Group for admin
  */
-// Route::group(['middleware' => ['auth', 'verified', 'is_admin']], function () {
-    // Route::group(['middleware' => ['auth', 'verified',]], function () {
+Route::group(['middleware' => ['auth', 'verified', 'is_admin']], function () {
     Route::get('/verifybooking','AdminPageController@index')->name('admin');
     Route::get('/verifydetail/{id}','AdminPageController@verifyBookingDetail')->name('verifybookingdetail');
     Route::get('/clientlist','AdminPageController@clientList')->name('clientlist');
@@ -63,35 +59,39 @@ Route::get('/clientlogin','ClientPageController@login')->name('clientlogin');
     Route::get('/payment','AdminPageController@payment')->name('payment');
     Route::get('/clientlist/detaillokasi/detaillapang/','AdminPageController@payment')->name('payment');    
     Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');
-
-    Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
-    Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');
-    Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
-    
-    Route::get('/menulapang','ClientPageController@menulapang')->name('lapang');
-    Route::get('/addlapang','ClientPageController@addLapang')->name('addlapang');
-    Route::get('/editlapang/{id}','ClientPageController@editLapang')->name('editlapang');
-    Route::get('/detaillapang','ClientPageController@detailLapang')->name('detaillapang');
+    // Route::get('/menulapang','ClientPageController@menulapang')->name('lapang');
+    // Route::get('/addlapang','ClientPageController@addLapang')->name('addlapang');
+    // Route::get('/editlapang/{id}','ClientPageController@editLapang')->name('editlapang');
+    // Route::get('/detaillapang','ClientPageController@detailLapang')->name('detaillapang');
 
 
-// });
+});
 
 /**
  * Router Group for Client Page
  */
-
-
 $now = \Carbon\Carbon::now();
 Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm'. (string) $now->day], function () {
     Route::get('/locationlist','ClientPageController@locationList')->name('locationlist');
     Route::get('/locationdetail','ClientPageController@locationDetail')->name('locationdetail');
     Route::get('/locationadd','ClientPageController@locationAdd')->name('locationadd');
     Route::get('/locationedit','ClientPageController@locationEdit')->name('locationedit');
+    // Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
+    // Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');
 
     Route::get('/register','ClientPageController@register')->name('clientregister');
     Route::get('/login','ClientPageController@login')->name('clientlogin');
-    Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
     
-    Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
-    Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');
+    
+    
+
+    
 });
+
+Route::get('/menulapang','ClientPageController@menulapang')->name('lapang');
+    Route::get('/addlapang','ClientPageController@addLapang')->name('addlapang');
+    Route::get('/editlapang/{id}','ClientPageController@editLapang')->name('editlapang');
+    Route::get('/detaillapang','ClientPageController@detailLapang')->name('detaillapang');
+Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
+Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
+Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');

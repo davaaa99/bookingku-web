@@ -91275,10 +91275,6 @@ Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_3___default.a);
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('booking-list', __webpack_require__(/*! ./components/bookingListComponent.vue */ "./resources/js/client/components/bookingListComponent.vue")["default"]);
-Vue.component('add-booking', __webpack_require__(/*! ./components/addBookingComponent.vue */ "./resources/js/client/components/addBookingComponent.vue")["default"]);
-Vue.component('manage-schedule', __webpack_require__(/*! ./components/manageScheduleComponent.vue */ "./resources/js/client/components/manageScheduleComponent.vue")["default"]);
-Vue.component('client-list', __webpack_require__(/*! ../admin/components/clientListComponent.vue */ "./resources/js/admin/components/clientListComponent.vue")["default"]);
 Vue.component('register-component', __webpack_require__(/*! ./components/registerComponent.vue */ "./resources/js/client/components/registerComponent.vue")["default"]);
 Vue.component('login-component', __webpack_require__(/*! ./components/loginComponent.vue */ "./resources/js/client/components/loginComponent.vue")["default"]);
 Vue.component('location-list', __webpack_require__(/*! ./components/locationListComponent.vue */ "./resources/js/client/components/locationListComponent.vue")["default"]);

@@ -30,12 +30,6 @@ Vue.use(Vuelidate);
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('booking-list', require('./components/bookingListComponent.vue').default);
-Vue.component('add-booking', require('./components/addBookingComponent.vue').default);
-Vue.component('manage-schedule', require('./components/manageScheduleComponent.vue').default);
-Vue.component('client-list', require('../admin/components/clientListComponent.vue').default);
-
-
 
 Vue.component('register-component', require('./components/registerComponent.vue').default);
 Vue.component('login-component', require('./components/loginComponent.vue').default);
@@ -55,6 +49,7 @@ Vue.component('client-list', require('../admin/components/clientListComponent.vu
 
 Vue.component('booking-list', require('./components/bookingListComponent.vue').default);
 Vue.component('add-booking', require('./components/addBookingComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
