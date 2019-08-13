@@ -14,6 +14,19 @@
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('admin') }}" class="content-link">
                         <i class="far fa-clone"></i>
+                        DASHBOARD
+            </a>
+                </div>
+                <div class="content-item d-flex align-items-center">
+                    <a href="{{ route('locationlist') }}" class="content-link">
+                        <i class="far fa-address-card"></i>
+                        LOCATION
+                    </a>
+                </div>
+                <div class="content-item d-flex align-items-center">
+                    <a href="{{ route('register') }}" class="content-link">
+                        <i class="far fa-address-card"></i>
+                        REGISTER
                         VERIFY BOOKING
                     </a>
                 </div>
@@ -27,6 +40,12 @@
                     <a href="{{ route('payment') }}" class="content-link">
                         <i class="far fa-credit-card"></i>
                         PAYMENT
+                    </a>
+                </div>
+                <div class="content-item d-flex align-items-center">
+                    <a href="{{ route('clientlogout') }}" class="content-link">
+                        <i class="far fa-address-card"></i>
+                        LOGOUT
                     </a>
                 </div>
             </div>

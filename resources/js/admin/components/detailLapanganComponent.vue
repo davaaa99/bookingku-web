@@ -1,6 +1,6 @@
 <template>
   <div id="detail-lapangan">
-    <div class="lapangan" v-for="lapangan in detailLapangan">
+    <div class="lapangan" v-for="lapangan in detailLapangan" :key="lapangan.detailLapangan">
       <div class="col-md-12 col-lg-6 col-sm-12">
         <div class="image" :style="{ 'background-image': 'url(' + lapangan.field_photo + ')' }"></div>
       </div>
@@ -12,7 +12,7 @@
             v-model="filterTanggal"
             lang="en"
             input-class="datepicker"
-            format="DD-MM-YYYY"
+            format="DD-MM-YYYY"  
           ></date-picker>
           <div class="row">
             <div

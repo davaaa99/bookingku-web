@@ -25,33 +25,37 @@ Route::group(['prefix' => '/v1/auth'], function () {
  */
 Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => 'v1'], function () {    
     Route::get('locations','API\REST\LocationController@index');
-    Route::get('field/{id_location}','API\REST\FieldController@show');
-    Route::get('schedule/{id_field}','API\REST\ScheduleController@show');
-    Route::post('booking/{id_schedule}/{client_email}','API\REST\BookingController@create');
-    Route::get('booking/{id_field}/{date}','API\REST\BookingController@showByUser');
+    Route::get('fields/{id_location}','API\REST\FieldController@show');
+    Route::get('schedules/{id_field}','API\REST\ScheduleController@show');
+    Route::post('booking','API\REST\BookingController@create');
+    Route::get('bookings','API\REST\BookingController@showByUser');
     
 });
 
 /**
  * Router Group for web client
  */
-Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
+// Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' => 'v1'], function () {    
+    Route::group(['prefix' => 'v1'], function () {    
     Route::get('location','API\REST\LocationController@show');
     Route::post('location','API\REST\LocationController@create');
     Route::put('location/{id_location}','API\REST\LocationController@update');
     Route::delete('location/{id_location}','API\REST\LocationController@destroy');
 
-    Route::get('field/{id_location}','API\REST\FieldController@show');
-    Route::post('field/{id_location}/{id_kind}','API\REST\FieldController@create');
+
+    
+    Route::get('field','API\REST\FieldController@show');
+    Route::post('field','API\REST\FieldController@store');
+    Route::get('/field/{id}', 'PI\REST\FieldController@edit');
     Route::put('field/{id_field}','API\REST\FieldController@update');
     Route::delete('field/{id_field}','API\REST\FieldController@destroy');
     
     Route::get('schedule/{id_field}','API\REST\ScheduleController@show');
-    Route::post('schedule/{id_field}','API\REST\ScheduleController@create');
+    Route::post('schedule','API\REST\ScheduleController@create');
     Route::delete('schedule/{id_schedule}','API\REST\ScheduleController@destroy');
     
-    Route::get('booking/{id_field}/{date}','API\REST\BookingController@showByField');
-    Route::post('booking/{id_schedule}','API\REST\BookingController@createBookingManual');
+    Route::post('bookings','API\REST\BookingController@showByField');
+    Route::post('booking/manual','API\REST\BookingController@createBookingManual');
     Route::put('/booking/{id_booking}','API\REST\BookingController@update');
     Route::delete('/booking/{id_booking}', 'API\REST\BookingController@destroy');
 
@@ -70,6 +74,10 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
     Route::get('users','API\REST\UserController@getUser');
     Route::get('user/{name}','API\REST\UserController@searchUser');
 
+    Route::get('locations/admin','API\REST\LocationController@index');
+    Route::get('fields/admin/{id_location}','API\REST\FieldController@show');
+    Route::post('bookings/admin','API\REST\BookingController@showByLocation');
+    Route::put('/bookings/{id_booking}','API\REST\BookingController@update');
     Route::get('locations','API\REST\LocationController@index');
     Route::get('fields/{id_location}','API\REST\FieldController@show');
 
@@ -77,7 +85,12 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_client'], 'prefix' =>
     Route::get('bookings/{id_location}/{date}','API\REST\BookingController@showByLocation');
     Route::put('/booking/{id_booking}','API\REST\BookingController@update');
     
-    Route::post('payment/{email}/{date}','API\REST\PaymentController@create');
+    Route::get('kindoffield','API\REST\KindOfFieldController@index');
+    Route::post('kindoffield','API\REST\KindOfFieldController@create');
+    Route::put('kindoffield/{id_kind_of_field}','API\REST\KindOfFieldController@update');
+    Route::delete('kindoffield/{id_kind_of_field}','API\REST\KindOfFieldController@destroy');
+
+    Route::post('payment','API\REST\PaymentController@create');
     Route::put('payment/{id_payment}', 'API\REST\PaymentController@update');
     Route::delete('payment/{id_payment}', 'API\REST\PaymentController@destroy');
 });

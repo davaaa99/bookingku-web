@@ -89,11 +89,17 @@ main {
     font-size: 16px;
     color: #FFFFFF;
 
-
 }
+
+$vue-navy: #2c3e50;
+$vue-navy-light: #3a5169;
+$vue-teal: #42b883;
+$vue-teal-light: #42b983;
+$gray: #666a73;
+$light-gray: #f8f8f8;
  
-#bookinglist{
-    button.paid{
+#bookinglist {
+    button.paid {
         &:hover {
             background-color:rgb(128, 0, 0);
             cursor: pointer;
@@ -107,7 +113,7 @@ main {
         // line-height:50px;
         // border-radius: 30px;
     }
-    button.unpaid{
+    button.unpaid {
         &:hover {
             background-color:green;
             cursor: pointer;
@@ -123,24 +129,17 @@ main {
     }
 }
 
-#addbooking{
-    .available{
+#addbooking {
+    .available {
          background: rgb(127, 189, 27) !important;
-     }
-    .unavailable{
+    }
+    .unavailable {
         background: #e93a3a !important;
     }
-    .choosed{
+    .choosed {
         background: rgb(106, 176, 223) !important;
     }
-
-    $vue-navy: #2c3e50;
-$vue-navy-light: #3a5169;
-$vue-teal: #42b883;
-$vue-teal-light: #42b983;
-$gray: #666a73;
-$light-gray: #f8f8f8;
-
+}
 
 body {
   background: $light-gray;
@@ -267,7 +266,7 @@ body {
             border-color:transparent rgba(40,44,53,.06) transparent transparent;
             border-style:solid;
             border-width:12px 12px 12px 0;
-        }
+            }
         
           &:after {
             content:"";
@@ -280,7 +279,7 @@ body {
             border-radius: 2px;
             background: white;
             box-shadow:-0px -0px 0px #004977;
-          }
+            }
         }
       }
     }
@@ -294,12 +293,20 @@ h1 {
   margin-bottom: 0;
   color: $vue-teal;
 }
+.error {
+    color: red;
+    font-weight: normal;
 }
 
 /*------------------------ SIDE BAR ------------------------*/
 #sidebar {
+    .logo{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
     .sidebar {
-        background: $black-side;
+        background :#156183;
         box-shadow: $box-shadow;
         flex-grow: 0;
         flex-shrink: 0;
@@ -334,13 +341,13 @@ h1 {
                     font-style: normal;
                     font-weight: 500;
                     font-size: 15px;
-                    color: #8B8B8B;
-                    padding-left: 20px;
+                    color: #FFFFFF;
+                    padding-left: 30px;
                     text-transform: uppercase;
                     text-decoration: none;
 
                     i {
-                        margin-right: 15px;
+                        margin-right: 10px;
                         font-size: 17px;
                     }
                 }
@@ -352,117 +359,7 @@ h1 {
 
 
 
-/*------------------------  LIST  ------------------------*/
-
-#list {
-    .btn-clear {
-        // background: $filter-color;
-        color: white;
-        font-family: Poppins;
-    }
-
-    .filter {
-
-
-        .filter-item {
-            font-size: 13px;
-
-            input {
-                &:focus {
-                    outline: none;
-                }
-            }
-
-            select {
-                &:focus {
-                    outline: none;
-                }
-            }
-
-
-            .datepicker {
-                display: flex;
-                align-items: center;
-                height: 40px;
-                border-radius: 100px;
-                padding: 10px;
-                padding-left: 20px;
-                padding-right: 20px;
-                color: #73879c !important;
-                border: none;
-                margin-right: 30px;
-                margin-bottom: 10px;
-                border: 1px solid #73879c;
-            }
-
-            .filterStatus {
-                .filterTitle {
-                    width: 200px;
-                    height: 40px;
-                    border-radius: 100px;
-                    padding: 10px;
-                    padding-left: 20px;
-                    padding-right: 20px;
-                    color: #73879c;
-                    border: none;
-                    margin-left: 30px;
-                    border: 1px solid #73879c;
-                }
-
-                .box {
-                    position: absolute;
-                    z-index: 1;
-                    width: 200px;
-                    margin-top: 10px;
-                    margin-left: 30px;
-
-                    .link {
-                        padding-top: 10px;
-                        padding-bottom: 10px;
-                        width: 180px;
-                        background: white;
-                        -webkit-box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
-                        -moz-box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
-                        box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
-
-                        .link-item {
-                            padding-left: 15px;
-                            padding-right: 15px;
-                            padding-top: 5px;
-                            padding-bottom: 5px;
-                            font-style: normal;
-                            font-weight: normal;
-                            font-size: 13px;
-                            color: #73879c;
-
-                            &:hover {
-                                background: #f5f7fa;
-                            }
-
-                            .link-status {
-                                width: 180px;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .search {
-                border: 1px solid #73879c;
-                border-radius: 100px;
-                padding: 20px;
-                height: 40px;
-
-                width: 200px;
-
-                .filterSearch {
-                    border: none;
-                }
-            }
-
-        }
-    }
-
+/*------------------------ LIST ------------------------*/
     #my-table {
         thead {
 
@@ -498,8 +395,6 @@ h1 {
                         border-radius: 4px;
                         font-size: 13px;
                         color: #FFFFFF;
-
-                        &:focus {}
                     }
                 }
 
@@ -537,14 +432,14 @@ h1 {
 
         .active {
             a {
-                background: #2796E1;
+                background: #000;
                 outline: none !important;
                 color: #FFFFFF;
 
 
 
                 &:focus {
-                    background: #2796E1;
+                    background: #000;
                     outline: none;
 
                     color: #FFFFFF;
@@ -578,7 +473,7 @@ h1 {
                 }
 
                 &:hover {
-                    background: #2796E1;
+                    background: #000;
                     outline: none;
                     color: #FFFFFF;
                     border-radius: 360px;
@@ -589,7 +484,6 @@ h1 {
         }
     }
 
-}
 
 
 /*------------------------ VERIFY BOOKING ------------------------*/
@@ -880,7 +774,6 @@ h1 {
         padding-left: 50px;
         padding-right: 50px;
 
-
         .header {
             padding-right: 15px;
 
@@ -891,9 +784,7 @@ h1 {
         }
 
         .item {
-
             text-align: right;
-
             .sub-title {
                 font-family: Poppins;
                 font-style: normal;
@@ -901,7 +792,14 @@ h1 {
                 font-size: 15px;
                 text-align: right;
                 color: black;
+            }
 
+            .signup-button {
+                border-radius: 4px;
+                font-size: 13px;
+                color: #4D4F5C;
+                background-color: #FFFFFF;
+                width: 130px;
             }
 
             .sub-item {
@@ -914,7 +812,6 @@ h1 {
         }
 
         .desc {
-
             .penerima {
                 padding-right: 50px;
             }
@@ -942,9 +839,7 @@ h1 {
         .row {
             padding-left: 30px;
             padding-right: 30px;
-
             table {
-
                 width: 100%;
                 border-left: 1px solid #E1E1E1;
                 border-top: 1px solid #E1E1E1;
@@ -989,11 +884,7 @@ h1 {
                 font-weight: 500;
                 font-size: 15px;
 
-
-
                 color: #FFFFFF;
-
-
             }
         }
 
@@ -1001,6 +892,194 @@ h1 {
 
 }
 
+/*------------------------ MENU LAPANGAN ------------------------*/
+#content{
+    .cardlapang{
+        display: inline-block
+    }
+    .gambarlapang
+    {
+        width: 100%;
+        height:100%;
+        margin: 2 auto;
+        margin-bottom: 10px;
+    }
+    .button-variant{
+        width: 20px;
+        height: 10px;
+    }
+   .card-img-top{
+       width: 100%;
+       height: 300px;
+   } 
+   .card:hover{
+       background: lightgray;
+   }
+   .card{
+       display: inline-block;
+       
+   }
+   .card-deck{
+       width: 500px;
+       height: 500px;
+       margin: 20px auto;
+       display: inline-block;
+   }
+  
+   
+}
+
+#carilokasi{
+    padding-left: 10px;
+}
+
+
+/*------------------------ MENU LAPANGAN ------------------------*/
+#lapang {
+    .btn-clear {
+        // background: $filter-color;
+        color: white;
+        font-family: Poppins;
+    }
+
+    .selectlokasi{
+        width: 75%;
+        margin-left: 1.5%;
+        margin-right: 5%;
+        display: inline-block;
+        
+    }
+    
+    .filter {
+
+
+        .filter-item {
+            font-size: 13px;
+
+            input {
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            select {
+                &:focus {
+                    outline: none;
+                }
+            }
+
+
+            .datepicker {
+                display: flex;
+                align-items: center;
+                height: 40px;
+                border-radius: 100px;
+                padding: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: #73879c !important;
+                border: none;
+                margin-right: 30px;
+                margin-bottom: 10px;
+                border: 1px solid #73879c;
+            }
+
+            .filterStatus {
+                .filterTitle {
+                    width: 300px;
+                    height: 40px;
+                    border-radius: 100px;
+                    padding: 10px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    color: #73879c;
+                    border: none;
+                    margin-left: 10px;
+                    border: 1px solid #73879c;
+                }
+
+                .box {
+                    position: absolute;
+                    z-index: 1;
+                    width: 300px;
+                    margin-top: 0px;
+                    margin-left: 10px;
+
+                    .link {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        width: 280px;
+                        padding-left: 10px;
+                        background: white;
+                        -webkit-box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+                        -moz-box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+                        box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
+
+                        .link-item {
+                            padding-left: 15px;
+                            padding-right: 15px;
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 13px;
+                            color: #73879c;
+
+                            &:hover {
+                                background: #f5f7fa;
+                            }
+
+                            .link-status {
+                                width: 180px;
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            .buttonadd{
+                position: relative;
+                margin-left: 50%
+            }
+            .cardlink{
+                color: #000000;
+            }
+            
+
+        }
+    }
+}
+
+#lapang-detail{
+    .hari{
+        width: 20%;
+        margin-left: 30px;
+    }
+    .tabel-jadwal{
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 2%;
+
+}
+
 .myselect{
     font-size: 15px;
+    }
+    .card-img{
+        width: 100%;
+        height: 450px;
+    }
+    
+}
+
+
+#addlapang{
+    .buttonadd{
+        float: right;
+        padding-top: 5px;
+        margin-bottom: 1%
+    }
+    .myselect{
+        font-size: 15px;
+    }
 }
