@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);
+@charset "UTF-8";
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -16573,34 +16574,50 @@ main {
   text-align: center;
 }
 
-#bookinglist button.paid:hover {
-  background-color: maroon;
-  cursor: pointer;
-  cursor: hand;
+/*------------------------ SIDE BAR ------------------------*/
+
+#sidebar .logo {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
-#bookinglist button.unpaid {
-  background-color: maroon;
+#sidebar .sidebar {
+  background: #156183;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  flex-grow: 0;
+  flex-shrink: 0;
   color: white;
-  text-align: center;
+  width: 250px;
+  height: 100vh;
+  padding: 20px;
 }
 
-#bookinglist button.unpaid:hover {
-  background-color: green;
-  cursor: pointer;
-  cursor: hand;
+#sidebar .sidebar.fixed-top {
+  position: fixed;
+  top: 0px;
 }
 
-#addbooking .available {
-  background: #7fbd1b !important;
+#sidebar .sidebar .brand a img {
+  height: 40px;
+  width: 40px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
-#addbooking .unavailable {
-  background: #e93a3a !important;
+#sidebar .sidebar .content-side .content-item {
+  margin-bottom: 15px;
 }
 
-#addbooking .choosed {
-  background: #6ab0df !important;
+#sidebar .sidebar .content-side .content-item .content-link {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  color: #FFFFFF;
+  padding-left: 30px;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
 body {
@@ -16949,257 +16966,58 @@ h1 {
   width: 100%;
 }
 
-#verifyBookingDetail .table-box .detail table tr td,
-#verifyBookingDetail .table-box .detail table tr th {
+#list .filter .filter-item .filterStatus .box .link {
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 20px;
-  font-family: Poppins;
-  font-size: 16px;
-  line-height: 24px;
-  /* identical to box height */
-  color: #4D4D4D;
-  border-bottom: 1px solid #EBECF1;
+  width: 180px;
+  background: white;
+  box-shadow: 0px 0px 10px 0px rgba(115, 135, 156, 0.47);
 }
 
-#verifyBookingDetail .table-box .detail table tr td .buktipembayaran,
-#verifyBookingDetail .table-box .detail table tr th .buktipembayaran {
-  max-width: 300px;
-  max-height: 300px;
-}
-
-#verifyBookingDetail .table-box .detail .tombol {
-  padding-top: 30px;
-}
-
-#verifyBookingDetail .table-box .detail .tombol .btn {
-  width: 150px;
-  height: 40px;
-  border-radius: 4px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  color: #FFFFFF;
-}
-
-#verifyBookingDetail .table-box .detail .tombol .accept {
-  background: #4ABA70;
-  margin-right: 30px;
-}
-
-#verifyBookingDetail .table-box .detail .tombol .decline {
-  background: #FF3636;
-}
-
-#client {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-/*------------------------ DETAIL LOKASI ------------------------*/
-
-#detaillokasi {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-#detaillokasi .lokasi {
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 50px;
-  background: #FFFFFF;
-  border: 1px solid #E1E1E1;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-@media (min-width: 990px) {
-  #detaillokasi .lokasi {
-    display: flex;
-  }
-}
-
-#detaillokasi .lokasi .image {
-  padding-right: 20px;
-  height: 300px;
-  background-size: cover;
-  background-position: center center;
-}
-
-@media (max-width: 990px) {
-  #detaillokasi .lokasi .image {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 750px) {
-  #detaillokasi .lokasi .image {
-    height: 200px;
-  }
-}
-
-#detaillokasi .lokasi .desc {
-  padding-left: 20px;
-  color: #5C5C5C;
-}
-
-#detaillokasi .lokasi .desc .item {
-  margin-bottom: 20px;
-}
-
-#detaillokasi .lokasi .desc .item i {
-  font-size: 15px;
-  color: #C0C0C0;
-  margin-right: 20px;
-  padding-top: 5px;
-}
-
-#detaillokasi .lokasi .desc .item .jam-buka .title-list {
-  margin-right: 10px;
-}
-
-#detaillokasi .lokasi .desc .item .jam-buka .list-jam {
-  margin-top: 10px;
-}
-
-#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul {
-  list-style: none;
-}
-
-#detaillokasi .lokasi .desc .item .jam-buka .list-jam ul li .jam {
-  margin-left: 20px;
-}
-
-#detaillokasi .lokasi .desc .nama-client {
-  font-family: Poppins;
-  font-weight: 500;
-  font-size: 20px;
-  color: #414141;
-}
-
-#detaillokasi .lokasi .btn {
-  max-width: 290.2px;
-  height: 49.16px;
-  font-size: 15px;
-  font-family: Poppins;
-  color: #FFFFFF;
-  background: #3A69B7;
-  border-radius: 4px;
-}
-
-/*------------------------ DETAIL LAPANGAN ------------------------*/
-
-#detailapangan {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-#detailapangan .lapangan {
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 50px;
-  background: #FFFFFF;
-  border: 1px solid #E1E1E1;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-@media (min-width: 990px) {
-  #detailapangan .lapangan {
-    display: flex;
-  }
-}
-
-#detailapangan .lapangan .image {
-  padding-right: 20px;
-  height: 300px;
-  background-size: cover;
-  background-position: center center;
-}
-
-@media (max-width: 990px) {
-  #detailapangan .lapangan .image {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 750px) {
-  #detailapangan .lapangan .image {
-    height: 200px;
-  }
-}
-
-#detailapangan .lapangan .nama-lapangan {
-  margin-bottom: 10px;
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 31px;
-  color: #414141;
-}
-
-#detailapangan .lapangan .jadwal .datepicker {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  border-radius: 4px;
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #73879c !important;
-  border: none;
-  margin-bottom: 10px;
-  border: 1px solid #73879c;
-}
-
-#detailapangan .lapangan .jadwal .list-jam {
-  border: 1px solid #73879c;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-family: Poopins;
-  font-size: 18px;
-  text-align: center;
-  color: #73879c;
-  margin-left: 15px;
-  margin-top: 10px;
-  height: 30px;
-}
-
-@media (max-width: 1099px) {
-  #detailapangan .lapangan .jadwal .list-jam {
-    font-size: 14px;
-  }
-}
-
-#payment {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-#paymentdetail {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-#paymentdetail .table-box {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-#paymentdetail .table-box .header {
+#list .filter .filter-item .filterStatus .box .link .link-item {
+  padding-left: 15px;
   padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  color: #73879c;
 }
 
-#paymentdetail .table-box .header .brand {
-  width: 50px;
-  height: 50px;
+#list .filter .filter-item .filterStatus .box .link .link-item:hover {
+  background: #f5f7fa;
 }
 
-#paymentdetail .table-box .item {
-  text-align: right;
+#list .filter .filter-item .filterStatus .box .link .link-item .link-status {
+  width: 180px;
 }
 
-#paymentdetail .table-box .item .sub-title {
+#list .filter .filter-item .search {
+  border: 1px solid #73879c;
+  border-radius: 100px;
+  padding: 20px;
+  height: 40px;
+  width: 200px;
+}
+
+#list .filter .filter-item .search .filterSearch {
+  border: none;
+}
+
+#list #my-table thead {
+  background: #3A69B7 !important;
+  font-family: Poppins;
+  font-style: normal;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+#list #my-table thead th {
+  text-align: center;
+}
+
+#list #my-table tbody {
   font-family: Poppins;
   font-style: normal;
   font-size: 15px;
@@ -17231,64 +17049,72 @@ h1 {
   padding-left: 50px;
 }
 
-#paymentdetail .table-box .desc .sub-title {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  color: black;
-  margin-bottom: 10px;
+#list #my-table tbody tr td {
+  text-align: center;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 
-#paymentdetail .table-box .desc .desc-item {
-  margin-bottom: 10px;
-  font-family: Poppins;
-  font-size: 11px;
-}
-
-#paymentdetail .table-box .row {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-#paymentdetail .table-box .row table {
-  width: 100%;
-  border-left: 1px solid #E1E1E1;
-  border-top: 1px solid #E1E1E1;
-  border-bottom: 1px solid #E1E1E1;
-  border-right: 1px solid #E1E1E1;
-}
-
-#paymentdetail .table-box .row table tr th {
-  font-size: 11px;
-}
-
-#paymentdetail .table-box .row table tr td {
-  font-size: 11px;
-  font-family: Poppins;
-}
-
-#paymentdetail .table-box .row table tr td,
-#paymentdetail .table-box .row table tr th {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-#paymentdetail .table-box .row .total {
-  max-width: 50%;
-}
-
-#paymentdetail .table-box .row .btn {
-  background: #3A69B7;
+#list #my-table tbody tr td .btn-detail {
+  background: #3FB5E1;
   border-radius: 4px;
-  width: 200px;
-  height: 50px;
-  font-family: Poppins;
-  font-weight: 500;
-  font-size: 15px;
+  font-size: 13px;
   color: #FFFFFF;
+}
+
+#list .pagination li a {
+  color: #4D4D4D;
+  border: none !important;
+  border-radius: 360px;
+  margin-right: 10px;
+}
+
+#list .pagination li span {
+  color: #4D4D4D;
+  border: none !important;
+  border-radius: 360px;
+  margin-right: 10px;
+  width: 30px;
+  width: 30px;
+}
+
+#list .pagination .active a {
+  background: #2796E1;
+  outline: none !important;
+  color: #FFFFFF;
+}
+
+#list .pagination .active a:focus {
+  background: #2796E1;
+  outline: none;
+  color: #FFFFFF;
+  border-radius: 360px;
+}
+
+#list .pagination .active a:hover {
+  background: #2796E1;
+  outline: none;
+  color: #FFFFFF;
+  border-radius: 360px;
+}
+
+#list .pagination .active span {
+  background: #2796E1;
+  outline: none !important;
+  color: #FFFFFF;
+  border-radius: 360px;
+  font-family: Poppins;
+  width: 30px;
+  width: 30px;
+}
+
+#list .pagination .active span:focus {
+  background: #2796E1;
+  outline: none;
+  color: #FFFFFF;
+  border-radius: 360px;
+  width: 30px;
+  width: 30px;
 }
 
 /*------------------------ MENU LAPANGAN ------------------------*/

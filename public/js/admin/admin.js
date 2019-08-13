@@ -75038,17 +75038,21 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-5 list-jam d-flex align-items-center justify-content-center",
-                      attrs: { "v-for": _vm.jam in lapangan.jamBooking }
-                    },
-                    [_vm._v(_vm._s(_vm.jam.jam))]
-                  )
-                ])
+                _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(lapangan.jamBooking, function(jam) {
+                    return _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col-5 list-jam d-flex align-items-center justify-content-center"
+                      },
+                      [_vm._v(_vm._s(jam.jam))]
+                    )
+                  }),
+                  0
+                )
               ],
               1
             )
@@ -91168,7 +91172,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\admin\admin.js */"./resources/js/admin/admin.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation register DONE\bookingku-web\resources\js\admin\admin.js */"./resources/js/admin/admin.js");
 
 
 /***/ })

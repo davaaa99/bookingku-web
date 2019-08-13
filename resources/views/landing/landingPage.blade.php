@@ -21,7 +21,7 @@
                 </div>
                 <div class="spacer-50"></div>
                 <div class="btn-aksi d-flex align-items-center col-lg-6 col-md-8 col-12">
-                    <a href="{{ route('clientlogin') }}" class="btn btn-daftar">DAFTAR</a>
+                    <a href="{{ route('login') }}" class="btn btn-daftar">DAFTAR</a>
                     <a href="" class="btn btn-pelajari">PELAJARI</a>
                 </div>
                 <div class="spacer-50"></div>
