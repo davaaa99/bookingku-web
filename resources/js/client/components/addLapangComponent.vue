@@ -3,13 +3,14 @@
     <div id="addlapang">
         <form> 
          <div class="idlapangan">
-                <!-- <b-form-group id="input-group-1" label="Id Lapang:" label-for="input-1"> -->
+                <b-form-group id="input-group-1" label="Id Lapang:" label-for="input-1">
                     <b-form-input
                     id="input-1"
+                    required
                     v-model="form.id_field"
                     placeholder="Masukan Id Lapang" >
                     </b-form-input>
-                <!-- </b-form-group> -->
+                </b-form-group>
             </div>
             <!-- <div class="chooselocation">
                 <b-form-group id="input-group-1" label="Location:" label-for="input-1">

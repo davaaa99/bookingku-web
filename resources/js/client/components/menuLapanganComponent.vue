@@ -44,7 +44,7 @@
         <b-card-text>
           {{lapangan.field_type}}
         </b-card-text>
-        <a href="editlapang/4141"><b-button variant="light">Edit</b-button></a>
+        <a href="editlapang"><b-button variant="light">Edit</b-button></a>
         <b-button variant="danger" @click="deleteLapang(lapangan.id_field)">Delete </b-button>
        </b-card> 
         </b-card-group>

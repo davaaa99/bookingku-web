@@ -13,7 +13,12 @@ Vue.use(VueRouter);
 
 import VueAxios from 'vue-axios';
 import axios from 'axios';
-Vue.use(VueAxios,axios);
+Vue.use(VueAxios, axios);
+
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

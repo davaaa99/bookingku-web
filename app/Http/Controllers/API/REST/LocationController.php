@@ -10,6 +10,7 @@ use App\Location;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Response;
+use App\Http\Resources\PostCollection;
 
 
 class LocationController extends Controller
@@ -19,10 +20,10 @@ class LocationController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
-    {
-        $this->middleware(['auth:api']);
-    }
+    // public function __construct(Request $request)
+    // {
+    //     $this->middleware(['auth:api']);
+    // }
 
     /**
      * Display a listing of the location.
@@ -31,19 +32,20 @@ class LocationController extends Controller
      */
     public function index()
     {
-        try{
-            $dataLocation = Location::all();
-        }catch (Exception $e){
-            return response()->json()([
-                'message' => 'Failed retrieve data.' . $e->getMessage(),
-                'serve' => []
-            ], 500);
-        }
+        // try{
+        //     $dataLocation = Location::all();
+        // }catch (Exception $e){
+        //     return response()->json()([
+        //         'message' => 'Failed retrieve data.' . $e->getMessage(),
+        //         'serve' => []
+        //     ], 500);
+        // }
 
-        return response()->json([
-            'message' => 'Successfully retrieved data.',
-            'serve' => $dataLocation
-        ], 200);
+        // return response()->json([
+        //     'message' => 'Successfully retrieved data.',
+        //     'serve' => $dataLocation
+        // ], 200);
+        return new PostCollection(Location::all());
     }
 
     /**
@@ -122,7 +124,8 @@ class LocationController extends Controller
     public function show()
     {
         try{
-            $idUser = Auth::user()->id_user;
+            $dataUser = Auth::user();
+            $idUser = $dataUser->id_user;
             $dataLocation = Location::where('id_user',$idUser)->get();
         }catch(Exception $e){
             return response()->json([
@@ -135,6 +138,12 @@ class LocationController extends Controller
             'message' => 'Successfully retrieved data.',
             'serve' => $dataLocation,
         ], 200);
+
+        // $dataUser = Auth::user();
+        // return response()->json([
+        //     'message' => 'Successfully retrieved data.',
+        //     'serve' => print_r($dataUser),
+        // ], 200);
     }
 
     /**
