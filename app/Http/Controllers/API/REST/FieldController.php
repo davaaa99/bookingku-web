@@ -34,8 +34,7 @@ class FieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    { 
+    public function index(){ 
         // try{
         //     $dataField = Field::all();
         // }catch (Exception $e){
@@ -82,8 +81,7 @@ class FieldController extends Controller
      * @param  String $field_name
      * @return \Illuminate\Http\Response
      */
-    public function search($field_name)
-    {
+    public function search($field_name){
         try{
             $field = Field::where('field_name','LIKE',"%$field_name%")->get();
         }catch(Exception $e){
@@ -105,8 +103,7 @@ class FieldController extends Controller
      * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // try{
         //     $dataUser = Auth::user();
         //     $kind_of_field = DB::table('kind_of_fields')->where('name_of_kind',$request->name_of_kind)->first();
@@ -182,22 +179,34 @@ class FieldController extends Controller
     //         'serve' => []
     //     ], 200);
     // }
-    public function update($id_field, Request $request)
+
+    /**
+     * Remove the specified field from storage.
+     *
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
     {
-      $field = Field::find($id_field);
+      $field = Field::find($request->id_field);
+      $field->field_name = $request->field_name;
+      $field->field_type = $request->field_type;
+      $field->save();
 
-      $field->update($request->all());
-
-      return response()->json('successfully updated');
+      return response()->json([
+                'message' => 'Successfully updated field data.',
+                'serve' => []
+            ], 200);
     }
+
+
     /**
      * Remove the specified field from storage.
      *
      * @param  String $id_field
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_field)
-    {
+    public function destroy($id_field){
         // try{
         //     $dataUser = Auth::user();
 
@@ -220,10 +229,10 @@ class FieldController extends Controller
     }
 
     
-    public function edit($id_field)
+    public function edit(Request $request)
     {
-        $field = Field::find($id_field);
-        return response()->json($field);
+        $field = Field::find($request->id);
+        return $field;
     }
     
 }

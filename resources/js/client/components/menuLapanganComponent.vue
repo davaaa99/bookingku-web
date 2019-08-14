@@ -44,7 +44,7 @@
         <b-card-text>
           {{lapangan.field_type}}
         </b-card-text>
-        <a href="editlapang"><b-button variant="light">Edit</b-button></a>
+        <a :href="'editlapang/' + lapangan.id_field"><b-button variant="light">Edit</b-button></a>
         <b-button variant="danger" @click="deleteLapang(lapangan.id_field)">Delete </b-button>
        </b-card> 
         </b-card-group>
@@ -111,31 +111,13 @@
                   this.dataLapangan = response.data.data;   
               });
             },
-        // created: function(){
-        //     this.fetchItems();
-        // },
         methods: {
-            // fetchItems(){
-            //   let uri = 'http://127.0.0.1:8000/api/v1/field';
-            //   this.Axios.get(uri).then((response) => {
-            //       this.dataLapangan = response.data;
-            //   });
-            // },
-            func(){	
-	        var FieldId  = lapangan.id_field;
-	        window.location.href = "editlapang" + FieldId;
-            },
-            editLapang(id_field){
-                let uri = `http://localhost:8000/api/v1/field/${id_field}`;
-                this.axios.post(uri, this.dataLapangan).then(response => {
-                console.log(this.form);
-              });
-            },
-            deleteLapang(id_field){
+            deleteLapang(id_field){     
               let uri = `http://localhost:8000/api/v1/field/${id_field}`;
               this.axios.delete(uri).then(response => {
                this.dataLapangan.splice(this.dataLapangan.indexOf(id_field), 1);
                console.log(this.dataLapangan);
+               window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
               });
             },
             show: function () {

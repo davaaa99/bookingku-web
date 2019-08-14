@@ -85,8 +85,9 @@ class ClientPageController extends Controller
     public function addLapang(){
         return view('client.AddLapang');
     }
-    public function editLapang(){
-        return view('client.EditLapang');
+    public function editLapang($id_field){
+        $data['id'] = $id_field;
+        return view('client.EditLapang',$data);
     }
     public function detailLapang(){
         return view('client.DetailLapangan');

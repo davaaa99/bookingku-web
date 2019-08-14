@@ -77,18 +77,17 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
     Route::get('/locationedit','ClientPageController@locationEdit')->name('locationedit');
 
     Route::get('/register','ClientPageController@register')->name('clientregister');
-    Route::get('/login','ClientPageController@login')->name('clientlogin');
-    
-    
-    
-
-    
+    Route::get('/login','ClientPageController@login')->name('clientlogin');    
 });
 
-Route::get('/menulapang','ClientPageController@menulapang')->name('lapang');
+    Route::get('/menulapang','ClientPageController@menulapang')->name('lapang');
     Route::get('/addlapang','ClientPageController@addLapang')->name('addlapang');
     Route::get('/editlapang/{id}','ClientPageController@editLapang')->name('editlapang');
     Route::get('/detaillapang','ClientPageController@detailLapang')->name('detaillapang');
-Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
-Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
+    Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
+    Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
     Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');
+
+    Route::post('edit', 'API\REST\FieldController@edit');
+    Route::post('add', 'API\REST\FieldController@store');
+    Route::put('data/field', 'API\REST\FieldController@update');
