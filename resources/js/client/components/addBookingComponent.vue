@@ -7,7 +7,7 @@
                 <div class="card-carousel--overflow-container">
                     <div class="card-carousel-cards" :style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}">
                     <b-card border-variant="secondary" header="Lapang A" header-border-variant="white" align="center">
-                            <b-button class="available">08.00-09.00</b-button>
+                            <b-button class="available" :class="classStatus(0)" v-on:click="changeStatus(0)">08.00-09.00</b-button>
                             <b-button class="available">09.00-10.00</b-button>
                             <b-button class="unavailable">10.00-11.00</b-button>
                             <b-button class="unavailable">11.00-12.00</b-button>
@@ -143,15 +143,6 @@
                 currentOffset: 0,
                 windowSize: 3,
                 paginationFactor: 220,
-                items: [
-                    {name: 'Tycoon Thai', tag: "Thai"},
-                    {name: 'Ippudo', tag: "Japanese"},
-                    {name: 'Milano', tag: "Pizza"},
-                    {name: 'Tsing Tao', tag: "Chinese"},
-                    {name: 'Frances', tag: "French"},
-                    {name: 'Burma Superstar', tag: "Burmese"},
-                    {name: 'Salt and Straw', tag: "Ice cream"},
-                ],
                 perPage:20,
                 currentPage:1,
                 selectedLocation: null,
@@ -163,9 +154,6 @@
                     format: 'YYYY/MM/DD',
                     useCurrent:false,
                 },
-                // components:{
-                //     datePicker
-                // },
                 "user_email":"",
                 "price":"", //ambil dari db
                 "paymentType":"", 
@@ -224,7 +212,23 @@
                 } else if (direction === -1 && !this.atHeadOfList) {
                     this.currentOffset += this.paginationFactor;
                 }
-            }
+            },
+            classStatus(status){
+                switch(parseInt(status)){
+                    case 0:
+                        return 'available'
+                        break;
+                    case 1:
+                        return 'choosed'
+                        break;
+                    case 2:
+                        return 'unavailable'
+                        break;
+                }
+            },
+            changeStatus(status){
+                this.item.status +=1;
+            },
         }
 
     }

@@ -2001,27 +2001,25 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
         status: 'Rejected'
       }],
       fields: ["No", {
-        key: "id_booking",
-        label: "ID Booking"
+        key: "client_email",
+        label: "Name"
       }, {
-        key: "id_schedule",
+        key: "location_name",
+        label: "Location"
+      }, {
+        key: "field_name",
+        label: "Field"
+      }, {
+        key: "created_at",
+        label: "Payment Date"
+      }, {
+        key: "start_time",
         label: "Schedule"
       }, {
-        key: "client_email",
-        label: "Client"
-      }, // {
-      //     key: "lokasi",
-      //     label: "Lokasi"
-      // },
-      // {
-      //     key: "lapangan",
-      //     label: "Lapangan"
-      // },
-      {
-        key: "created_at",
-        label: "Tanggal"
+        key: "payment_type",
+        label: "Payment Type"
       }, {
-        key: "payment_status",
+        key: "paymet_status",
         label: "Status"
       }, {
         key: "aksi",
@@ -2098,20 +2096,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    //    await Axios.get('http://localhost:8000/api/v1/clients')
-    //     .then(function(rest){
-    //         this.ClientList = rest;
-    //         console.log(this.ClientList)
-    //     }).catch(function(error){
-    //         console.log('Error :',error);
-    //     })
-    var uri = 'http://localhost:8000/api/v1/bookings';
-    this.axios.get(uri).then(function (response) {
-      _this.VerifyBooking = response.data.data;
-      console.log(response.data.data);
-    });
+    this.loadData();
   },
   methods: {
     getData: function () {
@@ -2154,6 +2139,19 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
       if (month.length < 2) month = '0' + month;
       if (day.length < 2) day = '0' + day;
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/verifydetail/' + btoa(id);
+    },
+    loadData: function loadData() {
+      var _this = this;
+
+      axios({
+        url: 'api/v1/bookings/admin/2019-07-31',
+        method: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this.VerifyBooking = response.data.serve;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   watch: {
@@ -2228,6 +2226,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2238,9 +2237,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       currentPage: 1,
       filterSearch: "",
       fields: ["No", {
-        key: "id_user",
-        label: "ID Clients"
-      }, {
         key: "email",
         label: "Email"
       }, {
@@ -2254,13 +2250,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    var uri = 'http://localhost:8000/api/v1/clients';
-    this.axios.get(uri).then(function (response) {
-      _this.ClientList = response.data.data;
-      console.log('response.data.data');
-    });
+    this.loadData();
   },
   computed: {
     rows: function rows() {
@@ -2277,6 +2267,19 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       if (month.length < 2) month = '0' + month; // if (day.length < 2) day = '0' + day;
 
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
+    },
+    loadData: function loadData() {
+      var _this = this;
+
+      axios({
+        url: 'api/v1/clients',
+        method: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this.ClientList = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });

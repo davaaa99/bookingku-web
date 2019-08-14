@@ -88,31 +88,31 @@
                 fields: [
                     "No",
                     {
-                        key: "id_booking",
-                        label: "ID Booking"
+                        key: "client_email",
+                        label:"Name"
                     },
                     {
-                        key: "id_schedule",
+                        key: "location_name",
+                        label: "Location"
+                    },
+                    {
+                        key: "field_name",
+                        label: "Field"
+                    },
+                    {
+                        key: "created_at",
+                        label: "Payment Date"
+                    },
+                    {
+                        key: "start_time",
                         label: "Schedule"
                     },
                     {
-                        key: "client_email",
-                        label:"Client"
-                    },
-                    // {
-                    //     key: "lokasi",
-                    //     label: "Lokasi"
-                    // },
-                    // {
-                    //     key: "lapangan",
-                    //     label: "Lapangan"
-                    // },
-                    {
-                        key: "created_at",
-                        label: "Tanggal"
+                        key: "payment_type",
+                        label: "Payment Type"
                     },
                     {
-                        key: "payment_status",
+                        key: "paymet_status",
                         label: "Status"
                     },
                     {
@@ -194,18 +194,7 @@
             };
         },
         mounted(){
-        //    await Axios.get('http://localhost:8000/api/v1/clients')
-        //     .then(function(rest){
-        //         this.ClientList = rest;
-        //         console.log(this.ClientList)
-        //     }).catch(function(error){
-        //         console.log('Error :',error);
-        //     })
-        let uri='http://localhost:8000/api/v1/bookings';
-        this.axios.get(uri).then(response=>{
-            this.VerifyBooking=response.data.data;
-            console.log(response.data.data);
-        });
+            this.loadData();
         },
         methods: {
             async getData() {
@@ -233,7 +222,18 @@
                     '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/verifydetail/' +
                     btoa(id);
 
-            }
+            },
+            loadData() {
+                axios({
+                    url: 'api/v1/bookings/admin/2019-07-31',
+                    method: 'GET'
+                }).then(response => {
+                    console.log(response);
+                    this.VerifyBooking = response.data.serve
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
         },
         watch: {
             filterTanggal: function (fal) {

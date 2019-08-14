@@ -664,7 +664,7 @@ main {
                         font-size: 13px;
                         color: #FFFFFF;
 
-                        &:focus {}
+                        // &:focus {}
                     }
                 }
 
@@ -956,54 +956,64 @@ main {
 /*------------------------ BOOKING ------------------------*/
 
 #bookinglist {
-    button.paid {
-        &:hover {
-            background-color: rgb(128, 0, 0);
-            cursor: pointer;
-            cursor: hand;
+    $blue: #3490dc;
+    $indigo: #6574cd;
+    $purple: #9561e2;
+    $pink: #f66d9b;
+    $red: #e3342f;
+    $orange: #f6993f;
+    $yellow: #ffed4a;
+    $green: #38c172;
+    $teal: #4dc0b5;
+    $cyan: #6cb2eb;
+    .badge {
+        font-size: 12px;
+        padding: 5px;
+        border-radius: 3px;
+        font-weight: 600;
+        &.unpaid {
+            background: rgba($red, .4) !important;
+            color: $red !important;
         }
-
-        // width: 100px;
-        // height: 50px;
-        background-color: green;
-        color: white;
-        text-align:center;
-        // line-height:50px;
-        // border-radius: 30px;
-    }
-
-    button.unpaid {
-        &:hover {
-            background-color: green;
-            cursor: pointer;
-            cursor: hand;
+    
+        &.down-payment {
+            background: rgba($orange, .4) !important;
+            color: $orange !important;
         }
-
-        // width: 100px;
-        // height: 50px;
-        background-color: rgb(128, 0, 0);
-        color: white;
-        text-align:center;
-        // line-height:50px;
-        // border-radius: 30px;
+    
+        &.full-payment {
+            background: rgba($green, .4) !important;
+            color: $green !important;
+        }
     }
+    
 }
 
 #addbooking {
     
+    $blue: #1e92f1;
+    $indigo: #6574cd;
+    $purple: #9561e2;
+    $pink: #f66d9b;
+    $red: #e3342f;
+    $orange: #f6993f;
+    $yellow: #ffed4a;
+    $green: #38c172;
+    $teal: #4dc0b5;
+    $cyan: #6cb2eb;
     .available {
-        background: rgb(127, 189, 27) !important;
-        font-size: 12px;
+        background: rgba($green, .2) !important;
+        color: $green !important;
     }
 
     .unavailable {
-        background: #e93a3a !important;
-        font-size: 12px;
+        background: rgba($red, .2) !important;
+        color: $red !important;
     }
 
     .choosed {
-        background: rgb(106, 176, 223) !important;
-        font-size: 12px;
+        background: rgba($blue, .4) !important;
+        color: $blue !important;
     }
 
     $vue-navy: #2c3e50;

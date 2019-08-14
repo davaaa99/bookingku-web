@@ -25,15 +25,16 @@
             <b-button variant="primary" class="btn btn-detail" href="addbooking" >Add</b-button>
         </b-col>
         <div class="spacer-20"></div>
-        <b-table striped hover small :items="items" :fields="fields" class="thead-light" id="bookinglist">
-            <template slot="status" slot-scope="data">
-                <b-button v-model="data.item.status" class=" btn btn-detail paid" v-bind:style="paid" v-on:click="handleClick" @click="paidAction()">{{ paid(data.item.status) }}</b-button>
-            </template>    
+        <b-table fixed bordered small :items="items" :fields="fields" class="thead-light" id="bookinglist" primary-key="id_booking" >
+            <template slot="payment_status" slot-scope="data">
+                <!-- <b-button v-model="data.item.status" class="btn btn-detail paid" v-bind:style="paid(data.item.status)" v-on:click="handleClick" @click="paidAction()">{{ paid(data.item.status) }}</b-button> -->
+                <button class="btn button badge" :class="classStatus(data.item.payment_status)" v-on:click="changeStatus(data.index)" :disabled="disableButton(data.item.payment_status)">{{paid(data.item.payment_status)}}</button>
+            </template>
         </b-table>
         <div class="spacer-20"></div>
-        <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-controls="bookinglist"
+        <!-- <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-controls="bookinglist"
             :prev-text="'«'" :next-text="'»'" :hide-goto-end-buttons="true" size="md" align="center">
-        </b-pagination>
+        </b-pagination> -->
     </div>
 </template>
 
@@ -60,20 +61,23 @@
                 },
                 fields:{
                     user: {
+                        key: 'client_email',
                         label: 'User',
                         sortable: true
                     },
                     bookingCode: {
+                        key: 'id_booking',
                         label: 'Booking Code',
                         sortable: false
                     },
                     schedule: {
-                        key: 'schedule',
+                        key: 'id_schedule',
+                        label:'Schedule',
                         sortable: true
                     },
 
-                    status: {
-                        key: 'status',
+                    payment_status: {
+                        key: 'payment_status',
                         label: 'Status',
                         sortable: true
                     },
@@ -82,60 +86,51 @@
                         sortable: true
                     }
                 },
-                items:[
-                    {
-                        user: "Tedy Subagjo",
-                        bookingCode: "BKN-001",
-                        schedule: "11.00-12.00",
-                        status: true,
-                        payment: "DP"
-                    },
-                    {
-                        user: "Tedy Subagjo",
-                        bookingCode: "BKN-001",
-                        schedule: "11.00-12.00",
-                        status: false,
-                        payment: "DP"
-                    },
-                    {
-                        user: "Tedy Subagjo",
-                        bookingCode: "BKN-001",
-                        schedule: "11.00-12.00",
-                        status: false,
-                        payment: "DP"
-                    },
-                    {
-                        user: "Tedy Subagjo",
-                        bookingCode: "BKN-001",
-                        schedule: "11.00-12.00",
-                        status: false,
-                        payment: "DP"
-                    }
-                ]
+                items:[]
             }
         },
+        mounted(){
+            this.loadData();
+            console.log(this.items);
+            
+        },
         methods:{
-            paid(status){
-                if(!status){
-                    return 'Unpaid'
-                } else return 'Paid'
+            paid($status){
+                const $key=['Unpaid','Down Payment', 'Full Payment']
+                return $key[$status]
             },
-            changeStatus(status){
-                if(status){
-                    let newStatus = status
-                    return paid(newStatus)
+            classStatus($status){
+                switch(parseInt($status)){
+                    case 0:
+                        return 'unpaid'
+                        break;
+                    case 1:
+                        return 'down-payment'
+                        break;
+                    case 2:
+                        return 'full-payment'
+                        break;
                 }
             },
-            handleClick: function() {
-                console.log(event)
+            changeStatus(index) {
+                this.items[index].payment_status += 1;                
             },
-            paidAction(status) {
-                if(status==true){
-                    return 'paidbutton'
-                } else{
-                    return 'unpaidbutton'
-                }
-            }
+            disableButton($status){
+                return $status === 2;
+            },
+            loadData() {
+                axios({
+                    url: 'api/v1/bookings',
+                    method: 'GET'
+                }).then(response => {
+                    console.log(response);
+                    this.items = response.data.serve
+                    console.log(this.items);
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+
         },
         watch:{
             filterTanggal: function (fal) {
@@ -172,10 +167,5 @@
                 self.filterData = data;
             }
         },
-        // computed: {
-        //     rows() {
-        //         return this.filterData.length;
-        //     }
-        // }
     }
 </script>

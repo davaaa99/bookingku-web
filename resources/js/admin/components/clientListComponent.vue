@@ -15,6 +15,7 @@
                 {{ data.index + 1 }}
             </template>
             <template slot="aksi" slot-scope="data">
+                <!-- <button class=" btn btn-detail" @click="detail(data.item.idClient)">Detail</button> -->
                 <button class=" btn btn-detail" @click="detail(data.item.idClient)">Detail</button>
             </template>
         </b-table>
@@ -46,10 +47,6 @@
                 fields: [
                     "No",
                     {
-                        key: "id_user",
-                        label: "ID Clients"
-                    },
-                    {
                         key: "email",
                         label: "Email"
                     },
@@ -68,11 +65,7 @@
             };
         },
         mounted(){
-        let uri='http://localhost:8000/api/v1/clients';
-        this.axios.get(uri).then(response=>{
-            this.ClientList=response.data.data;
-            console.log('response.data.data');
-        });
+            this.loadData();
         },
         computed: {
             rows() {
@@ -95,7 +88,18 @@
                     '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
                     '/clientlist/detaillokasi/' +
                     btoa(id);
-            }
+            },
+            loadData() {
+                axios({
+                    url: 'api/v1/clients',
+                    method: 'GET'
+                }).then(response => {
+                    console.log(response);
+                    this.ClientList = response.data.data
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
         }
     };
 

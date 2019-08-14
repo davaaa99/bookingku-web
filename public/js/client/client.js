@@ -1728,6 +1728,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -1738,9 +1739,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       currentPage: 1,
       filterSearch: "",
       fields: ["No", {
-        key: "id_user",
-        label: "ID Clients"
-      }, {
         key: "email",
         label: "Email"
       }, {
@@ -1754,13 +1752,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
   },
   mounted: function mounted() {
-    var _this = this;
-
-    var uri = 'http://localhost:8000/api/v1/clients';
-    this.axios.get(uri).then(function (response) {
-      _this.ClientList = response.data.data;
-      console.log('response.data.data');
-    });
+    this.loadData();
   },
   computed: {
     rows: function rows() {
@@ -1777,6 +1769,19 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       if (month.length < 2) month = '0' + month; // if (day.length < 2) day = '0' + day;
 
       window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
+    },
+    loadData: function loadData() {
+      var _this = this;
+
+      axios({
+        url: 'api/v1/clients',
+        method: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this.ClientList = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -1938,28 +1943,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       currentOffset: 0,
       windowSize: 3,
       paginationFactor: 220,
-      items: [{
-        name: 'Tycoon Thai',
-        tag: "Thai"
-      }, {
-        name: 'Ippudo',
-        tag: "Japanese"
-      }, {
-        name: 'Milano',
-        tag: "Pizza"
-      }, {
-        name: 'Tsing Tao',
-        tag: "Chinese"
-      }, {
-        name: 'Frances',
-        tag: "French"
-      }, {
-        name: 'Burma Superstar',
-        tag: "Burmese"
-      }, {
-        name: 'Salt and Straw',
-        tag: "Ice cream"
-      }],
       perPage: 20,
       currentPage: 1,
       selectedLocation: null,
@@ -1977,9 +1960,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         format: 'YYYY/MM/DD',
         useCurrent: false
       },
-      // components:{
-      //     datePicker
-      // },
       "user_email": "",
       "price": "",
       //ambil dari db
@@ -2035,6 +2015,24 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       } else if (direction === -1 && !this.atHeadOfList) {
         this.currentOffset += this.paginationFactor;
       }
+    },
+    classStatus: function classStatus(status) {
+      switch (parseInt(status)) {
+        case 0:
+          return 'available';
+          break;
+
+        case 1:
+          return 'choosed';
+          break;
+
+        case 2:
+          return 'unavailable';
+          break;
+      }
+    },
+    changeStatus: function changeStatus(status) {
+      this.item.status += 1;
     }
   }
 });
@@ -2195,6 +2193,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2222,19 +2221,22 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       },
       fields: {
         user: {
+          key: 'client_email',
           label: 'User',
           sortable: true
         },
         bookingCode: {
+          key: 'id_booking',
           label: 'Booking Code',
           sortable: false
         },
         schedule: {
-          key: 'schedule',
+          key: 'id_schedule',
+          label: 'Schedule',
           sortable: true
         },
-        status: {
-          key: 'status',
+        payment_status: {
+          key: 'payment_status',
           label: 'Status',
           sortable: true
         },
@@ -2243,54 +2245,52 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           sortable: true
         }
       },
-      items: [{
-        user: "Tedy Subagjo",
-        bookingCode: "BKN-001",
-        schedule: "11.00-12.00",
-        status: true,
-        payment: "DP"
-      }, {
-        user: "Tedy Subagjo",
-        bookingCode: "BKN-001",
-        schedule: "11.00-12.00",
-        status: false,
-        payment: "DP"
-      }, {
-        user: "Tedy Subagjo",
-        bookingCode: "BKN-001",
-        schedule: "11.00-12.00",
-        status: false,
-        payment: "DP"
-      }, {
-        user: "Tedy Subagjo",
-        bookingCode: "BKN-001",
-        schedule: "11.00-12.00",
-        status: false,
-        payment: "DP"
-      }]
+      items: []
     };
   },
+  mounted: function mounted() {
+    this.loadData();
+    console.log(this.items);
+  },
   methods: {
-    paid: function paid(status) {
-      if (!status) {
-        return 'Unpaid';
-      } else return 'Paid';
+    paid: function paid($status) {
+      var $key = ['Unpaid', 'Down Payment', 'Full Payment'];
+      return $key[$status];
     },
-    changeStatus: function changeStatus(status) {
-      if (status) {
-        var newStatus = status;
-        return paid(newStatus);
+    classStatus: function classStatus($status) {
+      switch (parseInt($status)) {
+        case 0:
+          return 'unpaid';
+          break;
+
+        case 1:
+          return 'down-payment';
+          break;
+
+        case 2:
+          return 'full-payment';
+          break;
       }
     },
-    handleClick: function handleClick() {
-      console.log(event);
+    changeStatus: function changeStatus(index) {
+      this.items[index].payment_status += 1;
     },
-    paidAction: function paidAction(status) {
-      if (status == true) {
-        return 'paidbutton';
-      } else {
-        return 'unpaidbutton';
-      }
+    disableButton: function disableButton($status) {
+      return $status === 2;
+    },
+    loadData: function loadData() {
+      var _this = this;
+
+      axios({
+        url: 'api/v1/bookings',
+        method: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this.items = response.data.serve;
+        console.log(_this.items);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   watch: {
@@ -2322,12 +2322,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       });
       self.filterData = data;
     }
-  } // computed: {
-  //     rows() {
-  //         return this.filterData.length;
-  //     }
-  // }
-
+  }
 });
 
 /***/ }),
@@ -23704,7 +23699,7 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip */
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69233,9 +69228,19 @@ var render = function() {
                       }
                     },
                     [
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("08.00-09.00")
-                      ]),
+                      _c(
+                        "b-button",
+                        {
+                          staticClass: "available",
+                          class: _vm.classStatus(0),
+                          on: {
+                            click: function($event) {
+                              return _vm.changeStatus(0)
+                            }
+                          }
+                        },
+                        [_vm._v("08.00-09.00")]
+                      ),
                       _vm._v(" "),
                       _c("b-button", { staticClass: "available" }, [
                         _vm._v("09.00-10.00")
@@ -69977,40 +69982,34 @@ var render = function() {
       _c("b-table", {
         staticClass: "thead-light",
         attrs: {
-          striped: "",
-          hover: "",
+          fixed: "",
+          bordered: "",
           small: "",
           items: _vm.items,
           fields: _vm.fields,
-          id: "bookinglist"
+          id: "bookinglist",
+          "primary-key": "id_booking"
         },
         scopedSlots: _vm._u([
           {
-            key: "status",
+            key: "payment_status",
             fn: function(data) {
               return [
                 _c(
-                  "b-button",
+                  "button",
                   {
-                    staticClass: " btn btn-detail paid",
-                    style: _vm.paid,
-                    on: {
-                      click: [
-                        _vm.handleClick,
-                        function($event) {
-                          return _vm.paidAction()
-                        }
-                      ]
+                    staticClass: "btn button badge",
+                    class: _vm.classStatus(data.item.payment_status),
+                    attrs: {
+                      disabled: _vm.disableButton(data.item.payment_status)
                     },
-                    model: {
-                      value: data.item.status,
-                      callback: function($$v) {
-                        _vm.$set(data.item, "status", $$v)
-                      },
-                      expression: "data.item.status"
+                    on: {
+                      click: function($event) {
+                        return _vm.changeStatus(data.index)
+                      }
                     }
                   },
-                  [_vm._v(_vm._s(_vm.paid(data.item.status)))]
+                  [_vm._v(_vm._s(_vm.paid(data.item.payment_status)))]
                 )
               ]
             }
@@ -70018,27 +70017,7 @@ var render = function() {
         ])
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "spacer-20" }),
-      _vm._v(" "),
-      _c("b-pagination", {
-        attrs: {
-          "total-rows": _vm.rows,
-          "per-page": _vm.perPage,
-          "aria-controls": "bookinglist",
-          "prev-text": "«",
-          "next-text": "»",
-          "hide-goto-end-buttons": true,
-          size: "md",
-          align: "center"
-        },
-        model: {
-          value: _vm.currentPage,
-          callback: function($$v) {
-            _vm.currentPage = $$v
-          },
-          expression: "currentPage"
-        }
-      })
+      _c("div", { staticClass: "spacer-20" })
     ],
     1
   )
