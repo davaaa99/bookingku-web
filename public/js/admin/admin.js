@@ -1970,6 +1970,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -1990,16 +1993,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
       filterTanggal: "",
       filterStatus: "Filter Status",
       filterSearch: "",
-      statusList: [{
-        id: '001',
-        status: 'Waiting'
-      }, {
-        id: '002',
-        status: 'Confirmed'
-      }, {
-        id: '003',
-        status: 'Rejected'
-      }],
       fields: ["No", {
         key: "client_email",
         label: "Name"
@@ -2019,79 +2012,13 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
         key: "payment_type",
         label: "Payment Type"
       }, {
-        key: "paymet_status",
+        key: "payment_status",
         label: "Status"
       }, {
         key: "aksi",
         label: "Aksi"
       }],
       VerifyBooking: [],
-      // VerifyBooking: [{
-      //         idBooking: "BKN-001",
-      //         nama: "Tedy Subagjo",
-      //         lokasi: "JL. Telkom ",
-      //         lapangan: "Lapang Semesta",
-      //         tglBayar: "12-12-2012",
-      //         jamBooking: "12.00",
-      //         jenisPembayaran: "DP",
-      //         status: "Confirmed",
-      //         buktiPembayaran: "/images/avatar.jpg"
-      //     }, {
-      //         idBooking: "BKN-002",
-      //         nama: "Masrum",
-      //         lokasi: "JL. Telkom ",
-      //         lapangan: "Lapang Semesta",
-      //         tglBayar: "12-12-2012",
-      //         jamBooking: "12.00",
-      //         jenisPembayaran: "DP",
-      //         status: "Confirmed",
-      //         buktiPembayaran: "/images/avatar.jpg"
-      //     },
-      //     {
-      //         idBooking: "BKN-003",
-      //         nama: "Mokhan",
-      //         lokasi: "JL. Telkom ",
-      //         lapangan: "Lapang Semesta",
-      //         tglBayar: "12-12-2012",
-      //         jamBooking: "12.00",
-      //         jenisPembayaran: "DP",
-      //         status: "Confirmed",
-      //         buktiPembayaran: "/images/avatar.jpg"
-      //     },
-      //     {
-      //         idBooking: "BKN-004",
-      //         nama: "Abnes",
-      //         lokasi: "JL. Telkom ",
-      //         lapangan: "Lapang Semesta",
-      //         tglBayar: "12-12-2012",
-      //         jamBooking: "12.00",
-      //         jenisPembayaran: "DP",
-      //         status: "Confirmed",
-      //         buktiPembayaran: "/images/avatar.jpg"
-      //     },
-      //     {
-      //         idBooking: "BKN-005",
-      //         nama: "Rendy",
-      //         lokasi: "JL. Telkom ",
-      //         lapangan: "Lapang Semesta",
-      //         tglBayar: "12-12-2012",
-      //         jamBooking: "12.00",
-      //         jenisPembayaran: "DP",
-      //         status: "Confirmed",
-      //         buktiPembayaran: "/images/avatar.jpg"
-      //     },
-      //     {
-      //         idBooking: "BKN-006",
-      //         nama: "Hammad",
-      //         lokasi: "JL. Telkom ",
-      //         lapangan: "Lapang Semesta",
-      //         tglBayar: "12-12-2012",
-      //         jamBooking: "12.00",
-      //         jenisPembayaran: "DP",
-      //         status: "Confirmed",
-      //         buktiPembayaran: "/images/avatar.jpg"
-      //     }
-      // ],
       filterData: []
     };
   },
@@ -2144,7 +2071,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
       var _this = this;
 
       axios({
-        url: 'api/v1/bookings/admin/2019-07-31',
+        // url: 'api/v1/bookings/admin/2019-07-31',
+        url: 'api/v1/bookings',
         method: 'GET'
       }).then(function (response) {
         console.log(response);
@@ -2152,6 +2080,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    paid: function paid($status) {
+      var $key = ['Unpaid', 'Down Payment', 'Full Payment'];
+      return $key[$status];
     }
   },
   watch: {
@@ -22516,7 +22448,7 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip */
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74824,6 +74756,18 @@ var render = function() {
             }
           },
           {
+            key: "payment_status",
+            fn: function(data) {
+              return [
+                _vm._v(
+                  "\n            " +
+                    _vm._s(_vm.paid(data.item.payment_status)) +
+                    "\n        "
+                )
+              ]
+            }
+          },
+          {
             key: "aksi",
             fn: function(data) {
               return [
@@ -74833,7 +74777,7 @@ var render = function() {
                     staticClass: " btn btn-detail",
                     on: {
                       click: function($event) {
-                        return _vm.detail(data.item.idBooking)
+                        return _vm.detail(data.VerifyBooking.idBooking)
                       }
                     }
                   },

@@ -1943,6 +1943,28 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       currentOffset: 0,
       windowSize: 3,
       paginationFactor: 220,
+      items: [{
+        name: 'Tycoon Thai',
+        tag: "Thai"
+      }, {
+        name: 'Ippudo',
+        tag: "Japanese"
+      }, {
+        name: 'Milano',
+        tag: "Pizza"
+      }, {
+        name: 'Tsing Tao',
+        tag: "Chinese"
+      }, {
+        name: 'Frances',
+        tag: "French"
+      }, {
+        name: 'Burma Superstar',
+        tag: "Burmese"
+      }, {
+        name: 'Salt and Straw',
+        tag: "Ice cream"
+      }],
       perPage: 20,
       currentPage: 1,
       selectedLocation: null,
@@ -1960,6 +1982,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         format: 'YYYY/MM/DD',
         useCurrent: false
       },
+      // components:{
+      //     datePicker
+      // },
       "user_email": "",
       "price": "",
       //ambil dari db
@@ -2015,24 +2040,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       } else if (direction === -1 && !this.atHeadOfList) {
         this.currentOffset += this.paginationFactor;
       }
-    },
-    classStatus: function classStatus(status) {
-      switch (parseInt(status)) {
-        case 0:
-          return 'available';
-          break;
-
-        case 1:
-          return 'choosed';
-          break;
-
-        case 2:
-          return 'unavailable';
-          break;
-      }
-    },
-    changeStatus: function changeStatus(status) {
-      this.item.status += 1;
     }
   }
 });
@@ -69244,19 +69251,9 @@ var render = function() {
                       }
                     },
                     [
-                      _c(
-                        "b-button",
-                        {
-                          staticClass: "available",
-                          class: _vm.classStatus(0),
-                          on: {
-                            click: function($event) {
-                              return _vm.changeStatus(0)
-                            }
-                          }
-                        },
-                        [_vm._v("08.00-09.00")]
-                      ),
+                      _c("b-button", { staticClass: "available" }, [
+                        _vm._v("08.00-09.00")
+                      ]),
                       _vm._v(" "),
                       _c("b-button", { staticClass: "available" }, [
                         _vm._v("09.00-10.00")
