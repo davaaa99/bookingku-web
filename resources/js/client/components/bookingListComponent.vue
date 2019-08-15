@@ -113,7 +113,21 @@
                 }
             },
             changeStatus(index) {
-                this.items[index].payment_status += 1;                
+                const data = {
+                    // id_booking:this.items[index].id_booking,
+                    payment_status:this.items[index].payment_status += 1
+                }
+                axios({
+                    url: 'api/v1/bookings/'+this.items[index].id_booking,
+                    method:'PUT',
+                    data: data
+                }).then(response=>{
+                    console.log(response);
+                    this.items[index].payment_status = response.data.serve
+                    window.location.href = window.location.protocol +'//'+ window.location.host + '/bookinglist';
+                }).catch(error=>{
+                    console.log(error);                    
+                })
             },
             disableButton($status){
                 return $status === 2;
