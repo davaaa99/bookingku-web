@@ -80,8 +80,8 @@ class VerificationController extends Controller
     public function verifiedEmail()
     {
         if (session()->has('message')) {
-            return redirect('/home');
+            return redirect('/locations');
         }
-        return redirect('/');
+        return redirect('/login');
     }
 }

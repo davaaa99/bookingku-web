@@ -20,10 +20,10 @@ class LocationController extends Controller
      *
      * @return void
      */
-    // public function __construct(Request $request)
-    // {
-    //     $this->middleware(['auth:api']);
-    // }
+    public function __construct(Request $request)
+    {
+        $this->middleware(['auth']);
+    }
 
     /**
      * Display a listing of the location.
@@ -32,20 +32,19 @@ class LocationController extends Controller
      */
     public function index()
     {
-        // try{
-        //     $dataLocation = Location::all();
-        // }catch (Exception $e){
-        //     return response()->json()([
-        //         'message' => 'Failed retrieve data.' . $e->getMessage(),
-        //         'serve' => []
-        //     ], 500);
-        // }
+        try{
+            $dataLocation = Location::all();
+        }catch (Exception $e){
+            return response()->json()([
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
 
-        // return response()->json([
-        //     'message' => 'Successfully retrieved data.',
-        //     'serve' => $dataLocation
-        // ], 200);
-        return new PostCollection(Location::all());
+        return response()->json([
+            'message' => 'Successfully retrieved data.',
+            'serve' => $dataLocation
+        ], 200);
     }
 
     /**
@@ -59,8 +58,8 @@ class LocationController extends Controller
         return Validator::make($data, [
             'location_name' => ['required', 'string', 'max:50'],
             'location_address' => ['required', 'string', 'max:255'],
-            'open_time' => ['required', 'date_format:H:i'],
-            'closing_time' => ['required', 'date_format:H:i','after:open_time'],
+            // 'open_time' => ['required', 'date_format:H:i'],
+            // 'closing_time' => ['required', 'date_format:H:i','after:open_time'],
         ]);
     }
 
@@ -138,12 +137,6 @@ class LocationController extends Controller
             'message' => 'Successfully retrieved data.',
             'serve' => $dataLocation,
         ], 200);
-
-        // $dataUser = Auth::user();
-        // return response()->json([
-        //     'message' => 'Successfully retrieved data.',
-        //     'serve' => print_r($dataUser),
-        // ], 200);
     }
 
     /**
@@ -172,27 +165,46 @@ class LocationController extends Controller
     }
 
     /**
+     * Retrieve specified location data
+     */
+    public function locationDetail(Request $request)
+    {
+        try {
+            $location = Location::find($request->id);
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
+            ]);
+        }
+        return response()->json([
+            'message' => 'Successfully retrieved data.',
+            'serve' => $location
+        ]);
+    }
+
+    /**
      * Update the location data.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  String $id_location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_location)
+    public function update(Request $request)
     {
         try{
-            $dataUser = Auth::user();
+            // $dataUser = Auth::user();
 
-            $location = Location::find($id_location);
+            $location = Location::find($request->id_location);
             $location->location_name = $request->location_name;
             $location->location_address = $request->location_address;
-            $location->description = $request->description;
-            $location->open_time = $request->open_time;
-            $location->closing_time = $request->closing_time;
-            $location->location_photo = $request->location_photo;
-            $location->latitude = $request->latitude;
-            $location->longitude = $request->longitude;
-            $location->updated_by = $dataUser->email;
+            // $location->description = $request->description;
+            // $location->open_time = $request->open_time;
+            // $location->closing_time = $request->closing_time;
+            // $location->location_photo = $request->location_photo;
+            // $location->latitude = $request->latitude;
+            // $location->longitude = $request->longitude;
+            // $location->updated_by = $dataUser->email;
             $location->save();
         }catch(Exception $e){
             return response()->json([
@@ -216,11 +228,11 @@ class LocationController extends Controller
     public function destroy($id_location)
     {
         try{
-            $dataUser = Auth::user();
+            // $dataUser = Auth::user();
 
-            $location = Location::find($id_location);
-            $location->updated_by = $dataUser->email;
-            $location->save();
+            // $location = Location::find($id_location);
+            // $location->updated_by = $dataUser->email;
+            // $location->save();
             Location::where('id_location',$id_location)->delete();
         }catch(Exception $e){
             return response()->json([

@@ -67,7 +67,6 @@ class AuthController extends Controller
             'account_number' => $data['account_number'],
             'phone_number' => $data['phone_number'],
             'email_token' => base64_encode($data['email']),
-            // 'user_type' => $data['user_type'],
             'user_type' => 2,
         ]);
     }
@@ -85,7 +84,7 @@ class AuthController extends Controller
             if ($validate->fails()) {
                 return response()->json([
                     'message' => 'Unable to save data. Bad config.',
-                    'serve' => [
+                    'serve' => [ 
                         'error' => $validate->errors()
                     ]
                 ], 401);

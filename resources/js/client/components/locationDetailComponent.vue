@@ -6,8 +6,8 @@
             <div class="spacer"></div>
             <div class="spacer-30"></div>
             <b-card-text>
-                <h1>Sarijadi Futsal</h1>
-                <p>Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223</p>
+                <h1>{{ location.location_name }}</h1>
+                <p>{{ location.location_address }}</p>
             </b-card-text>
         </b-card>
         <div class="spacer-30"></div>
@@ -51,13 +51,39 @@
     Vue.use(BootstrapVue)
 
     export default {
-
+        props: {
+            idLocation: String
+        },
         data() {
 
             return {
                 perPage: 10,
+                location: {}
             };
         },
+        mounted() {
+            this.loadDetail();
+        },
+        methods: {
+            loadDetail() {
+                axios({
+                    url: '/data/location',
+                    method: 'POST',
+                    data: {
+                        id: this.idLocation
+                    }
+                }).then(response=> {
+                    this.location = response.data.serve
+                    console.log(response);
+                    console.log(this.location);
+                    
+                    
+                }).catch(error=> {
+                    console.log(error);
+                    
+                })
+            },
+        }
     };
 
 </script>

@@ -11,9 +11,9 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import VueAxios from 'vue-axios';
-import axios from 'axios';
-Vue.use(VueAxios, axios);
+// import VueAxios from 'vue-axios';
+// import axios from 'axios';
+// Vue.use(VueAxios, axios);
 
 import Vuelidate from 'vuelidate';
 Vue.use(Vuelidate);
@@ -32,7 +32,6 @@ Vue.use(Vuelidate);
 
 
 Vue.component('register-component', require('./components/registerComponent.vue').default);
-Vue.component('login-component', require('./components/loginComponent.vue').default);
 Vue.component('location-list', require('./components/locationListComponent.vue').default);
 Vue.component('location-detail', require('./components/locationDetailComponent.vue').default);
 Vue.component('location-add', require('./components/locationAddComponent.vue').default);

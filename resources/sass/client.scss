@@ -276,8 +276,8 @@ main {
             font-weight: 900;
 
             .sub-title {
-                font-family: Source Sans Pro;
-                font-size: 12px;
+                font-family: Rajdhani;
+                font-size: 14px;
                 color: #8B8B8B;
                 font-weight: 100;
             }
@@ -287,20 +287,22 @@ main {
             width: 80%;
 
             .register-label {
-                font-family: Source Sans Pro;
+                font-family: Rajdhani;
                 font-weight: bold;
                 font-size: 12px;
                 margin-bottom: 2px;
             }
 
             .register-input {
+                font-family: Poppins;
+                font-size: 12px;
                 border: none;
                 border-bottom: 1px #C7C7DB solid;
                 border-radius: 0px;
             }
 
             .register-checkbox {
-                font-family: Source Sans Pro;
+                font-family: Rajdhani;
                 font-size: 12px;
                 margin-top: 25px;
                 margin-bottom: 2px;
@@ -317,9 +319,9 @@ main {
 
             .sub-title {
                 text-decoration: underline;
-                font-family: Source Sans Pro;
-                font-size: 12px;
-                color: #8B8B8B;
+                font-family: Rajdhani;
+                font-size: 13px;
+                color: #4D4D4D;
                 font-weight: 100;
             }
 
@@ -363,34 +365,40 @@ main {
             font-weight: 900;
 
             .sub-title {
-                font-family: Source Sans Pro;
-                font-size: 12px;
+                font-family: Rajdhani;
+                font-size: 14px;
                 color: #8B8B8B;
                 font-weight: 100;
             }
         }
 
         #login-form {
-            width: 80%;
+            width: 70%;
 
             .login-label {
-                font-family: Source Sans Pro;
+                font-family: Rajdhani;
                 font-weight: bold;
                 font-size: 12px;
                 margin-bottom: 2px;
             }
 
             .login-input {
+                font-family: Poppins;
+                font-size: 13px;
                 border: none;
                 border-bottom: 1px #C7C7DB solid;
                 border-radius: 0px;
             }
 
             .login-checkbox {
-                font-family: Source Sans Pro;
+                font-family: Poppins;
                 font-size: 12px;
                 margin-top: 25px;
                 margin-bottom: 2px;
+
+                .sub-title {
+                    color: #5C5C5C;
+                }
 
                 .sub-title:hover {
                     cursor: pointer;
@@ -399,7 +407,7 @@ main {
         }
 
         .login-footer {
-            width: 80%;
+            width: 100%;
 
             .login-button {
                 border-radius: 4px;
@@ -407,19 +415,27 @@ main {
                 color: #FFFFFF;
                 width: 130px;
                 margin-right: auto;
+                background-color: #4D4F5C;
+
+                &:hover {
+                    background-color: #8B8B8B;
+                    border-color: #8B8B8B;;
+                    color: #FFFFFF;
+                }
             }
 
             .signup-button {
+                border-color: #8B8B8B;
                 border-radius: 4px;
                 font-size: 13px;
                 color: #4D4F5C;
-                background-color: #FFFFFF;
+                background-color: #E4E4E4;
                 width: 130px;
-            }
 
-            .signup-button:hover {
-                color: #FFFFFF;
-                background-color: #4D4F5C;
+                &:hover {
+                    color: #FFFFFF;
+                    background-color: #8B8B8B;
+                }
             }
 
             .sub-title {
@@ -1167,4 +1183,61 @@ main {
 
 .myselect {
     font-size: 15px;
+}
+
+
+/*------------------------ VERIFY ------------------------*/
+
+#verify {
+    min-height: 600px;
+    background-image: url('~/images/section-1.png');
+    background-size: cover;
+    height: 100%;
+    background-position: center center;
+
+    .container {
+        font-family: Poppins;
+        background-color: #FFFFFF;
+        z-index: 1;
+        width: 36%;
+        height: 90%;
+
+        .verify-header {
+            font-family: Rajdhani !important;
+            font-size: 30px;
+            color: black;
+            font-weight: 900;
+        }
+
+        .header {
+            font-size: 30px;
+            color: #707070;
+            font-weight: 900;
+        }
+
+        .sub-title {
+            font-size: 15px;
+            color: #707070;
+            font-weight: 900;
+        }
+
+        .verify-content {
+            font-size: 13px;
+            color: #707070;
+            text-align: center;
+        }
+    }
+
+    @media (max-width:568px) {
+        min-height: 500px;
+    }
+
+    &:after {
+        background: rgba(0, 0, 0, .75);
+        content: " ";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
 }

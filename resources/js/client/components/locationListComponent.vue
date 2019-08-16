@@ -7,33 +7,33 @@
                         <input class="filterSearch" type="text" v-model="filterSearch" placeholder="Search">
                         <i class="fa fa-search" style="color:#C0C4CC"></i>
                     </div>
-                    <button class="btn btn-add btn-primary ml-auto" @click="addLocation()">ADD</button>
+                    <a href="/location/add" class="ml-auto"><button class="btn btn-add btn-primary">ADD</button></a>
                 </div>
                 <div class="spacer-20"></div>
             </div>
         </div>
         <div class="item-list">
-            <div class="card mt-3" v-for="location in dataLocation" :key="location.id_location">
+            <div class="card mt-3" v-for="(location, index) in locations" :key="location.id_location">
                 <div class="horizontal" >
                     <b-card no-body class="overflow-hidden">
                         <b-row no-gutters class="d-flex">
-                            <b-col class="col-lg-2" @click="detailLocation()">
+                            <b-col class="col-lg-2" @click="detailLocation(location.id_location)">
                                 <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
                             </b-col>
-                            <b-col class="col-lg-9" @click="detailLocation()">
+                            <b-col class="col-lg-9" @click="detailLocation(location.id_location)">
                                 <b-card-body>
                                     <h2>{{location.location_name}}</h2>
                                     <b-card-text>
                                         {{location.open_time}} - {{location.closing_time}}
                                     </b-card-text>
-                                    <b-card-text>
+                                    <b-card-text class="mt-4">
                                         {{location.location_address}}
                                     </b-card-text>
                                 </b-card-body>
                             </b-col>
                             <div class="mt-2 igroup col-lg-1">
-                                <i class="material-icons ic" @click="editLocation()">edit</i>
-                                <i class="material-icons mr-3 ic">close</i>
+                                <i class="material-icons ic" @click="editLocation(location.id_location)">edit</i>
+                                <i class="material-icons mr-3 ic" @click="msgBoxDelete(index)">close</i>
                             </div>
                         </b-row>
                     </b-card>
@@ -52,88 +52,74 @@
     Vue.use(BootstrapVue)
 
     export default {
-
         data() {
-
             return {
-
                 perPage: 10,
                 filterSearch: "",
-                url: window.location.origin + window.location.pathname,
-                dataLocation: [
-                    {
-                        id_location: "001",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "002",
-                        location_name: "Ciwaruga Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "003",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "004",
-                        location_name: "Ciwaruga Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                    {
-                        id_location: "005",
-                        location_name: "Sarijadi Futsal",
-                        location_address: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-                        description: "Lapangan Baru",
-                        open_time: "07:00",
-                        closing_time: "22:00",
-                    },
-                ],
+                locations: []
             };
         },
         computed: {
             rows() {
                 return this.dataLocation.length;
-
             }
         },
+        mounted() {
+            this.loadLocations();
+        },
         methods: {
-            detailLocation: function() {
-                var d = new Date(),
-                    month = '' + (d.getMonth() + 1),
-                    day = '' + d.getDate(),
-                    year = d.getFullYear();
-                window.location.href = window.location.protocol + '//' + window.location.host +
-                    '/locationdetail';
+            loadLocations() {
+                axios({
+                    url: 'data/locations',
+                    method: 'GET'
+                }).then(response=> {
+                    this.locations = response.data.serve;
+                    
+                }).catch(error=> {
+                    console.log(error);
+                    
+                })
             },
-            addLocation: function() {
-                var d = new Date(),
-                    month = '' + (d.getMonth() + 1),
-                    day = '' + d.getDate(),
-                    year = d.getFullYear();
-                window.location.href = window.location.protocol + '//' + window.location.host +
-                    '/locationadd';
+            msgBoxDelete(index) {
+                this.$bvModal.msgBoxConfirm('Are you sure you want delete this locations?', {
+                    title: 'Delete Location',
+                    size: 'sm',
+                    buttonSize: 'sm',
+                    okVariant: 'danger',
+                    okTitle: 'DELETE',
+                    footerClass: 'p-2',
+                    centered: true
+                }).then(value=> {
+                    if(value) {
+                        axios({
+                            url: '/location/' + this.locations[index].id_location,
+                            method: 'DELETE',
+                        }).then(response=> {
+                            window.location.href = window.location.protocol + '//' + window.location.host +
+                                '/locations';
+                            
+                        }).catch(error=> {
+                            console.log(error);
+                            
+                        })
+                    }
+                    
+                }).catch(error=> {
+                    console.log(error);
+                    
+                })
             },
-            editLocation: function() {
-                var d = new Date(),
-                    month = '' + (d.getMonth() + 1),
-                    day = '' + d.getDate(),
-                    year = d.getFullYear();
+            detailLocation(id) {
                 window.location.href = window.location.protocol + '//' + window.location.host +
-                    '/locationedit';
+                    '/location/detail/' + id;
+            },
+            addLocation() {
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/location/add';
+            },
+            editLocation(id) {
+                window.location.href = window.location.protocol + '//' + window.location.host +
+                    '/location/edit/' + id;
             },
         }
     };
