@@ -4,13 +4,11 @@
             <b-row>
                 <b-col cols="4">
                     <label for="location">Location</label>
-                    <b-form-select v-model="locations" :options="location">
-                        <!-- <option v-for="loc in location" v-bind=""></option> -->
-                    </b-form-select>
+                    <b-form-select v-model="locations" :options="location"></b-form-select>
                 </b-col>
                 <b-col cols="4">
                     <label for="field">Field</label>
-                    <b-form-select v-model="fields" :options="field"></b-form-select>
+                    <b-form-select v-model="fieldlist" :options="field"></b-form-select>
                 </b-col>
                 <b-col cols="4">
                     <b-row>
@@ -58,7 +56,7 @@
                 location:[],
                 selectedField: null,
                 // field:[{text:'Choose Field', value:null},'Vinyl', 'Syntetic', 'Semen'],
-                fields:[],
+                fieldlist:[],
                 field:[],
                 selectedDate: new Date(),
                 date:{
@@ -99,8 +97,6 @@
             this.loadData();
             this.loadLocation();
             this.loadField();
-            console.log('aaa');
-            console.log(this.items);
         },
         methods:{
             paid($status){
@@ -159,6 +155,7 @@
                     methods:'GET',
                 }).then(response=>{
                     this.locations = response.data.serve
+                    console.log(response.data.serve);
                     for (index=0; index<= response.data.serve.length; index++) {
                         this.location.push({value: response.data.serve[index].id_location, text: response.data.serve[index].location_name})
                     }
@@ -173,12 +170,13 @@
                     url: 'api/v1/field',
                     methods:'GET',
                 }).then(response=>{
-                    this.fields = response.data.serve
-                    for (index=0; index<= response.data.serve.length; index++) {
-                        this.location.push({value: response.data.serve[index].id_field, text: response.data.serve[index].field_name})
-                        console.log(response.data.serve);
+                    this.fieldlist = response.data.data
+                    console.log(response.data.data);
+                    for (index=0; index<= response.data.data.length; index++) {
+                        this.fieldlist.push({value: response.data.data[index].id_field, text: response.data.data[index].field_name})
                     }
-                    console.log(this.fields);
+                    console.log('uhuy');
+                    console.log(this.fieldlist);
                 }).catch(error=>{
                     console.log(error);
                 })
@@ -204,7 +202,6 @@
                 self.filterData = data;
             },
             filterLokasi: function (loc) {
-                
             },
             filterLapang: function (fal) {
                 var self = this;
