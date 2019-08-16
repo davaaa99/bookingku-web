@@ -173,7 +173,7 @@
                     this.fieldlist = response.data.data
                     console.log(response.data.data);
                     for (index=0; index<= response.data.data.length; index++) {
-                        this.fieldlist.push({value: response.data.data[index].id_field, text: response.data.data[index].field_name})
+                        this.field.push({value: response.data.data[index].id_field, text: response.data.data[index].field_name})
                     }
                     console.log('uhuy');
                     console.log(this.fieldlist);

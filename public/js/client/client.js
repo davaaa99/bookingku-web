@@ -2349,7 +2349,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         console.log(response.data.data);
 
         for (index = 0; index <= response.data.data.length; index++) {
-          _this4.fieldlist.push({
+          _this4.field.push({
             value: response.data.data[index].id_field,
             text: response.data.data[index].field_name
           });
