@@ -3,16 +3,18 @@
         <b-form-group>
             <b-row>
                 <b-col cols="4">
-                    <label for="location">Lokasi</label>
-                    <b-form-select v-model="selectedLocation" :options="location"></b-form-select>
+                    <label for="location">Location</label>
+                    <b-form-select v-model="locations" :options="location">
+                        <!-- <option v-for="loc in location" v-bind=""></option> -->
+                    </b-form-select>
                 </b-col>
                 <b-col cols="4">
-                    <label for="field">Lapang</label>
-                    <b-form-select v-model="selectedField" :options="field"></b-form-select>
+                    <label for="field">Field</label>
+                    <b-form-select v-model="fields" :options="field"></b-form-select>
                 </b-col>
                 <b-col cols="4">
                     <b-row>
-                        <label for="date">Tanggal</label>
+                        <label for="date">Date</label>
                     </b-row>
                     <b-row>
                         <date-picker v-model="selectedDate" lang="en" :config="date"></date-picker>
@@ -51,9 +53,13 @@
                 perPage:20,
                 currentPage:1,
                 selectedLocation: null,
-                location:[{text:'Pilih Lokasi', value:null},'Ciwarug Futsal', 'Sarijadi Futsal'],
+                // location:[{text:'Choose Location', value:null}, 'Ciwaruga Futsal', 'Sarijadi Futsal'],
+                locations:[],
+                location:[],
                 selectedField: null,
-                field:[{text:'Pilih Lokasi', value:null},'Vinyl', 'Syntetic', 'Semen'],
+                // field:[{text:'Choose Field', value:null},'Vinyl', 'Syntetic', 'Semen'],
+                fields:[],
+                field:[],
                 selectedDate: new Date(),
                 date:{
                     format: 'YYYY/MM/DD',
@@ -91,8 +97,10 @@
         },
         mounted(){
             this.loadData();
+            this.loadLocation();
+            this.loadField();
+            console.log('aaa');
             console.log(this.items);
-            
         },
         methods:{
             paid($status){
@@ -144,7 +152,37 @@
                     console.log(error);
                 })
             },
-
+            loadLocation(){
+                let index=0;
+                axios({
+                    url: 'api/v1/location',
+                    methods:'GET',
+                }).then(response=>{
+                    this.locations = response.data.serve
+                    for (index=0; index<= response.data.serve.length; index++) {
+                        this.location.push({value: response.data.serve[index].id_location, text: response.data.serve[index].location_name})
+                    }
+                    console.log(this.locations);
+                }).catch(error=>{
+                    console.log(error);
+                })
+            },
+            loadField(){
+                let index=0;
+                axios({
+                    url: 'api/v1/field',
+                    methods:'GET',
+                }).then(response=>{
+                    this.fields = response.data.serve
+                    for (index=0; index<= response.data.serve.length; index++) {
+                        this.location.push({value: response.data.serve[index].id_field, text: response.data.serve[index].field_name})
+                        console.log(response.data.serve);
+                    }
+                    console.log(this.fields);
+                }).catch(error=>{
+                    console.log(error);
+                })
+            },
         },
         watch:{
             filterTanggal: function (fal) {
@@ -156,7 +194,7 @@
 
                 if (month.length < 2) month = '0' + month;
                 if (day.length < 2) day = '0' + day;
-
+                
                 var realdate = [day, month, year].join('-');
 
                 const data = self.filterData.filter(function (project) {
@@ -165,13 +203,8 @@
 
                 self.filterData = data;
             },
-
-            filterLokasi: function (fal) {
-                var self = this;
-                const data = self.filterData.filter(function (project) {
-                    return project.status === fal;
-                });
-                self.filterData = data;
+            filterLokasi: function (loc) {
+                
             },
             filterLapang: function (fal) {
                 var self = this;

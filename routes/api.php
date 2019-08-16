@@ -77,7 +77,6 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
     Route::get('locations/admin','API\REST\LocationController@index');
     Route::get('fields/admin/{id_location}','API\REST\FieldController@show');
     Route::get('bookings/admin/{date}','API\REST\BookingController@showByLocation');
-    // Route::put('bookings/admin/{id_user}/{date}','API\REST\BookingController@showByLocation'); 
     Route::put('/bookings/{id_booking}','API\REST\BookingController@update');
     Route::get('locations','API\REST\LocationController@index');
     Route::get('fields/{id_location}','API\REST\FieldController@show');

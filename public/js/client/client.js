@@ -1768,7 +1768,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           year = d.getFullYear();
       if (month.length < 2) month = '0' + month; // if (day.length < 2) day = '0' + day;
 
-      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/'; // btoa(CLN-003);
     },
     loadData: function loadData() {
       var _this = this;
@@ -2161,6 +2161,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_date_picker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_date_picker__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
 //
 //
 //
@@ -2207,56 +2211,57 @@ __webpack_require__.r(__webpack_exports__);
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
       // Note 'age' is left out and will not appear in the rendered table
       perPage: 20,
       currentPage: 1,
       selectedLocation: null,
-      location: [{
-        text: 'Pilih Lokasi',
-        value: null
-      }, 'Ciwarug Futsal', 'Sarijadi Futsal'],
+      // location:[{text:'Choose Location', value:null}, 'Ciwaruga Futsal', 'Sarijadi Futsal'],
+      locations: [],
+      location: [],
       selectedField: null,
-      field: [{
-        text: 'Pilih Lokasi',
-        value: null
-      }, 'Vinyl', 'Syntetic', 'Semen'],
+      // field:[{text:'Choose Field', value:null},'Vinyl', 'Syntetic', 'Semen'],
+      fields: [],
+      field: [],
       selectedDate: new Date(),
       date: {
         format: 'YYYY/MM/DD',
         useCurrent: false
+      }
+    }, _defineProperty(_ref, "fields", {
+      user: {
+        key: 'client_email',
+        label: 'User',
+        sortable: true
       },
-      fields: {
-        user: {
-          key: 'client_email',
-          label: 'User',
-          sortable: true
-        },
-        bookingCode: {
-          key: 'id_booking',
-          label: 'Booking Code',
-          sortable: false
-        },
-        schedule: {
-          key: 'id_schedule',
-          label: 'Schedule',
-          sortable: true
-        },
-        payment_status: {
-          key: 'payment_status',
-          label: 'Status',
-          sortable: true
-        },
-        payment: {
-          label: 'Payment',
-          sortable: true
-        }
+      bookingCode: {
+        key: 'id_booking',
+        label: 'Booking Code',
+        sortable: false
       },
-      items: []
-    };
+      schedule: {
+        key: 'id_schedule',
+        label: 'Schedule',
+        sortable: true
+      },
+      payment_status: {
+        key: 'payment_status',
+        label: 'Status',
+        sortable: true
+      },
+      payment: {
+        label: 'Payment',
+        sortable: true
+      }
+    }), _defineProperty(_ref, "items", []), _ref;
   },
   mounted: function mounted() {
     this.loadData();
+    this.loadLocation();
+    this.loadField();
+    console.log('aaa');
     console.log(this.items);
   },
   methods: {
@@ -2314,6 +2319,52 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    loadLocation: function loadLocation() {
+      var _this3 = this;
+
+      var index = 0;
+      axios({
+        url: 'api/v1/location',
+        methods: 'GET'
+      }).then(function (response) {
+        _this3.locations = response.data.serve;
+
+        for (index = 0; index <= response.data.serve.length; index++) {
+          _this3.location.push({
+            value: response.data.serve[index].id_location,
+            text: response.data.serve[index].location_name
+          });
+        }
+
+        console.log(_this3.locations);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadField: function loadField() {
+      var _this4 = this;
+
+      var index = 0;
+      axios({
+        url: 'api/v1/field',
+        methods: 'GET'
+      }).then(function (response) {
+        _this4.fields = response.data.serve;
+
+        for (index = 0; index <= response.data.serve.length; index++) {
+          _this4.location.push({
+            value: response.data.serve[index].id_field,
+            text: response.data.serve[index].field_name
+          });
+
+          console.log(response.data.serve);
+        }
+
+        console.log(_this4.fields);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   watch: {
@@ -2331,13 +2382,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       });
       self.filterData = data;
     },
-    filterLokasi: function filterLokasi(fal) {
-      var self = this;
-      var data = self.filterData.filter(function (project) {
-        return project.status === fal;
-      });
-      self.filterData = data;
-    },
+    filterLokasi: function filterLokasi(loc) {},
     filterLapang: function filterLapang(fal) {
       var self = this;
       var data = self.filterData.filter(function (project) {
@@ -69901,17 +69946,17 @@ var render = function() {
                 { attrs: { cols: "4" } },
                 [
                   _c("label", { attrs: { for: "location" } }, [
-                    _vm._v("Lokasi")
+                    _vm._v("Location")
                   ]),
                   _vm._v(" "),
                   _c("b-form-select", {
                     attrs: { options: _vm.location },
                     model: {
-                      value: _vm.selectedLocation,
+                      value: _vm.locations,
                       callback: function($$v) {
-                        _vm.selectedLocation = $$v
+                        _vm.locations = $$v
                       },
-                      expression: "selectedLocation"
+                      expression: "locations"
                     }
                   })
                 ],
@@ -69922,16 +69967,16 @@ var render = function() {
                 "b-col",
                 { attrs: { cols: "4" } },
                 [
-                  _c("label", { attrs: { for: "field" } }, [_vm._v("Lapang")]),
+                  _c("label", { attrs: { for: "field" } }, [_vm._v("Field")]),
                   _vm._v(" "),
                   _c("b-form-select", {
                     attrs: { options: _vm.field },
                     model: {
-                      value: _vm.selectedField,
+                      value: _vm.fields,
                       callback: function($$v) {
-                        _vm.selectedField = $$v
+                        _vm.fields = $$v
                       },
-                      expression: "selectedField"
+                      expression: "fields"
                     }
                   })
                 ],
@@ -69943,7 +69988,7 @@ var render = function() {
                 { attrs: { cols: "4" } },
                 [
                   _c("b-row", [
-                    _c("label", { attrs: { for: "date" } }, [_vm._v("Tanggal")])
+                    _c("label", { attrs: { for: "date" } }, [_vm._v("Date")])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -91435,15 +91480,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************************!*\
   !*** ./resources/js/client/components/bookingListComponent.vue ***!
   \*****************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bookingListComponent_vue_vue_type_template_id_510827b9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bookingListComponent.vue?vue&type=template&id=510827b9& */ "./resources/js/client/components/bookingListComponent.vue?vue&type=template&id=510827b9&");
 /* harmony import */ var _bookingListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookingListComponent.vue?vue&type=script&lang=js& */ "./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _bookingListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _bookingListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -91473,7 +91517,7 @@ component.options.__file = "resources/js/client/components/bookingListComponent.
 /*!******************************************************************************************!*\
   !*** ./resources/js/client/components/bookingListComponent.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

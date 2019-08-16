@@ -70,7 +70,6 @@
         computed: {
             rows() {
                 return this.ClientList.length;
-
             }
         },
         methods: {
@@ -86,8 +85,8 @@
 
                 window.location.href = window.location.protocol + '//' + window.location.host +
                     '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
-                    '/clientlist/detaillokasi/' +
-                    btoa(id);
+                    '/clientlist/detaillokasi/' ;
+                    // btoa(CLN-003);
             },
             loadData() {
                 axios({

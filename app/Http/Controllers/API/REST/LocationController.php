@@ -32,20 +32,20 @@ class LocationController extends Controller
      */
     public function index()
     {
-        // try{
-        //     $dataLocation = Location::all();
-        // }catch (Exception $e){
-        //     return response()->json()([
-        //         'message' => 'Failed retrieve data.' . $e->getMessage(),
-        //         'serve' => []
-        //     ], 500);
-        // }
+        try{
+            $dataLocation = Location::all();
+        }catch (Exception $e){
+            return response()->json()([
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
 
-        // return response()->json([
-        //     'message' => 'Successfully retrieved data.',
-        //     'serve' => $dataLocation
-        // ], 200);
-        return new PostCollection(Location::all());
+        return response()->json([
+            'message' => 'Successfully retrieved data.',
+            'serve' => $dataLocation
+        ], 200);
+        // return new PostCollection(Location::all());
     }
 
     /**
@@ -124,9 +124,10 @@ class LocationController extends Controller
     public function show()
     {
         try{
-            $dataUser = Auth::user();
-            $idUser = $dataUser->id_user;
-            $dataLocation = Location::where('id_user',$idUser)->get();
+            // $dataUser = Auth::user();
+            // $idUser = $dataUser->id_user;
+            // $dataLocation = Location::where('id_user',$idUser)->get();
+            $dataLocation = Location::where('id_user','48b2844ab33811e9a7f5b06ebf217877')->get();
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),

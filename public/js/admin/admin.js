@@ -2198,7 +2198,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           year = d.getFullYear();
       if (month.length < 2) month = '0' + month; // if (day.length < 2) day = '0' + day;
 
-      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/' + btoa(id);
+      window.location.href = window.location.protocol + '//' + window.location.host + '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/clientlist/detaillokasi/'; // btoa(CLN-003);
     },
     loadData: function loadData() {
       var _this = this;
@@ -2407,96 +2407,66 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       dropdown: false,
-      datailLokasi: [// {
-        //   idLokasi: "001",
-        //   img: "/images/avatar.jpg",
-        //   namaClient: "Amir",
-        //   lokasi: "Gor Lodaya",
-        //   alamat:
-        //     "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        //   jamBuka: [
-        //     {
-        //       hari: "senin",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "selasa",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "rabu",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "kamis",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "jumat",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "sabtu",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "minggu",
-        //       jam: "07.00 - 12.00"
-        //     }
-        //   ],
-        //   nomorTelepon: "089898989898"
-        // },
-        // {
-        //   idLokasi: "002",
-        //   img:
-        //     "https://images.unsplash.com/photo-1489216317223-a88355bd0e38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-        //   namaClient: "Amir",
-        //   lokasi: "Gor Lodaya",
-        //   alamat:
-        //     "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
-        //   jamBuka: [
-        //     {
-        //       hari: "Senin",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "Selasa",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "Rabu",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "Kamis",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "Jumat",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "Sabtu",
-        //       jam: "07.00 - 12.00"
-        //     },
-        //     {
-        //       hari: "Minggu",
-        //       jam: "07.00 - 12.00"
-        //     }
-        //   ],
-        //   nomorTelepon: "089898989898"
-        // }
-      ]
+      datailLokasi: [{
+        idLokasi: "001",
+        img: "/images/avatar.jpg",
+        namaClient: "Amir",
+        lokasi: "Gor Lodaya",
+        alamat: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        jamBuka: [{
+          hari: "senin",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "selasa",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "rabu",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "kamis",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "jumat",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "sabtu",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "minggu",
+          jam: "07.00 - 12.00"
+        }],
+        nomorTelepon: "089898989898"
+      }, {
+        idLokasi: "002",
+        img: "https://images.unsplash.com/photo-1489216317223-a88355bd0e38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+        namaClient: "Amir",
+        lokasi: "Gor Lodaya",
+        alamat: "Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223",
+        jamBuka: [{
+          hari: "Senin",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "Selasa",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "Rabu",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "Kamis",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "Jumat",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "Sabtu",
+          jam: "07.00 - 12.00"
+        }, {
+          hari: "Minggu",
+          jam: "07.00 - 12.00"
+        }],
+        nomorTelepon: "089898989898"
+      }]
     };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    var uri = 'http://localhost:8000/api/v1/locations';
-    this.axios.get(uri).then(function (response) {
-      _this.datailLokasi = response.data.data;
-      console.log(response.data.data);
-    });
   },
   methods: {
     click: function click() {
@@ -2512,7 +2482,7 @@ __webpack_require__.r(__webpack_exports__);
           year = d.getFullYear();
       if (month.length < 2) month = "0" + month;
       if (day.length < 2) day = "0" + day;
-      window.location.href = window.location.protocol + "//" + window.location.host + "/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm" + day + "/clientlist/detaillokasi/detaillapang/" + btoa(idLokasi);
+      window.location.href = window.location.protocol + "//" + window.location.host + "/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm" + day + "/clientlist/detaillokasi/detaillapang/"; // btoa(idLokasi);
     }
   }
 });
@@ -22448,7 +22418,7 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default */
+/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75052,20 +75022,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "detail-lokasi" } }, [
-    _c(
-      "div",
-      {
-        staticClass: "lokasi",
-        attrs: { "v-for": _vm.lokasi in _vm.datailLokasi }
-      },
-      [
+  return _c(
+    "div",
+    { attrs: { id: "detail-lokasi" } },
+    _vm._l(_vm.datailLokasi, function(lokasi) {
+      return _c("div", { key: lokasi.idLokasi, staticClass: "lokasi" }, [
         _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
           _c("div", {
             staticClass: "image",
-            style: {
-              "background-image": "url(" + _vm.lokasi.location_photo + ")"
-            }
+            style: { "background-image": "url(" + lokasi.img + ")" }
           })
         ]),
         _vm._v(" "),
@@ -75073,10 +75038,7 @@ var render = function() {
           _c("div", { staticClass: "desc" }, [
             _c("div", { staticClass: "nama-client item" }, [
               _vm._v(
-                _vm._s(_vm.lokasi.id_user) +
-                  " ( " +
-                  _vm._s(_vm.lokasi.id_location) +
-                  " )"
+                _vm._s(lokasi.namaClient) + " ( " + _vm._s(lokasi.lokasi) + " )"
               )
             ]),
             _vm._v(" "),
@@ -75084,7 +75046,7 @@ var render = function() {
               _c("i", { staticClass: "fas fa-map-marker-alt" }),
               _vm._v(" "),
               _c("div", { staticClass: "alamat" }, [
-                _vm._v(_vm._s(_vm.lokasi.address))
+                _vm._v(_vm._s(lokasi.alamat))
               ])
             ]),
             _vm._v(" "),
@@ -75104,7 +75066,7 @@ var render = function() {
                   ? _c("div", { staticClass: "list-jam" }, [
                       _c(
                         "ul",
-                        _vm._l(_vm.lokasi.jamBuka, function(list) {
+                        _vm._l(lokasi.jamBuka, function(list) {
                           return _c(
                             "li",
                             { key: list.jamBuka, staticClass: "d-flex" },
@@ -75130,7 +75092,7 @@ var render = function() {
               _c("i", { staticClass: "fas fa-phone" }),
               _vm._v(" "),
               _c("div", { staticClass: "phone" }, [
-                _vm._v(_vm._s(_vm.lokasi.nomorTelepon))
+                _vm._v(_vm._s(lokasi.nomorTelepon))
               ])
             ])
           ]),
@@ -75146,16 +75108,17 @@ var render = function() {
                 "btn d-flex align-items-center justify-content-center ml-auto mr-auto",
               on: {
                 click: function($event) {
-                  return _vm.detail(_vm.lokasi.id_lokasi)
+                  return _vm.detail(lokasi.idLokasi)
                 }
               }
             },
             [_vm._v("DETAIL")]
           )
         ])
-      ]
-    )
-  ])
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
