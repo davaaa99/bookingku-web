@@ -2080,6 +2080,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2090,8 +2093,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addLapang: function addLapang() {
-      var uri = 'http://localhost:8000/api/v1/field';
+      var uri = '/add';
       this.axios.post(uri, this.form).then(function (response) {
+        alert('Data berhasil ditambahkan');
+        window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+      })["catch"](function (error) {
+        console.log(error);
+        alert('Data gagal ditambahkan');
+      });
+    },
+    store: function store() {
+      var data = {
+        id_field: this.form.id_field,
+        field_name: this.form.field_name,
+        field_type: this.form.field_type
+      };
+      axios({
+        url: '/add',
+        method: 'POST',
+        data: data
+      }).then(function (response) {
         alert('Data berhasil ditambahkan');
         window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
       })["catch"](function (error) {
@@ -2303,9 +2324,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -2335,14 +2353,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-
-Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    idField: String
+  },
   data: function data() {
     return {
-      namalapang: 'Lapang A',
-      tipelapang: 'Sintetis',
       fields: ['Jam', 'Down_Payment', 'Harga', 'Action'],
       items: [{
         Jam: "07.00-12.00",
@@ -2360,44 +2377,32 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         Harga: "Rp.130.000",
         Action: ""
       }],
-      selected: null,
-      options: [{
-        value: null,
-        text: 'Pilih Hari '
-      }, {
-        value: 'Senin',
-        text: 'Senin'
-      }, {
-        value: 'Selasa',
-        text: 'Selasa'
-      }, {
-        value: 'Rabu',
-        text: 'Rabu'
-      }, {
-        value: 'Kamis',
-        text: 'Kamis'
-      }, {
-        value: 'Jumat',
-        text: 'Jumat'
-      }, {
-        value: 'Sabtu',
-        text: 'Sabtu'
-      }, {
-        value: 'Minggu',
-        text: 'Minggu'
-      }],
+      found: true,
       perPage: 10,
-      filterSearch: "",
-      url: window.location.origin + window.location.pathname,
-      datafoto: {}
+      form: {}
     };
   },
-  computed: {
-    rows: function rows() {
-      return this.dataLocation.length;
-    }
+  mounted: function mounted() {
+    this.loadData();
   },
-  methods: {}
+  methods: {
+    loadData: function loadData() {
+      var _this = this;
+
+      axios({
+        url: '/detail',
+        method: 'POST',
+        data: {
+          id: this.idField
+        }
+      }).then(function (response) {
+        _this.form = response.data;
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2437,6 +2442,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     idField: String
@@ -2444,7 +2451,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       found: true,
-      // id:'',
       form: {},
       tipelapang: [{
         text: 'Pilih Tipe Lapang',
@@ -3865,19 +3871,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3895,19 +3888,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       status: false,
       perPage: 5,
       currentPage: 1,
-      filterTanggal: "",
+      locations: [],
+      location: [],
       filterStatus: "Pilih Lokasi",
-      filterSearch: "",
-      statusList: [{
-        id: '001',
-        status: 'Sarijadi Futsal'
-      }, {
-        id: '002',
-        status: 'Ciwaruga Futsal'
-      }, {
-        id: '003',
-        status: 'Progresif Futsal'
-      }],
       dataLapangan: [//   namalapangan : 'Lapang A',
         //   jenislapangan: 'Sintetis',
         //   image: 'http://www.staradmiral.com/wp-content/uploads/2017/01/Empat-Macam-Lapangan-Futsal.jpg'
@@ -3919,6 +3902,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         // }
       ]
     };
+  },
+  mounted: function mounted() {
+    this.loadLocation();
   },
   created: function created() {
     var _this = this;
@@ -3939,6 +3925,29 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
         console.log(_this2.dataLapangan);
         window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+      });
+    },
+    loadLocation: function loadLocation() {
+      var _this3 = this;
+
+      var index = 0;
+      axios({
+        url: 'api/v1/location',
+        methods: 'GET'
+      }).then(function (response) {
+        _this3.locations = response.data.data;
+        console.log(response.data.data);
+
+        for (index = 0; index <= response.data.data.length; index++) {
+          _this3.location.push({
+            value: response.data.data[index].id_location,
+            text: response.data.data[index].location_name
+          });
+        }
+
+        console.log(_this3.locations);
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     show: function show() {
@@ -70658,31 +70667,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "addlapang" } }, [
     _c("form", [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "idlapang" } }, [_vm._v("Id Lapang : ")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.id_field,
-              expression: "form.id_field"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", required: "" },
-          domProps: { value: _vm.form.id_field },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "id_field", $event.target.value)
-            }
-          }
-        })
-      ]),
+      _c("div", { staticClass: "form-group" }),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "namalapang" } }, [
@@ -70732,24 +70717,35 @@ var render = function() {
           })
         ],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          on: {
-            click: function($event) {
-              return _vm.addLapang()
-            }
-          }
-        },
-        [_vm._v("Tambah Lapang")]
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        on: {
+          click: function($event) {
+            return _vm.store()
+          }
+        }
+      },
+      [_vm._v("Tambah Lapang")]
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/menulapang" } }, [
+      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Cancel")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -70978,8 +70974,7 @@ var render = function() {
           staticClass: "image-header",
           attrs: {
             overlay: "",
-            "img-src":
-              "https://rumus.web.id/wp-content/uploads/2018/08/lapangan-futsal.jpg",
+            "img-src": _vm.form.field_photo,
             "img-alt": "Gambar Lapangan",
             "text-variant": "white",
             "border-variant": "dark"
@@ -70991,9 +70986,9 @@ var render = function() {
           _c("div", { staticClass: "spacer-30" }),
           _vm._v(" "),
           _c("b-card-text", [
-            _c("h1", [_vm._v(" " + _vm._s(_vm.namalapang))]),
+            _c("h1", [_vm._v(" " + _vm._s(_vm.form.field_name))]),
             _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.tipelapang))])
+            _c("p", [_vm._v(_vm._s(_vm.form.field_type))])
           ])
         ],
         1
@@ -71172,24 +71167,35 @@ var render = function() {
           })
         ],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          on: {
-            click: function($event) {
-              return _vm.save()
-            }
-          }
-        },
-        [_vm._v("Update Lapang")]
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        on: {
+          click: function($event) {
+            return _vm.save()
+          }
+        }
+      },
+      [_vm._v("Update Lapang")]
+    )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/menulapang" } }, [
+      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Cancel")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -74520,78 +74526,29 @@ var render = function() {
     "div",
     { attrs: { id: "content" } },
     [
-      _vm._m(0),
-      _vm._v(" "),
       _c("div", { attrs: { id: "lapang" } }, [
         _c("div", { staticClass: "filter " }, [
           _c("div", { staticClass: "filter-item d-flex" }, [
-            _c("div", { staticClass: "filterStatus" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "filterTitle d-flex align-items-center ",
-                  on: { click: _vm.show }
-                },
-                [
-                  _vm._v(
-                    "\r\n                        " +
-                      _vm._s(_vm.filterStatus) +
-                      "\r\n                        "
-                  ),
-                  _c("i", {
-                    staticClass: "ml-auto",
-                    class: [
-                      { "fas fa-caret-down": !_vm.status },
-                      { "fas fa-sort-up": _vm.status }
-                    ]
-                  })
-                ]
-              ),
-              _vm._v(" "),
-              _vm.status
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "box d-flex align-items-center justify-content-center"
+            _c(
+              "div",
+              [
+                _c("label", { attrs: { for: "location" } }, [
+                  _vm._v(" Location ")
+                ]),
+                _vm._v(" "),
+                _c("b-form-select", {
+                  attrs: { options: _vm.location },
+                  model: {
+                    value: _vm.locations,
+                    callback: function($$v) {
+                      _vm.locations = $$v
                     },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "link" },
-                        _vm._l(_vm.statusList, function(list) {
-                          return _c(
-                            "div",
-                            { key: list.statusList, staticClass: "link-item" },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.click(list.status)
-                                    }
-                                  }
-                                },
-                                [
-                                  _c("div", { staticClass: "link-status" }, [
-                                    _vm._v(
-                                      "\r\n                                        " +
-                                        _vm._s(list.status) +
-                                        "\r\n                                    "
-                                    )
-                                  ])
-                                ]
-                              )
-                            ]
-                          )
-                        }),
-                        0
-                      )
-                    ]
-                  )
-                : _vm._e()
-            ]),
+                    expression: "locations"
+                  }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
             _c(
               "div",
@@ -74624,55 +74581,56 @@ var render = function() {
           { key: lapangan.id_field, staticClass: "cardlapang" },
           [
             _c(
-              "b-card-group",
-              { attrs: { deck: "" } },
+              "a",
+              { attrs: { href: "detaillapang/" + lapangan.id_field } },
               [
                 _c(
-                  "b-card",
+                  "b-card-group",
+                  { attrs: { deck: "" } },
                   [
-                    _c("img", {
-                      staticClass: "gambarlapang",
-                      attrs: { src: lapangan.field_photo }
-                    }),
-                    _vm._v(" "),
-                    _c("b-card-title", [
-                      _vm._v(
-                        "\r\n          " +
-                          _vm._s(lapangan.field_name) +
-                          "\r\n        "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("b-card-text", [
-                      _vm._v(
-                        "\r\n          " +
-                          _vm._s(lapangan.field_type) +
-                          "\r\n        "
-                      )
-                    ]),
-                    _vm._v(" "),
                     _c(
-                      "a",
-                      { attrs: { href: "editlapang/" + lapangan.id_field } },
+                      "b-card",
                       [
-                        _c("b-button", { attrs: { variant: "light" } }, [
-                          _vm._v("Edit")
-                        ])
+                        _c("img", {
+                          staticClass: "gambarlapang",
+                          attrs: { src: lapangan.field_photo }
+                        }),
+                        _vm._v(" "),
+                        _c("b-card-title", { staticClass: "textlapang" }, [
+                          _c("p", [_vm._v(_vm._s(lapangan.field_name))])
+                        ]),
+                        _vm._v(" "),
+                        _c("b-card-text", { staticClass: "textlapang" }, [
+                          _c("p", [_vm._v(_vm._s(lapangan.field_type))])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "editlapang/" + lapangan.id_field }
+                          },
+                          [
+                            _c("b-button", { attrs: { variant: "light" } }, [
+                              _vm._v("Edit")
+                            ])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "b-button",
+                          {
+                            attrs: { variant: "danger" },
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteLapang(lapangan.id_field)
+                              }
+                            }
+                          },
+                          [_vm._v("Delete ")]
+                        )
                       ],
                       1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      {
-                        attrs: { variant: "danger" },
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteLapang(lapangan.id_field)
-                          }
-                        }
-                      },
-                      [_vm._v("Delete ")]
                     )
                   ],
                   1
@@ -74680,24 +74638,14 @@ var render = function() {
               ],
               1
             )
-          ],
-          1
+          ]
         )
       })
     ],
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "carilokasi" } }, [
-      _c("h5", [_vm._v("Cari Lokasi: ")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -127,8 +127,8 @@ class FieldController extends Controller
         
         // ;
         $field = new Field([
-            'id_field' => $request->get('id_field'),
-            // 'id_field' => Uuid::uuid1()->getHex(),
+            // 'id_field' => $request->get('id_field'),
+            'id_field' => Uuid::uuid1()->getHex(),
             'id_location' => '1',
             'field_name' => $request->get('field_name'),
             'field_type' => $request->get('field_type'),
@@ -235,4 +235,9 @@ class FieldController extends Controller
         return $field;
     }
     
+    public function detail(Request $request)
+    {
+        $field = Field::find($request->id);
+        return $field;
+    }
 }

@@ -212,7 +212,7 @@ main {
 
 #location-detail {
 
-    .image-header {
+    .image-gambar {
         width: 100%;
         // height: 250px;
     }
@@ -759,11 +759,16 @@ main {
 #content {
     .cardlapang {
         display: inline-block
+        
     }
-
+    .textlapang {
+        color: #000000;
+        padding-left: 0px;
+        margin-left: 0px;
+    }
     .gambarlapang {
-        width: 100%;
-        height: 100%;
+        width: 400px;
+        height: 300px;
         margin: 2 auto;
         margin-bottom: 10px;
     }
@@ -797,6 +802,13 @@ main {
 
 }
 
+#lapang{
+    margin-left: 15px;
+    .buttonadd{
+        padding-left: 180px;
+        padding-top: 30px;
+    }
+}
 #carilokasi {
     padding-left: 10px;
 }
@@ -921,6 +933,10 @@ main {
 }
 
 #lapang-detail {
+    .gambardetail{
+        width: 100%;
+        height: 400px;
+    }
     .hari {
         width: 20%;
         margin-left: 30px;

@@ -89,8 +89,9 @@ class ClientPageController extends Controller
         $data['id'] = $id_field;
         return view('client.EditLapang',$data);
     }
-    public function detailLapang(){
-        return view('client.DetailLapangan');
+    public function detailLapang($id_field){
+        $data['id'] = $id_field;
+        return view('client.DetailLapangan',$data);
     }
      /**
      * Display manage Schedule

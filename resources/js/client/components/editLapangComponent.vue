@@ -18,8 +18,10 @@
                     required>
               </b-form-select>
            </div>
+        </form>
+           <a href="/menulapang"><button class="btn btn-primary">Cancel</button></a>
            <button class="btn btn-primary" @click="save()">Update Lapang</button>
-      </form>
+      
 </div>
 </template>
 
@@ -33,7 +35,6 @@
     data() {
       return {
         found: true,
-        // id:'',
         form: {},
         tipelapang: [{ text: 'Pilih Tipe Lapang', value: null }, 'Sintetis', 'Vinyl', 'Semen', 'Karpet'],
         show: true

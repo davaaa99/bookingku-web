@@ -16665,7 +16665,7 @@ main {
   width: 30px;
 }
 
-#location-detail .image-header {
+#location-detail .image-gambar {
   width: 100%;
 }
 
@@ -17142,9 +17142,15 @@ main {
   display: inline-block;
 }
 
+#content .textlapang {
+  color: #000000;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
 #content .gambarlapang {
-  width: 100%;
-  height: 100%;
+  width: 400px;
+  height: 300px;
   margin: 2 auto;
   margin-bottom: 10px;
 }
@@ -17172,6 +17178,15 @@ main {
   height: 500px;
   margin: 20px auto;
   display: inline-block;
+}
+
+#lapang {
+  margin-left: 15px;
+}
+
+#lapang .buttonadd {
+  padding-left: 180px;
+  padding-top: 30px;
 }
 
 #carilokasi {
@@ -17275,6 +17290,11 @@ main {
 
 #lapang .filter .filter-item .cardlink {
   color: #000000;
+}
+
+#lapang-detail .gambardetail {
+  width: 100%;
+  height: 400px;
 }
 
 #lapang-detail .hari {

@@ -1,54 +1,41 @@
 <template>
 <div id="content">
-    <div id="carilokasi"><h5>Cari Lokasi: </h5></div>
     
   <div id="lapang">
         <div class="filter ">
             <div class="filter-item d-flex">
-                <div class="filterStatus">
-                    <div class="filterTitle d-flex align-items-center " @click="show">
-                        {{filterStatus}}
-                        <i :class="[{ 'fas fa-caret-down':!status }, { 'fas fa-sort-up':status }]" class="ml-auto"></i>
-                    </div>
-                    <div v-if="status" class="box d-flex align-items-center justify-content-center">
-                        <div class="link">
-                            <div class="link-item" v-for="list in statusList" :key="list.statusList">
-                                <a @click="click(list.status)">
-                                    <div class="link-status">
-                                        {{ list.status }}
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <label for="location"> Location </label>
+                    <b-form-select v-model="locations" :options="location"></b-form-select> 
                 </div>
                <div class="buttonadd">
                     <b-col offset="10">
                         <a href="addlapang"><b-button  type="add" variant="primary">Add</b-button></a>
                     </b-col>
                 </div>
-            </div>
-           
-        </div>
-        
+            </div>  
+        </div>   
     </div>
    
     
     <div class ="cardlapang" v-for="lapangan in dataLapangan" :key="lapangan.id_field">
+        <a :href="'detaillapang/' + lapangan.id_field">
         <b-card-group deck>
        <b-card>
         <img class="gambarlapang" :src="lapangan.field_photo" />
-        <b-card-title>
-          {{lapangan.field_name}}
+        <b-card-title class="textlapang">
+        <p>{{lapangan.field_name}}</p>
         </b-card-title>
-        <b-card-text>
-          {{lapangan.field_type}}
+        <b-card-text class="textlapang">
+        <p>{{lapangan.field_type}}</p>
         </b-card-text>
         <a :href="'editlapang/' + lapangan.id_field"><b-button variant="light">Edit</b-button></a>
         <b-button variant="danger" @click="deleteLapang(lapangan.id_field)">Delete </b-button>
        </b-card> 
         </b-card-group>
+         </a>
     </div>
+   
 </div>
 </template>
 
@@ -73,22 +60,9 @@
                 status: false,
                 perPage: 5,
                 currentPage: 1,
-                filterTanggal: "",
+                locations: [],
+                location:[],
                 filterStatus: "Pilih Lokasi",
-                filterSearch: "",
-                statusList: [{
-                        id: '001',
-                        status: 'Sarijadi Futsal'
-                    },
-                    {
-                        id: '002',
-                        status: 'Ciwaruga Futsal'
-                    },
-                    {
-                        id: '003',
-                        status: 'Progresif Futsal'
-                    }
-                ],
                 dataLapangan: [
                 //   namalapangan : 'Lapang A',
                 //   jenislapangan: 'Sintetis',
@@ -103,7 +77,9 @@
                 
             };
         },
-        
+        mounted(){
+            this.loadLocation();
+        },
         created(){
               let uri = 'http://localhost:8000/api/v1/field';
               this.axios.get(uri).then(response => {
@@ -119,6 +95,22 @@
                console.log(this.dataLapangan);
                window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
               });
+            },
+            loadLocation(){
+                let index=0;
+                axios({
+                    url: 'api/v1/location',
+                    methods: 'GET',
+                }).then(response=>{
+                    this.locations = response.data.data
+                    console.log(response.data.data);
+                    for(index=0;index<= response.data.data.length; index++){
+                        this.location.push({value: response.data.data[index].id_location, text: response.data.data[index].location_name})
+                    }
+                    console.log(this.locations);
+                }).catch(error=>{
+                    console.log(error);
+                })
             },
             show: function () {
                 this.status = !this.status;
