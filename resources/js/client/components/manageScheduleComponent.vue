@@ -1,7 +1,7 @@
 <template>
   <div>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show">
-      <b-form-group id="input-group-2" label="Location:" label-for="input-2">
+    <b-form>
+      <b-form-group>
         <b-form-select class= "myselect"
           id="input-2"
           v-model="form.location"
@@ -11,7 +11,7 @@
         ></b-form-select>
       </b-form-group>
 
-      <b-form-group id="input-group-3" label="Field:" label-for="input-3">
+      <b-form-group>
         <b-form-select class= "myselect"
           id="input-3"
           v-model="form.field"
@@ -65,13 +65,14 @@
 
       <b-button type="add" variant="primary">Add</b-button>
         
-        <!-- <b-form-group id="input-group-6" label=" " label-for="input-6">
-        <b-table striped hover :items="items">
-        </b-table>
-        </b-form-group> -->
+        <div class="spacer-20"></div>
+          <b-table fixed border small :items="items" :fields="fields" class="thead-light" primary-key="id_location ">
+            <button class="btn button badge" :class="classStatus(data.item.edit_manageschedule)" v-on:click="changeStatus(data.index)" ></button>
+          </b-table>
+        
 
 <!-- coba tambahan -->
-<div class="container">
+<!-- <div class="container">
 	<div class="row">
 		<table class="table table-hover table-responsive">
 		    <thead>
@@ -149,7 +150,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- end coba -->
         <b-button type="save" variant="primary">Save</b-button>
         <b-button type="back" variant="primary">Back</b-button>

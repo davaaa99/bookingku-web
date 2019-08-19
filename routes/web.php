@@ -31,10 +31,11 @@ Route::get('/clogin','ClientPageController@login')->name('clientlogin');
 /**
  * Router Group for
  */
-Route::group(['middleware' => ['auth', 'verified']], function () {
+// Route::group(['middleware' => ['auth', 'verified']], function () {
+    // Route::group( function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
-});
+// });
 
 /**
  * Router Group for client
@@ -75,6 +76,8 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
     Route::get('/locationdetail','ClientPageController@locationDetail')->name('locationdetail');
     Route::get('/locationadd','ClientPageController@locationAdd')->name('locationadd');
     Route::get('/locationedit','ClientPageController@locationEdit')->name('locationedit');
+    // Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
+    // Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');
 
     Route::get('/register','ClientPageController@register')->name('clientregister');
     Route::get('/login','ClientPageController@login')->name('clientlogin');
@@ -90,5 +93,13 @@ Route::get('/menulapang','ClientPageController@menulapang')->name('lapang');
     Route::get('/editlapang/{id}','ClientPageController@editLapang')->name('editlapang');
     Route::get('/detaillapang','ClientPageController@detailLapang')->name('detaillapang');
 Route::get('/schedule','ClientPageController@manageSchedule')->name('schedule');
-Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
-    Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');
+Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
+Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');
+Route::get('/verifybooking','AdminPageController@index')->name('admin');
+    Route::get('/verifydetail/{id}','AdminPageController@verifyBookingDetail')->name('verifybookingdetail');
+    Route::get('/clientlist','AdminPageController@clientList')->name('clientlist');
+    Route::get('/clientlist/detaillokasi/{id}','AdminPageController@clientListDetailLokasi')->name('detaillokasi');
+    Route::get('/clientlist/detaillokasi/detaillapang/{id}','AdminPageController@clientListDetailLapangan')->name('detaillapang');
+    Route::get('/payment','AdminPageController@payment')->name('payment');
+    Route::get('/clientlist/detaillokasi/detaillapang/','AdminPageController@payment')->name('payment');    
+    Route::get('/payment/paymentdetail/{id}','AdminPageController@paymentdetail')->name('paymentdetail');

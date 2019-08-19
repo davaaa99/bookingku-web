@@ -35,7 +35,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 80a528df346bb8e9c71e80ea569c22cf9a427a9d
 
 </head>
 <body>
@@ -51,5 +54,9 @@
     </div>
 </body>
 
+<<<<<<< HEAD
 </html>
 </html>
+=======
+</html>
+>>>>>>> 80a528df346bb8e9c71e80ea569c22cf9a427a9d

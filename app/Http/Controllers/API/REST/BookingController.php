@@ -11,8 +11,6 @@ use App\Field;
 use App\Schedule;
 use App\Location;
 
-use App\Http\Resources\PostCollection;
-
 class BookingController extends Controller
 {
     /**
@@ -32,19 +30,18 @@ class BookingController extends Controller
      */
     public function index()
     {
-        // try {
-        //     $dataBooking = Booking::all();
-        // } catch (Exception $e) {
-        //     return response()->json([
-        //         'message' => 'Failed retrieved data.' . $e->getMessage(),
-        //         'serve' => []
-        //     ], 500);
-        // }
-        // return response()->json([
-        //     'message' => 'Succesfully retrieved data.',
-        //     'serve' => $dataBooking
-        // ], 200);
-        return new PostCollection(Booking::all());
+        try {
+            $dataBooking = Booking::all();
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed retrieved data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+        return response()->json([
+            'message' => 'Succesfully retrieved data.',
+            'serve' => $dataBooking
+        ], 200);
     }
 
     /**
@@ -136,15 +133,10 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function showByField(Request $request)
+    
+    public function showByField($date)
     {
         try {
-            $listSchedule = Schedule::where('id_field', $request->id_field)->get();
-            foreach ($listSchedule as $ds) {
-                $listBooking = Booking::where('id_schedule', $ds->id_schedule)
-                                        ->orwhere('created_at','LIKE',"%$request->date%")
-                                        ->get();
-            }
             $listBooking=Field::join('schedules','schedules.id_field','=','fields.id_field')
                                 ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
                                 ->where('fields.id_field',$id_field)
@@ -168,18 +160,12 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function showByLocation(Request $request)
+    public function showByLocation($date)
     {
         try {
-            $listField = Field::where('id_location', $request->id_location)->get();
-            foreach ($listField as $df) {
-                $dataschedule = Schedule::where('id_field', $df->id_field)->get();
-                foreach ($dataschedule as $ds) {
-                    $listBooking[] = Booking::where('id_schedule', $ds->id_schedule)
-                                                ->orwhere('created_at','LIKE',"%$request->date%")
-                                                ->get();
-                }
-            }
+            $dataUser = Auth::user();
+            $idUser = $dataUser->id_user;
+            $id_location = Location::where('id_user',$idUser)->get('id_location');
             $listbooking=Location::join('fields','fields.id_location','=','locations.id_location')
                                     ->join('schedules','schedules.id_field','=','fields.id_field')
                                     ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
@@ -194,7 +180,7 @@ class BookingController extends Controller
         }
         return response()->json([
             'message' => 'Succesfully retrieved data.',
-            'serve' => $listBooking
+            'serve' => $listbooking
         ], 200);
     }
 
@@ -241,10 +227,10 @@ class BookingController extends Controller
     public function update(Request $request, $id_booking)
     {
         try {
-            $dataUser = Auth::user();
+            // $dataUser = Auth::user();
             $booking = Booking::find($id_booking);
             $booking->payment_status=$request->payment_status;
-            $booking->updated_by = $dataUser->email;
+            // $booking->updated_by = $dataUser->email;
             $booking->save();
         } catch (Exception $e){
             return response()->json([

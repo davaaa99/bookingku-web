@@ -37,8 +37,11 @@
             <template slot="No" slot-scope="data">
                 {{ data.index + 1 }}
             </template>
+            <template slot="payment_status" slot-scope="data">
+                {{paid(data.item.payment_status)}}
+            </template>
             <template slot="aksi" slot-scope="data">
-                <a class=" btn btn-detail" @click="detail(data.item.idBooking)">Detail</a>
+                <a class=" btn btn-detail" @click="detail(data.VerifyBooking.idBooking)">Detail</a>
             </template>
         </b-table>
         <div class="spacer-20"></div>
@@ -72,44 +75,31 @@
                 filterTanggal: "",
                 filterStatus: "Filter Status",
                 filterSearch: "",
-                statusList: [{
-                        id: '001',
-                        status: 'Waiting'
-                    },
-                    {
-                        id: '002',
-                        status: 'Confirmed'
-                    },
-                    {
-                        id: '003',
-                        status: 'Rejected'
-                    }
-                ],
                 fields: [
                     "No",
                     {
-                        key: "id_booking",
-                        label: "ID Booking"
+                        key: "client_email",
+                        label:"Name"
                     },
                     {
-                        key: "id_schedule",
+                        key: "location_name",
+                        label: "Location"
+                    },
+                    {
+                        key: "field_name",
+                        label: "Field"
+                    },
+                    {
+                        key: "created_at",
+                        label: "Payment Date"
+                    },
+                    {
+                        key: "start_time",
                         label: "Schedule"
                     },
                     {
-                        key: "client_email",
-                        label:"Client"
-                    },
-                    // {
-                    //     key: "lokasi",
-                    //     label: "Lokasi"
-                    // },
-                    // {
-                    //     key: "lapangan",
-                    //     label: "Lapangan"
-                    // },
-                    {
-                        key: "created_at",
-                        label: "Tanggal"
+                        key: "payment_type",
+                        label: "Payment Type"
                     },
                     {
                         key: "payment_status",
@@ -123,89 +113,11 @@
                 VerifyBooking:[
 
                 ],
-                // VerifyBooking: [{
-                //         idBooking: "BKN-001",
-                //         nama: "Tedy Subagjo",
-                //         lokasi: "JL. Telkom ",
-                //         lapangan: "Lapang Semesta",
-                //         tglBayar: "12-12-2012",
-                //         jamBooking: "12.00",
-                //         jenisPembayaran: "DP",
-                //         status: "Confirmed",
-                //         buktiPembayaran: "/images/avatar.jpg"
-                //     }, {
-                //         idBooking: "BKN-002",
-                //         nama: "Masrum",
-                //         lokasi: "JL. Telkom ",
-                //         lapangan: "Lapang Semesta",
-                //         tglBayar: "12-12-2012",
-                //         jamBooking: "12.00",
-                //         jenisPembayaran: "DP",
-                //         status: "Confirmed",
-                //         buktiPembayaran: "/images/avatar.jpg"
-                //     },
-                //     {
-                //         idBooking: "BKN-003",
-                //         nama: "Mokhan",
-                //         lokasi: "JL. Telkom ",
-                //         lapangan: "Lapang Semesta",
-                //         tglBayar: "12-12-2012",
-                //         jamBooking: "12.00",
-                //         jenisPembayaran: "DP",
-                //         status: "Confirmed",
-                //         buktiPembayaran: "/images/avatar.jpg"
-                //     },
-                //     {
-                //         idBooking: "BKN-004",
-                //         nama: "Abnes",
-                //         lokasi: "JL. Telkom ",
-                //         lapangan: "Lapang Semesta",
-                //         tglBayar: "12-12-2012",
-                //         jamBooking: "12.00",
-                //         jenisPembayaran: "DP",
-                //         status: "Confirmed",
-                //         buktiPembayaran: "/images/avatar.jpg"
-                //     },
-                //     {
-                //         idBooking: "BKN-005",
-                //         nama: "Rendy",
-                //         lokasi: "JL. Telkom ",
-                //         lapangan: "Lapang Semesta",
-                //         tglBayar: "12-12-2012",
-                //         jamBooking: "12.00",
-                //         jenisPembayaran: "DP",
-                //         status: "Confirmed",
-                //         buktiPembayaran: "/images/avatar.jpg"
-                //     },
-                //     {
-                //         idBooking: "BKN-006",
-                //         nama: "Hammad",
-                //         lokasi: "JL. Telkom ",
-                //         lapangan: "Lapang Semesta",
-                //         tglBayar: "12-12-2012",
-                //         jamBooking: "12.00",
-                //         jenisPembayaran: "DP",
-                //         status: "Confirmed",
-                //         buktiPembayaran: "/images/avatar.jpg"
-                //     }
-
-                // ],
                 filterData: []
             };
         },
         mounted(){
-        //    await Axios.get('http://localhost:8000/api/v1/clients')
-        //     .then(function(rest){
-        //         this.ClientList = rest;
-        //         console.log(this.ClientList)
-        //     }).catch(function(error){
-        //         console.log('Error :',error);
-        //     })
-        let uri='http://localhost:8000/api/v1/bookings';
-        this.axios.get(uri).then(response=>{
-            this.VerifyBooking=response.data.data;
-            console.log(response.data.data);
-        });
+            this.loadData();
         },
         methods: {
             async getData() {
@@ -233,6 +145,21 @@
                     '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day + '/verifydetail/' +
                     btoa(id);
 
+            },
+            loadData() {
+                axios({
+                    // url: 'api/v1/bookings/admin/2019-07-31',
+                    url: 'api/v1/bookings',
+                    method: 'GET'
+                }).then(response => {
+                    console.log(response);
+                    this.VerifyBooking = response.data.serve
+                }).catch(error => {
+                    console.log(error);
+                })
+            },paid($status){
+                const $key=['Unpaid','Down Payment', 'Full Payment']
+                return $key[$status]
             }
         },
         watch: {

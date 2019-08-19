@@ -82,11 +82,4 @@ class AdminPageController extends Controller
         return view('admin.paymentdetail',['id'=>$data]);
     }
     
-    public function bookinglist(){
-        return view('client.bookingList');
-    }
-
-    public function addbooking(){
-        return view('client.addBooking');
-    }
 }
