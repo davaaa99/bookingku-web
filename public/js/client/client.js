@@ -2161,10 +2161,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_date_picker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_date_picker__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
 //
 //
 //
@@ -2211,9 +2207,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var _ref;
-
-    return _ref = {
+    return {
       // Note 'age' is left out and will not appear in the rendered table
       perPage: 20,
       currentPage: 1,
@@ -2223,46 +2217,46 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       location: [],
       selectedField: null,
       // field:[{text:'Choose Field', value:null},'Vinyl', 'Syntetic', 'Semen'],
-      fields: [],
+      fieldlist: [],
       field: [],
       selectedDate: new Date(),
       date: {
         format: 'YYYY/MM/DD',
         useCurrent: false
-      }
-    }, _defineProperty(_ref, "fields", {
-      user: {
-        key: 'client_email',
-        label: 'User',
-        sortable: true
       },
-      bookingCode: {
-        key: 'id_booking',
-        label: 'Booking Code',
-        sortable: false
+      fields: {
+        user: {
+          key: 'client_email',
+          label: 'User',
+          sortable: true
+        },
+        bookingCode: {
+          key: 'id_booking',
+          label: 'Booking Code',
+          sortable: false
+        },
+        schedule: {
+          key: 'id_schedule',
+          label: 'Schedule',
+          sortable: true
+        },
+        payment_status: {
+          key: 'payment_status',
+          label: 'Status',
+          sortable: true
+        },
+        payment: {
+          label: 'Payment',
+          sortable: true
+        }
       },
-      schedule: {
-        key: 'id_schedule',
-        label: 'Schedule',
-        sortable: true
-      },
-      payment_status: {
-        key: 'payment_status',
-        label: 'Status',
-        sortable: true
-      },
-      payment: {
-        label: 'Payment',
-        sortable: true
-      }
-    }), _defineProperty(_ref, "items", []), _ref;
+      items: []
+    };
   },
   mounted: function mounted() {
     this.loadData();
     this.loadLocation();
     this.loadField();
-    console.log('aaa');
-    console.log(this.items);
   },
   methods: {
     paid: function paid($status) {
@@ -2329,6 +2323,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         methods: 'GET'
       }).then(function (response) {
         _this3.locations = response.data.serve;
+        console.log(response.data.serve);
 
         for (index = 0; index <= response.data.serve.length; index++) {
           _this3.location.push({
@@ -2350,18 +2345,18 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         url: 'api/v1/field',
         methods: 'GET'
       }).then(function (response) {
-        _this4.fields = response.data.serve;
+        _this4.fieldlist = response.data.data;
+        console.log(response.data.data);
 
-        for (index = 0; index <= response.data.serve.length; index++) {
-          _this4.location.push({
-            value: response.data.serve[index].id_field,
-            text: response.data.serve[index].field_name
+        for (index = 0; index <= response.data.data.length; index++) {
+          _this4.fieldlist.push({
+            value: response.data.data[index].id_field,
+            text: response.data.data[index].field_name
           });
-
-          console.log(response.data.serve);
         }
 
-        console.log(_this4.fields);
+        console.log('uhuy');
+        console.log(_this4.fieldlist);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -69973,11 +69968,11 @@ var render = function() {
                   _c("b-form-select", {
                     attrs: { options: _vm.field },
                     model: {
-                      value: _vm.fields,
+                      value: _vm.fieldlist,
                       callback: function($$v) {
-                        _vm.fields = $$v
+                        _vm.fieldlist = $$v
                       },
-                      expression: "fields"
+                      expression: "fieldlist"
                     }
                   })
                 ],
