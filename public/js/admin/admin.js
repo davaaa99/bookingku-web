@@ -2397,10 +2397,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     clientId: {
@@ -75022,8 +75018,110 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function () {}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "detail-lokasi" } },
+    _vm._l(_vm.datailLokasi, function(lokasi) {
+      return _c("div", { key: lokasi.idLokasi, staticClass: "lokasi" }, [
+        _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
+          _c("div", {
+            staticClass: "image",
+            style: { "background-image": "url(" + lokasi.img + ")" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12 col-lg-6 col-sm-12" }, [
+          _c("div", { staticClass: "desc" }, [
+            _c("div", { staticClass: "nama-client item" }, [
+              _vm._v(
+                _vm._s(lokasi.namaClient) + " ( " + _vm._s(lokasi.lokasi) + " )"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex item" }, [
+              _c("i", { staticClass: "fas fa-map-marker-alt" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "alamat" }, [
+                _vm._v(_vm._s(lokasi.alamat))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex item" }, [
+              _c("i", { staticClass: "far fa-clock" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "jam-buka" }, [
+                _c("a", { staticClass: "d-flex", on: { click: _vm.click } }, [
+                  _c("div", { staticClass: "title-list" }, [
+                    _vm._v("Jam Buka")
+                  ]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-caret-down" })
+                ]),
+                _vm._v(" "),
+                _vm.dropdown
+                  ? _c("div", { staticClass: "list-jam" }, [
+                      _c(
+                        "ul",
+                        _vm._l(lokasi.jamBuka, function(list) {
+                          return _c(
+                            "li",
+                            { key: list.jamBuka, staticClass: "d-flex" },
+                            [
+                              _c("div", { staticClass: "hari" }, [
+                                _vm._v(_vm._s(list.hari))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "jam" }, [
+                                _vm._v(": " + _vm._s(list.jam) + " WIB")
+                              ])
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ])
+                  : _vm._e()
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex item" }, [
+              _c("i", { staticClass: "fas fa-phone" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "phone" }, [
+                _vm._v(_vm._s(lokasi.nomorTelepon))
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "line-grey" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-20" }),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "btn d-flex align-items-center justify-content-center ml-auto mr-auto",
+              on: {
+                click: function($event) {
+                  return _vm.detail(lokasi.idLokasi)
+                }
+              }
+            },
+            [_vm._v("DETAIL")]
+          )
+        ])
+      ])
+    }),
+    0
+  )
+}
 var staticRenderFns = []
+render._withStripped = true
 
 
 
