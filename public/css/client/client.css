@@ -17142,6 +17142,10 @@ main {
   display: inline-block;
 }
 
+#content .locationdd {
+  width: 250px;
+}
+
 #content .textlapang {
   color: #000000;
   padding-left: 0px;
@@ -17185,7 +17189,7 @@ main {
 }
 
 #lapang .buttonadd {
-  padding-left: 180px;
+  padding-left: 30px;
   padding-top: 30px;
 }
 

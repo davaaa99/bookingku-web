@@ -3,6 +3,7 @@
             <b-card overlay :img-src="form.field_photo" 
                 img-alt="Gambar Lapangan" text-variant="white" border-variant="dark"
                 class="image-header">
+                
             <div class="spacer"></div>
             <div class="spacer-30"></div>
             <b-card-text>
@@ -12,7 +13,7 @@
             </b-card>
         <div class="spacer-30"></div>
         <div class="hari">
-            <b-form-select v-model="selected" :options="options"></b-form-select>
+            <!-- <b-form-select v-model="selected" :options="options"></b-form-select> -->
         </div>
         <div class="tabel-jadwal">
             <b-table stripped hover :items="items" :fields="fields">

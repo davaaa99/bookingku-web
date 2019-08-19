@@ -126,6 +126,7 @@ class LocationController extends Controller
         try{
             // $dataUser = Auth::user();
             // $idUser = $dataUser->id_user;
+            // $dataLocation = Location::where('id_user',$idUser)->get();
             $dataLocation = Location::where('id_user','1')->get();
         }catch(Exception $e){
             return response()->json([

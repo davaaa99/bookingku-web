@@ -4,9 +4,9 @@
   <div id="lapang">
         <div class="filter ">
             <div class="filter-item d-flex">
-                <div>
+                <div class="locationdd">
                     <label for="location"> Location </label>
-                    <b-form-select v-model="locations" :options="location"></b-form-select> 
+                    <b-form-select v-model="locations" :options="location"></b-form-select>
                 </div>
                <div class="buttonadd">
                     <b-col offset="10">
@@ -60,8 +60,9 @@
                 status: false,
                 perPage: 5,
                 currentPage: 1,
-                locations: [],
+                locations:[],
                 location:[],
+                selectedLocation: null,
                 filterStatus: "Pilih Lokasi",
                 dataLapangan: [
                 //   namalapangan : 'Lapang A',
@@ -102,10 +103,10 @@
                     url: 'api/v1/location',
                     methods: 'GET',
                 }).then(response=>{
-                    this.locations = response.data.data
-                    console.log(response.data.data);
-                    for(index=0;index<= response.data.data.length; index++){
-                        this.location.push({value: response.data.data[index].id_location, text: response.data.data[index].location_name})
+                    this.locations = response.data.serve
+                    console.log(response.data.serve);
+                    for(index=0;index<= response.data.serve.length; index++){
+                        this.location.push({value: response.data.serve[index].id_location, text: response.data.serve[index].location_name})
                     }
                     console.log(this.locations);
                 }).catch(error=>{

@@ -2354,6 +2354,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     idField: String
@@ -3890,6 +3891,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       currentPage: 1,
       locations: [],
       location: [],
+      selectedLocation: null,
       filterStatus: "Pilih Lokasi",
       dataLapangan: [//   namalapangan : 'Lapang A',
         //   jenislapangan: 'Sintetis',
@@ -3935,13 +3937,13 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         url: 'api/v1/location',
         methods: 'GET'
       }).then(function (response) {
-        _this3.locations = response.data.data;
-        console.log(response.data.data);
+        _this3.locations = response.data.serve;
+        console.log(response.data.serve);
 
-        for (index = 0; index <= response.data.data.length; index++) {
+        for (index = 0; index <= response.data.serve.length; index++) {
           _this3.location.push({
-            value: response.data.data[index].id_location,
-            text: response.data.data[index].location_name
+            value: response.data.serve[index].id_location,
+            text: response.data.serve[index].location_name
           });
         }
 
@@ -70996,23 +70998,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "spacer-30" }),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "hari" },
-        [
-          _c("b-form-select", {
-            attrs: { options: _vm.options },
-            model: {
-              value: _vm.selected,
-              callback: function($$v) {
-                _vm.selected = $$v
-              },
-              expression: "selected"
-            }
-          })
-        ],
-        1
-      ),
+      _c("div", { staticClass: "hari" }),
       _vm._v(" "),
       _c(
         "div",
@@ -74531,6 +74517,7 @@ var render = function() {
           _c("div", { staticClass: "filter-item d-flex" }, [
             _c(
               "div",
+              { staticClass: "locationdd" },
               [
                 _c("label", { attrs: { for: "location" } }, [
                   _vm._v(" Location ")
