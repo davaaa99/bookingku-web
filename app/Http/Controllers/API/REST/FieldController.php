@@ -58,21 +58,20 @@ class FieldController extends Controller
      * @param \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(){
-        // try{
-        //     $field = Field::where('id_location',$id_location)->get();
-        // }catch (Exception $e){
-        //     return response()->json([
-        //         'message' => 'Failed retrieve data.' . $e->getMessage(),
-        //         'serve' => []
-        //     ],500);
-        // }
+    public function show($id_location){
+        try{
+            $field = Field::where('id_location',$id_location)->get();
+        }catch (Exception $e){
+            return response()->json([
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
+            ],500);
+        }
         
-		// return response()->json([
-        //     'message' => 'Succesfully retrieved data.',
-        //     'serve' => $field
-        // ],200);
-        return new PostCollection(Field::all());
+		return response()->json([
+            'message' => 'Succesfully retrieved data.',
+            'serve' => $field
+        ],200);
     }
     
     /**
@@ -104,47 +103,20 @@ class FieldController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        // try{
-        //     $dataUser = Auth::user();
-        //     $kind_of_field = DB::table('kind_of_fields')->where('name_of_kind',$request->name_of_kind)->first();
-
-            // $field = new Field();
-            // $field->id_field = Uuid::uuid1()->getHex();
-        //     $field->id_kind_of_field = $kind_of_field->id_kind_of_field;
-        //     $field->id_location = $id_location;
-            // $field->field_type = $request->field_type;
-            // $field->field_name = $request->field_name;
-            // $field->field_photo = $request->field_photo;
-        //     $field->created_by = $dataUser->email;
-        //     $field->updated_by = $dataUser->email;
-            // $field->save();
-
-        // }catch(Exception $e){
-        //     return response()->json([
-        //         'message' => 'Failed save data.' . $e->getMessage(),
-        //         'serve' => []
-        //     ], 500)
+       
+        // $this->validate($request, [
+		// 	'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048'
+        // ]);
         
-        // ;
         $field = new Field([
-            // 'id_field' => $request->get('id_field'),
             'id_field' => Uuid::uuid1()->getHex(),
             'id_location' => '1',
             'field_name' => $request->get('field_name'),
             'field_type' => $request->get('field_type'),
-            // 'field_photo' => $request->get('field_photo'),
+            'field_photo' => $request->file('field_photo')
           ]);
         $field->save();
-    
-         
-    
-        //   return response()->json('successfully added');
-        
-        // return $request->all();
-        // return response()->json([
-            // 'message' => 'Successfully saved data.',
-            // 'serve' => view('client.MenuLapangan')
-        // ], 200);
+
         
     }
 

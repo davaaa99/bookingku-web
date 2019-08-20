@@ -92,4 +92,5 @@ Route::group(['prefix' => '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym
     Route::post('add', 'API\REST\FieldController@store');
     Route::post('detail', 'API\REST\FieldController@detail');
     Route::post('add', 'API\REST\FieldController@store');
+    Route::get('field/{id}','API\REST\FieldController@show');
     Route::put('data/field', 'API\REST\FieldController@update');

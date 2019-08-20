@@ -2083,6 +2083,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2106,7 +2115,8 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         id_field: this.form.id_field,
         field_name: this.form.field_name,
-        field_type: this.form.field_type
+        field_type: this.form.field_type,
+        field_photo: this.form.field_photo
       };
       axios({
         url: '/add',
@@ -3891,33 +3901,33 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       currentPage: 1,
       locations: [],
       location: [],
-      selectedLocation: null,
+      selectedLocation: "",
       filterStatus: "Pilih Lokasi",
-      dataLapangan: [//   namalapangan : 'Lapang A',
-        //   jenislapangan: 'Sintetis',
-        //   image: 'http://www.staradmiral.com/wp-content/uploads/2017/01/Empat-Macam-Lapangan-Futsal.jpg'
-        // },
-        // {
-        //   namalapangan : 'Lapang B',
-        //   jenislapangan: 'Vinyl',
-        //   image: 'https://djsport.id/wp-content/uploads/2018/11/futsal-stadium-1024x576.jpg'
-        // }
-      ]
+      dataLapangan: []
     };
   },
   mounted: function mounted() {
     this.loadLocation();
   },
-  created: function created() {
-    var _this = this;
-
-    var uri = 'http://localhost:8000/api/v1/field';
-    this.axios.get(uri).then(function (response) {
-      console.log(response);
-      _this.dataLapangan = response.data.data;
-    });
+  watch: {
+    selectedLocation: function selectedLocation() {
+      this.loadField();
+    }
   },
   methods: {
+    loadField: function loadField() {
+      var _this = this;
+
+      axios({
+        url: 'field/' + this.selectedLocation,
+        methods: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this.dataLapangan = response.data.serve;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     deleteLapang: function deleteLapang(id_field) {
       var _this2 = this;
 
@@ -3937,17 +3947,17 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         url: 'api/v1/location',
         methods: 'GET'
       }).then(function (response) {
-        _this3.locations = response.data.serve;
-        console.log(response.data.serve);
+        _this3.locations = response.data.serve; // console.log(response);
+        // console.log(this.locations);
 
-        for (index = 0; index <= response.data.serve.length; index++) {
+        _this3.location = [];
+
+        for (index = 0; index < _this3.locations.length; index++) {
           _this3.location.push({
-            value: response.data.serve[index].id_location,
-            text: response.data.serve[index].location_name
+            value: _this3.locations[index].id_location,
+            text: _this3.locations[index].location_name
           });
         }
-
-        console.log(_this3.locations);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3958,15 +3968,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
     click: function click(status) {
       this.status = !this.status;
       this.filterStatus = status;
-    }
-  },
-  watch: {
-    filterStatus: function filterStatus(fal) {
-      var self = this;
-      var data = self.filterData.filter(function (project) {
-        return project.status === fal;
-      });
-      self.filterData = data;
     }
   }
 });
@@ -70719,6 +70720,33 @@ var render = function() {
           })
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
+          _c("label", { attrs: { for: "filelapang" } }, [
+            _vm._v(" Upload File ")
+          ]),
+          _vm._v(" "),
+          _c("b-form-file", {
+            attrs: {
+              multiple: "",
+              state: Boolean(_vm.form.field_photo),
+              placeholder: "Choose a file or drop it here...",
+              "drop-placeholder": "Drop file here..."
+            },
+            model: {
+              value: _vm.form.field_photo,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "field_photo", $$v)
+              },
+              expression: "form.field_photo"
+            }
+          })
+        ],
+        1
       )
     ]),
     _vm._v(" "),
@@ -70734,7 +70762,7 @@ var render = function() {
           }
         }
       },
-      [_vm._v("Tambah Lapang")]
+      [_vm._v("Add Lapang")]
     )
   ])
 }
@@ -74520,17 +74548,17 @@ var render = function() {
               { staticClass: "locationdd" },
               [
                 _c("label", { attrs: { for: "location" } }, [
-                  _vm._v(" Location ")
+                  _vm._v(" Lokasi ")
                 ]),
                 _vm._v(" "),
                 _c("b-form-select", {
                   attrs: { options: _vm.location },
                   model: {
-                    value: _vm.locations,
+                    value: _vm.selectedLocation,
                     callback: function($$v) {
-                      _vm.locations = $$v
+                      _vm.selectedLocation = $$v
                     },
-                    expression: "locations"
+                    expression: "selectedLocation"
                   }
                 })
               ],
@@ -74549,7 +74577,7 @@ var render = function() {
                       _c(
                         "b-button",
                         { attrs: { type: "add", variant: "primary" } },
-                        [_vm._v("Add")]
+                        [_vm._v("Tambah Lapang")]
                       )
                     ],
                     1

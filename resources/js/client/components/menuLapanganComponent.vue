@@ -5,12 +5,12 @@
         <div class="filter ">
             <div class="filter-item d-flex">
                 <div class="locationdd">
-                    <label for="location"> Location </label>
-                    <b-form-select v-model="locations" :options="location"></b-form-select>
+                    <label for="location"> Lokasi </label>
+                    <b-form-select v-model="selectedLocation" :options="location"></b-form-select>
                 </div>
                <div class="buttonadd">
                     <b-col offset="10">
-                        <a href="addlapang"><b-button  type="add" variant="primary">Add</b-button></a>
+                        <a href="addlapang"><b-button  type="add" variant="primary">Tambah Lapang</b-button></a>
                     </b-col>
                 </div>
             </div>  
@@ -62,33 +62,32 @@
                 currentPage: 1,
                 locations:[],
                 location:[],
-                selectedLocation: null,
+                selectedLocation: "",
                 filterStatus: "Pilih Lokasi",
-                dataLapangan: [
-                //   namalapangan : 'Lapang A',
-                //   jenislapangan: 'Sintetis',
-                //   image: 'http://www.staradmiral.com/wp-content/uploads/2017/01/Empat-Macam-Lapangan-Futsal.jpg'
-                // },
-                // {
-                //   namalapangan : 'Lapang B',
-                //   jenislapangan: 'Vinyl',
-                //   image: 'https://djsport.id/wp-content/uploads/2018/11/futsal-stadium-1024x576.jpg'
-                // }
-                ],
+                dataLapangan: [],
                 
             };
         },
         mounted(){
             this.loadLocation();
         },
-        created(){
-              let uri = 'http://localhost:8000/api/v1/field';
-              this.axios.get(uri).then(response => {
-                  console.log(response);
-                  this.dataLapangan = response.data.data;   
-              });
+        watch: {
+              selectedLocation:function(){
+                  this.loadField()
+              }
             },
         methods: {
+            loadField(){
+                axios({
+                    url: 'field/'+ this.selectedLocation,
+                    methods: 'GET',
+              }).then(response=>{
+                  console.log(response);
+                  this.dataLapangan = response.data.serve;
+              }).catch(error=>{
+                    console.log(error);
+                });
+            },
             deleteLapang(id_field){     
               let uri = `http://localhost:8000/api/v1/field/${id_field}`;
               this.axios.delete(uri).then(response => {
@@ -104,11 +103,12 @@
                     methods: 'GET',
                 }).then(response=>{
                     this.locations = response.data.serve
-                    console.log(response.data.serve);
-                    for(index=0;index<= response.data.serve.length; index++){
-                        this.location.push({value: response.data.serve[index].id_location, text: response.data.serve[index].location_name})
+                    // console.log(response);
+                    // console.log(this.locations);
+                    this.location=[];
+                    for(index=0;index < this.locations.length; index++){
+                        this.location.push({value: this.locations[index].id_location, text: this.locations[index].location_name})
                     }
-                    console.log(this.locations);
                 }).catch(error=>{
                     console.log(error);
                 })
@@ -120,15 +120,6 @@
                 this.status = !this.status;
                 this.filterStatus = status;
             },
-        },
-        watch: {
-            filterStatus: function (fal) {
-                var self = this;
-                const data = self.filterData.filter(function (project) {
-                    return project.status === fal;
-                });
-                self.filterData = data;
-            }
         },
       
     };

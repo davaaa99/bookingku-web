@@ -17140,10 +17140,11 @@ main {
 
 #content .cardlapang {
   display: inline-block;
+  margin-left: 25px;
 }
 
 #content .locationdd {
-  width: 250px;
+  width: 200px;
 }
 
 #content .textlapang {
@@ -17185,11 +17186,11 @@ main {
 }
 
 #lapang {
-  margin-left: 15px;
+  margin-left: 40px;
+  margin-right: 60px;
 }
 
 #lapang .buttonadd {
-  padding-left: 30px;
   padding-top: 30px;
 }
 

@@ -18,10 +18,19 @@
                     required>
               </b-form-select>
            </div>
-           
+           <div class="form-group">
+             <label for="filelapang"> Upload File </label>
+                <b-form-file
+                  multiple
+                  v-model="form.field_photo"
+                  :state="Boolean(form.field_photo)"
+                  placeholder="Choose a file or drop it here..."
+                  drop-placeholder="Drop file here..."
+                ></b-form-file>
+           </div>
       </form>
       <a href="/menulapang"><button class="btn btn-primary">Cancel</button></a>
-      <button class="btn btn-primary" @click="store()">Tambah Lapang</button>
+      <button class="btn btn-primary" @click="store()">Add Lapang</button>
       
     </div>
 </template>
@@ -52,7 +61,8 @@
         const data = {
           id_field: this.form.id_field,
           field_name: this.form.field_name,
-          field_type: this.form.field_type
+          field_type: this.form.field_type,
+          field_photo: this.form.field_photo
         }
         axios({
           url: '/add',

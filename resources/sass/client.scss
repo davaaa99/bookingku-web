@@ -758,11 +758,11 @@ main {
 /*------------------------ MENU LAPANGAN ------------------------*/
 #content {
     .cardlapang {
-        display: inline-block
-        
+        display: inline-block;
+        margin-left: 25px;
     }
     .locationdd{
-        width: 250px
+        width: 200px
     }
     .textlapang {
         color: #000000;
@@ -806,9 +806,10 @@ main {
 }
 
 #lapang{
-    margin-left: 15px;
+    margin-left: 40px;
+    margin-right: 60px;
     .buttonadd{
-        padding-left: 30px;
+        // padding-right: 100px;
         padding-top: 30px;
     }
 }
