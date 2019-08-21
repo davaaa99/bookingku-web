@@ -16591,6 +16591,10 @@ main {
   cursor: pointer;
 }
 
+#location-list .item-list .card .desc {
+  color: #707070;
+}
+
 #location-list .item-list .card:hover {
   background: #eeeeee;
   cursor: pointer;
@@ -16677,6 +16681,7 @@ main {
 }
 
 #location-detail .detail .time {
+  color: #5C5C5C;
   margin-left: 70px;
   padding: 10px;
   width: 30%;

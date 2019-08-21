@@ -3,17 +3,37 @@
     <b-form id="location-form">
       <b-form-group>
         <b-row>
-          <b-col class="col-2 mt-2" :class="status($v.form.name)">
+          <b-col class="col-2 mt-2" :class="status($v.location.location_name)">
             <label>
-              <strong>Nama Lokasi</strong>
+              <strong>Location Name</strong>
             </label>
           </b-col>
           <b-col>
             <b-form-input
               class="forminput"
-              v-model="location.location_name"
+              v-model="$v.location.location_name.$model"
               required
-              placeholder="Masukkan nama lokasi"
+              placeholder="Enter a location name"
+            ></b-form-input>
+            <div v-if="$v.location.location_name.$error">
+              <div class="error" v-if="!$v.location.location_name.required">Location name must be filled in</div>
+            </div>
+          </b-col>
+        </b-row>
+      </b-form-group>
+      <b-form-group>
+        <b-row>
+          <b-col class="col-2 mt-2">
+            <label>
+              <strong>Location Address</strong>
+            </label>
+          </b-col>
+          <b-col>
+            <b-form-input
+              class="forminput"
+              v-model="location.location_address"
+              required
+              placeholder="Enter a location address"
             ></b-form-input>
           </b-col>
         </b-row>
@@ -22,278 +42,248 @@
         <b-row>
           <b-col class="col-2 mt-2">
             <label>
-              <strong>Alamat Lokasi</strong>
+              <strong>Location Description</strong>
             </label>
           </b-col>
           <b-col>
-            <b-form-input
+            <b-form-textarea
               class="forminput"
-              v-model="location.location_address"
+              v-model="location.description"
               required
-              placeholder="Masukkan alamat lokasi"
-            ></b-form-input>
+              placeholder="Description"
+              style="height: 100px"
+            ></b-form-textarea>
           </b-col>
         </b-row>
       </b-form-group>
       <b-form-group>
-                <b-row>
-                    <b-col class="col-2 mt-2" :class="status($v.form.name)">
-                        <label><strong>Nama Lokasi</strong></label>
-                    </b-col>
-                    <b-col>
-                        <b-form-input class="forminput" v-model="$v.form.name.$model" required placeholder="Masukkan nama lokasi"></b-form-input>
-                        <div v-if="$v.form.name.$error">
-                            <div class="error" v-if="!$v.form.name.required">Nama lokasi harus diisi</div>
-                        </div>
-                    </b-col>
-                </b-row>
-            </b-form-group>
-            <b-form-group>
-                <b-row>
-                    <b-col class="col-2 mt-2">
-                        <label><strong>Alamat Lokasi</strong></label>
-                    </b-col>
-                    <b-col>
-                        <b-form-input class="forminput" v-model="form.address" required placeholder="Masukkan alamat lokasi"></b-form-input>
-                    </b-col>
-                </b-row>
-            </b-form-group>
-            <b-form-group>
-                <b-row>
-                    <b-col class="col-2 mt-2">
-                        <label><strong>Deskripsi Lokasi</strong></label>
-                    </b-col>
-                    <b-col>
-                        <b-form-textarea class="forminput" v-model="form.description" required placeholder="Masukkan deskripsi lapangan" style="height: 100px"></b-form-textarea>
-                    </b-col>
-                </b-row>
-            </b-form-group>
-            <b-form-group>
-                <b-row>
-                    <b-col class="col-2 mt-2">
-                        <label><strong>Foto Lokasi</strong></label>
-                    </b-col>
-                    <b-col>
-                        <b-form-file multiple :file-name-formater="formatName"></b-form-file>
-                    </b-col>
-                </b-row>
+        <b-row>
+          <b-col class="col-2 mt-2">
+            <label>
+              <strong>Location Photo</strong>
+            </label>
+          </b-col>
+          <b-col>
+            <b-form-file multiple :file-name-formater="formatName"></b-form-file>
+          </b-col>
+        </b-row>
       </b-form-group>
       <div class="spacer-20"></div>
       <div class="d-flex">
-        <b-button v-b-modal.octime class="btn" style="margin-left: 17.5%">Atur Waktu Buka</b-button>
+        <b-button v-b-modal.octime class="btn" style="margin-left: 17.5%">Set Open Time</b-button>
         <b-modal
           id="octime"
           size="lg"
           centered
-          title="Atur Waktu Buka"
+          title="Set Open Time"
           :header-bg-variant="headerBgVariant"
           :header-text-variant="headerTextVariant"
         >
           <b-row>
             <p class="col-2 mt-2" style="margin-right: -5%">
-              <strong>Setiap Hari</strong>
+              <strong>Everyday</strong>
             </p>
             <div class="mt-2 col-2 d-flex">
-              <b-form-checkbox v-model="form.everyday.valstatus" name="check-button" switch></b-form-checkbox>
-              <p :style="{color: changeColor(form.everyday.valstatus)}">
-                <strong>{{ changeStatus(form.everyday.valstatus) }}</strong>
+              <b-form-checkbox v-model="location.day[0].valstatus" name="check-button" switch></b-form-checkbox>
+              <p :style="{color: changeColor(location.day[0].valstatus)}">
+                <strong>{{ changeStatus(location.day[0].valstatus) }}</strong>
               </p>
             </div>
-            <div v-if="form.everyday.valstatus" class="col-8">
+            <div v-if="location.day[0].valstatus" class="col-8">
               <b-form-select
                 style="border: none; border-bottom: 2px solid #3490DC; background: none"
                 class="ml-3 mb-2 mr-2 col-3"
-                v-model="form.everyday.open_time"
+                v-model="location.day[0].open_time"
                 :options="otimes"
               ></b-form-select>
               <i class="fas fa-minus mr-2 mt-2"></i>
               <b-form-select
-                style="border: none; border-bottom: 2px solid #3490DC; background: none"
+                style="border: none; border-bottom: 2px solid #3490DC; background: none;"
                 class="mb-2 mr-2 col-3"
-                v-model="form.everyday.closing_time"
+                v-model="location.day[0].closing_time"
                 :options="ctimes"
               ></b-form-select>
             </div>
           </b-row>
-          <div v-if="!form.everyday.valstatus">
+          <div v-if="!location.day[0].valstatus">
             <b-row>
               <p class="col-1 mt-2 mr-4">
-                <strong>Senin</strong>
+                <strong>Monday</strong>
               </p>
               <div class="mt-2 col-2 d-flex">
-                <b-form-checkbox v-model="form.monday.valstatus" name="check-button" switch></b-form-checkbox>
-                <p :style="{color: changeColor(form.monday.valstatus)}">
-                  <strong>{{ changeStatus(form.monday.valstatus) }}</strong>
+                <b-form-checkbox v-model="location.day[1].valstatus" name="check-button" switch></b-form-checkbox>
+                <p :style="{color: changeColor(location.day[1].valstatus)}">
+                  <strong>{{ changeStatus(location.day[1].valstatus) }}</strong>
                 </p>
               </div>
-              <div v-if="form.monday.valstatus" class="col-8">
+              <div v-if="location.day[1].valstatus" class="col-8">
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="ml-3 mb-2 mr-2 col-3"
-                  v-model="form.monday.open_time"
+                  v-model="location.day[1].open_time"
                   :options="otimes"
                 ></b-form-select>
                 <i class="fas fa-minus mr-2 mt-2"></i>
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="mb-2 mr-2 col-3"
-                  v-model="form.monday.closing_time"
+                  v-model="location.day[1].closing_time"
                   :options="ctimes"
                 ></b-form-select>
               </div>
             </b-row>
             <b-row>
               <p class="col-1 mt-2 mr-4">
-                <strong>Selasa</strong>
+                <strong>Tuesday</strong>
               </p>
               <div class="mt-2 col-2 d-flex">
-                <b-form-checkbox v-model="form.tuesday.valstatus" name="check-button" switch></b-form-checkbox>
-                <p :style="{color: changeColor(form.tuesday.valstatus)}">
-                  <strong>{{ changeStatus(form.tuesday.valstatus) }}</strong>
+                <b-form-checkbox v-model="location.day[2].valstatus" name="check-button" switch></b-form-checkbox>
+                <p :style="{color: changeColor(location.day[2].valstatus)}">
+                  <strong>{{ changeStatus(location.day[2].valstatus) }}</strong>
                 </p>
               </div>
-              <div v-if="form.tuesday.valstatus" class="col-8">
+              <div v-if="location.day[2].valstatus" class="col-8">
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="ml-3 mb-2 mr-2 col-3"
-                  v-model="form.tuesday.open_time"
+                  v-model="location.day[2].open_time"
                   :options="otimes"
                 ></b-form-select>
                 <i class="fas fa-minus mr-2 mt-2"></i>
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="mb-2 mr-2 col-3"
-                  v-model="form.tuesday.closing_time"
+                  v-model="location.day[2].closing_time"
                   :options="ctimes"
                 ></b-form-select>
               </div>
             </b-row>
             <b-row>
               <p class="col-1 mt-2 mr-4">
-                <strong>Rabu</strong>
+                <strong>Wednesday</strong>
               </p>
               <div class="mt-2 col-2 d-flex">
-                <b-form-checkbox v-model="form.wednesday.valstatus" name="check-button" switch></b-form-checkbox>
-                <p :style="{color: changeColor(form.wednesday.valstatus)}">
-                  <strong>{{ changeStatus(form.wednesday.valstatus) }}</strong>
+                <b-form-checkbox v-model="location.day[3].valstatus" name="check-button" switch></b-form-checkbox>
+                <p :style="{color: changeColor(location.day[3].valstatus)}">
+                  <strong>{{ changeStatus(location.day[3].valstatus) }}</strong>
                 </p>
               </div>
-              <div v-if="form.wednesday.valstatus" class="col-8">
+              <div v-if="location.day[3].valstatus" class="col-8">
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="ml-3 mb-2 mr-2 col-3"
-                  v-model="form.wednesday.open_time"
+                  v-model="location.day[3].open_time"
                   :options="otimes"
                 ></b-form-select>
                 <i class="fas fa-minus mr-2 mt-2"></i>
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="mb-2 mr-2 col-3"
-                  v-model="form.wednesday.closing_time"
+                  v-model="location.day[3].closing_time"
                   :options="ctimes"
                 ></b-form-select>
               </div>
             </b-row>
             <b-row>
               <p class="col-1 mt-2 mr-4">
-                <strong>Kamis</strong>
+                <strong>Thursday</strong>
               </p>
               <div class="mt-2 col-2 d-flex">
-                <b-form-checkbox v-model="form.thrusday.valstatus" name="check-button" switch></b-form-checkbox>
-                <p :style="{color: changeColor(form.thrusday.valstatus)}">
-                  <strong>{{ changeStatus(form.thrusday.valstatus) }}</strong>
+                <b-form-checkbox v-model="location.day[4].valstatus" name="check-button" switch></b-form-checkbox>
+                <p :style="{color: changeColor(location.day[4].valstatus)}">
+                  <strong>{{ changeStatus(location.day[4].valstatus) }}</strong>
                 </p>
               </div>
-              <div v-if="form.thrusday.valstatus" class="col-8">
+              <div v-if="location.day[4].valstatus" class="col-8">
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="ml-3 mb-2 mr-2 col-3"
-                  v-model="form.thrusday.open_time"
+                  v-model="location.day[4].open_time"
                   :options="otimes"
                 ></b-form-select>
                 <i class="fas fa-minus mr-2 mt-2"></i>
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="mb-2 mr-2 col-3"
-                  v-model="form.thrusday.closing_time"
+                  v-model="location.day[4].closing_time"
                   :options="ctimes"
                 ></b-form-select>
               </div>
             </b-row>
             <b-row>
               <p class="col-1 mt-2 mr-4">
-                <strong>Jumat</strong>
+                <strong>Friday</strong>
               </p>
               <div class="mt-2 col-2 d-flex">
-                <b-form-checkbox v-model="form.friday.valstatus" name="check-button" switch></b-form-checkbox>
-                <p :style="{color: changeColor(form.friday.valstatus)}">
-                  <strong>{{ changeStatus(form.friday.valstatus) }}</strong>
+                <b-form-checkbox v-model="location.day[5].valstatus" name="check-button" switch></b-form-checkbox>
+                <p :style="{color: changeColor(location.day[5].valstatus)}">
+                  <strong>{{ changeStatus(location.day[5].valstatus) }}</strong>
                 </p>
               </div>
-              <div v-if="form.friday.valstatus" class="col-8">
+              <div v-if="location.day[5].valstatus" class="col-8">
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="ml-3 mb-2 mr-2 col-3"
-                  v-model="form.friday.open_time"
+                  v-model="location.day[5].open_time"
                   :options="otimes"
                 ></b-form-select>
                 <i class="fas fa-minus mr-2 mt-2"></i>
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="mb-2 mr-2 col-3"
-                  v-model="form.friday.closing_time"
+                  v-model="location.day[5].closing_time"
                   :options="ctimes"
                 ></b-form-select>
               </div>
             </b-row>
             <b-row>
               <p class="col-1 mt-2 mr-4">
-                <strong>Sabtu</strong>
+                <strong>Saturday</strong>
               </p>
               <div class="mt-2 col-2 d-flex">
-                <b-form-checkbox v-model="form.saturday.valstatus" name="check-button" switch></b-form-checkbox>
-                <p :style="{color: changeColor(form.saturday.valstatus)}">
-                  <strong>{{ changeStatus(form.saturday.valstatus) }}</strong>
+                <b-form-checkbox v-model="location.day[6].valstatus" name="check-button" switch></b-form-checkbox>
+                <p :style="{color: changeColor(location.day[6].valstatus)}">
+                  <strong>{{ changeStatus(location.day[6].valstatus) }}</strong>
                 </p>
               </div>
-              <div v-if="form.saturday.valstatus" class="col-8">
+              <div v-if="location.day[6].valstatus" class="col-8">
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="ml-3 mb-2 mr-2 col-3"
-                  v-model="form.saturday.open_time"
+                  v-model="location.day[6].open_time"
                   :options="otimes"
                 ></b-form-select>
                 <i class="fas fa-minus mr-2 mt-2"></i>
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="mb-2 mr-2 col-3"
-                  v-model="form.saturday.closing_time"
+                  v-model="location.day[6].closing_time"
                   :options="ctimes"
                 ></b-form-select>
               </div>
             </b-row>
             <b-row>
               <p class="col-1 mt-2 mr-4">
-                <strong>Minggu</strong>
+                <strong>Sunday</strong>
               </p>
               <div class="mt-2 col-2 d-flex">
-                <b-form-checkbox v-model="form.sunday.valstatus" name="check-button" switch></b-form-checkbox>
-                <p :style="{color: changeColor(form.sunday.valstatus)}">
-                  <strong>{{ changeStatus(form.sunday.valstatus) }}</strong>
+                <b-form-checkbox v-model="location.day[7].valstatus" name="check-button" switch></b-form-checkbox>
+                <p :style="{color: changeColor(location.day[7].valstatus)}">
+                  <strong>{{ changeStatus(location.day[7].valstatus) }}</strong>
                 </p>
               </div>
-              <div v-if="form.sunday.valstatus" class="col-8">
+              <div v-if="location.day[7].valstatus" class="col-8">
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="ml-3 mb-2 mr-2 col-3"
-                  v-model="form.sunday.open_time"
+                  v-model="location.day[7].open_time"
                   :options="otimes"
                 ></b-form-select>
                 <i class="fas fa-minus mr-2 mt-2"></i>
                 <b-form-select
                   style="border: none; border-bottom: 2px solid #3490DC; background: none"
                   class="mb-2 mr-2 col-3"
-                  v-model="form.sunday.closing_time"
+                  v-model="location.day[7].closing_time"
                   :options="ctimes"
                 ></b-form-select>
               </div>
@@ -323,63 +313,22 @@ export default {
       headerBgVariant: "primary",
       headerTextVariant: "light",
       colorstatus: "#5C5C5C",
-      location: {},
-      form: {
-        name: "",
-        address: "",
-        everyday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        monday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        tuesday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        wednesday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        thrusday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        friday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        saturday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        sunday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
+      location: {
+        location_name: "",
+        location_address: "",
         description: "",
-        images: ""
+        day: [{open_time:"",closing_time:"",valstatus:""},
+          {open_time:"",closing_time:"",valstatus:""},
+          {open_time:"",closing_time:"",valstatus:""},
+          {open_time:"",closing_time:"",valstatus:""},
+          {open_time:"",closing_time:"",valstatus:""},
+          {open_time:"",closing_time:"",valstatus:""},
+          {open_time:"",closing_time:"",valstatus:""},
+          {open_time:"",closing_time:"",valstatus:""}
+        ]
       },
       otimes: [
-        { text: "- Jam Buka -", value: "", disabled: true },
+        { text: "- Open -", value: "", disabled: true },
         "00:00",
         "01:00",
         "02:00",
@@ -406,7 +355,7 @@ export default {
         "23:00"
       ],
       ctimes: [
-        { text: "- Jam Tutup -", value: "", disabled: true },
+        { text: "- Close -", value: "", disabled: true },
         "00:00",
         "01:00",
         "02:00",
@@ -435,13 +384,99 @@ export default {
     };
   },
   validations: {
-    form: {
-      name: {
+    location: {
+      location_name: {
         required
       }
     }
   },
+  computed: {
+    everyday: function(){
+      return this.location.day[0].valstatus
+    },
+    monday: function(){
+      return this.location.day[1].valstatus
+    },
+    tuesday: function(){
+      return this.location.day[2].valstatus
+    },
+    wednesday: function(){
+      return this.location.day[3].valstatus
+    },
+    thursday: function(){
+      return this.location.day[4].valstatus
+    },
+    friday: function(){
+      return this.location.day[5].valstatus
+    },
+    saturday: function(){
+      return this.location.day[6].valstatus
+    },
+    sunday: function(){
+      return this.location.day[7].valstatus
+    }
+  },
+  watch: {
+    everyday: function() {
+      if (! this.location.day[0].valstatus)
+      {
+        this.resetTime(0)
+      } else
+      {
+        for (let index = 1; index < 8; index++) {
+          this.resetTime(index)
+        }
+      }
+    },
+    monday: function() {
+      if (! this.location.day[1].valstatus)
+      {
+        this.resetTime(1)
+      }
+    },
+    tuesday: function() {
+      if (! this.location.day[2].valstatus)
+      {
+        this.resetTime(2)
+      }
+    },
+    wednesday: function() {
+      if (! this.location.day[3].valstatus)
+      {
+        this.resetTime(3)
+      }
+    },
+    thursday: function() {
+      if (! this.location.day[4].valstatus)
+      {
+        this.resetTime(4)
+      }
+    },
+    friday: function() {
+      if (! this.location.day[5].valstatus)
+      {
+        this.resetTime(5)
+      }
+    },
+    saturday: function() {
+      if (! this.location.day[6].valstatus)
+      {
+        this.resetTime(6)
+      }
+    },
+    sunday: function() {
+      if (! this.location.day[7].valstatus)
+      {
+        this.resetTime(7)
+      }
+    }
+  },
   methods: {
+    resetTime($index){
+      this.location.day[$index].open_time = ""
+      this.location.day[$index].closing_time = ""
+      this.location.day[$index].valstatus = false
+    },
     status(validation) {
       return {
         error: validation.$error
@@ -467,10 +502,7 @@ export default {
     },
     cancel: function() {
       window.location.href =
-        window.location.protocol +
-        "//" +
-        window.location.host +
-        "/locations";
+        window.location.protocol + "//" + window.location.host + "/locations";
     },
     formatName(files) {
       if (files.length === 1) {
@@ -481,9 +513,9 @@ export default {
     },
     changeStatus(valstatus) {
       if (valstatus) {
-        return "Buka";
+        return "Open";
       } else {
-        return "Tutup";
+        return "Close";
       }
     },
     changeColor(valstatus) {

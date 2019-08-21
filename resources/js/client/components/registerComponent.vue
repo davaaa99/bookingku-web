@@ -127,14 +127,20 @@
         <b-form-group class="register-checkbox">
           <b-form-checkbox
             id="check-agreement"
-            v-model="agreement"
+            v-model="$v.agreement.$model"
             name="check-agreement"
           >I agree with terms and conditions</b-form-checkbox>
+          <div v-if="$v.agreement.required">
+            <div
+              class="error"
+              v-if="!agreement"
+            >Please check this box if you want to proceed</div>
+          </div>
         </b-form-group>
       </b-form>
       <div class="spacer-20"></div>
       <div class="register-footer d-flex flex-column">
-        <b-button class="btn register-button" @click="register()" :disabled="$v.$invalid">Sign up</b-button>
+        <b-button class="btn register-button" @click="register()" :disabled="$v.$invalid || !agreement">Sign up</b-button>
         <div class="spacer-10"></div>
         <a class="sub-title" href="/login">Already have an account? Sign in.</a>
       </div>
@@ -162,7 +168,7 @@ export default {
         account_number: "",
         phone_number: ""
       },
-      agreement: false,
+      agreement: "",
       bank: [
         { text: "Bank", value: "", disabled: true },
         "BI",
@@ -192,6 +198,9 @@ export default {
       phone_number: {
         minLength: minLength(10)
       }
+    },
+    agreement: {
+      required
     }
   },
   methods: {

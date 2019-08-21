@@ -2862,16 +2862,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2882,81 +2872,141 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       headerBgVariant: "primary",
       headerTextVariant: "light",
       colorstatus: "#5C5C5C",
-      location: {},
-      form: {
-        name: "",
-        address: "",
-        everyday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        monday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        tuesday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        wednesday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        thrusday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        friday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        saturday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        sunday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
+      location: {
+        location_name: "",
+        location_address: "",
         description: "",
-        images: ""
+        day: [{
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }]
       },
       otimes: [{
-        text: "- Jam Buka -",
+        text: "- Open -",
         value: "",
         disabled: true
       }, "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
       ctimes: [{
-        text: "- Jam Tutup -",
+        text: "- Close -",
         value: "",
         disabled: true
       }, "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
     };
   },
   validations: {
-    form: {
-      name: {
+    location: {
+      location_name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
       }
     }
   },
+  computed: {
+    everyday: function everyday() {
+      return this.location.day[0].valstatus;
+    },
+    monday: function monday() {
+      return this.location.day[1].valstatus;
+    },
+    tuesday: function tuesday() {
+      return this.location.day[2].valstatus;
+    },
+    wednesday: function wednesday() {
+      return this.location.day[3].valstatus;
+    },
+    thursday: function thursday() {
+      return this.location.day[4].valstatus;
+    },
+    friday: function friday() {
+      return this.location.day[5].valstatus;
+    },
+    saturday: function saturday() {
+      return this.location.day[6].valstatus;
+    },
+    sunday: function sunday() {
+      return this.location.day[7].valstatus;
+    }
+  },
+  watch: {
+    everyday: function everyday() {
+      if (!this.location.day[0].valstatus) {
+        this.resetTime(0);
+      } else {
+        for (var index = 1; index < 8; index++) {
+          this.resetTime(index);
+        }
+      }
+    },
+    monday: function monday() {
+      if (!this.location.day[1].valstatus) {
+        this.resetTime(1);
+      }
+    },
+    tuesday: function tuesday() {
+      if (!this.location.day[2].valstatus) {
+        this.resetTime(2);
+      }
+    },
+    wednesday: function wednesday() {
+      if (!this.location.day[3].valstatus) {
+        this.resetTime(3);
+      }
+    },
+    thursday: function thursday() {
+      if (!this.location.day[4].valstatus) {
+        this.resetTime(4);
+      }
+    },
+    friday: function friday() {
+      if (!this.location.day[5].valstatus) {
+        this.resetTime(5);
+      }
+    },
+    saturday: function saturday() {
+      if (!this.location.day[6].valstatus) {
+        this.resetTime(6);
+      }
+    },
+    sunday: function sunday() {
+      if (!this.location.day[7].valstatus) {
+        this.resetTime(7);
+      }
+    }
+  },
   methods: {
+    resetTime: function resetTime($index) {
+      this.location.day[$index].open_time = "";
+      this.location.day[$index].closing_time = "";
+      this.location.day[$index].valstatus = false;
+    },
     status: function status(validation) {
       return {
         error: validation.$error
@@ -2986,9 +3036,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     },
     changeStatus: function changeStatus(valstatus) {
       if (valstatus) {
-        return "Buka";
+        return "Open";
       } else {
-        return "Tutup";
+        return "Close";
       }
     },
     changeColor: function changeColor(valstatus) {
@@ -3060,6 +3110,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -3070,7 +3123,29 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   data: function data() {
     return {
       perPage: 10,
-      location: {}
+      location: {},
+      schedule: [{
+        open_time: "",
+        closing_time: ""
+      }, {
+        open_time: "",
+        closing_time: ""
+      }, {
+        open_time: "",
+        closing_time: ""
+      }, {
+        open_time: "",
+        closing_time: ""
+      }, {
+        open_time: "",
+        closing_time: ""
+      }, {
+        open_time: "",
+        closing_time: ""
+      }, {
+        open_time: "",
+        closing_time: ""
+      }]
     };
   },
   mounted: function mounted() {
@@ -3081,18 +3156,57 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var _this = this;
 
       axios({
-        url: '/data/location',
-        method: 'POST',
+        url: "/data/location",
+        method: "POST",
         data: {
           id: this.idLocation
         }
       }).then(function (response) {
         _this.location = response.data.serve;
+
+        _this.splitSchedule(_this.location.schedule[0]);
+
         console.log(response);
         console.log(_this.location);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    splitSchedule: function splitSchedule($schedules) {
+      var $time;
+
+      if (!this.isClose($schedules.everyday)) {
+        for (var index = 0; index < 7; index++) {
+          $time = $schedules.everyday.split(";");
+          this.schedule[index].open_time = $time[0];
+          this.schedule[index].closing_time = $time[1];
+        }
+      } else {
+        $time = $schedules.monday.split(";");
+        this.schedule[0].open_time = $time[0];
+        this.schedule[0].closing_time = $time[1];
+        $time = $schedules.tuesday.split(";");
+        this.schedule[1].open_time = $time[0];
+        this.schedule[1].closing_time = $time[1];
+        $time = $schedules.wednesday.split(";");
+        this.schedule[2].open_time = $time[0];
+        this.schedule[2].closing_time = $time[1];
+        $time = $schedules.thursday.split(";");
+        this.schedule[3].open_time = $time[0];
+        this.schedule[3].closing_time = $time[1];
+        $time = $schedules.friday.split(";");
+        this.schedule[4].open_time = $time[0];
+        this.schedule[4].closing_time = $time[1];
+        $time = $schedules.saturday.split(";");
+        this.schedule[5].open_time = $time[0];
+        this.schedule[5].closing_time = $time[1];
+        $time = $schedules.sunday.split(";");
+        this.schedule[6].open_time = $time[0];
+        this.schedule[6].closing_time = $time[1];
+      }
+    },
+    isClose: function isClose($day) {
+      return $day.length == 1;
     }
   }
 });
@@ -3416,40 +3530,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3462,80 +3542,137 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     return {
       headerBgVariant: "primary",
       headerTextVariant: "light",
-      checked: false,
       colorstatus: "#5C5C5C",
-      location: {},
-      // id: '',
-      form: {
-        name: "",
-        address: "",
-        everyday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        monday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        tuesday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        wednesday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        thrusday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        friday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        saturday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
-        sunday: {
-          status: "Tutup",
-          valstatus: false,
-          open_time: "",
-          closing_time: ""
-        },
+      files: [],
+      oldLocation: {},
+      location: {
+        id_location: "",
+        location_name: "",
+        location_address: "",
         description: "",
-        images: ""
+        photos: [],
+        day: [{
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }, {
+          open_time: "",
+          closing_time: "",
+          valstatus: ""
+        }]
       },
       otimes: [{
-        text: "- Jam Buka -",
+        text: "- Open -",
         value: "",
         disabled: true
       }, "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"],
       ctimes: [{
-        text: "- Jam Tutup -",
+        text: "- Close -",
         value: "",
         disabled: true
       }, "00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
     };
   },
   validations: {
-    form: {
-      name: {
+    location: {
+      location_name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      }
+    }
+  },
+  computed: {
+    everyday: function everyday() {
+      return this.location.day[0].valstatus;
+    },
+    monday: function monday() {
+      return this.location.day[1].valstatus;
+    },
+    tuesday: function tuesday() {
+      return this.location.day[2].valstatus;
+    },
+    wednesday: function wednesday() {
+      return this.location.day[3].valstatus;
+    },
+    thursday: function thursday() {
+      return this.location.day[4].valstatus;
+    },
+    friday: function friday() {
+      return this.location.day[5].valstatus;
+    },
+    saturday: function saturday() {
+      return this.location.day[6].valstatus;
+    },
+    sunday: function sunday() {
+      return this.location.day[7].valstatus;
+    }
+  },
+  watch: {
+    everyday: function everyday() {
+      if (!this.location.day[0].valstatus) {
+        this.resetTime(0);
+      } else {
+        for (var index = 1; index < 8; index++) {
+          this.resetTime(index);
+        }
+      }
+    },
+    monday: function monday() {
+      if (!this.location.day[1].valstatus) {
+        this.resetTime(1);
+      }
+    },
+    tuesday: function tuesday() {
+      if (!this.location.day[2].valstatus) {
+        this.resetTime(2);
+      }
+    },
+    wednesday: function wednesday() {
+      if (!this.location.day[3].valstatus) {
+        this.resetTime(3);
+      }
+    },
+    thursday: function thursday() {
+      if (!this.location.day[4].valstatus) {
+        this.resetTime(4);
+      }
+    },
+    friday: function friday() {
+      if (!this.location.day[5].valstatus) {
+        this.resetTime(5);
+      }
+    },
+    saturday: function saturday() {
+      if (!this.location.day[6].valstatus) {
+        this.resetTime(6);
+      }
+    },
+    sunday: function sunday() {
+      if (!this.location.day[7].valstatus) {
+        this.resetTime(7);
       }
     }
   },
@@ -3543,6 +3680,11 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     this.loadDetail();
   },
   methods: {
+    resetTime: function resetTime($index) {
+      this.location.day[$index].open_time = "";
+      this.location.day[$index].closing_time = "";
+      this.location.day[$index].valstatus = false;
+    },
     status: function status(validation) {
       return {
         error: validation.$error
@@ -3558,22 +3700,87 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           id: this.idLocation
         }
       }).then(function (response) {
-        _this.location = response.data.serve;
-        console.log(response);
+        _this.oldLocation = response.data.serve;
+
+        _this.setDataLocation(_this.oldLocation);
       })["catch"](function (error) {
         console.log(error);
       });
     },
+    setDataLocation: function setDataLocation($oldLocation) {
+      this.location.id_location = $oldLocation.id_location;
+      this.location.location_name = $oldLocation.location_name;
+      this.location.location_address = $oldLocation.location_address;
+      this.location.description = $oldLocation.description;
+      this.splitSchedule($oldLocation.schedule[0]);
+    },
+    splitSchedule: function splitSchedule($schedules) {
+      var $time;
+
+      if (!this.isClose($schedules.everyday)) {
+        $time = $schedules.everyday.split(";");
+        this.location.day[0].open_time = $time[0];
+        this.location.day[0].closing_time = $time[1];
+        this.location.day[0].valstatus = true;
+      } else {
+        if (!this.isClose($schedules.monday)) {
+          $time = $schedules.monday.split(";");
+          this.location.day[1].open_time = $time[0];
+          this.location.day[1].closing_time = $time[1];
+          this.location.day[1].valstatus = true;
+        }
+
+        if (!this.isClose($schedules.tuesday)) {
+          $time = $schedules.tuesday.split(";");
+          this.location.day[2].open_time = $time[0];
+          this.location.day[2].closing_time = $time[1];
+          this.location.day[2].valstatus = true;
+        }
+
+        if (!this.isClose($schedules.wednesday)) {
+          $time = $schedules.wednesday.split(";");
+          this.location.day[3].open_time = $time[0];
+          this.location.day[3].closing_time = $time[1];
+          this.location.day[3].valstatus = true;
+        }
+
+        if (!this.isClose($schedules.thursday)) {
+          $time = $schedules.thursday.split(";");
+          this.location.day[4].open_time = $time[0];
+          this.location.day[4].closing_time = $time[1];
+          this.location.day[4].valstatus = true;
+        }
+
+        if (!this.isClose($schedules.friday)) {
+          $time = $schedules.friday.split(";");
+          this.location.day[5].open_time = $time[0];
+          this.location.day[5].closing_time = $time[1];
+          this.location.day[5].valstatus = true;
+        }
+
+        if (!this.isClose($schedules.saturday)) {
+          $time = $schedules.saturday.split(";");
+          this.location.day[6].open_time = $time[0];
+          this.location.day[6].closing_time = $time[1];
+          this.location.day[6].valstatus = true;
+        }
+
+        if (!this.isClose($schedules.sunday)) {
+          $time = $schedules.sunday.split(";");
+          this.location.day[7].open_time = $time[0];
+          this.location.day[7].closing_time = $time[1];
+          this.location.day[7].valstatus = true;
+        }
+      }
+    },
+    isClose: function isClose($day) {
+      return $day.length == 1;
+    },
     save: function save() {
-      var loc = {
-        id_location: this.location.id_location,
-        location_name: this.location.location_name,
-        location_address: this.location.location_address
-      };
       axios({
         url: "/update/location",
         method: "PUT",
-        data: loc
+        data: this.location
       }).then(function (response) {
         alert("Data Berhasil diupdate");
         window.location.href = window.location.protocol + "//" + window.location.host + "/locations";
@@ -3585,18 +3792,18 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     cancel: function cancel() {
       window.location.href = window.location.protocol + "//" + window.location.host + "/locations";
     },
-    formatNames: function formatNames(files) {
-      if (files.length === 1) {
+    formatName: function formatName(files) {
+      if (files.length == 1) {
         return files[0].name;
       } else {
-        return "".concat(files.length, " files selected");
+        return files[1].name;
       }
     },
     changeStatus: function changeStatus(valstatus) {
       if (valstatus) {
-        return "Buka";
+        return "Open";
       } else {
-        return "Tutup";
+        return "Close";
       }
     },
     changeColor: function changeColor(valstatus) {
@@ -3669,6 +3876,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -3681,8 +3890,12 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
   },
   computed: {
-    rows: function rows() {
-      return this.dataLocation.length;
+    searchLocation: function searchLocation() {
+      var _this = this;
+
+      return this.locations.filter(function (loc) {
+        return !_this.filterSearch || loc.location_name.toLowerCase().indexOf(_this.filterSearch.toLowerCase()) > -1;
+      });
     }
   },
   mounted: function mounted() {
@@ -3690,35 +3903,35 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   },
   methods: {
     loadLocations: function loadLocations() {
-      var _this = this;
+      var _this2 = this;
 
       axios({
-        url: 'data/locations',
-        method: 'GET'
+        url: "data/locations",
+        method: "GET"
       }).then(function (response) {
-        _this.locations = response.data.serve;
+        _this2.locations = response.data.serve;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     msgBoxDelete: function msgBoxDelete(index) {
-      var _this2 = this;
+      var _this3 = this;
 
-      this.$bvModal.msgBoxConfirm('Are you sure you want delete this locations?', {
-        title: 'Delete Location',
-        size: 'sm',
-        buttonSize: 'sm',
-        okVariant: 'danger',
-        okTitle: 'DELETE',
-        footerClass: 'p-2',
+      this.$bvModal.msgBoxConfirm("Are you sure you want delete this locations?", {
+        title: "Delete Location",
+        size: "sm",
+        buttonSize: "sm",
+        okVariant: "danger",
+        okTitle: "DELETE",
+        footerClass: "p-2",
         centered: true
       }).then(function (value) {
         if (value) {
           axios({
-            url: '/location/' + _this2.locations[index].id_location,
-            method: 'DELETE'
+            url: "/location/" + _this3.locations[index].id_location,
+            method: "DELETE"
           }).then(function (response) {
-            window.location.href = window.location.protocol + '//' + window.location.host + '/locations';
+            window.location.href = window.location.protocol + "//" + window.location.host + "/locations";
           })["catch"](function (error) {
             console.log(error);
           });
@@ -3728,13 +3941,13 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       });
     },
     detailLocation: function detailLocation(id) {
-      window.location.href = window.location.protocol + '//' + window.location.host + '/location/detail/' + id;
+      window.location.href = window.location.protocol + "//" + window.location.host + "/location/detail/" + id;
     },
     addLocation: function addLocation() {
-      window.location.href = window.location.protocol + '//' + window.location.host + '/location/add';
+      window.location.href = window.location.protocol + "//" + window.location.host + "/location/add";
     },
     editLocation: function editLocation(id) {
-      window.location.href = window.location.protocol + '//' + window.location.host + '/location/edit/' + id;
+      window.location.href = window.location.protocol + "//" + window.location.host + "/location/edit/" + id;
     }
   }
 });
@@ -4473,6 +4686,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4490,7 +4709,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         account_number: "",
         phone_number: ""
       },
-      agreement: false,
+      agreement: "",
       bank: [{
         text: "Bank",
         value: "",
@@ -4517,6 +4736,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       phone_number: {
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(10)
       }
+    },
+    agreement: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
     }
   },
   methods: {
@@ -24064,7 +24286,7 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip */
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70622,9 +70844,9 @@ var render = function() {
                     "b-col",
                     {
                       staticClass: "col-2 mt-2",
-                      class: _vm.status(_vm.$v.form.name)
+                      class: _vm.status(_vm.$v.location.location_name)
                     },
-                    [_c("label", [_c("strong", [_vm._v("Nama Lokasi")])])]
+                    [_c("label", [_c("strong", [_vm._v("Location Name")])])]
                   ),
                   _vm._v(" "),
                   _c(
@@ -70634,16 +70856,30 @@ var render = function() {
                         staticClass: "forminput",
                         attrs: {
                           required: "",
-                          placeholder: "Masukkan nama lokasi"
+                          placeholder: "Enter a location name"
                         },
                         model: {
-                          value: _vm.location.location_name,
+                          value: _vm.$v.location.location_name.$model,
                           callback: function($$v) {
-                            _vm.$set(_vm.location, "location_name", $$v)
+                            _vm.$set(
+                              _vm.$v.location.location_name,
+                              "$model",
+                              $$v
+                            )
                           },
-                          expression: "location.location_name"
+                          expression: "$v.location.location_name.$model"
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.$v.location.location_name.$error
+                        ? _c("div", [
+                            !_vm.$v.location.location_name.required
+                              ? _c("div", { staticClass: "error" }, [
+                                  _vm._v("Location name must be filled in")
+                                ])
+                              : _vm._e()
+                          ])
+                        : _vm._e()
                     ],
                     1
                   )
@@ -70661,7 +70897,7 @@ var render = function() {
                 "b-row",
                 [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
-                    _c("label", [_c("strong", [_vm._v("Alamat Lokasi")])])
+                    _c("label", [_c("strong", [_vm._v("Location Address")])])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -70671,7 +70907,7 @@ var render = function() {
                         staticClass: "forminput",
                         attrs: {
                           required: "",
-                          placeholder: "Masukkan alamat lokasi"
+                          placeholder: "Enter a location address"
                         },
                         model: {
                           value: _vm.location.location_address,
@@ -70697,97 +70933,10 @@ var render = function() {
               _c(
                 "b-row",
                 [
-                  _c(
-                    "b-col",
-                    {
-                      staticClass: "col-2 mt-2",
-                      class: _vm.status(_vm.$v.form.name)
-                    },
-                    [_c("label", [_c("strong", [_vm._v("Nama Lokasi")])])]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    [
-                      _c("b-form-input", {
-                        staticClass: "forminput",
-                        attrs: {
-                          required: "",
-                          placeholder: "Masukkan nama lokasi"
-                        },
-                        model: {
-                          value: _vm.$v.form.name.$model,
-                          callback: function($$v) {
-                            _vm.$set(_vm.$v.form.name, "$model", $$v)
-                          },
-                          expression: "$v.form.name.$model"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.$v.form.name.$error
-                        ? _c("div", [
-                            !_vm.$v.form.name.required
-                              ? _c("div", { staticClass: "error" }, [
-                                  _vm._v("Nama lokasi harus diisi")
-                                ])
-                              : _vm._e()
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "b-form-group",
-            [
-              _c(
-                "b-row",
-                [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
-                    _c("label", [_c("strong", [_vm._v("Alamat Lokasi")])])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    [
-                      _c("b-form-input", {
-                        staticClass: "forminput",
-                        attrs: {
-                          required: "",
-                          placeholder: "Masukkan alamat lokasi"
-                        },
-                        model: {
-                          value: _vm.form.address,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "address", $$v)
-                          },
-                          expression: "form.address"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "b-form-group",
-            [
-              _c(
-                "b-row",
-                [
-                  _c("b-col", { staticClass: "col-2 mt-2" }, [
-                    _c("label", [_c("strong", [_vm._v("Deskripsi Lokasi")])])
+                    _c("label", [
+                      _c("strong", [_vm._v("Location Description")])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -70796,16 +70945,13 @@ var render = function() {
                       _c("b-form-textarea", {
                         staticClass: "forminput",
                         staticStyle: { height: "100px" },
-                        attrs: {
-                          required: "",
-                          placeholder: "Masukkan deskripsi lapangan"
-                        },
+                        attrs: { required: "", placeholder: "Description" },
                         model: {
-                          value: _vm.form.description,
+                          value: _vm.location.description,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "description", $$v)
+                            _vm.$set(_vm.location, "description", $$v)
                           },
-                          expression: "form.description"
+                          expression: "location.description"
                         }
                       })
                     ],
@@ -70825,7 +70971,7 @@ var render = function() {
                 "b-row",
                 [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
-                    _c("label", [_c("strong", [_vm._v("Foto Lokasi")])])
+                    _c("label", [_c("strong", [_vm._v("Location Photo")])])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -70866,7 +71012,7 @@ var render = function() {
                   staticClass: "btn",
                   staticStyle: { "margin-left": "17.5%" }
                 },
-                [_vm._v("Atur Waktu Buka")]
+                [_vm._v("Set Open Time")]
               ),
               _vm._v(" "),
               _c(
@@ -70876,7 +71022,7 @@ var render = function() {
                     id: "octime",
                     size: "lg",
                     centered: "",
-                    title: "Atur Waktu Buka",
+                    title: "Set Open Time",
                     "header-bg-variant": _vm.headerBgVariant,
                     "header-text-variant": _vm.headerTextVariant
                   }
@@ -70889,7 +71035,7 @@ var render = function() {
                         staticClass: "col-2 mt-2",
                         staticStyle: { "margin-right": "-5%" }
                       },
-                      [_c("strong", [_vm._v("Setiap Hari")])]
+                      [_c("strong", [_vm._v("Everyday")])]
                     ),
                     _vm._v(" "),
                     _c(
@@ -70899,11 +71045,11 @@ var render = function() {
                         _c("b-form-checkbox", {
                           attrs: { name: "check-button", switch: "" },
                           model: {
-                            value: _vm.form.everyday.valstatus,
+                            value: _vm.location.day[0].valstatus,
                             callback: function($$v) {
-                              _vm.$set(_vm.form.everyday, "valstatus", $$v)
+                              _vm.$set(_vm.location.day[0], "valstatus", $$v)
                             },
-                            expression: "form.everyday.valstatus"
+                            expression: "location.day[0].valstatus"
                           }
                         }),
                         _vm._v(" "),
@@ -70912,7 +71058,7 @@ var render = function() {
                           {
                             style: {
                               color: _vm.changeColor(
-                                _vm.form.everyday.valstatus
+                                _vm.location.day[0].valstatus
                               )
                             }
                           },
@@ -70920,7 +71066,9 @@ var render = function() {
                             _c("strong", [
                               _vm._v(
                                 _vm._s(
-                                  _vm.changeStatus(_vm.form.everyday.valstatus)
+                                  _vm.changeStatus(
+                                    _vm.location.day[0].valstatus
+                                  )
                                 )
                               )
                             ])
@@ -70930,7 +71078,7 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _vm.form.everyday.valstatus
+                    _vm.location.day[0].valstatus
                       ? _c(
                           "div",
                           { staticClass: "col-8" },
@@ -70944,11 +71092,15 @@ var render = function() {
                               },
                               attrs: { options: _vm.otimes },
                               model: {
-                                value: _vm.form.everyday.open_time,
+                                value: _vm.location.day[0].open_time,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.form.everyday, "open_time", $$v)
+                                  _vm.$set(
+                                    _vm.location.day[0],
+                                    "open_time",
+                                    $$v
+                                  )
                                 },
-                                expression: "form.everyday.open_time"
+                                expression: "location.day[0].open_time"
                               }
                             }),
                             _vm._v(" "),
@@ -70963,15 +71115,15 @@ var render = function() {
                               },
                               attrs: { options: _vm.ctimes },
                               model: {
-                                value: _vm.form.everyday.closing_time,
+                                value: _vm.location.day[0].closing_time,
                                 callback: function($$v) {
                                   _vm.$set(
-                                    _vm.form.everyday,
+                                    _vm.location.day[0],
                                     "closing_time",
                                     $$v
                                   )
                                 },
-                                expression: "form.everyday.closing_time"
+                                expression: "location.day[0].closing_time"
                               }
                             })
                           ],
@@ -70980,13 +71132,13 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  !_vm.form.everyday.valstatus
+                  !_vm.location.day[0].valstatus
                     ? _c(
                         "div",
                         [
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Senin")])
+                              _c("strong", [_vm._v("Monday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -70996,15 +71148,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.monday.valstatus,
+                                    value: _vm.location.day[1].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.monday,
+                                        _vm.location.day[1],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.monday.valstatus"
+                                    expression: "location.day[1].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -71013,7 +71165,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.monday.valstatus
+                                        _vm.location.day[1].valstatus
                                       )
                                     }
                                   },
@@ -71022,7 +71174,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.monday.valstatus
+                                            _vm.location.day[1].valstatus
                                           )
                                         )
                                       )
@@ -71033,7 +71185,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.monday.valstatus
+                            _vm.location.day[1].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -71047,15 +71199,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.monday.open_time,
+                                        value: _vm.location.day[1].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.monday,
+                                            _vm.location.day[1],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.monday.open_time"
+                                        expression: "location.day[1].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -71072,226 +71224,16 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.monday.closing_time,
+                                        value: _vm.location.day[1].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.monday,
-                                            "closing_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.monday.closing_time"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          ]),
-                          _vm._v(" "),
-                          _c("b-row", [
-                            _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Selasa")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "mt-2 col-2 d-flex" },
-                              [
-                                _c("b-form-checkbox", {
-                                  attrs: { name: "check-button", switch: "" },
-                                  model: {
-                                    value: _vm.form.tuesday.valstatus,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.form.tuesday,
-                                        "valstatus",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "form.tuesday.valstatus"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  {
-                                    style: {
-                                      color: _vm.changeColor(
-                                        _vm.form.tuesday.valstatus
-                                      )
-                                    }
-                                  },
-                                  [
-                                    _c("strong", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.changeStatus(
-                                            _vm.form.tuesday.valstatus
-                                          )
-                                        )
-                                      )
-                                    ])
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _vm.form.tuesday.valstatus
-                              ? _c(
-                                  "div",
-                                  { staticClass: "col-8" },
-                                  [
-                                    _c("b-form-select", {
-                                      staticClass: "ml-3 mb-2 mr-2 col-3",
-                                      staticStyle: {
-                                        border: "none",
-                                        "border-bottom": "2px solid #3490DC",
-                                        background: "none"
-                                      },
-                                      attrs: { options: _vm.otimes },
-                                      model: {
-                                        value: _vm.form.tuesday.open_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.tuesday,
-                                            "open_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.tuesday.open_time"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("i", {
-                                      staticClass: "fas fa-minus mr-2 mt-2"
-                                    }),
-                                    _vm._v(" "),
-                                    _c("b-form-select", {
-                                      staticClass: "mb-2 mr-2 col-3",
-                                      staticStyle: {
-                                        border: "none",
-                                        "border-bottom": "2px solid #3490DC",
-                                        background: "none"
-                                      },
-                                      attrs: { options: _vm.ctimes },
-                                      model: {
-                                        value: _vm.form.tuesday.closing_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.tuesday,
-                                            "closing_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.tuesday.closing_time"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          ]),
-                          _vm._v(" "),
-                          _c("b-row", [
-                            _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Rabu")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "mt-2 col-2 d-flex" },
-                              [
-                                _c("b-form-checkbox", {
-                                  attrs: { name: "check-button", switch: "" },
-                                  model: {
-                                    value: _vm.form.wednesday.valstatus,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.form.wednesday,
-                                        "valstatus",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "form.wednesday.valstatus"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  {
-                                    style: {
-                                      color: _vm.changeColor(
-                                        _vm.form.wednesday.valstatus
-                                      )
-                                    }
-                                  },
-                                  [
-                                    _c("strong", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.changeStatus(
-                                            _vm.form.wednesday.valstatus
-                                          )
-                                        )
-                                      )
-                                    ])
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _vm.form.wednesday.valstatus
-                              ? _c(
-                                  "div",
-                                  { staticClass: "col-8" },
-                                  [
-                                    _c("b-form-select", {
-                                      staticClass: "ml-3 mb-2 mr-2 col-3",
-                                      staticStyle: {
-                                        border: "none",
-                                        "border-bottom": "2px solid #3490DC",
-                                        background: "none"
-                                      },
-                                      attrs: { options: _vm.otimes },
-                                      model: {
-                                        value: _vm.form.wednesday.open_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.wednesday,
-                                            "open_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.wednesday.open_time"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("i", {
-                                      staticClass: "fas fa-minus mr-2 mt-2"
-                                    }),
-                                    _vm._v(" "),
-                                    _c("b-form-select", {
-                                      staticClass: "mb-2 mr-2 col-3",
-                                      staticStyle: {
-                                        border: "none",
-                                        "border-bottom": "2px solid #3490DC",
-                                        background: "none"
-                                      },
-                                      attrs: { options: _vm.ctimes },
-                                      model: {
-                                        value: _vm.form.wednesday.closing_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.wednesday,
+                                            _vm.location.day[1],
                                             "closing_time",
                                             $$v
                                           )
                                         },
                                         expression:
-                                          "form.wednesday.closing_time"
+                                          "location.day[1].closing_time"
                                       }
                                     })
                                   ],
@@ -71302,7 +71244,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Kamis")])
+                              _c("strong", [_vm._v("Tuesday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -71312,15 +71254,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.thrusday.valstatus,
+                                    value: _vm.location.day[2].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.thrusday,
+                                        _vm.location.day[2],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.thrusday.valstatus"
+                                    expression: "location.day[2].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -71329,7 +71271,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.thrusday.valstatus
+                                        _vm.location.day[2].valstatus
                                       )
                                     }
                                   },
@@ -71338,7 +71280,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.thrusday.valstatus
+                                            _vm.location.day[2].valstatus
                                           )
                                         )
                                       )
@@ -71349,7 +71291,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.thrusday.valstatus
+                            _vm.location.day[2].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -71363,15 +71305,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.thrusday.open_time,
+                                        value: _vm.location.day[2].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.thrusday,
+                                            _vm.location.day[2],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.thrusday.open_time"
+                                        expression: "location.day[2].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -71388,15 +71330,16 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.thrusday.closing_time,
+                                        value: _vm.location.day[2].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.thrusday,
+                                            _vm.location.day[2],
                                             "closing_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.thrusday.closing_time"
+                                        expression:
+                                          "location.day[2].closing_time"
                                       }
                                     })
                                   ],
@@ -71407,7 +71350,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Jumat")])
+                              _c("strong", [_vm._v("Wednesday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -71417,15 +71360,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.friday.valstatus,
+                                    value: _vm.location.day[3].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.friday,
+                                        _vm.location.day[3],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.friday.valstatus"
+                                    expression: "location.day[3].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -71434,7 +71377,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.friday.valstatus
+                                        _vm.location.day[3].valstatus
                                       )
                                     }
                                   },
@@ -71443,7 +71386,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.friday.valstatus
+                                            _vm.location.day[3].valstatus
                                           )
                                         )
                                       )
@@ -71454,7 +71397,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.friday.valstatus
+                            _vm.location.day[3].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -71468,15 +71411,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.friday.open_time,
+                                        value: _vm.location.day[3].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.friday,
+                                            _vm.location.day[3],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.friday.open_time"
+                                        expression: "location.day[3].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -71493,15 +71436,16 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.friday.closing_time,
+                                        value: _vm.location.day[3].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.friday,
+                                            _vm.location.day[3],
                                             "closing_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.friday.closing_time"
+                                        expression:
+                                          "location.day[3].closing_time"
                                       }
                                     })
                                   ],
@@ -71512,7 +71456,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Sabtu")])
+                              _c("strong", [_vm._v("Thursday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -71522,15 +71466,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.saturday.valstatus,
+                                    value: _vm.location.day[4].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.saturday,
+                                        _vm.location.day[4],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.saturday.valstatus"
+                                    expression: "location.day[4].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -71539,7 +71483,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.saturday.valstatus
+                                        _vm.location.day[4].valstatus
                                       )
                                     }
                                   },
@@ -71548,7 +71492,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.saturday.valstatus
+                                            _vm.location.day[4].valstatus
                                           )
                                         )
                                       )
@@ -71559,7 +71503,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.saturday.valstatus
+                            _vm.location.day[4].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -71573,15 +71517,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.saturday.open_time,
+                                        value: _vm.location.day[4].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.saturday,
+                                            _vm.location.day[4],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.saturday.open_time"
+                                        expression: "location.day[4].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -71598,15 +71542,16 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.saturday.closing_time,
+                                        value: _vm.location.day[4].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.saturday,
+                                            _vm.location.day[4],
                                             "closing_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.saturday.closing_time"
+                                        expression:
+                                          "location.day[4].closing_time"
                                       }
                                     })
                                   ],
@@ -71617,7 +71562,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Minggu")])
+                              _c("strong", [_vm._v("Friday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -71627,15 +71572,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.sunday.valstatus,
+                                    value: _vm.location.day[5].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.sunday,
+                                        _vm.location.day[5],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.sunday.valstatus"
+                                    expression: "location.day[5].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -71644,7 +71589,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.sunday.valstatus
+                                        _vm.location.day[5].valstatus
                                       )
                                     }
                                   },
@@ -71653,7 +71598,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.sunday.valstatus
+                                            _vm.location.day[5].valstatus
                                           )
                                         )
                                       )
@@ -71664,7 +71609,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.sunday.valstatus
+                            _vm.location.day[5].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -71678,15 +71623,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.sunday.open_time,
+                                        value: _vm.location.day[5].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.sunday,
+                                            _vm.location.day[5],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.sunday.open_time"
+                                        expression: "location.day[5].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -71703,15 +71648,228 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.sunday.closing_time,
+                                        value: _vm.location.day[5].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.sunday,
+                                            _vm.location.day[5],
                                             "closing_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.sunday.closing_time"
+                                        expression:
+                                          "location.day[5].closing_time"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c("b-row", [
+                            _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                              _c("strong", [_vm._v("Saturday")])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-2 col-2 d-flex" },
+                              [
+                                _c("b-form-checkbox", {
+                                  attrs: { name: "check-button", switch: "" },
+                                  model: {
+                                    value: _vm.location.day[6].valstatus,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.location.day[6],
+                                        "valstatus",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "location.day[6].valstatus"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    style: {
+                                      color: _vm.changeColor(
+                                        _vm.location.day[6].valstatus
+                                      )
+                                    }
+                                  },
+                                  [
+                                    _c("strong", [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.changeStatus(
+                                            _vm.location.day[6].valstatus
+                                          )
+                                        )
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.location.day[6].valstatus
+                              ? _c(
+                                  "div",
+                                  { staticClass: "col-8" },
+                                  [
+                                    _c("b-form-select", {
+                                      staticClass: "ml-3 mb-2 mr-2 col-3",
+                                      staticStyle: {
+                                        border: "none",
+                                        "border-bottom": "2px solid #3490DC",
+                                        background: "none"
+                                      },
+                                      attrs: { options: _vm.otimes },
+                                      model: {
+                                        value: _vm.location.day[6].open_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.location.day[6],
+                                            "open_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "location.day[6].open_time"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("i", {
+                                      staticClass: "fas fa-minus mr-2 mt-2"
+                                    }),
+                                    _vm._v(" "),
+                                    _c("b-form-select", {
+                                      staticClass: "mb-2 mr-2 col-3",
+                                      staticStyle: {
+                                        border: "none",
+                                        "border-bottom": "2px solid #3490DC",
+                                        background: "none"
+                                      },
+                                      attrs: { options: _vm.ctimes },
+                                      model: {
+                                        value: _vm.location.day[6].closing_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.location.day[6],
+                                            "closing_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "location.day[6].closing_time"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c("b-row", [
+                            _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                              _c("strong", [_vm._v("Sunday")])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-2 col-2 d-flex" },
+                              [
+                                _c("b-form-checkbox", {
+                                  attrs: { name: "check-button", switch: "" },
+                                  model: {
+                                    value: _vm.location.day[7].valstatus,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.location.day[7],
+                                        "valstatus",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "location.day[7].valstatus"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    style: {
+                                      color: _vm.changeColor(
+                                        _vm.location.day[7].valstatus
+                                      )
+                                    }
+                                  },
+                                  [
+                                    _c("strong", [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.changeStatus(
+                                            _vm.location.day[7].valstatus
+                                          )
+                                        )
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.location.day[7].valstatus
+                              ? _c(
+                                  "div",
+                                  { staticClass: "col-8" },
+                                  [
+                                    _c("b-form-select", {
+                                      staticClass: "ml-3 mb-2 mr-2 col-3",
+                                      staticStyle: {
+                                        border: "none",
+                                        "border-bottom": "2px solid #3490DC",
+                                        background: "none"
+                                      },
+                                      attrs: { options: _vm.otimes },
+                                      model: {
+                                        value: _vm.location.day[7].open_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.location.day[7],
+                                            "open_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "location.day[7].open_time"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("i", {
+                                      staticClass: "fas fa-minus mr-2 mt-2"
+                                    }),
+                                    _vm._v(" "),
+                                    _c("b-form-select", {
+                                      staticClass: "mb-2 mr-2 col-3",
+                                      staticStyle: {
+                                        border: "none",
+                                        "border-bottom": "2px solid #3490DC",
+                                        background: "none"
+                                      },
+                                      attrs: { options: _vm.ctimes },
+                                      model: {
+                                        value: _vm.location.day[7].closing_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.location.day[7],
+                                            "closing_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "location.day[7].closing_time"
                                       }
                                     })
                                   ],
@@ -71823,46 +71981,46 @@ var render = function() {
       _c("div", { staticClass: "spacer-30" }),
       _vm._v(" "),
       _c("div", { staticClass: "detail d-flex" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "desc" }, [
+          _c("h3", [_vm._v("Description")]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(_vm.location.description))])
+        ]),
         _vm._v(" "),
         _c(
           "div",
           { staticClass: "time" },
           [
-            _c("h3", [_vm._v("Waktu Buka")]),
+            _c("h3", [_vm._v("Open Time")]),
             _vm._v(" "),
             _c("b-row", [
               _c("ul", [
-                _c("li", [_vm._v("Senin")]),
+                _c("li", [_vm._v("Monday")]),
                 _vm._v(" "),
-                _c("li", [_vm._v("Selasa")]),
+                _c("li", [_vm._v("Tuesday")]),
                 _vm._v(" "),
-                _c("li", [_vm._v("Rabu")]),
+                _c("li", [_vm._v("Wednesday")]),
                 _vm._v(" "),
-                _c("li", [_vm._v("Kamis")]),
+                _c("li", [_vm._v("Thursday")]),
                 _vm._v(" "),
-                _c("li", [_vm._v("Jumat")]),
+                _c("li", [_vm._v("Friday")]),
                 _vm._v(" "),
-                _c("li", [_vm._v("Sabtu")]),
+                _c("li", [_vm._v("Saturday")]),
                 _vm._v(" "),
-                _c("li", [_vm._v("Minggu")])
+                _c("li", [_vm._v("Sunday")])
               ]),
               _vm._v(" "),
-              _c("ul", [
-                _c("li", [_vm._v("07:00 - 22:00")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("07:00 - 22:00")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("07:00 - 22:00")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("07:00 - 22:00")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("07:00 - 22:00")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("07:00 - 22:00")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("07:00 - 22:00")])
-              ])
+              _c(
+                "ul",
+                _vm._l(_vm.schedule, function(time) {
+                  return _c("li", { key: time.id }, [
+                    _vm._v(
+                      _vm._s(time.open_time) + " - " + _vm._s(time.closing_time)
+                    )
+                  ])
+                }),
+                0
+              )
             ])
           ],
           1
@@ -71874,20 +72032,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "desc" }, [
-      _c("p", [
-        _vm._v(
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -71927,9 +72072,9 @@ var render = function() {
                     "b-col",
                     {
                       staticClass: "col-2 mt-2",
-                      class: _vm.status(_vm.$v.form.name)
+                      class: _vm.status(_vm.$v.location.location_name)
                     },
-                    [_c("label", [_c("strong", [_vm._v("Nama Lokasi")])])]
+                    [_c("label", [_c("strong", [_vm._v("Location Name")])])]
                   ),
                   _vm._v(" "),
                   _c(
@@ -71939,16 +72084,30 @@ var render = function() {
                         staticClass: "forminput",
                         attrs: {
                           required: "",
-                          placeholder: "Masukkan nama lokasi"
+                          placeholder: "Enter a location name"
                         },
                         model: {
-                          value: _vm.location.location_name,
+                          value: _vm.$v.location.location_name.$model,
                           callback: function($$v) {
-                            _vm.$set(_vm.location, "location_name", $$v)
+                            _vm.$set(
+                              _vm.$v.location.location_name,
+                              "$model",
+                              $$v
+                            )
                           },
-                          expression: "location.location_name"
+                          expression: "$v.location.location_name.$model"
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _vm.$v.location.location_name.$error
+                        ? _c("div", [
+                            !_vm.$v.location.location_name.required
+                              ? _c("div", { staticClass: "error" }, [
+                                  _vm._v("Location name must be filled in")
+                                ])
+                              : _vm._e()
+                          ])
+                        : _vm._e()
                     ],
                     1
                   )
@@ -71966,7 +72125,7 @@ var render = function() {
                 "b-row",
                 [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
-                    _c("label", [_c("strong", [_vm._v("Alamat Lokasi")])])
+                    _c("label", [_c("strong", [_vm._v("Location Address")])])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -71976,7 +72135,7 @@ var render = function() {
                         staticClass: "forminput",
                         attrs: {
                           required: "",
-                          placeholder: "Masukkan alamat lokasi"
+                          placeholder: "Enter a location address"
                         },
                         model: {
                           value: _vm.location.location_address,
@@ -72002,97 +72161,10 @@ var render = function() {
               _c(
                 "b-row",
                 [
-                  _c(
-                    "b-col",
-                    {
-                      staticClass: "col-2 mt-2",
-                      class: _vm.status(_vm.$v.form.name)
-                    },
-                    [_c("label", [_c("strong", [_vm._v("Nama Lokasi")])])]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    [
-                      _c("b-form-input", {
-                        staticClass: "forminput",
-                        attrs: {
-                          required: "",
-                          placeholder: "Masukkan nama lokasi"
-                        },
-                        model: {
-                          value: _vm.$v.form.name.$model,
-                          callback: function($$v) {
-                            _vm.$set(_vm.$v.form.name, "$model", $$v)
-                          },
-                          expression: "$v.form.name.$model"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.$v.form.name.$error
-                        ? _c("div", [
-                            !_vm.$v.form.name.required
-                              ? _c("div", { staticClass: "error" }, [
-                                  _vm._v("Nama lokasi harus diisi")
-                                ])
-                              : _vm._e()
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "b-form-group",
-            [
-              _c(
-                "b-row",
-                [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
-                    _c("label", [_c("strong", [_vm._v("Alamat Lokasi")])])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    [
-                      _c("b-form-input", {
-                        staticClass: "forminput",
-                        attrs: {
-                          required: "",
-                          placeholder: "Masukkan alamat lokasi"
-                        },
-                        model: {
-                          value: _vm.form.address,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "address", $$v)
-                          },
-                          expression: "form.address"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "b-form-group",
-            [
-              _c(
-                "b-row",
-                [
-                  _c("b-col", { staticClass: "col-2 mt-2" }, [
-                    _c("label", [_c("strong", [_vm._v("Deskripsi Lokasi")])])
+                    _c("label", [
+                      _c("strong", [_vm._v("Location Description")])
+                    ])
                   ]),
                   _vm._v(" "),
                   _c(
@@ -72101,16 +72173,13 @@ var render = function() {
                       _c("b-form-textarea", {
                         staticClass: "forminput",
                         staticStyle: { height: "100px" },
-                        attrs: {
-                          required: "",
-                          placeholder: "Masukkan deskripsi lapangan"
-                        },
+                        attrs: { required: "", placeholder: "Description" },
                         model: {
-                          value: _vm.form.description,
+                          value: _vm.location.description,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "description", $$v)
+                            _vm.$set(_vm.location, "description", $$v)
                           },
-                          expression: "form.description"
+                          expression: "location.description"
                         }
                       })
                     ],
@@ -72130,16 +72199,20 @@ var render = function() {
                 "b-row",
                 [
                   _c("b-col", { staticClass: "col-2 mt-2" }, [
-                    _c("label", [_c("strong", [_vm._v("Foto Lokasi")])])
+                    _c("label", [_c("strong", [_vm._v("Location Photo")])])
                   ]),
                   _vm._v(" "),
                   _c(
                     "b-col",
                     [
                       _c("b-form-file", {
-                        attrs: {
-                          multiple: "",
-                          "file-name-formater": _vm.formatName
+                        attrs: { accept: ".jpg, .png, .gif", multiple: "" },
+                        model: {
+                          value: _vm.location.photos,
+                          callback: function($$v) {
+                            _vm.$set(_vm.location, "photos", $$v)
+                          },
+                          expression: "location.photos"
                         }
                       })
                     ],
@@ -72171,7 +72244,7 @@ var render = function() {
                   staticClass: "btn",
                   staticStyle: { "margin-left": "17.5%" }
                 },
-                [_vm._v("Atur Waktu Buka")]
+                [_vm._v("Set Open Time")]
               ),
               _vm._v(" "),
               _c(
@@ -72181,7 +72254,7 @@ var render = function() {
                     id: "octime",
                     size: "lg",
                     centered: "",
-                    title: "Atur Waktu Buka",
+                    title: "Set Open Time",
                     "header-bg-variant": _vm.headerBgVariant,
                     "header-text-variant": _vm.headerTextVariant
                   }
@@ -72194,7 +72267,7 @@ var render = function() {
                         staticClass: "col-2 mt-2",
                         staticStyle: { "margin-right": "-5%" }
                       },
-                      [_c("strong", [_vm._v("Setiap Hari")])]
+                      [_c("strong", [_vm._v("Everyday")])]
                     ),
                     _vm._v(" "),
                     _c(
@@ -72204,11 +72277,11 @@ var render = function() {
                         _c("b-form-checkbox", {
                           attrs: { name: "check-button", switch: "" },
                           model: {
-                            value: _vm.form.everyday.valstatus,
+                            value: _vm.location.day[0].valstatus,
                             callback: function($$v) {
-                              _vm.$set(_vm.form.everyday, "valstatus", $$v)
+                              _vm.$set(_vm.location.day[0], "valstatus", $$v)
                             },
-                            expression: "form.everyday.valstatus"
+                            expression: "location.day[0].valstatus"
                           }
                         }),
                         _vm._v(" "),
@@ -72217,7 +72290,7 @@ var render = function() {
                           {
                             style: {
                               color: _vm.changeColor(
-                                _vm.form.everyday.valstatus
+                                _vm.location.day[0].valstatus
                               )
                             }
                           },
@@ -72225,7 +72298,9 @@ var render = function() {
                             _c("strong", [
                               _vm._v(
                                 _vm._s(
-                                  _vm.changeStatus(_vm.form.everyday.valstatus)
+                                  _vm.changeStatus(
+                                    _vm.location.day[0].valstatus
+                                  )
                                 )
                               )
                             ])
@@ -72235,7 +72310,7 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _vm.form.everyday.valstatus
+                    _vm.location.day[0].valstatus
                       ? _c(
                           "div",
                           { staticClass: "col-8" },
@@ -72249,11 +72324,15 @@ var render = function() {
                               },
                               attrs: { options: _vm.otimes },
                               model: {
-                                value: _vm.form.everyday.open_time,
+                                value: _vm.location.day[0].open_time,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.form.everyday, "open_time", $$v)
+                                  _vm.$set(
+                                    _vm.location.day[0],
+                                    "open_time",
+                                    $$v
+                                  )
                                 },
-                                expression: "form.everyday.open_time"
+                                expression: "location.day[0].open_time"
                               }
                             }),
                             _vm._v(" "),
@@ -72268,15 +72347,15 @@ var render = function() {
                               },
                               attrs: { options: _vm.ctimes },
                               model: {
-                                value: _vm.form.everyday.closing_time,
+                                value: _vm.location.day[0].closing_time,
                                 callback: function($$v) {
                                   _vm.$set(
-                                    _vm.form.everyday,
+                                    _vm.location.day[0],
                                     "closing_time",
                                     $$v
                                   )
                                 },
-                                expression: "form.everyday.closing_time"
+                                expression: "location.day[0].closing_time"
                               }
                             })
                           ],
@@ -72285,13 +72364,13 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  !_vm.form.everyday.valstatus
+                  !_vm.location.day[0].valstatus
                     ? _c(
                         "div",
                         [
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Senin")])
+                              _c("strong", [_vm._v("Monday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -72301,15 +72380,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.monday.valstatus,
+                                    value: _vm.location.day[1].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.monday,
+                                        _vm.location.day[1],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.monday.valstatus"
+                                    expression: "location.day[1].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -72318,7 +72397,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.monday.valstatus
+                                        _vm.location.day[1].valstatus
                                       )
                                     }
                                   },
@@ -72327,7 +72406,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.monday.valstatus
+                                            _vm.location.day[1].valstatus
                                           )
                                         )
                                       )
@@ -72338,7 +72417,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.monday.valstatus
+                            _vm.location.day[1].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -72352,15 +72431,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.monday.open_time,
+                                        value: _vm.location.day[1].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.monday,
+                                            _vm.location.day[1],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.monday.open_time"
+                                        expression: "location.day[1].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -72377,226 +72456,16 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.monday.closing_time,
+                                        value: _vm.location.day[1].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.monday,
-                                            "closing_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.monday.closing_time"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          ]),
-                          _vm._v(" "),
-                          _c("b-row", [
-                            _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Selasa")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "mt-2 col-2 d-flex" },
-                              [
-                                _c("b-form-checkbox", {
-                                  attrs: { name: "check-button", switch: "" },
-                                  model: {
-                                    value: _vm.form.tuesday.valstatus,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.form.tuesday,
-                                        "valstatus",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "form.tuesday.valstatus"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  {
-                                    style: {
-                                      color: _vm.changeColor(
-                                        _vm.form.tuesday.valstatus
-                                      )
-                                    }
-                                  },
-                                  [
-                                    _c("strong", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.changeStatus(
-                                            _vm.form.tuesday.valstatus
-                                          )
-                                        )
-                                      )
-                                    ])
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _vm.form.tuesday.valstatus
-                              ? _c(
-                                  "div",
-                                  { staticClass: "col-8" },
-                                  [
-                                    _c("b-form-select", {
-                                      staticClass: "ml-3 mb-2 mr-2 col-3",
-                                      staticStyle: {
-                                        border: "none",
-                                        "border-bottom": "2px solid #3490DC",
-                                        background: "none"
-                                      },
-                                      attrs: { options: _vm.otimes },
-                                      model: {
-                                        value: _vm.form.tuesday.open_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.tuesday,
-                                            "open_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.tuesday.open_time"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("i", {
-                                      staticClass: "fas fa-minus mr-2 mt-2"
-                                    }),
-                                    _vm._v(" "),
-                                    _c("b-form-select", {
-                                      staticClass: "mb-2 mr-2 col-3",
-                                      staticStyle: {
-                                        border: "none",
-                                        "border-bottom": "2px solid #3490DC",
-                                        background: "none"
-                                      },
-                                      attrs: { options: _vm.ctimes },
-                                      model: {
-                                        value: _vm.form.tuesday.closing_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.tuesday,
-                                            "closing_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.tuesday.closing_time"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          ]),
-                          _vm._v(" "),
-                          _c("b-row", [
-                            _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Rabu")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "mt-2 col-2 d-flex" },
-                              [
-                                _c("b-form-checkbox", {
-                                  attrs: { name: "check-button", switch: "" },
-                                  model: {
-                                    value: _vm.form.wednesday.valstatus,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        _vm.form.wednesday,
-                                        "valstatus",
-                                        $$v
-                                      )
-                                    },
-                                    expression: "form.wednesday.valstatus"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "p",
-                                  {
-                                    style: {
-                                      color: _vm.changeColor(
-                                        _vm.form.wednesday.valstatus
-                                      )
-                                    }
-                                  },
-                                  [
-                                    _c("strong", [
-                                      _vm._v(
-                                        _vm._s(
-                                          _vm.changeStatus(
-                                            _vm.form.wednesday.valstatus
-                                          )
-                                        )
-                                      )
-                                    ])
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _vm.form.wednesday.valstatus
-                              ? _c(
-                                  "div",
-                                  { staticClass: "col-8" },
-                                  [
-                                    _c("b-form-select", {
-                                      staticClass: "ml-3 mb-2 mr-2 col-3",
-                                      staticStyle: {
-                                        border: "none",
-                                        "border-bottom": "2px solid #3490DC",
-                                        background: "none"
-                                      },
-                                      attrs: { options: _vm.otimes },
-                                      model: {
-                                        value: _vm.form.wednesday.open_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.wednesday,
-                                            "open_time",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "form.wednesday.open_time"
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("i", {
-                                      staticClass: "fas fa-minus mr-2 mt-2"
-                                    }),
-                                    _vm._v(" "),
-                                    _c("b-form-select", {
-                                      staticClass: "mb-2 mr-2 col-3",
-                                      staticStyle: {
-                                        border: "none",
-                                        "border-bottom": "2px solid #3490DC",
-                                        background: "none"
-                                      },
-                                      attrs: { options: _vm.ctimes },
-                                      model: {
-                                        value: _vm.form.wednesday.closing_time,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.form.wednesday,
+                                            _vm.location.day[1],
                                             "closing_time",
                                             $$v
                                           )
                                         },
                                         expression:
-                                          "form.wednesday.closing_time"
+                                          "location.day[1].closing_time"
                                       }
                                     })
                                   ],
@@ -72607,7 +72476,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Kamis")])
+                              _c("strong", [_vm._v("Tuesday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -72617,15 +72486,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.thrusday.valstatus,
+                                    value: _vm.location.day[2].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.thrusday,
+                                        _vm.location.day[2],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.thrusday.valstatus"
+                                    expression: "location.day[2].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -72634,7 +72503,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.thrusday.valstatus
+                                        _vm.location.day[2].valstatus
                                       )
                                     }
                                   },
@@ -72643,7 +72512,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.thrusday.valstatus
+                                            _vm.location.day[2].valstatus
                                           )
                                         )
                                       )
@@ -72654,7 +72523,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.thrusday.valstatus
+                            _vm.location.day[2].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -72668,15 +72537,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.thrusday.open_time,
+                                        value: _vm.location.day[2].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.thrusday,
+                                            _vm.location.day[2],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.thrusday.open_time"
+                                        expression: "location.day[2].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -72693,15 +72562,16 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.thrusday.closing_time,
+                                        value: _vm.location.day[2].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.thrusday,
+                                            _vm.location.day[2],
                                             "closing_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.thrusday.closing_time"
+                                        expression:
+                                          "location.day[2].closing_time"
                                       }
                                     })
                                   ],
@@ -72712,7 +72582,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Jumat")])
+                              _c("strong", [_vm._v("Wednesday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -72722,15 +72592,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.friday.valstatus,
+                                    value: _vm.location.day[3].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.friday,
+                                        _vm.location.day[3],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.friday.valstatus"
+                                    expression: "location.day[3].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -72739,7 +72609,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.friday.valstatus
+                                        _vm.location.day[3].valstatus
                                       )
                                     }
                                   },
@@ -72748,7 +72618,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.friday.valstatus
+                                            _vm.location.day[3].valstatus
                                           )
                                         )
                                       )
@@ -72759,7 +72629,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.friday.valstatus
+                            _vm.location.day[3].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -72773,15 +72643,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.friday.open_time,
+                                        value: _vm.location.day[3].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.friday,
+                                            _vm.location.day[3],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.friday.open_time"
+                                        expression: "location.day[3].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -72798,15 +72668,16 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.friday.closing_time,
+                                        value: _vm.location.day[3].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.friday,
+                                            _vm.location.day[3],
                                             "closing_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.friday.closing_time"
+                                        expression:
+                                          "location.day[3].closing_time"
                                       }
                                     })
                                   ],
@@ -72817,7 +72688,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Sabtu")])
+                              _c("strong", [_vm._v("Thursday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -72827,15 +72698,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.saturday.valstatus,
+                                    value: _vm.location.day[4].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.saturday,
+                                        _vm.location.day[4],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.saturday.valstatus"
+                                    expression: "location.day[4].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -72844,7 +72715,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.saturday.valstatus
+                                        _vm.location.day[4].valstatus
                                       )
                                     }
                                   },
@@ -72853,7 +72724,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.saturday.valstatus
+                                            _vm.location.day[4].valstatus
                                           )
                                         )
                                       )
@@ -72864,7 +72735,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.saturday.valstatus
+                            _vm.location.day[4].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -72878,15 +72749,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.saturday.open_time,
+                                        value: _vm.location.day[4].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.saturday,
+                                            _vm.location.day[4],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.saturday.open_time"
+                                        expression: "location.day[4].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -72903,15 +72774,16 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.saturday.closing_time,
+                                        value: _vm.location.day[4].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.saturday,
+                                            _vm.location.day[4],
                                             "closing_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.saturday.closing_time"
+                                        expression:
+                                          "location.day[4].closing_time"
                                       }
                                     })
                                   ],
@@ -72922,7 +72794,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("b-row", [
                             _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
-                              _c("strong", [_vm._v("Minggu")])
+                              _c("strong", [_vm._v("Friday")])
                             ]),
                             _vm._v(" "),
                             _c(
@@ -72932,15 +72804,15 @@ var render = function() {
                                 _c("b-form-checkbox", {
                                   attrs: { name: "check-button", switch: "" },
                                   model: {
-                                    value: _vm.form.sunday.valstatus,
+                                    value: _vm.location.day[5].valstatus,
                                     callback: function($$v) {
                                       _vm.$set(
-                                        _vm.form.sunday,
+                                        _vm.location.day[5],
                                         "valstatus",
                                         $$v
                                       )
                                     },
-                                    expression: "form.sunday.valstatus"
+                                    expression: "location.day[5].valstatus"
                                   }
                                 }),
                                 _vm._v(" "),
@@ -72949,7 +72821,7 @@ var render = function() {
                                   {
                                     style: {
                                       color: _vm.changeColor(
-                                        _vm.form.sunday.valstatus
+                                        _vm.location.day[5].valstatus
                                       )
                                     }
                                   },
@@ -72958,7 +72830,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           _vm.changeStatus(
-                                            _vm.form.sunday.valstatus
+                                            _vm.location.day[5].valstatus
                                           )
                                         )
                                       )
@@ -72969,7 +72841,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.form.sunday.valstatus
+                            _vm.location.day[5].valstatus
                               ? _c(
                                   "div",
                                   { staticClass: "col-8" },
@@ -72983,15 +72855,15 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.otimes },
                                       model: {
-                                        value: _vm.form.sunday.open_time,
+                                        value: _vm.location.day[5].open_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.sunday,
+                                            _vm.location.day[5],
                                             "open_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.sunday.open_time"
+                                        expression: "location.day[5].open_time"
                                       }
                                     }),
                                     _vm._v(" "),
@@ -73008,15 +72880,228 @@ var render = function() {
                                       },
                                       attrs: { options: _vm.ctimes },
                                       model: {
-                                        value: _vm.form.sunday.closing_time,
+                                        value: _vm.location.day[5].closing_time,
                                         callback: function($$v) {
                                           _vm.$set(
-                                            _vm.form.sunday,
+                                            _vm.location.day[5],
                                             "closing_time",
                                             $$v
                                           )
                                         },
-                                        expression: "form.sunday.closing_time"
+                                        expression:
+                                          "location.day[5].closing_time"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c("b-row", [
+                            _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                              _c("strong", [_vm._v("Saturday")])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-2 col-2 d-flex" },
+                              [
+                                _c("b-form-checkbox", {
+                                  attrs: { name: "check-button", switch: "" },
+                                  model: {
+                                    value: _vm.location.day[6].valstatus,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.location.day[6],
+                                        "valstatus",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "location.day[6].valstatus"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    style: {
+                                      color: _vm.changeColor(
+                                        _vm.location.day[6].valstatus
+                                      )
+                                    }
+                                  },
+                                  [
+                                    _c("strong", [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.changeStatus(
+                                            _vm.location.day[6].valstatus
+                                          )
+                                        )
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.location.day[6].valstatus
+                              ? _c(
+                                  "div",
+                                  { staticClass: "col-8" },
+                                  [
+                                    _c("b-form-select", {
+                                      staticClass: "ml-3 mb-2 mr-2 col-3",
+                                      staticStyle: {
+                                        border: "none",
+                                        "border-bottom": "2px solid #3490DC",
+                                        background: "none"
+                                      },
+                                      attrs: { options: _vm.otimes },
+                                      model: {
+                                        value: _vm.location.day[6].open_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.location.day[6],
+                                            "open_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "location.day[6].open_time"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("i", {
+                                      staticClass: "fas fa-minus mr-2 mt-2"
+                                    }),
+                                    _vm._v(" "),
+                                    _c("b-form-select", {
+                                      staticClass: "mb-2 mr-2 col-3",
+                                      staticStyle: {
+                                        border: "none",
+                                        "border-bottom": "2px solid #3490DC",
+                                        background: "none"
+                                      },
+                                      attrs: { options: _vm.ctimes },
+                                      model: {
+                                        value: _vm.location.day[6].closing_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.location.day[6],
+                                            "closing_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "location.day[6].closing_time"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c("b-row", [
+                            _c("p", { staticClass: "col-1 mt-2 mr-4" }, [
+                              _c("strong", [_vm._v("Sunday")])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-2 col-2 d-flex" },
+                              [
+                                _c("b-form-checkbox", {
+                                  attrs: { name: "check-button", switch: "" },
+                                  model: {
+                                    value: _vm.location.day[7].valstatus,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.location.day[7],
+                                        "valstatus",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "location.day[7].valstatus"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  {
+                                    style: {
+                                      color: _vm.changeColor(
+                                        _vm.location.day[7].valstatus
+                                      )
+                                    }
+                                  },
+                                  [
+                                    _c("strong", [
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm.changeStatus(
+                                            _vm.location.day[7].valstatus
+                                          )
+                                        )
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.location.day[7].valstatus
+                              ? _c(
+                                  "div",
+                                  { staticClass: "col-8" },
+                                  [
+                                    _c("b-form-select", {
+                                      staticClass: "ml-3 mb-2 mr-2 col-3",
+                                      staticStyle: {
+                                        border: "none",
+                                        "border-bottom": "2px solid #3490DC",
+                                        background: "none"
+                                      },
+                                      attrs: { options: _vm.otimes },
+                                      model: {
+                                        value: _vm.location.day[7].open_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.location.day[7],
+                                            "open_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression: "location.day[7].open_time"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("i", {
+                                      staticClass: "fas fa-minus mr-2 mt-2"
+                                    }),
+                                    _vm._v(" "),
+                                    _c("b-form-select", {
+                                      staticClass: "mb-2 mr-2 col-3",
+                                      staticStyle: {
+                                        border: "none",
+                                        "border-bottom": "2px solid #3490DC",
+                                        background: "none"
+                                      },
+                                      attrs: { options: _vm.ctimes },
+                                      model: {
+                                        value: _vm.location.day[7].closing_time,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            _vm.location.day[7],
+                                            "closing_time",
+                                            $$v
+                                          )
+                                        },
+                                        expression:
+                                          "location.day[7].closing_time"
                                       }
                                     })
                                   ],
@@ -73097,9 +73182,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "location-list" } }, [
     _c("div", { attrs: { id: "list" } }, [
-      _c("div", { staticClass: "filter " }, [
+      _c("div", { staticClass: "filter" }, [
         _c("div", { staticClass: "filter-item d-flex" }, [
-          _c("div", { staticClass: "search  d-flex align-items-center" }, [
+          _c("div", { staticClass: "search d-flex align-items-center" }, [
             _c("input", {
               directives: [
                 {
@@ -73138,7 +73223,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "item-list" },
-      _vm._l(_vm.locations, function(location, index) {
+      _vm._l(_vm.searchLocation, function(location, index) {
         return _c(
           "div",
           { key: location.id_location, staticClass: "card mt-3" },
@@ -73194,22 +73279,12 @@ var render = function() {
                                   _vm._v(_vm._s(location.location_name))
                                 ]),
                                 _vm._v(" "),
-                                _c("b-card-text", [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(location.open_time) +
-                                      " - " +
-                                      _vm._s(location.closing_time) +
-                                      "\n                                "
-                                  )
+                                _c("b-card-text", { staticClass: "desc" }, [
+                                  _vm._v(_vm._s(location.description))
                                 ]),
                                 _vm._v(" "),
                                 _c("b-card-text", { staticClass: "mt-4" }, [
-                                  _vm._v(
-                                    "\n                                    " +
-                                      _vm._s(location.location_address) +
-                                      "\n                                "
-                                  )
+                                  _vm._v(_vm._s(location.location_address))
                                 ])
                               ],
                               1
@@ -74364,15 +74439,27 @@ var render = function() {
                     {
                       attrs: { id: "check-agreement", name: "check-agreement" },
                       model: {
-                        value: _vm.agreement,
+                        value: _vm.$v.agreement.$model,
                         callback: function($$v) {
-                          _vm.agreement = $$v
+                          _vm.$set(_vm.$v.agreement, "$model", $$v)
                         },
-                        expression: "agreement"
+                        expression: "$v.agreement.$model"
                       }
                     },
                     [_vm._v("I agree with terms and conditions")]
-                  )
+                  ),
+                  _vm._v(" "),
+                  _vm.$v.agreement.required
+                    ? _c("div", [
+                        !_vm.agreement
+                          ? _c("div", { staticClass: "error" }, [
+                              _vm._v(
+                                "Please check this box if you want to proceed"
+                              )
+                            ])
+                          : _vm._e()
+                      ])
+                    : _vm._e()
                 ],
                 1
               )
@@ -74390,7 +74477,7 @@ var render = function() {
                 "b-button",
                 {
                   staticClass: "btn register-button",
-                  attrs: { disabled: _vm.$v.$invalid },
+                  attrs: { disabled: _vm.$v.$invalid || !_vm.agreement },
                   on: {
                     click: function($event) {
                       return _vm.register()
