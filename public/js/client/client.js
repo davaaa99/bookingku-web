@@ -3520,6 +3520,11 @@ var vemail = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].re
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var vue_date_picker__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-date-picker */ "./node_modules/vue-date-picker/dist/datepicker.common.js");
+/* harmony import */ var vue_date_picker__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_date_picker__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -3584,328 +3589,138 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-$(document).ready(function () {
-  $(".update").click(function () {
-    var id = $(this).data("uid");
-    var a1 = $("#a1").html();
-    var f1 = $("#f1").html();
-    var l1 = $("#l1").html();
-    var m1 = $("#m1").html();
-    var b1 = $("#b1").html();
-    var c1 = $("#c1").html();
-    var a2 = $("#a2").html();
-    var f2 = $("#f2").html();
-    var l2 = $("#l2").html();
-    var m2 = $("#m2").html();
-    var b2 = $("#b2").html();
-    var c2 = $("#c2").html();
 
-    if (id == 1) {
-      $("#an").val(a1);
-      $("#fn").val(f1);
-      $("#mn").val(m1);
-      $("#ln").val(l1);
-      $("#bn").val(b1);
-      $("#cn").val(c1);
-    } else if (id == 2) {
-      $("#an").val(a2);
-      $("#fn").val(f2);
-      $("#mn").val(m2);
-      $("#ln").val(l2);
-      $("#bn").val(b2);
-      $("#cn").val(c2);
-    }
 
-    $("#up").click(function () {
-      if (id == 1) {
-        var an = $("#an").val();
-        var fn = $("#fn").val();
-        var mn = $("#mn").val();
-        var ln = $("#ln").val();
-        var bn = $("#bn").val();
-        var cn = $("#cn").val();
-        $("#a1").html(an);
-        $("#f1").html(fn);
-        $("#m1").html(mn);
-        $("#l1").html(ln);
-        $("#b1").html(bn);
-        $("#c1").html(cn);
-      } else if (id == 2) {
-        var an = $("#an").val();
-        var fn = $("#fn").val();
-        var mn = $("#mn").val();
-        var ln = $("#ln").val();
-        var bn = $("#bn").val();
-        var cn = $("#cn").val();
-        $("#a2").html(an);
-        $("#f2").html(fn);
-        $("#m2").html(mn);
-        $("#l2").html(ln);
-        $("#b2").html(bn);
-        $("#c2").html(cn);
-      }
-    });
-  });
-  $(".delete").click(function () {
-    var id = $(this).data("uid");
-    $("#del").click(function () {
-      if (id == 1) {
-        $("#d1").html('');
-      } else if (id == 2) {
-        $("#d2").html('');
-      }
-    });
-  });
-});
+
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      form: {
-        location: null,
-        field: null,
+      // Note 'age' is left out and will not appear in the rendered table
+      perPage: 20,
+      schedule: {
+        selectedLocation: "",
+        selectedField: "",
         price: '',
-        dp: '',
         day: [],
+        dp: '',
         t_start: null,
         t_finish: null
       },
-      fieldss: [{
-        text: 'Select One',
-        value: null
-      }, 'Progresif', 'D groove', 'Queen', 'Bikasoga'],
-      locations: [{
-        text: 'Select One',
-        value: null
-      }, 'Bandung', 'Jakarta', 'Karawang', 'Bekasi'],
-      t_starts: [{
-        text: 'Select One',
-        value: null
-      }, '00:00', '00:01', '00:02', '00:03'],
-      t_finishs: [{
-        text: 'Select One',
-        value: null
-      }, '00:00', '00:01', '00:02', '00:03'],
-      options: [{
-        text: 'Monday',
-        value: 'monday'
-      }, {
-        text: 'Tueday',
-        value: 'tuesday'
-      }, {
-        text: 'Wednesday',
-        value: 'wednesday'
-      }, {
-        text: 'Thursday',
-        value: 'thursday'
-      }, {
-        text: 'Friday',
-        value: 'friday'
-      }, {
-        text: 'Saturday',
-        value: 'saturday'
-      }, {
-        text: 'Sunday',
-        value: 'sunday'
-      }],
-      items: [{
-        location: 'Bandung',
-        field: 'D groove',
-        day: 'Monday',
-        time: '15:00 - 16:00',
-        price: 'Rp.200.000',
-        dp: '50%'
-      }, {
-        location: 'Bekasi',
-        field: 'Progresif',
-        day: 'Sunday',
-        time: '20:00 - 22:00',
-        price: 'Rp.150.000',
-        dp: '25%'
-      }, {
-        location: 'Jakarta',
-        field: 'Queen',
-        day: 'Wednesday',
-        time: '07:00 - 09:00',
-        price: 'Rp.300.000',
-        dp: '75%'
-      }, {
-        location: 'Bandung',
-        field: 'Bikasoga',
-        day: 'Thrusday',
-        time: '18:00 - 19:00',
-        price: 'Rp.400.000',
-        dp: '50%'
-      }],
-      show: true
+      currentPage: 1,
+      locationlist: [],
+      location: [],
+      fieldlist: [],
+      field: [],
+      days: ['Monday'],
+      t_starts: ['00:00', '01:00'],
+      t_finishs: ['00:00', '01:00'],
+      add: false,
+      items: [],
+      index: 0,
+      fields: {
+        location: {
+          key: 'selectedLocation',
+          label: 'Location',
+          sortable: true
+        },
+        field: {
+          key: 'selectedField',
+          label: 'Field',
+          sortable: true
+        },
+        price: {
+          key: 'price',
+          label: 'Price',
+          sortable: true
+        },
+        dp: {
+          key: 'dp',
+          label: 'Down Payment',
+          sortable: true
+        },
+        day: {
+          key: 'day',
+          label: 'Day',
+          sortable: true
+        },
+        time_start: {
+          key: 't_start',
+          label: 'Time Start',
+          sortable: true
+        },
+        time_finish: {
+          key: 't_finish',
+          label: 'Time Finish',
+          sortable: true
+        }
+      }
     };
   },
+  mounted: function mounted() {
+    this.loadLocation();
+  },
   methods: {
-    onSubmit: function onSubmit(evt) {
-      evt.preventDefault();
-      alert(JSON.stringify(this.form));
-    },
-    onReset: function onReset(evt) {
+    loadLocation: function loadLocation() {
       var _this = this;
 
-      evt.preventDefault(); // Reset our form values
+      var index = 0;
+      axios({
+        url: 'api/v1/location',
+        methods: 'GET'
+      }).then(function (response) {
+        _this.locationList = response.data.serve;
+        console.log(response.data.serve);
 
-      this.form.location = null;
-      this.form.field = null;
-      this.form.price = '';
-      this.form.dp = '';
-      this.form.day = []; // Trick to reset/clear native browser form validation state
-
-      this.show = false;
-      this.$nextTick(function () {
-        _this.show = true;
-      });
-      $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-        var actions = $("table td:last-child").html(); // Append table with add row form on add new button click
-
-        $(".add-new").click(function () {
-          $(this).attr("disabled", "disabled");
-          var index = $("table tbody tr:last-child").index();
-          var row = '<tr>' + '<td><input type="text" class="form-control" name="name" id="name"></td>' + '<td><input type="text" class="form-control" name="department" id="department"></td>' + '<td><input type="text" class="form-control" name="phone" id="phone"></td>' + '<td>' + actions + '</td>' + '</tr>';
-          $("table").append(row);
-          $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-          $('[data-toggle="tooltip"]').tooltip();
-        }); // Add row on add button click
-
-        $(document).on("click", ".add", function () {
-          var empty = false;
-          var input = $(this).parents("tr").find('input[type="text"]');
-          input.each(function () {
-            if (!$(this).val()) {
-              $(this).addClass("error");
-              empty = true;
-            } else {
-              $(this).removeClass("error");
-            }
+        for (index = 0; index < _this.locationList.length; index++) {
+          _this.location.push({
+            value: _this.locationList[index].id_location,
+            text: _this.locationList[index].location_name
           });
-          $(this).parents("tr").find(".error").first().focus();
+        }
 
-          if (!empty) {
-            input.each(function () {
-              $(this).parent("td").html($(this).val());
-            });
-            $(this).parents("tr").find(".add, .edit").toggle();
-            $(".add-new").removeAttr("disabled");
-          }
-        }); // Edit row on edit button click
-
-        $(document).on("click", ".edit", function () {
-          $(this).parents("tr").find("td:not(:last-child)").each(function () {
-            $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-          });
-          $(this).parents("tr").find(".add, .edit").toggle();
-          $(".add-new").attr("disabled", "disabled");
-        }); // Delete row on delete button click
-
-        $(document).on("click", ".delete", function () {
-          $(this).parents("tr").remove();
-          $(".add-new").removeAttr("disabled");
-        });
+        console.log(_this.location);
+      })["catch"](function (error) {
+        console.log(error);
       });
+    },
+    loadField: function loadField() {
+      var _this2 = this;
+
+      var index = 0;
+      axios({
+        url: 'api/v1/fields/' + this.schedule.selectedLocation,
+        methods: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this2.fieldlist = response.data.serve;
+        console.log(response.data.serve);
+        _this2.field = [];
+
+        for (index = 0; index < _this2.fieldlist.length; index++) {
+          _this2.field.push({
+            value: _this2.fieldlist[index].id_field,
+            text: _this2.fieldlist[index].field_name
+          });
+        }
+
+        console.log(_this2.fieldlist);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    addschedule: function addschedule() {
+      if (this.add) this.add = false;else this.add = true;
+    }
+  },
+  watch: {
+    'schedule.selectedLocation': function scheduleSelectedLocation() {
+      this.loadField();
+    },
+    add: function add() {
+      // this.items[this.index]=this.schedule
+      // this.index++
+      this.items.push(this.schedule);
     }
   }
 });
@@ -23763,7 +23578,7 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default, componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip */
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73089,20 +72904,16 @@ var render = function() {
           _c(
             "b-form-group",
             [
+              _c("label", { attrs: { for: "location" } }, [_vm._v("Location")]),
+              _vm._v(" "),
               _c("b-form-select", {
-                staticClass: "myselect",
-                attrs: {
-                  id: "input-2",
-                  options: _vm.locations,
-                  required: "",
-                  "size:lg": ""
-                },
+                attrs: { options: _vm.location },
                 model: {
-                  value: _vm.form.location,
+                  value: _vm.schedule.selectedLocation,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "location", $$v)
+                    _vm.$set(_vm.schedule, "selectedLocation", $$v)
                   },
-                  expression: "form.location"
+                  expression: "schedule.selectedLocation"
                 }
               })
             ],
@@ -73112,15 +72923,16 @@ var render = function() {
           _c(
             "b-form-group",
             [
+              _c("label", { attrs: { for: "field" } }, [_vm._v("Field")]),
+              _vm._v(" "),
               _c("b-form-select", {
-                staticClass: "myselect",
-                attrs: { id: "input-3", options: _vm.fieldss, required: "" },
+                attrs: { options: _vm.field },
                 model: {
-                  value: _vm.form.field,
+                  value: _vm.schedule.selectedField,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "field", $$v)
+                    _vm.$set(_vm.schedule, "selectedField", $$v)
                   },
-                  expression: "form.field"
+                  expression: "schedule.selectedField"
                 }
               })
             ],
@@ -73144,11 +72956,11 @@ var render = function() {
                   placeholder: "Enter Price"
                 },
                 model: {
-                  value: _vm.form.price,
+                  value: _vm.schedule.price,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "price", $$v)
+                    _vm.$set(_vm.schedule, "price", $$v)
                   },
-                  expression: "form.price"
+                  expression: "schedule.price"
                 }
               })
             ],
@@ -73172,11 +72984,11 @@ var render = function() {
                   placeholder: "Enter Down Payment"
                 },
                 model: {
-                  value: _vm.form.dp,
+                  value: _vm.schedule.dp,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "dp", $$v)
+                    _vm.$set(_vm.schedule, "dp", $$v)
                   },
-                  expression: "form.dp"
+                  expression: "schedule.dp"
                 }
               })
             ],
@@ -73195,13 +73007,13 @@ var render = function() {
             [
               _c("b-form-checkbox-group", {
                 staticClass: "myselect",
-                attrs: { options: _vm.options, switches: "" },
+                attrs: { options: _vm.days, switches: "" },
                 model: {
-                  value: _vm.form.day,
+                  value: _vm.schedule.day,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "day", $$v)
+                    _vm.$set(_vm.schedule, "day", $$v)
                   },
-                  expression: "form.day"
+                  expression: "schedule.day"
                 }
               })
             ],
@@ -73222,11 +73034,11 @@ var render = function() {
                 staticClass: "myselect",
                 attrs: { id: "input-8", options: _vm.t_starts, required: "" },
                 model: {
-                  value: _vm.form.t_start,
+                  value: _vm.schedule.t_start,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "t_start", $$v)
+                    _vm.$set(_vm.schedule, "t_start", $$v)
                   },
-                  expression: "form.t_start"
+                  expression: "schedule.t_start"
                 }
               })
             ],
@@ -73247,48 +73059,51 @@ var render = function() {
                 staticClass: "myselect",
                 attrs: { id: "input-8", options: _vm.t_finishs, required: "" },
                 model: {
-                  value: _vm.form.t_finish,
+                  value: _vm.schedule.t_finish,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "t_finish", $$v)
+                    _vm.$set(_vm.schedule, "t_finish", $$v)
                   },
-                  expression: "form.t_finish"
+                  expression: "schedule.t_finish"
                 }
               })
             ],
             1
           ),
           _vm._v(" "),
-          _c("b-button", { attrs: { type: "add", variant: "primary" } }, [
-            _vm._v("Add")
-          ]),
+          _c(
+            "b-button",
+            {
+              staticClass: "btn btn-detail",
+              attrs: { variant: "primary" },
+              on: {
+                click: function($event) {
+                  return _vm.addschedule()
+                }
+              },
+              model: {
+                value: _vm.add,
+                callback: function($$v) {
+                  _vm.add = $$v
+                },
+                expression: "add"
+              }
+            },
+            [_vm._v("Add")]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "spacer-20" }),
           _vm._v(" "),
-          _c(
-            "b-table",
-            {
-              staticClass: "thead-light",
-              attrs: {
-                fixed: "",
-                border: "",
-                small: "",
-                items: _vm.items,
-                fields: _vm.fields,
-                "primary-key": "id_location "
-              }
-            },
-            [
-              _c("button", {
-                staticClass: "btn button badge",
-                class: _vm.classStatus(_vm.data.item.edit_manageschedule),
-                on: {
-                  click: function($event) {
-                    return _vm.changeStatus(_vm.data.index)
-                  }
-                }
-              })
-            ]
-          ),
+          _c("b-table", {
+            staticClass: "thead-light",
+            attrs: {
+              fixed: "",
+              border: "",
+              small: "",
+              items: _vm.items,
+              fields: _vm.fields,
+              "primary-key": "id_location "
+            }
+          }),
           _vm._v(" "),
           _c("b-button", { attrs: { type: "save", variant: "primary" } }, [
             _vm._v("Save")
@@ -73299,12 +73114,6 @@ var render = function() {
           ])
         ],
         1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-card",
-        { staticClass: "mt-3", attrs: { header: "Form Data Result" } },
-        [_c("pre", { staticClass: "m-0" }, [_vm._v(_vm._s(_vm.form))])]
       )
     ],
     1
