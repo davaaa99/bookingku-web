@@ -2088,14 +2088,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: {},
+      photos: null,
       tipelapang: ['Sintetis', 'Vinyl', 'Semen', 'Karpet'],
       show: true
     };
@@ -2115,8 +2112,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         id_field: this.form.id_field,
         field_name: this.form.field_name,
-        field_type: this.form.field_type,
-        field_photo: this.form.field_photo
+        field_type: this.form.field_type
       };
       axios({
         url: '/add',
@@ -2128,6 +2124,23 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
         alert('Data gagal ditambahkan');
+      });
+    },
+    upload: function upload(event) {
+      event.preventDefault();
+      var formData = new FormData();
+      formData.append('image', this.photos);
+      axios({
+        url: "/upload",
+        method: "POST",
+        data: formData,
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (response) {
+        console.log(error);
       });
     }
   }
@@ -70732,17 +70745,15 @@ var render = function() {
           _vm._v(" "),
           _c("b-form-file", {
             attrs: {
-              multiple: "",
-              state: Boolean(_vm.form.field_photo),
-              placeholder: "Choose a file or drop it here...",
-              "drop-placeholder": "Drop file here..."
+              accept: ".jpg, .png, .jpeg,. .gif",
+              enctype: "multipart/form-data"
             },
             model: {
-              value: _vm.form.field_photo,
+              value: _vm.photos,
               callback: function($$v) {
-                _vm.$set(_vm.form, "field_photo", $$v)
+                _vm.photos = $$v
               },
-              expression: "form.field_photo"
+              expression: "photos"
             }
           })
         ],
@@ -70758,7 +70769,8 @@ var render = function() {
         staticClass: "btn btn-primary",
         on: {
           click: function($event) {
-            return _vm.store()
+            _vm.store()
+            _vm.upload($event)
           }
         }
       },
@@ -74625,24 +74637,33 @@ var render = function() {
                             attrs: { href: "editlapang/" + lapangan.id_field }
                           },
                           [
-                            _c("b-button", { attrs: { variant: "light" } }, [
-                              _vm._v("Edit")
-                            ])
+                            _c(
+                              "b-button",
+                              { attrs: { important: "", variant: "light" } },
+                              [_vm._v("Edit")]
+                            )
                           ],
                           1
                         ),
                         _vm._v(" "),
                         _c(
-                          "b-button",
-                          {
-                            attrs: { variant: "danger" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteLapang(lapangan.id_field)
-                              }
-                            }
-                          },
-                          [_vm._v("Delete ")]
+                          "a",
+                          { attrs: { href: "#" } },
+                          [
+                            _c(
+                              "b-button",
+                              {
+                                attrs: { important: "", variant: "danger" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deleteLapang(lapangan.id_field)
+                                  }
+                                }
+                              },
+                              [_vm._v("Delete ")]
+                            )
+                          ],
+                          1
                         )
                       ],
                       1

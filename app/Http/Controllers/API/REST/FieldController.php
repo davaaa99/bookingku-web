@@ -104,18 +104,19 @@ class FieldController extends Controller
      */
     public function store(Request $request){
        
-        // $this->validate($request, [
-		// 	'file' => 'required|file|image|mimes:jpeg,png,jpg|max:2048'
-        // ]);
         
         $field = new Field([
             'id_field' => Uuid::uuid1()->getHex(),
             'id_location' => '1',
             'field_name' => $request->get('field_name'),
             'field_type' => $request->get('field_type'),
-            'field_photo' => $request->file('field_photo')
-          ]);
-        $field->save();
+            // 'field_photo' => $request->get('field_photo'),
+            ]);
+            // $name = time().'.' . explode('/', explode(':', substr($field->field_photo, 0, strpos($field->field_photo, ';')))[''])[''];
+            // \Image::make($request->get('field_photo'))->save(public_path('images/').$name);
+            // $field= new FileUpload();
+            // $field->field_photo = $name;
+            $field->save();
 
         
     }
@@ -211,5 +212,20 @@ class FieldController extends Controller
     {
         $field = Field::find($request->id);
         return $field;
+    }
+
+    public function upload(Request $request)
+    {
+        // $data = json_decode($request,TRUE);
+
+        $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        $path = 'storage/fieldPhoto';
+        $request->image->move($path,$imageName);
+        // $id = $data['id'];
+        // $field = Field::find($id);
+        // $field->field_photo = $path. $imageName;
+        // $field->save();
+
+        return response()->json(['success'=>'Berhasil upload foto']);
     }
 }

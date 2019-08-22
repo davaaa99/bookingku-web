@@ -29,8 +29,8 @@
         <b-card-text class="textlapang">
         <p>{{lapangan.field_type}}</p>
         </b-card-text>
-        <a :href="'editlapang/' + lapangan.id_field"><b-button variant="light">Edit</b-button></a>
-        <b-button variant="danger" @click="deleteLapang(lapangan.id_field)">Delete </b-button>
+        <a :href="'editlapang/' + lapangan.id_field"><b-button important variant="light">Edit</b-button></a>
+        <a href="#"><b-button important variant="danger" @click="deleteLapang(lapangan.id_field)">Delete </b-button></a>
        </b-card> 
         </b-card-group>
          </a>
