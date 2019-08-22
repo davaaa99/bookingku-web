@@ -134,14 +134,14 @@ class BookingController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function showByField($date)
+    public function showByField(Request $request)
     {
         try {
             $listBooking=Field::join('schedules','schedules.id_field','=','fields.id_field')
-                                ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
-                                ->where('fields.id_field',$id_field)
-                                ->where('bookings.created_at','LIKE',"%$date%")
-                                ->select('bookings.*')->get();
+                                    ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                    ->where('fields.id_field',$request->id_field)
+                                    ->where('bookings.created_at','LIKE',"%$request->date%")
+                                    ->select('bookings.*')->get();
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),
@@ -149,7 +149,7 @@ class BookingController extends Controller
             ], 500);
         }
         return response()->json([
-            'message' => 'Succesfully retrieved data.',
+            'message' => 'Succesfully retrieved dakkkta.',
             'serve' => $listBooking
         ], 200);
     }
@@ -160,17 +160,17 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function showByLocation($date)
+    public function showByLocation($id_location)
     {
         try {
-            $dataUser = Auth::user();
-            $idUser = $dataUser->id_user;
-            $id_location = Location::where('id_user',$idUser)->get('id_location');
+            // $dataUser = Auth::user();
+            // $idUser = $dataUser->id_user;
+            // $id_location = Location::where('id_user',$idUser)->get('id_location');
             $listbooking=Location::join('fields','fields.id_location','=','locations.id_location')
                                     ->join('schedules','schedules.id_field','=','fields.id_field')
                                     ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
                                     ->where('locations.id_location',$id_location)
-                                    ->where('bookings.created_at','LIKE',"%$date%")
+                                    // ->where('bookings.created_at','LIKE',"%$date%")
                                     ->select('bookings.*')->get();
         } catch (Exception $e) {
             return response()->json([

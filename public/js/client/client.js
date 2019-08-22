@@ -1940,6 +1940,12 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      selectedLocation: "",
+      locationList: [],
+      location: [],
+      selectedField: "",
+      fieldlist: [],
+      field: [],
       currentOffset: 0,
       windowSize: 3,
       paginationFactor: 220,
@@ -1967,18 +1973,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       }],
       perPage: 20,
       currentPage: 1,
-      selectedLocation: null,
-      location: [{
-        text: 'Pilih Lokasi',
-        value: null
-      }, 'Ciwarug Futsal', 'Sarijadi Futsal'],
-      selectedField: null,
-      field: [{
-        text: 'Pilih Lokasi',
-        value: null
-      }, 'Vinyl', 'Sintetis', 'Semen'],
       selectedDate: new Date(),
-      date: {
+      dateFormat: {
         format: 'YYYY/MM/DD',
         useCurrent: false
       },
@@ -2000,6 +1996,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
     atHeadOfList: function atHeadOfList() {
       return this.currentOffset === 0;
     }
+  },
+  mounted: function mounted() {
+    this.loadLocation();
   },
   methods: {
     onSubmit: function onSubmit(book) {
@@ -2040,6 +2039,64 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       } else if (direction === -1 && !this.atHeadOfList) {
         this.currentOffset += this.paginationFactor;
       }
+    },
+    loadLocation: function loadLocation() {
+      var _this2 = this;
+
+      var index = 0;
+      axios({
+        url: 'api/v1/location',
+        methods: 'GET'
+      }).then(function (response) {
+        _this2.locationList = response.data.serve;
+        console.log(response.data.serve);
+
+        for (index = 0; index <= _this2.locationList.length; index++) {
+          _this2.location.push({
+            value: _this2.locationList[index].id_location,
+            text: _this2.locationList[index].location_name
+          });
+        }
+
+        console.log(_this2.location);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadField: function loadField() {
+      var _this3 = this;
+
+      console.log();
+      var index = 0;
+      axios({
+        url: 'api/v1/field/data/' + this.selectedLocation,
+        methods: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this3.fieldlist = response.data.serve;
+        console.log(response.data.serve);
+        _this3.field = [];
+
+        for (index = 0; index <= _this3.fieldlist.length; index++) {
+          _this3.field.push({
+            value: _this3.fieldlist[index].id_field,
+            text: _this3.fieldlist[index].field_name
+          });
+        }
+
+        console.log(_this3.fieldlist);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  watch: {
+    selectedLocation: function selectedLocation() {
+      this.loadField();
+      this.loadByLocation();
+    },
+    selectedField: function selectedField() {
+      this.loadByField();
     }
   }
 });
@@ -2201,6 +2258,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2211,18 +2270,25 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       // Note 'age' is left out and will not appear in the rendered table
       perPage: 20,
       currentPage: 1,
-      selectedLocation: null,
-      // location:[{text:'Choose Location', value:null}, 'Ciwaruga Futsal', 'Sarijadi Futsal'],
-      locations: [],
+      selectedLocation: "",
+      locationList: [],
       location: [],
-      selectedField: null,
-      // field:[{text:'Choose Field', value:null},'Vinyl', 'Syntetic', 'Semen'],
+      selectedField: "",
       fieldlist: [],
       field: [],
-      selectedDate: new Date(),
-      date: {
-        format: 'YYYY/MM/DD',
+      scheduleList: [],
+      selectedDate: "",
+      dateFormat: {
+        format: 'YYYY-MM-DD',
         useCurrent: false
+      },
+      componen: {
+        datePicker: vue_date_picker__WEBPACK_IMPORTED_MODULE_1___default.a
+      },
+      filter: {
+        locaton: '',
+        field: '',
+        date: ''
       },
       fields: {
         user: {
@@ -2236,7 +2302,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           sortable: false
         },
         schedule: {
-          key: 'id_schedule',
           label: 'Schedule',
           sortable: true
         },
@@ -2246,6 +2311,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           sortable: true
         },
         payment: {
+          key: 'payment_type',
           label: 'Payment',
           sortable: true
         }
@@ -2256,11 +2322,13 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   mounted: function mounted() {
     this.loadData();
     this.loadLocation();
-    this.loadField();
   },
   methods: {
+    test: function test() {
+      console.log(this.locationList);
+    },
     paid: function paid($status) {
-      var $key = ['Unpaid', 'Down Payment', 'Full Payment'];
+      var $key = ['Unpaid', 'Down Payment', 'Paid'];
       return $key[$status];
     },
     classStatus: function classStatus($status) {
@@ -2313,77 +2381,129 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       })["catch"](function (error) {
         console.log(error);
       });
+      console.log(this.items.id_schedule);
+
+      for (var index = 0; index < this.items.length; index++) {
+        this.loadSchedule(this.items.id_schedule);
+      }
+
+      console.log(this.scheduleList);
+    },
+    loadSchedule: function loadSchedule(index) {
+      var _this3 = this;
+
+      id_schedule = this.items[index].id_schedule;
+      axios({
+        url: 'api/v1/bookings/schedule/' + id_schedule,
+        method: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this3.scheduleList = response.data.serve;
+        console.log(_this3.scheduleList);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     loadLocation: function loadLocation() {
-      var _this3 = this;
+      var _this4 = this;
 
       var index = 0;
       axios({
         url: 'api/v1/location',
         methods: 'GET'
       }).then(function (response) {
-        _this3.locations = response.data.serve;
+        _this4.locationList = response.data.serve;
         console.log(response.data.serve);
 
-        for (index = 0; index <= response.data.serve.length; index++) {
-          _this3.location.push({
-            value: response.data.serve[index].id_location,
-            text: response.data.serve[index].location_name
+        for (index = 0; index <= _this4.locationList.length; index++) {
+          _this4.location.push({
+            value: _this4.locationList[index].id_location,
+            text: _this4.locationList[index].location_name
           });
         }
 
-        console.log(_this3.locations);
+        console.log(_this4.location);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadField: function loadField() {
-      var _this4 = this;
+      var _this5 = this;
 
+      console.log();
       var index = 0;
       axios({
-        url: 'api/v1/field',
+        url: 'api/v1/field/data/' + this.selectedLocation,
         methods: 'GET'
       }).then(function (response) {
-        _this4.fieldlist = response.data.data;
-        console.log(response.data.data);
+        console.log(response);
+        _this5.fieldlist = response.data.serve;
+        console.log(response.data.serve);
+        _this5.field = [];
 
-        for (index = 0; index <= response.data.data.length; index++) {
-          _this4.field.push({
-            value: response.data.data[index].id_field,
-            text: response.data.data[index].field_name
+        for (index = 0; index <= _this5.fieldlist.length; index++) {
+          _this5.field.push({
+            value: _this5.fieldlist[index].id_field,
+            text: _this5.fieldlist[index].field_name
           });
         }
 
-        console.log('uhuy');
-        console.log(_this4.fieldlist);
+        console.log(_this5.fieldlist);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadByLocation: function loadByLocation() {
+      var _this6 = this;
+
+      axios({
+        url: 'api/v1/bookings/location/' + this.selectedLocation,
+        method: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this6.items = response.data.serve;
+        console.log(_this6.items);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadByField: function loadByField() {
+      var _this7 = this;
+
+      console.log(this.selectedDate); // format: {
+      //     toValue: function (date, format, language) {
+      //     var d = new Date(date);
+      //     d.setDate(d.getDate() + 7);
+      //     return new Date(d);
+      //     }
+      // }
+
+      axios({
+        url: 'api/v1/bookings/field',
+        method: 'POST',
+        data: {
+          id_field: this.selectedField,
+          date: this.selectedDate
+        }
+      }).then(function (response) {
+        console.log(response);
+        _this7.items = response.data.serve;
+        console.log(_this7.items);
       })["catch"](function (error) {
         console.log(error);
       });
     }
   },
   watch: {
-    filterTanggal: function filterTanggal(fal) {
-      var self = this;
-      var d = new Date(fal),
-          month = '' + (d.getMonth() + 1),
-          day = '' + d.getDate(),
-          year = d.getFullYear();
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
-      var realdate = [day, month, year].join('-');
-      var data = self.filterData.filter(function (project) {
-        return project.tglBayar === realdate;
-      });
-      self.filterData = data;
+    selectedLocation: function selectedLocation() {
+      this.loadField();
+      this.loadByLocation();
     },
-    filterLokasi: function filterLokasi(loc) {},
-    filterLapang: function filterLapang(fal) {
-      var self = this;
-      var data = self.filterData.filter(function (project) {
-        return project.status === fal;
-      });
-      self.filterData = data;
+    selectedField: function selectedField() {
+      this.loadByField();
+    },
+    selectedDate: function selectedDate() {
+      this.loadByField();
     }
   }
 });
@@ -69575,7 +69695,7 @@ var render = function() {
                         "b-row",
                         [
                           _c("date-picker", {
-                            attrs: { lang: "en", config: _vm.date },
+                            attrs: { lang: "en", config: _vm.dateFormat },
                             model: {
                               value: _vm.selectedDate,
                               callback: function($$v) {
@@ -69656,40 +69776,35 @@ var render = function() {
               }
             },
             [
-              _c(
-                "b-row",
-                { staticClass: "justify-content-md-right" },
-                [
-                  _c("b-col", { attrs: { cols: "2" } }, [
-                    _c("label", { attrs: { for: "input-price" } }, [
-                      _vm._v("Harga")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    { attrs: { cols: "6" } },
-                    [
-                      _c("b-form-input", {
-                        attrs: {
-                          id: "input-price",
-                          type: "number",
-                          required: ""
+              _c("b-row", { staticClass: "justify-content-md-right" }, [
+                _c("div", { staticClass: "col-md-2" }, [
+                  _c("label", { attrs: { for: "input-price" } }, [
+                    _vm._v("Harga")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6" },
+                  [
+                    _c("b-form-input", {
+                      attrs: {
+                        id: "input-price",
+                        type: "number",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.price,
+                        callback: function($$v) {
+                          _vm.price = $$v
                         },
-                        model: {
-                          value: _vm.price,
-                          callback: function($$v) {
-                            _vm.price = $$v
-                          },
-                          expression: "price"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
+                        expression: "price"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
             ],
             1
           ),
@@ -69701,15 +69816,15 @@ var render = function() {
                 "b-row",
                 { staticClass: "justify-content-md-right" },
                 [
-                  _c("b-col", { attrs: { cols: "2" } }, [
+                  _c("div", { staticClass: "col-md-2" }, [
                     _c("label", { attrs: { for: "payment_menthod" } }, [
                       _vm._v("Tipe Pembayaran")
                     ])
                   ]),
                   _vm._v(" "),
                   _c(
-                    "b-col",
-                    { attrs: { cols: "6" } },
+                    "div",
+                    { staticClass: "col-md-6" },
                     [
                       _c(
                         "b-button",
@@ -69736,37 +69851,32 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "b-row",
-            { staticClass: "justify-content-md-right" },
-            [
-              _c(
-                "b-col",
-                { attrs: { col: "6", offset: "8" } },
-                [
-                  _c(
-                    "b-button",
-                    {
-                      attrs: {
-                        type: "reset",
-                        variant: "outline-primary",
-                        href: "bookinglist"
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-arrow-left" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-button",
-                    { attrs: { type: "submit", variant: "primary" } },
-                    [_vm._v("Continue")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
+          _c("b-row", { staticClass: "justify-content-md-right" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-6 col-md-offset-8" },
+              [
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      type: "reset",
+                      variant: "outline-primary",
+                      href: "bookinglist"
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-arrow-left" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  { attrs: { type: "submit", variant: "primary" } },
+                  [_vm._v("Continue")]
+                )
+              ],
+              1
+            )
+          ])
         ],
         1
       )
@@ -69947,11 +70057,11 @@ var render = function() {
                   _c("b-form-select", {
                     attrs: { options: _vm.location },
                     model: {
-                      value: _vm.locations,
+                      value: _vm.selectedLocation,
                       callback: function($$v) {
-                        _vm.locations = $$v
+                        _vm.selectedLocation = $$v
                       },
-                      expression: "locations"
+                      expression: "selectedLocation"
                     }
                   })
                 ],
@@ -69967,11 +70077,11 @@ var render = function() {
                   _c("b-form-select", {
                     attrs: { options: _vm.field },
                     model: {
-                      value: _vm.fieldlist,
+                      value: _vm.selectedField,
                       callback: function($$v) {
-                        _vm.fieldlist = $$v
+                        _vm.selectedField = $$v
                       },
-                      expression: "fieldlist"
+                      expression: "selectedField"
                     }
                   })
                 ],
@@ -69990,7 +70100,7 @@ var render = function() {
                     "b-row",
                     [
                       _c("date-picker", {
-                        attrs: { lang: "en", config: _vm.date },
+                        attrs: { lang: "en", config: _vm.dateFormat },
                         model: {
                           value: _vm.selectedDate,
                           callback: function($$v) {
@@ -70044,6 +70154,20 @@ var render = function() {
           "primary-key": "id_booking"
         },
         scopedSlots: _vm._u([
+          {
+            key: "schedule",
+            fn: function(scheduleList) {
+              return [
+                _vm._v(
+                  "\n            " +
+                    _vm._s(scheduleList.start_time) +
+                    "-" +
+                    _vm._s(scheduleList.end_time) +
+                    "\n        "
+                )
+              ]
+            }
+          },
           {
             key: "payment_status",
             fn: function(data) {

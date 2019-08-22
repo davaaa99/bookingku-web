@@ -4,18 +4,18 @@
             <b-row>
                 <b-col cols="4">
                     <label for="location">Location</label>
-                    <b-form-select v-model="locations" :options="location"></b-form-select>
+                    <b-form-select v-model="selectedLocation" :options="location" ></b-form-select>
                 </b-col>
                 <b-col cols="4">
                     <label for="field">Field</label>
-                    <b-form-select v-model="fieldlist" :options="field"></b-form-select>
+                    <b-form-select v-model="selectedField" :options="field"></b-form-select>
                 </b-col>
                 <b-col cols="4">
                     <b-row>
                         <label for="date">Date</label>
                     </b-row>
                     <b-row>
-                        <date-picker v-model="selectedDate" lang="en" :config="date"></date-picker>
+                        <date-picker v-model="selectedDate" lang="en" :config="dateFormat"></date-picker>
                     </b-row>
                 </b-col>
             </b-row>
@@ -26,8 +26,10 @@
         </b-col>
         <div class="spacer-20"></div>
         <b-table fixed bordered small :items="items" :fields="fields" class="thead-light" id="bookinglist" primary-key="id_booking" >
+            <template slot="schedule" slot-scope="scheduleList">
+                {{scheduleList.start_time}}-{{scheduleList.end_time}}
+            </template>
             <template slot="payment_status" slot-scope="data">
-                <!-- <b-button v-model="data.item.status" class="btn btn-detail paid" v-bind:style="paid(data.item.status)" v-on:click="handleClick" @click="paidAction()">{{ paid(data.item.status) }}</b-button> -->
                 <button class="btn button badge" :class="classStatus(data.item.payment_status)" v-on:click="changeStatus(data.index)" :disabled="disableButton(data.item.payment_status)">{{paid(data.item.payment_status)}}</button>
             </template>
         </b-table>
@@ -50,18 +52,25 @@
                 // Note 'age' is left out and will not appear in the rendered table
                 perPage:20,
                 currentPage:1,
-                selectedLocation: null,
-                // location:[{text:'Choose Location', value:null}, 'Ciwaruga Futsal', 'Sarijadi Futsal'],
-                locations:[],
+                selectedLocation: "",
+                locationList:[],
                 location:[],
-                selectedField: null,
-                // field:[{text:'Choose Field', value:null},'Vinyl', 'Syntetic', 'Semen'],
+                selectedField: "",
                 fieldlist:[],
                 field:[],
-                selectedDate: new Date(),
-                date:{
-                    format: 'YYYY/MM/DD',
+                scheduleList:[],
+                selectedDate:"",
+                dateFormat:{
+                    format: 'YYYY-MM-DD',
                     useCurrent:false,
+                },
+                componen:{
+                    datePicker
+                },
+                filter:{
+                    locaton:'',
+                    field: '',
+                    date:''
                 },
                 fields:{
                     user: {
@@ -75,17 +84,16 @@
                         sortable: false
                     },
                     schedule: {
-                        key: 'id_schedule',
                         label:'Schedule',
                         sortable: true
                     },
-
                     payment_status: {
                         key: 'payment_status',
                         label: 'Status',
                         sortable: true
                     },
                     payment: {
+                        key: 'payment_type',
                         label: 'Payment',
                         sortable: true
                     }
@@ -96,11 +104,13 @@
         mounted(){
             this.loadData();
             this.loadLocation();
-            this.loadField();
         },
         methods:{
+            test(){
+                console.log(this.locationList);
+            },
             paid($status){
-                const $key=['Unpaid','Down Payment', 'Full Payment']
+                const $key=['Unpaid','Down Payment', 'Paid']
                 return $key[$status]
             },
             classStatus($status){
@@ -147,6 +157,26 @@
                 }).catch(error => {
                     console.log(error);
                 })
+                console.log(this.items.id_schedule);
+                
+                for (let index = 0; index < this.items.length; index++) {
+                    this.loadSchedule(this.items.id_schedule);
+                }
+                console.log(this.scheduleList);
+                
+            },
+            loadSchedule(index){
+                id_schedule= this.items[index].id_schedule
+                axios({
+                    url: 'api/v1/bookings/schedule/'+id_schedule,
+                    method: 'GET'
+                }).then(response => {
+                    console.log(response);
+                    this.scheduleList = response.data.serve
+                    console.log(this.scheduleList);
+                }).catch(error => {
+                    console.log(error);
+                })
             },
             loadLocation(){
                 let index=0;
@@ -154,62 +184,84 @@
                     url: 'api/v1/location',
                     methods:'GET',
                 }).then(response=>{
-                    this.locations = response.data.serve
+                    this.locationList = response.data.serve
                     console.log(response.data.serve);
-                    for (index=0; index<= response.data.serve.length; index++) {
-                        this.location.push({value: response.data.serve[index].id_location, text: response.data.serve[index].location_name})
+                    for (index=0; index<= this.locationList.length; index++) {
+                        this.location.push({value: this.locationList[index].id_location, text: this.locationList[index].location_name})
                     }
-                    console.log(this.locations);
+                    console.log(this.location);
                 }).catch(error=>{
                     console.log(error);
                 })
             },
             loadField(){
+                console.log();
+                
                 let index=0;
                 axios({
-                    url: 'api/v1/field',
+                    url: 'api/v1/field/data/'+this.selectedLocation,
                     methods:'GET',
                 }).then(response=>{
-                    this.fieldlist = response.data.data
-                    console.log(response.data.data);
-                    for (index=0; index<= response.data.data.length; index++) {
-                        this.field.push({value: response.data.data[index].id_field, text: response.data.data[index].field_name})
+                    console.log(response);
+                    this.fieldlist = response.data.serve
+                    console.log(response.data.serve);
+                    this.field = []
+                    for (index=0; index<= this.fieldlist.length; index++) {
+                        this.field.push({value: this.fieldlist[index].id_field, text: this.fieldlist[index].field_name})
                     }
-                    console.log('uhuy');
                     console.log(this.fieldlist);
                 }).catch(error=>{
                     console.log(error);
                 })
             },
-        },
-        watch:{
-            filterTanggal: function (fal) {
-                var self = this;
-                var d = new Date(fal),
-                    month = '' + (d.getMonth() + 1),
-                    day = '' + d.getDate(),
-                    year = d.getFullYear();
-
-                if (month.length < 2) month = '0' + month;
-                if (day.length < 2) day = '0' + day;
-                
-                var realdate = [day, month, year].join('-');
-
-                const data = self.filterData.filter(function (project) {
-                    return project.tglBayar === realdate;
-                });
-
-                self.filterData = data;
+            loadByLocation(){
+                axios({
+                    url: 'api/v1/bookings/location/'+this.selectedLocation,
+                    method: 'GET'
+                }).then(response => {
+                    console.log(response);
+                    this.items = response.data.serve
+                    console.log(this.items);
+                }).catch(error => {
+                    console.log(error);
+                })
             },
-            filterLokasi: function (loc) {
-            },
-            filterLapang: function (fal) {
-                var self = this;
-                const data = self.filterData.filter(function (project) {
-                    return project.status === fal;
-                });
-                self.filterData = data;
+            loadByField(){
+                console.log(this.selectedDate);
+                // format: {
+                //     toValue: function (date, format, language) {
+                //     var d = new Date(date);
+                //     d.setDate(d.getDate() + 7);
+                //     return new Date(d);
+                //     }
+                // }
+                 axios({
+                    url: 'api/v1/bookings/field',
+                    method: 'POST',
+                    data: {
+                        id_field : this.selectedField,
+                        date : this.selectedDate
+                    }
+                }).then(response => {
+                    console.log(response);
+                    this.items = response.data.serve
+                    console.log(this.items);
+                }).catch(error => {
+                    console.log(error);
+                })
             }
         },
+        watch:{
+            selectedLocation:function(){
+                this.loadField()
+                this.loadByLocation()
+            },
+            selectedField:function(){
+                this.loadByField()
+            },
+            selectedDate:function(){
+                this.loadByField()
+            }
+        }
     }
 </script>
