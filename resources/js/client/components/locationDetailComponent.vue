@@ -1,8 +1,46 @@
 <template>
   <div id="location-detail">
-    <b-card
+    <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="4000"
+      controls
+      indicators
+      background="#ababab"
+      img-width="1024"
+      img-height="250"
+      style="text-shadow: 1px 1px 2px #333;"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+      <b-carousel-slide v-for="photo in photos" :key="photo.id" :caption="location.location_name" :text="location.location_address">
+        <img
+          slot="img"
+          class="d-block w-100"
+          width="100%"
+          height="350"
+          :src="photo"
+          :alt="location.location_name"
+        />
+      </b-carousel-slide>
+    </b-carousel>
+    <!-- <b-carousel-slide
+        :caption="location.location_name"
+        :text="location.location_address"
+      >
+        <img
+          slot="img"
+          class="d-block w-100"
+          width="100%"
+          height="350"
+          :src="location.location_photo"
+          :alt="location.location_name"
+        >
+      </b-carousel-slide>
+    </b-carousel>-->
+    <!-- <b-card
       overlay
-      img-src="https://picsum.photos/900/250/?image=3"
+      :img-src="location.location_photo"
       img-alt="Gambar Lapangan"
       text-variant="white"
       border-variant="dark"
@@ -14,16 +52,16 @@
         <h1>{{ location.location_name }}</h1>
         <p>{{ location.location_address }}</p>
       </b-card-text>
-    </b-card>
-    <div class="spacer-30"></div>
+    </b-card>-->
+    <div class="spacer-20"></div>
     <div class="detail d-flex">
       <div class="desc">
-        <h3>Description</h3>
+        <h4>Description</h4>
         <p>{{ location.description }}</p>
       </div>
-      <div class="time">
-        <h3>Open Time</h3>
-        <b-row>
+      <div class="time d-flex flex-column align-items-center justify-content-center">
+        <h5>Open Time</h5>
+        <b-row class="ml-n5">
           <ul>
             <li>Monday</li>
             <li>Tuesday</li>
@@ -35,14 +73,15 @@
           </ul>
           <ul>
             <li
-              v-for="(time) in schedule"
+              v-for="time in schedule"
               :key="time.id"
             >{{ time.open_time }} - {{ time.closing_time }}</li>
           </ul>
         </b-row>
       </div>
     </div>
-    <div class="spacer-20"></div>
+    <!-- <img :src="location.location_photo"> -->
+    <!-- <div class="spacer-20"></div> -->
   </div>
 </template>
 
@@ -57,8 +96,10 @@ export default {
   },
   data() {
     return {
+      slide: 0,
       perPage: 10,
       location: {},
+      photos: [],
       schedule: [
         { open_time: "", closing_time: "" },
         { open_time: "", closing_time: "" },
@@ -84,7 +125,11 @@ export default {
       })
         .then(response => {
           this.location = response.data.serve;
+          console.log(this.location);
+          this.splitPhotoUrl(this.location.location_photo);
           this.splitSchedule(this.location.schedule[0]);
+          
+          
           console.log(response);
           console.log(this.location);
         })
@@ -126,6 +171,15 @@ export default {
     },
     isClose($day) {
       return $day.length == 1;
+    },
+    splitPhotoUrl($photosUrl) {
+      this.photos = $photosUrl.split(";");
+    },
+    onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd(slide) {
+      this.sliding = false;
     }
   }
 };

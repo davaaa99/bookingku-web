@@ -216,6 +216,11 @@ main {
 
 #location-detail {
 
+    .image {
+        background-size: cover;
+        background-position: center center;
+    }
+
     .image-header {
         width: 100%;
         // height: 250px;
@@ -235,7 +240,6 @@ main {
         .time {
             color: #5C5C5C;
             margin-left: 70px;
-            padding: 10px;
             width: 30%;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 

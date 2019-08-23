@@ -10,9 +10,11 @@ use App\Location;
 use App\Location_schedule;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use App\Http\Resources\PostCollection;
-
+use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
 
 class LocationController extends Controller
 {
@@ -124,7 +126,7 @@ class LocationController extends Controller
             }
 
             /**
-             * Location register
+             * Create location
              */
             $dataUser = Auth::user();
 
@@ -134,7 +136,6 @@ class LocationController extends Controller
             $location->location_name = $request->location_name;
             $location->location_address = $request->location_address;
             $location->description = $request->description;
-            $location->location_photo = $request->photos;
             $location->latitude = $request->latitude;
             $location->longitude = $request->longitude;
             $location->created_by = $dataUser->email;
@@ -156,6 +157,42 @@ class LocationController extends Controller
         return response()->json([
             'message' => 'Successfully saved data.',
             'serve' => $location
+        ], 200);
+    }
+
+    /**
+     * Save location photo to storage
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request)
+    {
+        try {
+            $index = 1;
+            $location = Location::find($request->id_location);
+            foreach ($request->file('photo') as $loc_photo) {
+                $extension = $loc_photo->getClientOriginalExtension();
+                $photoName = $index . $request->id_location . '.' . $extension;
+                $path = Storage::disk('public')->putFileAs('/locationPhotos', $loc_photo, $photoName);
+
+                if($location->location_photo == null) 
+                    $location->location_photo = '/storage' . '/' . $path;
+                else $location->location_photo = $location->location_photo .';'. '/storage' . '/' . $path;
+                $location->save();
+                $index++;
+            }
+
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed save data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully saved data.',
+            'serve' => []
         ], 200);
     }
 
@@ -280,11 +317,13 @@ class LocationController extends Controller
         try {
             $dataUser = Auth::user();
 
+            $photos = $request->file('file');
+            $path = $photos->store('public/locationPhotos');
             $location = Location::find($request->id_location);
             $location->location_name = $request->location_name;
             $location->location_address = $request->location_address;
             $location->description = $request->description;
-            $location->location_photo = $request->location_photo;
+            // $location->location_photo = $request->photos;
             $location->latitude = $request->latitude;
             $location->longitude = $request->longitude;
             $location->updated_by = $dataUser->email;

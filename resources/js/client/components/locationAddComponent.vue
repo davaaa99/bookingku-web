@@ -16,7 +16,10 @@
               placeholder="Enter a location name"
             ></b-form-input>
             <div v-if="$v.location.location_name.$error">
-              <div class="error" v-if="!$v.location.location_name.required">Location name must be filled in</div>
+              <div
+                class="error"
+                v-if="!$v.location.location_name.required"
+              >Location name must be filled in</div>
             </div>
           </b-col>
         </b-row>
@@ -64,7 +67,12 @@
             </label>
           </b-col>
           <b-col>
-            <b-form-file multiple :file-name-formater="formatName"></b-form-file>
+            <b-form-file
+              accept=".jpg, .png, .gif"
+              v-model="photos"
+              multiple
+              enctype="multipart/form-data"
+            ></b-form-file>
           </b-col>
         </b-row>
       </b-form-group>
@@ -293,7 +301,7 @@
       </div>
       <div class="spacer-50"></div>
       <div class="d-flex">
-        <button class="btn btn-primary ml-auto mr-2" @click="save()">Save</button>
+        <button class="btn btn-primary ml-auto mr-2" @click="save($event);upload($event);">Save</button>
         <button class="btn btn-danger mr-auto" @click="cancel()">Cancel</button>
       </div>
     </b-form>
@@ -313,18 +321,22 @@ export default {
       headerBgVariant: "primary",
       headerTextVariant: "light",
       colorstatus: "#5C5C5C",
+      photos: null,
+      tempIdLocation: "",
       location: {
         location_name: "",
         location_address: "",
         description: "",
-        day: [{open_time:"",closing_time:"",valstatus:""},
-          {open_time:"",closing_time:"",valstatus:""},
-          {open_time:"",closing_time:"",valstatus:""},
-          {open_time:"",closing_time:"",valstatus:""},
-          {open_time:"",closing_time:"",valstatus:""},
-          {open_time:"",closing_time:"",valstatus:""},
-          {open_time:"",closing_time:"",valstatus:""},
-          {open_time:"",closing_time:"",valstatus:""}
+        photos: null,
+        day: [
+          { open_time: "", closing_time: "", valstatus: "" },
+          { open_time: "", closing_time: "", valstatus: "" },
+          { open_time: "", closing_time: "", valstatus: "" },
+          { open_time: "", closing_time: "", valstatus: "" },
+          { open_time: "", closing_time: "", valstatus: "" },
+          { open_time: "", closing_time: "", valstatus: "" },
+          { open_time: "", closing_time: "", valstatus: "" },
+          { open_time: "", closing_time: "", valstatus: "" }
         ]
       },
       otimes: [
@@ -391,110 +403,125 @@ export default {
     }
   },
   computed: {
-    everyday: function(){
-      return this.location.day[0].valstatus
+    everyday: function() {
+      return this.location.day[0].valstatus;
     },
-    monday: function(){
-      return this.location.day[1].valstatus
+    monday: function() {
+      return this.location.day[1].valstatus;
     },
-    tuesday: function(){
-      return this.location.day[2].valstatus
+    tuesday: function() {
+      return this.location.day[2].valstatus;
     },
-    wednesday: function(){
-      return this.location.day[3].valstatus
+    wednesday: function() {
+      return this.location.day[3].valstatus;
     },
-    thursday: function(){
-      return this.location.day[4].valstatus
+    thursday: function() {
+      return this.location.day[4].valstatus;
     },
-    friday: function(){
-      return this.location.day[5].valstatus
+    friday: function() {
+      return this.location.day[5].valstatus;
     },
-    saturday: function(){
-      return this.location.day[6].valstatus
+    saturday: function() {
+      return this.location.day[6].valstatus;
     },
-    sunday: function(){
-      return this.location.day[7].valstatus
+    sunday: function() {
+      return this.location.day[7].valstatus;
     }
   },
   watch: {
     everyday: function() {
-      if (! this.location.day[0].valstatus)
-      {
-        this.resetTime(0)
-      } else
-      {
+      if (!this.location.day[0].valstatus) {
+        this.resetTime(0);
+      } else {
         for (let index = 1; index < 8; index++) {
-          this.resetTime(index)
+          this.resetTime(index);
         }
       }
     },
     monday: function() {
-      if (! this.location.day[1].valstatus)
-      {
-        this.resetTime(1)
+      if (!this.location.day[1].valstatus) {
+        this.resetTime(1);
       }
     },
     tuesday: function() {
-      if (! this.location.day[2].valstatus)
-      {
-        this.resetTime(2)
+      if (!this.location.day[2].valstatus) {
+        this.resetTime(2);
       }
     },
     wednesday: function() {
-      if (! this.location.day[3].valstatus)
-      {
-        this.resetTime(3)
+      if (!this.location.day[3].valstatus) {
+        this.resetTime(3);
       }
     },
     thursday: function() {
-      if (! this.location.day[4].valstatus)
-      {
-        this.resetTime(4)
+      if (!this.location.day[4].valstatus) {
+        this.resetTime(4);
       }
     },
     friday: function() {
-      if (! this.location.day[5].valstatus)
-      {
-        this.resetTime(5)
+      if (!this.location.day[5].valstatus) {
+        this.resetTime(5);
       }
     },
     saturday: function() {
-      if (! this.location.day[6].valstatus)
-      {
-        this.resetTime(6)
+      if (!this.location.day[6].valstatus) {
+        this.resetTime(6);
       }
     },
     sunday: function() {
-      if (! this.location.day[7].valstatus)
-      {
-        this.resetTime(7)
+      if (!this.location.day[7].valstatus) {
+        this.resetTime(7);
       }
     }
   },
   methods: {
-    resetTime($index){
-      this.location.day[$index].open_time = ""
-      this.location.day[$index].closing_time = ""
-      this.location.day[$index].valstatus = false
+    resetTime($index) {
+      this.location.day[$index].open_time = "";
+      this.location.day[$index].closing_time = "";
+      this.location.day[$index].valstatus = false;
     },
     status(validation) {
       return {
         error: validation.$error
       };
     },
-    save() {
+    upload(event) {
+      event.preventDefault();
+      window.setTimeout(() => {
+        let formData = new FormData();
+        formData.append("id_location", this.tempIdLocation);
+
+        for (let index = 0; index < this.photos.length; index++) {
+          formData.append("photo[]", this.photos[index]);
+        }
+
+        axios({
+          url: "/upload",
+          method: "POST",
+          data: formData,
+          headers: { "content-type": "multipart/form-data" }
+        })
+          .then(response => {
+            alert("Successfully added new location");
+            window.location.href =
+              window.location.protocol +
+              "//" +
+              window.location.host +
+              "/locations";
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }, 1000);
+    },
+    save(event) {
       axios({
         url: "/location",
         method: "POST",
         data: this.location
       })
         .then(response => {
-          alert("Successfully added new location");
-          window.location.href =
-            window.location.protocol +
-            "//" +
-            window.location.host +
-            "/locations";
+          this.tempIdLocation = response.data.serve.id_location;
         })
         .catch(error => {
           alert("Failed add new location");

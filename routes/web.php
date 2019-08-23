@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
     Route::post('data/location', 'API\REST\LocationController@locationDetail');
     Route::put('update/location', 'API\REST\LocationController@update');
     Route::delete('location/{id}', 'API\REST\LocationController@destroy');
+
+    Route::post('upload', 'API\REST\LocationController@upload')->name('upload');
 });
 
 

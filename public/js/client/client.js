@@ -2862,6 +2862,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2872,10 +2880,13 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       headerBgVariant: "primary",
       headerTextVariant: "light",
       colorstatus: "#5C5C5C",
+      photos: null,
+      tempIdLocation: "",
       location: {
         location_name: "",
         location_address: "",
         description: "",
+        photos: null,
         day: [{
           open_time: "",
           closing_time: "",
@@ -3012,14 +3023,42 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         error: validation.$error
       };
     },
-    save: function save() {
+    upload: function upload(event) {
+      var _this = this;
+
+      event.preventDefault();
+      window.setTimeout(function () {
+        var formData = new FormData();
+        formData.append("id_location", _this.tempIdLocation);
+
+        for (var index = 0; index < _this.photos.length; index++) {
+          formData.append("photo[]", _this.photos[index]);
+        }
+
+        axios({
+          url: "/upload",
+          method: "POST",
+          data: formData,
+          headers: {
+            "content-type": "multipart/form-data"
+          }
+        }).then(function (response) {
+          alert("Successfully added new location");
+          window.location.href = window.location.protocol + "//" + window.location.host + "/locations";
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }, 1000);
+    },
+    save: function save(event) {
+      var _this2 = this;
+
       axios({
         url: "/location",
         method: "POST",
         data: this.location
       }).then(function (response) {
-        alert("Successfully added new location");
-        window.location.href = window.location.protocol + "//" + window.location.host + "/locations";
+        _this2.tempIdLocation = response.data.serve.id_location;
       })["catch"](function (error) {
         alert("Failed add new location");
       });
@@ -3113,6 +3152,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -3122,8 +3200,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
   },
   data: function data() {
     return {
+      slide: 0,
       perPage: 10,
       location: {},
+      photos: [],
       schedule: [{
         open_time: "",
         closing_time: ""
@@ -3163,6 +3243,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         }
       }).then(function (response) {
         _this.location = response.data.serve;
+        console.log(_this.location);
+
+        _this.splitPhotoUrl(_this.location.location_photo);
 
         _this.splitSchedule(_this.location.schedule[0]);
 
@@ -3207,6 +3290,15 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     },
     isClose: function isClose($day) {
       return $day.length == 1;
+    },
+    splitPhotoUrl: function splitPhotoUrl($photosUrl) {
+      this.photos = $photosUrl.split(";");
+    },
+    onSlideStart: function onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd: function onSlideEnd(slide) {
+      this.sliding = false;
     }
   }
 });
@@ -3550,7 +3642,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         location_name: "",
         location_address: "",
         description: "",
-        photos: [],
+        file: [],
         day: [{
           open_time: "",
           closing_time: "",
@@ -70979,8 +71071,16 @@ var render = function() {
                     [
                       _c("b-form-file", {
                         attrs: {
+                          accept: ".jpg, .png, .gif",
                           multiple: "",
-                          "file-name-formater": _vm.formatName
+                          enctype: "multipart/form-data"
+                        },
+                        model: {
+                          value: _vm.photos,
+                          callback: function($$v) {
+                            _vm.photos = $$v
+                          },
+                          expression: "photos"
                         }
                       })
                     ],
@@ -71897,7 +71997,8 @@ var render = function() {
                 staticClass: "btn btn-primary ml-auto mr-2",
                 on: {
                   click: function($event) {
-                    return _vm.save()
+                    _vm.save($event)
+                    _vm.upload($event)
                   }
                 }
               },
@@ -71953,47 +72054,77 @@ var render = function() {
     { attrs: { id: "location-detail" } },
     [
       _c(
-        "b-card",
+        "b-carousel",
         {
-          staticClass: "image-header",
+          staticStyle: { "text-shadow": "1px 1px 2px #333" },
           attrs: {
-            overlay: "",
-            "img-src": "https://picsum.photos/900/250/?image=3",
-            "img-alt": "Gambar Lapangan",
-            "text-variant": "white",
-            "border-variant": "dark"
+            id: "carousel-1",
+            interval: 4000,
+            controls: "",
+            indicators: "",
+            background: "#ababab",
+            "img-width": "1024",
+            "img-height": "250"
+          },
+          on: {
+            "sliding-start": _vm.onSlideStart,
+            "sliding-end": _vm.onSlideEnd
+          },
+          model: {
+            value: _vm.slide,
+            callback: function($$v) {
+              _vm.slide = $$v
+            },
+            expression: "slide"
           }
         },
-        [
-          _c("div", { staticClass: "spacer" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "spacer-30" }),
-          _vm._v(" "),
-          _c("b-card-text", [
-            _c("h1", [_vm._v(_vm._s(_vm.location.location_name))]),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.location.location_address))])
-          ])
-        ],
+        _vm._l(_vm.photos, function(photo) {
+          return _c(
+            "b-carousel-slide",
+            {
+              key: photo.id,
+              attrs: {
+                caption: _vm.location.location_name,
+                text: _vm.location.location_address
+              }
+            },
+            [
+              _c("img", {
+                staticClass: "d-block w-100",
+                attrs: {
+                  slot: "img",
+                  width: "100%",
+                  height: "350",
+                  src: photo,
+                  alt: _vm.location.location_name
+                },
+                slot: "img"
+              })
+            ]
+          )
+        }),
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "spacer-30" }),
+      _c("div", { staticClass: "spacer-20" }),
       _vm._v(" "),
       _c("div", { staticClass: "detail d-flex" }, [
         _c("div", { staticClass: "desc" }, [
-          _c("h3", [_vm._v("Description")]),
+          _c("h4", [_vm._v("Description")]),
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(_vm.location.description))])
         ]),
         _vm._v(" "),
         _c(
           "div",
-          { staticClass: "time" },
+          {
+            staticClass:
+              "time d-flex flex-column align-items-center justify-content-center"
+          },
           [
-            _c("h3", [_vm._v("Open Time")]),
+            _c("h5", [_vm._v("Open Time")]),
             _vm._v(" "),
-            _c("b-row", [
+            _c("b-row", { staticClass: "ml-n5" }, [
               _c("ul", [
                 _c("li", [_vm._v("Monday")]),
                 _vm._v(" "),
@@ -72025,9 +72156,7 @@ var render = function() {
           ],
           1
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "spacer-20" })
+      ])
     ],
     1
   )
@@ -72208,11 +72337,11 @@ var render = function() {
                       _c("b-form-file", {
                         attrs: { accept: ".jpg, .png, .gif", multiple: "" },
                         model: {
-                          value: _vm.location.photos,
+                          value: _vm.location.file,
                           callback: function($$v) {
-                            _vm.$set(_vm.location, "photos", $$v)
+                            _vm.$set(_vm.location, "file", $$v)
                           },
-                          expression: "location.photos"
+                          expression: "location.file"
                         }
                       })
                     ],
@@ -91614,10 +91743,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/client/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); // import VueAxios from 'vue-axios';
-// import axios from 'axios';
-// Vue.use(VueAxios, axios);
-
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_1___default.a);
 /**

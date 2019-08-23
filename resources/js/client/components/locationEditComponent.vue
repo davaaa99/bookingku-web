@@ -64,7 +64,7 @@
             </label>
           </b-col>
           <b-col>
-            <b-form-file accept=".jpg, .png, .gif" multiple v-model="location.photos"></b-form-file>
+            <b-form-file accept=".jpg, .png, .gif" multiple v-model="location.file"></b-form-file>
           </b-col>
         </b-row>
       </b-form-group>
@@ -323,7 +323,7 @@ export default {
         location_name: "",
         location_address: "",
         description: "",
-        photos: [],
+        file: [],
         day: [{open_time:"",closing_time:"",valstatus:""},
           {open_time:"",closing_time:"",valstatus:""},
           {open_time:"",closing_time:"",valstatus:""},

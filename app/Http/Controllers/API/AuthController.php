@@ -67,7 +67,7 @@ class AuthController extends Controller
             'account_number' => $data['account_number'],
             'phone_number' => $data['phone_number'],
             'email_token' => base64_encode($data['email']),
-            'user_type' => 2,
+            'user_type' => 1,
         ]);
     }
 
