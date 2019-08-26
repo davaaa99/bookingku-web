@@ -104,7 +104,7 @@ class FieldController extends Controller
      */
     public function store(Request $request){
        
-        
+        try{
         $field = new Field([
             'id_field' => Uuid::uuid1()->getHex(),
             'id_location' => '1',
@@ -117,7 +117,17 @@ class FieldController extends Controller
             // $field= new FileUpload();
             // $field->field_photo = $name;
             $field->save();
-
+        } catch (Exception $e){
+            return response()->json([
+            'message' => 'Failed delete data.' . $e->getMessage(),
+            'serve' => []
+            ],500);
+        }
+            return response()->json([
+                'message' => 'Successfully updated field data.',
+                'serve' => $field
+            ], 200);
+            
         
     }
 
@@ -161,11 +171,17 @@ class FieldController extends Controller
      */
     public function update(Request $request)
     {
+    try{
       $field = Field::find($request->id_field);
       $field->field_name = $request->field_name;
       $field->field_type = $request->field_type;
       $field->save();
-
+    } catch (Exception $e){
+        return response()->json([
+        'message' => 'Failed uploaded data.' . $e->getMessage(),
+        'serve' => []
+        ],500);
+    }
       return response()->json([
                 'message' => 'Successfully updated field data.',
                 'serve' => []
@@ -216,16 +232,54 @@ class FieldController extends Controller
 
     public function upload(Request $request)
     {
-        // $data = json_decode($request,TRUE);
-
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();
-        $path = 'storage/fieldPhoto';
-        $request->image->move($path,$imageName);
-        // $id = $data['id'];
-        // $field = Field::find($id);
-        // $field->field_photo = $path. $imageName;
-        // $field->save();
-
-        return response()->json(['success'=>'Berhasil upload foto']);
+    //    dd($request);
+        try{
+            $index = 1;
+            $field = Field::find($request->id_field);
+            foreach($request->file('photo') as $f_photo){
+                $extension = $f_photo->getClientOriginalExtension();
+                $photoName = $index . $request->id_field . '.' . $extension;
+                $path = Storage::disk('public')->putFileAs('/fieldPhotos',$f_photo,$photoName);
+                
+                if($field->field_photo == NULL)
+                    $field->field_photo = '/storage' . '/' . $path;
+                else $field->field_photo = $field->field_photo . ';' . '/storage' . '/' . $path;
+                $field->save();
+                $index++;            
+            } 
+          
+        } catch (Exception $e){
+            return response()->json([
+            'message' => 'Failed delete data.' . $e->getMessage(),
+            'serve' => []
+            ],500);
+        }
     }
+
+    public function uploadedit(Request $request)
+    {
+    //    dd($request);
+        try{
+            $index = 1;
+            $field = Field::find($request->id_field);
+            foreach($request->file('photo') as $f_photo){
+                $extension = $f_photo->getClientOriginalExtension();
+                $photoName = $index . $request->id_field . '.' . $extension;
+                $path = Storage::disk('public')->putFileAs('/fieldPhotos',$f_photo,$photoName);
+                
+                // if($field->field_photo == NULL)
+                    $field->field_photo = '/storage' . '/' . $path;
+                // else $field->field_photo = $field->field_photo . ';' . '/storage' . '/' . $path;
+                $field->save();
+                $index++;            
+            } 
+          
+        } catch (Exception $e){
+            return response()->json([
+            'message' => 'Failed delete data.' . $e->getMessage(),
+            'serve' => []
+            ],500);
+        }
+    }
+
 }

@@ -2085,16 +2085,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      tempIdField: "",
       form: {},
       photos: null,
       tipelapang: ['Sintetis', 'Vinyl', 'Semen', 'Karpet'],
-      show: true
+      show: true,
+      field: {
+        field_name: "",
+        field_type: "",
+        photos: null
+      }
     };
   },
   methods: {
@@ -2108,39 +2111,47 @@ __webpack_require__.r(__webpack_exports__);
         alert('Data gagal ditambahkan');
       });
     },
+    upload: function upload(event) {
+      var _this = this;
+
+      console.log(this.photos);
+      event.preventDefault();
+      window.setTimeout(function () {
+        var formData = new FormData();
+        formData.append('id_field', _this.tempIdField);
+
+        for (var index = 0; index < _this.photos.length; index++) {
+          formData.append("photo[]", _this.photos[index]);
+        }
+
+        console.log(formData);
+        axios({
+          url: "/upload",
+          method: "POST",
+          data: formData,
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        }).then(function (response) {
+          alert("Successfully added new Field");
+          window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+        })["catch"](function (response) {
+          console.log(error);
+        });
+      }, 1000);
+    },
     store: function store() {
-      var data = {
-        id_field: this.form.id_field,
-        field_name: this.form.field_name,
-        field_type: this.form.field_type
-      };
+      var _this2 = this;
+
       axios({
         url: '/add',
         method: 'POST',
-        data: data
+        data: this.field
       }).then(function (response) {
-        alert('Data berhasil ditambahkan');
-        window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+        _this2.tempIdField = response.data.serve.id_field;
       })["catch"](function (error) {
         console.log(error);
         alert('Data gagal ditambahkan');
-      });
-    },
-    upload: function upload(event) {
-      event.preventDefault();
-      var formData = new FormData();
-      formData.append('image', this.photos);
-      axios({
-        url: "/upload",
-        method: "POST",
-        data: formData,
-        headers: {
-          'content-type': 'multipart/form-data'
-        }
-      }).then(function (response) {
-        console.log(response);
-      })["catch"](function (response) {
-        console.log(error);
       });
     }
   }
@@ -2468,14 +2479,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     idField: String
   },
   data: function data() {
     return {
+      // tempIdField: "",
       found: true,
-      form: {},
+      // form: {},
+      photos: [],
+      oldfield: {},
+      field: {
+        id_field: "",
+        field_name: "",
+        field_type: "",
+        photos: []
+      },
       tipelapang: [{
         text: 'Pilih Tipe Lapang',
         value: null
@@ -2487,26 +2514,49 @@ __webpack_require__.r(__webpack_exports__);
     this.loadData();
   },
   methods: {
+    upload: function upload(event) {
+      var _this = this;
+
+      console.log(this.photos);
+      event.preventDefault();
+      window.setTimeout(function () {
+        var formData = new FormData();
+        formData.append('id_field', _this.idField);
+
+        for (var index = 0; index < _this.photos.length; index++) {
+          formData.append("photo[]", _this.photos[index]);
+        }
+
+        console.log(formData);
+        axios({
+          url: "/upload",
+          method: "POST",
+          data: formData,
+          headers: {
+            'content-type': 'multipart/form-data'
+          }
+        }).then(function (response) {
+          alert("Successfully added new Field");
+          window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+        })["catch"](function (response) {
+          console.log(error);
+        });
+      }, 1000);
+    },
     save: function save() {
-      var data = {
-        id_field: this.form.id_field,
-        field_name: this.form.field_name,
-        field_type: this.form.field_type
-      };
       axios({
         url: '/data/field',
         method: 'PUT',
-        data: data
-      }).then(function (response) {
-        alert('Berhasil di update');
-        window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+        data: this.field
+      }).then(function (response) {// alert('Berhasil di update')
+        // window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
       })["catch"](function (error) {
         console.log(error);
         alert('Gagal di update');
       });
     },
     loadData: function loadData() {
-      var _this = this;
+      var _this2 = this;
 
       axios({
         url: '/edit',
@@ -2515,11 +2565,20 @@ __webpack_require__.r(__webpack_exports__);
           id: this.idField
         }
       }).then(function (response) {
-        _this.form = response.data;
-        console.log(response.data);
+        _this2.oldfield = response.data;
+        console.log(response);
+        console.log(_this2.oldfield);
+
+        _this2.setDataField(_this2.oldfield); // console.log(response.data)
+
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    setDataField: function setDataField($oldfield) {
+      this.field.id_field = $oldfield.id_field;
+      this.field.field_name = $oldfield.field_name;
+      this.field.field_type = $oldfield.field_type;
     }
   }
 });
@@ -70683,8 +70742,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "addlapang" } }, [
     _c("form", [
-      _c("div", { staticClass: "form-group" }),
-      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "namalapang" } }, [
           _vm._v("Nama Lapang : ")
@@ -70695,19 +70752,19 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.form.field_name,
-              expression: "form.field_name"
+              value: _vm.field.field_name,
+              expression: "field.field_name"
             }
           ],
           staticClass: "form-control",
           attrs: { type: "text", required: "" },
-          domProps: { value: _vm.form.field_name },
+          domProps: { value: _vm.field.field_name },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.form, "field_name", $event.target.value)
+              _vm.$set(_vm.field, "field_name", $event.target.value)
             }
           }
         })
@@ -70724,11 +70781,11 @@ var render = function() {
           _c("b-form-select", {
             attrs: { id: "input-3", options: _vm.tipelapang, required: "" },
             model: {
-              value: _vm.form.field_type,
+              value: _vm.field.field_type,
               callback: function($$v) {
-                _vm.$set(_vm.form, "field_type", $$v)
+                _vm.$set(_vm.field, "field_type", $$v)
               },
-              expression: "form.field_type"
+              expression: "field.field_type"
             }
           })
         ],
@@ -70745,6 +70802,7 @@ var render = function() {
           _vm._v(" "),
           _c("b-form-file", {
             attrs: {
+              multiple: "",
               accept: ".jpg, .png, .jpeg,. .gif",
               enctype: "multipart/form-data"
             },
@@ -71127,19 +71185,19 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.form.id_field,
-              expression: "form.id_field"
+              value: _vm.field.id_field,
+              expression: "field.id_field"
             }
           ],
           staticClass: "form-control",
           attrs: { type: "text", required: "", disabled: "" },
-          domProps: { value: _vm.form.id_field },
+          domProps: { value: _vm.field.id_field },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.form, "id_field", $event.target.value)
+              _vm.$set(_vm.field, "id_field", $event.target.value)
             }
           }
         })
@@ -71155,19 +71213,19 @@ var render = function() {
             {
               name: "model",
               rawName: "v-model",
-              value: _vm.form.field_name,
-              expression: "form.field_name"
+              value: _vm.field.field_name,
+              expression: "field.field_name"
             }
           ],
           staticClass: "form-control",
           attrs: { type: "text", required: "" },
-          domProps: { value: _vm.form.field_name },
+          domProps: { value: _vm.field.field_name },
           on: {
             input: function($event) {
               if ($event.target.composing) {
                 return
               }
-              _vm.$set(_vm.form, "field_name", $event.target.value)
+              _vm.$set(_vm.field, "field_name", $event.target.value)
             }
           }
         })
@@ -71184,11 +71242,37 @@ var render = function() {
           _c("b-form-select", {
             attrs: { id: "input-3", options: _vm.tipelapang, required: "" },
             model: {
-              value: _vm.form.field_type,
+              value: _vm.field.field_type,
               callback: function($$v) {
-                _vm.$set(_vm.form, "field_type", $$v)
+                _vm.$set(_vm.field, "field_type", $$v)
               },
-              expression: "form.field_type"
+              expression: "field.field_type"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
+          _c("label", { attrs: { for: "filelapang" } }, [
+            _vm._v(" Upload File ")
+          ]),
+          _vm._v(" "),
+          _c("b-form-file", {
+            attrs: {
+              multiple: "",
+              accept: ".jpg, .png, .jpeg,. .gif",
+              enctype: "multipart/form-data"
+            },
+            model: {
+              value: _vm.photos,
+              callback: function($$v) {
+                _vm.photos = $$v
+              },
+              expression: "photos"
             }
           })
         ],
@@ -71204,7 +71288,8 @@ var render = function() {
         staticClass: "btn btn-primary",
         on: {
           click: function($event) {
-            return _vm.save()
+            _vm.save()
+            _vm.upload($event)
           }
         }
       },

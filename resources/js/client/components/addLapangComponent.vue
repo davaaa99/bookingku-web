@@ -2,18 +2,14 @@
     <div id="addlapang">
       <form>
             <div class="form-group">
-              <!-- <label for="idlapang">Id Lapang : </label> -->
-              <!-- <input type="text" class="form-control" v-model="form.id_field" required> -->
-            </div>
-            <div class="form-group">
               <label for="namalapang">Nama Lapang : </label>
-              <input type="text" class="form-control" v-model="form.field_name" required>
+              <input type="text" class="form-control" v-model="field.field_name" required>
             </div>
             <div class="form-group">
               <label for="tipelapang">Tipe Lapang : </label>
               <b-form-select
                     id="input-3"
-                    v-model="form.field_type"
+                    v-model="field.field_type"
                     :options="tipelapang"
                     required>
               </b-form-select>
@@ -21,7 +17,8 @@
            <div class="form-group">
              <label for="filelapang"> Upload File </label>
                 <b-form-file
-                  accept=".jpg, .png, .jpeg,. .gif" v-model="photos" enctype="multipart/form-data"
+                multiple
+                  accept=".jpg, .png, .jpeg,. .gif"  v-model="photos" enctype="multipart/form-data"
                 ></b-form-file>
            </div>
       </form>
@@ -36,10 +33,16 @@
   export default {
     data() {
       return {
+        tempIdField: "",
         form: {},
         photos: null,
         tipelapang: ['Sintetis', 'Vinyl', 'Semen', 'Karpet'],
-        show: true
+        show: true,
+        field:{
+          field_name: "",
+          field_type: "",
+          photos: null
+        }
       }
     },
     
@@ -54,29 +57,20 @@
           alert('Data gagal ditambahkan')
         });
       },
-      store() {
-        const data = {
-          id_field: this.form.id_field,
-          field_name: this.form.field_name,
-          field_type: this.form.field_type,
-        }
-        axios({
-          url: '/add',
-          method: 'POST',
-          data: data
-        }).then(response => {
-          alert('Data berhasil ditambahkan')
-          window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
-          
-        }).catch(error => {
-          console.log(error)
-          alert('Data gagal ditambahkan')
-        })
-      },
       upload(event) {
+                console.log(this.photos);
                 event.preventDefault();
+                window.setTimeout(() => {
                 let formData = new FormData();
-                formData.append('image', this.photos);
+                formData.append('id_field', this.tempIdField);
+                
+                 for (let index = 0; index < this.photos.length; index++) {
+                      formData.append("photo[]", this.photos[index]);
+                  }
+
+
+                console.log(formData);
+                
                 axios({
                   url: "/upload",
                   method: "POST",
@@ -84,12 +78,27 @@
                   headers: { 'content-type': 'multipart/form-data' }
 
                 }).then(response=>{
-                  console.log(response);
+                  alert("Successfully added new Field");
+                  window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
                 }).catch(response=>{
                   console.log(error);
-                })
+                });
+                },1000);
 
-            }
+            },
+      store() {
+        axios({
+          url: '/add',
+          method: 'POST',
+          data: this.field
+        }).then(response => {
+          this.tempIdField = response.data.serve.id_field;
+        }).catch(error => {
+          console.log(error)
+          alert('Data gagal ditambahkan')
+        })
+      },
+      
     }
   }
 </script>
