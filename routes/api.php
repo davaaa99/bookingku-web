@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
 
     
     Route::get('fields/{id}','API\REST\FieldController@show');
+    Route::get('field/data/{idLocation}','API\REST\FieldController@show');
     Route::post('field','API\REST\FieldController@store');
     Route::get('/field/{id}', 'API\REST\FieldController@edit');
     Route::put('field/{id_field}','API\REST\FieldController@update');
@@ -54,7 +55,10 @@ Route::group(['middleware' => ['auth:api', 'verified', 'is_user'], 'prefix' => '
     Route::post('schedule','API\REST\ScheduleController@create');
     Route::delete('schedule/{id_schedule}','API\REST\ScheduleController@destroy');
     
-    Route::post('bookings','API\REST\BookingController@showByField');
+    Route::get('bookings/schedule/{id_schedule}','API\REST\ScheduleController@showById');
+    Route::get('bookings/user/{email}','API\REST\UserController@getClientName');
+    Route::post('bookings/field','API\REST\BookingController@showByField');
+    Route::get('bookings/location/{id_location}/','API\REST\BookingController@showByLocation');
     Route::post('booking/manual','API\REST\BookingController@create');
     Route::put('/booking/{id_booking}','API\REST\BookingController@update');
     Route::delete('/booking/{id_booking}', 'API\REST\BookingController@destroy');

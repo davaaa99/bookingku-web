@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Http\Resources\PostCollection;
 
 class UserController extends Controller
 {
@@ -28,20 +27,20 @@ class UserController extends Controller
      */
     public function getClient()
     {
-        // try{
-        //     $clients = User::where('user_type',2)->get();
-        // }catch(Exception $e){
-        //     return response()->json([
-        //         'message' => 'Failed retrieve data.' . $e->getMessage(),
-        //         'serve' => []
-        //     ], 500);
-        // }
+        try{
+            $clients = User::where('user_type',2)->get();
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
 
-        // return response()->json([
-        //     'message' => 'Successfully retrieved data.',
-        //     'serve' => $clients
-        // ], 200);
-        return new PostCollection(User::where('user_type',2)->get());
+        return response()->json([
+            'message' => 'Successfully retrieved data.',
+            'serve' => $clients
+        ], 200);
+        // return new PostCollection(User::where('user_type',2)->get());
     }
 
     /**
@@ -103,6 +102,28 @@ class UserController extends Controller
             $clients = User::where('user_type',3)
                                 ->where('name','LIKE',"%$name%")
                                 ->get();
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully retrieve data.',
+            'serve' => $clients
+        ], 200);
+    }
+
+    /**
+     * Display the specified User based on name.
+     *
+     * @param  string  $email
+     * @return \Illuminate\Http\Response
+     */
+    public function getClientName($email){
+        try{
+            $clients = User::where('email', $email)->get();
         }catch(Exception $e){
             return response()->json([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),

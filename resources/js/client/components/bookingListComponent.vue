@@ -4,18 +4,19 @@
             <b-row>
                 <b-col cols="4">
                     <label for="location">Location</label>
-                    <b-form-select v-model="locations" :options="location"></b-form-select>
+                    <b-form-select v-model="selectedLocation" :options="location" ></b-form-select>
                 </b-col>
                 <b-col cols="4">
                     <label for="field">Field</label>
-                    <b-form-select v-model="fieldlist" :options="field"></b-form-select>
+                    <b-form-select v-model="selectedField" :options="field"></b-form-select>
                 </b-col>
                 <b-col cols="4">
                     <b-row>
                         <label for="date">Date</label>
                     </b-row>
                     <b-row>
-                        <date-picker v-model="selectedDate" lang="en" :config="date"></date-picker>
+                        <!-- <date-picker v-model="selectedDate" lang="en" format="MM/DD/YYYY"></date-picker> -->
+                        <input type="date" v-model="selectedDate">
                     </b-row>
                 </b-col>
             </b-row>
@@ -25,16 +26,30 @@
             <b-button variant="primary" class="btn btn-detail" href="addbooking" >Add</b-button>
         </b-col>
         <div class="spacer-20"></div>
-        <b-table fixed bordered small :items="items" :fields="fields" class="thead-light" id="bookinglist" primary-key="id_booking" >
-            <template slot="payment_status" slot-scope="data">
-                <!-- <b-button v-model="data.item.status" class="btn btn-detail paid" v-bind:style="paid(data.item.status)" v-on:click="handleClick" @click="paidAction()">{{ paid(data.item.status) }}</b-button> -->
-                <button class="btn button badge" :class="classStatus(data.item.payment_status)" v-on:click="changeStatus(data.index)" :disabled="disableButton(data.item.payment_status)">{{paid(data.item.payment_status)}}</button>
-            </template>
-        </b-table>
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Booking Code</th>
+                <th>Schedule</th>
+                <th>Payment Status</th>
+                <th>Payment Method</th>
+            </thead>
+            <tbody>
+                <tr v-for="(data,index) in dataBooking" :key="data.id_booking">
+                    <td>{{data.name}}</td>
+                    <td>{{data.id_booking}}</td>
+                    <td>{{data.schedule}}</td>
+                    <td>
+                        <button class="btn button badge" :class="classStatus(data.payment_status)" v-on:click="changeStatus(index)" :disabled="disableButton(data.payment_status)">{{paid(data.payment_status)}}</button>
+                    </td>
+                    <td>{{data.payment_type}}</td>
+                </tr>
+            </tbody>
+        </table>
         <div class="spacer-20"></div>
-        <!-- <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-controls="bookinglist"
+        <b-pagination v-model="currentPage" :per-page="perPage" aria-controls="bookinglist"
             :prev-text="'«'" :next-text="'»'" :hide-goto-end-buttons="true" size="md" align="center">
-        </b-pagination> -->
+        </b-pagination>
     </div>
 </template>
 
@@ -46,61 +61,53 @@
 
     export default {
         data() {
+
             return {
                 // Note 'age' is left out and will not appear in the rendered table
                 perPage:20,
                 currentPage:1,
-                selectedLocation: null,
-                // location:[{text:'Choose Location', value:null}, 'Ciwaruga Futsal', 'Sarijadi Futsal'],
-                locations:[],
+                selectedLocation: "",
+                locationList:[],
                 location:[],
-                selectedField: null,
-                // field:[{text:'Choose Field', value:null},'Vinyl', 'Syntetic', 'Semen'],
+                selectedField: "",
                 fieldlist:[],
                 field:[],
-                selectedDate: new Date(),
-                date:{
-                    format: 'YYYY/MM/DD',
+                scheduleList:[],
+                userList:[],
+                items:[],
+                selectedDate:"",
+                dateFormat:{
+                    format: 'MMM/DD/YYYY',
                     useCurrent:false,
                 },
-                fields:{
-                    user: {
-                        key: 'client_email',
-                        label: 'User',
-                        sortable: true
-                    },
-                    bookingCode: {
-                        key: 'id_booking',
-                        label: 'Booking Code',
-                        sortable: false
-                    },
-                    schedule: {
-                        key: 'id_schedule',
-                        label:'Schedule',
-                        sortable: true
-                    },
-
-                    payment_status: {
-                        key: 'payment_status',
-                        label: 'Status',
-                        sortable: true
-                    },
-                    payment: {
-                        label: 'Payment',
-                        sortable: true
-                    }
+                componen:{
+                    datePicker
                 },
-                items:[]
+                filter:{
+                    locaton:'',
+                    field: '',
+                    date:''
+                },
+                Booking:{
+                    id_booking:'',
+                    name:'',
+                    schedule:'',
+                    payment_status:'',
+                    payment_type:''
+                },
+                dataBooking:[]
             }
         },
         mounted(){
             this.loadData();
             this.loadLocation();
-            this.loadField();
         },
         methods:{
+            test(){
+                console.log(this.locationList);
+            },
             paid($status){
-                const $key=['Unpaid','Down Payment', 'Full Payment']
+                const $key=['Unpaid','Down Payment', 'Paid']
                 return $key[$status]
             },
             classStatus($status){
@@ -118,7 +125,6 @@
             },
             changeStatus(index) {
                 const data = {
-                    // id_booking:this.items[index].id_booking,
                     payment_status:this.items[index].payment_status += 1
                 }
                 axios({
@@ -126,7 +132,6 @@
                     method:'PUT',
                     data: data
                 }).then(response=>{
-                    console.log(response);
                     this.items[index].payment_status = response.data.serve
                     window.location.href = window.location.protocol +'//'+ window.location.host + '/bookinglist';
                 }).catch(error=>{
@@ -141,9 +146,54 @@
                     url: 'api/v1/bookings',
                     method: 'GET'
                 }).then(response => {
-                    console.log(response);
-                    this.items = response.data.serve
-                    console.log(this.items);
+                    let items = response.data.serve
+                    // console.log(items);
+                    
+                    for (let index = 0; index < items.length; index++) {
+                        this.Booking.id_booking=items[index].id_booking;
+                        this.Booking.payment_status=items[index].payment_status;
+                        this.Booking.payment_type=items[index].payment_type;
+                        this.loadSchedule(items[index].id_schedule,index)
+                        this.loadUser(items[index].client_email,index)
+                        console.log(this.Booking.name);
+                        
+                        this.dataBooking.push({
+                            name:this.Booking.name,
+                            id_booking:this.Booking.id_booking,
+                            schedule:this.Booking.schedule,
+                            payment_status:this.Booking.payment_status,
+                            payment_type:this.Booking.payment_type,
+                        })
+                    }
+                }).catch(error => {
+                    console.log(error);
+                })
+                
+            },
+            loadSchedule(id_schedule,index){
+                axios({
+                    url: 'api/v1/bookings/schedule/'+id_schedule,
+                    method: 'GET'
+                }).then(response => {
+                    let temp=response.data.serve[0].start_time+'-'+response.data.serve[0].end_time;
+                    this.Booking.schedule=temp
+                    // return schedule
+                    console.log(this.Booking.schedule);         
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            loadUser(email,i){
+                axios({
+                    url: 'api/v1/bookings/user/'+email,
+                    method: 'GET'
+                }).then(response => {
+                    let temp = response.data.serve;
+                    for (let index = 0; index < temp.length; index++) {
+                        this.Booking.name=temp[index].name
+                        // return this.Booking.name
+                        console.log(this.Booking.name); 
+                    }
                 }).catch(error => {
                     console.log(error);
                 })
@@ -154,12 +204,10 @@
                     url: 'api/v1/location',
                     methods:'GET',
                 }).then(response=>{
-                    this.locations = response.data.serve
-                    console.log(response.data.serve);
-                    for (index=0; index<= response.data.serve.length; index++) {
-                        this.location.push({value: response.data.serve[index].id_location, text: response.data.serve[index].location_name})
+                    this.locationList = response.data.serve
+                    for (index=0; index< this.locationList.length; index++) {
+                        this.location.push({value: this.locationList[index].id_location, text: this.locationList[index].location_name})
                     }
-                    console.log(this.locations);
                 }).catch(error=>{
                     console.log(error);
                 })
@@ -167,49 +215,62 @@
             loadField(){
                 let index=0;
                 axios({
-                    url: 'api/v1/field',
+                    url: 'api/v1/field/data/'+this.selectedLocation,
                     methods:'GET',
                 }).then(response=>{
-                    this.fieldlist = response.data.data
-                    console.log(response.data.data);
-                    for (index=0; index<= response.data.data.length; index++) {
-                        this.fieldlist.push({value: response.data.data[index].id_field, text: response.data.data[index].field_name})
+                    this.fieldlist = response.data.serve
+                    this.field = []
+                    for (index=0; index< this.fieldlist.length; index++) {
+                        this.field.push({value: this.fieldlist[index].id_field, text: this.fieldlist[index].field_name})
                     }
-                    console.log('uhuy');
-                    console.log(this.fieldlist);
                 }).catch(error=>{
                     console.log(error);
                 })
             },
-        },
-        watch:{
-            filterTanggal: function (fal) {
-                var self = this;
-                var d = new Date(fal),
-                    month = '' + (d.getMonth() + 1),
-                    day = '' + d.getDate(),
-                    year = d.getFullYear();
-
-                if (month.length < 2) month = '0' + month;
-                if (day.length < 2) day = '0' + day;
-                
-                var realdate = [day, month, year].join('-');
-
-                const data = self.filterData.filter(function (project) {
-                    return project.tglBayar === realdate;
-                });
-
-                self.filterData = data;
+            loadByLocation(){
+                axios({
+                    url: 'api/v1/bookings/location/'+this.selectedLocation,
+                    method: 'GET'
+                }).then(response => {
+                    this.items = response.data.serve
+                }).catch(error => {
+                    console.log(error);
+                })
             },
-            filterLokasi: function (loc) {
-            },
-            filterLapang: function (fal) {
-                var self = this;
-                const data = self.filterData.filter(function (project) {
-                    return project.status === fal;
-                });
-                self.filterData = data;
+            loadByField(){
+                console.log(this.selectedDate);
+                var d = this.selectedDate
+                // month = '' + (d.getMonth() + 1),
+                // day = '' + d.getDate(),
+                // year = d.getFullYear();
+                 axios({
+                    url: 'api/v1/bookings/field',
+                    method: 'POST',
+                    data: {
+                        id_field : this.selectedField,
+                        date: this.selectedDate
+                    }
+                }).then(response => {
+                    console.log(response);
+                    this.items = response.data.serve
+                    console.log(this.items);
+                }).catch(error => {
+                    console.log(error);
+                })
             }
         },
+        watch:{
+            selectedLocation:function(){
+                this.loadField()
+                this.loadByLocation()
+            },
+            selectedField:function(){
+                this.loadByField()
+            },
+            selectedDate:function(){
+                this.loadByField()
+            }
+        }
     }
 </script>
+

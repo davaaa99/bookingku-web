@@ -16,10 +16,10 @@ class ScheduleController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
-    {
-        $this->middleware(['auth:api']);
-    }
+    // public function __construct(Request $request)
+    // {
+    //     $this->middleware(['auth:api']);
+    // }
 
     /**
      * Display a listing of the schedule.
@@ -92,6 +92,29 @@ class ScheduleController extends Controller
     {
         try{
             $schedules = Schedule::where('id_field', $id_field)->get();
+            
+        }catch (Exception $e){
+            return response()->json([
+                'message' => 'Failed retrieved data.'. $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+        return response()->json([
+            'message' => 'Succesfully retrieved data.',
+            'serve' => $schedules
+        ], 200);  
+    }
+
+    /**
+     * Display the specified schedule based on id_field.
+     *
+     * @param  String $id_field
+     * @return \Illuminate\Http\Response
+     */
+    public function showById($id_schedule)
+    {
+        try{
+            $schedules = Schedule::where('id_schedule', $id_schedule)->get();
             
         }catch (Exception $e){
             return response()->json([

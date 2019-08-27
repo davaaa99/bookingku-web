@@ -1940,6 +1940,12 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      selectedLocation: "",
+      locationList: [],
+      location: [],
+      selectedField: "",
+      fieldlist: [],
+      field: [],
       currentOffset: 0,
       windowSize: 3,
       paginationFactor: 220,
@@ -1967,18 +1973,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       }],
       perPage: 20,
       currentPage: 1,
-      selectedLocation: null,
-      location: [{
-        text: 'Pilih Lokasi',
-        value: null
-      }, 'Ciwarug Futsal', 'Sarijadi Futsal'],
-      selectedField: null,
-      field: [{
-        text: 'Pilih Lokasi',
-        value: null
-      }, 'Vinyl', 'Sintetis', 'Semen'],
       selectedDate: new Date(),
-      date: {
+      dateFormat: {
         format: 'YYYY/MM/DD',
         useCurrent: false
       },
@@ -2000,6 +1996,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
     atHeadOfList: function atHeadOfList() {
       return this.currentOffset === 0;
     }
+  },
+  mounted: function mounted() {
+    this.loadLocation();
   },
   methods: {
     onSubmit: function onSubmit(book) {
@@ -2040,6 +2039,64 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       } else if (direction === -1 && !this.atHeadOfList) {
         this.currentOffset += this.paginationFactor;
       }
+    },
+    loadLocation: function loadLocation() {
+      var _this2 = this;
+
+      var index = 0;
+      axios({
+        url: 'api/v1/location',
+        methods: 'GET'
+      }).then(function (response) {
+        _this2.locationList = response.data.serve;
+        console.log(response.data.serve);
+
+        for (index = 0; index <= _this2.locationList.length; index++) {
+          _this2.location.push({
+            value: _this2.locationList[index].id_location,
+            text: _this2.locationList[index].location_name
+          });
+        }
+
+        console.log(_this2.location);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadField: function loadField() {
+      var _this3 = this;
+
+      console.log();
+      var index = 0;
+      axios({
+        url: 'api/v1/field/data/' + this.selectedLocation,
+        methods: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this3.fieldlist = response.data.serve;
+        console.log(response.data.serve);
+        _this3.field = [];
+
+        for (index = 0; index <= _this3.fieldlist.length; index++) {
+          _this3.field.push({
+            value: _this3.fieldlist[index].id_field,
+            text: _this3.fieldlist[index].field_name
+          });
+        }
+
+        console.log(_this3.fieldlist);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  watch: {
+    selectedLocation: function selectedLocation() {
+      this.loadField();
+      this.loadByLocation();
+    },
+    selectedField: function selectedField() {
+      this.loadByField();
     }
   }
 });
@@ -2201,6 +2258,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2211,56 +2283,48 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       // Note 'age' is left out and will not appear in the rendered table
       perPage: 20,
       currentPage: 1,
-      selectedLocation: null,
-      // location:[{text:'Choose Location', value:null}, 'Ciwaruga Futsal', 'Sarijadi Futsal'],
-      locations: [],
+      selectedLocation: "",
+      locationList: [],
       location: [],
-      selectedField: null,
-      // field:[{text:'Choose Field', value:null},'Vinyl', 'Syntetic', 'Semen'],
+      selectedField: "",
       fieldlist: [],
       field: [],
-      selectedDate: new Date(),
-      date: {
-        format: 'YYYY/MM/DD',
+      scheduleList: [],
+      userList: [],
+      items: [],
+      selectedDate: "",
+      dateFormat: {
+        format: 'MMM/DD/YYYY',
         useCurrent: false
       },
-      fields: {
-        user: {
-          key: 'client_email',
-          label: 'User',
-          sortable: true
-        },
-        bookingCode: {
-          key: 'id_booking',
-          label: 'Booking Code',
-          sortable: false
-        },
-        schedule: {
-          key: 'id_schedule',
-          label: 'Schedule',
-          sortable: true
-        },
-        payment_status: {
-          key: 'payment_status',
-          label: 'Status',
-          sortable: true
-        },
-        payment: {
-          label: 'Payment',
-          sortable: true
-        }
+      componen: {
+        datePicker: vue_date_picker__WEBPACK_IMPORTED_MODULE_1___default.a
       },
-      items: []
+      filter: {
+        locaton: '',
+        field: '',
+        date: ''
+      },
+      Booking: {
+        id_booking: '',
+        name: '',
+        schedule: '',
+        payment_status: '',
+        payment_type: ''
+      },
+      dataBooking: []
     };
   },
   mounted: function mounted() {
     this.loadData();
     this.loadLocation();
-    this.loadField();
   },
   methods: {
+    test: function test() {
+      console.log(this.locationList);
+    },
     paid: function paid($status) {
-      var $key = ['Unpaid', 'Down Payment', 'Full Payment'];
+      var $key = ['Unpaid', 'Down Payment', 'Paid'];
       return $key[$status];
     },
     classStatus: function classStatus($status) {
@@ -2282,7 +2346,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var _this = this;
 
       var data = {
-        // id_booking:this.items[index].id_booking,
         payment_status: this.items[index].payment_status += 1
       };
       axios({
@@ -2290,7 +2353,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         method: 'PUT',
         data: data
       }).then(function (response) {
-        console.log(response);
         _this.items[index].payment_status = response.data.serve;
         window.location.href = window.location.protocol + '//' + window.location.host + '/bookinglist';
       })["catch"](function (error) {
@@ -2307,83 +2369,151 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         url: 'api/v1/bookings',
         method: 'GET'
       }).then(function (response) {
-        console.log(response);
-        _this2.items = response.data.serve;
-        console.log(_this2.items);
+        var items = response.data.serve; // console.log(items);
+
+        for (var index = 0; index < items.length; index++) {
+          _this2.Booking.id_booking = items[index].id_booking;
+          _this2.Booking.payment_status = items[index].payment_status;
+          _this2.Booking.payment_type = items[index].payment_type;
+
+          _this2.loadSchedule(items[index].id_schedule, index);
+
+          _this2.loadUser(items[index].client_email, index);
+
+          console.log(_this2.Booking.name);
+
+          _this2.dataBooking.push({
+            name: _this2.Booking.name,
+            id_booking: _this2.Booking.id_booking,
+            schedule: _this2.Booking.schedule,
+            payment_status: _this2.Booking.payment_status,
+            payment_type: _this2.Booking.payment_type
+          });
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadSchedule: function loadSchedule(id_schedule, index) {
+      var _this3 = this;
+
+      axios({
+        url: 'api/v1/bookings/schedule/' + id_schedule,
+        method: 'GET'
+      }).then(function (response) {
+        var temp = response.data.serve[0].start_time + '-' + response.data.serve[0].end_time;
+        _this3.Booking.schedule = temp; // return schedule
+
+        console.log(_this3.Booking.schedule);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadUser: function loadUser(email, i) {
+      var _this4 = this;
+
+      axios({
+        url: 'api/v1/bookings/user/' + email,
+        method: 'GET'
+      }).then(function (response) {
+        var temp = response.data.serve;
+
+        for (var index = 0; index < temp.length; index++) {
+          _this4.Booking.name = temp[index].name; // return this.Booking.name
+
+          console.log(_this4.Booking.name);
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadLocation: function loadLocation() {
-      var _this3 = this;
+      var _this5 = this;
 
       var index = 0;
       axios({
         url: 'api/v1/location',
         methods: 'GET'
       }).then(function (response) {
-        _this3.locations = response.data.serve;
-        console.log(response.data.serve);
+        _this5.locationList = response.data.serve;
 
-        for (index = 0; index <= response.data.serve.length; index++) {
-          _this3.location.push({
-            value: response.data.serve[index].id_location,
-            text: response.data.serve[index].location_name
+        for (index = 0; index < _this5.locationList.length; index++) {
+          _this5.location.push({
+            value: _this5.locationList[index].id_location,
+            text: _this5.locationList[index].location_name
           });
         }
-
-        console.log(_this3.locations);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadField: function loadField() {
-      var _this4 = this;
+      var _this6 = this;
 
       var index = 0;
       axios({
-        url: 'api/v1/field',
+        url: 'api/v1/field/data/' + this.selectedLocation,
         methods: 'GET'
       }).then(function (response) {
-        _this4.fieldlist = response.data.data;
-        console.log(response.data.data);
+        _this6.fieldlist = response.data.serve;
+        _this6.field = [];
 
-        for (index = 0; index <= response.data.data.length; index++) {
-          _this4.fieldlist.push({
-            value: response.data.data[index].id_field,
-            text: response.data.data[index].field_name
+        for (index = 0; index < _this6.fieldlist.length; index++) {
+          _this6.field.push({
+            value: _this6.fieldlist[index].id_field,
+            text: _this6.fieldlist[index].field_name
           });
         }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadByLocation: function loadByLocation() {
+      var _this7 = this;
 
-        console.log('uhuy');
-        console.log(_this4.fieldlist);
+      axios({
+        url: 'api/v1/bookings/location/' + this.selectedLocation,
+        method: 'GET'
+      }).then(function (response) {
+        _this7.items = response.data.serve;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadByField: function loadByField() {
+      var _this8 = this;
+
+      console.log(this.selectedDate);
+      var d = this.selectedDate; // month = '' + (d.getMonth() + 1),
+      // day = '' + d.getDate(),
+      // year = d.getFullYear();
+
+      axios({
+        url: 'api/v1/bookings/field',
+        method: 'POST',
+        data: {
+          id_field: this.selectedField,
+          date: this.selectedDate
+        }
+      }).then(function (response) {
+        console.log(response);
+        _this8.items = response.data.serve;
+        console.log(_this8.items);
       })["catch"](function (error) {
         console.log(error);
       });
     }
   },
   watch: {
-    filterTanggal: function filterTanggal(fal) {
-      var self = this;
-      var d = new Date(fal),
-          month = '' + (d.getMonth() + 1),
-          day = '' + d.getDate(),
-          year = d.getFullYear();
-      if (month.length < 2) month = '0' + month;
-      if (day.length < 2) day = '0' + day;
-      var realdate = [day, month, year].join('-');
-      var data = self.filterData.filter(function (project) {
-        return project.tglBayar === realdate;
-      });
-      self.filterData = data;
+    selectedLocation: function selectedLocation() {
+      this.loadField();
+      this.loadByLocation();
     },
-    filterLokasi: function filterLokasi(loc) {},
-    filterLapang: function filterLapang(fal) {
-      var self = this;
-      var data = self.filterData.filter(function (project) {
-        return project.status === fal;
-      });
-      self.filterData = data;
+    selectedField: function selectedField() {
+      this.loadByField();
+    },
+    selectedDate: function selectedDate() {
+      this.loadByField();
     }
   }
 });
@@ -69894,257 +70024,6 @@ var render = function() {
     "div",
     { attrs: { id: "addbooking" } },
     [
-      _c("div", { attrs: { id: "v-carousel", type: "x/template" } }, [
-        _c("div", { staticClass: "card-carousel-wrapper" }, [
-          _c("div", {
-            staticClass: "card-carousel--nav__left",
-            attrs: { disabled: _vm.atHeadOfList },
-            on: {
-              click: function($event) {
-                return _vm.moveCarousel(-1)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-carousel" }, [
-            _c("div", { staticClass: "card-carousel--overflow-container" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "card-carousel-cards",
-                  style: {
-                    transform:
-                      "translateX" + "(" + _vm.currentOffset + "px" + ")"
-                  }
-                },
-                [
-                  _c(
-                    "b-card",
-                    {
-                      attrs: {
-                        "border-variant": "secondary",
-                        header: "Lapang A",
-                        "header-border-variant": "white",
-                        align: "center"
-                      }
-                    },
-                    [
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("08.00-09.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("09.00-10.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("10.00-11.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("11.00-12.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("12.00-13.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("13.00-14.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("14.00-15.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("15.00-16.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("16.00-17.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("17.00-17.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("18.00-19.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("19.00-20.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("20.00-21.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("21.00-22.00")
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-card",
-                    {
-                      attrs: {
-                        "border-variant": "secondary",
-                        header: "Lapang B",
-                        "header-border-variant": "white",
-                        align: "center"
-                      }
-                    },
-                    [
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("08.00-09.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("09.00-10.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("10.00-11.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("11.00-12.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("12.00-13.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("13.00-14.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("14.00-15.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "choosed" }, [
-                        _vm._v("15.00-16.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("16.00-17.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("17.00-17.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("18.00-19.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("19.00-20.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("20.00-21.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("21.00-22.00")
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-card",
-                    {
-                      attrs: {
-                        "border-variant": "secondary",
-                        header: "Lapang C",
-                        "header-border-variant": "white",
-                        align: "center"
-                      }
-                    },
-                    [
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("08.00-09.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("09.00-10.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("10.00-11.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("11.00-12.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("12.00-13.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("13.00-14.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("14.00-15.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("15.00-16.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("16.00-17.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("17.00-17.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("18.00-19.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "unavailable" }, [
-                        _vm._v("19.00-20.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("20.00-21.00")
-                      ]),
-                      _vm._v(" "),
-                      _c("b-button", { staticClass: "available" }, [
-                        _vm._v("21.00-22.00")
-                      ])
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "card-carousel--nav__right",
-            attrs: { disabled: _vm.atEndOfList },
-            on: {
-              click: function($event) {
-                return _vm.moveCarousel(1)
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
       _c(
         "b-form",
         { on: { submit: _vm.onSubmit, reset: _vm.onReset } },
@@ -70152,6 +70031,265 @@ var render = function() {
           _c(
             "b-form-group",
             [
+              _c("div", { attrs: { id: "v-carousel", type: "x/template" } }, [
+                _c("div", { staticClass: "card-carousel-wrapper" }, [
+                  _c("div", {
+                    staticClass: "card-carousel--nav__left",
+                    attrs: { disabled: _vm.atHeadOfList },
+                    on: {
+                      click: function($event) {
+                        return _vm.moveCarousel(-1)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-carousel" }, [
+                    _c(
+                      "div",
+                      { staticClass: "card-carousel--overflow-container" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "card-carousel-cards",
+                            style: {
+                              transform:
+                                "translateX" +
+                                "(" +
+                                _vm.currentOffset +
+                                "px" +
+                                ")"
+                            }
+                          },
+                          [
+                            _c(
+                              "b-card",
+                              {
+                                attrs: {
+                                  "border-variant": "secondary",
+                                  header: "Lapang A",
+                                  "header-border-variant": "white",
+                                  align: "center"
+                                }
+                              },
+                              [
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("08.00-09.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("09.00-10.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("10.00-11.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("11.00-12.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("12.00-13.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("13.00-14.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("14.00-15.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("15.00-16.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("16.00-17.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("17.00-17.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("18.00-19.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("19.00-20.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("20.00-21.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("21.00-22.00")
+                                ])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-card",
+                              {
+                                attrs: {
+                                  "border-variant": "secondary",
+                                  header: "Lapang B",
+                                  "header-border-variant": "white",
+                                  align: "center"
+                                }
+                              },
+                              [
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("08.00-09.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("09.00-10.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("10.00-11.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("11.00-12.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("12.00-13.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("13.00-14.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("14.00-15.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "choosed" }, [
+                                  _vm._v("15.00-16.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("16.00-17.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("17.00-17.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("18.00-19.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("19.00-20.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("20.00-21.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("21.00-22.00")
+                                ])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-card",
+                              {
+                                attrs: {
+                                  "border-variant": "secondary",
+                                  header: "Lapang C",
+                                  "header-border-variant": "white",
+                                  align: "center"
+                                }
+                              },
+                              [
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("08.00-09.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("09.00-10.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("10.00-11.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("11.00-12.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("12.00-13.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("13.00-14.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("14.00-15.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("15.00-16.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("16.00-17.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("17.00-17.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("18.00-19.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "unavailable" }, [
+                                  _vm._v("19.00-20.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("20.00-21.00")
+                                ]),
+                                _vm._v(" "),
+                                _c("b-button", { staticClass: "available" }, [
+                                  _vm._v("21.00-22.00")
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", {
+                    staticClass: "card-carousel--nav__right",
+                    attrs: { disabled: _vm.atEndOfList },
+                    on: {
+                      click: function($event) {
+                        return _vm.moveCarousel(1)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
               _c(
                 "b-row",
                 [
@@ -70213,7 +70351,7 @@ var render = function() {
                         "b-row",
                         [
                           _c("date-picker", {
-                            attrs: { lang: "en", config: _vm.date },
+                            attrs: { lang: "en", config: _vm.dateFormat },
                             model: {
                               value: _vm.selectedDate,
                               callback: function($$v) {
@@ -70294,40 +70432,35 @@ var render = function() {
               }
             },
             [
-              _c(
-                "b-row",
-                { staticClass: "justify-content-md-right" },
-                [
-                  _c("b-col", { attrs: { cols: "2" } }, [
-                    _c("label", { attrs: { for: "input-price" } }, [
-                      _vm._v("Harga")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "b-col",
-                    { attrs: { cols: "6" } },
-                    [
-                      _c("b-form-input", {
-                        attrs: {
-                          id: "input-price",
-                          type: "number",
-                          required: ""
+              _c("b-row", { staticClass: "justify-content-md-right" }, [
+                _c("div", { staticClass: "col-md-2" }, [
+                  _c("label", { attrs: { for: "input-price" } }, [
+                    _vm._v("Harga")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-6" },
+                  [
+                    _c("b-form-input", {
+                      attrs: {
+                        id: "input-price",
+                        type: "number",
+                        required: ""
+                      },
+                      model: {
+                        value: _vm.price,
+                        callback: function($$v) {
+                          _vm.price = $$v
                         },
-                        model: {
-                          value: _vm.price,
-                          callback: function($$v) {
-                            _vm.price = $$v
-                          },
-                          expression: "price"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
+                        expression: "price"
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
             ],
             1
           ),
@@ -70339,15 +70472,15 @@ var render = function() {
                 "b-row",
                 { staticClass: "justify-content-md-right" },
                 [
-                  _c("b-col", { attrs: { cols: "2" } }, [
+                  _c("div", { staticClass: "col-md-2" }, [
                     _c("label", { attrs: { for: "payment_menthod" } }, [
                       _vm._v("Tipe Pembayaran")
                     ])
                   ]),
                   _vm._v(" "),
                   _c(
-                    "b-col",
-                    { attrs: { cols: "6" } },
+                    "div",
+                    { staticClass: "col-md-6" },
                     [
                       _c(
                         "b-button",
@@ -70374,37 +70507,32 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "b-row",
-            { staticClass: "justify-content-md-right" },
-            [
-              _c(
-                "b-col",
-                { attrs: { col: "6", offset: "8" } },
-                [
-                  _c(
-                    "b-button",
-                    {
-                      attrs: {
-                        type: "reset",
-                        variant: "outline-primary",
-                        href: "bookinglist"
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-arrow-left" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-button",
-                    { attrs: { type: "submit", variant: "primary" } },
-                    [_vm._v("Continue")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
+          _c("b-row", { staticClass: "justify-content-md-right" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-6 col-md-offset-8" },
+              [
+                _c(
+                  "b-button",
+                  {
+                    attrs: {
+                      type: "reset",
+                      variant: "outline-primary",
+                      href: "bookinglist"
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-arrow-left" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "b-button",
+                  { attrs: { type: "submit", variant: "primary" } },
+                  [_vm._v("Continue")]
+                )
+              ],
+              1
+            )
+          ])
         ],
         1
       )
@@ -70585,11 +70713,11 @@ var render = function() {
                   _c("b-form-select", {
                     attrs: { options: _vm.location },
                     model: {
-                      value: _vm.locations,
+                      value: _vm.selectedLocation,
                       callback: function($$v) {
-                        _vm.locations = $$v
+                        _vm.selectedLocation = $$v
                       },
-                      expression: "locations"
+                      expression: "selectedLocation"
                     }
                   })
                 ],
@@ -70605,11 +70733,11 @@ var render = function() {
                   _c("b-form-select", {
                     attrs: { options: _vm.field },
                     model: {
-                      value: _vm.fieldlist,
+                      value: _vm.selectedField,
                       callback: function($$v) {
-                        _vm.fieldlist = $$v
+                        _vm.selectedField = $$v
                       },
-                      expression: "fieldlist"
+                      expression: "selectedField"
                     }
                   })
                 ],
@@ -70624,22 +70752,28 @@ var render = function() {
                     _c("label", { attrs: { for: "date" } }, [_vm._v("Date")])
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "b-row",
-                    [
-                      _c("date-picker", {
-                        attrs: { lang: "en", config: _vm.date },
-                        model: {
+                  _c("b-row", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
                           value: _vm.selectedDate,
-                          callback: function($$v) {
-                            _vm.selectedDate = $$v
-                          },
                           expression: "selectedDate"
                         }
-                      })
-                    ],
-                    1
-                  )
+                      ],
+                      attrs: { type: "date" },
+                      domProps: { value: _vm.selectedDate },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.selectedDate = $event.target.value
+                        }
+                      }
+                    })
+                  ])
                 ],
                 1
               )
@@ -70670,50 +70804,85 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "spacer-20" }),
       _vm._v(" "),
-      _c("b-table", {
-        staticClass: "thead-light",
-        attrs: {
-          fixed: "",
-          bordered: "",
-          small: "",
-          items: _vm.items,
-          fields: _vm.fields,
-          id: "bookinglist",
-          "primary-key": "id_booking"
-        },
-        scopedSlots: _vm._u([
-          {
-            key: "payment_status",
-            fn: function(data) {
-              return [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.dataBooking, function(data, index) {
+            return _c("tr", { key: data.id_booking }, [
+              _c("td", [_vm._v(_vm._s(data.name))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(data.id_booking))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(data.schedule))]),
+              _vm._v(" "),
+              _c("td", [
                 _c(
                   "button",
                   {
                     staticClass: "btn button badge",
-                    class: _vm.classStatus(data.item.payment_status),
-                    attrs: {
-                      disabled: _vm.disableButton(data.item.payment_status)
-                    },
+                    class: _vm.classStatus(data.payment_status),
+                    attrs: { disabled: _vm.disableButton(data.payment_status) },
                     on: {
                       click: function($event) {
-                        return _vm.changeStatus(data.index)
+                        return _vm.changeStatus(index)
                       }
                     }
                   },
-                  [_vm._v(_vm._s(_vm.paid(data.item.payment_status)))]
+                  [_vm._v(_vm._s(_vm.paid(data.payment_status)))]
                 )
-              ]
-            }
-          }
-        ])
-      }),
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(data.payment_type))])
+            ])
+          }),
+          0
+        )
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "spacer-20" })
+      _c("div", { staticClass: "spacer-20" }),
+      _vm._v(" "),
+      _c("b-pagination", {
+        attrs: {
+          "per-page": _vm.perPage,
+          "aria-controls": "bookinglist",
+          "prev-text": "«",
+          "next-text": "»",
+          "hide-goto-end-buttons": true,
+          size: "md",
+          align: "center"
+        },
+        model: {
+          value: _vm.currentPage,
+          callback: function($$v) {
+            _vm.currentPage = $$v
+          },
+          expression: "currentPage"
+        }
+      })
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("th", [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Booking Code")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Schedule")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Payment Status")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Payment Method")])
+    ])
+  }
+]
 render._withStripped = true
 
 

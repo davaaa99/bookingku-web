@@ -73,7 +73,7 @@ class FieldController extends Controller
             'message' => 'Succesfully retrieved data.',
             'serve' => $field
         ],200);
-    
+        // return new PostCollection(Field::all());
     }
     
     /**
