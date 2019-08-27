@@ -15,6 +15,7 @@
                 {{ data.index + 1 }}
             </template>
             <template slot="aksi" slot-scope="data">
+                <!-- <button class=" btn btn-detail" @click="detail(data.item.idClient)">Detail</button> -->
                 <button class=" btn btn-detail" @click="detail(data.item.idClient)">Detail</button>
             </template>
         </b-table>
@@ -43,13 +44,8 @@
                 perPage: 10,
                 currentPage: 1,
                 filterSearch: "",
-
                 fields: [
                     "No",
-                    {
-                        key: "id_user",
-                        label: "ID Clients"
-                    },
                     {
                         key: "email",
                         label: "Email"
@@ -58,10 +54,6 @@
                         key: "name",
                         label: "Nama"
                     },
-                    // {
-                    //     key: "user_type",
-                    //     label: "Tipe User"
-                    // },
                     {
                         key: "aksi",
                         label: "Aksi"
@@ -73,16 +65,11 @@
             };
         },
         mounted(){
-        let uri='http://localhost:8000/api/v1/clients';
-        this.axios.get(uri).then(response=>{
-            this.ClientList=response.data.data;
-            console.log('response.data.data');
-        });
+            this.loadData();
         },
         computed: {
             rows() {
                 return this.ClientList.length;
-
             }
         },
         methods: {
@@ -98,9 +85,20 @@
 
                 window.location.href = window.location.protocol + '//' + window.location.host +
                     '/$2y$10$MtKIr0/yICTGGEPWGcj0lOGLK9UlSd6hrOiBYgQWlfkym6V52hQSm' + day +
-                    '/clientlist/detaillokasi/' +
-                    btoa(id);
-            }
+                    '/clientlist/detaillokasi/' ;
+                    // btoa(CLN-003);
+            },
+            loadData() {
+                axios({
+                    url: 'api/v1/clients',
+                    method: 'GET'
+                }).then(response => {
+                    console.log(response);
+                    this.ClientList = response.data.data
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
         }
     };
 

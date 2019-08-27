@@ -69,7 +69,32 @@ export default {
   },
   data() {
     return {
-      detailBooking: {},
+      detailBooking: [
+        // {
+        //   key: "id_booking"
+        // },
+        // {
+        //   key: "client_name"
+        // },
+        // {
+        //   key: "location_name"
+        // },
+        // {
+        //   key: "field_name"
+        // },
+        // {
+        //   key: "payment_date"
+        // },
+        // {
+        //   key: "payment_time"
+        // },
+        // {
+        //   key: "payment_type"
+        // },
+        // {
+        //   key: "payment_status"
+        // },
+      ],
 
       filterData: [
         {

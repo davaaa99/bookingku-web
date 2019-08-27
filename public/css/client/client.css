@@ -17342,6 +17342,10 @@ main {
   margin-top: 2%;
 }
 
+#lapang-detail .myselect {
+  font-size: 15px;
+}
+
 #lapang-detail .card-img {
   width: 100%;
   height: 450px;
@@ -17355,47 +17359,48 @@ main {
 
 /*------------------------ BOOKING ------------------------*/
 
-#bookinglist button.paid {
-  background-color: green;
-  color: white;
-  text-align: center;
+#bookinglist .badge {
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 3px;
+  font-weight: 600;
 }
 
-#bookinglist button.paid:hover {
-  background-color: maroon;
-  cursor: pointer;
-  cursor: hand;
+#bookinglist .badge.unpaid {
+  background: rgba(227, 52, 47, 0.4) !important;
+  color: #e3342f !important;
 }
 
-#bookinglist button.unpaid {
-  background-color: maroon;
-  color: white;
-  text-align: center;
+#bookinglist .badge.down-payment {
+  background: rgba(246, 153, 63, 0.4) !important;
+  color: #f6993f !important;
 }
 
-#bookinglist button.unpaid:hover {
-  background-color: green;
-  cursor: pointer;
-  cursor: hand;
+#bookinglist .badge.full-payment {
+  background: rgba(56, 193, 114, 0.4) !important;
+  color: #38c172 !important;
 }
 
 #addbooking .available {
-  background: #7fbd1b !important;
+  background: rgba(56, 193, 114, 0.2) !important;
+  color: #38c172 !important;
 }
 
 #addbooking .unavailable {
-  background: #e93a3a !important;
+  background: rgba(227, 52, 47, 0.2) !important;
+  color: #e3342f !important;
 }
 
 #addbooking .choosed {
-  background: #6ab0df !important;
+  background: rgba(30, 146, 241, 0.4) !important;
+  color: #1e92f1 !important;
 }
 
 #addbooking body {
   background: #f8f8f8;
   color: #2c3e50;
   font-family: "Source Sans Pro", sans-serif;
-  min-height: 1000px;
+  min-height: 50px;
 }
 
 #addbooking .card-carousel-wrapper {
@@ -17409,7 +17414,7 @@ main {
 #addbooking .card-carousel {
   display: flex;
   justify-content: center;
-  width: 640px;
+  width: 6400px;
 }
 
 #addbooking .card-carousel--overflow-container {

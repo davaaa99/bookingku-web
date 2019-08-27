@@ -90,6 +90,14 @@ class ClientPageController extends Controller
     public function detailLapang(){
         return view('client.DetailLapangan');
     }
+    
+    public function bookinglist(){
+        return view('client.bookingList');
+    }
+
+    public function addbooking(){
+        return view('client.addBooking');
+    }
      /**
      * Display manage Schedule
      * 
