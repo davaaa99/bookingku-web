@@ -67,7 +67,8 @@ class LocationController extends Controller
     /**
      * Create and store a new location schedule.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  array $data
+     * @param String $id_location
      * @return \Illuminate\Http\Response
      */
     public function createLocationSchedule(array $data, $id_location)
@@ -166,7 +167,7 @@ class LocationController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function upload(Request $request)
+    public function storePhoto(Request $request)
     {
         try {
             $index = 1;
@@ -247,6 +248,9 @@ class LocationController extends Controller
 
     /**
      * Retrieve specified location data
+     * 
+     *  @param \Illuminate\Http\Request  $request
+     *  @return \Illuminate\Http\Response
      */
     public function locationDetail(Request $request)
     {
@@ -269,7 +273,7 @@ class LocationController extends Controller
     /**
      * Update the location schedule.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  array $data
      * @return \Illuminate\Http\Response
      */
     public function updateLocationSchedule(array $data)
@@ -306,10 +310,59 @@ class LocationController extends Controller
     }
 
     /**
+     * Update location photo
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePhoto(Request $request)
+    {
+        // dd($request->oldPhoto);
+        try {
+            $index = 1;
+            $location = Location::find($request->id_location);
+            $location_photo = null;
+            if ($request->oldPhoto != null) {
+                foreach ($request->oldPhoto as $loc_photo) {
+                    if($location_photo == null) 
+                        $location_photo = $loc_photo;
+                    else $location_photo = $location_photo .';'. $loc_photo;
+                    $index++;
+                }
+            }
+            if ($request->file('photo') != null) {
+                foreach ($request->file('photo') as $loc_photo) {
+                    $extension = $loc_photo->getClientOriginalExtension();
+                    $photoName = $index . $request->id_location . '.' . $extension;
+                    $path = Storage::disk('public')->putFileAs('/locationPhotos', $loc_photo, $photoName);
+
+                    if($location_photo == null) 
+                        $location_photo = '/storage' . '/' . $path;
+                    else $location_photo = $location_photo .';'. '/storage' . '/' . $path;
+                    
+                    $index++;
+                }
+            }
+            $location->location_photo = $location_photo;
+            $location->save();
+
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed save data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully saved data.',
+            'serve' => []
+        ], 200);
+    }
+
+    /**
      * Update the location data.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  String $id_location
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
@@ -317,13 +370,10 @@ class LocationController extends Controller
         try {
             $dataUser = Auth::user();
 
-            $photos = $request->file('file');
-            $path = $photos->store('public/locationPhotos');
             $location = Location::find($request->id_location);
             $location->location_name = $request->location_name;
             $location->location_address = $request->location_address;
             $location->description = $request->description;
-            // $location->location_photo = $request->photos;
             $location->latitude = $request->latitude;
             $location->longitude = $request->longitude;
             $location->updated_by = $dataUser->email;

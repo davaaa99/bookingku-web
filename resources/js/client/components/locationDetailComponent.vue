@@ -24,35 +24,6 @@
         />
       </b-carousel-slide>
     </b-carousel>
-    <!-- <b-carousel-slide
-        :caption="location.location_name"
-        :text="location.location_address"
-      >
-        <img
-          slot="img"
-          class="d-block w-100"
-          width="100%"
-          height="350"
-          :src="location.location_photo"
-          :alt="location.location_name"
-        >
-      </b-carousel-slide>
-    </b-carousel>-->
-    <!-- <b-card
-      overlay
-      :img-src="location.location_photo"
-      img-alt="Gambar Lapangan"
-      text-variant="white"
-      border-variant="dark"
-      class="image-header"
-    >
-      <div class="spacer"></div>
-      <div class="spacer-30"></div>
-      <b-card-text>
-        <h1>{{ location.location_name }}</h1>
-        <p>{{ location.location_address }}</p>
-      </b-card-text>
-    </b-card>-->
     <div class="spacer-20"></div>
     <div class="detail d-flex">
       <div class="desc">
@@ -80,8 +51,6 @@
         </b-row>
       </div>
     </div>
-    <!-- <img :src="location.location_photo"> -->
-    <!-- <div class="spacer-20"></div> -->
   </div>
 </template>
 
@@ -125,13 +94,8 @@ export default {
       })
         .then(response => {
           this.location = response.data.serve;
-          console.log(this.location);
           this.splitPhotoUrl(this.location.location_photo);
           this.splitSchedule(this.location.schedule[0]);
-          
-          
-          console.log(response);
-          console.log(this.location);
         })
         .catch(error => {
           console.log(error);

@@ -64,7 +64,24 @@
             </label>
           </b-col>
           <b-col>
-            <b-form-file accept=".jpg, .png, .gif" multiple v-model="location.file"></b-form-file>
+            <b-form-file accept=".jpg, .png, .gif" multiple v-model="photos" enctype="multipart/form-data" @change="previewImage"></b-form-file>
+            <div class="spacer-10"></div>
+            <div class="d-flex">
+              <div v-if="oldPhotos.length > 0" class="d-flex flex-row image-bg">
+                <div v-for="(photo, index) in oldPhotos" :key="index" >
+                  <div class="image" :style="{ 'background-image': 'url(' + photo + ')' }">
+                    <i class="material-icons ic mr-auto" @click="removeOldphoto(index)">close</i>
+                  </div>
+                </div>
+              </div>
+              <div v-if="photoData.length > 0" class="d-flex flex-row image-bg">
+                  <div v-for="(photo, index) in photoData" :key="index" >
+                    <div class="image" :style="{ 'background-image': 'url(' + photo + ')' }">
+                      <i class="material-icons ic mr-auto" @click="removePhoto(index)">close</i>
+                    </div>
+                  </div>
+              </div>
+            </div>
           </b-col>
         </b-row>
       </b-form-group>
@@ -293,7 +310,7 @@
       </div>
       <div class="spacer-50"></div>
       <div class="d-flex">
-        <button class="btn btn-primary ml-auto mr-2" @click="save()">Save</button>
+        <button class="btn btn-primary ml-auto mr-2" @click="save();upload($event);">Save</button>
         <button class="btn btn-danger mr-auto" @click="cancel()">Cancel</button>
       </div>
     </b-form>
@@ -316,14 +333,16 @@ export default {
       headerBgVariant: "primary",
       headerTextVariant: "light",
       colorstatus: "#5C5C5C",
-      files:[],
+      photos: null,
+      oldPhotos: [],
+      photoData: [],
       oldLocation: {},
       location: {
         id_location: "",
         location_name: "",
         location_address: "",
         description: "",
-        file: [],
+        photo:"",
         day: [{open_time:"",closing_time:"",valstatus:""},
           {open_time:"",closing_time:"",valstatus:""},
           {open_time:"",closing_time:"",valstatus:""},
@@ -504,6 +523,10 @@ export default {
         .then(response => {
           this.oldLocation = response.data.serve
           this.setDataLocation(this.oldLocation)
+          this.splitPhotoUrl(this.oldLocation.location_photo)
+          this.splitSchedule(this.oldLocation.schedule[0])
+          console.log(this.oldPhotos);
+          
         })
         .catch(error => {
           console.log(error);
@@ -514,7 +537,9 @@ export default {
       this.location.location_name = $oldLocation.location_name
       this.location.location_address = $oldLocation.location_address
       this.location.description = $oldLocation.description
-      this.splitSchedule($oldLocation.schedule[0])
+    },
+    splitPhotoUrl($photosUrl) {
+      this.oldPhotos = $photosUrl.split(";")
     },
     splitSchedule($schedules) {
       let $time;
@@ -586,12 +611,12 @@ export default {
         data: this.location
       })
         .then(response => {
-          alert("Data Berhasil diupdate");
-          window.location.href =
-            window.location.protocol +
-            "//" +
-            window.location.host +
-            "/locations";
+          // alert("Data Berhasil diupdate");
+          // window.location.href =
+          //   window.location.protocol +
+          //   "//" +
+          //   window.location.host +
+          //   "/locations";
         })
         .catch(error => {
           console.log(error);
@@ -622,6 +647,65 @@ export default {
       } else {
         return "darkgray";
       }
+    },
+    upload(event) {
+      event.preventDefault();
+      window.setTimeout(() => {
+        let formData = new FormData();
+        formData.append("id_location", this.idLocation);
+        console.log(this.oldPhotos);
+        
+        if (this.oldPhotos != null) {
+          for (let index = 0; index < this.oldPhotos.length; index++) {
+            formData.append("oldPhoto[]", this.oldPhotos[index]);
+          }
+        }
+        if (this.photos != null) {
+          for (let index = 0; index < this.photos.length; index++) {
+            formData.append("photo[]", this.photos[index]);
+          }
+        }
+
+        axios({
+          url: "/update/photo",
+          method: "POST",
+          data: formData,
+          headers: { "content-type": "multipart/form-data" }
+        })
+          .then(response => {
+            alert("Successfully added new location");
+            window.location.href =
+              window.location.protocol +
+              "//" +
+              window.location.host +
+              "/locations";
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }, 1000);
+    },
+    previewImage: function(event) {
+      var input = event.target;
+      this.photoData = []
+      if (input.files && input.files[0]) {
+        for (let index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+          reader.onload = e => {
+            this.photoData.push(e.target.result);
+          };
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
+    removeOldphoto(index) {
+      this.oldPhotos.splice(index,1)
+      console.log(this.oldPhotos);
+      
+    },
+    removePhoto(index) {
+      this.photoData.splice(index,1)
+      this.photos.splice(index,1)
     }
   }
 };

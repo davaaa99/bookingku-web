@@ -51,13 +51,20 @@
                 </div>
                 <div class="spacer-20"></div>
                 <div class="login-footer d-flex">
-                        <button type="submit" class="btn login-button">
-                            {{ __('Login') }}
-                        </button>
-                        <a href="{{ route('clientregister') }}" class="btn signup-button">
-                            {{ __('Sign up') }}
-                        </a>
+                    <button type="submit" class="btn login-button">
+                        {{ __('Login') }}
+                    </button>
+                    <a href="{{ route('clientregister') }}" class="btn signup-button">
+                        {{ __('Sign up') }}
+                    </a>
                 </div>
+                <script type="application/javascript">
+                    var msg = '{{Session::get('alert ')}}';
+                    var exist = '{{Session::has('alert ')}}';
+                    if (exist) {
+                        alert(msg);
+                    }
+                </script>
             </form>
         </div>
     </div>

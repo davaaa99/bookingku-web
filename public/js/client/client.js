@@ -2870,6 +2870,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2877,6 +2887,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      photoData: [],
       headerBgVariant: "primary",
       headerTextVariant: "light",
       colorstatus: "#5C5C5C",
@@ -2886,7 +2897,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         location_name: "",
         location_address: "",
         description: "",
-        photos: null,
         day: [{
           open_time: "",
           closing_time: "",
@@ -3050,7 +3060,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         });
       }, 1000);
     },
-    save: function save(event) {
+    save: function save() {
       var _this2 = this;
 
       axios({
@@ -3066,13 +3076,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     cancel: function cancel() {
       window.location.href = window.location.protocol + "//" + window.location.host + "/locations";
     },
-    formatName: function formatName(files) {
-      if (files.length === 1) {
-        return files[0].name;
-      } else {
-        return "".concat(files.length, " files selected");
-      }
-    },
     changeStatus: function changeStatus(valstatus) {
       if (valstatus) {
         return "Open";
@@ -3086,6 +3089,28 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       } else {
         return "darkgray";
       }
+    },
+    previewImage: function previewImage(event) {
+      var _this3 = this;
+
+      var input = event.target;
+      this.photoData = [];
+
+      if (input.files && input.files[0]) {
+        for (var index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            _this3.photoData.push(e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
+    removePhoto: function removePhoto(index) {
+      this.photoData.splice(index, 1);
+      this.photos.splice(index, 1);
     }
   }
 });
@@ -3104,37 +3129,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3243,14 +3237,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         }
       }).then(function (response) {
         _this.location = response.data.serve;
-        console.log(_this.location);
 
         _this.splitPhotoUrl(_this.location.location_photo);
 
         _this.splitSchedule(_this.location.schedule[0]);
-
-        console.log(response);
-        console.log(_this.location);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3622,6 +3612,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3635,14 +3642,16 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       headerBgVariant: "primary",
       headerTextVariant: "light",
       colorstatus: "#5C5C5C",
-      files: [],
+      photos: null,
+      oldPhotos: [],
+      photoData: [],
       oldLocation: {},
       location: {
         id_location: "",
         location_name: "",
         location_address: "",
         description: "",
-        file: [],
+        photo: "",
         day: [{
           open_time: "",
           closing_time: "",
@@ -3795,6 +3804,12 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         _this.oldLocation = response.data.serve;
 
         _this.setDataLocation(_this.oldLocation);
+
+        _this.splitPhotoUrl(_this.oldLocation.location_photo);
+
+        _this.splitSchedule(_this.oldLocation.schedule[0]);
+
+        console.log(_this.oldPhotos);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3804,7 +3819,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.location.location_name = $oldLocation.location_name;
       this.location.location_address = $oldLocation.location_address;
       this.location.description = $oldLocation.description;
-      this.splitSchedule($oldLocation.schedule[0]);
+    },
+    splitPhotoUrl: function splitPhotoUrl($photosUrl) {
+      this.oldPhotos = $photosUrl.split(";");
     },
     splitSchedule: function splitSchedule($schedules) {
       var $time;
@@ -3873,9 +3890,12 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         url: "/update/location",
         method: "PUT",
         data: this.location
-      }).then(function (response) {
-        alert("Data Berhasil diupdate");
-        window.location.href = window.location.protocol + "//" + window.location.host + "/locations";
+      }).then(function (response) {// alert("Data Berhasil diupdate");
+        // window.location.href =
+        //   window.location.protocol +
+        //   "//" +
+        //   window.location.host +
+        //   "/locations";
       })["catch"](function (error) {
         console.log(error);
         alert("Data Gagal diupdate");
@@ -3904,6 +3924,68 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       } else {
         return "darkgray";
       }
+    },
+    upload: function upload(event) {
+      var _this2 = this;
+
+      event.preventDefault();
+      window.setTimeout(function () {
+        var formData = new FormData();
+        formData.append("id_location", _this2.idLocation);
+        console.log(_this2.oldPhotos);
+
+        if (_this2.oldPhotos != null) {
+          for (var index = 0; index < _this2.oldPhotos.length; index++) {
+            formData.append("oldPhoto[]", _this2.oldPhotos[index]);
+          }
+        }
+
+        if (_this2.photos != null) {
+          for (var _index = 0; _index < _this2.photos.length; _index++) {
+            formData.append("photo[]", _this2.photos[_index]);
+          }
+        }
+
+        axios({
+          url: "/update/photo",
+          method: "POST",
+          data: formData,
+          headers: {
+            "content-type": "multipart/form-data"
+          }
+        }).then(function (response) {
+          alert("Successfully added new location");
+          window.location.href = window.location.protocol + "//" + window.location.host + "/locations";
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }, 1000);
+    },
+    previewImage: function previewImage(event) {
+      var _this3 = this;
+
+      var input = event.target;
+      this.photoData = [];
+
+      if (input.files && input.files[0]) {
+        for (var index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            _this3.photoData.push(e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
+    removeOldphoto: function removeOldphoto(index) {
+      this.oldPhotos.splice(index, 1);
+      console.log(this.oldPhotos);
+    },
+    removePhoto: function removePhoto(index) {
+      this.photoData.splice(index, 1);
+      this.photos.splice(index, 1);
     }
   }
 });
@@ -3922,6 +4004,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -4040,6 +4123,11 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     },
     editLocation: function editLocation(id) {
       window.location.href = window.location.protocol + "//" + window.location.host + "/location/edit/" + id;
+    },
+    setPhoto: function setPhoto(photosUrl) {
+      if (photosUrl == null) return 'https://picsum.photos/400/400/?image=20';
+      var photos = photosUrl.split(";");
+      return photos[0];
     }
   }
 });
@@ -4793,6 +4881,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     return {
       checked: false,
       colorstatus: "#5C5C5C",
+      account_type: "",
+      account_number: "",
       form: {
         name: "",
         email: "",
@@ -4806,7 +4896,19 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         text: "Bank",
         value: "",
         disabled: true
-      }, "BI", "BNI", "BRI", "BTN", "BCA"]
+      }, {
+        text: "BNI",
+        value: "009"
+      }, {
+        text: "BRI",
+        value: "002"
+      }, {
+        text: "BTN",
+        value: "200"
+      }, {
+        text: "BCA",
+        value: "014"
+      }]
     };
   },
   validations: {
@@ -4842,6 +4944,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       return error.$error;
     },
     register: function register() {
+      this.form.account_number = this.account_type + this.account_number;
       axios({
         url: "/v1/auth/register",
         method: "POST",
@@ -4851,7 +4954,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         window.location.href = window.location.protocol + "//" + window.location.host + "/login";
       })["catch"](function (error) {
         alert("Unable to save data. Bad config.");
-        console.log(error);
+        window.location.href = window.location.protocol + "//" + window.location.host + "/v1/auth/register";
       });
     }
   }
@@ -71075,6 +71178,7 @@ var render = function() {
                           multiple: "",
                           enctype: "multipart/form-data"
                         },
+                        on: { change: _vm.previewImage },
                         model: {
                           value: _vm.photos,
                           callback: function($$v) {
@@ -71082,7 +71186,45 @@ var render = function() {
                           },
                           expression: "photos"
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "spacer-10" }),
+                      _vm._v(" "),
+                      _vm.photoData.length > 0
+                        ? _c(
+                            "div",
+                            { staticClass: "d-flex flex-row image-bg" },
+                            _vm._l(_vm.photoData, function(photo, index) {
+                              return _c("div", { key: index }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "image",
+                                    style: {
+                                      "background-image": "url(" + photo + ")"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "i",
+                                      {
+                                        staticClass:
+                                          "material-icons ic mr-auto",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.removePhoto(index)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("close")]
+                                    )
+                                  ]
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
@@ -71997,7 +72139,7 @@ var render = function() {
                 staticClass: "btn btn-primary ml-auto mr-2",
                 on: {
                   click: function($event) {
-                    _vm.save($event)
+                    _vm.save()
                     _vm.upload($event)
                   }
                 }
@@ -72335,15 +72477,96 @@ var render = function() {
                     "b-col",
                     [
                       _c("b-form-file", {
-                        attrs: { accept: ".jpg, .png, .gif", multiple: "" },
+                        attrs: {
+                          accept: ".jpg, .png, .gif",
+                          multiple: "",
+                          enctype: "multipart/form-data"
+                        },
+                        on: { change: _vm.previewImage },
                         model: {
-                          value: _vm.location.file,
+                          value: _vm.photos,
                           callback: function($$v) {
-                            _vm.$set(_vm.location, "file", $$v)
+                            _vm.photos = $$v
                           },
-                          expression: "location.file"
+                          expression: "photos"
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "spacer-10" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "d-flex" }, [
+                        _vm.oldPhotos.length > 0
+                          ? _c(
+                              "div",
+                              { staticClass: "d-flex flex-row image-bg" },
+                              _vm._l(_vm.oldPhotos, function(photo, index) {
+                                return _c("div", { key: index }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "image",
+                                      style: {
+                                        "background-image": "url(" + photo + ")"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "i",
+                                        {
+                                          staticClass:
+                                            "material-icons ic mr-auto",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.removeOldphoto(index)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("close")]
+                                      )
+                                    ]
+                                  )
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.photoData.length > 0
+                          ? _c(
+                              "div",
+                              { staticClass: "d-flex flex-row image-bg" },
+                              _vm._l(_vm.photoData, function(photo, index) {
+                                return _c("div", { key: index }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "image",
+                                      style: {
+                                        "background-image": "url(" + photo + ")"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "i",
+                                        {
+                                          staticClass:
+                                            "material-icons ic mr-auto",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.removePhoto(index)
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("close")]
+                                      )
+                                    ]
+                                  )
+                                ])
+                              }),
+                              0
+                            )
+                          : _vm._e()
+                      ])
                     ],
                     1
                   )
@@ -73258,7 +73481,8 @@ var render = function() {
                 staticClass: "btn btn-primary ml-auto mr-2",
                 on: {
                   click: function($event) {
-                    return _vm.save()
+                    _vm.save()
+                    _vm.upload($event)
                   }
                 }
               },
@@ -73380,14 +73604,16 @@ var render = function() {
                             }
                           },
                           [
-                            _c("b-card-img", {
-                              staticClass: "rounded-0",
-                              attrs: {
-                                src: "https://picsum.photos/400/400/?image=20"
+                            _c("div", {
+                              staticClass: "image",
+                              style: {
+                                "background-image":
+                                  "url(" +
+                                  _vm.setPhoto(location.location_photo) +
+                                  ")"
                               }
                             })
-                          ],
-                          1
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -74491,6 +74717,23 @@ var render = function() {
                     "div",
                     { staticClass: "d-flex" },
                     [
+                      _c("b-form-select", {
+                        staticClass: "col-3 mr-1",
+                        staticStyle: {
+                          border: "none",
+                          "border-bottom": "1px solid #C7C7DB",
+                          background: "none"
+                        },
+                        attrs: { size: "sm", options: _vm.bank },
+                        model: {
+                          value: _vm.account_type,
+                          callback: function($$v) {
+                            _vm.account_type = $$v
+                          },
+                          expression: "account_type"
+                        }
+                      }),
+                      _vm._v(" "),
                       _c("b-form-input", {
                         staticClass: "register-input",
                         attrs: {
@@ -74499,11 +74742,11 @@ var render = function() {
                           required: ""
                         },
                         model: {
-                          value: _vm.form.account_number,
+                          value: _vm.account_number,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "account_number", $$v)
+                            _vm.account_number = $$v
                           },
-                          expression: "form.account_number"
+                          expression: "account_number"
                         }
                       })
                     ],

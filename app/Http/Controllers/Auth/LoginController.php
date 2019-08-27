@@ -55,10 +55,11 @@ class LoginController extends Controller
 
             if (!Auth::attempt($credentials))
             {
-                return response()->json([
-                    'message' => 'Unauthorized. Bad username or password.',
-                    'serve' => []
-                ], 401);
+                return redirect()->back()->with('alert',"Unauthorized. Bad username or password.");
+                // return response()->json([
+                //     'message' => 'Unauthorized. Bad username or password.',
+                //     'serve' => []
+                // ], 401);
             }
             $user = Auth::user();
             

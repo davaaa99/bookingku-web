@@ -24,7 +24,8 @@
           <b-card no-body class="overflow-hidden">
             <b-row no-gutters class="d-flex">
               <b-col class="col-lg-2" @click="detailLocation(location.id_location)">
-                <b-card-img src="https://picsum.photos/400/400/?image=20" class="rounded-0"></b-card-img>
+                <div class="image" :style="{ 'background-image': 'url(' + setPhoto(location.location_photo) + ')' }"></div>
+                <!-- <b-card-img :src="setPhoto(location.location_photo)" class="rounded-0"></b-card-img> -->
               </b-col>
               <b-col class="col-lg-9" @click="detailLocation(location.id_location)">
                 <b-card-body>
@@ -138,6 +139,12 @@ export default {
         window.location.host +
         "/location/edit/" +
         id;
+    },
+    setPhoto(photosUrl){
+      if(photosUrl == null) return 'https://picsum.photos/400/400/?image=20'
+      
+      let photos = photosUrl.split(";");
+      return photos[0]
     }
   }
 };

@@ -94,12 +94,12 @@
           class="register-label d-flex flex-column"
         >
           <div class="d-flex">
-            <!-- <b-form-select size="sm" class="col-3 mr-1" v-model="form.account_type" :options="bank" style="border: none; border-bottom: 1px solid #C7C7DB; background: none"></b-form-select> -->
+            <b-form-select size="sm" class="col-3 mr-1" v-model="account_type" :options="bank" style="border: none; border-bottom: 1px solid #C7C7DB; background: none"></b-form-select>
             <b-form-input
               class="register-input"
               size="sm"
               id="input-account_number"
-              v-model="form.account_number"
+              v-model="account_number"
               required
             ></b-form-input>
           </div>
@@ -160,6 +160,8 @@ export default {
     return {
       checked: false,
       colorstatus: "#5C5C5C",
+      account_type: "",
+      account_number: "",
       form: {
         name: "",
         email: "",
@@ -171,11 +173,10 @@ export default {
       agreement: "",
       bank: [
         { text: "Bank", value: "", disabled: true },
-        "BI",
-        "BNI",
-        "BRI",
-        "BTN",
-        "BCA"
+        {text: "BNI", value: "009"},
+        {text: "BRI", value: "002"},
+        {text: "BTN", value: "200"},
+        {text: "BCA", value: "014"}
       ]
     };
   },
@@ -212,6 +213,7 @@ export default {
       return error.$error;
     },
     register() {
+      this.form.account_number = this.account_type + this.account_number
       axios({
         url: "/v1/auth/register",
         method: "POST",
@@ -224,7 +226,8 @@ export default {
         })
         .catch(error => {
           alert("Unable to save data. Bad config.");
-          console.log(error);
+          window.location.href =
+            window.location.protocol + "//" + window.location.host + "/v1/auth/register";
         });
     }
   }

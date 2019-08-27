@@ -72,7 +72,17 @@
               v-model="photos"
               multiple
               enctype="multipart/form-data"
+              @change="previewImage"
             ></b-form-file>
+            <div class="spacer-10"></div>
+            <div v-if="photoData.length > 0" class="d-flex flex-row image-bg">
+                <div v-for="(photo, index) in photoData" :key="index" >
+                  <div class="image" :style="{ 'background-image': 'url(' + photo + ')' }">
+                    <i class="material-icons ic mr-auto" @click="removePhoto(index)">close</i>
+                  </div>
+                  <!-- <img class="preview" :src="img"> -->
+                </div>
+            </div>
           </b-col>
         </b-row>
       </b-form-group>
@@ -301,7 +311,7 @@
       </div>
       <div class="spacer-50"></div>
       <div class="d-flex">
-        <button class="btn btn-primary ml-auto mr-2" @click="save($event);upload($event);">Save</button>
+        <button class="btn btn-primary ml-auto mr-2" @click="save();upload($event);">Save</button>
         <button class="btn btn-danger mr-auto" @click="cancel()">Cancel</button>
       </div>
     </b-form>
@@ -318,6 +328,7 @@ Vue.use(BootstrapVue);
 export default {
   data() {
     return {
+      photoData: [],
       headerBgVariant: "primary",
       headerTextVariant: "light",
       colorstatus: "#5C5C5C",
@@ -327,7 +338,6 @@ export default {
         location_name: "",
         location_address: "",
         description: "",
-        photos: null,
         day: [
           { open_time: "", closing_time: "", valstatus: "" },
           { open_time: "", closing_time: "", valstatus: "" },
@@ -514,7 +524,7 @@ export default {
           });
       }, 1000);
     },
-    save(event) {
+    save() {
       axios({
         url: "/location",
         method: "POST",
@@ -531,13 +541,6 @@ export default {
       window.location.href =
         window.location.protocol + "//" + window.location.host + "/locations";
     },
-    formatName(files) {
-      if (files.length === 1) {
-        return files[0].name;
-      } else {
-        return `${files.length} files selected`;
-      }
-    },
     changeStatus(valstatus) {
       if (valstatus) {
         return "Open";
@@ -551,6 +554,23 @@ export default {
       } else {
         return "darkgray";
       }
+    },
+    previewImage: function(event) {
+      var input = event.target;
+      this.photoData = []
+      if (input.files && input.files[0]) {
+        for (let index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+          reader.onload = e => {
+            this.photoData.push(e.target.result);
+          };
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
+    removePhoto(index) {
+      this.photoData.splice(index,1)
+      this.photos.splice(index,1)
     }
   }
 };
