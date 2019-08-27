@@ -575,7 +575,6 @@ main {
 
 
 
-
 /*------------------------  LIST  ------------------------*/
 
 #list {
@@ -824,12 +823,20 @@ main {
 /*------------------------ MENU LAPANGAN ------------------------*/
 #content {
     .cardlapang {
-        display: inline-block
+        display: inline-block;
+        margin-left: 25px;
     }
-
+    .locationdd{
+        width: 200px
+    }
+    .textlapang {
+        color: #000000;
+        padding-left: 0px;
+        margin-left: 0px;
+    }
     .gambarlapang {
-        width: 100%;
-        height: 100%;
+        width: 400px;
+        height: 300px;
         margin: 2 auto;
         margin-bottom: 10px;
     }
@@ -863,6 +870,14 @@ main {
 
 }
 
+#lapang{
+    margin-left: 40px;
+    margin-right: 60px;
+    .buttonadd{
+        // padding-right: 100px;
+        padding-top: 30px;
+    }
+}
 #carilokasi {
     padding-left: 10px;
 }
@@ -987,6 +1002,10 @@ main {
 }
 
 #lapang-detail {
+    .gambardetail{
+        width: 100%;
+        height: 400px;
+    }
     .hari {
         width: 20%;
         margin-left: 30px;

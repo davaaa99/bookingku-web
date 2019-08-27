@@ -39,8 +39,8 @@
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('payment') }}" class="content-link">
-                        <img class="logo" src="{{ asset('client/schedule.png')}}">
+                    <a href="{{ route('schedule') }}" class="content-link">
+                    <img class="logo" src="{{ asset('client/schedule.png')}}" >
                         Schedule
                     </a>
                 </div>

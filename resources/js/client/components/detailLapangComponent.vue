@@ -1,18 +1,32 @@
 <template>
     <div id="lapang-detail">
-        <b-card overlay img-src="https://rumus.web.id/wp-content/uploads/2018/08/lapangan-futsal.jpg" img-alt="Gambar Lapangan" 
-        text-variant="white" border-variant="dark" class="image-header">
-            <div class="spacer"></div>
-            <div class="spacer-30"></div>
-            <b-card-text>
-                <h1> {{namalapang}}</h1>
-                <p>{{tipelapang}}</p>
-            </b-card-text>
-        </b-card>
-        
+        <b-carousel
+            id="carousel-1"
+            v-model="slide"
+            :interval="4000"
+            controls
+            indicators
+            background="#ababab"
+            img-width ="1024"
+            img-height = "250"
+            style="text-shadow: 1px 1px 2px #333;"
+            @sliding-start="onSlideStart"
+            @sliding-end="onSlideEnd"
+            >
+        <b-carousel-slide v-for="photo in photos" :key="photo.id" :caption="form.field_name" :text="form.field_type">
+            <img
+                slot="img"
+                class="d-block w-100"
+                width="100%"
+                height="400"
+                :src="photo"
+                :alt="form.field_name"
+                /> 
+        </b-carousel-slide>
+        </b-carousel>
         <div class="spacer-30"></div>
         <div class="hari">
-            <b-form-select v-model="selected" :options="options"></b-form-select>
+            <!-- <b-form-select v-model="selected" :options="options"></b-form-select> -->
         </div>
         <div class="tabel-jadwal">
             <b-table stripped hover :items="items" :fields="fields">
@@ -22,57 +36,60 @@
                     <b-button variant="danger" class=" btn btn-detail" @click="detail(data.item.idClient)">Delete</b-button>
                 </template>
             </b-table>
+            
         </div>
     </div>
        
 </template>
 
 <script>
-    import BootstrapVue from 'bootstrap-vue'
-    import {
-        type
-    } from 'os';
-    Vue.use(BootstrapVue)
-
     export default {
-
+    props: {
+        idField: String
+        },
         data() {
 
             return {
-                namalapang: 'Lapang A',
-                tipelapang: 'Sintetis',
+                slide:0,
                 fields: ['Jam', 'Down_Payment', 'Harga', 'Action'],
                 items: [
                     {Jam:"07.00-12.00",Down_Payment:"50%",Harga:"Rp.120.000",Action:""},
                     {Jam:"12.00-18.00",Down_Payment:"50%",Harga:"Rp.125.000",Action:""},
                     {Jam:"18.00-22.00",Down_Payment:"50%",Harga:"Rp.130.000",Action:""},
                 ],
-                selected: null,
-                options: [
-                { value: null, text: 'Pilih Hari ' },
-                { value: 'Senin', text: 'Senin' },
-                { value: 'Selasa', text: 'Selasa' },
-                { value: 'Rabu', text: 'Rabu' },
-                { value: 'Kamis', text: 'Kamis' },
-                { value: 'Jumat', text: 'Jumat' },
-                { value: 'Sabtu', text: 'Sabtu' },
-                { value: 'Minggu', text: 'Minggu' }
-                ],
+                found: true,
                 perPage: 10,
-                filterSearch: "",
-                url: window.location.origin + window.location.pathname,
-                datafoto: {},
+                form: {},
+                photos: []
             };
         },
-        computed: {
-            rows() {
-                return this.dataLocation.length;
-
-            }
+        mounted(){
+        this.loadData();
         },
         methods: {
-            
+        splitPhotoUrl($photosUrl){
+            this.photos = $photosUrl.split(";");
+        },
+        onSlideStart(slide){
+            this.sliding = true;
+        },
+        onSlideEnd(slide){
+            this.sliding = false;
+        },
+        loadData() {
+        axios({
+          url: '/detail',
+          method: 'POST',
+          data:{ 
+              id: this.idField
+          },
+        }).then(response =>{
+            this.form = response.data;
+            this.splitPhotoUrl(this.form.field_photo);
+        }).catch(error =>{
+            console.log(error);
+        })
+      }
         }
     };
-
 </script>
