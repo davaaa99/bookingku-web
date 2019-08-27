@@ -18,11 +18,12 @@
     </div>
    
     
-    <div class ="cardlapang" v-for="lapangan in dataLapangan" :key="lapangan.id_field">
+    <div class ="cardlapang" v-for="(lapangan, index) in dataLapangan" :key="lapangan.id_field">
         <a :href="'detaillapang/' + lapangan.id_field">
         <b-card-group deck>
        <b-card>
-        <img class="gambarlapang" :src="lapangan.field_photo" />
+        <img class="gambarlapang" :src="setPhoto(lapangan.field_photo)"/>
+
         <b-card-title class="textlapang">
         <p>{{lapangan.field_name}}</p>
         </b-card-title>
@@ -120,6 +121,10 @@
                 this.status = !this.status;
                 this.filterStatus = status;
             },
+            setPhoto(photosUrl){
+                let photos = photosUrl.split(";");
+                return photos[0]
+            }
         },
       
     };

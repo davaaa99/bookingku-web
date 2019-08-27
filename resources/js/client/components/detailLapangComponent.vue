@@ -1,16 +1,29 @@
 <template>
     <div id="lapang-detail">
-            <b-card overlay :img-src="form.field_photo" 
-                img-alt="Gambar Lapangan" text-variant="white" border-variant="dark"
-                class="image-header">
-                
-            <div class="spacer"></div>
-            <div class="spacer-30"></div>
-            <b-card-text>
-                <h1> {{form.field_name}}</h1>
-                <p>{{form.field_type}}</p>
-            </b-card-text>
-            </b-card>
+        <b-carousel
+            id="carousel-1"
+            v-model="slide"
+            :interval="4000"
+            controls
+            indicators
+            background="#ababab"
+            img-width ="1024"
+            img-height = "250"
+            style="text-shadow: 1px 1px 2px #333;"
+            @sliding-start="onSlideStart"
+            @sliding-end="onSlideEnd"
+            >
+        <b-carousel-slide v-for="photo in photos" :key="photo.id" :caption="form.field_name" :text="form.field_type">
+            <img
+                slot="img"
+                class="d-block w-100"
+                width="100%"
+                height="400"
+                :src="photo"
+                :alt="form.field_name"
+                /> 
+        </b-carousel-slide>
+        </b-carousel>
         <div class="spacer-30"></div>
         <div class="hari">
             <!-- <b-form-select v-model="selected" :options="options"></b-form-select> -->
@@ -37,7 +50,7 @@
         data() {
 
             return {
-                
+                slide:0,
                 fields: ['Jam', 'Down_Payment', 'Harga', 'Action'],
                 items: [
                     {Jam:"07.00-12.00",Down_Payment:"50%",Harga:"Rp.120.000",Action:""},
@@ -46,13 +59,23 @@
                 ],
                 found: true,
                 perPage: 10,
-                form: {}
+                form: {},
+                photos: []
             };
         },
         mounted(){
         this.loadData();
         },
         methods: {
+        splitPhotoUrl($photosUrl){
+            this.photos = $photosUrl.split(";");
+        },
+        onSlideStart(slide){
+            this.sliding = true;
+        },
+        onSlideEnd(slide){
+            this.sliding = false;
+        },
         loadData() {
         axios({
           url: '/detail',
@@ -61,8 +84,8 @@
               id: this.idField
           },
         }).then(response =>{
-            this.form = response.data
-            console.log(response.data)
+            this.form = response.data;
+            this.splitPhotoUrl(this.form.field_photo);
         }).catch(error =>{
             console.log(error);
         })

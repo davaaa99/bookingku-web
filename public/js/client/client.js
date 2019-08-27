@@ -2389,12 +2389,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     idField: String
   },
   data: function data() {
     return {
+      slide: 0,
       fields: ['Jam', 'Down_Payment', 'Harga', 'Action'],
       items: [{
         Jam: "07.00-12.00",
@@ -2414,13 +2428,23 @@ __webpack_require__.r(__webpack_exports__);
       }],
       found: true,
       perPage: 10,
-      form: {}
+      form: {},
+      photos: []
     };
   },
   mounted: function mounted() {
     this.loadData();
   },
   methods: {
+    splitPhotoUrl: function splitPhotoUrl($photosUrl) {
+      this.photos = $photosUrl.split(";");
+    },
+    onSlideStart: function onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd: function onSlideEnd(slide) {
+      this.sliding = false;
+    },
     loadData: function loadData() {
       var _this = this;
 
@@ -2432,7 +2456,8 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this.form = response.data;
-        console.log(response.data);
+
+        _this.splitPhotoUrl(_this.form.field_photo);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3954,6 +3979,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -4040,6 +4066,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
     click: function click(status) {
       this.status = !this.status;
       this.filterStatus = status;
+    },
+    setPhoto: function setPhoto(photosUrl) {
+      var photos = photosUrl.split(";");
+      return photos[0];
     }
   }
 });
@@ -71069,28 +71099,52 @@ var render = function() {
     { attrs: { id: "lapang-detail" } },
     [
       _c(
-        "b-card",
+        "b-carousel",
         {
-          staticClass: "image-header",
+          staticStyle: { "text-shadow": "1px 1px 2px #333" },
           attrs: {
-            overlay: "",
-            "img-src": _vm.form.field_photo,
-            "img-alt": "Gambar Lapangan",
-            "text-variant": "white",
-            "border-variant": "dark"
+            id: "carousel-1",
+            interval: 4000,
+            controls: "",
+            indicators: "",
+            background: "#ababab",
+            "img-width": "1024",
+            "img-height": "250"
+          },
+          on: {
+            "sliding-start": _vm.onSlideStart,
+            "sliding-end": _vm.onSlideEnd
+          },
+          model: {
+            value: _vm.slide,
+            callback: function($$v) {
+              _vm.slide = $$v
+            },
+            expression: "slide"
           }
         },
-        [
-          _c("div", { staticClass: "spacer" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "spacer-30" }),
-          _vm._v(" "),
-          _c("b-card-text", [
-            _c("h1", [_vm._v(" " + _vm._s(_vm.form.field_name))]),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(_vm.form.field_type))])
-          ])
-        ],
+        _vm._l(_vm.photos, function(photo) {
+          return _c(
+            "b-carousel-slide",
+            {
+              key: photo.id,
+              attrs: { caption: _vm.form.field_name, text: _vm.form.field_type }
+            },
+            [
+              _c("img", {
+                staticClass: "d-block w-100",
+                attrs: {
+                  slot: "img",
+                  width: "100%",
+                  height: "400",
+                  src: photo,
+                  alt: _vm.form.field_name
+                },
+                slot: "img"
+              })
+            ]
+          )
+        }),
         1
       ),
       _vm._v(" "),
@@ -74687,7 +74741,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._l(_vm.dataLapangan, function(lapangan) {
+      _vm._l(_vm.dataLapangan, function(lapangan, index) {
         return _c(
           "div",
           { key: lapangan.id_field, staticClass: "cardlapang" },
@@ -74705,7 +74759,7 @@ var render = function() {
                       [
                         _c("img", {
                           staticClass: "gambarlapang",
-                          attrs: { src: lapangan.field_photo }
+                          attrs: { src: _vm.setPhoto(lapangan.field_photo) }
                         }),
                         _vm._v(" "),
                         _c("b-card-title", { staticClass: "textlapang" }, [
