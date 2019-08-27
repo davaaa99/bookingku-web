@@ -3589,6 +3589,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3601,9 +3622,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       schedule: {
         selectedLocation: "",
         selectedField: "",
-        price: '',
-        day: [],
-        dp: '',
+        price: "",
+        day: "",
+        dp: "",
         t_start: null,
         t_finish: null
       },
@@ -3612,49 +3633,50 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       location: [],
       fieldlist: [],
       field: [],
-      days: ['Monday'],
-      t_starts: ['00:00', '01:00'],
-      t_finishs: ['00:00', '01:00'],
+      days: ["Monday", "Tuesday"],
+      t_starts: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
+      t_finishs: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
       add: false,
       items: [],
       index: 0,
-      fields: {
-        location: {
-          key: 'selectedLocation',
-          label: 'Location',
-          sortable: true
-        },
-        field: {
-          key: 'selectedField',
-          label: 'Field',
-          sortable: true
-        },
-        price: {
-          key: 'price',
-          label: 'Price',
-          sortable: true
-        },
-        dp: {
-          key: 'dp',
-          label: 'Down Payment',
-          sortable: true
-        },
-        day: {
-          key: 'day',
-          label: 'Day',
-          sortable: true
-        },
-        time_start: {
-          key: 't_start',
-          label: 'Time Start',
-          sortable: true
-        },
-        time_finish: {
-          key: 't_finish',
-          label: 'Time Finish',
-          sortable: true
-        }
-      }
+      schedules: [] //   fields: {
+      //     locationn: {
+      //       key: "selectedLocation",
+      //       label: "Location",
+      //       sortable: true
+      //     },
+      //     field: {
+      //       key: "selectedField",
+      //       label: "Field",
+      //       sortable: true
+      //     },
+      //     price: {
+      //       key: "price",
+      //       label: "Price",
+      //       sortable: true
+      //     },
+      //     dp: {
+      //       key: "dp",
+      //       label: "Down Payment",
+      //       sortable: true
+      //     },
+      //     day: {
+      //       key: "day",
+      //       label: "Day",
+      //       sortable: true
+      //     },
+      //     time_start: {
+      //       key: "t_start",
+      //       label: "Time Start",
+      //       sortable: true
+      //     },
+      //     time_finish: {
+      //       key: "t_finish",
+      //       label: "Time Finish",
+      //       sortable: true
+      //     }
+      //   }
+
     };
   },
   mounted: function mounted() {
@@ -3666,8 +3688,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
       var index = 0;
       axios({
-        url: 'api/v1/location',
-        methods: 'GET'
+        url: "api/v1/location",
+        methods: "GET"
       }).then(function (response) {
         _this.locationList = response.data.serve;
         console.log(response.data.serve);
@@ -3689,8 +3711,8 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
       var index = 0;
       axios({
-        url: 'api/v1/fields/' + this.schedule.selectedLocation,
-        methods: 'GET'
+        url: "api/v1/fields/" + this.schedule.selectedLocation,
+        methods: "GET"
       }).then(function (response) {
         console.log(response);
         _this2.fieldlist = response.data.serve;
@@ -3709,18 +3731,33 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         console.log(error);
       });
     },
-    addschedule: function addschedule() {
-      if (this.add) this.add = false;else this.add = true;
+    addSchedule: function addSchedule() {
+      this.schedules.push({
+        selectedLocation: this.schedule.selectedLocation,
+        selectedField: this.schedule.selectedField,
+        price: this.schedule.price,
+        day: this.schedule.day,
+        dp: this.schedule.dp,
+        t_start: this.schedule.t_start,
+        t_finish: this.schedule.t_finish
+      });
+      this.schedule = {
+        selectedLocation: "",
+        selectedField: "",
+        price: "",
+        day: "",
+        dp: "",
+        t_start: null,
+        t_finish: null
+      };
+    },
+    removeSchedule: function removeSchedule(item) {
+      this.schedules.splice(item, 1);
     }
   },
   watch: {
-    'schedule.selectedLocation': function scheduleSelectedLocation() {
+    "schedule.selectedLocation": function scheduleSelectedLocation() {
       this.loadField();
-    },
-    add: function add() {
-      // this.items[this.index]=this.schedule
-      // this.index++
-      this.items.push(this.schedule);
     }
   }
 });
@@ -73075,35 +73112,52 @@ var render = function() {
             {
               staticClass: "btn btn-detail",
               attrs: { variant: "primary" },
-              on: {
-                click: function($event) {
-                  return _vm.addschedule()
-                }
-              },
-              model: {
-                value: _vm.add,
-                callback: function($$v) {
-                  _vm.add = $$v
-                },
-                expression: "add"
-              }
+              on: { click: _vm.addSchedule }
             },
             [_vm._v("Add")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "spacer-20" }),
-          _vm._v(" "),
-          _c("b-table", {
-            staticClass: "thead-light",
-            attrs: {
-              fixed: "",
-              border: "",
-              small: "",
-              items: _vm.items,
-              fields: _vm.fields,
-              "primary-key": "id_location "
-            }
-          }),
+          _c("table", { staticClass: "table" }, [
+            _c("thead", [
+              _c("tr", [
+                _c("th", [_vm._v("Location")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Field")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Price")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Down Payment")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Day")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Time Start")]),
+                _vm._v(" "),
+                _c("th", [_vm._v("Time Finish")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.schedules, function(u) {
+                return _c("tr", { key: u.id }, [
+                  _c("td", [_vm._v(_vm._s(u.selectedLocation))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(u.selectedField))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(u.price))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(u.dp))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(u.day))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(u.t_start))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(u.t_finish))])
+                ])
+              }),
+              0
+            )
+          ]),
           _vm._v(" "),
           _c("b-button", { attrs: { type: "save", variant: "primary" } }, [
             _vm._v("Save")
