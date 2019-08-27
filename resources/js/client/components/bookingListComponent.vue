@@ -15,7 +15,8 @@
                         <label for="date">Date</label>
                     </b-row>
                     <b-row>
-                        <date-picker v-model="selectedDate" lang="en" :config="dateFormat"></date-picker>
+                        <!-- <date-picker v-model="selectedDate" lang="en" format="MM/DD/YYYY"></date-picker> -->
+                        <input type="date" v-model="selectedDate">
                     </b-row>
                 </b-col>
             </b-row>
@@ -25,18 +26,30 @@
             <b-button variant="primary" class="btn btn-detail" href="addbooking" >Add</b-button>
         </b-col>
         <div class="spacer-20"></div>
-        <b-table fixed bordered small :items="items" :fields="fields" class="thead-light" id="bookinglist" primary-key="id_booking" >
-            <template slot="schedule" slot-scope="scheduleList">
-                {{scheduleList.start_time}}-{{scheduleList.end_time}}
-            </template>
-            <template slot="payment_status" slot-scope="data">
-                <button class="btn button badge" :class="classStatus(data.item.payment_status)" v-on:click="changeStatus(data.index)" :disabled="disableButton(data.item.payment_status)">{{paid(data.item.payment_status)}}</button>
-            </template>
-        </b-table>
+        <table class="table">
+            <thead>
+                <th>Name</th>
+                <th>Booking Code</th>
+                <th>Schedule</th>
+                <th>Payment Status</th>
+                <th>Payment Method</th>
+            </thead>
+            <tbody>
+                <tr v-for="(data,index) in dataBooking" :key="data.id_booking">
+                    <td>{{data.name}}</td>
+                    <td>{{data.id_booking}}</td>
+                    <td>{{data.schedule}}</td>
+                    <td>
+                        <button class="btn button badge" :class="classStatus(data.payment_status)" v-on:click="changeStatus(index)" :disabled="disableButton(data.payment_status)">{{paid(data.payment_status)}}</button>
+                    </td>
+                    <td>{{data.payment_type}}</td>
+                </tr>
+            </tbody>
+        </table>
         <div class="spacer-20"></div>
-        <!-- <b-pagination v-model="currentPage" :total-rows="rows" :per-page="perPage" aria-controls="bookinglist"
+        <b-pagination v-model="currentPage" :per-page="perPage" aria-controls="bookinglist"
             :prev-text="'«'" :next-text="'»'" :hide-goto-end-buttons="true" size="md" align="center">
-        </b-pagination> -->
+        </b-pagination>
     </div>
 </template>
 
@@ -48,6 +61,7 @@
 
     export default {
         data() {
+
             return {
                 // Note 'age' is left out and will not appear in the rendered table
                 perPage:20,
@@ -59,9 +73,11 @@
                 fieldlist:[],
                 field:[],
                 scheduleList:[],
+                userList:[],
+                items:[],
                 selectedDate:"",
                 dateFormat:{
-                    format: 'YYYY-MM-DD',
+                    format: 'MMM/DD/YYYY',
                     useCurrent:false,
                 },
                 componen:{
@@ -72,33 +88,14 @@
                     field: '',
                     date:''
                 },
-                fields:{
-                    user: {
-                        key: 'client_email',
-                        label: 'User',
-                        sortable: true
-                    },
-                    bookingCode: {
-                        key: 'id_booking',
-                        label: 'Booking Code',
-                        sortable: false
-                    },
-                    schedule: {
-                        label:'Schedule',
-                        sortable: true
-                    },
-                    payment_status: {
-                        key: 'payment_status',
-                        label: 'Status',
-                        sortable: true
-                    },
-                    payment: {
-                        key: 'payment_type',
-                        label: 'Payment',
-                        sortable: true
-                    }
+                Booking:{
+                    id_booking:'',
+                    name:'',
+                    schedule:'',
+                    payment_status:'',
+                    payment_type:''
                 },
-                items:[]
+                dataBooking:[]
             }
         },
         mounted(){
@@ -128,7 +125,6 @@
             },
             changeStatus(index) {
                 const data = {
-                    // id_booking:this.items[index].id_booking,
                     payment_status:this.items[index].payment_status += 1
                 }
                 axios({
@@ -136,7 +132,6 @@
                     method:'PUT',
                     data: data
                 }).then(response=>{
-                    console.log(response);
                     this.items[index].payment_status = response.data.serve
                     window.location.href = window.location.protocol +'//'+ window.location.host + '/bookinglist';
                 }).catch(error=>{
@@ -151,29 +146,54 @@
                     url: 'api/v1/bookings',
                     method: 'GET'
                 }).then(response => {
-                    console.log(response);
-                    this.items = response.data.serve
-                    console.log(this.items);
+                    let items = response.data.serve
+                    // console.log(items);
+                    
+                    for (let index = 0; index < items.length; index++) {
+                        this.Booking.id_booking=items[index].id_booking;
+                        this.Booking.payment_status=items[index].payment_status;
+                        this.Booking.payment_type=items[index].payment_type;
+                        this.loadSchedule(items[index].id_schedule,index)
+                        this.loadUser(items[index].client_email,index)
+                        console.log(this.Booking.name);
+                        
+                        this.dataBooking.push({
+                            name:this.Booking.name,
+                            id_booking:this.Booking.id_booking,
+                            schedule:this.Booking.schedule,
+                            payment_status:this.Booking.payment_status,
+                            payment_type:this.Booking.payment_type,
+                        })
+                    }
                 }).catch(error => {
                     console.log(error);
                 })
-                console.log(this.items.id_schedule);
-                
-                for (let index = 0; index < this.items.length; index++) {
-                    this.loadSchedule(this.items.id_schedule);
-                }
-                console.log(this.scheduleList);
                 
             },
-            loadSchedule(index){
-                id_schedule= this.items[index].id_schedule
+            loadSchedule(id_schedule,index){
                 axios({
                     url: 'api/v1/bookings/schedule/'+id_schedule,
                     method: 'GET'
                 }).then(response => {
-                    console.log(response);
-                    this.scheduleList = response.data.serve
-                    console.log(this.scheduleList);
+                    let temp=response.data.serve[0].start_time+'-'+response.data.serve[0].end_time;
+                    this.Booking.schedule=temp
+                    // return schedule
+                    console.log(this.Booking.schedule);         
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            loadUser(email,i){
+                axios({
+                    url: 'api/v1/bookings/user/'+email,
+                    method: 'GET'
+                }).then(response => {
+                    let temp = response.data.serve;
+                    for (let index = 0; index < temp.length; index++) {
+                        this.Booking.name=temp[index].name
+                        // return this.Booking.name
+                        console.log(this.Booking.name); 
+                    }
                 }).catch(error => {
                     console.log(error);
                 })
@@ -185,31 +205,24 @@
                     methods:'GET',
                 }).then(response=>{
                     this.locationList = response.data.serve
-                    console.log(response.data.serve);
-                    for (index=0; index<= this.locationList.length; index++) {
+                    for (index=0; index< this.locationList.length; index++) {
                         this.location.push({value: this.locationList[index].id_location, text: this.locationList[index].location_name})
                     }
-                    console.log(this.location);
                 }).catch(error=>{
                     console.log(error);
                 })
             },
             loadField(){
-                console.log();
-                
                 let index=0;
                 axios({
                     url: 'api/v1/field/data/'+this.selectedLocation,
                     methods:'GET',
                 }).then(response=>{
-                    console.log(response);
                     this.fieldlist = response.data.serve
-                    console.log(response.data.serve);
                     this.field = []
-                    for (index=0; index<= this.fieldlist.length; index++) {
+                    for (index=0; index< this.fieldlist.length; index++) {
                         this.field.push({value: this.fieldlist[index].id_field, text: this.fieldlist[index].field_name})
                     }
-                    console.log(this.fieldlist);
                 }).catch(error=>{
                     console.log(error);
                 })
@@ -219,28 +232,23 @@
                     url: 'api/v1/bookings/location/'+this.selectedLocation,
                     method: 'GET'
                 }).then(response => {
-                    console.log(response);
                     this.items = response.data.serve
-                    console.log(this.items);
                 }).catch(error => {
                     console.log(error);
                 })
             },
             loadByField(){
                 console.log(this.selectedDate);
-                // format: {
-                //     toValue: function (date, format, language) {
-                //     var d = new Date(date);
-                //     d.setDate(d.getDate() + 7);
-                //     return new Date(d);
-                //     }
-                // }
+                var d = this.selectedDate
+                // month = '' + (d.getMonth() + 1),
+                // day = '' + d.getDate(),
+                // year = d.getFullYear();
                  axios({
                     url: 'api/v1/bookings/field',
                     method: 'POST',
                     data: {
                         id_field : this.selectedField,
-                        date : this.selectedDate
+                        date: this.selectedDate
                     }
                 }).then(response => {
                     console.log(response);
@@ -265,3 +273,4 @@
         }
     }
 </script>
+

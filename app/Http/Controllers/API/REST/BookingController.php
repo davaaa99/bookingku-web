@@ -10,6 +10,7 @@ use App\Booking;
 use App\Field;
 use App\Schedule;
 use App\Location;
+use Illuminate\Support\Carbon;
 
 class BookingController extends Controller
 {
@@ -136,11 +137,15 @@ class BookingController extends Controller
     
     public function showByField(Request $request)
     {
+        // dd($request);
+        $date= new Carbon($request->date, 'Asia/Jakarta');
+        $find= $date->format('Y-m-d');
+        dd($find);
         try {
             $listBooking=Field::join('schedules','schedules.id_field','=','fields.id_field')
                                     ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
                                     ->where('fields.id_field',$request->id_field)
-                                    ->where('bookings.created_at','LIKE',"%$request->date%")
+                                    ->where('bookings.created_at','LIKE',"%$find%")
                                     ->select('bookings.*')->get();
         } catch (Exception $e) {
             return response()->json([

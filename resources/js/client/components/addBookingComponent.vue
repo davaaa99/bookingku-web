@@ -1,69 +1,69 @@
 <template>
     <div id="addbooking">
-        <div id="v-carousel" type="x/template">
-            <div class="card-carousel-wrapper">
-                <div class="card-carousel--nav__left" @click="moveCarousel(-1)" :disabled="atHeadOfList"></div>
-                <div class="card-carousel">
-                <div class="card-carousel--overflow-container">
-                    <div class="card-carousel-cards" :style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}">
-                    <b-card border-variant="secondary" header="Lapang A" header-border-variant="white" align="center">
-                            <b-button class="available">08.00-09.00</b-button>
-                            <b-button class="available">09.00-10.00</b-button>
-                            <b-button class="unavailable">10.00-11.00</b-button>
-                            <b-button class="unavailable">11.00-12.00</b-button>
-                            <b-button class="available">12.00-13.00</b-button>
-                            <b-button class="available">13.00-14.00</b-button>
-                            <b-button class="available">14.00-15.00</b-button>
-                            <b-button class="available">15.00-16.00</b-button>
-                            <b-button class="unavailable">16.00-17.00</b-button>
-                            <b-button class="unavailable">17.00-17.00</b-button>
-                            <b-button class="unavailable">18.00-19.00</b-button>
-                            <b-button class="unavailable">19.00-20.00</b-button>
-                            <b-button class="available">20.00-21.00</b-button>
-                            <b-button class="available">21.00-22.00</b-button>
-                    </b-card>
-                    <b-card border-variant="secondary" header="Lapang B" header-border-variant="white" align="center">
-                                <!-- foreach schedule where field -->
-                                <b-button class="available">08.00-09.00</b-button>
-                                <b-button class="available">09.00-10.00</b-button>
-                                <b-button class="unavailable">10.00-11.00</b-button>
-                                <b-button class="unavailable">11.00-12.00</b-button>
-                                <b-button class="available">12.00-13.00</b-button>
-                                <b-button class="available">13.00-14.00</b-button>
-                                <b-button class="available">14.00-15.00</b-button>
-                                <b-button class="choosed">15.00-16.00</b-button>
-                                <b-button class="unavailable">16.00-17.00</b-button>
-                                <b-button class="unavailable">17.00-17.00</b-button>
-                                <b-button class="unavailable">18.00-19.00</b-button>
-                                <b-button class="unavailable">19.00-20.00</b-button>
-                                <b-button class="available">20.00-21.00</b-button>
-                                <b-button class="available">21.00-22.00</b-button>
-                            </b-card>
-                            <b-card border-variant="secondary" header="Lapang C" header-border-variant="white" align="center">
-                                <!-- foreach schedule where field -->
-                                <b-button class="available">08.00-09.00</b-button>
-                                <b-button class="available">09.00-10.00</b-button>
-                                <b-button class="unavailable">10.00-11.00</b-button>
-                                <b-button class="unavailable">11.00-12.00</b-button>
-                                <b-button class="available">12.00-13.00</b-button>
-                                <b-button class="available">13.00-14.00</b-button>
-                                <b-button class="available">14.00-15.00</b-button>
-                                <b-button class="available">15.00-16.00</b-button>
-                                <b-button class="unavailable">16.00-17.00</b-button>
-                                <b-button class="unavailable">17.00-17.00</b-button>
-                                <b-button class="unavailable">18.00-19.00</b-button>
-                                <b-button class="unavailable">19.00-20.00</b-button>
-                                <b-button class="available">20.00-21.00</b-button>
-                                <b-button class="available">21.00-22.00</b-button>
-                            </b-card>
-                    </div>
-                </div>
-                </div>
-                <div class="card-carousel--nav__right" @click="moveCarousel(1)" :disabled="atEndOfList"></div>
-            </div>
-        </div>
         <b-form @submit="onSubmit" @reset="onReset">
             <b-form-group>
+                <div id="v-carousel" type="x/template">
+                    <div class="card-carousel-wrapper">
+                        <div class="card-carousel--nav__left" @click="moveCarousel(-1)" :disabled="atHeadOfList"></div>
+                        <div class="card-carousel">
+                        <div class="card-carousel--overflow-container">
+                            <div class="card-carousel-cards" :style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}">
+                            <b-card border-variant="secondary" header="Lapang A" header-border-variant="white" align="center">
+                                    <b-button class="available">08.00-09.00</b-button>
+                                    <b-button class="available">09.00-10.00</b-button>
+                                    <b-button class="unavailable">10.00-11.00</b-button>
+                                    <b-button class="unavailable">11.00-12.00</b-button>
+                                    <b-button class="available">12.00-13.00</b-button>
+                                    <b-button class="available">13.00-14.00</b-button>
+                                    <b-button class="available">14.00-15.00</b-button>
+                                    <b-button class="available">15.00-16.00</b-button>
+                                    <b-button class="unavailable">16.00-17.00</b-button>
+                                    <b-button class="unavailable">17.00-17.00</b-button>
+                                    <b-button class="unavailable">18.00-19.00</b-button>
+                                    <b-button class="unavailable">19.00-20.00</b-button>
+                                    <b-button class="available">20.00-21.00</b-button>
+                                    <b-button class="available">21.00-22.00</b-button>
+                            </b-card>
+                            <b-card border-variant="secondary" header="Lapang B" header-border-variant="white" align="center">
+                                        <!-- foreach schedule where field -->
+                                        <b-button class="available">08.00-09.00</b-button>
+                                        <b-button class="available">09.00-10.00</b-button>
+                                        <b-button class="unavailable">10.00-11.00</b-button>
+                                        <b-button class="unavailable">11.00-12.00</b-button>
+                                        <b-button class="available">12.00-13.00</b-button>
+                                        <b-button class="available">13.00-14.00</b-button>
+                                        <b-button class="available">14.00-15.00</b-button>
+                                        <b-button class="choosed">15.00-16.00</b-button>
+                                        <b-button class="unavailable">16.00-17.00</b-button>
+                                        <b-button class="unavailable">17.00-17.00</b-button>
+                                        <b-button class="unavailable">18.00-19.00</b-button>
+                                        <b-button class="unavailable">19.00-20.00</b-button>
+                                        <b-button class="available">20.00-21.00</b-button>
+                                        <b-button class="available">21.00-22.00</b-button>
+                                    </b-card>
+                                    <b-card border-variant="secondary" header="Lapang C" header-border-variant="white" align="center">
+                                        <!-- foreach schedule where field -->
+                                        <b-button class="available">08.00-09.00</b-button>
+                                        <b-button class="available">09.00-10.00</b-button>
+                                        <b-button class="unavailable">10.00-11.00</b-button>
+                                        <b-button class="unavailable">11.00-12.00</b-button>
+                                        <b-button class="available">12.00-13.00</b-button>
+                                        <b-button class="available">13.00-14.00</b-button>
+                                        <b-button class="available">14.00-15.00</b-button>
+                                        <b-button class="available">15.00-16.00</b-button>
+                                        <b-button class="unavailable">16.00-17.00</b-button>
+                                        <b-button class="unavailable">17.00-17.00</b-button>
+                                        <b-button class="unavailable">18.00-19.00</b-button>
+                                        <b-button class="unavailable">19.00-20.00</b-button>
+                                        <b-button class="available">20.00-21.00</b-button>
+                                        <b-button class="available">21.00-22.00</b-button>
+                                    </b-card>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="card-carousel--nav__right" @click="moveCarousel(1)" :disabled="atEndOfList"></div>
+                    </div>
+                </div>
                 <b-row>
                 <b-col cols="4">
                     <label for="location">Lokasi</label>
@@ -148,7 +148,8 @@
                 field:[],
                 currentOffset: 0,
                 windowSize: 3,
-                paginationFactor: 220,items: [
+                paginationFactor: 220,
+                items: [
                     {name: 'Tycoon Thai', tag: "Thai"},
                     {name: 'Ippudo', tag: "Japanese"},
                     {name: 'Milano', tag: "Pizza"},
