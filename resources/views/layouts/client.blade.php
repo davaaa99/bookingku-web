@@ -9,7 +9,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
     <title>Bookingku - Client</title>
 
     <!-- Scripts -->

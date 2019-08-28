@@ -7,7 +7,8 @@
         <div class="spacer-30"></div>
         <div class="title">Edit Lapang </div>
         <div class="spacer-50"></div>
-        <edit-lapangan></edit-lapangan>
+        <edit-lapangan id-field="{{$id}}">
+        </edit-lapangan>
         <div class="spacer-50"></div>
         </div>
     </div>

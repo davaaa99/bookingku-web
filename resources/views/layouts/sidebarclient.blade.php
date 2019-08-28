@@ -13,7 +13,7 @@
             <div class="content-side">
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('admin') }}" class="content-link">
-                    <img class="logo" src="{{ asset('client/dashboard.png') }}">
+                        <img class="logo" src="{{ asset('client/dashboard.png') }}">
                         Dashboard
                     </a>
                 </div>
@@ -25,7 +25,7 @@
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('payment') }}" class="content-link">
+                    <a href="/locations" class="content-link">
                         <!-- <i class="far fa-credit-card"></i> -->
                         <img class="logo" src="{{ asset('client/location.png')}}">
                         Location
@@ -34,15 +34,25 @@
                 <div class="content-item d-flex align-items-center">
                     <a href="{{ route('lapang') }}" class="content-link">
                         <!-- <i class="far fa-credit-card"></i> -->
-                        <img class="logo" src="{{ asset('client/field.png')}}" >
+                        <img class="logo" src="{{ asset('client/field.png')}}">
                         Field
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('payment') }}" class="content-link">
+                    <a href="{{ route('schedule') }}" class="content-link">
                     <img class="logo" src="{{ asset('client/schedule.png')}}" >
                         Schedule
                     </a>
+                </div>
+                <div class="content-item d-flex align-items-center">
+                    <a class="content-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        <img class="logo" src="{{ asset('client/schedule.png')}}">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

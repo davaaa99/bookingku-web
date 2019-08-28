@@ -30,11 +30,10 @@ class ClientPageController extends Controller
      * @param String $id
      * @return View
      */
-    public function locationDetail(){
-        // $data = base64_decode($id);
+    public function locationDetail($id){
+        $data['id'] = $id;
         
-        // return view('client.locationDetail',['id' => $data]);
-        return view('client.locationDetail');
+        return view('client.locationDetail',$data);
     }
 
     /**
@@ -54,9 +53,9 @@ class ClientPageController extends Controller
      * @param String $id
      * @return View
      */
-    public function locationEdit(){
-        
-        return view('client.locationEdit');
+    public function locationEdit($id){
+        $data['id'] = $id;
+        return view('client.locationEdit',$data);
     }
 
     /**
@@ -85,11 +84,13 @@ class ClientPageController extends Controller
     public function addLapang(){
         return view('client.AddLapang');
     }
-    public function editLapang(){
-        return view('client.EditLapang');
+    public function editLapang($id_field){
+        $data['id'] = $id_field;
+        return view('client.EditLapang',$data);
     }
-    public function detailLapang(){
-        return view('client.DetailLapangan');
+    public function detailLapang($id_field){
+        $data['id'] = $id_field;
+        return view('client.DetailLapangan',$data);
     }
     
     public function bookinglist(){

@@ -1,63 +1,150 @@
 <template>
-    <div id="location-detail">
-        <b-card overlay img-src="https://picsum.photos/900/250/?image=3" 
-        img-alt="Gambar Lapangan" text-variant="white" border-variant="dark"
-        class="image-header">
-            <div class="spacer"></div>
-            <div class="spacer-30"></div>
-            <b-card-text>
-                <h1>Sarijadi Futsal</h1>
-                <p>Komp. Pasadena Residence Blok AA No 21, Margahayu Utara, Kec. Babakan Ciparay, Kota Bandung, Jawa Barat 40223</p>
-            </b-card-text>
-        </b-card>
-        <div class="spacer-30"></div>
-        <div class="detail d-flex">
-            <div class="desc">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </div>
-            <div class="time">
-                <h3>Waktu Buka</h3>
-                <b-row>
-                    <ul>
-                        <li>Senin</li>
-                        <li>Selasa</li>
-                        <li>Rabu</li>
-                        <li>Kamis</li>
-                        <li>Jumat</li>
-                        <li>Sabtu</li>
-                        <li>Minggu</li>
-                    </ul>
-                    <ul>
-                        <li>07:00 - 22:00</li>
-                        <li>07:00 - 22:00</li>
-                        <li>07:00 - 22:00</li>
-                        <li>07:00 - 22:00</li>
-                        <li>07:00 - 22:00</li>
-                        <li>07:00 - 22:00</li>
-                        <li>07:00 - 22:00</li>
-                    </ul>
-                </b-row>
-            </div>
-        </div>
-        <div class="spacer-20"></div>
+  <div id="location-detail">
+    <b-carousel
+      id="carousel-1"
+      v-model="slide"
+      :interval="4000"
+      controls
+      indicators
+      background="#ababab"
+      img-width="1024"
+      img-height="250"
+      style="text-shadow: 1px 1px 2px #333;"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+      <b-carousel-slide v-for="photo in photos" :key="photo.id" :caption="location.location_name" :text="location.location_address">
+        <img
+          slot="img"
+          class="d-block w-100"
+          width="100%"
+          height="350"
+          :src="photo"
+          :alt="location.location_name"
+        />
+      </b-carousel-slide>
+    </b-carousel>
+    <div class="spacer-20"></div>
+    <div class="detail d-flex">
+      <div class="desc">
+        <h4>Description</h4>
+        <p>{{ location.description }}</p>
+      </div>
+      <div class="time d-flex flex-column align-items-center justify-content-center">
+        <h5>Open Time</h5>
+        <b-row class="ml-n5">
+          <ul>
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+            <li>Sunday</li>
+          </ul>
+          <ul>
+            <li
+              v-for="time in schedule"
+              :key="time.id"
+            >{{ time.open_time }} - {{ time.closing_time }}</li>
+          </ul>
+        </b-row>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-    import BootstrapVue from 'bootstrap-vue'
-    import {
-        type
-    } from 'os';
-    Vue.use(BootstrapVue)
+import BootstrapVue from "bootstrap-vue";
+import { type } from "os";
+Vue.use(BootstrapVue);
 
-    export default {
-
-        data() {
-
-            return {
-                perPage: 10,
-            };
-        },
+export default {
+  props: {
+    idLocation: String
+  },
+  data() {
+    return {
+      slide: 0,
+      perPage: 10,
+      location: {},
+      photos: [],
+      schedule: [
+        { open_time: "", closing_time: "" },
+        { open_time: "", closing_time: "" },
+        { open_time: "", closing_time: "" },
+        { open_time: "", closing_time: "" },
+        { open_time: "", closing_time: "" },
+        { open_time: "", closing_time: "" },
+        { open_time: "", closing_time: "" }
+      ]
     };
-
+  },
+  mounted() {
+    this.loadDetail();
+  },
+  methods: {
+    loadDetail() {
+      axios({
+        url: "/data/location",
+        method: "POST",
+        data: {
+          id: this.idLocation
+        }
+      })
+        .then(response => {
+          this.location = response.data.serve;
+          this.splitPhotoUrl(this.location.location_photo);
+          this.splitSchedule(this.location.schedule[0]);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    splitSchedule($schedules) {
+      let $time;
+      if (!this.isClose($schedules.everyday)) {
+        for (let index = 0; index < 7; index++) {
+          $time = $schedules.everyday.split(";");
+          this.schedule[index].open_time = $time[0];
+          this.schedule[index].closing_time = $time[1];
+        }
+      } else {
+        $time = $schedules.monday.split(";");
+        this.schedule[0].open_time = $time[0];
+        this.schedule[0].closing_time = $time[1];
+        $time = $schedules.tuesday.split(";");
+        this.schedule[1].open_time = $time[0];
+        this.schedule[1].closing_time = $time[1];
+        $time = $schedules.wednesday.split(";");
+        this.schedule[2].open_time = $time[0];
+        this.schedule[2].closing_time = $time[1];
+        $time = $schedules.thursday.split(";");
+        this.schedule[3].open_time = $time[0];
+        this.schedule[3].closing_time = $time[1];
+        $time = $schedules.friday.split(";");
+        this.schedule[4].open_time = $time[0];
+        this.schedule[4].closing_time = $time[1];
+        $time = $schedules.saturday.split(";");
+        this.schedule[5].open_time = $time[0];
+        this.schedule[5].closing_time = $time[1];
+        $time = $schedules.sunday.split(";");
+        this.schedule[6].open_time = $time[0];
+        this.schedule[6].closing_time = $time[1];
+      }
+    },
+    isClose($day) {
+      return $day.length == 1;
+    },
+    splitPhotoUrl($photosUrl) {
+      this.photos = $photosUrl.split(";");
+    },
+    onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd(slide) {
+      this.sliding = false;
+    }
+  }
+};
 </script>

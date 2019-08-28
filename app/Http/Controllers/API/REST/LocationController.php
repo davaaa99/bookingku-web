@@ -7,11 +7,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Ramsey\Uuid\Uuid;
 use App\Location;
+use App\Location_schedule;
 use Mockery\CountValidator\Exception;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Response;
 use App\Http\Resources\PostCollection;
-
+use Illuminate\Http\File;
+use Illuminate\Http\UploadedFile;
 
 class LocationController extends Controller
 {
@@ -20,10 +23,10 @@ class LocationController extends Controller
      *
      * @return void
      */
-    // public function __construct(Request $request)
-    // {
-    //     $this->middleware(['auth:api']);
-    // }
+    public function __construct(Request $request)
+    {
+        $this->middleware(['auth']);
+    }
 
     /**
      * Display a listing of the location.
@@ -32,9 +35,9 @@ class LocationController extends Controller
      */
     public function index()
     {
-        try{
+        try {
             $dataLocation = Location::all();
-        }catch (Exception $e){
+        } catch (Exception $e) {
             return response()->json()([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),
                 'serve' => []
@@ -45,7 +48,6 @@ class LocationController extends Controller
             'message' => 'Successfully retrieved data.',
             'serve' => $dataLocation
         ], 200);
-        // return new PostCollection(Location::all());
     }
 
     /**
@@ -59,9 +61,50 @@ class LocationController extends Controller
         return Validator::make($data, [
             'location_name' => ['required', 'string', 'max:50'],
             'location_address' => ['required', 'string', 'max:255'],
-            'open_time' => ['required', 'date_format:H:i'],
-            'closing_time' => ['required', 'date_format:H:i','after:open_time'],
         ]);
+    }
+
+    /**
+     * Create and store a new location schedule.
+     *
+     * @param  array $data
+     * @param String $id_location
+     * @return \Illuminate\Http\Response
+     */
+    public function createLocationSchedule(array $data, $id_location)
+    {
+        try {
+            /**
+             * Location_schedule register
+             */
+            $dataUser = Auth::user();
+
+            $locationSchedule = new Location_schedule();
+            $locationSchedule->id_location_schedule = Uuid::uuid1()->getHex();
+            $locationSchedule->id_location = $id_location;
+            $locationSchedule->everyday = $data['day'][0]['open_time'] . ";" . $data['day'][0]['closing_time'];
+            $locationSchedule->monday = $data['day'][1]['open_time'] . ";" . $data['day'][1]['closing_time'];
+            $locationSchedule->tuesday = $data['day'][2]['open_time'] . ";" . $data['day'][2]['closing_time'];
+            $locationSchedule->wednesday = $data['day'][3]['open_time'] . ";" . $data['day'][3]['closing_time'];
+            $locationSchedule->thursday = $data['day'][4]['open_time'] . ";" . $data['day'][4]['closing_time'];
+            $locationSchedule->friday = $data['day'][5]['open_time'] . ";" . $data['day'][5]['closing_time'];
+            $locationSchedule->saturday = $data['day'][6]['open_time'] . ";" . $data['day'][6]['closing_time'];
+            $locationSchedule->sunday = $data['day'][7]['open_time'] . ";" . $data['day'][7]['closing_time'];
+            $locationSchedule->created_by = $dataUser->email;
+            $locationSchedule->updated_by = $dataUser->email;
+            $locationSchedule->save();
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed save data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+
+        return response()->json([
+            'message' => 'Successfully saved data.',
+            'serve' => $locationSchedule
+        ], 200);
     }
 
     /**
@@ -72,9 +115,9 @@ class LocationController extends Controller
      */
     public function create(Request $request)
     {
-        try{
+        try {
             $validate = $this->validator($request->all());
-            if ($validate->fails()){
+            if ($validate->fails()) {
                 return response()->json([
                     'message' => 'Unable to save data. Bad config',
                     'serve' => [
@@ -82,27 +125,29 @@ class LocationController extends Controller
                     ]
                 ], 500);
             }
-    
+
             /**
-             * Location register
+             * Create location
              */
             $dataUser = Auth::user();
-    
+
             $location = new Location();
             $location->id_location = Uuid::uuid1()->getHex();
             $location->id_user = $dataUser->id_user;
             $location->location_name = $request->location_name;
             $location->location_address = $request->location_address;
             $location->description = $request->description;
-            $location->open_time = $request->open_time;
-            $location->closing_time = $request->closing_time;
-            $location->location_photo = $request->location_photo;
             $location->latitude = $request->latitude;
             $location->longitude = $request->longitude;
             $location->created_by = $dataUser->email;
             $location->updated_by = $dataUser->email;
             $location->save();
-        }catch(Exception $e){
+
+            /**
+             * Create location schedule
+             */
+            $this->createLocationSchedule($request->all(), $location->id_location);
+        } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed save data.' . $e->getMessage(),
                 'serve' => []
@@ -117,18 +162,53 @@ class LocationController extends Controller
     }
 
     /**
+     * Save location photo to storage
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storePhoto(Request $request)
+    {
+        try {
+            $index = 1;
+            $location = Location::find($request->id_location);
+            foreach ($request->file('photo') as $loc_photo) {
+                $extension = $loc_photo->getClientOriginalExtension();
+                $photoName = $index . $request->id_location . '.' . $extension;
+                $path = Storage::disk('public')->putFileAs('/locationPhotos', $loc_photo, $photoName);
+
+                if($location->location_photo == null) 
+                    $location->location_photo = '/storage' . '/' . $path;
+                else $location->location_photo = $location->location_photo .';'. '/storage' . '/' . $path;
+                $location->save();
+                $index++;
+            }
+
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed save data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully saved data.',
+            'serve' => []
+        ], 200);
+    }
+
+    /**
      * Show specified location based on client login.
      *
      * @return \Illuminate\Http\Response
      */
     public function show()
     {
-        try{
-            // $dataUser = Auth::user();
-            // $idUser = $dataUser->id_user;
-            // $dataLocation = Location::where('id_user',$idUser)->get();
-            $dataLocation = Location::where('id_user','48b2844ab33811e9a7f5b06ebf217877')->get();
-        }catch(Exception $e){
+        try {
+            $dataUser = Auth::user();
+            $idUser = $dataUser->id_user;
+            $dataLocation = Location::where('id_user', $idUser)->get();
+        } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieve data.' . $e->getMessage(),
                 'serve' => []
@@ -139,12 +219,6 @@ class LocationController extends Controller
             'message' => 'Successfully retrieved data.',
             'serve' => $dataLocation,
         ], 200);
-
-        // $dataUser = Auth::user();
-        // return response()->json([
-        //     'message' => 'Successfully retrieved data.',
-        //     'serve' => print_r($dataUser),
-        // ], 200);
     }
 
     /**
@@ -155,11 +229,11 @@ class LocationController extends Controller
      */
     public function search($address)
     {
-        try{
-            $location = locations::where('location_address','LIKE',"%$address%")
-                                ->orwhere('location_name','LIKE',"%$address%")
-                                ->get();
-        }catch(Exception $e){
+        try {
+            $location = locations::where('location_address', 'LIKE', "%$address%")
+                ->orwhere('location_name', 'LIKE', "%$address%")
+                ->get();
+        } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieve data.',
                 'serve' => report($e)
@@ -173,29 +247,140 @@ class LocationController extends Controller
     }
 
     /**
+     * Retrieve specified location data
+     * 
+     *  @param \Illuminate\Http\Request  $request
+     *  @return \Illuminate\Http\Response
+     */
+    public function locationDetail(Request $request)
+    {
+        try {
+            $location = Location::find($request->id);
+            $loc_schedule = Location_schedule::where('id_location', $location->id_location)->get();
+            $location->schedule = $loc_schedule;
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed retrieve data.' . $e->getMessage(),
+                'serve' => []
+            ]);
+        }
+        return response()->json([
+            'message' => 'Successfully retrieved data.',
+            'serve' => $location
+        ]);
+    }
+
+    /**
+     * Update the location schedule.
+     *
+     * @param  array $data
+     * @return \Illuminate\Http\Response
+     */
+    public function updateLocationSchedule(array $data)
+    {
+        try {
+            /**
+             * Location_schedule register
+             */
+            $dataUser = Auth::user();
+
+            $locationSchedule = Location_schedule::where('id_location', $data['id_location'])->first();
+            $locationSchedule->everyday = $data['day'][0]['open_time'] . ";" . $data['day'][0]['closing_time'];
+            $locationSchedule->monday = $data['day'][1]['open_time'] . ";" . $data['day'][1]['closing_time'];
+            $locationSchedule->tuesday = $data['day'][2]['open_time'] . ";" . $data['day'][2]['closing_time'];
+            $locationSchedule->wednesday = $data['day'][3]['open_time'] . ";" . $data['day'][3]['closing_time'];
+            $locationSchedule->thursday = $data['day'][4]['open_time'] . ";" . $data['day'][4]['closing_time'];
+            $locationSchedule->friday = $data['day'][5]['open_time'] . ";" . $data['day'][5]['closing_time'];
+            $locationSchedule->saturday = $data['day'][6]['open_time'] . ";" . $data['day'][6]['closing_time'];
+            $locationSchedule->sunday = $data['day'][7]['open_time'] . ";" . $data['day'][7]['closing_time'];
+            $locationSchedule->updated_by = $dataUser->email;
+            $locationSchedule->save();
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed save data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+
+        return response()->json([
+            'message' => 'Successfully saved data.',
+            'serve' => $locationSchedule
+        ], 200);
+    }
+
+    /**
+     * Update location photo
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePhoto(Request $request)
+    {
+        // dd($request->oldPhoto);
+        try {
+            $index = 1;
+            $location = Location::find($request->id_location);
+            $location_photo = null;
+            if ($request->oldPhoto != null) {
+                foreach ($request->oldPhoto as $loc_photo) {
+                    if($location_photo == null) 
+                        $location_photo = $loc_photo;
+                    else $location_photo = $location_photo .';'. $loc_photo;
+                    $index++;
+                }
+            }
+            if ($request->file('photo') != null) {
+                foreach ($request->file('photo') as $loc_photo) {
+                    $extension = $loc_photo->getClientOriginalExtension();
+                    $photoName = $index . $request->id_location . '.' . $extension;
+                    $path = Storage::disk('public')->putFileAs('/locationPhotos', $loc_photo, $photoName);
+
+                    if($location_photo == null) 
+                        $location_photo = '/storage' . '/' . $path;
+                    else $location_photo = $location_photo .';'. '/storage' . '/' . $path;
+                    
+                    $index++;
+                }
+            }
+            $location->location_photo = $location_photo;
+            $location->save();
+
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed save data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'Successfully saved data.',
+            'serve' => []
+        ], 200);
+    }
+
+    /**
      * Update the location data.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  String $id_location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_location)
+    public function update(Request $request)
     {
-        try{
+        try {
             $dataUser = Auth::user();
 
-            $location = Location::find($id_location);
+            $location = Location::find($request->id_location);
             $location->location_name = $request->location_name;
             $location->location_address = $request->location_address;
             $location->description = $request->description;
-            $location->open_time = $request->open_time;
-            $location->closing_time = $request->closing_time;
-            $location->location_photo = $request->location_photo;
             $location->latitude = $request->latitude;
             $location->longitude = $request->longitude;
             $location->updated_by = $dataUser->email;
             $location->save();
-        }catch(Exception $e){
+
+            $this->updateLocationSchedule($request->all());
+        } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed update location data.' . $e->getMessage(),
                 'serve' => []
@@ -216,14 +401,14 @@ class LocationController extends Controller
      */
     public function destroy($id_location)
     {
-        try{
+        try {
             $dataUser = Auth::user();
 
             $location = Location::find($id_location);
             $location->updated_by = $dataUser->email;
             $location->save();
-            Location::where('id_location',$id_location)->delete();
-        }catch(Exception $e){
+            Location::where('id_location', $id_location)->delete();
+        } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed delete data.' . $e->getMessage(),
             ], 500);
