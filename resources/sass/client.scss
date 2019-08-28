@@ -1187,3 +1187,16 @@ main {
 .myselect {
     font-size: 15px;
 }
+
+[v-cloak] {
+    display: none;
+  }
+  .edit {
+    display: none;
+  }
+  .editing .edit {
+    display: block
+  }
+  .editing .view {
+    display: none;
+  }
