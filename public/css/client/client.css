@@ -16676,16 +16676,12 @@ main {
   width: 30px;
 }
 
-<<<<<<< HEAD
 #location-detail .image {
   background-size: cover;
   background-position: center center;
 }
 
 #location-detail .image-header {
-=======
-#location-detail .image-gambar {
->>>>>>> 3e12a11ff725eebb4625c769ea82c97575cb8641
   width: 100%;
 }
 
@@ -16725,8 +16721,8 @@ main {
 }
 
 #location-add .image {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin: 10px;
   border: 1px solid white;
   border-radius: 5px;
