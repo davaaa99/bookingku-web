@@ -75956,25 +75956,7 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-<<<<<<< HEAD
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  _vm._l(lapangan.jamBooking, function(jam) {
-                    return _c(
-                      "div",
-                      {
-                        staticClass:
-                          "col-5 list-jam d-flex align-items-center justify-content-center"
-                      },
-                      [_vm._v(_vm._s(jam.jam))]
-                    )
-                  }),
-                  0
-                )
-=======
                 _c("div", { staticClass: "row" })
->>>>>>> 3e12a11ff725eebb4625c769ea82c97575cb8641
               ],
               1
             )

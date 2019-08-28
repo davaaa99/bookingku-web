@@ -226,8 +226,8 @@ export default {
         })
         .catch(error => {
           alert("Unable to save data. Bad config.");
-          window.location.href =
-            window.location.protocol + "//" + window.location.host + "/v1/auth/register";
+          // window.location.href =
+            // window.location.protocol + "//" + window.location.host + "/v1/auth/register";
         });
     }
   }

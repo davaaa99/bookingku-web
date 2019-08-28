@@ -34,10 +34,10 @@ Vue.component('location-add', require('./components/locationAddComponent.vue').d
 Vue.component('location-edit', require('./components/locationEditComponent.vue').default);
 
 
-Vue.component('menu-lapangan', require('./components/menuLapanganComponent.vue').default);
-Vue.component('add-lapangan', require('./components/addLapangComponent.vue').default);
-Vue.component('edit-lapangan', require('./components/editLapangComponent.vue').default);
-Vue.component('detail-lapangan', require('./components/detailLapangComponent.vue').default);
+Vue.component('menu-lapangan', require('./components/fieldListcomponent.vue').default);
+Vue.component('add-lapangan', require('./components/addFieldComponent.vue').default);
+Vue.component('edit-lapangan', require('./components/editFieldComponent.vue').default);
+Vue.component('detail-lapangan', require('./components/fieldDetailComponent.vue').default);
 
 Vue.component('manage-schedule', require('./components/manageScheduleComponent.vue').default);
 Vue.component('client-list', require('../admin/components/clientListComponent.vue').default);
