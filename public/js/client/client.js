@@ -3283,6 +3283,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4636,6 +4649,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4654,55 +4685,19 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         t_start: null,
         t_finish: null
       },
+      editedSchedule: null,
       currentPage: 1,
       locationlist: [],
       location: [],
       fieldlist: [],
       field: [],
-      days: ["Monday", "Tuesday"],
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       t_starts: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
       t_finishs: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
       add: false,
       items: [],
       index: 0,
-      schedules: [] //   fields: {
-      //     locationn: {
-      //       key: "selectedLocation",
-      //       label: "Location",
-      //       sortable: true
-      //     },
-      //     field: {
-      //       key: "selectedField",
-      //       label: "Field",
-      //       sortable: true
-      //     },
-      //     price: {
-      //       key: "price",
-      //       label: "Price",
-      //       sortable: true
-      //     },
-      //     dp: {
-      //       key: "dp",
-      //       label: "Down Payment",
-      //       sortable: true
-      //     },
-      //     day: {
-      //       key: "day",
-      //       label: "Day",
-      //       sortable: true
-      //     },
-      //     time_start: {
-      //       key: "t_start",
-      //       label: "Time Start",
-      //       sortable: true
-      //     },
-      //     time_finish: {
-      //       key: "t_finish",
-      //       label: "Time Finish",
-      //       sortable: true
-      //     }
-      //   }
-
+      schedules: []
     };
   },
   mounted: function mounted() {
@@ -4779,6 +4774,11 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     },
     removeSchedule: function removeSchedule(item) {
       this.schedules.splice(item, 1);
+    },
+    saveData: function saveData() {},
+    editData: function editData(schedule) {
+      this.schedule.beforeEditCache = schedule;
+      this.schedule.editedSchedule = schedule;
     }
   },
   watch: {
@@ -72537,48 +72537,61 @@ var render = function() {
                           },
                           expression: "photos"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "spacer-10" }),
-                      _vm._v(" "),
-                      _vm.photoData.length > 0
-                        ? _c(
-                            "div",
-                            { staticClass: "d-flex flex-row image-bg" },
-                            _vm._l(_vm.photoData, function(photo, index) {
-                              return _c("div", { key: index }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "image",
-                                    style: {
-                                      "background-image": "url(" + photo + ")"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "i",
-                                      {
-                                        staticClass:
-                                          "material-icons ic mr-auto",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.removePhoto(index)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("close")]
-                                    )
-                                  ]
-                                )
-                              ])
-                            }),
-                            0
-                          )
-                        : _vm._e()
+                      })
                     ],
                     1
                   )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-row",
+                { staticStyle: { width: "300px" } },
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }),
+                  _vm._v(" "),
+                  _c("b-col", [
+                    _c("div", { staticClass: "spacer-10" }),
+                    _vm._v(" "),
+                    _vm.photoData.length > 0
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "d-flex image-bg",
+                            staticStyle: { "max-width": "inherit" }
+                          },
+                          _vm._l(_vm.photoData, function(photo, index) {
+                            return _c("div", { key: index }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "image",
+                                  style: {
+                                    "background-image": "url(" + photo + ")"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "i",
+                                    {
+                                      staticClass: "material-icons ic mr-auto",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.removePhoto(index)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("close")]
+                                  )
+                                ]
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      : _vm._e()
+                  ])
                 ],
                 1
               )
@@ -75186,14 +75199,13 @@ var render = function() {
             {
               attrs: {
                 id: "input-group-5",
-                label: "Day :",
+                label: "Day:",
                 "label-for": "input-5"
               }
             },
             [
               _c("b-form-checkbox-group", {
-                staticClass: "myselect",
-                attrs: { options: _vm.days, switches: "" },
+                attrs: { id: "input-5", options: _vm.days, switches: "" },
                 model: {
                   value: _vm.schedule.day,
                   callback: function($$v) {
@@ -75281,28 +75293,106 @@ var render = function() {
                 _vm._v(" "),
                 _c("th", [_vm._v("Time Start")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Time Finish")])
+                _c("th", [_vm._v("Time Finish")]),
+                _vm._v(" "),
+                _c("th"),
+                _vm._v(" "),
+                _c("th")
               ])
             ]),
             _vm._v(" "),
             _c(
               "tbody",
               _vm._l(_vm.schedules, function(u) {
-                return _c("tr", { key: u.id }, [
-                  _c("td", [_vm._v(_vm._s(u.selectedLocation))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.selectedField))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.price))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.dp))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.day))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.t_start))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.t_finish))])
-                ])
+                return _c(
+                  "tr",
+                  {
+                    key: u.id,
+                    class: { editing: _vm.schedule == _vm.editedSchedule }
+                  },
+                  [
+                    _c("td", [
+                      _c("div", { staticClass: "view" }, [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(u.selectedLocation) +
+                            "\n        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "edit" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.schedule.selectedLocation,
+                              expression: "schedule.selectedLocation"
+                            }
+                          ],
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.schedule.selectedLocation },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.schedule,
+                                "selectedLocation",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.selectedField))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.price))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.dp))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.day))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.t_start))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.t_finish))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "view" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.editData(_vm.schedule)
+                              }
+                            }
+                          },
+                          [_vm._v("Edit")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "edit" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.saveData(_vm.schedule)
+                              }
+                            }
+                          },
+                          [_vm._v("Save")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_c("button", [_vm._v("delete")])])
+                  ]
+                )
               }),
               0
             )
