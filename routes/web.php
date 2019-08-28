@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
     Route::get('/location/detail/{id}', 'ClientPageController@locationDetail')->name('locationdetail');
     Route::get('/location/add', 'ClientPageController@locationAdd')->name('locationadd');
     Route::get('/location/edit/{id}', 'ClientPageController@locationEdit')->name('locationedit');
+    Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
+    Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');
 
     /**
      * Route for data
@@ -80,5 +82,3 @@ Route::get('/addlapang', 'ClientPageController@addLapang')->name('addlapang');
 Route::get('/editlapang/{id}', 'ClientPageController@editLapang')->name('editlapang');
 Route::get('/detaillapang', 'ClientPageController@detailLapang')->name('detaillapang');
 Route::get('/schedule', 'ClientPageController@manageSchedule')->name('schedule');
-Route::get('/bookinglist', 'AdminPageController@bookinglist')->name('bookinglist');
-Route::get('/addbooking', 'AdminPageController@addbooking')->name('addbooking');

@@ -18,7 +18,7 @@
                     </a>
                 </div>
                 <div class="content-item d-flex align-items-center">
-                    <a href="{{ route('clientlist') }}" class="content-link">
+                    <a href="{{ route('bookinglist') }}" class="content-link">
                         <!-- <i class="far fa-address-card"></i> -->
                         <img class="logo" src="{{ asset('client/order.png')}}">
                         Order

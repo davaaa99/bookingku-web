@@ -153,14 +153,14 @@
                         this.Booking.id_booking=items[index].id_booking;
                         this.Booking.payment_status=items[index].payment_status;
                         this.Booking.payment_type=items[index].payment_type;
-                        let sch = this.loadSchedule(items[index].id_schedule,index)
+                        this.Booking.schedule= this.loadSchedule(items[index].id_schedule,index)
                         this.Booking.name = this.loadUser(items[index].client_email,index)
                         console.log(this.loadSchedule(items[index].id_schedule,index));
                         
                         this.dataBooking.push({
                             name:this.Booking.name,
                             id_booking:this.Booking.id_booking,
-                            schedule: sch,
+                            schedule: this.Booking.schedule,
                             payment_status:this.Booking.payment_status,
                             payment_type:this.Booking.payment_type,
                         })
