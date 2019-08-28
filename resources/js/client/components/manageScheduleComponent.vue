@@ -10,13 +10,13 @@
         <b-form-select v-model="schedule.selectedField" :options="field"></b-form-select>
       </b-form-group>
       <b-form-group id="input-group-1" label="Price:" label-for="input-1">
-        <b-form-input id="input-1" v-model="schedule.price" required placeholder="Enter Price"></b-form-input>
+      <b-form-input id="input-1" v-model="schedule.price" required placeholder="Enter Price"></b-form-input>
       </b-form-group>
       <b-form-group id="input-group-4" label="Down Payment:" label-for="input-4">
         <b-form-input id="input-4" v-model="schedule.dp" required placeholder="Enter Down Payment"></b-form-input>
       </b-form-group>
-      <b-form-group id="input-group-5" label="Day :" label-for="input-5">
-        <b-form-checkbox-group class="myselect" v-model="schedule.day" :options="days" switches></b-form-checkbox-group>
+      <b-form-group id="input-group-5" label="Day:" label-for="input-5">
+        <b-form-checkbox-group id="input-5" v-model="schedule.day" :options="days" switches></b-form-checkbox-group>
       </b-form-group>
 
       <b-form-group id="input-group-8" label="Time Start:" label-for="input-8">
@@ -51,17 +51,35 @@
       <th>Day</th>
       <th>Time Start</th>
       <th>Time Finish</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr v-for="u in schedules" :key="u.id">
-      <td>{{u.selectedLocation}}</td>
+    <tr v-for="u in schedules" :key="u.id" :class="{editing: schedule == editedSchedule}" v-cloak>
+      <td>
+        <div class="view">
+          {{u.selectedLocation}}
+        </div>
+        <div class="edit">
+          <input type="text" v-model="schedule.selectedLocation"/>
+        </div>
+      </td>
       <td>{{u.selectedField}}</td>
       <td>{{u.price}}</td>
       <td>{{u.dp}}</td>
       <td>{{u.day}}</td>
       <td>{{u.t_start}}</td>
       <td>{{u.t_finish}}</td>
+      <td>
+        <div class="view">
+          <button @click="editData(schedule)">Edit</button>
+        </div>
+        <div class="edit">
+          <button @click="saveData(schedule)">Save</button>
+        </div>
+      </td>
+      <td><button>delete</button></td>
     </tr>
   </tbody>
 </table>
@@ -103,56 +121,19 @@ export default {
         t_start: null,
         t_finish: null,
       },
+      editedSchedule: null,
       currentPage: 1,
       locationlist: [],
       location: [],
       fieldlist: [],
       field: [],
-      days: ["Monday","Tuesday"],
+      days: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
       t_starts: ["00:00", "01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","24:00"],
       t_finishs: ["00:00", "01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00","24:00"],
       add: false,
       items: [],
       index: 0,
       schedules:[],
-
-    //   fields: {
-    //     locationn: {
-    //       key: "selectedLocation",
-    //       label: "Location",
-    //       sortable: true
-    //     },
-    //     field: {
-    //       key: "selectedField",
-    //       label: "Field",
-    //       sortable: true
-    //     },
-    //     price: {
-    //       key: "price",
-    //       label: "Price",
-    //       sortable: true
-    //     },
-    //     dp: {
-    //       key: "dp",
-    //       label: "Down Payment",
-    //       sortable: true
-    //     },
-    //     day: {
-    //       key: "day",
-    //       label: "Day",
-    //       sortable: true
-    //     },
-    //     time_start: {
-    //       key: "t_start",
-    //       label: "Time Start",
-    //       sortable: true
-    //     },
-    //     time_finish: {
-    //       key: "t_finish",
-    //       label: "Time Finish",
-    //       sortable: true
-    //     }
-    //   }
     };
   },
   mounted() {
@@ -221,6 +202,13 @@ export default {
     },
      removeSchedule: function(item){
       this.schedules.splice(item,1);
+     },
+     saveData(){
+
+     },
+     editData(schedule){
+       this.schedule.beforeEditCache = schedule
+       this.schedule.editedSchedule = schedule
      }
   },
   watch: {

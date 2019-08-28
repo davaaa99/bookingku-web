@@ -82,3 +82,12 @@ Route::get('/addlapang', 'ClientPageController@addLapang')->name('addlapang');
 Route::get('/editlapang/{id}', 'ClientPageController@editLapang')->name('editlapang');
 Route::get('/detaillapang', 'ClientPageController@detailLapang')->name('detaillapang');
 Route::get('/schedule', 'ClientPageController@manageSchedule')->name('schedule');
+
+Route::post('add', 'API\REST\FieldController@store');
+Route::get('field/{id}','API\REST\FieldController@show');
+Route::put('data/field', 'API\REST\FieldController@update');
+Route::post('upload', 'API\REST\FieldController@upload')->name('upload');
+Route::put('update', 'API\REST\FieldController@uploadedit')->name('updateedit');
+
+Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
+Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');

@@ -3124,6 +3124,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3674,6 +3687,166 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      // Note 'age' is left out and will not appear in the rendered table
+      perPage: 20,
+      schedule: {
+        selectedLocation: "",
+        selectedField: "",
+        price: "",
+        day: "",
+        dp: "",
+        t_start: null,
+        t_finish: null
+      },
+      editedSchedule: null,
+      currentPage: 1,
+      locationlist: [],
+      location: [],
+      fieldlist: [],
+      field: [],
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      t_starts: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
+      t_finishs: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
+      add: false,
+      items: [],
+      index: 0,
+      schedules: []
+    };
+  },
+  mounted: function mounted() {
+    this.loadLocation();
+  },
+  methods: {
+    loadLocation: function loadLocation() {
+      var _this = this;
+
+      var index = 0;
+      axios({
+        url: "api/v1/location",
+        methods: "GET"
+      }).then(function (response) {
+        _this.locationList = response.data.serve;
+        console.log(response.data.serve);
+
+        for (index = 0; index < _this.locationList.length; index++) {
+          _this.location.push({
+            value: _this.locationList[index].id_location,
+            text: _this.locationList[index].location_name
+          });
+        }
+
+        console.log(_this.location);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadField: function loadField() {
+      var _this2 = this;
+
+      var index = 0;
+      axios({
+        url: "api/v1/fields/" + this.schedule.selectedLocation,
+        methods: "GET"
+      }).then(function (response) {
+        console.log(response);
+        _this2.fieldlist = response.data.serve;
+        console.log(response.data.serve);
+        _this2.field = [];
+
+        for (index = 0; index < _this2.fieldlist.length; index++) {
+          _this2.field.push({
+            value: _this2.fieldlist[index].id_field,
+            text: _this2.fieldlist[index].field_name
+          });
+        }
+
+        console.log(_this2.fieldlist);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    addSchedule: function addSchedule() {
+      this.schedules.push({
+        selectedLocation: this.schedule.selectedLocation,
+        selectedField: this.schedule.selectedField,
+        price: this.schedule.price,
+        day: this.schedule.day,
+        dp: this.schedule.dp,
+        t_start: this.schedule.t_start,
+        t_finish: this.schedule.t_finish
+      });
+      this.schedule = {
+        selectedLocation: "",
+        selectedField: "",
+        price: "",
+        day: "",
+        dp: "",
+        t_start: null,
+        t_finish: null
+      };
+    },
+    removeSchedule: function removeSchedule(item) {
+      this.schedules.splice(item, 1);
+    },
+    saveData: function saveData() {},
+    editData: function editData(schedule) {
+      this.schedule.beforeEditCache = schedule;
+      this.schedule.editedSchedule = schedule;
+    }
+  },
+  watch: {
+    "schedule.selectedLocation": function scheduleSelectedLocation() {
+      this.loadField();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/lib/index.js");
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_3__);
+>>>>>>> 6acbdeeda70236cbd4fe0c1aa2e340e6031d5f6f
 //
 //
 //
@@ -4724,6 +4897,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
   methods: {
     loadField: function loadField() {
       var _this = this;
+<<<<<<< HEAD
 
       axios({
         url: 'field/' + this.selectedLocation,
@@ -4749,6 +4923,33 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
     loadLocation: function loadLocation() {
       var _this3 = this;
 
+=======
+
+      axios({
+        url: 'field/' + this.selectedLocation,
+        methods: 'GET'
+      }).then(function (response) {
+        console.log(response);
+        _this.dataLapangan = response.data.serve;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    deleteLapang: function deleteLapang(id_field) {
+      var _this2 = this;
+
+      var uri = "http://localhost:8000/api/v1/field/".concat(id_field);
+      this.axios["delete"](uri).then(function (response) {
+        _this2.dataLapangan.splice(_this2.dataLapangan.indexOf(id_field), 1);
+
+        console.log(_this2.dataLapangan);
+        window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+      });
+    },
+    loadLocation: function loadLocation() {
+      var _this3 = this;
+
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
       var index = 0;
       axios({
         url: 'api/v1/location',
@@ -4756,9 +4957,15 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       }).then(function (response) {
         _this3.locations = response.data.serve; // console.log(response);
         // console.log(this.locations);
+<<<<<<< HEAD
 
         _this3.location = [];
 
+=======
+
+        _this3.location = [];
+
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
         for (index = 0; index < _this3.locations.length; index++) {
           _this3.location.push({
             value: _this3.locations[index].id_location,
@@ -5659,6 +5866,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+<<<<<<< HEAD
+=======
+
+var NAME = 'BButtonGroup';
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 var props = {
   vertical: {
     type: Boolean,
@@ -5666,7 +5878,13 @@ var props = {
   },
   size: {
     type: String,
+<<<<<<< HEAD
     default: null
+=======
+    default: function _default() {
+      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])('BButton', 'size');
+    }
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
   },
   tag: {
     type: String,
@@ -5681,7 +5899,11 @@ var props = {
 var BButtonGroup =
 /*#__PURE__*/
 _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+<<<<<<< HEAD
   name: 'BButtonGroup',
+=======
+  name: NAME,
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
   functional: true,
   props: props,
   render: function render(h, _ref) {
@@ -6732,8 +6954,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/vue */ "./node_modules/bootstrap-vue/esm/utils/vue.js");
 /* harmony import */ var vue_functional_data_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-functional-data-merge */ "./node_modules/vue-functional-data-merge/dist/lib.esm.js");
 /* harmony import */ var _utils_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/config */ "./node_modules/bootstrap-vue/esm/utils/config.js");
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 
 var NAME = 'BCardSubTitle';
 var props = {
@@ -8801,7 +9028,9 @@ var props = {
   },
   size: {
     type: String,
-    default: null
+    default: function _default() {
+      return Object(_utils_config__WEBPACK_IMPORTED_MODULE_3__["getComponentConfig"])(NAME, 'size');
+    }
   },
   variant: {
     type: String,
@@ -9411,6 +9640,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mixins_form_state__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../mixins/form-state */ "./node_modules/bootstrap-vue/esm/mixins/form-state.js");
 /* harmony import */ var _mixins_id__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../mixins/id */ "./node_modules/bootstrap-vue/esm/mixins/id.js");
 /* harmony import */ var _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../mixins/normalize-slot */ "./node_modules/bootstrap-vue/esm/mixins/normalize-slot.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -9427,11 +9662,18 @@ var BFormFile =
 _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
   name: NAME,
   mixins: [_mixins_id__WEBPACK_IMPORTED_MODULE_7__["default"], _mixins_form__WEBPACK_IMPORTED_MODULE_5__["default"], _mixins_form_state__WEBPACK_IMPORTED_MODULE_6__["default"], _mixins_form_custom__WEBPACK_IMPORTED_MODULE_4__["default"], _mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_8__["default"]],
+  inheritAttrs: false,
   model: {
     prop: 'value',
     event: 'input'
   },
   props: {
+    size: {
+      type: String,
+      default: function _default() {
+        return Object(_utils_config__WEBPACK_IMPORTED_MODULE_2__["getComponentConfig"])('BFormControl', 'size');
+      }
+    },
     value: {
       // type: Object,
       default: null
@@ -9704,7 +9946,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         'custom-file-input': this.custom,
         focus: this.custom && this.hasFocus
       }, this.stateClass],
-      attrs: {
+      attrs: _objectSpread({}, this.$attrs, {
         type: 'file',
         id: this.safeId(),
         name: this.name,
@@ -9716,7 +9958,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         multiple: this.multiple,
         webkitdirectory: this.directory,
         'aria-required': this.required ? 'true' : null
-      },
+      }),
       on: {
         change: this.onFileChange,
         focusin: this.focusHandler,
@@ -9741,7 +9983,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
     return h('div', {
       staticClass: 'custom-file b-form-file',
-      class: this.stateClass,
+      class: [this.stateClass, _defineProperty({}, "b-custom-control-".concat(this.size), Boolean(this.size))],
       attrs: {
         id: this.safeId('_BV_file_outer_')
       },
@@ -12034,7 +12276,7 @@ Object(_utils_plugins__WEBPACK_IMPORTED_MODULE_2__["pluginFactory"])({
 /*!****************************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/components/index.esm.js ***!
   \****************************************************************/
-/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip */
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, TableLitePlugin, TableSimplePlugin, BTable, BTableLite, BTableSimple, BTbody, BThead, BTfoot, BTr, BTh, BTd, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12389,12 +12631,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TablePlugin", function() { return _table__WEBPACK_IMPORTED_MODULE_35__["TablePlugin"]; });
 
+<<<<<<< HEAD
+=======
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TableLitePlugin", function() { return _table__WEBPACK_IMPORTED_MODULE_35__["TableLitePlugin"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TableSimplePlugin", function() { return _table__WEBPACK_IMPORTED_MODULE_35__["TableSimplePlugin"]; });
+
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 /* harmony import */ var _table_table__WEBPACK_IMPORTED_MODULE_119__ = __webpack_require__(/*! ./table/table */ "./node_modules/bootstrap-vue/esm/components/table/table.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTable", function() { return _table_table__WEBPACK_IMPORTED_MODULE_119__["BTable"]; });
 
 /* harmony import */ var _table_table_lite__WEBPACK_IMPORTED_MODULE_120__ = __webpack_require__(/*! ./table/table-lite */ "./node_modules/bootstrap-vue/esm/components/table/table-lite.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTableLite", function() { return _table_table_lite__WEBPACK_IMPORTED_MODULE_120__["BTableLite"]; });
 
+<<<<<<< HEAD
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TabsPlugin", function() { return _tabs__WEBPACK_IMPORTED_MODULE_36__["TabsPlugin"]; });
 
 /* harmony import */ var _tabs_tabs__WEBPACK_IMPORTED_MODULE_121__ = __webpack_require__(/*! ./tabs/tabs */ "./node_modules/bootstrap-vue/esm/components/tabs/tabs.js");
@@ -12415,6 +12665,49 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _tooltip_tooltip__WEBPACK_IMPORTED_MODULE_125__ = __webpack_require__(/*! ./tooltip/tooltip */ "./node_modules/bootstrap-vue/esm/components/tooltip/tooltip.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTooltip", function() { return _tooltip_tooltip__WEBPACK_IMPORTED_MODULE_125__["BTooltip"]; });
+=======
+/* harmony import */ var _table_table_simple__WEBPACK_IMPORTED_MODULE_121__ = __webpack_require__(/*! ./table/table-simple */ "./node_modules/bootstrap-vue/esm/components/table/table-simple.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTableSimple", function() { return _table_table_simple__WEBPACK_IMPORTED_MODULE_121__["BTableSimple"]; });
+
+/* harmony import */ var _table_tbody__WEBPACK_IMPORTED_MODULE_122__ = __webpack_require__(/*! ./table/tbody */ "./node_modules/bootstrap-vue/esm/components/table/tbody.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTbody", function() { return _table_tbody__WEBPACK_IMPORTED_MODULE_122__["BTbody"]; });
+
+/* harmony import */ var _table_thead__WEBPACK_IMPORTED_MODULE_123__ = __webpack_require__(/*! ./table/thead */ "./node_modules/bootstrap-vue/esm/components/table/thead.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BThead", function() { return _table_thead__WEBPACK_IMPORTED_MODULE_123__["BThead"]; });
+
+/* harmony import */ var _table_tfoot__WEBPACK_IMPORTED_MODULE_124__ = __webpack_require__(/*! ./table/tfoot */ "./node_modules/bootstrap-vue/esm/components/table/tfoot.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTfoot", function() { return _table_tfoot__WEBPACK_IMPORTED_MODULE_124__["BTfoot"]; });
+
+/* harmony import */ var _table_tr__WEBPACK_IMPORTED_MODULE_125__ = __webpack_require__(/*! ./table/tr */ "./node_modules/bootstrap-vue/esm/components/table/tr.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTr", function() { return _table_tr__WEBPACK_IMPORTED_MODULE_125__["BTr"]; });
+
+/* harmony import */ var _table_th__WEBPACK_IMPORTED_MODULE_126__ = __webpack_require__(/*! ./table/th */ "./node_modules/bootstrap-vue/esm/components/table/th.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTh", function() { return _table_th__WEBPACK_IMPORTED_MODULE_126__["BTh"]; });
+
+/* harmony import */ var _table_td__WEBPACK_IMPORTED_MODULE_127__ = __webpack_require__(/*! ./table/td */ "./node_modules/bootstrap-vue/esm/components/table/td.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTd", function() { return _table_td__WEBPACK_IMPORTED_MODULE_127__["BTd"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TabsPlugin", function() { return _tabs__WEBPACK_IMPORTED_MODULE_36__["TabsPlugin"]; });
+
+/* harmony import */ var _tabs_tabs__WEBPACK_IMPORTED_MODULE_128__ = __webpack_require__(/*! ./tabs/tabs */ "./node_modules/bootstrap-vue/esm/components/tabs/tabs.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTabs", function() { return _tabs_tabs__WEBPACK_IMPORTED_MODULE_128__["BTabs"]; });
+
+/* harmony import */ var _tabs_tab__WEBPACK_IMPORTED_MODULE_129__ = __webpack_require__(/*! ./tabs/tab */ "./node_modules/bootstrap-vue/esm/components/tabs/tab.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTab", function() { return _tabs_tab__WEBPACK_IMPORTED_MODULE_129__["BTab"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ToastPlugin", function() { return _toast__WEBPACK_IMPORTED_MODULE_37__["ToastPlugin"]; });
+
+/* harmony import */ var _toast_toast__WEBPACK_IMPORTED_MODULE_130__ = __webpack_require__(/*! ./toast/toast */ "./node_modules/bootstrap-vue/esm/components/toast/toast.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BToast", function() { return _toast_toast__WEBPACK_IMPORTED_MODULE_130__["BToast"]; });
+
+/* harmony import */ var _toast_toaster__WEBPACK_IMPORTED_MODULE_131__ = __webpack_require__(/*! ./toast/toaster */ "./node_modules/bootstrap-vue/esm/components/toast/toaster.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BToaster", function() { return _toast_toaster__WEBPACK_IMPORTED_MODULE_131__["BToaster"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TooltipPlugin", function() { return _tooltip__WEBPACK_IMPORTED_MODULE_38__["TooltipPlugin"]; });
+
+/* harmony import */ var _tooltip_tooltip__WEBPACK_IMPORTED_MODULE_132__ = __webpack_require__(/*! ./tooltip/tooltip */ "./node_modules/bootstrap-vue/esm/components/tooltip/tooltip.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BTooltip", function() { return _tooltip_tooltip__WEBPACK_IMPORTED_MODULE_132__["BTooltip"]; });
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 
 // Index file used for the main builds, which does not include legacy plugin names
 // Once es/ buld is removed, then this file will be renamed to index.js
@@ -13003,10 +13296,17 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     var $scopedSlots = scopedSlots || {};
     var childNodes = []; // Prepend prop/slot
 
+<<<<<<< HEAD
     if (props.prepend || props.prependHtml || Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["hasNormalizedSlot"])('prepend', $scopedSlots, $slots)) {
       childNodes.push(h(_input_group_prepend__WEBPACK_IMPORTED_MODULE_4__["BInputGroupPrepend"], [// Prop
       props.prepend || props.prependHtml ? h(_input_group_text__WEBPACK_IMPORTED_MODULE_6__["BInputGroupText"], {
         domProps: Object(_utils_html__WEBPACK_IMPORTED_MODULE_2__["htmlOrText"])(props.prependHtml, props.prepend)
+=======
+    if (props.prepend || props.prependHtml || Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_4__["hasNormalizedSlot"])('prepend', $scopedSlots, $slots)) {
+      childNodes.push(h(_input_group_prepend__WEBPACK_IMPORTED_MODULE_5__["BInputGroupPrepend"], [// Prop
+      props.prepend || props.prependHtml ? h(_input_group_text__WEBPACK_IMPORTED_MODULE_7__["BInputGroupText"], {
+        domProps: Object(_utils_html__WEBPACK_IMPORTED_MODULE_3__["htmlOrText"])(props.prependHtml, props.prepend)
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
       }) : h(), // Slot
       Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('prepend', {}, $scopedSlots, $slots) || h()]));
     } else {
@@ -13021,10 +13321,17 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
     } // Append prop
 
 
+<<<<<<< HEAD
     if (props.append || props.appendHtml || Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["hasNormalizedSlot"])('append', $scopedSlots, $slots)) {
       childNodes.push(h(_input_group_append__WEBPACK_IMPORTED_MODULE_5__["BInputGroupAppend"], [// prop
       props.append || props.appendHtml ? h(_input_group_text__WEBPACK_IMPORTED_MODULE_6__["BInputGroupText"], {
         domProps: Object(_utils_html__WEBPACK_IMPORTED_MODULE_2__["htmlOrText"])(props.appendHtml, props.append)
+=======
+    if (props.append || props.appendHtml || Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_4__["hasNormalizedSlot"])('append', $scopedSlots, $slots)) {
+      childNodes.push(h(_input_group_append__WEBPACK_IMPORTED_MODULE_6__["BInputGroupAppend"], [// prop
+      props.append || props.appendHtml ? h(_input_group_text__WEBPACK_IMPORTED_MODULE_7__["BInputGroupText"], {
+        domProps: Object(_utils_html__WEBPACK_IMPORTED_MODULE_3__["htmlOrText"])(props.appendHtml, props.append)
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
       }) : h(), // Slot
       Object(_utils_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["normalizeSlot"])('append', {}, $scopedSlots, $slots) || h()]));
     } else {
@@ -15379,7 +15686,11 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
 
       return [(_ref2 = {}, _defineProperty(_ref2, "bg-".concat(this.headerBgVariant), Boolean(this.headerBgVariant)), _defineProperty(_ref2, "text-".concat(this.headerTextVariant), Boolean(this.headerTextVariant)), _defineProperty(_ref2, "border-".concat(this.headerBorderVariant), Boolean(this.headerBorderVariant)), _ref2), this.headerClass];
     },
+<<<<<<< HEAD
     titleClases: function titleClases() {
+=======
+    titleClasses: function titleClasses() {
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
       return [{
         'sr-only': this.titleSrOnly
       }, this.titleClass];
@@ -15931,7 +16242,12 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         class: this.contentClass,
         attrs: {
           role: 'document',
+<<<<<<< HEAD
           id: this.safeId('__BV_modal_content_')
+=======
+          id: this.safeId('__BV_modal_content_'),
+          tabindex: '-1'
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
         }
       }, [header, body, footer]); // Modal dialog wrapper
 
@@ -16007,6 +16323,7 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         props: {
           noFade: this.noFade
         }
+<<<<<<< HEAD
       }, [backdrop]); // Tab trap to prevent page from scrolling to next element in
       // tab index during enforce focus tab cycle
 
@@ -16020,6 +16337,9 @@ _utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
         });
       } // Assemble modal and backdrop in an outer <div>
 
+=======
+      }, [backdrop]); // Assemble modal and backdrop in an outer <div>
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 
       return h('div', {
         key: "modal-outer-".concat(this._uid),
@@ -18006,9 +18326,15 @@ __webpack_require__.r(__webpack_exports__);
 //       Multisort will most likely be handled in mixin-sort.js by
 //       calling this method for each sortBy
 
+<<<<<<< HEAD
 var defaultSortCompare = function defaultSortCompare(a, b, sortBy, formatter, localeOpts, locale) {
   var aa = Object(_utils_get__WEBPACK_IMPORTED_MODULE_0__["default"])(a, sortBy, '');
   var bb = Object(_utils_get__WEBPACK_IMPORTED_MODULE_0__["default"])(b, sortBy, '');
+=======
+var defaultSortCompare = function defaultSortCompare(a, b, sortBy, sortDesc, formatter, localeOpts, locale, nullLast) {
+  var aa = Object(_utils_get__WEBPACK_IMPORTED_MODULE_0__["default"])(a, sortBy, null);
+  var bb = Object(_utils_get__WEBPACK_IMPORTED_MODULE_0__["default"])(b, sortBy, null);
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 
   if (Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_1__["isFunction"])(formatter)) {
     aa = formatter(aa, sortBy, a);
@@ -18022,10 +18348,23 @@ var defaultSortCompare = function defaultSortCompare(a, b, sortBy, formatter, lo
     // Special case for comparing dates and numbers
     // Internally dates are compared via their epoch number values
     return aa < bb ? -1 : aa > bb ? 1 : 0;
+<<<<<<< HEAD
   } else {
     // Do localized string comparison
     return Object(_stringify_object_values__WEBPACK_IMPORTED_MODULE_2__["default"])(aa).localeCompare(Object(_stringify_object_values__WEBPACK_IMPORTED_MODULE_2__["default"])(bb), locale, localeOpts);
   }
+=======
+  } else if (nullLast && aa === '' && bb !== '') {
+    // Special case when sorting null/undefined/empty string last
+    return 1;
+  } else if (nullLast && aa !== '' && bb === '') {
+    // Special case when sorting null/undefined/empty string last
+    return -1;
+  } // Do localized string comparison
+
+
+  return Object(_stringify_object_values__WEBPACK_IMPORTED_MODULE_2__["default"])(aa).localeCompare(Object(_stringify_object_values__WEBPACK_IMPORTED_MODULE_2__["default"])(bb), locale, localeOpts);
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (defaultSortCompare);
@@ -18106,7 +18445,11 @@ __webpack_require__.r(__webpack_exports__);
       var h = this.$createElement; // Static bottom row slot (hidden in visibly stacked mode as we can't control the data-label)
       // If in always stacked mode, we don't bother rendering the row
 
+<<<<<<< HEAD
       if (!this.hasNormalizedSlot('bottom-row') || this.isStacked === true) {
+=======
+      if (!this.hasNormalizedSlot(slotName) || this.stacked === true || this.stacked === '') {
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
         return h();
       }
 
@@ -18191,11 +18534,20 @@ __webpack_require__.r(__webpack_exports__);
         return h('tr', {
           key: 'table-busy-slot',
           staticClass: 'b-table-busy-slot',
+<<<<<<< HEAD
           class: [Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_0__["isFunction"])(this.tbodyTrClass) ? this.tbodyTrClass(null, 'table-busy') : this.tbodyTrClass],
           attrs: trAttrs
         }, [h('td', {
           attrs: tdAttrs
         }, [this.normalizeSlot('table-busy')])]);
+=======
+          class: [Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_0__["isFunction"])(this.tbodyTrClass) ? this.tbodyTrClass(null, busySlotName) : this.tbodyTrClass]
+        }, [h(_td__WEBPACK_IMPORTED_MODULE_2__["BTd"], {
+          props: {
+            colspan: this.computedFields.length || null
+          }
+        }, [this.normalizeSlot(busySlotName)])]);
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
       } else {
         // We return null here so that we can determine if we need to
         // render the table items rows or not.
@@ -19530,6 +19882,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
+=======
+/* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -19679,6 +20035,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_inspect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/inspect */ "./node_modules/bootstrap-vue/esm/utils/inspect.js");
 /* harmony import */ var _filter_event__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./filter-event */ "./node_modules/bootstrap-vue/esm/components/table/helpers/filter-event.js");
 /* harmony import */ var _text_selection_active__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./text-selection-active */ "./node_modules/bootstrap-vue/esm/components/table/helpers/text-selection-active.js");
+<<<<<<< HEAD
+=======
+/* harmony import */ var _tr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../tr */ "./node_modules/bootstrap-vue/esm/components/table/tr.js");
+/* harmony import */ var _td__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../td */ "./node_modules/bootstrap-vue/esm/components/table/td.js");
+/* harmony import */ var _th__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../th */ "./node_modules/bootstrap-vue/esm/components/table/th.js");
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -19964,6 +20326,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var handlers = {};
 
       if (hasRowClickHandler) {
+<<<<<<< HEAD
         handlers['click'] = function (evt) {
           _this2.rowClicked(evt, item, rowIndex);
         };
@@ -19971,6 +20334,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         handlers['keydown'] = function (evt) {
           _this2.tbodyRowKeydown(evt, item, rowIndex);
         };
+=======
+        handlers.click = evtFactory(this.rowClicked, item, rowIndex);
+        handlers.keydown = evtFactory(this.tbodyRowKeydown, item, rowIndex);
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
       } // Selectable classes and attributes
 
 
@@ -20081,7 +20448,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+<<<<<<< HEAD
 /* harmony import */ var _mixin_tbody_row__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mixin-tbody-row */ "./node_modules/bootstrap-vue/esm/components/table/helpers/mixin-tbody-row.js");
+=======
+/* harmony import */ var _tbody__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../tbody */ "./node_modules/bootstrap-vue/esm/components/table/tbody.js");
+/* harmony import */ var _mixin_tbody_row__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mixin-tbody-row */ "./node_modules/bootstrap-vue/esm/components/table/helpers/mixin-tbody-row.js");
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -20133,6 +20505,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         $rows.push(this.renderEmpty ? this.renderEmpty() : h()); // Static bottom row slot (hidden in visibly stacked mode as we can't control data-label attr)
 
         $rows.push(this.renderBottomRow ? this.renderBottomRow() : h());
+<<<<<<< HEAD
       } // If tbody transition enabled
 
 
@@ -20145,6 +20518,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         tbodyProps = _objectSpread({}, this.tbodyTransitionProps || {}, {
           tag: 'tbody'
         });
+=======
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
       } // Assemble rows into the tbody
 
 
@@ -20228,6 +20603,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_html__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/html */ "./node_modules/bootstrap-vue/esm/utils/html.js");
 /* harmony import */ var _filter_event__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./filter-event */ "./node_modules/bootstrap-vue/esm/components/table/helpers/filter-event.js");
 /* harmony import */ var _text_selection_active__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./text-selection-active */ "./node_modules/bootstrap-vue/esm/components/table/helpers/text-selection-active.js");
+<<<<<<< HEAD
+=======
+/* harmony import */ var _thead__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../thead */ "./node_modules/bootstrap-vue/esm/components/table/thead.js");
+/* harmony import */ var _tfoot__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../tfoot */ "./node_modules/bootstrap-vue/esm/components/table/tfoot.js");
+/* harmony import */ var _tr__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../tr */ "./node_modules/bootstrap-vue/esm/components/table/tr.js");
+/* harmony import */ var _th__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../th */ "./node_modules/bootstrap-vue/esm/components/table/th.js");
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -20296,7 +20678,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // In always stacked mode, we don't bother rendering the head/foot.
         // Or if no field headings (empty table)
         return h();
+<<<<<<< HEAD
       } // Helper function to generate a field TH cell
+=======
+      } // Helper function to generate a field <th> cell
+      // TODO: This should be moved into it's own mixin
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 
 
       var makeCell = function makeCell(field, colIndex) {
@@ -20379,11 +20766,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           fields: fields
         };
         $trs.push(this.normalizeSlot('thead-top', scope) || h());
+<<<<<<< HEAD
         $trs.push(h('tr', {
           class: this.theadTrClass,
           attrs: {
             role: 'row'
           }
+=======
+        $trs.push(h(_tr__WEBPACK_IMPORTED_MODULE_8__["BTr"], {
+          class: this.theadTrClass
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
         }, $cells));
       }
 
@@ -20417,7 +20809,11 @@ __webpack_require__.r(__webpack_exports__);
       var h = this.$createElement; // Add static Top Row slot (hidden in visibly stacked mode as we can't control the data-label)
       // If in always stacked mode, we don't bother rendering the row
 
+<<<<<<< HEAD
       if (!this.hasNormalizedSlot('top-row') || this.isStacked === true) {
+=======
+      if (!this.hasNormalizedSlot(slotName) || this.stacked === true || this.stacked === '') {
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
         return h();
       }
 
@@ -20577,11 +20973,24 @@ __webpack_require__.r(__webpack_exports__);
  // Return a copy of a row after all reserved fields have been filtered out
 // TODO: add option to specify which fields to include
 
+<<<<<<< HEAD
 var sanitizeRow = function sanitizeRow(row) {
   return Object(_utils_object__WEBPACK_IMPORTED_MODULE_0__["keys"])(row).reduce(function (obj, key) {
     // Ignore special fields that start with `_`
     if (!_constants__WEBPACK_IMPORTED_MODULE_1__["IGNORED_FIELD_KEYS"][key]) {
       obj[key] = row[key];
+=======
+var sanitizeRow = function sanitizeRow(row, ignoreFields, includeFields) {
+  var fieldsObj = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  return Object(_utils_object__WEBPACK_IMPORTED_MODULE_0__["keys"])(row).reduce(function (obj, key) {
+    // Ignore special fields that start with `_`
+    // Ignore fields in the `ignoreFields` array
+    // Include only fields in the `includeFields` array
+    if (!_constants__WEBPACK_IMPORTED_MODULE_2__["IGNORED_FIELD_KEYS"][key] && !(ignoreFields && ignoreFields.length > 0 && Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])(ignoreFields, key)) && !(includeFields && includeFields.length > 0 && !Object(_utils_array__WEBPACK_IMPORTED_MODULE_1__["arrayIncludes"])(includeFields, key))) {
+      var f = fieldsObj[key];
+      var val = row[key];
+      obj[key] = f && f.filterByFormatted && f.formatter ? f.formatter(val, key, row) : val;
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
     }
 
     return obj;
@@ -20664,7 +21073,155 @@ var stringifyRecordValues = function stringifyRecordValues(row) {
   return Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_0__["isObject"])(row) ? Object(_stringify_object_values__WEBPACK_IMPORTED_MODULE_2__["default"])(Object(_sanitize_row__WEBPACK_IMPORTED_MODULE_1__["default"])(row)) : '';
 };
 
+<<<<<<< HEAD
 /* harmony default export */ __webpack_exports__["default"] = (stringifyRecordValues);
+=======
+var props = {
+  header: {
+    type: Boolean,
+    default: false
+  },
+  variant: {
+    type: String,
+    default: null
+  },
+  colspan: {
+    type: [Number, String],
+    default: null,
+    validator: spanValidator
+  },
+  rowspan: {
+    type: [Number, String],
+    default: null,
+    validator: spanValidator
+  },
+  stackedHeading: {
+    type: String,
+    default: null
+  },
+  stickyColumn: {
+    type: Boolean,
+    default: false
+  } // @vue/component
+
+};
+var BTableCell =
+/*#__PURE__*/
+_utils_vue__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
+  name: 'BTableCell',
+  mixins: [_mixins_normalize_slot__WEBPACK_IMPORTED_MODULE_3__["default"]],
+  inheritAttrs: false,
+  inject: {
+    // Injections for feature / attribute detection
+    bvTable: {
+      default: null
+    },
+    bvTableTbody: {
+      default: null
+    },
+    bvTableThead: {
+      default: null
+    },
+    bvTableTfoot: {
+      default: null
+    },
+    bvTableTr: {
+      default: null
+    }
+  },
+  props: props,
+  computed: {
+    isDark: function isDark() {
+      return this.bvTable && this.bvTable.dark;
+    },
+    isStacked: function isStacked() {
+      return this.bvTable && this.bvTable.isStacked;
+    },
+    isStackedCell: function isStackedCell() {
+      // We only support stacked-heading in tbody in stacked mode
+      return this.isStacked && this.bvTableTbody;
+    },
+    isResponsive: function isResponsive() {
+      return this.bvTable && this.bvTable.isResponsive && !this.isStacked;
+    },
+    isStickyHeader: function isStickyHeader() {
+      // Needed to handle header background classes, due to lack of
+      // bg color inheritance with Bootstrap v4 tabl css
+      // Sticky headers only apply to cells in table `thead`
+      return !this.isStacked && this.bvTable && this.bvTableThead && this.bvTableTr && this.bvTable.stickyHeader;
+    },
+    isStickyColumn: function isStickyColumn() {
+      // Needed to handle header background classes, due to lack of
+      // background color inheritance with Bootstrap v4 table css.
+      // Sticky column cells are only available in responsive
+      // mode (horzontal scrolling) or when sticky header mode.
+      // Applies to cells in `thead`, `tbody` and `tfoot`
+      return (this.isResponsive || this.isStickyHeader) && this.stickyColumn && !this.isStacked && this.bvTable && this.bvTableTr;
+    },
+    cellClasses: function cellClasses() {
+      // We use computed props here for improved performance by caching
+      // the results of the string interpolation
+      var variant = this.variant;
+
+      if (!variant && this.isStickyHeader && !this.bvTableThead.headVariant || !variant && this.isStickyColumn) {
+        // Needed for stickyheader mode as Bootstrap v4 table cells do
+        // not inherit parent's background-color. Boo!
+        variant = this.bvTableTr.variant || this.bvTable.tableVariant || 'b-table-default';
+      }
+
+      return [variant ? "".concat(this.isDark ? 'bg' : 'table', "-").concat(variant) : null, this.isStickyColumn ? 'b-table-sticky-column' : null];
+    },
+    computedColspan: function computedColspan() {
+      return parseSpan(this.colspan);
+    },
+    computedRowspan: function computedRowspan() {
+      return parseSpan(this.rowspan);
+    },
+    cellAttrs: function cellAttrs() {
+      // We use computed props here for improved performance by caching
+      // the results of the object spread (Object.assign)
+      var headOrFoot = this.bvTableThead || this.bvTableTfoot; // Make sure col/rowspan's are > 0 or null
+
+      var colspan = this.computedColspan;
+      var rowspan = this.computedRowspan; // Default role and scope
+
+      var role = 'cell';
+      var scope = null; // Compute role and scope
+      // We only add scopes with an explicit span of 1 or greater
+
+      if (headOrFoot) {
+        // Header or footer cells
+        role = 'columnheader';
+        scope = colspan > 0 ? 'colspan' : 'col';
+      } else if (this.header) {
+        // th's in tbody
+        role = 'rowheader';
+        scope = rowspan > 0 ? 'rowgroup' : 'row';
+      }
+
+      return _objectSpread({
+        colspan: colspan,
+        rowspan: rowspan,
+        role: role,
+        scope: scope
+      }, this.$attrs, {
+        // Add in the stacked cell label data-attribute if in
+        // stacked mode (if a stacked heading label is provided)
+        'data-label': this.isStackedCell && !Object(_utils_inspect__WEBPACK_IMPORTED_MODULE_2__["isUndefinedOrNull"])(this.stackedHeading) ? Object(_utils_to_string__WEBPACK_IMPORTED_MODULE_1__["default"])(this.stackedHeading) : null
+      });
+    }
+  },
+  render: function render(h) {
+    var content = [this.normalizeSlot('default')];
+    return h(this.header ? 'th' : 'td', {
+      class: this.cellClasses,
+      attrs: this.cellAttrs,
+      // Transfer any native listeners
+      on: this.$listeners
+    }, [this.isStackedCell ? h('div', {}, [content]) : content]);
+  }
+});
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 
 /***/ }),
 
@@ -24583,7 +25140,11 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
+<<<<<<< HEAD
 /*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, BTable, BTableLite, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, BVConfigPlugin, BVConfig, BootstrapVue, install, setConfig, default */
+=======
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, TableLitePlugin, TableSimplePlugin, BTable, BTableLite, BTableSimple, BTbody, BThead, BTfoot, BTr, BTh, BTd, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, install, NAME, BVConfigPlugin, BVConfig, BootstrapVue, default */
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24876,7 +25437,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VBTooltip", function() { return _directives_index_esm__WEBPACK_IMPORTED_MODULE_3__["VBTooltip"]; });
 
 /*!
+<<<<<<< HEAD
  * BoostrapVue 2.0.0-rc.27
+=======
+ * BoostrapVue 2.0.0-rc.28
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
  *
  * @link https://bootstrap-vue.js.org
  * @source https://github.com/bootstrap-vue/bootstrap-vue
@@ -26846,8 +27411,13 @@ var ELLIPSIS_THRESHOLD = 3; // Default # of buttons limit
 
 var DEFAULT_LIMIT = 5; // Make an array of N to N+X
 
+<<<<<<< HEAD
 var makePageArray = function makePageArray(startNum, numPages) {
   return Object(_utils_range__WEBPACK_IMPORTED_MODULE_1__["default"])(numPages).map(function (val, i) {
+=======
+var makePageArray = function makePageArray(startNumber, numberOfPages) {
+  return Object(_utils_range__WEBPACK_IMPORTED_MODULE_1__["default"])(numberOfPages).map(function (val, i) {
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
     return {
       number: startNum + i,
       classes: null
@@ -26879,8 +27449,12 @@ var onSpaceKey = function onSpaceKey(evt) {
     evt.currentTarget.click();
     return false;
   }
+<<<<<<< HEAD
 }; // Props object
 
+=======
+};
+>>>>>>> 85e2a7f57f0fc0995ac49c25524c2fa98d0babdb
 
 var props = {
   disabled: {
@@ -71394,48 +71968,61 @@ var render = function() {
                           },
                           expression: "photos"
                         }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "spacer-10" }),
-                      _vm._v(" "),
-                      _vm.photoData.length > 0
-                        ? _c(
-                            "div",
-                            { staticClass: "d-flex flex-row image-bg" },
-                            _vm._l(_vm.photoData, function(photo, index) {
-                              return _c("div", { key: index }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "image",
-                                    style: {
-                                      "background-image": "url(" + photo + ")"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "i",
-                                      {
-                                        staticClass:
-                                          "material-icons ic mr-auto",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.removePhoto(index)
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("close")]
-                                    )
-                                  ]
-                                )
-                              ])
-                            }),
-                            0
-                          )
-                        : _vm._e()
+                      })
                     ],
                     1
                   )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-row",
+                { staticStyle: { width: "300px" } },
+                [
+                  _c("b-col", { staticClass: "col-2 mt-2" }),
+                  _vm._v(" "),
+                  _c("b-col", [
+                    _c("div", { staticClass: "spacer-10" }),
+                    _vm._v(" "),
+                    _vm.photoData.length > 0
+                      ? _c(
+                          "div",
+                          {
+                            staticClass: "d-flex image-bg",
+                            staticStyle: { "max-width": "inherit" }
+                          },
+                          _vm._l(_vm.photoData, function(photo, index) {
+                            return _c("div", { key: index }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "image",
+                                  style: {
+                                    "background-image": "url(" + photo + ")"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "i",
+                                    {
+                                      staticClass: "material-icons ic mr-auto",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.removePhoto(index)
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("close")]
+                                  )
+                                ]
+                              )
+                            ])
+                          }),
+                          0
+                        )
+                      : _vm._e()
+                  ])
                 ],
                 1
               )
@@ -74043,14 +74630,13 @@ var render = function() {
             {
               attrs: {
                 id: "input-group-5",
-                label: "Day :",
+                label: "Day:",
                 "label-for": "input-5"
               }
             },
             [
               _c("b-form-checkbox-group", {
-                staticClass: "myselect",
-                attrs: { options: _vm.days, switches: "" },
+                attrs: { id: "input-5", options: _vm.days, switches: "" },
                 model: {
                   value: _vm.schedule.day,
                   callback: function($$v) {
@@ -74138,28 +74724,106 @@ var render = function() {
                 _vm._v(" "),
                 _c("th", [_vm._v("Time Start")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Time Finish")])
+                _c("th", [_vm._v("Time Finish")]),
+                _vm._v(" "),
+                _c("th"),
+                _vm._v(" "),
+                _c("th")
               ])
             ]),
             _vm._v(" "),
             _c(
               "tbody",
               _vm._l(_vm.schedules, function(u) {
-                return _c("tr", { key: u.id }, [
-                  _c("td", [_vm._v(_vm._s(u.selectedLocation))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.selectedField))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.price))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.dp))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.day))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.t_start))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.t_finish))])
-                ])
+                return _c(
+                  "tr",
+                  {
+                    key: u.id,
+                    class: { editing: _vm.schedule == _vm.editedSchedule }
+                  },
+                  [
+                    _c("td", [
+                      _c("div", { staticClass: "view" }, [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(u.selectedLocation) +
+                            "\n        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "edit" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.schedule.selectedLocation,
+                              expression: "schedule.selectedLocation"
+                            }
+                          ],
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.schedule.selectedLocation },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.schedule,
+                                "selectedLocation",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.selectedField))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.price))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.dp))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.day))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.t_start))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.t_finish))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "view" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.editData(_vm.schedule)
+                              }
+                            }
+                          },
+                          [_vm._v("Edit")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "edit" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.saveData(_vm.schedule)
+                              }
+                            }
+                          },
+                          [_vm._v("Save")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_c("button", [_vm._v("delete")])])
+                  ]
+                )
               }),
               0
             )
@@ -92701,7 +93365,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\client\client.js */"./resources/js/client/client.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation register DONE\bookingku-web\resources\js\client\client.js */"./resources/js/client/client.js");
 
 
 /***/ })
