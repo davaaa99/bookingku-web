@@ -32,7 +32,10 @@ class BookingController extends Controller
     public function index()
     {
         try {
-            $dataBooking = Booking::all();
+            $dataBooking = Booking::select('users.name as user_name', 'bookings.id_booking', 'schedules.start_time', 'schedules.end_time', 'bookings.client_email', 'bookings.payment_status', 'bookings.payment_type')
+                                    ->join('users','users.email','=','bookings.user_email')
+                                    ->join('schedules','schedules.id_schedule','=','bookings.id_schedule')
+                                    ->get();
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),
@@ -137,16 +140,15 @@ class BookingController extends Controller
     
     public function showByField(Request $request)
     {
-        // dd($request);
         $date= new Carbon($request->date, 'Asia/Jakarta');
         $find= $date->format('Y-m-d');
-        dd($find);
         try {
             $listBooking=Field::join('schedules','schedules.id_field','=','fields.id_field')
                                     ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                    ->join('users','users.email','=','bookings.user_email')
                                     ->where('fields.id_field',$request->id_field)
                                     ->where('bookings.created_at','LIKE',"%$find%")
-                                    ->select('bookings.*')->get();
+                                    ->select('users.name as user_name', 'bookings.id_booking', 'schedules.start_time', 'schedules.end_time', 'bookings.client_email', 'bookings.payment_status', 'bookings.payment_type')->get();
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),
@@ -168,15 +170,13 @@ class BookingController extends Controller
     public function showByLocation($id_location)
     {
         try {
-            // $dataUser = Auth::user();
-            // $idUser = $dataUser->id_user;
-            // $id_location = Location::where('id_user',$idUser)->get('id_location');
             $listbooking=Location::join('fields','fields.id_location','=','locations.id_location')
                                     ->join('schedules','schedules.id_field','=','fields.id_field')
                                     ->join('bookings','bookings.id_schedule','=','schedules.id_schedule')
+                                    ->join('users','users.email','=','bookings.user_email')
                                     ->where('locations.id_location',$id_location)
-                                    // ->where('bookings.created_at','LIKE',"%$date%")
-                                    ->select('bookings.*')->get();
+                                    ->select('users.name as user_name', 'bookings.id_booking', 'schedules.start_time', 'schedules.end_time', 'bookings.client_email', 'bookings.payment_status', 'bookings.payment_type')
+                                    ->get();
         } catch (Exception $e) {
             return response()->json([
                 'message' => 'Failed retrieved data.' . $e->getMessage(),
@@ -186,6 +186,31 @@ class BookingController extends Controller
         return response()->json([
             'message' => 'Succesfully retrieved data.',
             'serve' => $listbooking
+        ], 200);
+    }
+
+    /**
+     * Display the specified booking based on client.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showByClient()
+    {
+        try {
+            $user = Auth::user();
+            $listBooking = Booking::select('users.name as user_name', 'bookings.id_booking', 'schedules.start_time', 'schedules.end_time', 'bookings.client_email', 'bookings.payment_status', 'bookings.payment_type')
+                                    ->join('users','users.email','=','bookings.user_email')
+                                    ->join('schedules','schedules.id_schedule','=','bookings.id_schedule')
+                                    ->where('client_email',$user->email)->get();
+        } catch (Exception $e) {
+            return response()->json([
+                'message' => 'Failed retrieved data.' . $e->getMessage(),
+                'serve' => []
+            ], 500);
+        }
+        return response()->json([
+            'message' => 'Succesfully retrieved data.',
+            'serve' => $listBooking
         ], 200);
     }
 

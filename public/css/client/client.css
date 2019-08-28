@@ -17406,6 +17406,15 @@ main {
   color: #38c172 !important;
 }
 
+#bookinglist .dateclass {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 3px 5px;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+  width: 190px;
+}
+
 #addbooking .available {
   background: rgba(56, 193, 114, 0.2) !important;
   color: #38c172 !important;
@@ -17588,7 +17597,6 @@ main {
   font-size: 15px;
 }
 
-<<<<<<< HEAD
 /*------------------------ VERIFY ------------------------*/
 
 #verify {
@@ -17757,7 +17765,8 @@ main {
 
 .modal-backdrop {
   opacity: 0.5 !important;
-=======
+}
+
 [v-cloak] {
   display: none;
 }
@@ -17772,6 +17781,5 @@ main {
 
 .editing .view {
   display: none;
->>>>>>> 6acbdeeda70236cbd4fe0c1aa2e340e6031d5f6f
 }
 
