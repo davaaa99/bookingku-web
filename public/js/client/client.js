@@ -2346,14 +2346,14 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var _this = this;
 
       var data = {
-        payment_status: this.items[index].payment_status += 1
+        payment_status: this.dataBooking[index].payment_status += 1
       };
       axios({
-        url: 'api/v1/bookings/' + this.items[index].id_booking,
+        url: 'api/v1/bookings/' + this.dataBooking[index].id_booking,
         method: 'PUT',
         data: data
       }).then(function (response) {
-        _this.items[index].payment_status = response.data.serve;
+        _this.dataBooking[index].payment_status = response.data.serve;
         window.location.href = window.location.protocol + '//' + window.location.host + '/bookinglist';
       })["catch"](function (error) {
         console.log(error);
@@ -2376,16 +2376,15 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
           _this2.Booking.payment_status = items[index].payment_status;
           _this2.Booking.payment_type = items[index].payment_type;
 
-          _this2.loadSchedule(items[index].id_schedule, index);
+          var sch = _this2.loadSchedule(items[index].id_schedule, index);
 
-          _this2.loadUser(items[index].client_email, index);
-
-          console.log(_this2.Booking.name);
+          _this2.Booking.name = _this2.loadUser(items[index].client_email, index);
+          console.log(_this2.loadSchedule(items[index].id_schedule, index));
 
           _this2.dataBooking.push({
             name: _this2.Booking.name,
             id_booking: _this2.Booking.id_booking,
-            schedule: _this2.Booking.schedule,
+            schedule: sch,
             payment_status: _this2.Booking.payment_status,
             payment_type: _this2.Booking.payment_type
           });
@@ -2394,7 +2393,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         console.log(error);
       });
     },
-    loadSchedule: function loadSchedule(id_schedule, index) {
+    loadSchedule: function loadSchedule(id_schedule, i) {
       var _this3 = this;
 
       axios({
@@ -2402,9 +2401,9 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         method: 'GET'
       }).then(function (response) {
         var temp = response.data.serve[0].start_time + '-' + response.data.serve[0].end_time;
-        _this3.Booking.schedule = temp; // return schedule
-
+        _this3.Booking.schedule = temp;
         console.log(_this3.Booking.schedule);
+        return _this3.Booking.schedule;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2417,12 +2416,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         method: 'GET'
       }).then(function (response) {
         var temp = response.data.serve;
-
-        for (var index = 0; index < temp.length; index++) {
-          _this4.Booking.name = temp[index].name; // return this.Booking.name
-
-          console.log(_this4.Booking.name);
-        }
+        console.log(temp);
+        _this4.Booking.name = temp[0].name;
+        console.log(_this4.Booking.name);
+        return _this4.Booking.name;
       })["catch"](function (error) {
         console.log(error);
       });

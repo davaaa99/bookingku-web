@@ -125,14 +125,14 @@
             },
             changeStatus(index) {
                 const data = {
-                    payment_status:this.items[index].payment_status += 1
+                    payment_status:this.dataBooking[index].payment_status += 1
                 }
                 axios({
-                    url: 'api/v1/bookings/'+this.items[index].id_booking,
+                    url: 'api/v1/bookings/'+this.dataBooking[index].id_booking,
                     method:'PUT',
                     data: data
                 }).then(response=>{
-                    this.items[index].payment_status = response.data.serve
+                    this.dataBooking[index].payment_status = response.data.serve
                     window.location.href = window.location.protocol +'//'+ window.location.host + '/bookinglist';
                 }).catch(error=>{
                     console.log(error);                    
@@ -153,14 +153,14 @@
                         this.Booking.id_booking=items[index].id_booking;
                         this.Booking.payment_status=items[index].payment_status;
                         this.Booking.payment_type=items[index].payment_type;
-                        this.loadSchedule(items[index].id_schedule,index)
-                        this.loadUser(items[index].client_email,index)
-                        console.log(this.Booking.name);
+                        let sch = this.loadSchedule(items[index].id_schedule,index)
+                        this.Booking.name = this.loadUser(items[index].client_email,index)
+                        console.log(this.loadSchedule(items[index].id_schedule,index));
                         
                         this.dataBooking.push({
                             name:this.Booking.name,
                             id_booking:this.Booking.id_booking,
-                            schedule:this.Booking.schedule,
+                            schedule: sch,
                             payment_status:this.Booking.payment_status,
                             payment_type:this.Booking.payment_type,
                         })
@@ -170,15 +170,15 @@
                 })
                 
             },
-            loadSchedule(id_schedule,index){
+            loadSchedule(id_schedule,i){
                 axios({
                     url: 'api/v1/bookings/schedule/'+id_schedule,
                     method: 'GET'
                 }).then(response => {
                     let temp=response.data.serve[0].start_time+'-'+response.data.serve[0].end_time;
-                    this.Booking.schedule=temp
-                    // return schedule
-                    console.log(this.Booking.schedule);         
+                    this.Booking.schedule = temp
+                    console.log(this.Booking.schedule);
+                    return this.Booking.schedule         
                 }).catch(error => {
                     console.log(error);
                 })
@@ -189,11 +189,10 @@
                     method: 'GET'
                 }).then(response => {
                     let temp = response.data.serve;
-                    for (let index = 0; index < temp.length; index++) {
-                        this.Booking.name=temp[index].name
-                        // return this.Booking.name
-                        console.log(this.Booking.name); 
-                    }
+                    console.log(temp);
+                    this.Booking.name =temp[0].name
+                    console.log(this.Booking.name); 
+                    return this.Booking.name
                 }).catch(error => {
                     console.log(error);
                 })
