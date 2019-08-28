@@ -17593,6 +17593,7 @@ main {
   font-size: 15px;
 }
 
+<<<<<<< HEAD
 /*------------------------ VERIFY ------------------------*/
 
 #verify {
@@ -17761,5 +17762,21 @@ main {
 
 .modal-backdrop {
   opacity: 0.5 !important;
+=======
+[v-cloak] {
+  display: none;
+}
+
+.edit {
+  display: none;
+}
+
+.editing .edit {
+  display: block;
+}
+
+.editing .view {
+  display: none;
+>>>>>>> 6acbdeeda70236cbd4fe0c1aa2e340e6031d5f6f
 }
 

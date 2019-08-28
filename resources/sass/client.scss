@@ -1437,3 +1437,15 @@ main {
 {
     opacity:0.5 !important;
 }
+[v-cloak] {
+    display: none;
+  }
+  .edit {
+    display: none;
+  }
+  .editing .edit {
+    display: block
+  }
+  .editing .view {
+    display: none;
+  }

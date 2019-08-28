@@ -3692,6 +3692,166 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      // Note 'age' is left out and will not appear in the rendered table
+      perPage: 20,
+      schedule: {
+        selectedLocation: "",
+        selectedField: "",
+        price: "",
+        day: "",
+        dp: "",
+        t_start: null,
+        t_finish: null
+      },
+      editedSchedule: null,
+      currentPage: 1,
+      locationlist: [],
+      location: [],
+      fieldlist: [],
+      field: [],
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      t_starts: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
+      t_finishs: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
+      add: false,
+      items: [],
+      index: 0,
+      schedules: []
+    };
+  },
+  mounted: function mounted() {
+    this.loadLocation();
+  },
+  methods: {
+    loadLocation: function loadLocation() {
+      var _this = this;
+
+      var index = 0;
+      axios({
+        url: "api/v1/location",
+        methods: "GET"
+      }).then(function (response) {
+        _this.locationList = response.data.serve;
+        console.log(response.data.serve);
+
+        for (index = 0; index < _this.locationList.length; index++) {
+          _this.location.push({
+            value: _this.locationList[index].id_location,
+            text: _this.locationList[index].location_name
+          });
+        }
+
+        console.log(_this.location);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadField: function loadField() {
+      var _this2 = this;
+
+      var index = 0;
+      axios({
+        url: "api/v1/fields/" + this.schedule.selectedLocation,
+        methods: "GET"
+      }).then(function (response) {
+        console.log(response);
+        _this2.fieldlist = response.data.serve;
+        console.log(response.data.serve);
+        _this2.field = [];
+
+        for (index = 0; index < _this2.fieldlist.length; index++) {
+          _this2.field.push({
+            value: _this2.fieldlist[index].id_field,
+            text: _this2.fieldlist[index].field_name
+          });
+        }
+
+        console.log(_this2.fieldlist);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    addSchedule: function addSchedule() {
+      this.schedules.push({
+        selectedLocation: this.schedule.selectedLocation,
+        selectedField: this.schedule.selectedField,
+        price: this.schedule.price,
+        day: this.schedule.day,
+        dp: this.schedule.dp,
+        t_start: this.schedule.t_start,
+        t_finish: this.schedule.t_finish
+      });
+      this.schedule = {
+        selectedLocation: "",
+        selectedField: "",
+        price: "",
+        day: "",
+        dp: "",
+        t_start: null,
+        t_finish: null
+      };
+    },
+    removeSchedule: function removeSchedule(item) {
+      this.schedules.splice(item, 1);
+    },
+    saveData: function saveData() {},
+    editData: function editData(schedule) {
+      this.schedule.beforeEditCache = schedule;
+      this.schedule.editedSchedule = schedule;
+    }
+  },
+  watch: {
+    "schedule.selectedLocation": function scheduleSelectedLocation() {
+      this.loadField();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/lib/index.js");
+/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_3__);
+>>>>>>> 6acbdeeda70236cbd4fe0c1aa2e340e6031d5f6f
 //
 //
 //
@@ -75057,14 +75217,13 @@ var render = function() {
             {
               attrs: {
                 id: "input-group-5",
-                label: "Day :",
+                label: "Day:",
                 "label-for": "input-5"
               }
             },
             [
               _c("b-form-checkbox-group", {
-                staticClass: "myselect",
-                attrs: { options: _vm.days, switches: "" },
+                attrs: { id: "input-5", options: _vm.days, switches: "" },
                 model: {
                   value: _vm.schedule.day,
                   callback: function($$v) {
@@ -75152,28 +75311,106 @@ var render = function() {
                 _vm._v(" "),
                 _c("th", [_vm._v("Time Start")]),
                 _vm._v(" "),
-                _c("th", [_vm._v("Time Finish")])
+                _c("th", [_vm._v("Time Finish")]),
+                _vm._v(" "),
+                _c("th"),
+                _vm._v(" "),
+                _c("th")
               ])
             ]),
             _vm._v(" "),
             _c(
               "tbody",
               _vm._l(_vm.schedules, function(u) {
-                return _c("tr", { key: u.id }, [
-                  _c("td", [_vm._v(_vm._s(u.selectedLocation))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.selectedField))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.price))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.dp))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.day))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.t_start))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(u.t_finish))])
-                ])
+                return _c(
+                  "tr",
+                  {
+                    key: u.id,
+                    class: { editing: _vm.schedule == _vm.editedSchedule }
+                  },
+                  [
+                    _c("td", [
+                      _c("div", { staticClass: "view" }, [
+                        _vm._v(
+                          "\n          " +
+                            _vm._s(u.selectedLocation) +
+                            "\n        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "edit" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.schedule.selectedLocation,
+                              expression: "schedule.selectedLocation"
+                            }
+                          ],
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.schedule.selectedLocation },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.schedule,
+                                "selectedLocation",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.selectedField))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.price))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.dp))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.day))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.t_start))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(u.t_finish))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("div", { staticClass: "view" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.editData(_vm.schedule)
+                              }
+                            }
+                          },
+                          [_vm._v("Edit")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "edit" }, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                return _vm.saveData(_vm.schedule)
+                              }
+                            }
+                          },
+                          [_vm._v("Save")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_c("button", [_vm._v("delete")])])
+                  ]
+                )
               }),
               0
             )
