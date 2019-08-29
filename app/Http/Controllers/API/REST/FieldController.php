@@ -109,6 +109,7 @@ class FieldController extends Controller
         $field = new Field([
             'id_field' => Uuid::uuid1()->getHex(),
             'id_location' => '1',
+            'id_kind_of_field' => '111',
             'field_name' => $request->get('field_name'),
             'field_type' => $request->get('field_type'),
             // 'field_photo' => $request->get('field_photo'),
