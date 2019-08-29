@@ -74,26 +74,12 @@
               enctype="multipart/form-data"
               @change="previewImage"
             ></b-form-file>
-            <!-- <div class="spacer-10"></div>
-            <div v-if="photoData.length > 0" class="d-flex image-bg" style="max-width: inherit;">
-                <div v-for="(photo, index) in photoData" :key="index" >
-                  <div class="image" :style="{ 'background-image': 'url(' + photo + ')' }">
-                    <i class="material-icons ic mr-auto" @click="removePhoto(index)">close</i>
-                  </div>
-                </div>
-            </div> -->
-          </b-col>
-        </b-row>
-        <b-row style="width: 300px">
-          <b-col class="col-2 mt-2"></b-col>
-          <b-col>
             <div class="spacer-10"></div>
             <div v-if="photoData.length > 0" class="d-flex image-bg" style="max-width: inherit;">
                 <div v-for="(photo, index) in photoData" :key="index" >
                   <div class="image" :style="{ 'background-image': 'url(' + photo + ')' }">
                     <i class="material-icons ic mr-auto" @click="removePhoto(index)">close</i>
                   </div>
-                  <!-- <img class="preview" :src="img"> -->
                 </div>
             </div>
           </b-col>

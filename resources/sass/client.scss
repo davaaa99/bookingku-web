@@ -1031,6 +1031,33 @@ main {
 
 
 #addlapang {
+    .tombol{
+        padding-top: 20px
+    }
+    .image-bg {
+        border-radius: 5px;
+        background-color: #E4E4E4;
+        width: fit-content;
+    }
+
+    .image {
+        width: 150px;
+        height: 150px;
+        margin: 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+        background-size: cover;
+        background-position: center center;
+
+        .ic {
+            color: white;
+
+            &:hover {       
+                color: #4D4D4D;
+                cursor: pointer;
+            }
+        }
+    }
     .buttonadd {
         float: right;
         padding-top: 5px;

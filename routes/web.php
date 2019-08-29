@@ -78,11 +78,13 @@ Route::group(['middleware' => ['auth', 'verified', 'is_admin']], function () {
 Route::get('/menulapang', 'ClientPageController@menulapang')->name('lapang');
 Route::get('/addlapang', 'ClientPageController@addLapang')->name('addlapang');
 Route::get('/editlapang/{id}', 'ClientPageController@editLapang')->name('editlapang');
-Route::get('/detaillapang', 'ClientPageController@detailLapang')->name('detaillapang');
+Route::get('/detaillapang/{id}', 'ClientPageController@detailLapang')->name('detaillapang');
 Route::get('/schedule', 'ClientPageController@manageSchedule')->name('schedule');
 
 Route::post('add', 'API\REST\FieldController@store');
 Route::get('field/{id}','API\REST\FieldController@show');
+Route::post('detail', 'API\REST\FieldController@detail')->name('edit');
+Route::post('edit', 'API\REST\FieldController@edit')->name('edit');
 Route::put('data/field', 'API\REST\FieldController@update');
 Route::post('upload', 'API\REST\FieldController@upload')->name('upload');
 Route::put('update', 'API\REST\FieldController@uploadedit')->name('updateedit');

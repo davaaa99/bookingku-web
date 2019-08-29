@@ -2143,9 +2143,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      photoData: [],
       tempIdField: "",
       form: {},
       photos: null,
@@ -2159,6 +2172,28 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    removePhoto: function removePhoto(index) {
+      this.photoData.splice(index, 1);
+      this.photos.splice(index, 1);
+    },
+    previewImage: function previewImage(event) {
+      var _this = this;
+
+      var input = event.target;
+      this.photoData = [];
+
+      if (input.files && input.files[0]) {
+        for (var index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            _this.photoData.push(e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
     addLapang: function addLapang() {
       var uri = '/add';
       this.axios.post(uri, this.form).then(function (response) {
@@ -2170,16 +2205,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     upload: function upload(event) {
-      var _this = this;
+      var _this2 = this;
 
       console.log(this.photos);
       event.preventDefault();
       window.setTimeout(function () {
         var formData = new FormData();
-        formData.append('id_field', _this.tempIdField);
+        formData.append('id_field', _this2.tempIdField);
 
-        for (var index = 0; index < _this.photos.length; index++) {
-          formData.append("photo[]", _this.photos[index]);
+        for (var index = 0; index < _this2.photos.length; index++) {
+          formData.append("photo[]", _this2.photos[index]);
         }
 
         console.log(formData);
@@ -2199,14 +2234,14 @@ __webpack_require__.r(__webpack_exports__);
       }, 1000);
     },
     store: function store() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios({
         url: '/add',
         method: 'POST',
         data: this.field
       }).then(function (response) {
-        _this2.tempIdField = response.data.serve.id_field;
+        _this3.tempIdField = response.data.serve.id_field;
       })["catch"](function (error) {
         console.log(error);
         alert('Data gagal ditambahkan');
@@ -2695,6 +2730,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     idField: String
@@ -2705,6 +2758,8 @@ __webpack_require__.r(__webpack_exports__);
       found: true,
       // form: {},
       photos: [],
+      oldPhotos: [],
+      photoData: [],
       oldfield: {},
       field: {
         id_field: "",
@@ -2723,17 +2778,46 @@ __webpack_require__.r(__webpack_exports__);
     this.loadData();
   },
   methods: {
-    upload: function upload(event) {
+    previewImage: function previewImage(event) {
       var _this = this;
+
+      var input = event.target;
+      this.photoData = [];
+
+      if (input.files && input.files[0]) {
+        for (var index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            _this.photoData.push(e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
+    splitPhotoUrl: function splitPhotoUrl($photosUrl) {
+      this.oldPhotos = $photosUrl.split(";");
+    },
+    removeOldphoto: function removeOldphoto(index) {
+      this.oldPhotos.splice(index, 1);
+      console.log(this.oldPhotos);
+    },
+    removePhoto: function removePhoto(index) {
+      this.photoData.splice(index, 1);
+      this.photos.splice(index, 1);
+    },
+    upload: function upload(event) {
+      var _this2 = this;
 
       console.log(this.photos);
       event.preventDefault();
       window.setTimeout(function () {
         var formData = new FormData();
-        formData.append('id_field', _this.idField);
+        formData.append('id_field', _this2.idField);
 
-        for (var index = 0; index < _this.photos.length; index++) {
-          formData.append("photo[]", _this.photos[index]);
+        for (var index = 0; index < _this2.photos.length; index++) {
+          formData.append("photo[]", _this2.photos[index]);
         }
 
         console.log(formData);
@@ -2765,7 +2849,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     loadData: function loadData() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios({
         url: '/edit',
@@ -2774,11 +2858,13 @@ __webpack_require__.r(__webpack_exports__);
           id: this.idField
         }
       }).then(function (response) {
-        _this2.oldfield = response.data;
+        _this3.oldfield = response.data;
         console.log(response);
-        console.log(_this2.oldfield);
+        console.log(_this3.oldfield);
 
-        _this2.setDataField(_this2.oldfield); // console.log(response.data)
+        _this3.setDataField(_this3.oldfield);
+
+        _this3.splitPhotoUrl(_this3.oldfield.field_photo); // console.log(response.data)
 
       })["catch"](function (error) {
         console.log(error);
@@ -2808,20 +2894,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3692,166 +3764,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< HEAD
-=======
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      // Note 'age' is left out and will not appear in the rendered table
-      perPage: 20,
-      schedule: {
-        selectedLocation: "",
-        selectedField: "",
-        price: "",
-        day: "",
-        dp: "",
-        t_start: null,
-        t_finish: null
-      },
-      editedSchedule: null,
-      currentPage: 1,
-      locationlist: [],
-      location: [],
-      fieldlist: [],
-      field: [],
-      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      t_starts: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
-      t_finishs: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
-      add: false,
-      items: [],
-      index: 0,
-      schedules: []
-    };
-  },
-  mounted: function mounted() {
-    this.loadLocation();
-  },
-  methods: {
-    loadLocation: function loadLocation() {
-      var _this = this;
-
-      var index = 0;
-      axios({
-        url: "api/v1/location",
-        methods: "GET"
-      }).then(function (response) {
-        _this.locationList = response.data.serve;
-        console.log(response.data.serve);
-
-        for (index = 0; index < _this.locationList.length; index++) {
-          _this.location.push({
-            value: _this.locationList[index].id_location,
-            text: _this.locationList[index].location_name
-          });
-        }
-
-        console.log(_this.location);
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    loadField: function loadField() {
-      var _this2 = this;
-
-      var index = 0;
-      axios({
-        url: "api/v1/fields/" + this.schedule.selectedLocation,
-        methods: "GET"
-      }).then(function (response) {
-        console.log(response);
-        _this2.fieldlist = response.data.serve;
-        console.log(response.data.serve);
-        _this2.field = [];
-
-        for (index = 0; index < _this2.fieldlist.length; index++) {
-          _this2.field.push({
-            value: _this2.fieldlist[index].id_field,
-            text: _this2.fieldlist[index].field_name
-          });
-        }
-
-        console.log(_this2.fieldlist);
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    addSchedule: function addSchedule() {
-      this.schedules.push({
-        selectedLocation: this.schedule.selectedLocation,
-        selectedField: this.schedule.selectedField,
-        price: this.schedule.price,
-        day: this.schedule.day,
-        dp: this.schedule.dp,
-        t_start: this.schedule.t_start,
-        t_finish: this.schedule.t_finish
-      });
-      this.schedule = {
-        selectedLocation: "",
-        selectedField: "",
-        price: "",
-        day: "",
-        dp: "",
-        t_start: null,
-        t_finish: null
-      };
-    },
-    removeSchedule: function removeSchedule(item) {
-      this.schedules.splice(item, 1);
-    },
-    saveData: function saveData() {},
-    editData: function editData(schedule) {
-      this.schedule.beforeEditCache = schedule;
-      this.schedule.editedSchedule = schedule;
-    }
-  },
-  watch: {
-    "schedule.selectedLocation": function scheduleSelectedLocation() {
-      this.loadField();
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/client/components/menuLapanganComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue2-datepicker */ "./node_modules/vue2-datepicker/lib/index.js");
-/* harmony import */ var vue2_datepicker__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue2_datepicker__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
-/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_3__);
->>>>>>> 6acbdeeda70236cbd4fe0c1aa2e340e6031d5f6f
 //
 //
 //
@@ -4655,6 +4567,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4673,55 +4603,19 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         t_start: null,
         t_finish: null
       },
+      editedSchedule: null,
       currentPage: 1,
       locationlist: [],
       location: [],
       fieldlist: [],
       field: [],
-      days: ["Monday", "Tuesday"],
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       t_starts: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
       t_finishs: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"],
       add: false,
       items: [],
       index: 0,
-      schedules: [] //   fields: {
-      //     locationn: {
-      //       key: "selectedLocation",
-      //       label: "Location",
-      //       sortable: true
-      //     },
-      //     field: {
-      //       key: "selectedField",
-      //       label: "Field",
-      //       sortable: true
-      //     },
-      //     price: {
-      //       key: "price",
-      //       label: "Price",
-      //       sortable: true
-      //     },
-      //     dp: {
-      //       key: "dp",
-      //       label: "Down Payment",
-      //       sortable: true
-      //     },
-      //     day: {
-      //       key: "day",
-      //       label: "Day",
-      //       sortable: true
-      //     },
-      //     time_start: {
-      //       key: "t_start",
-      //       label: "Time Start",
-      //       sortable: true
-      //     },
-      //     time_finish: {
-      //       key: "t_finish",
-      //       label: "Time Finish",
-      //       sortable: true
-      //     }
-      //   }
-
+      schedules: []
     };
   },
   mounted: function mounted() {
@@ -4798,6 +4692,11 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     },
     removeSchedule: function removeSchedule(item) {
       this.schedules.splice(item, 1);
+    },
+    saveData: function saveData() {},
+    editData: function editData(schedule) {
+      this.schedule.beforeEditCache = schedule;
+      this.schedule.editedSchedule = schedule;
     }
   },
   watch: {
@@ -4929,7 +4828,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 
       var index = 0;
       axios({
-        url: 'api/v1/location',
+        url: 'data/locations',
         methods: 'GET'
       }).then(function (response) {
         _this3.locations = response.data.serve; // console.log(response);
@@ -71829,6 +71728,7 @@ var render = function() {
               accept: ".jpg, .png, .jpeg,. .gif",
               enctype: "multipart/form-data"
             },
+            on: { change: _vm.previewImage },
             model: {
               value: _vm.photos,
               callback: function($$v) {
@@ -71839,24 +71739,64 @@ var render = function() {
           })
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-10" }),
+      _vm._v(" "),
+      _vm.photoData.length > 0
+        ? _c(
+            "div",
+            {
+              staticClass: "d-flex image-bg",
+              staticStyle: { "max-width": "inherit" }
+            },
+            _vm._l(_vm.photoData, function(photo, index) {
+              return _c("div", { key: index }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "image",
+                    style: { "background-image": "url(" + photo + ")" }
+                  },
+                  [
+                    _c(
+                      "i",
+                      {
+                        staticClass: "material-icons ic mr-auto",
+                        on: {
+                          click: function($event) {
+                            return _vm.removePhoto(index)
+                          }
+                        }
+                      },
+                      [_vm._v("close")]
+                    )
+                  ]
+                )
+              ])
+            }),
+            0
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        on: {
-          click: function($event) {
-            _vm.store()
-            _vm.upload($event)
+    _c("div", { staticClass: "tombol" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          on: {
+            click: function($event) {
+              _vm.store()
+              _vm.upload($event)
+            }
           }
-        }
-      },
-      [_vm._v("Add Lapang")]
-    )
+        },
+        [_vm._v("Add Lapang")]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -72329,6 +72269,7 @@ var render = function() {
               accept: ".jpg, .png, .jpeg,. .gif",
               enctype: "multipart/form-data"
             },
+            on: { change: _vm.previewImage },
             model: {
               value: _vm.photos,
               callback: function($$v) {
@@ -72336,7 +72277,77 @@ var render = function() {
               },
               expression: "photos"
             }
-          })
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-10" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex" }, [
+            _vm.oldPhotos.length > 0
+              ? _c(
+                  "div",
+                  { staticClass: "d-flex flex-row image-bg" },
+                  _vm._l(_vm.oldPhotos, function(photo, index) {
+                    return _c("div", { key: index }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "image",
+                          style: { "background-image": "url(" + photo + ")" }
+                        },
+                        [
+                          _c(
+                            "i",
+                            {
+                              staticClass: "material-icons ic mr-auto",
+                              on: {
+                                click: function($event) {
+                                  return _vm.removeOldphoto(index)
+                                }
+                              }
+                            },
+                            [_vm._v("close")]
+                          )
+                        ]
+                      )
+                    ])
+                  }),
+                  0
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.photoData.length > 0
+              ? _c(
+                  "div",
+                  { staticClass: "d-flex flex-row image-bg" },
+                  _vm._l(_vm.photoData, function(photo, index) {
+                    return _c("div", { key: index }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "image",
+                          style: { "background-image": "url(" + photo + ")" }
+                        },
+                        [
+                          _c(
+                            "i",
+                            {
+                              staticClass: "material-icons ic mr-auto",
+                              on: {
+                                click: function($event) {
+                                  return _vm.removePhoto(index)
+                                }
+                              }
+                            },
+                            [_vm._v("close")]
+                          )
+                        ]
+                      )
+                    ])
+                  }),
+                  0
+                )
+              : _vm._e()
+          ])
         ],
         1
       )
@@ -72555,61 +72566,51 @@ var render = function() {
                           },
                           expression: "photos"
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "spacer-10" }),
+                      _vm._v(" "),
+                      _vm.photoData.length > 0
+                        ? _c(
+                            "div",
+                            {
+                              staticClass: "d-flex image-bg",
+                              staticStyle: { "max-width": "inherit" }
+                            },
+                            _vm._l(_vm.photoData, function(photo, index) {
+                              return _c("div", { key: index }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "image",
+                                    style: {
+                                      "background-image": "url(" + photo + ")"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "i",
+                                      {
+                                        staticClass:
+                                          "material-icons ic mr-auto",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.removePhoto(index)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("close")]
+                                    )
+                                  ]
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-row",
-                { staticStyle: { width: "300px" } },
-                [
-                  _c("b-col", { staticClass: "col-2 mt-2" }),
-                  _vm._v(" "),
-                  _c("b-col", [
-                    _c("div", { staticClass: "spacer-10" }),
-                    _vm._v(" "),
-                    _vm.photoData.length > 0
-                      ? _c(
-                          "div",
-                          {
-                            staticClass: "d-flex image-bg",
-                            staticStyle: { "max-width": "inherit" }
-                          },
-                          _vm._l(_vm.photoData, function(photo, index) {
-                            return _c("div", { key: index }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "image",
-                                  style: {
-                                    "background-image": "url(" + photo + ")"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "i",
-                                    {
-                                      staticClass: "material-icons ic mr-auto",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.removePhoto(index)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("close")]
-                                  )
-                                ]
-                              )
-                            ])
-                          }),
-                          0
-                        )
-                      : _vm._e()
-                  ])
                 ],
                 1
               )

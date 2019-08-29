@@ -19,12 +19,24 @@
                 <b-form-file
                 multiple
                   accept=".jpg, .png, .jpeg,. .gif"  v-model="photos" enctype="multipart/form-data"
+                  @change="previewImage"
                 ></b-form-file>
            </div>
+
+           <div class="spacer-10"></div>
+            <div v-if="photoData.length > 0" class="d-flex image-bg" style="max-width: inherit;">
+                <div v-for="(photo, index) in photoData" :key="index" >
+                  <div class="image" :style="{ 'background-image': 'url(' + photo + ')' }">
+                    <i class="material-icons ic mr-auto" @click="removePhoto(index)">close</i>
+                  </div>
+                  <!-- <img class="preview" :src="img"> -->
+                </div>
+            </div>
       </form>
+      <div class="tombol">
       <a href="/menulapang"><button class="btn btn-primary">Cancel</button></a>
       <button class="btn btn-primary" @click="store();upload($event);">Add Lapang</button>
-      
+      </div>
     </div>
 </template>
 
@@ -33,6 +45,7 @@
   export default {
     data() {
       return {
+        photoData: [],
         tempIdField: "",
         form: {},
         photos: null,
@@ -46,7 +59,24 @@
       }
     },
     
-    methods: {            
+    methods: {  
+      removePhoto(index) {
+      this.photoData.splice(index,1)
+      this.photos.splice(index,1)
+      },
+      previewImage: function(event) {
+      var input = event.target;
+      this.photoData = []
+      if (input.files && input.files[0]) {
+        for (let index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+          reader.onload = e => {
+            this.photoData.push(e.target.result);
+          };
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },          
       addLapang() {
           let uri = '/add';
           this.axios.post(uri, this.form).then((response) => {

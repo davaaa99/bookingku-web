@@ -100,7 +100,7 @@
             loadLocation(){
                 let index=0;
                 axios({
-                    url: 'api/v1/location',
+                    url: 'data/locations',
                     methods: 'GET',
                 }).then(response=>{
                     this.locations = response.data.serve
