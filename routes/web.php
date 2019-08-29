@@ -45,6 +45,9 @@ Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
     Route::get('/location/detail/{id}', 'ClientPageController@locationDetail')->name('locationdetail');
     Route::get('/location/add', 'ClientPageController@locationAdd')->name('locationadd');
     Route::get('/location/edit/{id}', 'ClientPageController@locationEdit')->name('locationedit');
+    
+    Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
+    Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');
 
     /**
      * Route for data
@@ -57,6 +60,17 @@ Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
 
     Route::post('upload', 'API\REST\LocationController@storePhoto')->name('storePhoto');
     Route::post('update/photo', 'API\REST\LocationController@updatePhoto')->name('updatePhoto');
+
+    Route::get('bookings/schedule/{id_schedule}','API\REST\ScheduleController@showById');
+    Route::get('bookings/user/{email}','API\REST\UserController@getClientName');
+    Route::post('bookings/field','API\REST\BookingController@showByField');
+    Route::get('bookings/location/{id_location}/','API\REST\BookingController@showByLocation');
+    Route::post('booking/manual','API\REST\BookingController@create');
+    Route::put('/bookings/{id_booking}','API\REST\BookingController@update');
+    Route::delete('/booking/{id_booking}', 'API\REST\BookingController@destroy');
+    Route::get('bookings','API\REST\BookingController@showByCLient');
+    Route::get('location','API\REST\LocationController@show');
+    Route::get('field/data/{idLocation}','API\REST\FieldController@show');
 });
 
 
@@ -88,6 +102,3 @@ Route::post('edit', 'API\REST\FieldController@edit')->name('edit');
 Route::put('data/field', 'API\REST\FieldController@update');
 Route::post('upload', 'API\REST\FieldController@upload')->name('upload');
 Route::put('update', 'API\REST\FieldController@uploadedit')->name('updateedit');
-
-Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
-Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');

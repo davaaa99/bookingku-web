@@ -16861,7 +16861,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.15';
+  var VERSION = '4.17.14';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -49543,10 +49543,10 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation register DONE\bookingku-web\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation register DONE\bookingku-web\resources\sass\app.scss */"./resources/sass/app.scss");
-__webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation register DONE\bookingku-web\resources\sass\admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! D:\xampp\htdocs\Bookingku implementation register DONE\bookingku-web\resources\sass\client.scss */"./resources/sass/client.scss");
+__webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\bookingku-web\resources\sass\client.scss */"./resources/sass/client.scss");
 
 
 /***/ })
