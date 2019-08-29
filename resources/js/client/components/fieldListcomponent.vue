@@ -31,7 +31,7 @@
         <p>{{lapangan.field_type}}</p>
         </b-card-text>
         <a :href="'editlapang/' + lapangan.id_field"><b-button important variant="light">Edit</b-button></a>
-        <a href="#"><b-button important variant="danger" @click="deleteLapang(lapangan.id_field)">Delete </b-button></a>
+        <a href="#"><b-button important variant="danger" @click="deleteLapang(index)">Delete </b-button></a>
        </b-card> 
         </b-card-group>
          </a>
@@ -89,18 +89,21 @@
                     console.log(error);
                 });
             },
-            deleteLapang(id_field){     
-              let uri = `http://localhost:8000/api/v1/field/${id_field}`;
-              this.axios.delete(uri).then(response => {
-               this.dataLapangan.splice(this.dataLapangan.indexOf(id_field), 1);
-               console.log(this.dataLapangan);
-               window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
-              });
+            deleteLapang(index){  
+                axios({
+                    url: 'delete/'+ this.dataLapangan[index].id_field,
+                    method: 'DELETE',
+              }).then(response=>{
+                // this.dataLapangan[index].splice(this.dataLapangan[index].indexOf(id_field), 1);
+                window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
+              }).catch(error=>{
+                    console.log(error);
+                });   
             },
             loadLocation(){
                 let index=0;
                 axios({
-                    url: 'api/v1/location',
+                    url: 'data/locations',
                     methods: 'GET',
                 }).then(response=>{
                     this.locations = response.data.serve

@@ -23,7 +23,25 @@
                 <b-form-file
                 multiple
                   accept=".jpg, .png, .jpeg,. .gif"  v-model="photos" enctype="multipart/form-data"
+                  @change="previewImage"
                 ></b-form-file>
+                <div class="spacer-10"></div>
+            <div class="d-flex">
+              <div v-if="oldPhotos.length > 0" class="d-flex flex-row image-bg">
+                <div v-for="(photo, index) in oldPhotos" :key="index" >
+                  <div class="image" :style="{ 'background-image': 'url(' + photo + ')' }">
+                    <i class="material-icons ic mr-auto" @click="removeOldphoto(index)">close</i>
+                  </div>
+                </div>
+              </div>
+              <div v-if="photoData.length > 0" class="d-flex flex-row image-bg">
+                  <div v-for="(photo, index) in photoData" :key="index" >
+                    <div class="image" :style="{ 'background-image': 'url(' + photo + ')' }">
+                      <i class="material-icons ic mr-auto" @click="removePhoto(index)">close</i>
+                    </div>
+                  </div>
+              </div>
+            </div>
            </div>
         </form>
            <a href="/menulapang"><button class="btn btn-primary">Cancel</button></a>
@@ -45,6 +63,8 @@
         found: true,
         // form: {},
         photos:[],
+        oldPhotos:[],
+        photoData:[],
         oldfield: {},
         field: {
             id_field: "",
@@ -61,6 +81,31 @@
     },
    
     methods: {
+      previewImage: function(event) {
+      var input = event.target;
+      this.photoData = []
+      if (input.files && input.files[0]) {
+        for (let index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+          reader.onload = e => {
+            this.photoData.push(e.target.result);
+          };
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
+      splitPhotoUrl($photosUrl) {
+      this.oldPhotos = $photosUrl.split(";")
+    },
+      removeOldphoto(index) {
+      this.oldPhotos.splice(index,1)
+      console.log(this.oldPhotos);
+      
+    },
+    removePhoto(index) {
+      this.photoData.splice(index,1)
+      this.photos.splice(index,1)
+    },
       upload(event) {
                 console.log(this.photos);
                 event.preventDefault();
@@ -115,6 +160,7 @@
             console.log(this.oldfield);
             
             this.setDataField(this.oldfield)
+            this.splitPhotoUrl(this.oldfield.field_photo)
             // console.log(response.data)
         }).catch(error =>{
             console.log(error);

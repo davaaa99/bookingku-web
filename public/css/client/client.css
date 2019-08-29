@@ -17381,6 +17381,37 @@ main {
   height: 450px;
 }
 
+#addlapang .tombol {
+  padding-top: 20px;
+}
+
+#addlapang .image-bg {
+  border-radius: 5px;
+  background-color: #E4E4E4;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+#addlapang .image {
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center center;
+}
+
+#addlapang .image .ic {
+  color: white;
+}
+
+#addlapang .image .ic:hover {
+  color: #4D4D4D;
+  cursor: pointer;
+}
+
 #addlapang .buttonadd {
   float: right;
   padding-top: 5px;
@@ -17409,6 +17440,15 @@ main {
 #bookinglist .badge.full-payment {
   background: rgba(56, 193, 114, 0.4) !important;
   color: #38c172 !important;
+}
+
+#bookinglist .dateclass {
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 3px 5px;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.1);
+  width: 190px;
 }
 
 #addbooking .available {

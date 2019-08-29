@@ -45,6 +45,9 @@ Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
     Route::get('/location/detail/{id}', 'ClientPageController@locationDetail')->name('locationdetail');
     Route::get('/location/add', 'ClientPageController@locationAdd')->name('locationadd');
     Route::get('/location/edit/{id}', 'ClientPageController@locationEdit')->name('locationedit');
+    
+    Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
+    Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');
 
     /**
      * Route for data
@@ -55,8 +58,19 @@ Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
     Route::put('update/location', 'API\REST\LocationController@update');
     Route::delete('location/{id}', 'API\REST\LocationController@destroy');
 
-    Route::post('upload', 'API\REST\LocationController@storePhoto')->name('storePhoto');
+    Route::post('uploadlokasi', 'API\REST\LocationController@storePhoto')->name('storePhoto');
     Route::post('update/photo', 'API\REST\LocationController@updatePhoto')->name('updatePhoto');
+
+    Route::get('bookings/schedule/{id_schedule}','API\REST\ScheduleController@showById');
+    Route::get('bookings/user/{email}','API\REST\UserController@getClientName');
+    Route::post('bookings/field','API\REST\BookingController@showByField');
+    Route::get('bookings/location/{id_location}/','API\REST\BookingController@showByLocation');
+    Route::post('booking/manual','API\REST\BookingController@create');
+    Route::put('/bookings/{id_booking}','API\REST\BookingController@update');
+    Route::delete('/booking/{id_booking}', 'API\REST\BookingController@destroy');
+    Route::get('bookings','API\REST\BookingController@showByCLient');
+    Route::get('location','API\REST\LocationController@show');
+    Route::get('field/data/{idLocation}','API\REST\FieldController@show');
 });
 
 
@@ -78,14 +92,14 @@ Route::group(['middleware' => ['auth', 'verified', 'is_admin']], function () {
 Route::get('/menulapang', 'ClientPageController@menulapang')->name('lapang');
 Route::get('/addlapang', 'ClientPageController@addLapang')->name('addlapang');
 Route::get('/editlapang/{id}', 'ClientPageController@editLapang')->name('editlapang');
-Route::get('/detaillapang', 'ClientPageController@detailLapang')->name('detaillapang');
+Route::get('/detaillapang/{id}', 'ClientPageController@detailLapang')->name('detaillapang');
 Route::get('/schedule', 'ClientPageController@manageSchedule')->name('schedule');
 
 Route::post('add', 'API\REST\FieldController@store');
 Route::get('field/{id}','API\REST\FieldController@show');
+Route::post('detail', 'API\REST\FieldController@detail')->name('edit');
+Route::post('edit', 'API\REST\FieldController@edit')->name('edit');
 Route::put('data/field', 'API\REST\FieldController@update');
 Route::post('upload', 'API\REST\FieldController@upload')->name('upload');
 Route::put('update', 'API\REST\FieldController@uploadedit')->name('updateedit');
-
-Route::get('/bookinglist', 'ClientPageController@bookinglist')->name('bookinglist');
-Route::get('/addbooking', 'ClientPageController@addbooking')->name('addbooking');
+Route::delete('delete/{id}', 'API\REST\FieldController@destroy')->name('delete');

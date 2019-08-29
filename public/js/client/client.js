@@ -2143,22 +2143,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      photoData: [],
       tempIdField: "",
       form: {},
       photos: null,
       tipelapang: ['Sintetis', 'Vinyl', 'Semen', 'Karpet'],
       show: true,
+      selectedLocation: "",
+      location: [],
+      locations: [],
       field: {
+        id_location: "",
         field_name: "",
         field_type: "",
         photos: null
       }
     };
   },
+  mounted: function mounted() {
+    this.loadLocation();
+  },
   methods: {
+    removePhoto: function removePhoto(index) {
+      this.photoData.splice(index, 1);
+      this.photos.splice(index, 1);
+    },
+    previewImage: function previewImage(event) {
+      var _this = this;
+
+      var input = event.target;
+      this.photoData = [];
+
+      if (input.files && input.files[0]) {
+        for (var index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            _this.photoData.push(e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
     addLapang: function addLapang() {
       var uri = '/add';
       this.axios.post(uri, this.form).then(function (response) {
@@ -2170,16 +2218,16 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     upload: function upload(event) {
-      var _this = this;
+      var _this2 = this;
 
       console.log(this.photos);
       event.preventDefault();
       window.setTimeout(function () {
         var formData = new FormData();
-        formData.append('id_field', _this.tempIdField);
+        formData.append('id_field', _this2.tempIdField);
 
-        for (var index = 0; index < _this.photos.length; index++) {
-          formData.append("photo[]", _this.photos[index]);
+        for (var index = 0; index < _this2.photos.length; index++) {
+          formData.append("photo[]", _this2.photos[index]);
         }
 
         console.log(formData);
@@ -2199,17 +2247,40 @@ __webpack_require__.r(__webpack_exports__);
       }, 1000);
     },
     store: function store() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios({
         url: '/add',
         method: 'POST',
         data: this.field
       }).then(function (response) {
-        _this2.tempIdField = response.data.serve.id_field;
+        _this3.tempIdField = response.data.serve.id_field;
       })["catch"](function (error) {
         console.log(error);
         alert('Data gagal ditambahkan');
+      });
+    },
+    loadLocation: function loadLocation() {
+      var _this4 = this;
+
+      var index = 0;
+      axios({
+        url: 'data/locations',
+        methods: 'GET'
+      }).then(function (response) {
+        _this4.locations = response.data.serve; // console.log(response);
+        // console.log(this.locations);
+
+        _this4.location = [];
+
+        for (index = 0; index < _this4.locations.length; index++) {
+          _this4.location.push({
+            value: _this4.locations[index].id_location,
+            text: _this4.locations[index].location_name
+          });
+        }
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }
@@ -2304,7 +2375,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       field: [],
       scheduleList: [],
       userList: [],
-      items: [],
       selectedDate: "",
       dateFormat: {
         format: 'MMM/DD/YYYY',
@@ -2318,13 +2388,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         field: '',
         date: ''
       },
-      Booking: {
-        id_booking: '',
-        name: '',
-        schedule: '',
-        payment_status: '',
-        payment_type: ''
-      },
       dataBooking: []
     };
   },
@@ -2333,9 +2396,6 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
     this.loadLocation();
   },
   methods: {
-    test: function test() {
-      console.log(this.locationList);
-    },
     paid: function paid($status) {
       var $key = ['Unpaid', 'Down Payment', 'Paid'];
       return $key[$status];
@@ -2359,14 +2419,14 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var _this = this;
 
       var data = {
-        payment_status: this.items[index].payment_status += 1
+        payment_status: this.dataBooking[index].payment_status += 1
       };
       axios({
-        url: 'api/v1/bookings/' + this.items[index].id_booking,
+        url: '/bookings/' + this.dataBooking[index].id_booking,
         method: 'PUT',
         data: data
       }).then(function (response) {
-        _this.items[index].payment_status = response.data.serve;
+        _this.dataBooking[index].payment_status = response.data.serve;
         window.location.href = window.location.protocol + '//' + window.location.host + '/bookinglist';
       })["catch"](function (error) {
         console.log(error);
@@ -2379,102 +2439,53 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var _this2 = this;
 
       axios({
-        url: 'api/v1/bookings',
+        url: '/bookings',
         method: 'GET'
       }).then(function (response) {
-        var items = response.data.serve; // console.log(items);
-
-        for (var index = 0; index < items.length; index++) {
-          _this2.Booking.id_booking = items[index].id_booking;
-          _this2.Booking.payment_status = items[index].payment_status;
-          _this2.Booking.payment_type = items[index].payment_type;
-
-          _this2.loadSchedule(items[index].id_schedule, index);
-
-          _this2.loadUser(items[index].client_email, index);
-
-          console.log(_this2.Booking.name);
-
-          _this2.dataBooking.push({
-            name: _this2.Booking.name,
-            id_booking: _this2.Booking.id_booking,
-            schedule: _this2.Booking.schedule,
-            payment_status: _this2.Booking.payment_status,
-            payment_type: _this2.Booking.payment_type
-          });
-        }
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    loadSchedule: function loadSchedule(id_schedule, index) {
-      var _this3 = this;
-
-      axios({
-        url: 'api/v1/bookings/schedule/' + id_schedule,
-        method: 'GET'
-      }).then(function (response) {
-        var temp = response.data.serve[0].start_time + '-' + response.data.serve[0].end_time;
-        _this3.Booking.schedule = temp; // return schedule
-
-        console.log(_this3.Booking.schedule);
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    loadUser: function loadUser(email, i) {
-      var _this4 = this;
-
-      axios({
-        url: 'api/v1/bookings/user/' + email,
-        method: 'GET'
-      }).then(function (response) {
-        var temp = response.data.serve;
-
-        for (var index = 0; index < temp.length; index++) {
-          _this4.Booking.name = temp[index].name; // return this.Booking.name
-
-          console.log(_this4.Booking.name);
-        }
+        _this2.dataBooking = response.data.serve;
+        console.log(_this2.dataBooking);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadLocation: function loadLocation() {
-      var _this5 = this;
+      var _this3 = this;
 
       var index = 0;
       axios({
-        url: 'api/v1/location',
+        url: '/location',
         methods: 'GET'
       }).then(function (response) {
-        _this5.locationList = response.data.serve;
+        _this3.locationList = response.data.serve;
 
-        for (index = 0; index < _this5.locationList.length; index++) {
-          _this5.location.push({
-            value: _this5.locationList[index].id_location,
-            text: _this5.locationList[index].location_name
+        for (index = 0; index < _this3.locationList.length; index++) {
+          _this3.location.push({
+            value: _this3.locationList[index].id_location,
+            text: _this3.locationList[index].location_name
           });
         }
+
+        console.log(_this3.location);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadField: function loadField() {
-      var _this6 = this;
+      var _this4 = this;
 
       var index = 0;
       axios({
-        url: 'api/v1/field/data/' + this.selectedLocation,
+        url: '/field/data/' + this.selectedLocation,
         methods: 'GET'
       }).then(function (response) {
-        _this6.fieldlist = response.data.serve;
-        _this6.field = [];
+        console.log(response);
+        _this4.fieldlist = response.data.serve;
+        _this4.field = [];
 
-        for (index = 0; index < _this6.fieldlist.length; index++) {
-          _this6.field.push({
-            value: _this6.fieldlist[index].id_field,
-            text: _this6.fieldlist[index].field_name
+        for (index = 0; index < _this4.fieldlist.length; index++) {
+          _this4.field.push({
+            value: _this4.fieldlist[index].id_field,
+            text: _this4.fieldlist[index].field_name
           });
         }
       })["catch"](function (error) {
@@ -2482,36 +2493,32 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
       });
     },
     loadByLocation: function loadByLocation() {
-      var _this7 = this;
+      var _this5 = this;
 
       axios({
-        url: 'api/v1/bookings/location/' + this.selectedLocation,
+        url: '/bookings/location/' + this.selectedLocation,
         method: 'GET'
       }).then(function (response) {
-        _this7.items = response.data.serve;
+        _this5.dataBooking = response.data.serve;
+        console.log(_this5.dataBooking);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadByField: function loadByField() {
-      var _this8 = this;
+      var _this6 = this;
 
-      console.log(this.selectedDate);
-      var d = this.selectedDate; // month = '' + (d.getMonth() + 1),
-      // day = '' + d.getDate(),
-      // year = d.getFullYear();
-
+      var d = this.selectedDate;
       axios({
-        url: 'api/v1/bookings/field',
+        url: '/bookings/field',
         method: 'POST',
         data: {
           id_field: this.selectedField,
           date: this.selectedDate
         }
       }).then(function (response) {
-        console.log(response);
-        _this8.items = response.data.serve;
-        console.log(_this8.items);
+        _this6.dataBooking = response.data.serve;
+        console.log(_this6.dataBooking);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2577,6 +2584,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     idField: String
@@ -2587,6 +2612,8 @@ __webpack_require__.r(__webpack_exports__);
       found: true,
       // form: {},
       photos: [],
+      oldPhotos: [],
+      photoData: [],
       oldfield: {},
       field: {
         id_field: "",
@@ -2605,17 +2632,46 @@ __webpack_require__.r(__webpack_exports__);
     this.loadData();
   },
   methods: {
-    upload: function upload(event) {
+    previewImage: function previewImage(event) {
       var _this = this;
+
+      var input = event.target;
+      this.photoData = [];
+
+      if (input.files && input.files[0]) {
+        for (var index = 0; index < input.files.length; index++) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            _this.photoData.push(e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[index]);
+        }
+      }
+    },
+    splitPhotoUrl: function splitPhotoUrl($photosUrl) {
+      this.oldPhotos = $photosUrl.split(";");
+    },
+    removeOldphoto: function removeOldphoto(index) {
+      this.oldPhotos.splice(index, 1);
+      console.log(this.oldPhotos);
+    },
+    removePhoto: function removePhoto(index) {
+      this.photoData.splice(index, 1);
+      this.photos.splice(index, 1);
+    },
+    upload: function upload(event) {
+      var _this2 = this;
 
       console.log(this.photos);
       event.preventDefault();
       window.setTimeout(function () {
         var formData = new FormData();
-        formData.append('id_field', _this.idField);
+        formData.append('id_field', _this2.idField);
 
-        for (var index = 0; index < _this.photos.length; index++) {
-          formData.append("photo[]", _this.photos[index]);
+        for (var index = 0; index < _this2.photos.length; index++) {
+          formData.append("photo[]", _this2.photos[index]);
         }
 
         console.log(formData);
@@ -2647,7 +2703,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     loadData: function loadData() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios({
         url: '/edit',
@@ -2656,11 +2712,13 @@ __webpack_require__.r(__webpack_exports__);
           id: this.idField
         }
       }).then(function (response) {
-        _this2.oldfield = response.data;
+        _this3.oldfield = response.data;
         console.log(response);
-        console.log(_this2.oldfield);
+        console.log(_this3.oldfield);
 
-        _this2.setDataField(_this2.oldfield); // console.log(response.data)
+        _this3.setDataField(_this3.oldfield);
+
+        _this3.splitPhotoUrl(_this3.oldfield.field_photo); // console.log(response.data)
 
       })["catch"](function (error) {
         console.log(error);
@@ -2898,34 +2956,34 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         console.log(error);
       });
     },
-    deleteLapang: function deleteLapang(id_field) {
-      var _this2 = this;
-
-      var uri = "http://localhost:8000/api/v1/field/".concat(id_field);
-      this.axios["delete"](uri).then(function (response) {
-        _this2.dataLapangan.splice(_this2.dataLapangan.indexOf(id_field), 1);
-
-        console.log(_this2.dataLapangan);
+    deleteLapang: function deleteLapang(index) {
+      axios({
+        url: 'delete/' + this.dataLapangan[index].id_field,
+        method: 'DELETE'
+      }).then(function (response) {
+        // this.dataLapangan[index].splice(this.dataLapangan[index].indexOf(id_field), 1);
         window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     loadLocation: function loadLocation() {
-      var _this3 = this;
+      var _this2 = this;
 
       var index = 0;
       axios({
-        url: 'api/v1/location',
+        url: 'data/locations',
         methods: 'GET'
       }).then(function (response) {
-        _this3.locations = response.data.serve; // console.log(response);
+        _this2.locations = response.data.serve; // console.log(response);
         // console.log(this.locations);
 
-        _this3.location = [];
+        _this2.location = [];
 
-        for (index = 0; index < _this3.locations.length; index++) {
-          _this3.location.push({
-            value: _this3.locations[index].id_location,
-            text: _this3.locations[index].location_name
+        for (index = 0; index < _this2.locations.length; index++) {
+          _this2.location.push({
+            value: _this2.locations[index].id_location,
+            text: _this2.locations[index].location_name
           });
         }
       })["catch"](function (error) {
@@ -2962,20 +3020,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_2__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3462,7 +3506,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         }
 
         axios({
-          url: "/upload",
+          url: "/uploadlokasi",
           method: "POST",
           data: formData,
           headers: {
@@ -25512,7 +25556,7 @@ var VBTooltip = {
 /*!*************************************************!*\
   !*** ./node_modules/bootstrap-vue/esm/index.js ***!
   \*************************************************/
-/*! exports provided: install, NAME, BVConfigPlugin, BVConfig, BootstrapVue, default, componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, TableLitePlugin, TableSimplePlugin, BTable, BTableLite, BTableSimple, BTbody, BThead, BTfoot, BTr, BTh, BTd, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip */
+/*! exports provided: componentsPlugin, BVModalPlugin, BVToastPlugin, AlertPlugin, BAlert, BadgePlugin, BBadge, BreadcrumbPlugin, BBreadcrumb, BBreadcrumbItem, ButtonPlugin, BButton, BButtonClose, ButtonGroupPlugin, BButtonGroup, ButtonToolbarPlugin, BButtonToolbar, CardPlugin, BCard, BCardBody, BCardFooter, BCardGroup, BCardHeader, BCardImg, BCardImgLazy, BCardSubTitle, BCardText, BCardTitle, CarouselPlugin, BCarousel, BCarouselSlide, CollapsePlugin, BCollapse, DropdownPlugin, BDropdown, BDropdownItem, BDropdownItemButton, BDropdownDivider, BDropdownForm, BDropdownGroup, BDropdownHeader, BDropdownText, EmbedPlugin, BEmbed, FormPlugin, BForm, BFormDatalist, BFormText, BFormInvalidFeedback, BFormValidFeedback, FormCheckboxPlugin, BFormCheckbox, BFormCheckboxGroup, FormFilePlugin, BFormFile, FormGroupPlugin, BFormGroup, FormInputPlugin, BFormInput, FormRadioPlugin, BFormRadio, BFormRadioGroup, FormSelectPlugin, BFormSelect, FormTextareaPlugin, BFormTextarea, ImagePlugin, BImg, BImgLazy, InputGroupPlugin, BInputGroup, BInputGroupAddon, BInputGroupAppend, BInputGroupPrepend, BInputGroupText, JumbotronPlugin, BJumbotron, LayoutPlugin, BContainer, BRow, BCol, BFormRow, LinkPlugin, BLink, ListGroupPlugin, BListGroup, BListGroupItem, MediaPlugin, BMedia, BMediaAside, BMediaBody, ModalPlugin, BModal, NavPlugin, BNav, BNavForm, BNavItem, BNavItemDropdown, BNavText, NavbarPlugin, BNavbar, BNavbarBrand, BNavbarNav, BNavbarToggle, PaginationPlugin, BPagination, PaginationNavPlugin, BPaginationNav, PopoverPlugin, BPopover, ProgressPlugin, BProgress, BProgressBar, SpinnerPlugin, BSpinner, TablePlugin, TableLitePlugin, TableSimplePlugin, BTable, BTableLite, BTableSimple, BTbody, BThead, BTfoot, BTr, BTh, BTd, TabsPlugin, BTabs, BTab, ToastPlugin, BToast, BToaster, TooltipPlugin, BTooltip, directivesPlugin, VBModalPlugin, VBModal, VBPopoverPlugin, VBPopover, VBScrollspyPlugin, VBScrollspy, VBTogglePlugin, VBToggle, VBTooltipPlugin, VBTooltip, install, NAME, BVConfigPlugin, BVConfig, BootstrapVue, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71592,6 +71636,28 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "addlapang" } }, [
     _c("form", [
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
+          _c("label", { attrs: { for: "namalapang" } }, [
+            _vm._v("Choose Location : ")
+          ]),
+          _vm._v(" "),
+          _c("b-form-select", {
+            attrs: { options: _vm.location },
+            model: {
+              value: _vm.field.id_location,
+              callback: function($$v) {
+                _vm.$set(_vm.field, "id_location", $$v)
+              },
+              expression: "field.id_location"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("label", { attrs: { for: "namalapang" } }, [
           _vm._v("Nama Lapang : ")
@@ -71656,6 +71722,7 @@ var render = function() {
               accept: ".jpg, .png, .jpeg,. .gif",
               enctype: "multipart/form-data"
             },
+            on: { change: _vm.previewImage },
             model: {
               value: _vm.photos,
               callback: function($$v) {
@@ -71666,24 +71733,64 @@ var render = function() {
           })
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "spacer-10" }),
+      _vm._v(" "),
+      _vm.photoData.length > 0
+        ? _c(
+            "div",
+            {
+              staticClass: "d-flex image-bg",
+              staticStyle: { "max-width": "inherit" }
+            },
+            _vm._l(_vm.photoData, function(photo, index) {
+              return _c("div", { key: index }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "image",
+                    style: { "background-image": "url(" + photo + ")" }
+                  },
+                  [
+                    _c(
+                      "i",
+                      {
+                        staticClass: "material-icons ic mr-auto",
+                        on: {
+                          click: function($event) {
+                            return _vm.removePhoto(index)
+                          }
+                        }
+                      },
+                      [_vm._v("close")]
+                    )
+                  ]
+                )
+              ])
+            }),
+            0
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        on: {
-          click: function($event) {
-            _vm.store()
-            _vm.upload($event)
+    _c("div", { staticClass: "tombol" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          on: {
+            click: function($event) {
+              _vm.store()
+              _vm.upload($event)
+            }
           }
-        }
-      },
-      [_vm._v("Add Lapang")]
-    )
+        },
+        [_vm._v("Add Lapang")]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -71787,6 +71894,7 @@ var render = function() {
                           expression: "selectedDate"
                         }
                       ],
+                      staticClass: "dateclass",
                       attrs: { type: "date" },
                       domProps: { value: _vm.selectedDate },
                       on: {
@@ -71836,11 +71944,13 @@ var render = function() {
           "tbody",
           _vm._l(_vm.dataBooking, function(data, index) {
             return _c("tr", { key: data.id_booking }, [
-              _c("td", [_vm._v(_vm._s(data.name))]),
+              _c("td", [_vm._v(_vm._s(data.user_name))]),
               _vm._v(" "),
               _c("td", [_vm._v(_vm._s(data.id_booking))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(data.schedule))]),
+              _c("td", [
+                _vm._v(_vm._s(data.start_time) + "-" + _vm._s(data.end_time))
+              ]),
               _vm._v(" "),
               _c("td", [
                 _c(
@@ -72021,6 +72131,7 @@ var render = function() {
               accept: ".jpg, .png, .jpeg,. .gif",
               enctype: "multipart/form-data"
             },
+            on: { change: _vm.previewImage },
             model: {
               value: _vm.photos,
               callback: function($$v) {
@@ -72028,7 +72139,77 @@ var render = function() {
               },
               expression: "photos"
             }
-          })
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "spacer-10" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex" }, [
+            _vm.oldPhotos.length > 0
+              ? _c(
+                  "div",
+                  { staticClass: "d-flex flex-row image-bg" },
+                  _vm._l(_vm.oldPhotos, function(photo, index) {
+                    return _c("div", { key: index }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "image",
+                          style: { "background-image": "url(" + photo + ")" }
+                        },
+                        [
+                          _c(
+                            "i",
+                            {
+                              staticClass: "material-icons ic mr-auto",
+                              on: {
+                                click: function($event) {
+                                  return _vm.removeOldphoto(index)
+                                }
+                              }
+                            },
+                            [_vm._v("close")]
+                          )
+                        ]
+                      )
+                    ])
+                  }),
+                  0
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.photoData.length > 0
+              ? _c(
+                  "div",
+                  { staticClass: "d-flex flex-row image-bg" },
+                  _vm._l(_vm.photoData, function(photo, index) {
+                    return _c("div", { key: index }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "image",
+                          style: { "background-image": "url(" + photo + ")" }
+                        },
+                        [
+                          _c(
+                            "i",
+                            {
+                              staticClass: "material-icons ic mr-auto",
+                              on: {
+                                click: function($event) {
+                                  return _vm.removePhoto(index)
+                                }
+                              }
+                            },
+                            [_vm._v("close")]
+                          )
+                        ]
+                      )
+                    ])
+                  }),
+                  0
+                )
+              : _vm._e()
+          ])
         ],
         1
       )
@@ -72325,7 +72506,7 @@ var render = function() {
                                 attrs: { important: "", variant: "danger" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.deleteLapang(lapangan.id_field)
+                                    return _vm.deleteLapang(index)
                                   }
                                 }
                               },
@@ -72537,61 +72718,51 @@ var render = function() {
                           },
                           expression: "photos"
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "spacer-10" }),
+                      _vm._v(" "),
+                      _vm.photoData.length > 0
+                        ? _c(
+                            "div",
+                            {
+                              staticClass: "d-flex image-bg",
+                              staticStyle: { "max-width": "inherit" }
+                            },
+                            _vm._l(_vm.photoData, function(photo, index) {
+                              return _c("div", { key: index }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "image",
+                                    style: {
+                                      "background-image": "url(" + photo + ")"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "i",
+                                      {
+                                        staticClass:
+                                          "material-icons ic mr-auto",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.removePhoto(index)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("close")]
+                                    )
+                                  ]
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-row",
-                { staticStyle: { width: "300px" } },
-                [
-                  _c("b-col", { staticClass: "col-2 mt-2" }),
-                  _vm._v(" "),
-                  _c("b-col", [
-                    _c("div", { staticClass: "spacer-10" }),
-                    _vm._v(" "),
-                    _vm.photoData.length > 0
-                      ? _c(
-                          "div",
-                          {
-                            staticClass: "d-flex image-bg",
-                            staticStyle: { "max-width": "inherit" }
-                          },
-                          _vm._l(_vm.photoData, function(photo, index) {
-                            return _c("div", { key: index }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "image",
-                                  style: {
-                                    "background-image": "url(" + photo + ")"
-                                  }
-                                },
-                                [
-                                  _c(
-                                    "i",
-                                    {
-                                      staticClass: "material-icons ic mr-auto",
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.removePhoto(index)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("close")]
-                                  )
-                                ]
-                              )
-                            ])
-                          }),
-                          0
-                        )
-                      : _vm._e()
-                  ])
                 ],
                 1
               )
