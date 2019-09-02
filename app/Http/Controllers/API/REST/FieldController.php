@@ -234,10 +234,10 @@ class FieldController extends Controller
 
     public function upload(Request $request)
     {
-    //    dd($request);
         try{
             $index = 1;
             $field = Field::find($request->id_field);
+            if ($request->file('photo') != null) {
             foreach($request->file('photo') as $f_photo){
                 $extension = $f_photo->getClientOriginalExtension();
                 $photoName = $index . $request->id_field . '.' . $extension;
@@ -249,7 +249,7 @@ class FieldController extends Controller
                 $field->save();
                 $index++;            
             } 
-          
+        }
         } catch (Exception $e){
             return response()->json([
             'message' => 'Failed delete data.' . $e->getMessage(),
@@ -260,21 +260,31 @@ class FieldController extends Controller
 
     public function uploadedit(Request $request)
     {
-    //    dd($request);
         try{
             $index = 1;
             $field = Field::find($request->id_field);
+
+            if ($request->oldPhoto != null) {
+                foreach ($request->oldPhoto as $f_photo) {
+                    if($field_photo == null) 
+                        $field_photo = $f_photo;
+                    else $field_photo = $location_photo .';'. $f_photo;
+                    $index++;
+                }
+            }
+            if ($request->file('photo') != null) {
             foreach($request->file('photo') as $f_photo){
                 $extension = $f_photo->getClientOriginalExtension();
                 $photoName = $index . $request->id_field . '.' . $extension;
                 $path = Storage::disk('public')->putFileAs('/fieldPhotos',$f_photo,$photoName);
                 
-                // if($field->field_photo == NULL)
+                if($field->field_photo == NULL)
                     $field->field_photo = '/storage' . '/' . $path;
-                // else $field->field_photo = $field->field_photo . ';' . '/storage' . '/' . $path;
+                else $field->field_photo = $field->field_photo . ';' . '/storage' . '/' . $path;
                 $field->save();
                 $index++;            
             } 
+            }
           
         } catch (Exception $e){
             return response()->json([

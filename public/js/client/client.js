@@ -2226,8 +2226,10 @@ __webpack_require__.r(__webpack_exports__);
         var formData = new FormData();
         formData.append('id_field', _this2.tempIdField);
 
-        for (var index = 0; index < _this2.photos.length; index++) {
-          formData.append("photo[]", _this2.photos[index]);
+        if (_this2.photos != null) {
+          for (var index = 0; index < _this2.photos.length; index++) {
+            formData.append("photo[]", _this2.photos[index]);
+          }
         }
 
         console.log(formData);
@@ -2268,9 +2270,7 @@ __webpack_require__.r(__webpack_exports__);
         url: 'data/locations',
         methods: 'GET'
       }).then(function (response) {
-        _this4.locations = response.data.serve; // console.log(response);
-        // console.log(this.locations);
-
+        _this4.locations = response.data.serve;
         _this4.location = [];
 
         for (index = 0; index < _this4.locations.length; index++) {

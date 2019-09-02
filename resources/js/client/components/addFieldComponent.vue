@@ -105,11 +105,11 @@
                 window.setTimeout(() => {
                 let formData = new FormData();
                 formData.append('id_field', this.tempIdField);
-                
+                  if (this.photos != null) { 
                  for (let index = 0; index < this.photos.length; index++) {
                       formData.append("photo[]", this.photos[index]);
                   }
-
+                }
 
                 console.log(formData);
                 
@@ -147,8 +147,6 @@
                     methods: 'GET',
                 }).then(response=>{
                     this.locations = response.data.serve
-                    // console.log(response);
-                    // console.log(this.locations);
                     this.location=[];
                     for(index=0;index < this.locations.length; index++){
                         this.location.push({value: this.locations[index].id_location, text: this.locations[index].location_name})
