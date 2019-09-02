@@ -499,9 +499,10 @@ export default {
       window.setTimeout(() => {
         let formData = new FormData();
         formData.append("id_location", this.tempIdLocation);
-
-        for (let index = 0; index < this.photos.length; index++) {
-          formData.append("photo[]", this.photos[index]);
+        if (this.photos != null) {
+          for (let index = 0; index < this.photos.length; index++) {
+            formData.append("photo[]", this.photos[index]);
+          }
         }
 
         axios({

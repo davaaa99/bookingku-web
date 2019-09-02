@@ -25,7 +25,6 @@
             <b-row no-gutters class="d-flex">
               <b-col class="col-lg-2" @click="detailLocation(location.id_location)">
                 <div class="image" :style="{ 'background-image': 'url(' + setPhoto(location.location_photo) + ')' }"></div>
-                <!-- <b-card-img :src="setPhoto(location.location_photo)" class="rounded-0"></b-card-img> -->
               </b-col>
               <b-col class="col-lg-9" @click="detailLocation(location.id_location)">
                 <b-card-body>

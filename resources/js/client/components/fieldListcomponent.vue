@@ -1,9 +1,7 @@
 <template>
 <div id="content">
     
-  <div id="lapang">
-        <div class="filter ">
-            <div class="filter-item d-flex">
+  <div id="lapang">        
                 <div class="locationdd">
                     <label for="location"> Lokasi </label>
                     <b-form-select v-model="selectedLocation" :options="location"></b-form-select>
@@ -13,11 +11,8 @@
                         <a href="addlapang"><b-button  type="add" variant="primary">Tambah Lapang</b-button></a>
                     </b-col>
                 </div>
-            </div>  
-        </div>   
     </div>
    
-    
     <div class ="cardlapang" v-for="(lapangan, index) in dataLapangan" :key="lapangan.id_field">
         <a :href="'detaillapang/' + lapangan.id_field">
         <b-card-group deck>
@@ -110,9 +105,11 @@
                     // console.log(response);
                     // console.log(this.locations);
                     this.location=[];
+
                     for(index=0;index < this.locations.length; index++){
                         this.location.push({value: this.locations[index].id_location, text: this.locations[index].location_name})
                     }
+
                 }).catch(error=>{
                     console.log(error);
                 })
@@ -125,6 +122,8 @@
                 this.filterStatus = status;
             },
             setPhoto(photosUrl){
+
+                if(photosUrl == null) return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGOebuJUjkcg9mlBiznHn1ZFz3t2Fj4o3_y4huH4hvi2ZOz9CV'
                 let photos = photosUrl.split(";");
                 return photos[0]
             }

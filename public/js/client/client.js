@@ -2670,11 +2670,18 @@ __webpack_require__.r(__webpack_exports__);
         var formData = new FormData();
         formData.append('id_field', _this2.idField);
 
-        for (var index = 0; index < _this2.photos.length; index++) {
-          formData.append("photo[]", _this2.photos[index]);
+        if (_this2.oldPhotos != null) {
+          for (var index = 0; index < _this2.oldPhotos.length; index++) {
+            formData.append("oldPhoto[]", _this2.oldPhotos[index]);
+          }
         }
 
-        console.log(formData);
+        if (_this2.photos != null) {
+          for (var _index = 0; _index < _this2.photos.length; _index++) {
+            formData.append("photo[]", _this2.photos[_index]);
+          }
+        }
+
         axios({
           url: "/upload",
           method: "POST",
@@ -2683,7 +2690,7 @@ __webpack_require__.r(__webpack_exports__);
             'content-type': 'multipart/form-data'
           }
         }).then(function (response) {
-          alert("Successfully added new Field");
+          alert("Successfully update new Field");
           window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
         })["catch"](function (response) {
           console.log(error);
@@ -2905,11 +2912,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -2998,6 +3000,7 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
       this.filterStatus = status;
     },
     setPhoto: function setPhoto(photosUrl) {
+      if (photosUrl == null) return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGOebuJUjkcg9mlBiznHn1ZFz3t2Fj4o3_y4huH4hvi2ZOz9CV';
       var photos = photosUrl.split(";");
       return photos[0];
     }
@@ -3501,8 +3504,10 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
         var formData = new FormData();
         formData.append("id_location", _this.tempIdLocation);
 
-        for (var index = 0; index < _this.photos.length; index++) {
-          formData.append("photo[]", _this.photos[index]);
+        if (_this.photos != null) {
+          for (var index = 0; index < _this.photos.length; index++) {
+            formData.append("photo[]", _this.photos[index]);
+          }
         }
 
         axios({
@@ -4464,7 +4469,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_1__);
-//
 //
 //
 //
@@ -72403,53 +72407,47 @@ var render = function() {
     { attrs: { id: "content" } },
     [
       _c("div", { attrs: { id: "lapang" } }, [
-        _c("div", { staticClass: "filter " }, [
-          _c("div", { staticClass: "filter-item d-flex" }, [
-            _c(
-              "div",
-              { staticClass: "locationdd" },
-              [
-                _c("label", { attrs: { for: "location" } }, [
-                  _vm._v(" Lokasi ")
-                ]),
-                _vm._v(" "),
-                _c("b-form-select", {
-                  attrs: { options: _vm.location },
-                  model: {
-                    value: _vm.selectedLocation,
-                    callback: function($$v) {
-                      _vm.selectedLocation = $$v
-                    },
-                    expression: "selectedLocation"
-                  }
-                })
-              ],
-              1
-            ),
+        _c(
+          "div",
+          { staticClass: "locationdd" },
+          [
+            _c("label", { attrs: { for: "location" } }, [_vm._v(" Lokasi ")]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "buttonadd" },
-              [
-                _c("b-col", { attrs: { offset: "10" } }, [
+            _c("b-form-select", {
+              attrs: { options: _vm.location },
+              model: {
+                value: _vm.selectedLocation,
+                callback: function($$v) {
+                  _vm.selectedLocation = $$v
+                },
+                expression: "selectedLocation"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "buttonadd" },
+          [
+            _c("b-col", { attrs: { offset: "10" } }, [
+              _c(
+                "a",
+                { attrs: { href: "addlapang" } },
+                [
                   _c(
-                    "a",
-                    { attrs: { href: "addlapang" } },
-                    [
-                      _c(
-                        "b-button",
-                        { attrs: { type: "add", variant: "primary" } },
-                        [_vm._v("Tambah Lapang")]
-                      )
-                    ],
-                    1
+                    "b-button",
+                    { attrs: { type: "add", variant: "primary" } },
+                    [_vm._v("Tambah Lapang")]
                   )
-                ])
-              ],
-              1
-            )
-          ])
-        ])
+                ],
+                1
+              )
+            ])
+          ],
+          1
+        )
       ]),
       _vm._v(" "),
       _vm._l(_vm.dataLapangan, function(lapangan, index) {

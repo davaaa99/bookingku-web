@@ -113,10 +113,17 @@
                 let formData = new FormData();
                 formData.append('id_field', this.idField);
                 
-                 for (let index = 0; index < this.photos.length; index++) {
+
+                if (this.oldPhotos != null) {
+                  for (let index = 0; index < this.oldPhotos.length; index++) {
+                      formData.append("oldPhoto[]", this.oldPhotos[index]);
+                  }
+                }
+                if (this.photos != null) { 
+                  for (let index = 0; index < this.photos.length; index++) {
                       formData.append("photo[]", this.photos[index]);
                   }
-                console.log(formData);
+                }
                 
                 axios({
                   url: "/upload",
@@ -125,7 +132,7 @@
                   headers: { 'content-type': 'multipart/form-data' }
 
                 }).then(response=>{
-                  alert("Successfully added new Field");
+                  alert("Successfully update new Field");
                   window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
                 }).catch(response=>{
                   console.log(error);
