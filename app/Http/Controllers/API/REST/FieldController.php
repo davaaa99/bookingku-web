@@ -109,7 +109,7 @@ class FieldController extends Controller
         $field = new Field([
             'id_field' => Uuid::uuid1()->getHex(),
             'id_location' => $request->get('id_location'),
-            'id_kind_of_field' => '111',
+            'id_kind_of_field' => $request->get('id_kind_of_field'),
             'field_name' => $request->get('field_name'),
             'field_type' => $request->get('field_type'),
             // 'field_photo' => $request->get('field_photo'),
@@ -263,7 +263,7 @@ class FieldController extends Controller
         try{
             $index = 1;
             $field = Field::find($request->id_field);
-
+            // $field_photo == null;
             if ($request->oldPhoto != null) {
                 foreach ($request->oldPhoto as $f_photo) {
                     if($field_photo == null) 

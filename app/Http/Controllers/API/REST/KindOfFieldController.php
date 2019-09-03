@@ -16,10 +16,10 @@ class KindOfFieldController extends Controller
      *
      * @return void
      */
-    public function __construct(Request $request)
-    {
-        $this->middleware(['auth:api']);
-    }
+    // public function __construct(Request $request)
+    // {
+    //     // $this->middleware(['auth:api']);
+    // }
 
     /**
      * Display a listing of the kind of field.
@@ -42,6 +42,8 @@ class KindOfFieldController extends Controller
             'serve' => $kindoffield
         ], 200);
     }
+
+    
 
     /**
      * Create and store a new kind of field.

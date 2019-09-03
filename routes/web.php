@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth', 'verified', 'is_client']], function () {
     /**
      * Route for data
      */
+    Route::get('data/kindoffield', 'API\REST\KindOfFieldController@index');
+
     Route::post('location', 'API\REST\LocationController@create');
     Route::get('data/locations', 'API\REST\LocationController@show');
     Route::post('data/location', 'API\REST\LocationController@locationDetail');
@@ -103,3 +105,4 @@ Route::put('data/field', 'API\REST\FieldController@update');
 Route::post('upload', 'API\REST\FieldController@upload')->name('upload');
 Route::put('update', 'API\REST\FieldController@uploadedit')->name('updateedit');
 Route::delete('delete/{id}', 'API\REST\FieldController@destroy')->name('delete');
+

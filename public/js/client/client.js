@@ -2161,6 +2161,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2173,8 +2180,11 @@ __webpack_require__.r(__webpack_exports__);
       selectedLocation: "",
       location: [],
       locations: [],
+      kindfield: [],
+      kindfields: [],
       field: {
         id_location: "",
+        id_kind_of_field: "",
         field_name: "",
         field_type: "",
         photos: null
@@ -2183,6 +2193,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.loadLocation();
+    this.loadKindOfField();
   },
   methods: {
     removePhoto: function removePhoto(index) {
@@ -2268,7 +2279,7 @@ __webpack_require__.r(__webpack_exports__);
       var index = 0;
       axios({
         url: 'data/locations',
-        methods: 'GET'
+        method: 'GET'
       }).then(function (response) {
         _this4.locations = response.data.serve;
         _this4.location = [];
@@ -2279,6 +2290,29 @@ __webpack_require__.r(__webpack_exports__);
             text: _this4.locations[index].location_name
           });
         }
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    loadKindOfField: function loadKindOfField() {
+      var _this5 = this;
+
+      var index = 0;
+      axios({
+        url: 'data/kindoffield',
+        method: 'GET'
+      }).then(function (response) {
+        _this5.kindfields = response.data.serve;
+        _this5.kindfield = [];
+
+        for (index = 0; index < _this5.kindfields.length; index++) {
+          _this5.kindfield.push({
+            value: _this5.kindfields[index].id_kind_of_field,
+            text: _this5.kindfields[index].name_of_kind
+          });
+        }
+
+        console.log(kindfield);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2683,8 +2717,8 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         axios({
-          url: "/upload",
-          method: "POST",
+          url: "/update",
+          method: "PUT",
           data: formData,
           headers: {
             'content-type': 'multipart/form-data'
@@ -2875,6 +2909,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
 /* harmony import */ var os__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_3__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2925,16 +2967,13 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
     idBooking: [String]
   },
   data: function data() {
-    return {
-      status: false,
+    var _ref;
+
+    return _ref = {
       perPage: 5,
       currentPage: 1,
-      locations: [],
-      location: [],
-      selectedLocation: "",
-      filterStatus: "Pilih Lokasi",
-      dataLapangan: []
-    };
+      status: false
+    }, _defineProperty(_ref, "perPage", 5), _defineProperty(_ref, "currentPage", 1), _defineProperty(_ref, "locations", []), _defineProperty(_ref, "location", []), _defineProperty(_ref, "selectedLocation", ""), _defineProperty(_ref, "filterStatus", "Pilih Lokasi"), _defineProperty(_ref, "dataLapangan", []), _ref;
   },
   mounted: function mounted() {
     this.loadLocation();
@@ -71694,6 +71733,28 @@ var render = function() {
         "div",
         { staticClass: "form-group" },
         [
+          _c("label", { attrs: { for: "jenislapang" } }, [
+            _vm._v("Jenis Lapang : ")
+          ]),
+          _vm._v(" "),
+          _c("b-form-select", {
+            attrs: { options: _vm.kindfield, required: "" },
+            model: {
+              value: _vm.field.id_kind_of_field,
+              callback: function($$v) {
+                _vm.$set(_vm.field, "id_kind_of_field", $$v)
+              },
+              expression: "field.id_kind_of_field"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-group" },
+        [
           _c("label", { attrs: { for: "tipelapang" } }, [
             _vm._v("Tipe Lapang : ")
           ]),
@@ -72404,7 +72465,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "content" } },
+    { attrs: { id: "lapangan" } },
     [
       _c("div", { attrs: { id: "lapang" } }, [
         _c(
@@ -72453,7 +72514,11 @@ var render = function() {
       _vm._l(_vm.dataLapangan, function(lapangan, index) {
         return _c(
           "div",
-          { key: lapangan.id_field, staticClass: "cardlapang" },
+          {
+            key: lapangan.id_field,
+            staticClass: "cardlapang",
+            attrs: { id: "cardlapang" }
+          },
           [
             _c(
               "a",

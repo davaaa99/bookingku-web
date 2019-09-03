@@ -1,5 +1,5 @@
 <template>
-<div id="content">
+<div id="lapangan">
     
   <div id="lapang">        
                 <div class="locationdd">
@@ -13,7 +13,7 @@
                 </div>
     </div>
    
-    <div class ="cardlapang" v-for="(lapangan, index) in dataLapangan" :key="lapangan.id_field">
+    <div id="cardlapang" class ="cardlapang" v-for="(lapangan, index) in dataLapangan" :key="lapangan.id_field">
         <a :href="'detaillapang/' + lapangan.id_field">
         <b-card-group deck>
        <b-card>
@@ -31,7 +31,13 @@
         </b-card-group>
          </a>
     </div>
-   
+    <!-- <div class="pagination">
+    <b-pagination
+      v-model="currentPage"
+      :per-page="perPage"
+      aria-controls="cardlapang"
+    ></b-pagination>
+        </div> -->
 </div>
 </template>
 
@@ -53,6 +59,8 @@
         },
         data() {
             return {
+                perPage:5,
+                currentPage:1,
                 status: false,
                 perPage: 5,
                 currentPage: 1,

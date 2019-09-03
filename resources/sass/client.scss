@@ -821,22 +821,23 @@ main {
 }
 
 /*------------------------ MENU LAPANGAN ------------------------*/
-#content {
+#lapangan {
+    .pagination{
+        margin-left: 2%;
+    }
     .cardlapang {
         display: inline-block;
-        margin-left: 25px;
+        // margin-left: px;
     }
-    .locationdd{
-        width: 200px
-    }
+    
     .textlapang {
         color: #000000;
         padding-left: 0px;
         margin-left: 0px;
     }
     .gambarlapang {
-        width: 400px;
-        height: 300px;
+        width: 350px;
+        height: 250px;
         margin: 2 auto;
         margin-bottom: 10px;
     }
@@ -871,11 +872,15 @@ main {
 }
 
 #lapang{
-    margin-left: 40px;
+    .locationdd{
+        width: 200px;
+        margin-top: 30px;
+    }
+    margin-left: 20px;
     margin-right: 60px;
     .buttonadd{
-        // padding-right: 100px;
-        padding-top: 30px;
+        padding-right: 5%;
+        // padding-top: 30px;
     }
 }
 #carilokasi {
@@ -1398,10 +1403,10 @@ main {
         }
 
         .card {
-            width: 90%;
+            width: 70%;
 
             .card-body {
-                width: 90%;
+                width: 70%;
 
                 .alert {
                     text-align: center;

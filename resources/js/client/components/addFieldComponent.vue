@@ -6,11 +6,18 @@
               <b-form-select v-model="field.id_location" :options="location"></b-form-select>
             </div>
                    
-
             <div class="form-group">
               <label for="namalapang">Nama Lapang : </label>
               <input type="text" class="form-control" v-model="field.field_name" required>
             </div>
+            <div class="form-group">
+              <label for="jenislapang">Jenis Lapang : </label>
+              <b-form-select
+                    v-model="field.id_kind_of_field"
+                    :options="kindfield"
+                    required>
+              </b-form-select>
+           </div>
             <div class="form-group">
               <label for="tipelapang">Tipe Lapang : </label>
               <b-form-select
@@ -60,8 +67,11 @@
         selectedLocation: "",
         location:[],
         locations:[],
+        kindfield:[],
+        kindfields:[],
         field:{
           id_location: "",
+          id_kind_of_field:"",
           field_name: "",
           field_type: "",
           photos: null
@@ -70,6 +80,7 @@
     },
     mounted(){
             this.loadLocation();
+            this.loadKindOfField();
         },
     methods: {  
       removePhoto(index) {
@@ -144,13 +155,30 @@
                 let index=0;
                 axios({
                     url: 'data/locations',
-                    methods: 'GET',
+                    method: 'GET',
                 }).then(response=>{
                     this.locations = response.data.serve
                     this.location=[];
                     for(index=0;index < this.locations.length; index++){
                         this.location.push({value: this.locations[index].id_location, text: this.locations[index].location_name})
                     }
+                }).catch(error=>{
+                    console.log(error);
+                })
+            },
+      loadKindOfField(){
+                let index=0;
+                axios({
+                    url: 'data/kindoffield',
+                    method: 'GET',
+                }).then(response=>{
+                    this.kindfields = response.data.serve
+                    this.kindfield=[];
+                    for(index=0;index < this.kindfields.length; index++){
+                        this.kindfield.push({value: this.kindfields[index].id_kind_of_field, text: this.kindfields[index].name_of_kind})
+                    }
+                    console.log(kindfield);
+                    
                 }).catch(error=>{
                     console.log(error);
                 })

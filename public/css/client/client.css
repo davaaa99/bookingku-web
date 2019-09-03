@@ -17197,47 +17197,46 @@ main {
 
 /*------------------------ MENU LAPANGAN ------------------------*/
 
-#content .cardlapang {
+#lapangan .pagination {
+  margin-left: 2%;
+}
+
+#lapangan .cardlapang {
   display: inline-block;
-  margin-left: 25px;
 }
 
-#content .locationdd {
-  width: 200px;
-}
-
-#content .textlapang {
+#lapangan .textlapang {
   color: #000000;
   padding-left: 0px;
   margin-left: 0px;
 }
 
-#content .gambarlapang {
-  width: 400px;
-  height: 300px;
+#lapangan .gambarlapang {
+  width: 350px;
+  height: 250px;
   margin: 2 auto;
   margin-bottom: 10px;
 }
 
-#content .button-variant {
+#lapangan .button-variant {
   width: 20px;
   height: 10px;
 }
 
-#content .card-img-top {
+#lapangan .card-img-top {
   width: 100%;
   height: 300px;
 }
 
-#content .card:hover {
+#lapangan .card:hover {
   background: lightgray;
 }
 
-#content .card {
+#lapangan .card {
   display: inline-block;
 }
 
-#content .card-deck {
+#lapangan .card-deck {
   width: 500px;
   height: 500px;
   margin: 20px auto;
@@ -17245,12 +17244,17 @@ main {
 }
 
 #lapang {
-  margin-left: 40px;
+  margin-left: 20px;
   margin-right: 60px;
 }
 
+#lapang .locationdd {
+  width: 200px;
+  margin-top: 30px;
+}
+
 #lapang .buttonadd {
-  padding-top: 30px;
+  padding-right: 5%;
 }
 
 #carilokasi {
@@ -17727,11 +17731,11 @@ main {
 }
 
 #reset .container .card {
-  width: 90%;
+  width: 70%;
 }
 
 #reset .container .card .card-body {
-  width: 90%;
+  width: 70%;
 }
 
 #reset .container .card .card-body .alert {

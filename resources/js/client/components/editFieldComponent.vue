@@ -126,8 +126,8 @@
                 }
                 
                 axios({
-                  url: "/upload",
-                  method: "POST",
+                  url: "/update",
+                  method: "PUT",
                   data: formData,
                   headers: { 'content-type': 'multipart/form-data' }
 
