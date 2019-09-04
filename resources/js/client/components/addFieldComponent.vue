@@ -3,7 +3,7 @@
       <form>
             <div class="form-group">
               <label for="namalapang">Choose Location : </label>
-              <b-form-select v-model="field.id_location" :options="location"></b-form-select>
+              <b-form-select v-model="field.id_location" :options="location" required></b-form-select>
             </div>
                    
             <div class="form-group">

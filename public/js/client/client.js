@@ -2828,6 +2828,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     idField: String
@@ -2997,34 +3000,49 @@ Vue.use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
         console.log(error);
       });
     },
-    deleteLapang: function deleteLapang(index) {
-      axios({
-        url: 'delete/' + this.dataLapangan[index].id_field,
-        method: 'DELETE'
-      }).then(function (response) {
-        // this.dataLapangan[index].splice(this.dataLapangan[index].indexOf(id_field), 1);
-        window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+    msgBoxDelete: function msgBoxDelete(index) {
+      var _this2 = this;
+
+      this.$bvModal.msgBoxConfirm("Are you sure you want delete this fields?", {
+        title: "Delete Field",
+        size: "sm",
+        buttonSize: "sm",
+        okVariant: "danger",
+        okTitle: "DELETE",
+        footerClass: "p-2",
+        centered: true
+      }).then(function (value) {
+        if (value) {
+          axios({
+            url: 'delete/' + _this2.dataLapangan[index].id_field,
+            method: 'DELETE'
+          }).then(function (response) {
+            window.location.href = window.location.protocol + '//' + window.location.host + '/menulapang';
+          })["catch"](function (error) {
+            console.log(error);
+          });
+        }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     loadLocation: function loadLocation() {
-      var _this2 = this;
+      var _this3 = this;
 
       var index = 0;
       axios({
         url: 'data/locations',
         methods: 'GET'
       }).then(function (response) {
-        _this2.locations = response.data.serve; // console.log(response);
+        _this3.locations = response.data.serve; // console.log(response);
         // console.log(this.locations);
 
-        _this2.location = [];
+        _this3.location = [];
 
-        for (index = 0; index < _this2.locations.length; index++) {
-          _this2.location.push({
-            value: _this2.locations[index].id_location,
-            text: _this2.locations[index].location_name
+        for (index = 0; index < _this3.locations.length; index++) {
+          _this3.location.push({
+            value: _this3.locations[index].id_location,
+            text: _this3.locations[index].location_name
           });
         }
       })["catch"](function (error) {
@@ -71688,7 +71706,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("b-form-select", {
-            attrs: { options: _vm.location },
+            attrs: { options: _vm.location, required: "" },
             model: {
               value: _vm.field.id_location,
               callback: function($$v) {
@@ -72569,7 +72587,7 @@ var render = function() {
                                 attrs: { important: "", variant: "danger" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.deleteLapang(index)
+                                    return _vm.msgBoxDelete(index)
                                   }
                                 }
                               },

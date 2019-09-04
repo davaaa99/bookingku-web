@@ -17360,7 +17360,14 @@ main {
   color: #000000;
 }
 
+#lapang-detail .tombolback {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  padding-bottom: 10px;
+}
+
 #lapang-detail .gambardetail {
+  padding-top: 10px;
   width: 100%;
   height: 400px;
 }

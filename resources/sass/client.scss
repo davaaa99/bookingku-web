@@ -1007,7 +1007,13 @@ main {
 }
 
 #lapang-detail {
+    .tombolback{
+        margin-left: 3px;
+        margin-bottom: 3px;
+        padding-bottom: 10px;
+    }
     .gambardetail{
+        padding-top: 10px;
         width: 100%;
         height: 400px;
     }

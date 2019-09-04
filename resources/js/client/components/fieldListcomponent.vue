@@ -26,7 +26,7 @@
         <p>{{lapangan.field_type}}</p>
         </b-card-text>
         <a :href="'editlapang/' + lapangan.id_field"><b-button important variant="light">Edit</b-button></a>
-        <a href="#"><b-button important variant="danger" @click="deleteLapang(index)">Delete </b-button></a>
+        <a href="#"><b-button important variant="danger" @click="msgBoxDelete(index)">Delete </b-button></a>
        </b-card> 
         </b-card-group>
          </a>
@@ -92,16 +92,35 @@
                     console.log(error);
                 });
             },
-            deleteLapang(index){  
-                axios({
+            msgBoxDelete(index){  
+                this.$bvModal
+                .msgBoxConfirm("Are you sure you want delete this fields?", {
+                title: "Delete Field",
+                size: "sm",
+                buttonSize: "sm",
+                okVariant: "danger",
+                okTitle: "DELETE",
+                footerClass: "p-2",
+                centered: true
+                })
+                .then(value => {
+                if (value) {
+                    axios({   
                     url: 'delete/'+ this.dataLapangan[index].id_field,
                     method: 'DELETE',
-              }).then(response=>{
-                // this.dataLapangan[index].splice(this.dataLapangan[index].indexOf(id_field), 1);
-                window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
-              }).catch(error=>{
-                    console.log(error);
-                });   
+                   
+                    })
+                    .then(response => {
+                       window.location.href = window.location.protocol +'//'+ window.location.host + '/menulapang';
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+                }
+                })
+                .catch(error => {
+                console.log(error);
+                }); 
             },
             loadLocation(){
                 let index=0;

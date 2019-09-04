@@ -1,4 +1,5 @@
 <template>
+
     <div id="lapang-detail">
         <b-carousel
             id="carousel-1"
@@ -28,6 +29,7 @@
         <div class="hari">
             <!-- <b-form-select v-model="selected" :options="options"></b-form-select> -->
         </div>
+
         <div class="tabel-jadwal">
             <b-table stripped hover :items="items" :fields="fields">
                 <template slot="Action" slot-scope="data">
@@ -36,6 +38,7 @@
                     <b-button variant="danger" class=" btn btn-detail" @click="detail(data.item.idClient)">Delete</b-button>
                 </template>
             </b-table>
+        <!-- <a href="/menulapang" class="tombolback"><button class="btn btn-primary">Back</button></a> -->
             
         </div>
     </div>
