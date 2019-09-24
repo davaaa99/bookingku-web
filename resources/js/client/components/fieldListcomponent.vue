@@ -13,12 +13,11 @@
                 </div>
     </div>
    
-    <div id="cardlapang" class ="cardlapang" v-for="(lapangan, index) in dataLapangan" :key="lapangan.id_field">
+    <div class ="cardlapang" v-for="(lapangan, index) in dataLapangan" :key="lapangan.id_field" >
         <a :href="'detaillapang/' + lapangan.id_field">
-        <b-card-group deck>
-       <b-card>
+        <b-card-group deck id="cardlapang1" :per-page="perPage" :current-page="currentPage" :dataLapangan="dataLapangan">
+       <b-card >
         <img class="gambarlapang" :src="setPhoto(lapangan.field_photo)"/>
-
         <b-card-title class="textlapang">
         <p>{{lapangan.field_name}}</p>
         </b-card-title>
@@ -31,13 +30,13 @@
         </b-card-group>
          </a>
     </div>
-    <!-- <div class="pagination">
+    <!-- <div class="pagination"> -->
     <b-pagination
-      v-model="currentPage"
+      :total-rows="rows"
       :per-page="perPage"
-      aria-controls="cardlapang"
+      aria-controls="cardlapang1"
     ></b-pagination>
-        </div> -->
+        <!-- </div> -->
 </div>
 </template>
 
@@ -59,11 +58,9 @@
         },
         data() {
             return {
-                perPage:5,
+                perPage:2,
                 currentPage:1,
                 status: false,
-                perPage: 5,
-                currentPage: 1,
                 locations:[],
                 location:[],
                 selectedLocation: "",
@@ -71,6 +68,11 @@
                 dataLapangan: [],
                 
             };
+        },
+        computed: {
+        rows() {
+            return this.dataLapangan.length
+        }
         },
         mounted(){
             this.loadLocation();

@@ -17197,6 +17197,10 @@ main {
 
 /*------------------------ MENU LAPANGAN ------------------------*/
 
+#lapangan {
+  margin-left: 40px;
+}
+
 #lapangan .pagination {
   margin-left: 2%;
 }
@@ -17249,7 +17253,7 @@ main {
 }
 
 #lapang .locationdd {
-  width: 200px;
+  width: 300px;
   margin-top: 30px;
 }
 
